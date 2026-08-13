@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/sidebar";
 import { startLogin } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { FileCheck2, LogOut, Menu, PanelLeft } from "lucide-react";
+import { FileCheck2, LogOut, Menu, PanelLeft, Search } from "lucide-react";
 import React, { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
@@ -98,6 +98,7 @@ function DashboardLayoutContent({
   const { state, toggleSidebar } = useSidebar();
   const isCollapsed = state === "collapsed";
   const [isResizing, setIsResizing] = useState(false);
+  const [workspaceSearch, setWorkspaceSearch] = useState("");
   const sidebarRef = useRef<HTMLDivElement>(null);
   const activeMenuItem = menuItems.find(item => item.path === location);
   const isMobile = useIsMobile();
@@ -228,6 +229,7 @@ function DashboardLayoutContent({
       </div>
 
       <SidebarInset>
+        {!isMobile && <header className="hidden h-16 items-center justify-between border-b border-slate-200/80 bg-white/90 px-6 shadow-sm backdrop-blur lg:flex"><div><p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3157d5]">Agreement workspace</p><p className="mt-1 text-sm font-medium text-slate-600">ERP Solutions · Software Development · IT Support</p></div><div className="flex items-center gap-3"><div className="relative hidden w-64 xl:block"><Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" /><input aria-label="Search clients, schools, reference numbers" value={workspaceSearch} onChange={(event) => { const value = event.target.value; setWorkspaceSearch(value); window.dispatchEvent(new CustomEvent("agreement-search", { detail: value })); }} placeholder="Search clients, schools, reference no…" className="h-10 w-full rounded-xl border border-slate-200 bg-white pl-9 pr-3 text-sm text-slate-700 outline-none transition focus:border-[#3157d5] focus:ring-2 focus:ring-[#3157d5]/10" /></div><div className="hidden text-right xl:block"><p className="text-sm font-semibold text-slate-800">{user?.name || "Admin User"}</p><p className="text-xs text-slate-500">{user?.email || "Authenticated workspace"}</p></div><Avatar className="h-10 w-10 border border-[#d9d6ff] bg-[#4b43a8] text-white"><AvatarFallback className="bg-[#4b43a8] text-xs font-semibold text-white">{user?.name?.slice(0, 2).toUpperCase() || "AD"}</AvatarFallback></Avatar></div></header>}
         {isMobile && (
           <div className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-slate-200/80 bg-white/90 px-4 shadow-sm backdrop-blur supports-[backdrop-filter]:backdrop-blur">
             <img src="/manus-storage/ERP-logo_8db1044d.png" alt="ERP" className="block h-10 w-10 object-contain object-center" />
@@ -237,7 +239,7 @@ function DashboardLayoutContent({
             </div>
           </div>
         )}
-        <main className="min-w-0 flex-1 p-3 sm:p-4 lg:p-6">{children}</main>
+        <main className="min-w-0 flex-1 bg-[#f8f9fd] p-3 sm:p-4 lg:p-6">{children}</main>
       </SidebarInset>
     </>
   );

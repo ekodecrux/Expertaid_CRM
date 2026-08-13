@@ -162,3 +162,28 @@
 - [x] Format agreement reference numbers as ERP26001-style identifiers, starting with ERP26001
 - [x] Display the ERP26001-style reference consistently in admin rows, client Agreement Details, and print output
 - [x] Validate the new reference format and preserve existing agreement workflow behavior
+
+- [x] Add a client option to upload a digital signature image from the local device
+- [x] Preserve the existing draw-signature option and allow switching, replacing, or removing the selected signature
+- [x] Validate uploaded signature file type and size before using it in the existing secure persistence flow
+- [x] Keep terms confirmation, signature date, acceptance, responsive behavior, and print output unchanged
+- [x] Validate the upload and draw flows with tests, responsive QA, and one-page A4 print verification (21 tests pass; pending mobile QA verified; existing print-hidden flow preserved)
+- [x] Add explicit replace-upload behavior and clear signature state when switching between Draw and Upload modes
+- [x] Convert JPEG/WebP uploads to PNG data URLs before using the existing PNG persistence path
+- [x] Add focused tests for signature mode validation and acceptance-state behavior
+- [x] Generate and inspect a fresh post-change A4 print artifact (one page, A4 dimensions confirmed)
+- [x] Add UI/integration coverage for Draw/Upload switching, replace/remove behavior, invalid upload rejection, and accept-button readiness (AgreementPage render coverage plus shared validation/state tests)
+- [x] Visually inspect the successful post-change A4 PDF for hidden upload controls and unclipped agreement content (one-page A4 render inspected)
+
+- [x] Align the admin shell toward the reference with a wider top bar, search area, admin profile controls, and expanded navigation structure (visual shell refinement with authenticated profile context)
+- [x] Add or refine KPI cards for Total Agreements, Pending, Approved, Expiring Soon, and Pipeline Value
+- [x] Refine the agreement list toward a structured table with client/reference, value, dates, status, and compact actions
+- [x] Preserve agreement creation, editing, link copying, signature viewing, public links, and responsive behavior
+- [x] Validate the reference-inspired dashboard on desktop and mobile before checkpointing
+
+- [x] Apply the supplied enterprise dashboard visual refinement without changing existing agreement or signature logic
+- [x] Preserve agreement creation/editing, ERP26001 references, link actions, public links, terms confirmation, and signature upload behavior
+- [x] Validate the redesigned dashboard on desktop and mobile with existing workflow tests passing
+- [x] Connect the reference-style top-bar search to the existing agreement filter without changing current search behavior
+- [x] Add an explicit desktop Status column while keeping the existing mobile stacked rows and actions
+- [x] Capture authenticated preview evidence for the final reference-inspired dashboard (desktop and mobile previews show agreement data, KPI cards, actions, and profile context; findings recorded in dashboard-qa.md)

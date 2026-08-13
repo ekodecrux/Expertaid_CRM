@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import React, { useEffect, useRef, useState, type ReactNode } from "react";
 import { useRoute } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Badge } from "@/components/ui/badge";
@@ -8,10 +8,12 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { AlertCircle, Building2, CalendarClock, CheckCircle2, FileCheck2, FileText, Handshake, Mail, MapPin, MessageSquare, Network, PenLine, Phone, Printer, RotateCcw, ShieldCheck, Tag, Users, Eye } from "lucide-react";
+import { AlertCircle, Building2, CalendarClock, CheckCircle2, FileCheck2, FileText, Handshake, ImageUp, Mail, MapPin, MessageSquare, Network, PenLine, Phone, Printer, RotateCcw, ShieldCheck, Tag, Upload, Users, Eye, X } from "lucide-react";
 import { toast } from "sonner";
 import { TERMS_DOCUMENT_FULL } from "@/data/softwareServiceAgreement";
 import { formatAgreementReference } from "@shared/agreement";
+import { isSignatureUploadSizeAllowed, isSupportedSignatureType, SIGNATURE_UPLOAD_MAX_BYTES } from "@shared/signatureUpload";
+import { isAgreementAcceptanceReady } from "@shared/signatureState";
 
 const COMPANY_LOGO = "/manus-storage/EXPLOGO2024_3ab64898.png";
 
@@ -89,6 +91,8 @@ function formatMoney(value: string | number) {
 }
 
 function SignatureCanvas({ onChange }: { onChange: (dataUrl: string | null) => void }) {
+  const [mode, setMode] = useState<"draw" | "upload">("draw");
+  const [uploadedUrl, setUploadedUrl] = useState<string | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const drawing = useRef(false);
   const [hasSignature, setHasSignature] = useState(false);
@@ -142,10 +146,59 @@ function SignatureCanvas({ onChange }: { onChange: (dataUrl: string | null) => v
     const ctx = canvas?.getContext("2d");
     if (canvas && ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
     setHasSignature(false);
+    setUploadedUrl(null);
     onChange(null);
   };
+  const handleUpload = (file: File | undefined) => {
+    if (!file) return;
+    if (!isSupportedSignatureType(file.type)) {
+      toast.error("Please choose a PNG, JPG, or WebP signature image.");
+      return;
+    }
+    if (!isSignatureUploadSizeAllowed(file.size)) {
+      toast.error(`Please choose a signature image smaller than ${Math.round(SIGNATURE_UPLOAD_MAX_BYTES / 1_000_000)} MB.`);
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = String(reader.result);
+      const commitPng = (pngDataUrl: string) => {
+        setUploadedUrl(pngDataUrl);
+        setHasSignature(false);
+        setMode("upload");
+        onChange(pngDataUrl);
+      };
+      if (file.type === "image/png") {
+        commitPng(dataUrl);
+        return;
+      }
+      const image = new Image();
+      image.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = image.naturalWidth;
+        canvas.height = image.naturalHeight;
+        canvas.getContext("2d")?.drawImage(image, 0, 0);
+        commitPng(canvas.toDataURL("image/png"));
+      };
+      image.onerror = () => toast.error("This signature image could not be read. Please choose another file.");
+      image.src = dataUrl;
+    };
+    reader.readAsDataURL(file);
+  };
 
-  return <div><div className="relative overflow-hidden rounded-xl border border-dashed border-slate-300 bg-white"><canvas ref={canvasRef} className="h-40 w-full touch-none cursor-crosshair" onPointerDown={start} onPointerMove={move} onPointerUp={end} onPointerCancel={end} aria-label="Draw your signature" />{!hasSignature && <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-sm text-slate-400">Draw your signature here</span>}</div><Button type="button" variant="ghost" size="sm" className="mt-2 px-0 text-slate-500" onClick={clear}><RotateCcw className="mr-2 h-4 w-4" />Clear signature</Button></div>;
+  const changeMode = (nextMode: "draw" | "upload") => {
+    clear();
+    setMode(nextMode);
+  };
+
+  return <div>
+    <div className="mb-3 flex flex-wrap gap-2 rounded-lg bg-slate-100 p-1">
+      <button type="button" aria-pressed={mode === "draw"} className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors ${mode === "draw" ? "bg-white text-[#3157d5] shadow-sm" : "text-slate-500 hover:text-slate-700"}`} onClick={() => changeMode("draw")}>Draw signature</button>
+      <button type="button" aria-pressed={mode === "upload"} className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors ${mode === "upload" ? "bg-white text-[#3157d5] shadow-sm" : "text-slate-500 hover:text-slate-700"}`} onClick={() => changeMode("upload")}><ImageUp className="mr-2 inline h-4 w-4" />Upload signature</button>
+    </div>
+    {mode === "draw" ? <div className="relative overflow-hidden rounded-xl border border-dashed border-slate-300 bg-white"><canvas ref={canvasRef} className="h-40 w-full touch-none cursor-crosshair" onPointerDown={start} onPointerMove={move} onPointerUp={end} onPointerCancel={end} aria-label="Draw your signature" />{!hasSignature && <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-sm text-slate-400">Draw your signature here</span>}</div> : <div className="relative flex h-40 flex-col items-center justify-center overflow-hidden rounded-xl border border-dashed border-slate-300 bg-white p-4">{uploadedUrl ? <><img src={uploadedUrl} alt="Uploaded digital signature preview" className="block max-h-24 max-w-full object-contain" /><div className="mt-2 flex items-center gap-3"><label className="cursor-pointer text-xs font-medium text-[#3157d5] hover:underline">Replace signature<input type="file" accept="image/png,image/jpeg,image/webp" className="sr-only" onChange={(event) => handleUpload(event.target.files?.[0])} /></label><button type="button" className="text-xs font-medium text-slate-500 hover:text-rose-600" onClick={clear}>Remove</button></div></> : <label className="flex cursor-pointer flex-col items-center gap-2 text-center text-sm text-slate-500"><Upload className="h-6 w-6 text-[#3157d5]" /><span>Choose a signature image from your device</span><span className="text-xs text-slate-400">PNG, JPG, or WebP · maximum 2 MB</span><input type="file" accept="image/png,image/jpeg,image/webp" className="sr-only" onChange={(event) => handleUpload(event.target.files?.[0])} /></label>}</div>}
+    <Button type="button" variant="ghost" size="sm" className="mt-2 px-0 text-slate-500" onClick={clear}><RotateCcw className="mr-2 h-4 w-4" />Clear signature</Button>
+  </div>;
 }
 
 export default function AgreementPage() {
@@ -164,8 +217,8 @@ export default function AgreementPage() {
 
   const decided = agreement.status !== "Pending";
   const submit = (decision: "Approved" | "Rejected") => {
-    if (decision === "Approved" && (!termsAccepted || !signatureDataUrl || !signatureDate)) {
-      toast.error("Please open View, scroll through the terms, confirm them, draw your signature, and confirm the signature date.");
+    if (decision === "Approved" && !isAgreementAcceptanceReady({ termsAccepted, signatureDataUrl, signatureDate })) {
+      toast.error("Please open View, scroll through the terms, confirm them, draw or upload your signature, and confirm the signature date.");
       return;
     }
     respond.mutate({ token, decision, termsAccepted, signatureDataUrl: signatureDataUrl ?? undefined, signatureDate: signatureDate || undefined }, {
@@ -204,7 +257,7 @@ export default function AgreementPage() {
         <section className="mt-6 grid gap-6 border-t border-slate-200 pt-5 sm:grid-cols-[1.35fr_0.65fr] print:mt-4 print:gap-5 print:pt-4"><div><div className="mb-3 flex items-center justify-between gap-3"><SectionLabel icon={<FileText />} text="Terms & Conditions" />{!decided && <Button type="button" variant="outline" size="sm" className="shrink-0 border-[#c4c1f0] text-[#4b43a8] hover:bg-[#f4f2ff] print:hidden" onClick={() => setTermsViewerOpen(true)}><Eye className="mr-2 h-4 w-4" />View</Button>}</div><p className="text-sm leading-6 text-slate-600">By accepting this agreement, the client confirms that the information above is accurate, agrees to the selected ERP plan and total value, and authorizes the use of their digital signature as evidence of acceptance.</p></div>{decided && agreement.signatureUrl && <div className="self-end sm:text-right"><p className="mb-2 text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Authorized Signature (Digital)</p><img src={agreement.signatureUrl} alt="Client signature" className="ml-auto block h-20 w-full max-w-[190px] object-contain object-right" /><div className="mt-1 border-t border-slate-400 pt-1 text-xs text-slate-600"><PenLine className="mr-1 inline h-3 w-3" />Signed {agreement.signatureDate || "—"}</div></div>}</section>
 
         {decided && <div className="mt-3 flex items-center gap-2 text-xs text-slate-500 print:hidden"><CheckCircle2 className={agreement.status === "Approved" ? "h-4 w-4 text-emerald-600" : "h-4 w-4 text-rose-600"} />This agreement is {agreement.status.toLowerCase()}. Decision recorded on {agreement.decidedAt ? new Date(agreement.decidedAt).toLocaleString("en-IN") : "—"}.</div>}
-        {!decided && <section className="mt-6 print:hidden"><div className="mb-5 rounded-xl border border-slate-200 bg-white p-4"><p className="text-sm leading-6 text-slate-600">Open <span className="font-semibold text-[#4b43a8]">View</span> beside Terms & Conditions, scroll to the bottom, and complete the confirmation checkbox there before accepting this agreement.</p><p className="mt-2 text-xs text-slate-500">{termsAccepted ? "Terms confirmed." : termsScrolledToEnd ? "Return to the terms viewer to confirm the terms." : "Terms confirmation is required before acceptance."}</p></div><div className="grid gap-6 sm:grid-cols-[1.4fr_0.6fr]"><div><Label className="mb-2 block">Client signature</Label><SignatureCanvas onChange={setSignatureDataUrl} /></div><div><Label htmlFor="signatureDate">Signature date</Label><Input id="signatureDate" type="date" className="mt-2" value={signatureDate} onChange={(e) => setSignatureDate(e.target.value)} /><p className="mt-3 text-xs leading-5 text-slate-500">Your drawn signature and acceptance date will be securely attached to this agreement.</p></div></div><div className="mt-7 flex flex-col-reverse gap-3 border-t border-slate-100 pt-6 sm:flex-row sm:justify-end"><Button variant="outline" className="border-rose-200 text-rose-700 hover:bg-rose-50" onClick={() => submit("Rejected")} disabled={respond.isPending}>Decline agreement</Button><Button className="bg-[#3157d5] text-white hover:bg-[#2748bd]" onClick={() => submit("Approved")} disabled={respond.isPending || !termsAccepted || !signatureDataUrl || !signatureDate}><CheckCircle2 className="mr-2 h-4 w-4" />Accept & sign agreement</Button></div></section>}
+        {!decided && <section className="mt-6 print:hidden"><div className="mb-5 rounded-xl border border-slate-200 bg-white p-4"><p className="text-sm leading-6 text-slate-600">Open <span className="font-semibold text-[#4b43a8]">View</span> beside Terms & Conditions, scroll to the bottom, and complete the confirmation checkbox there before accepting this agreement.</p><p className="mt-2 text-xs text-slate-500">{termsAccepted ? "Terms confirmed." : termsScrolledToEnd ? "Return to the terms viewer to confirm the terms." : "Terms confirmation is required before acceptance."}</p></div><div className="grid gap-6 sm:grid-cols-[1.4fr_0.6fr]"><div><Label className="mb-2 block">Client signature</Label><SignatureCanvas onChange={setSignatureDataUrl} /></div><div><Label htmlFor="signatureDate">Signature date</Label><Input id="signatureDate" type="date" className="mt-2" value={signatureDate} onChange={(e) => setSignatureDate(e.target.value)} /><p className="mt-3 text-xs leading-5 text-slate-500">Your drawn or uploaded signature and acceptance date will be securely attached to this agreement.</p></div></div><div className="mt-7 flex flex-col-reverse gap-3 border-t border-slate-100 pt-6 sm:flex-row sm:justify-end"><Button variant="outline" className="border-rose-200 text-rose-700 hover:bg-rose-50" onClick={() => submit("Rejected")} disabled={respond.isPending}>Decline agreement</Button><Button className="bg-[#3157d5] text-white hover:bg-[#2748bd]" onClick={() => submit("Approved")} disabled={respond.isPending || !isAgreementAcceptanceReady({ termsAccepted, signatureDataUrl, signatureDate })}><CheckCircle2 className="mr-2 h-4 w-4" />Accept & sign agreement</Button></div></section>}
         <Dialog open={termsViewerOpen} onOpenChange={setTermsViewerOpen}><DialogContent className="max-w-2xl gap-0 overflow-hidden p-0 print:hidden"><DialogHeader className="border-b border-slate-200 px-6 py-5 text-left"><DialogTitle>Terms & Conditions</DialogTitle><DialogDescription>Review the Software Service Agreement. Scroll to the bottom to enable the confirmation checkbox.</DialogDescription></DialogHeader><div className="terms-viewer max-h-[55vh] overflow-y-auto px-6 py-5" onScroll={(event) => { const element = event.currentTarget; if (element.scrollTop + element.clientHeight >= element.scrollHeight - 12) setTermsScrolledToEnd(true); }}><pre className="whitespace-pre-wrap font-sans text-sm leading-6 text-slate-600">{TERMS_DOCUMENT_FULL}</pre><div className="mt-6 rounded-xl border border-[#c4c1f0] bg-[#f4f2ff] p-4 text-sm text-[#273b8d]">End of Terms & Conditions</div></div><div className="border-t border-slate-200 bg-slate-50 px-6 py-4"><div className="flex items-start gap-3"><Checkbox id="terms-viewer-confirmation" checked={termsAccepted} disabled={!termsScrolledToEnd} onCheckedChange={(value) => setTermsAccepted(value === true)} /><Label htmlFor="terms-viewer-confirmation" className="text-sm leading-6 text-slate-700">I have read and understood the complete Terms & Conditions and confirm my acceptance.</Label></div><div className="mt-3 flex items-center justify-between gap-3"><span className="text-xs text-slate-500">{termsScrolledToEnd ? "Confirmation is available." : "Scroll to the bottom to enable confirmation."}</span><Button type="button" onClick={() => setTermsViewerOpen(false)} disabled={!termsAccepted}>Continue</Button></div></div></DialogContent></Dialog>
       </main>
       <footer className="flex items-center justify-center gap-4 bg-[#1e347e] px-4 py-3 text-xs text-white print:py-2"><span className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4" />Expertaid Technologies Pvt Ltd</span><span className="h-4 w-px bg-white/40" /><span>Secure digital agreement workflow</span></footer>
