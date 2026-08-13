@@ -96,3 +96,5 @@
 
 - [x] Assert create persists institute type, branch coverage, and branch count
 - [x] Assert update persists edited institute type, branch coverage, and branch count
+
+- [x] Position the agreement status badge directly to the right of the client school name in each list row
