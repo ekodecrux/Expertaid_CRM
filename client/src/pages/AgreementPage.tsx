@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label";
 import { AlertCircle, Building2, CalendarClock, CheckCircle2, FileCheck2, FileText, Handshake, Mail, MapPin, MessageSquare, Network, PenLine, Phone, Printer, RotateCcw, ShieldCheck, Tag, Users, Eye } from "lucide-react";
 import { toast } from "sonner";
 import { TERMS_DOCUMENT_FULL } from "@/data/softwareServiceAgreement";
+import { formatAgreementReference } from "@shared/agreement";
 
 const COMPANY_LOGO = "/manus-storage/EXPLOGO2024_3ab64898.png";
 
@@ -187,7 +188,7 @@ export default function AgreementPage() {
           </div>
           <div className="mt-7 grid gap-5 sm:grid-cols-[1fr_270px] sm:items-end print:mt-5 print:grid-cols-[1fr_245px]">
             <div><h1 className="text-3xl font-bold uppercase tracking-tight text-[#1f347f] sm:text-4xl">Client Agreement</h1><p className="mt-3 max-w-md text-sm leading-6 text-slate-600">Please review the agreement details carefully before accepting.</p></div>
-            <div className="rounded-2xl border border-slate-200 px-4 py-3"><div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[#4b43a8]"><FileText className="h-4 w-4" />Agreement details</div><div className="grid grid-cols-[1fr_auto] gap-y-2 text-xs"><span className="text-slate-500">Agreement date</span><strong>{dateLabel}</strong><span className="text-slate-500">Reference No.</span><strong>#{agreement.id.toString().padStart(5, "0")}</strong><span className="text-slate-500">Product name</span><strong>ERP Software</strong></div></div>
+            <div className="rounded-2xl border border-slate-200 px-4 py-3"><div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[#4b43a8]"><FileText className="h-4 w-4" />Agreement details</div><div className="grid grid-cols-[1fr_auto] gap-y-2 text-xs"><span className="text-slate-500">Agreement date</span><strong>{dateLabel}</strong><span className="text-slate-500">Reference No.</span><strong>{formatAgreementReference(agreement.id)}</strong><span className="text-slate-500">Product name</span><strong>ERP Software</strong></div></div>
           </div>
         </header>
 

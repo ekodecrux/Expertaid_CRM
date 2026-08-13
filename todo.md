@@ -158,3 +158,7 @@
 - [x] Change the agreement header caption to exactly “ERP Solutions • Software Development • IT Support”
 - [x] Revalidate the updated caption on desktop, mobile, and one-page A4 print output
 - [x] Inspect the fresh A4 print render to confirm the updated caption is visible and unclipped (confirmed beneath the company name in /tmp/agreement-caption-final.pdf; one A4 page)
+
+- [x] Format agreement reference numbers as ERP26001-style identifiers, starting with ERP26001
+- [x] Display the ERP26001-style reference consistently in admin rows, client Agreement Details, and print output
+- [x] Validate the new reference format and preserve existing agreement workflow behavior
