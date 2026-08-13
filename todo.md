@@ -84,3 +84,5 @@
 - [x] Replace the partial Home test with real DashboardLayout auth-loading integration coverage
 
 - [x] Remove test-only auth override and cover the production useAuth query transition from loading to authenticated dashboard
+
+- [x] Refine dashboard hero copy and visual hierarchy for a more professional enterprise presentation
