@@ -1,4 +1,4 @@
-import { desc, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { agreements, InsertAgreement, InsertUser, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
@@ -73,6 +73,14 @@ export async function getAgreementByToken(publicToken: string) {
   const db = await getDb();
   if (!db) return undefined;
   const rows = await db.select().from(agreements).where(eq(agreements.publicToken, publicToken)).limit(1);
+  return rows[0];
+}
+
+export async function updateAgreement(publicToken: string, ownerId: number, values: Partial<InsertAgreement>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  await db.update(agreements).set(values).where(and(eq(agreements.publicToken, publicToken), eq(agreements.ownerId, ownerId)));
+  const rows = await db.select().from(agreements).where(and(eq(agreements.publicToken, publicToken), eq(agreements.ownerId, ownerId))).limit(1);
   return rows[0];
 }
 

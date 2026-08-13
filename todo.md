@@ -51,3 +51,14 @@
 - [x] Capture desktop, tablet, and mobile visual QA; verify right-side controls and ERP-logo collapsed/mobile implementation paths
 
 - [x] Fix collapsed sidebar ERP logo clipping and place a three-line menu button directly below it
+
+- [x] Add pricing mode selection: per-student pricing or fixed package pricing
+- [x] Persist package price and selected pricing mode for each agreement
+- [x] Default Start Date to today while allowing manual changes
+- [x] Calculate End Date from Start Date plus No. of Year Plan and keep it editable
+- [x] Display school logo and expiry date in the agreement list
+- [x] Add edit action and update procedure for existing agreements
+- [x] Add tests for pricing modes, date calculations, and agreement editing
+
+- [x] Make failed or unauthorized agreement edits return a clear error instead of a false success
+- [x] Add a Vitest case covering failed agreement updates
