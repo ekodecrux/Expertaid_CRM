@@ -58,7 +58,7 @@ export function ManusDialog({
               <img
                 src={logo}
                 alt="Dialog graphic"
-                className="w-10 h-10 rounded-md"
+                className="block h-10 w-10 object-contain object-center rounded-md"
               />
             </div>
           ) : null}

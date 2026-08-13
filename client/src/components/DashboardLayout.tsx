@@ -149,9 +149,9 @@ function DashboardLayoutContent({
           <SidebarHeader className={`justify-center border-b border-slate-200/70 bg-white/70 px-2 py-3 backdrop-blur-sm ${isCollapsed ? "min-h-24" : "h-16"}`}>
             <div className={`flex w-full transition-all ${isCollapsed ? "flex-col items-center gap-2" : "items-center justify-between gap-3"}`}>
               {!isCollapsed ? (
-                <img src="/manus-storage/EXPLOGO2024_3ab64898.png" alt="EXPERTAL Technologies" className="h-9 w-auto max-w-[180px] object-contain" />
+                <img src="/manus-storage/EXPLOGO2024_3ab64898.png" alt="EXPERTAL Technologies" className="block h-9 w-auto max-w-[180px] object-contain object-center" />
               ) : (
-                <img src="/manus-storage/ERP-logo_8db1044d.png" alt="ERP" className="h-8 w-8 object-contain" />
+                <img src="/manus-storage/ERP-logo_8db1044d.png" alt="ERP" className="block h-8 w-8 object-contain object-center" />
               )}
               <button
                 onClick={toggleSidebar}
@@ -230,7 +230,7 @@ function DashboardLayoutContent({
       <SidebarInset>
         {isMobile && (
           <div className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-slate-200/80 bg-white/90 px-4 shadow-sm backdrop-blur supports-[backdrop-filter]:backdrop-blur">
-            <img src="/manus-storage/ERP-logo_8db1044d.png" alt="ERP" className="h-10 w-10 object-contain" />
+            <img src="/manus-storage/ERP-logo_8db1044d.png" alt="ERP" className="block h-10 w-10 object-contain object-center" />
             <div className="flex items-center gap-2">
               <span className="hidden text-sm font-medium text-slate-600 xs:inline">{activeMenuItem?.label ?? "Menu"}</span>
               <SidebarTrigger className="h-10 w-10 rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm hover:bg-[#eef2ff] hover:text-[#3157d5]" />

@@ -150,3 +150,7 @@
 - [x] Render the full supplied Software Service Agreement text in the scrollable viewer (wired from the complete DOCX extraction)
 - [x] Make the bottom-of-viewer checkbox the only terms confirmation control
 - [x] Capture fresh mobile and print QA evidence for the terms-viewer update (mobile screenshot plus inspected one-page A4 PDF)
+
+- [x] Ensure every rendered logo fits its assigned slot without clipping, overflow, or distortion across admin, client, mobile, and print views
+- [x] Validate all logo placements after the global containment styling update
+- [x] Capture fresh admin QA for expanded/collapsed sidebar, mobile header, agreement-list, and logo-picker containment (desktop expanded sidebar, mobile header/list screenshots, and source-level picker/collapsed-slot verification)
