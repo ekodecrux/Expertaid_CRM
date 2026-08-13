@@ -5,11 +5,17 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createAgreement, getAgreementByToken, listAgreementsForOwner, updateAgreement, updateAgreementDecision } from "./db";
+import { createAgreement, getAgreementByToken, listAgreementsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner } from "./db";
 import { storagePut } from "./storage";
 import { calculateAgreementEndDate, calculateAgreementTotal, PricingMode } from "@shared/pricing";
 
 const dataUrlSchema = z.string().regex(/^data:image\/(png|jpeg|jpg|webp);base64,[A-Za-z0-9+/=]+$/).max(2_500_000);
+const brandingInput = z.object({
+  companyName: z.string().trim().min(1).max(255),
+  serviceCaption: z.string().trim().min(1).max(255),
+  footerCompanyName: z.string().trim().min(1).max(255),
+  logoDataUrl: dataUrlSchema.optional(),
+});
 
 const agreementInput = z.object({
   clientName: z.string().trim().min(1).max(255),
@@ -78,6 +84,31 @@ export const appRouter = router({
       const cookieOptions = getSessionCookieOptions(ctx.req);
       ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
       return { success: true } as const;
+    }),
+  }),
+  branding: router({
+    get: protectedProcedure.query(({ ctx }) => getBrandingForOwner(ctx.user.id)),
+    forAgreement: publicProcedure.input(z.object({ token: z.string().min(12).max(32) })).query(async ({ input }) => {
+      const agreement = await getAgreementByToken(input.token);
+      return agreement ? getBrandingForOwner(agreement.ownerId) : null;
+    }),
+    update: protectedProcedure.input(brandingInput).mutation(async ({ ctx, input }) => {
+      let logoUrl: string | null | undefined;
+      let logoKey: string | null | undefined;
+      if (input.logoDataUrl) {
+        const [header, encoded] = input.logoDataUrl.split(",");
+        const mimeType = header.match(/^data:(image\/(?:png|jpeg|jpg|webp));base64$/)?.[1] ?? "image/png";
+        const extension = mimeType === "image/jpeg" || mimeType === "image/jpg" ? "jpg" : mimeType.split("/")[1];
+        const stored = await storagePut(`branding/${ctx.user.id}/logo.${extension}`, Buffer.from(encoded, "base64"), mimeType);
+        logoUrl = stored.url;
+        logoKey = stored.key;
+      }
+      return updateBrandingForOwner(ctx.user.id, {
+        companyName: input.companyName,
+        serviceCaption: input.serviceCaption,
+        footerCompanyName: input.footerCompanyName,
+        ...(logoUrl ? { companyLogoUrl: logoUrl, companyLogoKey: logoKey } : {}),
+      });
     }),
   }),
   agreements: router({

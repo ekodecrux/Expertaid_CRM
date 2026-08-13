@@ -34,6 +34,9 @@ vi.mock("wouter", () => ({ useRoute: () => [true, { token: "pending-signature-to
 vi.mock("sonner", () => ({ toast: { success: vi.fn(), error: vi.fn() } }));
 vi.mock("@/lib/trpc", () => ({
   trpc: {
+    branding: {
+      forAgreement: { useQuery: () => ({ data: { companyLogoUrl: "/logo.png", companyName: "Expertaid Technologies", serviceCaption: "ERP Solutions", footerCompanyName: "Expertaid Technologies Pvt Ltd" } }) },
+    },
     agreements: {
       byToken: { useQuery: () => queryState },
       respond: { useMutation: () => ({ isPending: false, mutate: vi.fn() }) },

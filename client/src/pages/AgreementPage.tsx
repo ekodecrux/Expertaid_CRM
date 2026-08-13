@@ -14,8 +14,7 @@ import { TERMS_DOCUMENT_FULL } from "@/data/softwareServiceAgreement";
 import { formatAgreementReference } from "@shared/agreement";
 import { isSignatureUploadSizeAllowed, isSupportedSignatureType, SIGNATURE_UPLOAD_MAX_BYTES } from "@shared/signatureUpload";
 import { isAgreementAcceptanceReady } from "@shared/signatureState";
-
-const COMPANY_LOGO = "/manus-storage/EXPLOGO2024_3ab64898.png";
+import { DEFAULT_BRANDING } from "@shared/branding";
 
 const TERMS_DOCUMENT = `Software Service Agreement
 
@@ -205,6 +204,7 @@ export default function AgreementPage() {
   const [, params] = useRoute("/agreement/:token");
   const token = params?.token ?? "";
   const { data: agreement, isLoading } = trpc.agreements.byToken.useQuery({ token }, { enabled: Boolean(token) });
+  const { data: branding } = trpc.branding.forAgreement.useQuery({ token }, { enabled: Boolean(token) });
   const respond = trpc.agreements.respond.useMutation();
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [termsViewerOpen, setTermsViewerOpen] = useState(false);
@@ -227,7 +227,8 @@ export default function AgreementPage() {
     });
   };
 
-  const clientLogo = agreement.logoUrl || COMPANY_LOGO;
+  const companyBranding = branding ?? DEFAULT_BRANDING;
+  const clientLogo = agreement.logoUrl || companyBranding.companyLogoUrl;
   const dateLabel = new Date(agreement.createdAt).toLocaleDateString("en-IN", { dateStyle: "long" });
 
   return <div className="agreement-page min-h-screen bg-[#f7f9fd] px-3 py-4 font-sans text-[#172033] sm:px-6 lg:px-8 print:bg-white print:p-0">
@@ -236,7 +237,7 @@ export default function AgreementPage() {
       <main className="px-5 pb-6 pt-5 sm:px-10 sm:pb-8 sm:pt-7 print:px-8 print:pb-4 print:pt-5">
         <header className="border-b border-slate-100 pb-5 print:pb-3">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-            <div className="flex min-w-0 items-start gap-4"><img src={COMPANY_LOGO} alt="Expertaid Technologies Pvt. Ltd." className="block h-12 w-auto max-h-14 max-w-[220px] object-contain object-center sm:h-14" /><div className="border-l border-slate-300 pl-4"><p className="text-sm font-bold text-[#1f347f] sm:text-base">Expertaid Technologies Pvt. Ltd.</p><p className="mt-1 text-[10px] font-medium uppercase tracking-[0.13em] text-slate-500">ERP Solutions • Software Development • IT Support</p></div></div>
+            <div className="flex min-w-0 items-start gap-4"><img src={companyBranding.companyLogoUrl} alt={companyBranding.companyName} className="block h-12 w-auto max-h-14 max-w-[220px] object-contain object-center sm:h-14" /><div className="border-l border-slate-300 pl-4"><p className="text-sm font-bold text-[#1f347f] sm:text-base">{companyBranding.companyName}</p><p className="mt-1 text-[10px] font-medium uppercase tracking-[0.13em] text-slate-500">{companyBranding.serviceCaption}</p></div></div>
             <div className="flex items-center gap-2 self-end print:hidden sm:self-auto"><Badge className={agreement.status === "Approved" ? "bg-emerald-100 text-emerald-700" : agreement.status === "Rejected" ? "bg-rose-100 text-rose-700" : "bg-amber-100 text-amber-700"}>{agreement.status}</Badge><Button variant="outline" size="sm" onClick={() => window.print()}><Printer className="mr-2 h-4 w-4" />Print</Button></div>
           </div>
           <div className="mt-7 grid gap-5 sm:grid-cols-[1fr_270px] sm:items-end print:mt-5 print:grid-cols-[1fr_245px]">
@@ -260,7 +261,7 @@ export default function AgreementPage() {
         {!decided && <section className="mt-6 print:hidden"><div className="mb-5 rounded-xl border border-slate-200 bg-white p-4"><p className="text-sm leading-6 text-slate-600">Open <span className="font-semibold text-[#4b43a8]">View</span> beside Terms & Conditions, scroll to the bottom, and complete the confirmation checkbox there before accepting this agreement.</p><p className="mt-2 text-xs text-slate-500">{termsAccepted ? "Terms confirmed." : termsScrolledToEnd ? "Return to the terms viewer to confirm the terms." : "Terms confirmation is required before acceptance."}</p></div><div className="grid gap-6 sm:grid-cols-[1.4fr_0.6fr]"><div><Label className="mb-2 block">Client signature</Label><SignatureCanvas onChange={setSignatureDataUrl} /></div><div><Label htmlFor="signatureDate">Signature date</Label><Input id="signatureDate" type="date" className="mt-2" value={signatureDate} onChange={(e) => setSignatureDate(e.target.value)} /><p className="mt-3 text-xs leading-5 text-slate-500">Your drawn or uploaded signature and acceptance date will be securely attached to this agreement.</p></div></div><div className="mt-7 flex flex-col-reverse gap-3 border-t border-slate-100 pt-6 sm:flex-row sm:justify-end"><Button variant="outline" className="border-rose-200 text-rose-700 hover:bg-rose-50" onClick={() => submit("Rejected")} disabled={respond.isPending}>Decline agreement</Button><Button className="bg-[#3157d5] text-white hover:bg-[#2748bd]" onClick={() => submit("Approved")} disabled={respond.isPending || !isAgreementAcceptanceReady({ termsAccepted, signatureDataUrl, signatureDate })}><CheckCircle2 className="mr-2 h-4 w-4" />Accept & sign agreement</Button></div></section>}
         <Dialog open={termsViewerOpen} onOpenChange={setTermsViewerOpen}><DialogContent className="max-w-2xl gap-0 overflow-hidden p-0 print:hidden"><DialogHeader className="border-b border-slate-200 px-6 py-5 text-left"><DialogTitle>Terms & Conditions</DialogTitle><DialogDescription>Review the Software Service Agreement. Scroll to the bottom to enable the confirmation checkbox.</DialogDescription></DialogHeader><div className="terms-viewer max-h-[55vh] overflow-y-auto px-6 py-5" onScroll={(event) => { const element = event.currentTarget; if (element.scrollTop + element.clientHeight >= element.scrollHeight - 12) setTermsScrolledToEnd(true); }}><pre className="whitespace-pre-wrap font-sans text-sm leading-6 text-slate-600">{TERMS_DOCUMENT_FULL}</pre><div className="mt-6 rounded-xl border border-[#c4c1f0] bg-[#f4f2ff] p-4 text-sm text-[#273b8d]">End of Terms & Conditions</div></div><div className="border-t border-slate-200 bg-slate-50 px-6 py-4"><div className="flex items-start gap-3"><Checkbox id="terms-viewer-confirmation" checked={termsAccepted} disabled={!termsScrolledToEnd} onCheckedChange={(value) => setTermsAccepted(value === true)} /><Label htmlFor="terms-viewer-confirmation" className="text-sm leading-6 text-slate-700">I have read and understood the complete Terms & Conditions and confirm my acceptance.</Label></div><div className="mt-3 flex items-center justify-between gap-3"><span className="text-xs text-slate-500">{termsScrolledToEnd ? "Confirmation is available." : "Scroll to the bottom to enable confirmation."}</span><Button type="button" onClick={() => setTermsViewerOpen(false)} disabled={!termsAccepted}>Continue</Button></div></div></DialogContent></Dialog>
       </main>
-      <footer className="flex items-center justify-center gap-4 bg-[#1e347e] px-4 py-3 text-xs text-white print:py-2"><span className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4" />Expertaid Technologies Pvt Ltd</span><span className="h-4 w-px bg-white/40" /><span>Secure digital agreement workflow</span></footer>
+      <footer className="flex items-center justify-center gap-4 bg-[#1e347e] px-4 py-3 text-xs text-white print:py-2"><span className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4" />{companyBranding.footerCompanyName}</span><span className="h-4 w-px bg-white/40" /><span>Secure digital agreement workflow</span></footer>
     </div>
   </div>;
 }

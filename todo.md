@@ -207,3 +207,17 @@
 - [x] Re-run final desktop/mobile QA after the alignment correction and record the evidence (desktop aligned grid/single status column and mobile responsive rows verified)
 
 - [x] Preserve all existing agreement and signature workflows and validate the reference composition on desktop and mobile (24 tests, production build, and post-refactor desktop/mobile screenshots passed)
+
+- [x] Reduce the desktop header height and keep it fixed while scrolling
+- [x] Move the primary logo into the sidebar header, place the menu control after it, and show the Expertaid Technologies name beside the branding
+- [x] Preserve the compact/mobile branding behavior without breaking the existing sidebar controls
+- [x] Add Settings fields for editable company logo, company name, service caption, and footer company name
+- [x] Persist branding settings and use them in the dashboard shell and agreement branding without changing agreement workflows
+- [x] Validate fixed-header scrolling, sidebar branding order, settings persistence, responsive behavior, tests, and production build
+
+- [x] Persist editable company branding settings and expose protected tRPC procedures
+- [x] Build responsive Settings page with logo upload and editable branding fields
+- [x] Freeze and compact dashboard header; reorder sidebar logo, menu icon, and company name
+- [x] Consume dynamic branding in dashboard shell and public agreement page
+- [x] Add Vitest coverage and complete responsive/browser/build validation
+- [ ] Save a checkpoint with the completed branding Settings module

@@ -29,6 +29,8 @@ import { DashboardShell } from './DashboardShell';
 import { resolveDashboardShellView } from "@shared/dashboardState";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
+import { DEFAULT_BRANDING, type CompanyBranding } from "@shared/branding";
+import { trpc } from "@/lib/trpc";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/", available: true },
@@ -36,7 +38,7 @@ const menuItems = [
   { icon: UsersRound, label: "Clients", available: false },
   { icon: Bell, label: "Reminders", available: false },
   { icon: BarChart3, label: "Reports", available: false },
-  { icon: Settings2, label: "Settings", available: false },
+  { icon: Settings2, label: "Settings", path: "/settings", available: true },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
@@ -54,6 +56,8 @@ export default function DashboardLayout({
     return saved ? parseInt(saved, 10) : DEFAULT_WIDTH;
   });
   const { loading, user, logout } = useAuth();
+  const branding = trpc.branding.get.useQuery(undefined, { enabled: Boolean(user) });
+  const companyBranding: CompanyBranding = branding.data ?? DEFAULT_BRANDING;
 
   useEffect(() => {
     localStorage.setItem(SIDEBAR_WIDTH_KEY, sidebarWidth.toString());
@@ -76,9 +80,9 @@ export default function DashboardLayout({
   return (
     <DashboardShell loading={shellView === "loading"} hasUser={shellView === "ready"} loadingFallback={<DashboardLayoutSkeleton />} unauthenticatedFallback={signInView}>
       <div className="min-h-screen bg-[#f8f9fd]">
-        <header className="hidden h-[102px] items-center border-b border-slate-200 bg-white lg:flex">
-          <div className="flex h-full w-[230px] shrink-0 items-center border-r border-slate-200 px-8">
-            <img src="/manus-storage/EXPLOGO2024_3ab64898.png" alt="Expertaid Technologies" className="block h-14 w-full max-w-[170px] object-contain object-left" />
+        <header className="sticky top-0 z-50 hidden h-[72px] items-center border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur lg:flex">
+          <div className="flex h-full w-[230px] shrink-0 items-center border-r border-slate-200 px-7">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-400">Admin workspace</span>
           </div>
           <div className="flex flex-1 items-center justify-end gap-7 px-6 xl:px-8">
             <div className="relative w-full max-w-[365px]">
@@ -94,7 +98,7 @@ export default function DashboardLayout({
         <SidebarProvider
           style={{ "--sidebar-width": `${sidebarWidth}px` } as CSSProperties}
         >
-          <DashboardLayoutContent setSidebarWidth={setSidebarWidth}>
+          <DashboardLayoutContent setSidebarWidth={setSidebarWidth} branding={companyBranding}>
             {children}
           </DashboardLayoutContent>
         </SidebarProvider>
@@ -106,11 +110,13 @@ export default function DashboardLayout({
 type DashboardLayoutContentProps = {
   children: React.ReactNode;
   setSidebarWidth: (width: number) => void;
+  branding: CompanyBranding;
 };
 
 function DashboardLayoutContent({
   children,
   setSidebarWidth,
+  branding,
 }: DashboardLayoutContentProps) {
   const { user, logout } = useAuth();
   const [location, setLocation] = useLocation();
@@ -162,16 +168,12 @@ function DashboardLayoutContent({
       <div className="relative" ref={sidebarRef}>
         <Sidebar
           collapsible="icon"
-          className="border-r-0 lg:top-[102px] lg:h-[calc(100vh-102px)]"
+          className="border-r-0 lg:top-[72px] lg:h-[calc(100vh-72px)]"
           disableTransition={isResizing}
         >
-          <SidebarHeader className={`justify-center border-b border-slate-200/70 bg-white/70 px-2 py-3 backdrop-blur-sm lg:hidden ${isCollapsed ? "min-h-24" : "h-16"}`}>
-            <div className={`flex w-full transition-all ${isCollapsed ? "flex-col items-center gap-2" : "items-center justify-between gap-3"}`}>
-              {!isCollapsed ? (
-                <img src="/manus-storage/EXPLOGO2024_3ab64898.png" alt="EXPERTAL Technologies" className="block h-9 w-auto max-w-[180px] object-contain object-center" />
-              ) : (
-                <img src="/manus-storage/ERP-logo_8db1044d.png" alt="ERP" className="block h-8 w-8 object-contain object-center" />
-              )}
+          <SidebarHeader className={`border-b border-slate-200/70 bg-white/90 px-3 py-3 backdrop-blur-sm ${isCollapsed ? "min-h-24" : "min-h-20"}`}>
+            <div className={`flex w-full transition-all ${isCollapsed ? "flex-col items-center gap-2" : "items-center gap-3"}`}>
+              <img src={branding.companyLogoUrl} alt={branding.companyName} className={`block object-contain object-center ${isCollapsed ? "h-9 w-12" : "h-10 w-16"}`} />
               <button
                 onClick={toggleSidebar}
                 className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-slate-500 transition-all hover:bg-[#eef2ff] hover:text-[#3157d5] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3157d5]"
@@ -179,13 +181,14 @@ function DashboardLayoutContent({
               >
                 {isCollapsed ? <Menu className="h-4 w-4" /> : <PanelLeft className="h-4 w-4" />}
               </button>
+              <span className="min-w-0 truncate text-sm font-semibold text-slate-700 group-data-[collapsible=icon]:hidden">{branding.companyName}</span>
             </div>
           </SidebarHeader>
 
           <SidebarContent className="gap-0"><div className="px-4 pb-2 pt-5 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400 group-data-[collapsible=icon]:hidden">Workspace</div>
             <SidebarMenu className="px-2 py-1">
               {menuItems.map(item => {
-                const isActive = item.label === "Agreements" && location === item.path;
+                const isActive = item.available && location === item.path;
                 return (
                   <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton
@@ -250,7 +253,7 @@ function DashboardLayoutContent({
 
         {isMobile && (
           <div className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-slate-200/80 bg-white/90 px-4 shadow-sm backdrop-blur supports-[backdrop-filter]:backdrop-blur">
-            <img src="/manus-storage/ERP-logo_8db1044d.png" alt="ERP" className="block h-10 w-10 object-contain object-center" />
+            <img src={branding.companyLogoUrl} alt={branding.companyName} className="block h-10 w-14 object-contain object-center" />
             <div className="flex items-center gap-2">
               <span className="hidden text-sm font-medium text-slate-600 xs:inline">{activeMenuItem?.label ?? "Menu"}</span>
               <SidebarTrigger className="h-10 w-10 rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm hover:bg-[#eef2ff] hover:text-[#3157d5]" />

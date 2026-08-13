@@ -6,10 +6,12 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import Settings from "./pages/Settings";
 
 function Router() {
   return <Switch>
     <Route path="/" component={Home} />
+    <Route path="/settings" component={Settings} />
     <Route path="/agreement/:token" component={AgreementPage} />
     <Route path="/404" component={NotFound} />
     <Route component={NotFound} />

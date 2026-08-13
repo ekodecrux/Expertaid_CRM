@@ -57,7 +57,7 @@ const { listResult, mutationResult, authQueryState } = vi.hoisted(() => ({
 }));
 
 vi.mock("wouter", () => ({ useLocation: () => ["/", vi.fn()] }));
-vi.mock("@/lib/trpc", () => ({ trpc: { auth: { me: { useQuery: () => authQueryState }, logout: { useMutation: () => mutationResult } }, agreements: { list: { useQuery: () => listResult }, create: { useMutation: () => mutationResult }, update: { useMutation: () => mutationResult } }, useUtils: () => ({ auth: { me: { setData: vi.fn(), invalidate: vi.fn() } } }) } }));
+vi.mock("@/lib/trpc", () => ({ trpc: { auth: { me: { useQuery: () => authQueryState }, logout: { useMutation: () => mutationResult } }, branding: { get: { useQuery: () => ({ data: { companyLogoUrl: "/logo.png", companyName: "Expertaid Technologies", serviceCaption: "ERP Solutions", footerCompanyName: "Expertaid Technologies Pvt Ltd" } }) } }, agreements: { list: { useQuery: () => listResult }, create: { useMutation: () => mutationResult }, update: { useMutation: () => mutationResult } }, useUtils: () => ({ auth: { me: { setData: vi.fn(), invalidate: vi.fn() } }, branding: { get: { invalidate: vi.fn() } } }) } }));
 vi.mock("sonner", () => ({ toast: { success: vi.fn(), error: vi.fn() } }));
 vi.mock("@/components/ui/dialog", async () => {
   const actual = await vi.importActual<typeof import("@/components/ui/dialog")>("@/components/ui/dialog");

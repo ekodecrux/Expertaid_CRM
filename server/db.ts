@@ -1,6 +1,7 @@
 import { and, desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { agreements, InsertAgreement, InsertUser, users } from "../drizzle/schema";
+import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -45,6 +46,31 @@ export async function upsertUser(user: InsertUser): Promise<void> {
   if (!values.lastSignedIn) values.lastSignedIn = new Date();
   if (Object.keys(updateSet).length === 0) updateSet.lastSignedIn = new Date();
   await db.insert(users).values(values).onDuplicateKeyUpdate({ set: updateSet });
+}
+
+export async function getBrandingForOwner(ownerId: number) {
+  const db = await getDb();
+  if (!db) return { ...DEFAULT_BRANDING };
+  const rows = await db.select({
+    companyLogoUrl: users.companyLogoUrl,
+    companyName: users.companyName,
+    serviceCaption: users.serviceCaption,
+    footerCompanyName: users.footerCompanyName,
+  }).from(users).where(eq(users.id, ownerId)).limit(1);
+  return normalizeBranding(rows[0]);
+}
+
+export async function updateBrandingForOwner(ownerId: number, values: {
+  companyLogoUrl?: string | null;
+  companyLogoKey?: string | null;
+  companyName: string;
+  serviceCaption: string;
+  footerCompanyName: string;
+}) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  await db.update(users).set(values).where(eq(users.id, ownerId));
+  return getBrandingForOwner(ownerId);
 }
 
 export async function getUserByOpenId(openId: string) {

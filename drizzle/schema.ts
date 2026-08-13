@@ -10,6 +10,11 @@ export const users = mysqlTable("users", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),
+  companyLogoUrl: text("companyLogoUrl"),
+  companyLogoKey: varchar("companyLogoKey", { length: 512 }),
+  companyName: varchar("companyName", { length: 255 }),
+  serviceCaption: varchar("serviceCaption", { length: 255 }),
+  footerCompanyName: varchar("footerCompanyName", { length: 255 }),
 });
 
 export const agreements = mysqlTable("agreements", {
