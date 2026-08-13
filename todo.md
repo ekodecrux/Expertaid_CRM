@@ -224,3 +224,9 @@
 
 - [x] Refine the desktop header to show the company logo in the left slot, keep the menu boundary, and show the brand name after the divider
 - [x] Verify the header alignment at desktop and mobile widths without affecting existing navigation
+
+- [x] Remove the extra Agreements hero metadata, description, and feature bullets shown in the provided reference
+- [x] Validate the simplified dashboard hero and preserve existing workflows
+
+- [x] Move the agreements panel caption above the All agreements heading to match the provided reference
+- [x] Validate the caption position without affecting agreement search, filter, or actions
