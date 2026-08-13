@@ -242,3 +242,6 @@
 
 - [x] Add the “Track progress, expiry, and approval links.” caption below the All agreements card
 - [x] Validate the new below-card placement without affecting agreement workflows
+
+- [x] Add “Track progress, expiry, and approval links.” directly below the Agreements heading
+- [x] Validate the heading copy placement without affecting existing agreement workflows
