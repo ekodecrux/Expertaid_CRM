@@ -239,3 +239,6 @@
 
 - [x] Remove the agreements caption entirely from the dashboard
 - [x] Validate the simplified All agreements section and preserve existing workflows
+
+- [x] Add the “Track progress, expiry, and approval links.” caption below the All agreements card
+- [x] Validate the new below-card placement without affecting agreement workflows
