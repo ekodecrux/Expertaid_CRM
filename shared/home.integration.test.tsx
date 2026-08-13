@@ -30,6 +30,24 @@ const { listResult, mutationResult, authQueryState } = vi.hoisted(() => ({
       decidedAt: null,
       createdAt: new Date("2026-08-13T00:00:00Z"),
       updatedAt: new Date("2026-08-13T00:00:00Z"),
+    }, {
+      id: 43,
+      publicToken: "integration-approved-token-456",
+      clientName: "Northview College",
+      clientOwnerName: "Chairman",
+      email: "chairman@northview.college",
+      noOfStudents: 800,
+      pricingMode: "package",
+      packagePrice: "250000.00",
+      totalPrice: "250000.00",
+      startDate: "2026-08-13",
+      endDate: "2027-08-12",
+      instituteType: "College",
+      branchCoverage: "multiple",
+      branchCount: 3,
+      status: "Approved",
+      signatureUrl: "/manus-storage/signature.png",
+      signatureDate: "2026-08-13",
     }],
     isLoading: false,
     refetch: vi.fn(),
@@ -64,6 +82,18 @@ describe("Home dashboard integration", () => {
     expect(markup).toContain("Ref #00042");
     expect(markup).toContain("2026-08-13");
     expect(markup).toContain("2027-08-12");
+    expect(markup).toContain("Northview College");
+    expect(markup).toContain("Approved");
+    expect(markup).toContain("View signature");
     expect(markup).toContain("Copy link");
+    for (const id of [42, 43]) {
+      expect(markup).toContain(`data-testid="agreement-row-${id}-identity"`);
+      expect(markup).toContain(`data-testid="agreement-row-${id}-metadata"`);
+      expect(markup).toContain(`data-testid="agreement-row-${id}-actions"`);
+    }
+    const approvedActionsStart = markup.indexOf('data-testid="agreement-row-43-actions"');
+    const approvedActions = markup.slice(approvedActionsStart);
+    expect(approvedActions.indexOf("Copy link")).toBeGreaterThan(-1);
+    expect(approvedActions.indexOf("View signature")).toBeGreaterThan(approvedActions.indexOf("Copy link"));
   });
 });

@@ -101,3 +101,15 @@
 
 - [x] Place View signature after Copy link in signed agreement rows
 - [x] Give the school name more readable width while keeping status beside it
+
+- [x] Separate agreement identity, metadata, and actions into stable responsive row sections
+- [x] Prevent status badges and signed actions from overlapping or wrapping into incorrect columns
+- [x] Validate pending and approved rows at desktop and mobile widths
+
+- [x] Capture desktop and mobile verification with both Pending and Approved agreement rows visible
+- [x] Add focused coverage asserting Pending and Approved row status/action separation
+
+- [x] Capture deterministic live dashboard screenshots with both Pending and Approved agreements guaranteed visible
+- [x] Assert separate identity, metadata, and actions containers for both row statuses and verify Copy link precedes View signature
+
+- [x] Verify live database status counts contain at least one Pending and one Approved agreement before final screenshots
