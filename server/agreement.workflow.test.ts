@@ -49,6 +49,9 @@ describe("agreement workflow", () => {
     await caller.agreements.create({
       clientName: "Test School",
       clientOwnerName: "Principal",
+      instituteType: "School",
+      branchCoverage: "individual",
+      branchCount: 1,
       contactNumber: "9876543210",
       email: "principal@test.school",
       address: "Test Address",
@@ -63,7 +66,7 @@ describe("agreement workflow", () => {
       logoDataUrl: "data:image/jpeg;base64,YWJj",
     });
     expect(storagePut).toHaveBeenCalledWith(expect.stringMatching(/^agreements\/.+\/logo\.jpg$/), expect.any(Buffer), "image/jpeg");
-    expect(createAgreement).toHaveBeenCalledWith(expect.objectContaining({ logoUrl: "/manus-storage/logo.jpg", logoKey: "agreements/logo/logo.jpg" }));
+    expect(createAgreement).toHaveBeenCalledWith(expect.objectContaining({ logoUrl: "/manus-storage/logo.jpg", logoKey: "agreements/logo/logo.jpg", instituteType: "School", branchCoverage: "individual", branchCount: 1 }));
     expect(createAgreement.mock.calls[0][0]).not.toHaveProperty("logoDataUrl");
   });
 
@@ -74,6 +77,9 @@ describe("agreement workflow", () => {
       publicToken: "new-public-token-123",
       clientName: "Updated School",
       clientOwnerName: "Chairman",
+      instituteType: "College",
+      branchCoverage: "multiple",
+      branchCount: 3,
       contactNumber: "9876543210",
       email: "chairman@updated.school",
       address: "Updated Address",
@@ -86,8 +92,30 @@ describe("agreement workflow", () => {
       endDate: "2028-08-12",
       description: "Updated package",
     });
-    expect(updateAgreement).toHaveBeenCalledWith("new-public-token-123", 1, expect.objectContaining({ pricingMode: "package", packagePrice: "125000.00", perStudentPrice: null, totalPrice: "250000.00", endDate: "2028-08-12" }));
+    expect(updateAgreement).toHaveBeenCalledWith("new-public-token-123", 1, expect.objectContaining({ pricingMode: "package", packagePrice: "125000.00", perStudentPrice: null, totalPrice: "250000.00", endDate: "2028-08-12", instituteType: "College", branchCoverage: "multiple", branchCount: 3 }));
     expect(result.pricingMode).toBe("package");
+  });
+
+  it("rejects multiple-branch agreements with fewer than two branches", async () => {
+    const caller = appRouter.createCaller({ user: { id: 1 } as any, req: {} as any, res: {} as any });
+    await expect(caller.agreements.create({
+      clientName: "Branch Test Academy",
+      clientOwnerName: "Owner",
+      instituteType: "Academy",
+      branchCoverage: "multiple",
+      branchCount: 1,
+      contactNumber: "9876543210",
+      email: "owner@academy.test",
+      address: "Academy Address",
+      noOfStudents: 100,
+      pricingMode: "package",
+      perStudentPrice: null,
+      packagePrice: 50000,
+      noOfYearPlan: 1,
+      startDate: "2026-08-13",
+      endDate: "2027-08-12",
+      description: "Invalid branch count",
+    })).rejects.toThrow();
   });
 
   it("rejects an edit when the agreement is not found for the current owner", async () => {
@@ -97,6 +125,9 @@ describe("agreement workflow", () => {
       publicToken: "missing-public-token-123",
       clientName: "Unknown School",
       clientOwnerName: "Owner",
+      instituteType: "Academy",
+      branchCoverage: "multiple",
+      branchCount: 2,
       contactNumber: "9876543210",
       email: "owner@unknown.school",
       address: "Unknown Address",

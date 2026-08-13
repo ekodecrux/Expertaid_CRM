@@ -86,3 +86,13 @@
 - [x] Remove test-only auth override and cover the production useAuth query transition from loading to authenticated dashboard
 
 - [x] Refine dashboard hero copy and visual hierarchy for a more professional enterprise presentation
+
+- [x] Add institute type selection: School, College, or Academy
+- [x] Add branch coverage selection: Individual by default or Multiple branches with branch count
+- [x] Persist institute type, branch coverage, and branch count on agreements
+- [x] Display institute type and branch coverage in the admin agreement list and client agreement view
+- [x] Support editing institute and branch details on existing agreements
+- [x] Add automated coverage for institute and branch validation and persistence
+
+- [x] Assert create persists institute type, branch coverage, and branch count
+- [x] Assert update persists edited institute type, branch coverage, and branch count

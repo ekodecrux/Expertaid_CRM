@@ -14,6 +14,9 @@ const dataUrlSchema = z.string().regex(/^data:image\/(png|jpeg|jpg|webp);base64,
 const agreementInput = z.object({
   clientName: z.string().trim().min(1).max(255),
   clientOwnerName: z.string().trim().min(1).max(255),
+  instituteType: z.enum(["School", "College", "Academy"]),
+  branchCoverage: z.enum(["individual", "multiple"]),
+  branchCount: z.number().int().positive(),
   contactNumber: z.string().trim().min(3).max(64),
   email: z.string().trim().email().max(320),
   address: z.string().trim().min(1),
@@ -29,6 +32,8 @@ const agreementInput = z.object({
 }).superRefine((value, ctx) => {
   if (value.pricingMode === "perStudent" && value.perStudentPrice == null) ctx.addIssue({ code: "custom", path: ["perStudentPrice"], message: "Per-student price is required" });
   if (value.pricingMode === "package" && value.packagePrice == null) ctx.addIssue({ code: "custom", path: ["packagePrice"], message: "Package price is required" });
+  if (value.branchCoverage === "individual" && value.branchCount !== 1) ctx.addIssue({ code: "custom", path: ["branchCount"], message: "Individual agreements must have one branch" });
+  if (value.branchCoverage === "multiple" && value.branchCount < 2) ctx.addIssue({ code: "custom", path: ["branchCount"], message: "Multiple-branch agreements must have at least two branches" });
 });
 
 type AgreementInput = z.infer<typeof agreementInput>;
@@ -47,6 +52,9 @@ function buildAgreementValues(input: AgreementInput) {
   return {
     clientName: input.clientName,
     clientOwnerName: input.clientOwnerName,
+    instituteType: input.instituteType,
+    branchCoverage: input.branchCoverage,
+    branchCount: input.branchCount,
     contactNumber: input.contactNumber,
     email: input.email,
     address: input.address,
