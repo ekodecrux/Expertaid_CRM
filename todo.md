@@ -128,3 +128,8 @@
 - [x] Match the client agreement print layout to the provided reference: branded top header, agreement details panel, dark prepared-for banner, card-based information sections, and bottom signature/footer treatment
 - [x] Correct the bottom footer company name to exactly “Expertaid Technologies”
 - [x] Preserve responsive client-link usability and one-page A4 print output after the visual redesign
+
+- [x] Change the agreement header subtitle to exactly “IT Support Services”
+- [x] Change the agreement footer company name to exactly “Expertaid Technologies Pvt Ltd”
+- [x] Revalidate the corrected branding in the responsive page and one-page A4 print output
+- [x] Recheck the exact branding text at a mobile viewport after the latest update
