@@ -80,7 +80,7 @@ export default function DashboardLayout({
   return (
     <DashboardShell loading={shellView === "loading"} hasUser={shellView === "ready"} loadingFallback={<DashboardLayoutSkeleton />} unauthenticatedFallback={signInView}>
       <SidebarProvider className="relative min-h-screen bg-[#f8f9fd]" style={{ "--sidebar-width": `${sidebarWidth}px` } as CSSProperties}>
-          <header className="fixed inset-x-0 top-0 z-50 hidden h-[72px] items-center border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur lg:flex">
+          <header className="fixed inset-x-0 top-0 z-50 hidden h-[72px] items-center bg-white/95 shadow-sm backdrop-blur lg:flex">
             <div className="flex h-full w-[230px] shrink-0 items-center border-r border-slate-200 px-7">
               <img src={companyBranding.companyLogoUrl} alt={companyBranding.companyName} className="block h-11 w-full max-w-[170px] object-contain object-left" />
             </div>

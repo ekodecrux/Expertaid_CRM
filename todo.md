@@ -248,3 +248,6 @@
 
 - [x] Freeze the dashboard header while scrolling the Agreements page
 - [x] Validate fixed-header scrolling without affecting sidebar, navigation, or mobile behavior
+
+- [x] Remove the visible horizontal divider lines from the frozen dashboard header
+- [x] Validate the borderless fixed header without affecting branding, controls, or mobile behavior
