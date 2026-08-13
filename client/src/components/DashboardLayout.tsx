@@ -167,9 +167,9 @@ function DashboardLayoutContent({
               </button>
               {!isCollapsed ? (
                 <div className="flex items-center gap-2 min-w-0">
-                  <span className="font-semibold tracking-tight truncate">
-                    Asteria ERP
-                  </span>
+                  <div className="flex min-w-0 items-center gap-2">
+                    <img src="/manus-storage/EXPLOGO2024_3ab64898.png" alt="EXPERTAL Technologies" className="h-9 w-auto max-w-[180px] object-contain" />
+                  </div>
                 </div>
               ) : null}
             </div>

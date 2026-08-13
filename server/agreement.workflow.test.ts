@@ -1,14 +1,15 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { calculateAgreementTotal } from "@shared/pricing";
 
-const { getAgreementByToken, updateAgreementDecision, storagePut } = vi.hoisted(() => ({
+const { createAgreement, getAgreementByToken, updateAgreementDecision, storagePut } = vi.hoisted(() => ({
+  createAgreement: vi.fn(),
   getAgreementByToken: vi.fn(),
   updateAgreementDecision: vi.fn(),
   storagePut: vi.fn(),
 }));
 
 vi.mock("./db", () => ({
-  createAgreement: vi.fn(),
+  createAgreement,
   listAgreementsForOwner: vi.fn(),
   getAgreementByToken,
   updateAgreementDecision,
@@ -31,6 +32,29 @@ describe("agreement workflow", () => {
   it("calculates total price from students, unit price, and years", () => {
     expect(calculateAgreementTotal(250, 499, 3)).toBe(374250);
     expect(calculateAgreementTotal(125, 499.5, 1)).toBe(62437.5);
+  });
+
+  it("stores an uploaded JPEG logo with its MIME type and excludes the data URL from persistence", async () => {
+    createAgreement.mockResolvedValue({ id: 8, publicToken: "new-token", status: "Pending", logoUrl: "/manus-storage/logo.jpg" });
+    storagePut.mockResolvedValue({ key: "agreements/logo/logo.jpg", url: "/manus-storage/logo.jpg" });
+    const caller = appRouter.createCaller({ user: { id: 1 } as any, req: {} as any, res: {} as any });
+    await caller.agreements.create({
+      clientName: "Test School",
+      clientOwnerName: "Principal",
+      contactNumber: "9876543210",
+      email: "principal@test.school",
+      address: "Test Address",
+      noOfStudents: 100,
+      perStudentPrice: 499,
+      noOfYearPlan: 1,
+      startDate: "2026-08-13",
+      endDate: "2027-08-12",
+      description: "Logo test",
+      logoDataUrl: "data:image/jpeg;base64,YWJj",
+    });
+    expect(storagePut).toHaveBeenCalledWith(expect.stringMatching(/^agreements\/.+\/logo\.jpg$/), expect.any(Buffer), "image/jpeg");
+    expect(createAgreement).toHaveBeenCalledWith(expect.objectContaining({ logoUrl: "/manus-storage/logo.jpg", logoKey: "agreements/logo/logo.jpg" }));
+    expect(createAgreement.mock.calls[0][0]).not.toHaveProperty("logoDataUrl");
   });
 
   it("approves with terms, signature, date, storage, and timestamp", async () => {

@@ -25,3 +25,19 @@
 - [x] Successfully capture and review the authenticated admin dashboard visual state
 
 - [x] Fix agreement creation modal solid background, width, and responsive form spacing based on user screenshot
+
+- [x] Add optional logo upload when creating a new agreement
+- [x] Persist the uploaded logo securely with the agreement record
+- [x] Display the agreement logo on client review and print layouts
+- [x] Test the logo upload, persistence, and rendering workflow
+
+- [x] Use the provided EXPERTAL Technologies logo as the primary application branding
+- [x] Display the primary logo in the admin workspace and client agreement header
+- [x] Validate branded layouts and preserve existing agreement logo upload behavior
+
+- [x] Render the per-agreement uploaded logo on the public review and print layout with a primary-logo fallback
+- [x] Preserve the uploaded logo MIME type and avoid forwarding logoDataUrl into database inserts
+- [x] Add Vitest coverage for logo upload storage and persisted logo metadata
+- [x] Visually verify the branded client agreement page; validate per-agreement logo behavior through storage tests and logoUrl rendering path
+
+- [x] Visually verify a client agreement with populated logoUrl metadata and confirm the uploaded logo replaces the fallback using a reversible screenshot check; restore the test record afterward

@@ -28,6 +28,8 @@ export const agreements = mysqlTable("agreements", {
   endDate: varchar("endDate", { length: 32 }).notNull(),
   totalPrice: decimal("totalPrice", { precision: 14, scale: 2 }).notNull(),
   description: text("description"),
+  logoUrl: text("logoUrl"),
+  logoKey: varchar("logoKey", { length: 512 }),
   status: mysqlEnum("status", ["Pending", "Approved", "Rejected"]).default("Pending").notNull(),
   signatureUrl: text("signatureUrl"),
   signatureKey: varchar("signatureKey", { length: 512 }),

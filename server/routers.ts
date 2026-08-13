@@ -8,6 +8,8 @@ import { createAgreement, getAgreementByToken, listAgreementsForOwner, updateAgr
 import { storagePut } from "./storage";
 import { calculateAgreementTotal } from "@shared/pricing";
 
+const dataUrlSchema = z.string().regex(/^data:image\/(png|jpeg|jpg|webp);base64,[A-Za-z0-9+/=]+$/).max(2_500_000);
+
 const agreementInput = z.object({
   clientName: z.string().trim().min(1).max(255),
   clientOwnerName: z.string().trim().min(1).max(255),
@@ -20,9 +22,8 @@ const agreementInput = z.object({
   startDate: z.string().min(1),
   endDate: z.string().min(1),
   description: z.string().optional(),
+  logoDataUrl: dataUrlSchema.optional(),
 });
-
-const dataUrlSchema = z.string().regex(/^data:image\/(png|jpeg|jpg);base64,[A-Za-z0-9+/=]+$/).max(2_500_000);
 
 export const appRouter = router({
   system: systemRouter,
@@ -38,13 +39,27 @@ export const appRouter = router({
     list: protectedProcedure.query(({ ctx }) => listAgreementsForOwner(ctx.user.id)),
     create: protectedProcedure.input(agreementInput).mutation(async ({ ctx, input }) => {
       const totalPrice = calculateAgreementTotal(input.noOfStudents, input.perStudentPrice, input.noOfYearPlan);
+      const { logoDataUrl, ...agreementFields } = input;
+      let logoUrl: string | null = null;
+      let logoKey: string | null = null;
+      if (logoDataUrl) {
+        const [header, encoded] = logoDataUrl.split(",");
+        const mimeType = header.match(/^data:(image\/(?:png|jpeg|jpg|webp));base64$/)?.[1] ?? "image/png";
+        const extension = mimeType === "image/jpeg" || mimeType === "image/jpg" ? "jpg" : mimeType.split("/")[1];
+        const buffer = Buffer.from(encoded, "base64");
+        const stored = await storagePut(`agreements/${nanoid(10)}/logo.${extension}`, buffer, mimeType);
+        logoUrl = stored.url;
+        logoKey = stored.key;
+      }
       const agreement = await createAgreement({
-        ...input,
+        ...agreementFields,
         ownerId: ctx.user.id,
         publicToken: nanoid(24),
         perStudentPrice: input.perStudentPrice.toFixed(2),
         totalPrice: totalPrice.toFixed(2),
         description: input.description || null,
+        logoUrl,
+        logoKey,
         status: "Pending",
       });
       return agreement;
