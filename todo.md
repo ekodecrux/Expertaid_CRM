@@ -233,3 +233,6 @@
 
 - [x] Move the agreements caption above the entire All agreements card, not inside the card header
 - [x] Validate the clarified caption placement and preserve existing agreement workflows
+
+- [x] Diagnose the sandbox tRPC query returning an HTML document instead of JSON
+- [x] Fix the API routing/server issue and validate the working sandbox URL
