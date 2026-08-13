@@ -113,3 +113,14 @@
 - [x] Assert separate identity, metadata, and actions containers for both row statuses and verify Copy link precedes View signature
 
 - [x] Verify live database status counts contain at least one Pending and one Approved agreement before final screenshots
+
+- [x] Add Expertaid Technologies Pvt. Ltd. company header with logo to the top of client agreement pages
+- [x] Display the uploaded client logo beside the client name, with fallback branding when absent
+- [x] Ensure all agreement logos fit their containers without clipping or distortion
+- [x] Optimize the client agreement and print layout for a clean single-page presentation
+- [x] Validate branded client-link rendering and print layout at desktop and mobile widths
+
+- [x] Widen the client-logo frame so wide school logos remain visibly legible while fitting cleanly beside the client name
+- [x] Prevent company branding text from wrapping into a narrow column beside the status controls on mobile agreement links
+- [x] Confirm fully loaded A4 print output remains one page for a signed agreement (approved agreement id 1 with stored signature)
+- [x] Capture final print-layout evidence with logos and signature content visible (company logo, client fallback logo, and signature shown in final A4 render)

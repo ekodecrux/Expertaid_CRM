@@ -13,3 +13,15 @@ body { margin: 0; min-width: 320px; background: var(--background); color: var(--
 button, a, input, textarea { transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 160ms ease; }
 button:active { transform: scale(0.98); }
 ::selection { background: #dbe4ff; color: #172033; }
+
+@media print {
+  @page { size: A4 portrait; margin: 8mm; }
+  .agreement-page { font-size: 10px; }
+  .agreement-page .agreement-document { width: 100%; box-shadow: none !important; }
+  .agreement-page .text-sm { font-size: 0.72rem; line-height: 1.25; }
+  .agreement-page img { max-height: 48px; }
+}
+
+@media print {
+  .agreement-page { zoom: 0.82; }
+}
