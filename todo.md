@@ -187,3 +187,9 @@
 - [x] Connect the reference-style top-bar search to the existing agreement filter without changing current search behavior
 - [x] Add an explicit desktop Status column while keeping the existing mobile stacked rows and actions
 - [x] Capture authenticated preview evidence for the final reference-inspired dashboard (desktop and mobile previews show agreement data, KPI cards, actions, and profile context; findings recorded in dashboard-qa.md)
+
+- [x] Rebuild the full dashboard top bar to match the reference: brand mark, search field, notification indicator, admin avatar, name, role, and dropdown affordance (explicit ChevronDown-triggered profile menu with Sign out action)
+- [x] Expand the sidebar navigation presentation toward Dashboard, Agreements, Clients, Reminders, Reports, and Settings without breaking the existing Agreements route
+- [x] Match the reference KPI card arrangement and agreement table composition, including compact row actions and pagination-style footer treatment
+- [x] Preserve all existing agreement creation/editing, link, signature, terms, ERP26001, and local signature-upload functionality
+- [x] Validate the complete reference-style dashboard at desktop and mobile widths before checkpointing (1536×1024 and 390×844 previews visibly show live authenticated dashboard data; findings recorded in dashboard-qa.md)

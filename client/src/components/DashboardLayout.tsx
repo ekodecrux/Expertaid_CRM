@@ -21,16 +21,22 @@ import {
 } from "@/components/ui/sidebar";
 import { startLogin } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { FileCheck2, LogOut, Menu, PanelLeft, Search } from "lucide-react";
+import { BarChart3, Bell, ChevronDown, FileCheck2, LayoutDashboard, LogOut, Menu, PanelLeft, Search, Settings2, UsersRound } from "lucide-react";
 import React, { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
 import { DashboardShell } from './DashboardShell';
 import { resolveDashboardShellView } from "@shared/dashboardState";
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 
 const menuItems = [
-  { icon: FileCheck2, label: "Agreements", path: "/" },
+  { icon: LayoutDashboard, label: "Dashboard", path: "/", available: true },
+  { icon: FileCheck2, label: "Agreements", path: "/", available: true },
+  { icon: UsersRound, label: "Clients", available: false },
+  { icon: Bell, label: "Reminders", available: false },
+  { icon: BarChart3, label: "Reports", available: false },
+  { icon: Settings2, label: "Settings", available: false },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
@@ -100,7 +106,7 @@ function DashboardLayoutContent({
   const [isResizing, setIsResizing] = useState(false);
   const [workspaceSearch, setWorkspaceSearch] = useState("");
   const sidebarRef = useRef<HTMLDivElement>(null);
-  const activeMenuItem = menuItems.find(item => item.path === location);
+  const activeMenuItem = menuItems.find(item => item.available && item.path === location);
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -164,15 +170,15 @@ function DashboardLayoutContent({
             </div>
           </SidebarHeader>
 
-          <SidebarContent className="gap-0">
+          <SidebarContent className="gap-0"><div className="px-4 pb-2 pt-5 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400 group-data-[collapsible=icon]:hidden">Workspace</div>
             <SidebarMenu className="px-2 py-1">
               {menuItems.map(item => {
-                const isActive = location === item.path;
+                const isActive = item.label === "Agreements" && location === item.path;
                 return (
-                  <SidebarMenuItem key={item.path}>
+                  <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton
                       isActive={isActive}
-                      onClick={() => setLocation(item.path)}
+                      onClick={() => item.available ? setLocation(item.path!) : toast.info(`${item.label} is coming soon.`)}
                       tooltip={item.label}
                       className={`h-10 transition-all font-normal`}
                     >
@@ -229,7 +235,7 @@ function DashboardLayoutContent({
       </div>
 
       <SidebarInset>
-        {!isMobile && <header className="hidden h-16 items-center justify-between border-b border-slate-200/80 bg-white/90 px-6 shadow-sm backdrop-blur lg:flex"><div><p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3157d5]">Agreement workspace</p><p className="mt-1 text-sm font-medium text-slate-600">ERP Solutions · Software Development · IT Support</p></div><div className="flex items-center gap-3"><div className="relative hidden w-64 xl:block"><Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" /><input aria-label="Search clients, schools, reference numbers" value={workspaceSearch} onChange={(event) => { const value = event.target.value; setWorkspaceSearch(value); window.dispatchEvent(new CustomEvent("agreement-search", { detail: value })); }} placeholder="Search clients, schools, reference no…" className="h-10 w-full rounded-xl border border-slate-200 bg-white pl-9 pr-3 text-sm text-slate-700 outline-none transition focus:border-[#3157d5] focus:ring-2 focus:ring-[#3157d5]/10" /></div><div className="hidden text-right xl:block"><p className="text-sm font-semibold text-slate-800">{user?.name || "Admin User"}</p><p className="text-xs text-slate-500">{user?.email || "Authenticated workspace"}</p></div><Avatar className="h-10 w-10 border border-[#d9d6ff] bg-[#4b43a8] text-white"><AvatarFallback className="bg-[#4b43a8] text-xs font-semibold text-white">{user?.name?.slice(0, 2).toUpperCase() || "AD"}</AvatarFallback></Avatar></div></header>}
+        {!isMobile && <header className="hidden h-16 items-center justify-between border-b border-slate-200/80 bg-white/90 px-6 shadow-sm backdrop-blur lg:flex"><div className="flex min-w-0 items-center gap-4"><img src="/manus-storage/EXPLOGO2024_3ab64898.png" alt="Expertaid Technologies" className="block h-9 w-40 max-w-[160px] object-contain object-left" /><div className="hidden min-w-0 md:block"><p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3157d5]">Agreement workspace</p><p className="mt-1 truncate text-sm font-medium text-slate-600">ERP Solutions · Software Development · IT Support</p></div></div><div className="flex items-center gap-3"><button type="button" aria-label="Notifications" className="relative hidden h-10 w-10 items-center justify-center rounded-xl text-slate-500 transition hover:bg-[#eef2ff] hover:text-[#3157d5] lg:flex" onClick={() => toast.info("No new notifications.")}><Bell className="h-5 w-5" /></button><div className="relative hidden w-64 xl:block"><Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" /><input aria-label="Search clients, schools, reference numbers" value={workspaceSearch} onChange={(event) => { const value = event.target.value; setWorkspaceSearch(value); window.dispatchEvent(new CustomEvent("agreement-search", { detail: value })); }} placeholder="Search clients, schools, reference no…" className="h-10 w-full rounded-xl border border-slate-200 bg-white pl-9 pr-3 text-sm text-slate-700 outline-none transition focus:border-[#3157d5] focus:ring-2 focus:ring-[#3157d5]/10" /></div><DropdownMenu><DropdownMenuTrigger asChild><button type="button" className="flex items-center gap-2 rounded-xl p-1.5 text-left transition hover:bg-[#eef2ff]" aria-label="Open admin profile menu"><div className="hidden text-right xl:block"><p className="text-sm font-semibold text-slate-800">{user?.name || "Admin User"}</p><p className="text-xs text-slate-500">Super Admin</p></div><Avatar className="h-10 w-10 border border-[#d9d6ff] bg-[#4b43a8] text-white"><AvatarFallback className="bg-[#4b43a8] text-xs font-semibold text-white">{user?.name?.slice(0, 2).toUpperCase() || "AD"}</AvatarFallback></Avatar><ChevronDown className="hidden h-4 w-4 text-slate-400 xl:block" /></button></DropdownMenuTrigger><DropdownMenuContent align="end" className="w-48"><DropdownMenuItem onClick={() => logout()}> <LogOut className="mr-2 h-4 w-4" />Sign out</DropdownMenuItem></DropdownMenuContent></DropdownMenu></div></header>}
         {isMobile && (
           <div className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-slate-200/80 bg-white/90 px-4 shadow-sm backdrop-blur supports-[backdrop-filter]:backdrop-blur">
             <img src="/manus-storage/ERP-logo_8db1044d.png" alt="ERP" className="block h-10 w-10 object-contain object-center" />
