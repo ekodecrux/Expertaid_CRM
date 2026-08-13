@@ -1,6 +1,7 @@
 import { startLogin } from "@/const";
 import { trpc } from "@/lib/trpc";
 import { TRPCClientError } from "@trpc/client";
+import { resolveAuthState } from "@shared/authState";
 import { useCallback, useEffect, useMemo } from "react";
 
 type UseAuthOptions = {
@@ -20,6 +21,15 @@ export function useAuth(options?: UseAuthOptions) {
     retry: false,
     refetchOnWindowFocus: false,
   });
+
+  const cachedUser = useMemo(() => {
+    try {
+      const raw = localStorage.getItem("manus-runtime-user-info");
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  }, []);
 
   const logoutMutation = trpc.auth.logout.useMutation({
     onSuccess: () => {
@@ -44,30 +54,35 @@ export function useAuth(options?: UseAuthOptions) {
       // backend cookie is cleared by the logout mutation.
       try {
         sessionStorage.removeItem("manus-cookie");
+        localStorage.removeItem("manus-runtime-user-info");
       } catch {}
       utils.auth.me.setData(undefined, null);
       await utils.auth.me.invalidate();
     }
   }, [logoutMutation, utils]);
 
-  const state = useMemo(() => {
-    localStorage.setItem(
-      "manus-runtime-user-info",
-      JSON.stringify(meQuery.data)
-    );
-    return {
-      user: meQuery.data ?? null,
-      loading: meQuery.isLoading || logoutMutation.isPending,
-      error: meQuery.error ?? logoutMutation.error ?? null,
-      isAuthenticated: Boolean(meQuery.data),
-    };
-  }, [
-    meQuery.data,
-    meQuery.error,
-    meQuery.isLoading,
-    logoutMutation.error,
-    logoutMutation.isPending,
-  ]);
+  const resolvedAuth = resolveAuthState({
+    isFetched: meQuery.isFetched,
+    isLoading: meQuery.isLoading,
+    liveUser: meQuery.data ?? null,
+    cachedUser,
+    logoutPending: logoutMutation.isPending,
+  });
+
+  const state = useMemo(() => ({
+    user: resolvedAuth.user,
+    loading: resolvedAuth.loading,
+    error: meQuery.error ?? logoutMutation.error ?? null,
+    isAuthenticated: resolvedAuth.isAuthenticated,
+  }), [resolvedAuth, meQuery.error, logoutMutation.error]);
+
+  useEffect(() => {
+    if (!meQuery.isFetched) return;
+    try {
+      if (meQuery.data) localStorage.setItem("manus-runtime-user-info", JSON.stringify(meQuery.data));
+      else localStorage.removeItem("manus-runtime-user-info");
+    } catch {}
+  }, [meQuery.data, meQuery.isFetched]);
 
   useEffect(() => {
     if (!redirectOnUnauthenticated) return;

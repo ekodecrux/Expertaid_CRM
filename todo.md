@@ -62,3 +62,25 @@
 
 - [x] Make failed or unauthorized agreement edits return a clear error instead of a false success
 - [x] Add a Vitest case covering failed agreement updates
+
+- [x] Diagnose and fix dashboard stuck on loading skeleton after agreement enhancements with live auth precedence
+- [x] Verify authenticated dashboard renders and data loads successfully after the fix with a deterministic shell-state test and screenshot
+
+- [x] Clear stale cached auth when live auth is null, unauthorized, or fails
+- [x] Add automated auth-state coverage for fresh, cached-success, and cached-failure cases
+- [x] Add deterministic dashboard loading/data-render validation coverage
+
+- [x] Ensure auth/dashboard tests are discovered and executed by Vitest
+- [x] Add an executed dashboard shell transition test for loading, ready, and sign-in states
+- [x] Add an executed validation that agreement data renders after authentication resolves
+
+- [x] Add a component-level render test proving the dashboard loading skeleton transitions to agreement list content after auth and data resolve
+
+- [x] Display agreement start date in each admin agreement list row
+- [x] Display the agreement reference number beneath the client name in each admin agreement list row
+
+- [x] Add an actual dashboard integration test using the real Home page path, mocked auth/data procedures, and agreement row content validation
+
+- [x] Replace the partial Home test with real DashboardLayout auth-loading integration coverage
+
+- [x] Remove test-only auth override and cover the production useAuth query transition from loading to authenticated dashboard
