@@ -221,3 +221,6 @@
 - [x] Consume dynamic branding in dashboard shell and public agreement page
 - [x] Add Vitest coverage and complete responsive/browser/build validation
 - [x] Save a checkpoint with the completed branding Settings module
+
+- [x] Refine the desktop header to show the company logo in the left slot, keep the menu boundary, and show the brand name after the divider
+- [x] Verify the header alignment at desktop and mobile widths without affecting existing navigation
