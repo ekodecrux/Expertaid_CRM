@@ -141,3 +141,12 @@
 - [x] Display the product name as exactly “ERP Software” inside the Agreement Details panel
 - [x] Revalidate the revised branding on the responsive agreement page and one-page A4 print output
 - [x] Verify the latest ERP Software wording at a mobile viewport after the revised branding update
+
+- [x] Add a View option beside Terms & Conditions for clients who are accepting an agreement
+- [x] Add a scrollable Terms & Conditions viewer using the supplied agreement document as the content reference
+- [x] Require a confirmation checkbox at the bottom of the terms viewer before enabling agreement acceptance
+- [x] Preserve the existing printable agreement layout with no terms-viewer controls in print output
+- [x] Validate the mandatory confirmation flow, responsive client page, tests, and one-page A4 print output
+- [x] Render the full supplied Software Service Agreement text in the scrollable viewer (wired from the complete DOCX extraction)
+- [x] Make the bottom-of-viewer checkbox the only terms confirmation control
+- [x] Capture fresh mobile and print QA evidence for the terms-viewer update (mobile screenshot plus inspected one-page A4 PDF)
