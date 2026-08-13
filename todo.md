@@ -230,3 +230,6 @@
 
 - [x] Move the agreements panel caption above the All agreements heading to match the provided reference
 - [x] Validate the caption position without affecting agreement search, filter, or actions
+
+- [x] Move the agreements caption above the entire All agreements card, not inside the card header
+- [x] Validate the clarified caption placement and preserve existing agreement workflows
