@@ -41,3 +41,11 @@
 - [x] Visually verify the branded client agreement page; validate per-agreement logo behavior through storage tests and logoUrl rendering path
 
 - [x] Visually verify a client agreement with populated logoUrl metadata and confirm the uploaded logo replaces the fallback using a reversible screenshot check; restore the test record afterward
+
+- [x] Add the provided ERP logo for collapsed-sidebar and responsive application branding
+- [x] Move the sidebar menu control to the right side of the navigation header
+- [x] Show the ERP logo when the sidebar is collapsed
+- [x] Improve desktop, tablet, and mobile responsive navigation and application spacing
+- [x] Run responsive visual QA and preserve mobile usability
+
+- [x] Capture desktop, tablet, and mobile visual QA; verify right-side controls and ERP-logo collapsed/mobile implementation paths

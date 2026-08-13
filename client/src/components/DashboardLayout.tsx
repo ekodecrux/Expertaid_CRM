@@ -156,22 +156,20 @@ function DashboardLayoutContent({
           className="border-r-0"
           disableTransition={isResizing}
         >
-          <SidebarHeader className="h-16 justify-center">
-            <div className="flex items-center gap-3 px-2 transition-all w-full">
+          <SidebarHeader className="h-16 justify-center border-b border-slate-200/70 bg-white/70 px-2 backdrop-blur-sm">
+            <div className={`flex w-full items-center transition-all ${isCollapsed ? "justify-center" : "justify-between gap-3"}`}>
+              {!isCollapsed ? (
+                <img src="/manus-storage/EXPLOGO2024_3ab64898.png" alt="EXPERTAL Technologies" className="h-9 w-auto max-w-[180px] object-contain" />
+              ) : (
+                <img src="/manus-storage/ERP-logo_8db1044d.png" alt="ERP" className="h-10 w-10 object-contain" />
+              )}
               <button
                 onClick={toggleSidebar}
-                className="h-8 w-8 flex items-center justify-center hover:bg-accent rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring shrink-0"
-                aria-label="Toggle navigation"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-slate-500 transition-all hover:bg-[#eef2ff] hover:text-[#3157d5] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3157d5]"
+                aria-label={isCollapsed ? "Expand navigation" : "Collapse navigation"}
               >
-                <PanelLeft className="h-4 w-4 text-muted-foreground" />
+                <PanelLeft className="h-4 w-4" />
               </button>
-              {!isCollapsed ? (
-                <div className="flex items-center gap-2 min-w-0">
-                  <div className="flex min-w-0 items-center gap-2">
-                    <img src="/manus-storage/EXPLOGO2024_3ab64898.png" alt="EXPERTAL Technologies" className="h-9 w-auto max-w-[180px] object-contain" />
-                  </div>
-                </div>
-              ) : null}
             </div>
           </SidebarHeader>
 
@@ -241,20 +239,15 @@ function DashboardLayoutContent({
 
       <SidebarInset>
         {isMobile && (
-          <div className="flex border-b h-14 items-center justify-between bg-background/95 px-2 backdrop-blur supports-[backdrop-filter]:backdrop-blur sticky top-0 z-40">
+          <div className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-slate-200/80 bg-white/90 px-4 shadow-sm backdrop-blur supports-[backdrop-filter]:backdrop-blur">
+            <img src="/manus-storage/ERP-logo_8db1044d.png" alt="ERP" className="h-10 w-10 object-contain" />
             <div className="flex items-center gap-2">
-              <SidebarTrigger className="h-9 w-9 rounded-lg bg-background" />
-              <div className="flex items-center gap-3">
-                <div className="flex flex-col gap-1">
-                  <span className="tracking-tight text-foreground">
-                    {activeMenuItem?.label ?? "Menu"}
-                  </span>
-                </div>
-              </div>
+              <span className="hidden text-sm font-medium text-slate-600 xs:inline">{activeMenuItem?.label ?? "Menu"}</span>
+              <SidebarTrigger className="h-10 w-10 rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm hover:bg-[#eef2ff] hover:text-[#3157d5]" />
             </div>
           </div>
         )}
-        <main className="flex-1 p-4">{children}</main>
+        <main className="min-w-0 flex-1 p-3 sm:p-4 lg:p-6">{children}</main>
       </SidebarInset>
     </>
   );
