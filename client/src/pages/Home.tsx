@@ -1,33 +1,47 @@
-import { useAuth } from "@/_core/hooks/useAuth";
+import { useMemo, useState } from "react";
+import DashboardLayout from "@/components/DashboardLayout";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { trpc } from "@/lib/trpc";
+import { toast } from "sonner";
+import { ArrowUpRight, Clipboard, FileCheck2, FilePlus2, IndianRupee, Link2, Loader2, Plus, Search, Users, X } from "lucide-react";
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Workflow, Frontend Best Practices, Design Guide and Common Pitfalls
- */
+const initialForm = { clientName: "", clientOwnerName: "", contactNumber: "", email: "", address: "", noOfStudents: "", perStudentPrice: "", noOfYearPlan: "1", startDate: "", endDate: "", description: "" };
+
+type FormState = typeof initialForm;
+
+function money(value: number) { return new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(value || 0); }
+function statusClass(status: string) { return status === "Approved" ? "bg-emerald-100 text-emerald-700" : status === "Rejected" ? "bg-rose-100 text-rose-700" : "bg-amber-100 text-amber-700"; }
+
 export default function Home() {
-  // The useAuth hook provides authentication state.
-  // To implement login/logout, call logout(), or start login from an event
-  // handler: onClick={() => startLogin()} (imported from "@/const"). Never call
-  // startLogin() during render (no href={startLogin()}) — it mints a one-time
-  // nonce cookie and must run only at the moment of navigation.
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
+  const [form, setForm] = useState<FormState>(initialForm);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const { data: agreements, isLoading, refetch } = trpc.agreements.list.useQuery();
+  const create = trpc.agreements.create.useMutation({ onSuccess: () => { toast.success("Agreement created. Your approval link is ready to share."); setForm(initialForm); setDialogOpen(false); refetch(); }, onError: (error) => toast.error(error.message) });
 
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  const total = useMemo(() => Number(form.noOfStudents || 0) * Number(form.perStudentPrice || 0) * Number(form.noOfYearPlan || 0), [form]);
+  const filtered = (agreements ?? []).filter((agreement) => `${agreement.clientName} ${agreement.clientOwnerName} ${agreement.email}`.toLowerCase().includes(search.toLowerCase()));
+  const stats = { total: agreements?.length ?? 0, pending: agreements?.filter(a => a.status === "Pending").length ?? 0, approved: agreements?.filter(a => a.status === "Approved").length ?? 0, value: agreements?.reduce((sum, a) => sum + Number(a.totalPrice), 0) ?? 0 };
 
-  return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
+  const update = (key: keyof FormState, value: string) => setForm((current) => ({ ...current, [key]: value }));
+  const submit = (event: React.FormEvent) => { event.preventDefault(); create.mutate({ ...form, noOfStudents: Number(form.noOfStudents), perStudentPrice: Number(form.perStudentPrice), noOfYearPlan: Number(form.noOfYearPlan) }); };
+
+  return <DashboardLayout><div className="min-h-[calc(100vh-2rem)] bg-[#f7f8fc] -m-4 p-5 text-[#172033] sm:p-8 lg:p-10">
+    <div className="mx-auto max-w-7xl">
+      <header className="mb-9 flex flex-col justify-between gap-5 lg:flex-row lg:items-end"><div><p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#3157d5]">Agreement workspace</p><h1 className="mt-2 font-serif text-4xl tracking-tight sm:text-5xl">Good morning, <span className="text-[#3157d5]">let’s close well.</span></h1><p className="mt-3 max-w-xl text-sm leading-6 text-slate-500">Create polished ERP agreements, send them securely, and keep every client decision in one calm, organized place.</p></div><Dialog open={dialogOpen} onOpenChange={setDialogOpen}><DialogTrigger asChild><Button className="h-11 bg-[#3157d5] px-5 text-white shadow-lg shadow-blue-200 hover:bg-[#2748bd]"><Plus className="mr-2 h-4 w-4" />New agreement</Button></DialogTrigger><DialogContent className="max-h-[92vh] max-w-3xl overflow-y-auto"><DialogHeader><DialogTitle className="font-serif text-2xl">Create a client agreement</DialogTitle></DialogHeader><form className="space-y-6 pt-2" onSubmit={submit}><div className="grid gap-4 sm:grid-cols-2"><Field label="Client name" required><Input value={form.clientName} onChange={e => update("clientName", e.target.value)} placeholder="e.g. Greenfield Public School" required /></Field><Field label="Client owner name" required><Input value={form.clientOwnerName} onChange={e => update("clientOwnerName", e.target.value)} placeholder="Principal / Chairman" required /></Field><Field label="Contact number" required><Input value={form.contactNumber} onChange={e => update("contactNumber", e.target.value)} placeholder="+91 98765 43210" required /></Field><Field label="Email ID" required><Input type="email" value={form.email} onChange={e => update("email", e.target.value)} placeholder="principal@school.edu" required /></Field><Field label="Address" required wide><Textarea value={form.address} onChange={e => update("address", e.target.value)} placeholder="Full client address" required /></Field></div><div className="rounded-2xl bg-slate-50 p-4 sm:p-5"><p className="mb-4 text-sm font-semibold text-slate-700">Plan & pricing</p><div className="grid gap-4 sm:grid-cols-3"><Field label="No. of students" required><Input type="number" min="1" value={form.noOfStudents} onChange={e => update("noOfStudents", e.target.value)} placeholder="250" required /></Field><Field label="Per student price" required><div className="relative"><IndianRupee className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" /><Input className="pl-9" type="number" min="0" step="0.01" value={form.perStudentPrice} onChange={e => update("perStudentPrice", e.target.value)} placeholder="499" required /></div></Field><Field label="No. of year plan" required><Input type="number" min="1" value={form.noOfYearPlan} onChange={e => update("noOfYearPlan", e.target.value)} required /></Field></div><div className="mt-4 flex items-center justify-between border-t border-slate-200 pt-4"><span className="text-sm text-slate-500">Calculated total price</span><span className="text-xl font-semibold text-[#3157d5]">{money(total)}</span></div></div><div className="grid gap-4 sm:grid-cols-2"><Field label="Start date" required><Input type="date" value={form.startDate} onChange={e => update("startDate", e.target.value)} required /></Field><Field label="End date" required><Input type="date" value={form.endDate} onChange={e => update("endDate", e.target.value)} required /></Field><Field label="Description / Note" wide><Textarea value={form.description} onChange={e => update("description", e.target.value)} placeholder="Add context, scope, or commercial notes for the client…" /></Field></div><div className="flex justify-end gap-3 border-t pt-5"><Button type="button" variant="outline" onClick={() => setDialogOpen(false)}>Cancel</Button><Button type="submit" className="bg-[#3157d5] text-white hover:bg-[#2748bd]" disabled={create.isPending}>{create.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}Create agreement</Button></div></form></DialogContent></Dialog></header>
+
+      <div className="mb-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4"><Stat label="Total agreements" value={stats.total.toString()} icon={<FileCheck2 />} tint="blue" /><Stat label="Awaiting response" value={stats.pending.toString()} icon={<Loader2 />} tint="amber" /><Stat label="Approved" value={stats.approved.toString()} icon={<Users />} tint="green" /><Stat label="Pipeline value" value={money(stats.value)} icon={<IndianRupee />} tint="violet" /></div>
+      <Card className="border-0 shadow-[0_18px_60px_rgba(30,45,80,0.07)]"><CardHeader className="flex flex-col gap-4 border-b border-slate-100 pb-5 sm:flex-row sm:items-center sm:justify-between"><div><CardTitle className="font-serif text-2xl">All agreements</CardTitle><p className="mt-1 text-sm text-slate-500">Track progress and share approval links with clients.</p></div><div className="relative w-full sm:w-64"><Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" /><Input value={search} onChange={e => setSearch(e.target.value)} className="pl-9" placeholder="Search clients…" /></div></CardHeader><CardContent className="p-0">{isLoading ? <div className="p-10 text-center text-sm text-slate-500">Loading agreements…</div> : filtered.length === 0 ? <div className="p-12 text-center"><div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-[#3157d5]"><FilePlus2 className="h-6 w-6" /></div><h3 className="font-semibold">No agreements yet</h3><p className="mt-1 text-sm text-slate-500">Create your first ERP agreement to start tracking approvals.</p></div> : <div className="divide-y divide-slate-100">{filtered.map(agreement => <div key={agreement.id} className="flex flex-col gap-4 p-5 transition-colors hover:bg-slate-50/70 lg:flex-row lg:items-center lg:justify-between"><div className="flex min-w-0 items-center gap-4"><div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#eef2ff] text-sm font-semibold text-[#3157d5]">{agreement.clientName.slice(0, 2).toUpperCase()}</div><div className="min-w-0"><div className="flex flex-wrap items-center gap-2"><h3 className="truncate font-semibold">{agreement.clientName}</h3><Badge className={statusClass(agreement.status)}>{agreement.status}</Badge></div><p className="mt-1 truncate text-sm text-slate-500">{agreement.clientOwnerName} · {agreement.email}</p></div></div><div className="flex flex-wrap items-center gap-5 text-sm"><div><p className="text-xs text-slate-400">Agreement value</p><p className="mt-1 font-semibold">{money(Number(agreement.totalPrice))}</p></div><div><p className="text-xs text-slate-400">Created</p><p className="mt-1 text-slate-600">{new Date(agreement.createdAt).toLocaleDateString("en-IN")}</p></div>{agreement.signatureUrl && <><div><p className="text-xs text-slate-400">Accepted on</p><p className="mt-1 text-slate-600">{agreement.signatureDate || "—"}</p></div><Button variant="outline" size="sm" onClick={() => window.open(agreement.signatureUrl!, "_blank")}><FileCheck2 className="mr-2 h-4 w-4" />View signature</Button></>}<Button variant="outline" size="sm" onClick={() => { const link = `${window.location.origin}/agreement/${agreement.publicToken}`; navigator.clipboard.writeText(link); toast.success("Approval link copied to clipboard."); }}><Link2 className="mr-2 h-4 w-4" />Copy link</Button><Button size="sm" className="bg-[#172033] text-white hover:bg-[#3157d5]" onClick={() => window.open(`/agreement/${agreement.publicToken}`, "_blank")}><ArrowUpRight className="mr-2 h-4 w-4" />Open</Button></div></div>)}</div>}</CardContent></Card>
+      <div className="mt-6 flex items-center justify-between text-xs text-slate-400"><span>Asteria ERP · Agreement management</span><span className="flex items-center gap-1"><Link2 className="h-3 w-3" />Every link is unique and client-ready</span></div>
     </div>
-  );
+  </div></DashboardLayout>;
 }
+
+function Field({ label, required, wide, children }: { label: string; required?: boolean; wide?: boolean; children: React.ReactNode }) { return <div className={wide ? "sm:col-span-2" : ""}><Label className="mb-2 block text-sm text-slate-600">{label}{required && <span className="ml-1 text-[#3157d5]">*</span>}</Label>{children}</div>; }
+function Stat({ label, value, icon, tint }: { label: string; value: string; icon: React.ReactNode; tint: string }) { const tones: Record<string, string> = { blue: "bg-blue-50 text-blue-600", amber: "bg-amber-50 text-amber-600", green: "bg-emerald-50 text-emerald-600", violet: "bg-violet-50 text-violet-600" }; return <Card className="border-0 shadow-[0_12px_40px_rgba(30,45,80,0.05)]"><CardContent className="flex items-center justify-between p-5"><div><p className="text-xs font-medium uppercase tracking-[0.12em] text-slate-400">{label}</p><p className="mt-2 text-2xl font-semibold tracking-tight">{value}</p></div><div className={`flex h-11 w-11 items-center justify-center rounded-xl ${tones[tint]}`}>{icon}</div></CardContent></Card>; }
