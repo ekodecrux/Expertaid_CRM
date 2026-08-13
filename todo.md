@@ -49,3 +49,5 @@
 - [x] Run responsive visual QA and preserve mobile usability
 
 - [x] Capture desktop, tablet, and mobile visual QA; verify right-side controls and ERP-logo collapsed/mobile implementation paths
+
+- [x] Fix collapsed sidebar ERP logo clipping and place a three-line menu button directly below it

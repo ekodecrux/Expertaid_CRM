@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/sidebar";
 import { startLogin } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { FileCheck2, LogOut, PanelLeft } from "lucide-react";
+import { FileCheck2, LogOut, Menu, PanelLeft } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
@@ -156,19 +156,19 @@ function DashboardLayoutContent({
           className="border-r-0"
           disableTransition={isResizing}
         >
-          <SidebarHeader className="h-16 justify-center border-b border-slate-200/70 bg-white/70 px-2 backdrop-blur-sm">
-            <div className={`flex w-full items-center transition-all ${isCollapsed ? "justify-center" : "justify-between gap-3"}`}>
+          <SidebarHeader className={`justify-center border-b border-slate-200/70 bg-white/70 px-2 py-3 backdrop-blur-sm ${isCollapsed ? "min-h-24" : "h-16"}`}>
+            <div className={`flex w-full transition-all ${isCollapsed ? "flex-col items-center gap-2" : "items-center justify-between gap-3"}`}>
               {!isCollapsed ? (
                 <img src="/manus-storage/EXPLOGO2024_3ab64898.png" alt="EXPERTAL Technologies" className="h-9 w-auto max-w-[180px] object-contain" />
               ) : (
-                <img src="/manus-storage/ERP-logo_8db1044d.png" alt="ERP" className="h-10 w-10 object-contain" />
+                <img src="/manus-storage/ERP-logo_8db1044d.png" alt="ERP" className="h-8 w-8 object-contain" />
               )}
               <button
                 onClick={toggleSidebar}
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-slate-500 transition-all hover:bg-[#eef2ff] hover:text-[#3157d5] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3157d5]"
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-slate-500 transition-all hover:bg-[#eef2ff] hover:text-[#3157d5] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3157d5]"
                 aria-label={isCollapsed ? "Expand navigation" : "Collapse navigation"}
               >
-                <PanelLeft className="h-4 w-4" />
+                {isCollapsed ? <Menu className="h-4 w-4" /> : <PanelLeft className="h-4 w-4" />}
               </button>
             </div>
           </SidebarHeader>
