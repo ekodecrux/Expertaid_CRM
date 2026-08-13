@@ -23,3 +23,5 @@
 - [x] Add admin visibility for acceptance date alongside the captured signature
 - [x] Add Vitest coverage for Approved and Rejected response mutation behavior, validation, and timestamps
 - [x] Successfully capture and review the authenticated admin dashboard visual state
+
+- [x] Fix agreement creation modal solid background, width, and responsive form spacing based on user screenshot
