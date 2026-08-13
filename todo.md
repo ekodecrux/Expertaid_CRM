@@ -245,3 +245,6 @@
 
 - [x] Add “Track progress, expiry, and approval links.” directly below the Agreements heading
 - [x] Validate the heading copy placement without affecting existing agreement workflows
+
+- [x] Freeze the dashboard header while scrolling the Agreements page
+- [x] Validate fixed-header scrolling without affecting sidebar, navigation, or mobile behavior
