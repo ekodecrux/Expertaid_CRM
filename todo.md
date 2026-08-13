@@ -220,4 +220,4 @@
 - [x] Freeze and compact dashboard header; reorder sidebar logo, menu icon, and company name
 - [x] Consume dynamic branding in dashboard shell and public agreement page
 - [x] Add Vitest coverage and complete responsive/browser/build validation
-- [ ] Save a checkpoint with the completed branding Settings module
+- [x] Save a checkpoint with the completed branding Settings module
