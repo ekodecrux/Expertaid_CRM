@@ -133,3 +133,6 @@
 - [x] Change the agreement footer company name to exactly “Expertaid Technologies Pvt Ltd”
 - [x] Revalidate the corrected branding in the responsive page and one-page A4 print output
 - [x] Recheck the exact branding text at a mobile viewport after the latest update
+
+- [x] Display the agreement product name as exactly “ERP Application”
+- [x] Revalidate the updated product wording on the responsive agreement page and one-page A4 print output
