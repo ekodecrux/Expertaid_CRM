@@ -124,3 +124,7 @@
 - [x] Prevent company branding text from wrapping into a narrow column beside the status controls on mobile agreement links
 - [x] Confirm fully loaded A4 print output remains one page for a signed agreement (approved agreement id 1 with stored signature)
 - [x] Capture final print-layout evidence with logos and signature content visible (company logo, client fallback logo, and signature shown in final A4 render)
+
+- [x] Match the client agreement print layout to the provided reference: branded top header, agreement details panel, dark prepared-for banner, card-based information sections, and bottom signature/footer treatment
+- [x] Correct the bottom footer company name to exactly “Expertaid Technologies”
+- [x] Preserve responsive client-link usability and one-page A4 print output after the visual redesign
