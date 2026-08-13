@@ -154,3 +154,7 @@
 - [x] Ensure every rendered logo fits its assigned slot without clipping, overflow, or distortion across admin, client, mobile, and print views
 - [x] Validate all logo placements after the global containment styling update
 - [x] Capture fresh admin QA for expanded/collapsed sidebar, mobile header, agreement-list, and logo-picker containment (desktop expanded sidebar, mobile header/list screenshots, and source-level picker/collapsed-slot verification)
+
+- [x] Change the agreement header caption to exactly “ERP Solutions • Software Development • IT Support”
+- [x] Revalidate the updated caption on desktop, mobile, and one-page A4 print output
+- [x] Inspect the fresh A4 print render to confirm the updated caption is visible and unclipped (confirmed beneath the company name in /tmp/agreement-caption-final.pdf; one A4 page)
