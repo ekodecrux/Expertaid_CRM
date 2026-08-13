@@ -193,3 +193,17 @@
 - [x] Match the reference KPI card arrangement and agreement table composition, including compact row actions and pagination-style footer treatment
 - [x] Preserve all existing agreement creation/editing, link, signature, terms, ERP26001, and local signature-upload functionality
 - [x] Validate the complete reference-style dashboard at desktop and mobile widths before checkpointing (1536×1024 and 390×844 previews visibly show live authenticated dashboard data; findings recorded in dashboard-qa.md)
+
+- [x] Restructure the desktop shell into a true full-width top bar above the sidebar/content area, with the logo on the far left and search/notification/profile controls in the top bar
+- [x] Offset the desktop sidebar below the 102px top bar so the top logo and first navigation item do not overlap
+- [x] Match the reference content geometry: compact KPI cards in one horizontal row, tighter dashboard spacing, and a wide agreements panel below
+- [x] Add a dedicated agreements-panel search and Filter control while preserving the existing global search behavior
+- [x] Convert desktop agreement rows into aligned fixed columns for client/reference, value, dates, accepted date, status, and icon actions; keep mobile cards responsive
+- [x] Refactor desktop agreement rows into a true header-aligned grid with fixed columns for client/reference, value, start date, expiry, accepted date, status, and actions
+- [x] Replace desktop text action buttons with compact icon actions while preserving accessible labels/tooltips and all existing behaviors
+- [x] Re-run desktop/mobile QA after the fixed-column and compact-action refactor and record evidence before checkpointing (desktop fixed-grid and icon actions; mobile labels and actions preserved)
+- [x] Use one exact shared grid template for the desktop agreement header and rows
+- [x] Hide the inline client status badge on desktop so the dedicated Status column is the only desktop status display
+- [x] Re-run final desktop/mobile QA after the alignment correction and record the evidence (desktop aligned grid/single status column and mobile responsive rows verified)
+
+- [x] Preserve all existing agreement and signature workflows and validate the reference composition on desktop and mobile (24 tests, production build, and post-refactor desktop/mobile screenshots passed)
