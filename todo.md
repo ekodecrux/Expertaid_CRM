@@ -236,3 +236,6 @@
 
 - [x] Diagnose the sandbox tRPC query returning an HTML document instead of JSON
 - [x] Fix the API routing/server issue and validate the working sandbox URL
+
+- [x] Remove the agreements caption entirely from the dashboard
+- [x] Validate the simplified All agreements section and preserve existing workflows
