@@ -136,3 +136,8 @@
 
 - [x] Display the agreement product name as exactly “ERP Application”
 - [x] Revalidate the updated product wording on the responsive agreement page and one-page A4 print output
+
+- [x] Restore the agreement header subtitle to exactly “ERP Solutions & IT Support Services”
+- [x] Display the product name as exactly “ERP Software” inside the Agreement Details panel
+- [x] Revalidate the revised branding on the responsive agreement page and one-page A4 print output
+- [x] Verify the latest ERP Software wording at a mobile viewport after the revised branding update
