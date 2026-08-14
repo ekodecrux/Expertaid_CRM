@@ -288,3 +288,9 @@
 
 - [x] Remove the vertical divider lines from the frozen dashboard header
 - [x] Validate borderless header styling without affecting controls or responsive behavior
+
+- [x] Place the menu icon to the right side of the workspace/company label in the header
+- [x] Validate the reordered header without affecting navigation or responsive behavior
+
+- [x] Place the sidebar menu icon on the right side of the WORKSPACE label
+- [x] Preserve the top header arrangement and validate sidebar responsive behavior

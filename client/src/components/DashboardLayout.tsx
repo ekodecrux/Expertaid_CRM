@@ -99,8 +99,7 @@ export default function DashboardLayout({
             <div className="flex h-full w-[230px] shrink-0 items-center px-7">
               <img src={companyBranding.companyLogoUrl} alt={companyBranding.companyName} className="block h-11 w-full max-w-[170px] object-contain object-left" />
             </div>
-            <div className="flex h-full w-[300px] shrink-0 items-center gap-3 px-5">
-              <SidebarTrigger aria-label="Toggle navigation" className="h-9 w-9 rounded-lg border border-slate-200 bg-white text-slate-600 shadow-sm hover:bg-[#eef2ff] hover:text-[#3157d5]" />
+            <div className="flex h-full w-[300px] shrink-0 items-center px-5">
               <span className="min-w-0 truncate text-sm font-semibold text-slate-700">{companyBranding.companyName}</span>
             </div>
             <div className="flex flex-1 items-center justify-end gap-7 px-6 xl:px-8">
@@ -200,7 +199,7 @@ function DashboardLayoutContent({
             </div>
           </SidebarHeader>
 
-          <SidebarContent className="gap-0"><div className="px-4 pb-2 pt-5 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400 group-data-[collapsible=icon]:hidden">Workspace</div>
+          <SidebarContent className="gap-0"><div className="flex items-center justify-between px-4 pb-2 pt-5 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400 group-data-[collapsible=icon]:hidden"><span>Workspace</span><button type="button" onClick={toggleSidebar} className="flex h-7 w-7 items-center justify-center rounded-md text-slate-500 transition hover:bg-[#eef2ff] hover:text-[#3157d5] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3157d5]" aria-label={isCollapsed ? "Expand navigation" : "Collapse navigation"}>{isCollapsed ? <Menu className="h-4 w-4" /> : <PanelLeft className="h-4 w-4" />}</button></div>
             <SidebarMenu className="px-2 py-1">
               {menuItems.map(item => {
                 const isActive = item.available && location === item.path;
