@@ -104,7 +104,7 @@ export async function getUserByEmail(email: string) {
 
 export async function getQuotationSettingsForOwner(ownerId: number) {
   const db = await getDb();
-  const fallback = { companyGst: DEFAULT_QUOTATION_GST, companyAddress: DEFAULT_QUOTATION_ADDRESS, validityDays: 15, gstRate: "18.00", gstMode: "exclusive" as const, invoiceNumberStart: 129, invoiceNumberNext: 129, terms: DEFAULT_QUOTATION_TERMS, products: DEFAULT_QUOTATION_PRODUCTS, logoUrl: null, logoKey: null, scannerUrl: null, scannerKey: null, signatureUrl: null, signatureKey: null };
+  const fallback = { companyGst: DEFAULT_QUOTATION_GST, companyAddress: DEFAULT_QUOTATION_ADDRESS, validityDays: 15, gstRate: "18.00", gstMode: "exclusive" as const, quotationPrefix: "QT", invoiceNumberStart: 129, invoiceNumberNext: 129, terms: DEFAULT_QUOTATION_TERMS, products: DEFAULT_QUOTATION_PRODUCTS, logoUrl: null, logoKey: null, scannerUrl: null, scannerKey: null, signatureUrl: null, signatureKey: null };
   if (!db) return fallback;
   const rows = await db.select().from(quotationSettings).where(eq(quotationSettings.ownerId, ownerId)).limit(1);
   const row = rows[0];
@@ -121,7 +121,7 @@ export async function allocateInvoiceNumberForOwner(ownerId: number) {
   if (existing[0]) {
     await db.update(quotationSettings).set({ invoiceNumberNext: next + 1 }).where(eq(quotationSettings.ownerId, ownerId));
   } else {
-    await db.insert(quotationSettings).values({ ownerId, companyGst: current.companyGst, companyAddress: current.companyAddress, validityDays: current.validityDays, gstRate: current.gstRate, gstMode: current.gstMode, invoiceNumberStart: current.invoiceNumberStart, invoiceNumberNext: next + 1, terms: current.terms, productsJson: JSON.stringify(current.products) });
+    await db.insert(quotationSettings).values({ ownerId, companyGst: current.companyGst, companyAddress: current.companyAddress, validityDays: current.validityDays, gstRate: current.gstRate, gstMode: current.gstMode, quotationPrefix: current.quotationPrefix ?? "QT", invoiceNumberStart: current.invoiceNumberStart, invoiceNumberNext: next + 1, terms: current.terms, productsJson: JSON.stringify(current.products) });
   }
   return String(next);
 }
@@ -133,7 +133,7 @@ export async function updateQuotationSettingsForOwner(ownerId: number, values: P
   const { products, ...fields } = values;
   const nextStart = fields.invoiceNumberStart ?? current.invoiceNumberStart;
   const nextNumber = fields.invoiceNumberNext ?? (fields.invoiceNumberStart !== undefined && Number(current.invoiceNumberNext) === Number(current.invoiceNumberStart) ? nextStart : current.invoiceNumberNext);
-  const completeFields = { companyGst: fields.companyGst ?? current.companyGst, companyAddress: fields.companyAddress ?? current.companyAddress, validityDays: fields.validityDays ?? current.validityDays, gstRate: fields.gstRate ?? current.gstRate, gstMode: fields.gstMode ?? current.gstMode, invoiceNumberStart: nextStart, invoiceNumberNext: nextNumber, terms: fields.terms ?? current.terms, logoUrl: fields.logoUrl ?? current.logoUrl, logoKey: fields.logoKey ?? current.logoKey, scannerUrl: fields.scannerUrl ?? current.scannerUrl, scannerKey: fields.scannerKey ?? current.scannerKey, signatureUrl: fields.signatureUrl ?? current.signatureUrl, signatureKey: fields.signatureKey ?? current.signatureKey };
+  const completeFields = { companyGst: fields.companyGst ?? current.companyGst, companyAddress: fields.companyAddress ?? current.companyAddress, validityDays: fields.validityDays ?? current.validityDays, gstRate: fields.gstRate ?? current.gstRate, gstMode: fields.gstMode ?? current.gstMode, quotationPrefix: fields.quotationPrefix ?? current.quotationPrefix ?? "QT", invoiceNumberStart: nextStart, invoiceNumberNext: nextNumber, terms: fields.terms ?? current.terms, logoUrl: fields.logoUrl ?? current.logoUrl, logoKey: fields.logoKey ?? current.logoKey, scannerUrl: fields.scannerUrl ?? current.scannerUrl, scannerKey: fields.scannerKey ?? current.scannerKey, signatureUrl: fields.signatureUrl ?? current.signatureUrl, signatureKey: fields.signatureKey ?? current.signatureKey };
   await db.insert(quotationSettings).values({ ...completeFields, ownerId, productsJson: JSON.stringify(products) }).onDuplicateKeyUpdate({ set: { ...completeFields, productsJson: JSON.stringify(products) } });
   return getQuotationSettingsForOwner(ownerId);
 }
@@ -171,12 +171,13 @@ export async function listQuotationsForOwner(ownerId: number) {
   return rows.map((row) => ({ ...row, items: JSON.parse(row.itemsJson) as unknown[] }));
 }
 
-export async function createQuotation(input: InsertQuotation) {
+export async function createQuotation(input: InsertQuotation & { quotationPrefix?: string }) {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
-  const result = await db.insert(quotations).values(input);
+  const { quotationPrefix, ...quotationInput } = input;
+  const result = await db.insert(quotations).values(quotationInput);
   const id = Number(result[0].insertId);
-  const quotationNumber = `QT${new Date().getFullYear()}${id.toString().padStart(4, "0")}`;
+  const quotationNumber = quotationInput.invoiceNumber ? `${String(quotationPrefix || "QT").trim()}${quotationInput.invoiceNumber}` : `QT${new Date().getFullYear()}${id.toString().padStart(4, "0")}`;
   await db.update(quotations).set({ quotationNumber }).where(eq(quotations.id, id));
   const rows = await db.select().from(quotations).where(eq(quotations.id, id)).limit(1);
   return rows[0] ? { ...rows[0], items: JSON.parse(rows[0].itemsJson) as unknown[] } : undefined;

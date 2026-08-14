@@ -36,6 +36,7 @@ export const quotationSettings = mysqlTable("quotationSettings", {
   validityDays: int("validityDays").default(15).notNull(),
   gstRate: decimal("gstRate", { precision: 5, scale: 2 }).default("18.00").notNull(),
   gstMode: mysqlEnum("gstMode", ["inclusive", "exclusive"]).default("exclusive").notNull(),
+  quotationPrefix: varchar("quotationPrefix", { length: 24 }).default("QT").notNull(),
   invoiceNumberStart: int("invoiceNumberStart").default(129).notNull(),
   invoiceNumberNext: int("invoiceNumberNext").default(129).notNull(),
   terms: text("terms").notNull(),

@@ -1,0 +1,1 @@
+ALTER TABLE `quotationSettings` ADD `quotationPrefix` varchar(24) DEFAULT 'QT' NOT NULL;

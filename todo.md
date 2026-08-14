@@ -419,3 +419,11 @@
 - [x] Remove the ERP/Biometric/WhatsApp category dropdown from quotation Settings catalog rows and Add item form
 - [x] Add product name, item name, quantity, and unit price fields for quotation Settings catalog entries
 - [x] Validate no dropdown is displayed and preserve saved catalog/new quotation behavior
+
+- [x] Add a configurable quotation prefix field beside the quotation starting number in Settings
+- [x] Persist the prefix and generate sequential quotation numbers using prefix plus start number
+- [x] Validate prefix changes and numbering continuity without changing existing quotation references
+
+- [x] Show a clear Estimation No. in the quotation creation form and quotation document
+- [x] Use the configured quotation prefix and sequential number as the estimation reference
+- [x] Preserve existing quotation records while validating the new estimation-number display
