@@ -104,7 +104,7 @@ export async function getUserByEmail(email: string) {
 
 export async function getQuotationSettingsForOwner(ownerId: number) {
   const db = await getDb();
-  const fallback = { companyGst: DEFAULT_QUOTATION_GST, companyAddress: DEFAULT_QUOTATION_ADDRESS, validityDays: 15, gstRate: "18.00", gstMode: "exclusive" as const, terms: DEFAULT_QUOTATION_TERMS, products: DEFAULT_QUOTATION_PRODUCTS, logoUrl: null, logoKey: null, scannerUrl: null, scannerKey: null, signatureUrl: null, signatureKey: null };
+  const fallback = { companyGst: DEFAULT_QUOTATION_GST, companyAddress: DEFAULT_QUOTATION_ADDRESS, validityDays: 15, gstRate: "18.00", gstMode: "exclusive" as const, invoiceNumberStart: 129, invoiceNumberNext: 129, terms: DEFAULT_QUOTATION_TERMS, products: DEFAULT_QUOTATION_PRODUCTS, logoUrl: null, logoKey: null, scannerUrl: null, scannerKey: null, signatureUrl: null, signatureKey: null };
   if (!db) return fallback;
   const rows = await db.select().from(quotationSettings).where(eq(quotationSettings.ownerId, ownerId)).limit(1);
   const row = rows[0];
@@ -112,11 +112,29 @@ export async function getQuotationSettingsForOwner(ownerId: number) {
   return { ...row, products: JSON.parse(row.productsJson) as QuotationProduct[] };
 }
 
-export async function updateQuotationSettingsForOwner(ownerId: number, values: Omit<InsertQuotationSettings, "ownerId" | "productsJson"> & { products: QuotationProduct[] }) {
+export async function allocateInvoiceNumberForOwner(ownerId: number) {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
+  const current = await getQuotationSettingsForOwner(ownerId);
+  const next = Number(current.invoiceNumberNext ?? current.invoiceNumberStart ?? 129);
+  const existing = await db.select({ id: quotationSettings.id }).from(quotationSettings).where(eq(quotationSettings.ownerId, ownerId)).limit(1);
+  if (existing[0]) {
+    await db.update(quotationSettings).set({ invoiceNumberNext: next + 1 }).where(eq(quotationSettings.ownerId, ownerId));
+  } else {
+    await db.insert(quotationSettings).values({ ownerId, companyGst: current.companyGst, companyAddress: current.companyAddress, validityDays: current.validityDays, gstRate: current.gstRate, gstMode: current.gstMode, invoiceNumberStart: current.invoiceNumberStart, invoiceNumberNext: next + 1, terms: current.terms, productsJson: JSON.stringify(current.products) });
+  }
+  return String(next);
+}
+
+export async function updateQuotationSettingsForOwner(ownerId: number, values: Partial<Omit<InsertQuotationSettings, "ownerId" | "productsJson">> & { products: QuotationProduct[] }) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const current = await getQuotationSettingsForOwner(ownerId);
   const { products, ...fields } = values;
-  await db.insert(quotationSettings).values({ ...fields, ownerId, productsJson: JSON.stringify(products) }).onDuplicateKeyUpdate({ set: { ...fields, productsJson: JSON.stringify(products) } });
+  const nextStart = fields.invoiceNumberStart ?? current.invoiceNumberStart;
+  const nextNumber = fields.invoiceNumberNext ?? (fields.invoiceNumberStart !== undefined && Number(current.invoiceNumberNext) === Number(current.invoiceNumberStart) ? nextStart : current.invoiceNumberNext);
+  const completeFields = { companyGst: fields.companyGst ?? current.companyGst, companyAddress: fields.companyAddress ?? current.companyAddress, validityDays: fields.validityDays ?? current.validityDays, gstRate: fields.gstRate ?? current.gstRate, gstMode: fields.gstMode ?? current.gstMode, invoiceNumberStart: nextStart, invoiceNumberNext: nextNumber, terms: fields.terms ?? current.terms, logoUrl: fields.logoUrl ?? current.logoUrl, logoKey: fields.logoKey ?? current.logoKey, scannerUrl: fields.scannerUrl ?? current.scannerUrl, scannerKey: fields.scannerKey ?? current.scannerKey, signatureUrl: fields.signatureUrl ?? current.signatureUrl, signatureKey: fields.signatureKey ?? current.signatureKey };
+  await db.insert(quotationSettings).values({ ...completeFields, ownerId, productsJson: JSON.stringify(products) }).onDuplicateKeyUpdate({ set: { ...completeFields, productsJson: JSON.stringify(products) } });
   return getQuotationSettingsForOwner(ownerId);
 }
 

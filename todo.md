@@ -391,9 +391,9 @@
 - [x] Add edit form and view details dialog without changing quotation creation defaults
 - [x] Validate quotation actions, audit trail, deletion safety, and responsive layout
 
-- [ ] Add a persisted invoice-number starting value in Quotations Settings
-- [ ] Generate sequential invoice numbers from the configured starting value for new quotations
-- [ ] Preserve existing quotation numbers and validate numbering continuity
+- [x] Add a persisted invoice-number starting value in Quotations Settings
+- [x] Generate sequential invoice numbers from the configured starting value for new quotations
+- [x] Preserve existing quotation numbers and validate numbering continuity
 
 - [x] Add an Add product control in Quotations Settings
 - [x] Allow editing default product category, name, and unit price
