@@ -482,3 +482,12 @@
 - [x] Change the document header label from Invoice to Quotation
 - [x] Display the existing quotation number/reference in the purple header panel
 - [x] Keep client-wise Estimation No. and quotation reference separate in View and A4 print
+
+- [x] Remove the generated #ET quotation reference from the purple quotation header display (superseded by the clarified requirement to keep the quotation number visible)
+- [x] Retain quotation prefix and start-number settings for numbering logic without displaying that reference in this header position (superseded by the clarified requirement to keep the quotation number visible)
+- [x] Validate Estimation No., quotation date, View, and A4 print output after the change
+
+- [x] Keep configured quotation prefix and start number available for numbering logic while hiding the generated reference from the purple header (superseded by the clarified requirement to keep the quotation number visible)
+
+- [x] Restore the configured quotation number in the purple document header while retaining the QUOTATION title
+- [x] Keep quotation number and client-wise Estimation No. clearly separate in View and A4 print
