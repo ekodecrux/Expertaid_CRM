@@ -28,6 +28,33 @@ export const sessions = mysqlTable("sessions", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 
+export const quotations = mysqlTable("quotations", {
+  id: int("id").autoincrement().primaryKey(),
+  ownerId: int("ownerId").notNull(),
+  quotationNumber: varchar("quotationNumber", { length: 32 }).notNull().unique(),
+  clientName: varchar("clientName", { length: 255 }).notNull(),
+  clientAddress: text("clientAddress").notNull(),
+  clientContact: varchar("clientContact", { length: 64 }).notNull(),
+  clientEmail: varchar("clientEmail", { length: 320 }),
+  clientGst: varchar("clientGst", { length: 32 }),
+  quotationDate: varchar("quotationDate", { length: 32 }).notNull(),
+  validityDays: int("validityDays").default(15).notNull(),
+  companyGst: varchar("companyGst", { length: 32 }).notNull(),
+  companyAddress: text("companyAddress").notNull(),
+  itemsJson: text("itemsJson").notNull(),
+  subtotal: decimal("subtotal", { precision: 14, scale: 2 }).notNull(),
+  gstRate: decimal("gstRate", { precision: 5, scale: 2 }).notNull(),
+  gstAmount: decimal("gstAmount", { precision: 14, scale: 2 }).notNull(),
+  grandTotal: decimal("grandTotal", { precision: 14, scale: 2 }).notNull(),
+  terms: text("terms"),
+  scannerUrl: text("scannerUrl"),
+  scannerKey: varchar("scannerKey", { length: 512 }),
+  signatureUrl: text("signatureUrl"),
+  signatureKey: varchar("signatureKey", { length: 512 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
 export const agreements = mysqlTable("agreements", {
   id: int("id").autoincrement().primaryKey(),
   ownerId: int("ownerId").notNull(),
@@ -65,5 +92,7 @@ export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 export type Session = typeof sessions.$inferSelect;
 export type InsertSession = typeof sessions.$inferInsert;
+export type Quotation = typeof quotations.$inferSelect;
+export type InsertQuotation = typeof quotations.$inferInsert;
 export type Agreement = typeof agreements.$inferSelect;
 export type InsertAgreement = typeof agreements.$inferInsert;

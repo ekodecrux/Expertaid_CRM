@@ -363,3 +363,12 @@
 
 - [x] Show only session labels in the Settings Current session selector
 - [x] Use a neutral selector background distinct from the Save session settings button
+
+- [x] Add persistent quotations with unique quotation numbers and client billing details
+- [x] Reuse company branding and GST details in quotation output
+- [x] Support ERP, Biometric, and WhatsApp products with configurable quantity and unit value lines
+- [x] Calculate subtotal, GST, tax amount, and grand total for each quotation
+- [x] Add scanner/upload management and digital-signature management for quotations
+- [x] Add Quotations navigation, list, create/edit workflow, and details view
+- [x] Add branded printable/exportable quotation output matching the supplied reference
+- [x] Validate Quotations responsively and confirm Agreements, Clients, and Sessions remain unchanged

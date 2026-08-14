@@ -5,11 +5,12 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createAgreement, getAgreementByToken, createSessionForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getUserByEmail } from "./db";
+import { createAgreement, createQuotation, getAgreementByToken, createSessionForOwner, listQuotationsForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getUserByEmail } from "./db";
 import { storagePut } from "./storage";
 import { sdk } from "./_core/sdk";
 import { validateCredentialLogin } from "./credentialLogin";
 import { calculateAgreementEndDate, calculateAgreementTotal, PricingMode } from "@shared/pricing";
+import { calculateQuotationTotals, DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, type QuotationItem } from "@shared/quotation";
 
 const dataUrlSchema = z.string().regex(/^data:image\/(png|jpeg|jpg|webp);base64,[A-Za-z0-9+/=]+$/).max(2_500_000);
 const brandingInput = z.object({
@@ -46,6 +47,34 @@ const agreementInput = z.object({
 });
 
 type AgreementInput = z.infer<typeof agreementInput>;
+
+const quotationInput = z.object({
+  clientName: z.string().trim().min(1).max(255),
+  clientAddress: z.string().trim().min(1),
+  clientContact: z.string().trim().min(3).max(64),
+  clientEmail: z.string().trim().email().max(320).optional(),
+  clientGst: z.string().trim().max(32).optional(),
+  quotationDate: z.string().min(1),
+  validityDays: z.number().int().positive().max(365).default(15),
+  companyGst: z.string().trim().min(1).max(32).default(DEFAULT_QUOTATION_GST),
+  companyAddress: z.string().trim().min(1).default(DEFAULT_QUOTATION_ADDRESS),
+  items: z.array(z.object({ product: z.enum(["ERP", "Biometric", "WhatsApp"]), itemName: z.string().trim().min(1).max(255), quantity: z.number().int().positive(), unitPrice: z.number().nonnegative() })).min(1),
+  gstRate: z.number().nonnegative().max(100).default(18),
+  terms: z.string().max(2000).default(DEFAULT_QUOTATION_TERMS),
+  scannerDataUrl: dataUrlSchema.optional(),
+  signatureDataUrl: dataUrlSchema.optional(),
+});
+
+type QuotationInput = z.infer<typeof quotationInput>;
+
+async function uploadQuotationAsset(dataUrl: string | undefined, path: string) {
+  if (!dataUrl) return { url: null, key: null };
+  const [header, encoded] = dataUrl.split(",");
+  const mimeType = header.match(/^data:(image\/(?:png|jpeg|jpg|webp));base64$/)?.[1] ?? "image/png";
+  const extension = mimeType === "image/jpeg" || mimeType === "image/jpg" ? "jpg" : mimeType.split("/")[1];
+  const stored = await storagePut(`quotations/${nanoid(10)}/${path}.${extension}`, Buffer.from(encoded, "base64"), mimeType);
+  return { url: stored.url, key: stored.key };
+}
 
 async function uploadLogo(logoDataUrl: string | undefined) {
   if (!logoDataUrl) return { logoUrl: null, logoKey: null };
@@ -100,6 +129,16 @@ export const appRouter = router({
       const cookieOptions = getSessionCookieOptions(ctx.req);
       ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
       return { success: true } as const;
+    }),
+  }),
+  quotations: router({
+    list: protectedProcedure.query(({ ctx }) => listQuotationsForOwner(ctx.user.id)),
+    create: protectedProcedure.input(quotationInput).mutation(async ({ ctx, input }) => {
+      const { scannerDataUrl, signatureDataUrl, items, ...fields } = input;
+      const { subtotal, gstAmount, grandTotal } = calculateQuotationTotals(items as QuotationItem[], input.gstRate);
+      const scanner = await uploadQuotationAsset(scannerDataUrl, "scanner");
+      const signature = await uploadQuotationAsset(signatureDataUrl, "signature");
+      return createQuotation({ ...fields, ownerId: ctx.user.id, quotationNumber: `PENDING-${nanoid(10)}`, itemsJson: JSON.stringify(items), subtotal: subtotal.toFixed(2), gstRate: input.gstRate.toFixed(2), gstAmount: gstAmount.toFixed(2), grandTotal: grandTotal.toFixed(2), scannerUrl: scanner.url, scannerKey: scanner.key, signatureUrl: signature.url, signatureKey: signature.key });
     }),
   }),
   branding: router({

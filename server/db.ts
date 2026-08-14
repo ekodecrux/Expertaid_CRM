@@ -1,6 +1,6 @@
 import { and, desc, eq, gte, like, lte, lt, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { agreements, InsertAgreement, InsertUser, sessions, users } from "../drizzle/schema";
+import { agreements, InsertAgreement, InsertQuotation, InsertUser, quotations, sessions, users } from "../drizzle/schema";
 import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
 import { ENV } from './_core/env';
 
@@ -99,6 +99,24 @@ export async function getUserByEmail(email: string) {
   if (!db) return undefined;
   const result = await db.select().from(users).where(eq(users.email, email)).limit(1);
   return result[0];
+}
+
+export async function listQuotationsForOwner(ownerId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  const rows = await db.select().from(quotations).where(eq(quotations.ownerId, ownerId)).orderBy(desc(quotations.createdAt));
+  return rows.map((row) => ({ ...row, items: JSON.parse(row.itemsJson) as unknown[] }));
+}
+
+export async function createQuotation(input: InsertQuotation) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const result = await db.insert(quotations).values(input);
+  const id = Number(result[0].insertId);
+  const quotationNumber = `QT${new Date().getFullYear()}${id.toString().padStart(4, "0")}`;
+  await db.update(quotations).set({ quotationNumber }).where(eq(quotations.id, id));
+  const rows = await db.select().from(quotations).where(eq(quotations.id, id)).limit(1);
+  return rows[0] ? { ...rows[0], items: JSON.parse(rows[0].itemsJson) as unknown[] } : undefined;
 }
 
 export async function createAgreement(input: InsertAgreement) {
