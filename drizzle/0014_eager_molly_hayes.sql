@@ -1,0 +1,1 @@
+ALTER TABLE `quotations` ADD `estimationNumber` int DEFAULT 1 NOT NULL;

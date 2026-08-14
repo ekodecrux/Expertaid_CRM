@@ -5,7 +5,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getAgreementByToken, createSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getUserByEmail } from "./db";
+import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getNextEstimationNumberForClient, getAgreementByToken, createSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getUserByEmail } from "./db";
 import { storagePut } from "./storage";
 import { sdk } from "./_core/sdk";
 import { validateCredentialLogin } from "./credentialLogin";
@@ -54,6 +54,7 @@ const quotationInput = z.object({
   clientContact: z.string().trim().min(3).max(64),
   clientEmail: z.string().trim().email().max(320).optional(),
   clientGst: z.string().trim().max(32).optional(),
+  estimationNumber: z.number().int().positive().max(999999999).optional(),
   quotationDate: z.string().min(1),
   validityDays: z.number().int().positive().max(365).default(15),
   companyGst: z.string().trim().min(1).max(32).default(DEFAULT_QUOTATION_GST),
@@ -159,8 +160,9 @@ export const appRouter = router({
       const { subtotal, gstAmount, grandTotal } = calculateQuotationTotals(effectiveItems as QuotationItem[], effectiveGstRate, input.gstMode);
       const scanner = scannerDataUrl ? await uploadQuotationAsset(scannerDataUrl, "scanner") : { url: defaults.scannerUrl, key: defaults.scannerKey };
       const invoiceNumber = await allocateInvoiceNumberForOwner(ctx.user.id);
+      const estimationNumber = input.estimationNumber ?? await getNextEstimationNumberForClient(ctx.user.id, input.clientName);
       const signature = signatureDataUrl ? await uploadQuotationAsset(signatureDataUrl, "signature") : { url: defaults.signatureUrl, key: defaults.signatureKey };
-      return createQuotation({ ...fields, quotationPrefix: defaults.quotationPrefix, validityDays: input.validityDays ?? defaults.validityDays, gstMode: input.gstMode ?? defaults.gstMode, companyGst: input.companyGst || defaults.companyGst, companyAddress: input.companyAddress || defaults.companyAddress, terms: input.terms || defaults.terms, ownerId: ctx.user.id, quotationNumber: `PENDING-${nanoid(10)}`, invoiceNumber, itemsJson: JSON.stringify(effectiveItems), subtotal: subtotal.toFixed(2), gstRate: effectiveGstRate.toFixed(2), gstAmount: gstAmount.toFixed(2), grandTotal: grandTotal.toFixed(2), scannerUrl: scanner.url, scannerKey: scanner.key, signatureUrl: signature.url, signatureKey: signature.key });
+      return createQuotation({ ...fields, quotationPrefix: defaults.quotationPrefix, validityDays: input.validityDays ?? defaults.validityDays, gstMode: input.gstMode ?? defaults.gstMode, companyGst: input.companyGst || defaults.companyGst, companyAddress: input.companyAddress || defaults.companyAddress, terms: input.terms || defaults.terms, ownerId: ctx.user.id, quotationNumber: `PENDING-${nanoid(10)}`, invoiceNumber, estimationNumber, itemsJson: JSON.stringify(effectiveItems), subtotal: subtotal.toFixed(2), gstRate: effectiveGstRate.toFixed(2), gstAmount: gstAmount.toFixed(2), grandTotal: grandTotal.toFixed(2), scannerUrl: scanner.url, scannerKey: scanner.key, signatureUrl: signature.url, signatureKey: signature.key });
     }),
   }),
   branding: router({

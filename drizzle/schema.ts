@@ -66,6 +66,7 @@ export const quotations = mysqlTable("quotations", {
   ownerId: int("ownerId").notNull(),
   quotationNumber: varchar("quotationNumber", { length: 32 }).notNull().unique(),
   invoiceNumber: varchar("invoiceNumber", { length: 32 }).unique(),
+  estimationNumber: int("estimationNumber").default(1).notNull(),
   clientName: varchar("clientName", { length: 255 }).notNull(),
   clientAddress: text("clientAddress").notNull(),
   clientContact: varchar("clientContact", { length: 64 }).notNull(),

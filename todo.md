@@ -427,3 +427,15 @@
 - [x] Show a clear Estimation No. in the quotation creation form and quotation document
 - [x] Use the configured quotation prefix and sequential number as the estimation reference
 - [x] Preserve existing quotation records while validating the new estimation-number display
+
+- [ ] Separate Estimation No. from the global quotation number
+- [ ] Assign Estimation No. 1 to a client’s first quotation and increment it for subsequent quotations to that client
+- [ ] Validate client-wise estimation numbering while preserving existing quotation references and audit behavior
+
+- [ ] Allow Estimation No. to be edited when creating and editing a quotation
+- [ ] Generate the next quotation’s client-wise Estimation No. from the latest saved value
+- [ ] Keep Estimation No. separate from the global quotation number and validate continuity
+
+- [x] Reflect all products saved in Quotations Settings in the New quotation product-line controls
+- [x] Inherit each saved product name, item name, quantity, and unit price into new quotation lines
+- [x] Validate catalog inheritance after saving Settings and preserve manual quotation-line editing

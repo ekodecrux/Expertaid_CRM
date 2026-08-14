@@ -171,6 +171,13 @@ export async function listQuotationsForOwner(ownerId: number) {
   return rows.map((row) => ({ ...row, items: JSON.parse(row.itemsJson) as unknown[] }));
 }
 
+export async function getNextEstimationNumberForClient(ownerId: number, clientName: string) {
+  const db = await getDb();
+  if (!db) return 1;
+  const rows = await db.select({ latest: sql<number>`MAX(${quotations.estimationNumber})` }).from(quotations).where(and(eq(quotations.ownerId, ownerId), eq(quotations.clientName, clientName.trim())));
+  return Number(rows[0]?.latest ?? 0) + 1;
+}
+
 export async function createQuotation(input: InsertQuotation & { quotationPrefix?: string }) {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
