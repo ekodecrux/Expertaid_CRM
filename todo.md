@@ -524,3 +524,6 @@
 
 - [x] Fix blank quotation print preview and unintended two-page A4 output
 - [x] Validate print-window content loading, A4 sizing, and regression safety
+
+- [x] Make printed quotation exactly match the on-screen preview and fit fully on one A4 page
+- [x] Validate one-page print fit and preview/print consistency
