@@ -106,26 +106,44 @@ button:active { transform: scale(0.98); }
   .login-card .mt-4 { margin-top: 0.3rem; }
 }
 
-/* Quotations print as a clean A4 portrait document while the CRM shell and dialog controls stay hidden. */
+/* The quotation preview is the print source. Keep its structure and styles intact while removing CRM modal constraints. */
 .quotation-print { max-width: 210mm; margin-inline: auto; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 @media print {
   @page { size: A4 portrait; margin: 0; }
-  body { background: #fff !important; }
+  html, body { margin: 0 !important; padding: 0 !important; background: #fff !important; }
   body * { visibility: hidden !important; }
   #quotation-print, #quotation-print * { visibility: visible !important; }
-  #quotation-print {
-    position: absolute !important;
-    inset: 0 auto auto 0 !important;
+  [role="dialog"], [data-radix-dialog-content] {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
     width: 210mm !important;
-    min-height: 297mm !important;
     max-width: none !important;
-    margin: 0 !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    transform: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+  }
+  #quotation-print {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    width: 210mm !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 auto !important;
     padding: 10mm !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     background: #fff !important;
     box-shadow: none !important;
     color: #172033 !important;
   }
+  #quotation-print .print\:hidden { display: none !important; }
   #quotation-print table { page-break-inside: avoid; }
   #quotation-print img { max-width: 100%; }
 }

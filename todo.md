@@ -542,3 +542,6 @@
 
 - [x] Fix the preview-to-Chrome-print handoff so the printed page matches the complete quotation preview
 - [ ] Directly verify the post-click print output rather than validating only the source preview
+
+- [x] Make Chrome print output use the exact quotation preview layout and proportions
+- [x] Validate the complete preview structure is not compressed or cropped in print
