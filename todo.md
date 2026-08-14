@@ -581,3 +581,7 @@
 
 - [x] Fit three quotation products plus totals, account details, signature, terms, and Thank You on one A4 page
 - [x] Validate the three-product quotation print output remains complete and readable
+
+- [x] Paginate quotations with additional products cleanly across pages
+- [x] Repeat table headers, keep rows intact, and group totals/footer sections without overlap
+- [x] Validate multi-page quotation print output in Chrome
