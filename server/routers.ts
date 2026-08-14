@@ -5,8 +5,10 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createAgreement, getAgreementByToken, listAgreementsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner } from "./db";
+import { createAgreement, getAgreementByToken, listAgreementsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, getUserByEmail } from "./db";
 import { storagePut } from "./storage";
+import { sdk } from "./_core/sdk";
+import { validateCredentialLogin } from "./credentialLogin";
 import { calculateAgreementEndDate, calculateAgreementTotal, PricingMode } from "@shared/pricing";
 
 const dataUrlSchema = z.string().regex(/^data:image\/(png|jpeg|jpg|webp);base64,[A-Za-z0-9+/=]+$/).max(2_500_000);
@@ -80,6 +82,18 @@ export const appRouter = router({
   system: systemRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
+    loginWithCredentials: publicProcedure.input(z.object({ email: z.string().trim().email(), password: z.string().min(1) })).mutation(async ({ ctx, input }) => {
+      if (!validateCredentialLogin(input.email, input.password)) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid email or password." });
+      }
+      const user = await getUserByEmail(input.email.trim().toLowerCase());
+      if (!user) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid email or password." });
+      }
+      const sessionToken = await sdk.createSessionToken(user.openId, { name: user.name ?? "" });
+      ctx.res.cookie(COOKIE_NAME, sessionToken, getSessionCookieOptions(ctx.req));
+      return user;
+    }),
     logout: publicProcedure.mutation(({ ctx }) => {
       const cookieOptions = getSessionCookieOptions(ctx.req);
       ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });

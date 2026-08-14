@@ -274,3 +274,7 @@
 
 - [x] Refine the reference-inspired login layout to fit one viewport at desktop, tablet, and mobile sizes
 - [x] Verify no page scrolling, visible form controls, and responsive secure sign-in behavior
+
+- [x] Add working credential login for expertsinstant@gmail.com with the requested password flow
+- [x] Preserve the reference-style login UI and responsive no-scroll behavior
+- [x] Validate successful login, rejected credentials, session access, and existing OAuth behavior
