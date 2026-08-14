@@ -606,3 +606,6 @@
 - [x] Add Awaiting, Success, and Closed quotation statuses
 - [x] Allow direct quotation status changes from the register without opening Edit
 - [x] Add tests for quotation status updates and register display data
+
+- [x] Make the Edit quotation form show the same saved quotation number as the quotation register
+- [x] Validate quotation-number consistency for existing and newly created quotations
