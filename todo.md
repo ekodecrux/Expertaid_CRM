@@ -257,3 +257,7 @@
 
 - [x] Set the browser tab title to exactly “Expertaid - CRM”
 - [x] Validate the browser title without changing other application branding or workflows
+
+- [x] Redesign the unauthenticated login page with attractive Expertaid CRM branding
+- [x] Preserve the secure existing authentication flow and avoid hardcoded credentials
+- [x] Validate login-page responsiveness, accessibility, and sign-in behavior
