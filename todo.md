@@ -614,3 +614,7 @@
 - [x] Show each product only once in the quotation product selector
 - [x] Load/select the configured item lines without duplicate product options
 - [x] Preserve existing quotation product data and validate the catalog flow
+
+- [x] Align package-manager metadata with Hostinger pnpm 10.21.0
+- [x] Validate Hostinger-compatible dependency installation and production build
+- [x] Prepare a clean redeployment package with corrected entry settings
