@@ -1,6 +1,7 @@
 import { and, desc, eq, gte, like, lte, lt, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { agreements, InsertAgreement, InsertQuotation, InsertUser, quotations, sessions, users } from "../drizzle/schema";
+import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, quotations, quotationSettings, sessions, users } from "../drizzle/schema";
+import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_PRODUCTS, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
 import { ENV } from './_core/env';
 
@@ -99,6 +100,24 @@ export async function getUserByEmail(email: string) {
   if (!db) return undefined;
   const result = await db.select().from(users).where(eq(users.email, email)).limit(1);
   return result[0];
+}
+
+export async function getQuotationSettingsForOwner(ownerId: number) {
+  const db = await getDb();
+  const fallback = { companyGst: DEFAULT_QUOTATION_GST, companyAddress: DEFAULT_QUOTATION_ADDRESS, validityDays: 15, gstRate: "18.00", terms: DEFAULT_QUOTATION_TERMS, products: DEFAULT_QUOTATION_PRODUCTS, logoUrl: null, logoKey: null, scannerUrl: null, scannerKey: null, signatureUrl: null, signatureKey: null };
+  if (!db) return fallback;
+  const rows = await db.select().from(quotationSettings).where(eq(quotationSettings.ownerId, ownerId)).limit(1);
+  const row = rows[0];
+  if (!row) return fallback;
+  return { ...row, products: JSON.parse(row.productsJson) as QuotationProduct[] };
+}
+
+export async function updateQuotationSettingsForOwner(ownerId: number, values: Omit<InsertQuotationSettings, "ownerId" | "productsJson"> & { products: QuotationProduct[] }) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const { products, ...fields } = values;
+  await db.insert(quotationSettings).values({ ...fields, ownerId, productsJson: JSON.stringify(products) }).onDuplicateKeyUpdate({ set: { ...fields, productsJson: JSON.stringify(products) } });
+  return getQuotationSettingsForOwner(ownerId);
 }
 
 export async function listQuotationsForOwner(ownerId: number) {

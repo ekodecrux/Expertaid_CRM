@@ -64,6 +64,13 @@
       "when": 1786690470358,
       "tag": "0008_brief_agent_brand",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1786691196187,
+      "tag": "0009_glossy_loki",
+      "breakpoints": true
     }
   ]
 }

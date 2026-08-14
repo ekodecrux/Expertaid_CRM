@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculateQuotationTotals } from "./quotation";
+import { calculateQuotationTotals, DEFAULT_QUOTATION_PRODUCTS } from "./quotation";
 
 describe("quotation totals", () => {
   it("calculates subtotal, GST, and grand total from product quantities", () => {
@@ -7,6 +7,10 @@ describe("quotation totals", () => {
       { product: "ERP", itemName: "ERP Software", quantity: 1, unitPrice: 7000 },
       { product: "Biometric", itemName: "Biometric Device", quantity: 2, unitPrice: 2000 },
     ], 18)).toEqual({ subtotal: 11000, gstAmount: 1980, grandTotal: 12980 });
+  });
+
+  it("includes the three configurable default product categories", () => {
+    expect(DEFAULT_QUOTATION_PRODUCTS.map((product) => product.product)).toEqual(["ERP", "Biometric", "WhatsApp"]);
   });
 
   it("supports zero GST for tax-exempt quotations", () => {

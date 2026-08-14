@@ -28,6 +28,25 @@ export const sessions = mysqlTable("sessions", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 
+export const quotationSettings = mysqlTable("quotationSettings", {
+  id: int("id").autoincrement().primaryKey(),
+  ownerId: int("ownerId").notNull().unique(),
+  companyGst: varchar("companyGst", { length: 32 }).notNull(),
+  companyAddress: text("companyAddress").notNull(),
+  validityDays: int("validityDays").default(15).notNull(),
+  gstRate: decimal("gstRate", { precision: 5, scale: 2 }).default("18.00").notNull(),
+  terms: text("terms").notNull(),
+  productsJson: text("productsJson").notNull(),
+  logoUrl: text("logoUrl"),
+  logoKey: varchar("logoKey", { length: 512 }),
+  scannerUrl: text("scannerUrl"),
+  scannerKey: varchar("scannerKey", { length: 512 }),
+  signatureUrl: text("signatureUrl"),
+  signatureKey: varchar("signatureKey", { length: 512 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
 export const quotations = mysqlTable("quotations", {
   id: int("id").autoincrement().primaryKey(),
   ownerId: int("ownerId").notNull(),
@@ -92,6 +111,8 @@ export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 export type Session = typeof sessions.$inferSelect;
 export type InsertSession = typeof sessions.$inferInsert;
+export type QuotationSettings = typeof quotationSettings.$inferSelect;
+export type InsertQuotationSettings = typeof quotationSettings.$inferInsert;
 export type Quotation = typeof quotations.$inferSelect;
 export type InsertQuotation = typeof quotations.$inferInsert;
 export type Agreement = typeof agreements.$inferSelect;

@@ -1,0 +1,20 @@
+CREATE TABLE `quotationSettings` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`ownerId` int NOT NULL,
+	`companyGst` varchar(32) NOT NULL,
+	`companyAddress` text NOT NULL,
+	`validityDays` int NOT NULL DEFAULT 15,
+	`gstRate` decimal(5,2) NOT NULL DEFAULT '18.00',
+	`terms` text NOT NULL,
+	`productsJson` text NOT NULL,
+	`logoUrl` text,
+	`logoKey` varchar(512),
+	`scannerUrl` text,
+	`scannerKey` varchar(512),
+	`signatureUrl` text,
+	`signatureKey` varchar(512),
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `quotationSettings_id` PRIMARY KEY(`id`),
+	CONSTRAINT `quotationSettings_ownerId_unique` UNIQUE(`ownerId`)
+);

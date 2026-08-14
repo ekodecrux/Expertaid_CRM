@@ -372,3 +372,9 @@
 - [x] Add Quotations navigation, list, create/edit workflow, and details view
 - [x] Add branded printable/exportable quotation output matching the supplied reference
 - [x] Validate Quotations responsively and confirm Agreements, Clients, and Sessions remain unchanged
+
+- [x] Add persisted quotation defaults for GST, address, logo, scanner, signature stamp, terms, validity, and GST rate
+- [x] Add manageable default product catalog with product names and unit prices
+- [x] Add Quotations settings icon and settings panel
+- [x] Make new quotations inherit saved defaults while preserving per-quotation overrides
+- [x] Validate settings persistence, asset previews, default inheritance, responsive UI, and existing modules

@@ -1,6 +1,17 @@
 export const DEFAULT_QUOTATION_GST = "36AAGCE2615N1ZH";
 export const DEFAULT_QUOTATION_ADDRESS = "Plot No. 7, Survey No. 202, Ashoknagar, Quthbullapur, Hyderabad, Telangana 502032";
 export const DEFAULT_QUOTATION_TERMS = "Goods Once Sold Will Not be taken back";
+export const DEFAULT_QUOTATION_PRODUCTS: QuotationProduct[] = [
+  { product: "ERP", itemName: "Instant ERP (Educational Management Software)", unitPrice: 0 },
+  { product: "Biometric", itemName: "Biometric Device", unitPrice: 0 },
+  { product: "WhatsApp", itemName: "WhatsApp Business Integration", unitPrice: 0 },
+];
+
+export type QuotationProduct = {
+  product: "ERP" | "Biometric" | "WhatsApp";
+  itemName: string;
+  unitPrice: number;
+};
 
 export type QuotationItem = {
   product: "ERP" | "Biometric" | "WhatsApp";
