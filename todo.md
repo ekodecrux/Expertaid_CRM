@@ -591,3 +591,6 @@
 
 - [x] Keep the complete Terms & Conditions card, including Thank You, together on one printed page
 - [x] Validate the whole-card page break in multi-page quotations
+
+- [x] Make quotations fit correctly with Chrome default print margins enabled
+- [x] Validate complete quotation layout with default margins for single and multi-page output
