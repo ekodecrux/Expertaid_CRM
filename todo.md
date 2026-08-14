@@ -521,3 +521,6 @@
 
 - [x] Make quotation A4 print output visually match the on-screen quotation preview
 - [x] Validate print layout consistency without changing quotation content or functionality
+
+- [x] Fix blank quotation print preview and unintended two-page A4 output
+- [x] Validate print-window content loading, A4 sizing, and regression safety
