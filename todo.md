@@ -412,3 +412,6 @@
 - [x] Add reference sections for header/GST, invoice panel, billed-to card, item table, GST totals, amount in words, account/QR/signature, and terms footer
 - [x] Align the dedicated A4 print window with the same reference-matching quotation document
 - [x] Validate the redesigned quotation preview and preserve existing quotation workflows
+
+- [x] Make quotation Settings item names free-text inputs while retaining the product category dropdown
+- [x] Validate adding a custom catalog item and inheritance into new quotations
