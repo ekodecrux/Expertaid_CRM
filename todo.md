@@ -638,3 +638,7 @@
 - [x] Fix production static-file serving to use the built dist/public frontend path
 - [x] Validate Hostinger production startup and frontend asset resolution
 - [x] Prepare a replacement ZIP with the corrected server path
+
+- [x] Ensure client/src/data/softwareServiceAgreement.ts is present in the project Code tree and latest checkpoint
+- [x] Verify the Code download contains the complete source and corrected production files
+- [x] Provide one authoritative download for Hostinger redeployment
