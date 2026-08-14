@@ -503,3 +503,7 @@
 - [x] Hide the quotation QR and UPI payment section when no QR or UPI information is configured
 - [x] Show the QR image and UPI label only when payment information is provided
 - [x] Validate quotation View and A4 print output with payment information present and absent
+
+- [x] Remove the empty QR column from the quotation footer when no scanner is configured
+- [x] Keep the signature block right-aligned beside Account Details without scanner
+- [x] Validate both footer layouts with and without scanner/QR information
