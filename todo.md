@@ -271,3 +271,6 @@
 - [x] Rebuild the login screen to match the provided dark-panel and white-card reference
 - [x] Add username/email, password, remember-me, forgot-password, and Sign In controls without hardcoded credentials
 - [x] Preserve secure authentication and validate responsive single-viewport behavior
+
+- [x] Refine the reference-inspired login layout to fit one viewport at desktop, tablet, and mobile sizes
+- [x] Verify no page scrolling, visible form controls, and responsive secure sign-in behavior
