@@ -499,3 +499,7 @@
 - [x] Match the quotation header to the supplied large-logo, GST/address, and purple-summary-panel structure
 - [x] Keep the configured quotation reference and separate Estimation No. aligned inside the right panel
 - [x] Validate the reference-matching header in View and A4 print output
+
+- [x] Hide the quotation QR and UPI payment section when no QR or UPI information is configured
+- [x] Show the QR image and UPI label only when payment information is provided
+- [x] Validate quotation View and A4 print output with payment information present and absent
