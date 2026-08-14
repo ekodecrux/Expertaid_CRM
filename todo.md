@@ -254,3 +254,6 @@
 
 - [x] Cancelled: change the application title to exactly “Expertaid - CRM”
 - [x] Cancelled: validate the updated browser title and preserve existing branding and workflows
+
+- [x] Set the browser tab title to exactly “Expertaid - CRM”
+- [x] Validate the browser title without changing other application branding or workflows
