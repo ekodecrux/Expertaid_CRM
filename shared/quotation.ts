@@ -8,13 +8,18 @@ export const DEFAULT_QUOTATION_PRODUCTS: QuotationProduct[] = [
 ];
 
 export type QuotationProduct = {
+  /** Legacy category retained for existing saved quotations; new Settings entries use productName. */
   product: "ERP" | "Biometric" | "WhatsApp";
+  productName?: string;
   itemName: string;
+  quantity?: number;
   unitPrice: number;
 };
 
 export type QuotationItem = {
+  /** Legacy category retained for existing saved quotations; new entries may provide productName. */
   product: "ERP" | "Biometric" | "WhatsApp";
+  productName?: string;
   itemName: string;
   quantity: number;
   unitPrice: number;

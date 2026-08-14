@@ -415,3 +415,7 @@
 
 - [x] Make quotation Settings item names free-text inputs while retaining the product category dropdown
 - [x] Validate adding a custom catalog item and inheritance into new quotations
+
+- [x] Remove the ERP/Biometric/WhatsApp category dropdown from quotation Settings catalog rows and Add item form
+- [x] Add product name, item name, quantity, and unit price fields for quotation Settings catalog entries
+- [x] Validate no dropdown is displayed and preserve saved catalog/new quotation behavior

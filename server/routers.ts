@@ -58,7 +58,7 @@ const quotationInput = z.object({
   validityDays: z.number().int().positive().max(365).default(15),
   companyGst: z.string().trim().min(1).max(32).default(DEFAULT_QUOTATION_GST),
   companyAddress: z.string().trim().min(1).default(DEFAULT_QUOTATION_ADDRESS),
-  items: z.array(z.object({ product: z.enum(["ERP", "Biometric", "WhatsApp"]), itemName: z.string().trim().min(1).max(255), quantity: z.number().int().positive(), unitPrice: z.number().nonnegative() })).min(1),
+  items: z.array(z.object({ product: z.enum(["ERP", "Biometric", "WhatsApp"]).default("ERP"), productName: z.string().trim().min(1).max(255).optional(), itemName: z.string().trim().min(1).max(255), quantity: z.number().int().positive(), unitPrice: z.number().nonnegative() })).min(1),
   gstRate: z.number().nonnegative().max(100).default(18),
   gstMode: z.enum(["inclusive", "exclusive"]).default("exclusive"),
   terms: z.string().max(2000).default(DEFAULT_QUOTATION_TERMS),
@@ -136,7 +136,7 @@ export const appRouter = router({
     list: protectedProcedure.query(({ ctx }) => listQuotationsForOwner(ctx.user.id)),
     settings: router({
       get: protectedProcedure.query(({ ctx }) => getQuotationSettingsForOwner(ctx.user.id)),
-      update: protectedProcedure.input(z.object({ companyGst: z.string().trim().min(1).max(32), companyAddress: z.string().trim().min(1), validityDays: z.number().int().positive().max(365), gstRate: z.number().nonnegative().max(100), gstMode: z.enum(["inclusive", "exclusive"]), invoiceNumberStart: z.number().int().positive().max(999999999).optional(), terms: z.string().max(2000), products: z.array(z.object({ product: z.enum(["ERP", "Biometric", "WhatsApp"]), itemName: z.string().trim().min(1).max(255), unitPrice: z.number().nonnegative() })).min(1), logoDataUrl: dataUrlSchema.optional(), scannerDataUrl: dataUrlSchema.optional(), signatureDataUrl: dataUrlSchema.optional() })).mutation(async ({ ctx, input }) => {
+      update: protectedProcedure.input(z.object({ companyGst: z.string().trim().min(1).max(32), companyAddress: z.string().trim().min(1), validityDays: z.number().int().positive().max(365), gstRate: z.number().nonnegative().max(100), gstMode: z.enum(["inclusive", "exclusive"]), invoiceNumberStart: z.number().int().positive().max(999999999).optional(), terms: z.string().max(2000), products: z.array(z.object({ product: z.enum(["ERP", "Biometric", "WhatsApp"]).default("ERP"), productName: z.string().trim().min(1).max(255).optional(), itemName: z.string().trim().min(1).max(255), quantity: z.number().int().positive().default(1), unitPrice: z.number().nonnegative() })).min(1), logoDataUrl: dataUrlSchema.optional(), scannerDataUrl: dataUrlSchema.optional(), signatureDataUrl: dataUrlSchema.optional() })).mutation(async ({ ctx, input }) => {
         const current = await getQuotationSettingsForOwner(ctx.user.id);
         const logo = input.logoDataUrl ? await uploadQuotationAsset(input.logoDataUrl, "logo") : { url: current.logoUrl, key: current.logoKey };
         const scanner = input.scannerDataUrl ? await uploadQuotationAsset(input.scannerDataUrl, "scanner") : { url: current.scannerUrl, key: current.scannerKey };
@@ -154,7 +154,7 @@ export const appRouter = router({
     create: protectedProcedure.input(quotationInput).mutation(async ({ ctx, input }) => {
       const defaults = await getQuotationSettingsForOwner(ctx.user.id);
       const { scannerDataUrl, signatureDataUrl, items, ...fields } = input;
-      const effectiveItems = items.length ? items : defaults.products.map((product) => ({ ...product, quantity: 1 }));
+      const effectiveItems = items.length ? items : defaults.products.map((product) => ({ product: product.product ?? "ERP", productName: product.productName ?? product.product, itemName: product.itemName, quantity: product.quantity ?? 1, unitPrice: product.unitPrice }));
       const effectiveGstRate = input.gstRate ?? Number(defaults.gstRate);
       const { subtotal, gstAmount, grandTotal } = calculateQuotationTotals(effectiveItems as QuotationItem[], effectiveGstRate, input.gstMode);
       const scanner = scannerDataUrl ? await uploadQuotationAsset(scannerDataUrl, "scanner") : { url: defaults.scannerUrl, key: defaults.scannerKey };
