@@ -278,3 +278,6 @@
 - [x] Add working credential login for expertsinstant@gmail.com with the requested password flow
 - [x] Preserve the reference-style login UI and responsive no-scroll behavior
 - [x] Validate successful login, rejected credentials, session access, and existing OAuth behavior
+
+- [x] Keep unauthenticated users on the Expertaid CRM credential login screen instead of redirecting to Manus OAuth
+- [x] Validate the credential login and preserve protected-route behavior
