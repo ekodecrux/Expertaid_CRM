@@ -548,3 +548,6 @@
 
 - [x] Print only the quotation document instead of the surrounding CRM application page
 - [x] Validate one-page A4 output without blank pages or application footer content
+
+- [x] Fit the isolated quotation document onto one A4 page without losing lower sections
+- [ ] Validate the actual Chrome print screen shows one page with account, QR, signature, and terms content
