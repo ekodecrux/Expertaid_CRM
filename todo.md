@@ -533,3 +533,6 @@
 
 - [x] Diagnose and resolve the persistent mismatch between quotation preview and A4 print output
 - [x] Validate the deterministic print document layout and all quotation sections
+
+- [x] Rebuild quotation print output so the complete preview content is visible without cropping
+- [x] Validate QR, signature, account details, totals, and terms in the final A4 print document
