@@ -578,3 +578,6 @@
 
 - [x] Diagnose and fix Agreements print output in the branded A4 layout
 - [x] Validate agreement preview and post-click print output
+
+- [x] Fit three quotation products plus totals, account details, signature, terms, and Thank You on one A4 page
+- [x] Validate the three-product quotation print output remains complete and readable
