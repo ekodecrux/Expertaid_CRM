@@ -281,3 +281,7 @@
 
 - [x] Keep unauthenticated users on the Expertaid CRM credential login screen instead of redirecting to Manus OAuth
 - [x] Validate the credential login and preserve protected-route behavior
+
+- [x] Fit the login page completely within the viewport and remove the bottom white strip
+- [x] Keep decorative curves behind content and prevent overlap with feature text/cards
+- [x] Validate desktop and mobile login sizing without changing credential authentication
