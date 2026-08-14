@@ -530,3 +530,6 @@
 
 - [x] Keep the full quotation readable in one-page A4 print output, including QR, signature, and terms sections
 - [x] Validate print scaling does not clip or hide lower document content
+
+- [x] Diagnose and resolve the persistent mismatch between quotation preview and A4 print output
+- [x] Validate the deterministic print document layout and all quotation sections
