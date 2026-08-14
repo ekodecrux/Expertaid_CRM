@@ -627,9 +627,9 @@
 - [x] Validate the replacement ZIP against the Hostinger Vite build failure
 - [x] Provide exact replacement and redeploy instructions for the complete package
 
-- [ ] Confirm Hostinger database name, username, and host for the CRM connection
-- [ ] Provide secure DATABASE_URL configuration instructions without exposing credentials
-- [ ] Provide Hostinger schema migration and connection validation steps
+- [x] Confirm Hostinger database name, username, and host for the CRM connection
+- [x] Provide secure DATABASE_URL configuration instructions without exposing credentials
+- [x] Provide Hostinger schema migration and connection validation steps
 
 - [x] Generate a non-destructive SQL structure for all current CRM tables
 - [x] Review and validate the Hostinger-importable schema SQL
