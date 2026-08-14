@@ -536,3 +536,9 @@
 
 - [x] Rebuild quotation print output so the complete preview content is visible without cropping
 - [x] Validate QR, signature, account details, totals, and terms in the final A4 print document
+
+- [ ] Directly test the live quotation print preview and inspect the rendered A4 page
+- [ ] Record whether all quotation sections are visible in the actual print screen
+
+- [x] Fix the preview-to-Chrome-print handoff so the printed page matches the complete quotation preview
+- [ ] Directly verify the post-click print output rather than validating only the source preview
