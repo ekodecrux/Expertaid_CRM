@@ -456,3 +456,6 @@
 - [x] Make the Estimation No. control compact in the New quotation header
 - [x] Display the separate Quotation No. on the right side of the identifier row
 - [x] Validate the compact responsive identifier layout without changing numbering behavior
+
+- [x] Fix Custom product selection so the same product field becomes writable immediately
+- [x] Validate typing a custom product name and preserving item, quantity, and price editing
