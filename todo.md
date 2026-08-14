@@ -609,3 +609,8 @@
 
 - [x] Make the Edit quotation form show the same saved quotation number as the quotation register
 - [x] Validate quotation-number consistency for existing and newly created quotations
+
+- [x] Allow multiple configured items under one product in quotation settings
+- [x] Show each product only once in the quotation product selector
+- [x] Load/select the configured item lines without duplicate product options
+- [x] Preserve existing quotation product data and validate the catalog flow
