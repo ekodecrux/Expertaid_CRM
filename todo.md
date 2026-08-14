@@ -448,3 +448,11 @@
 - [x] Populate a product dropdown with all products saved in Quotations Settings
 - [x] Fill selected product details while preserving manual product, item, quantity, and price editing
 - [x] Validate additional product rows and catalog/manual entry behavior
+
+- [x] Ensure the New quotation dropdown hydrates every product saved in Quotations Settings
+- [x] Make the product field itself editable when Custom product is selected
+- [x] Validate catalog selection and same-field custom product entry
+
+- [x] Make the Estimation No. control compact in the New quotation header
+- [x] Display the separate Quotation No. on the right side of the identifier row
+- [x] Validate the compact responsive identifier layout without changing numbering behavior
