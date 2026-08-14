@@ -443,3 +443,8 @@
 - [x] Standardize all currency displays to use the compact ₹ symbol style from the reference
 - [x] Apply the same rupee styling to quotation, agreement, client, dashboard, export, and print monetary outputs
 - [x] Validate the currency presentation across responsive module views
+
+- [x] Show one default product row when creating a quotation
+- [x] Populate a product dropdown with all products saved in Quotations Settings
+- [x] Fill selected product details while preserving manual product, item, quantity, and price editing
+- [x] Validate additional product rows and catalog/manual entry behavior
