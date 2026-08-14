@@ -1,6 +1,6 @@
 import { and, desc, eq, gte, like, lte, lt, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { agreements, InsertAgreement, InsertUser, users } from "../drizzle/schema";
+import { agreements, InsertAgreement, InsertUser, sessions, users } from "../drizzle/schema";
 import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
 import { ENV } from './_core/env';
 
@@ -110,11 +110,31 @@ export async function createAgreement(input: InsertAgreement) {
   return rows[0];
 }
 
+function defaultSessionDates(label: string) {
+  const [startYear, endYear] = label.split("-").map(Number);
+  return { startDate: `${startYear}-04-01`, endDate: `${endYear}-03-31` };
+}
+
 export async function listSessionsForOwner(ownerId: number) {
   const db = await getDb();
-  if (!db) return [];
-  const rows = await db.select({ session: agreements.session }).from(agreements).where(eq(agreements.ownerId, ownerId)).groupBy(agreements.session).orderBy(agreements.session);
-  return rows.map((row) => row.session);
+  const settings = await getSessionSettings(ownerId);
+  if (!db) {
+    const dates = defaultSessionDates(settings.currentSession);
+    return [{ id: 0, ownerId, sessionLabel: settings.currentSession, ...dates }];
+  }
+  const rows = await db.select().from(sessions).where(eq(sessions.ownerId, ownerId)).orderBy(sessions.startDate);
+  if (rows.some((row) => row.sessionLabel === settings.currentSession)) return rows;
+  const dates = defaultSessionDates(settings.currentSession);
+  return [{ id: 0, ownerId, sessionLabel: settings.currentSession, ...dates }, ...rows];
+}
+
+export async function createSessionForOwner(ownerId: number, values: { sessionLabel: string; startDate: string; endDate: string }) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const existing = await db.select({ id: sessions.id }).from(sessions).where(and(eq(sessions.ownerId, ownerId), eq(sessions.sessionLabel, values.sessionLabel))).limit(1);
+  if (existing.length) throw new Error("That session already exists.");
+  await db.insert(sessions).values({ ownerId, ...values });
+  return listSessionsForOwner(ownerId);
 }
 
 export async function listAgreementsForOwner(ownerId: number, scope?: { sessionMode: "all" | "single"; currentSession: string }) {

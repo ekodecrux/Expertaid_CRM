@@ -19,6 +19,15 @@ export const users = mysqlTable("users", {
   currentSession: varchar("currentSession", { length: 16 }).default("2026-2027").notNull(),
 });
 
+export const sessions = mysqlTable("sessions", {
+  id: int("id").autoincrement().primaryKey(),
+  ownerId: int("ownerId").notNull(),
+  sessionLabel: varchar("sessionLabel", { length: 16 }).notNull(),
+  startDate: varchar("startDate", { length: 32 }).notNull(),
+  endDate: varchar("endDate", { length: 32 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
 export const agreements = mysqlTable("agreements", {
   id: int("id").autoincrement().primaryKey(),
   ownerId: int("ownerId").notNull(),
@@ -54,5 +63,7 @@ export const agreements = mysqlTable("agreements", {
 
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
+export type Session = typeof sessions.$inferSelect;
+export type InsertSession = typeof sessions.$inferInsert;
 export type Agreement = typeof agreements.$inferSelect;
 export type InsertAgreement = typeof agreements.$inferInsert;

@@ -342,3 +342,13 @@
 
 - [x] Keep Agreements independent from global session scope and default its local session filter to All
 - [x] Add a local Agreements session filter while preserving global session behavior for Clients and dashboard summaries
+
+- [x] Add persistent session records for previous, current, and future academic/business sessions
+- [x] Add Settings controls to create and select a particular session
+- [x] Populate header and module session selectors from the managed session list
+- [x] Ensure new agreements use the selected session and existing data remains selectable
+- [x] Validate session management, switching, filtering, and responsive behavior
+
+- [x] Add session start date and end date fields with month/day precision
+- [x] Validate that session end date is after the session start date
+- [x] Display the configured date range wherever a session is selected or shown

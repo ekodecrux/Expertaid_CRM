@@ -5,7 +5,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createAgreement, getAgreementByToken, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getUserByEmail } from "./db";
+import { createAgreement, getAgreementByToken, createSessionForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getUserByEmail } from "./db";
 import { storagePut } from "./storage";
 import { sdk } from "./_core/sdk";
 import { validateCredentialLogin } from "./credentialLogin";
@@ -129,6 +129,8 @@ export const appRouter = router({
   }),
   session: router({
     get: protectedProcedure.query(({ ctx }) => getSessionSettings(ctx.user.id)),
+    list: protectedProcedure.query(({ ctx }) => listSessionsForOwner(ctx.user.id)),
+    create: protectedProcedure.input(z.object({ sessionLabel: z.string().regex(/^\d{4}-\d{4}$/), startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), endDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) }).superRefine((value, ctx) => { if (value.endDate <= value.startDate) ctx.addIssue({ code: "custom", path: ["endDate"], message: "End date must be after start date." }); })).mutation(({ ctx, input }) => createSessionForOwner(ctx.user.id, input)),
     update: protectedProcedure.input(z.object({ sessionMode: z.enum(["all", "single"]), currentSession: z.string().regex(/^\d{4}-\d{4}$/) })).mutation(({ ctx, input }) => updateSessionSettings(ctx.user.id, input)),
   }),
   clients: router({
