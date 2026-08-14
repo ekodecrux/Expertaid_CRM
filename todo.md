@@ -261,3 +261,6 @@
 - [x] Redesign the unauthenticated login page with attractive Expertaid CRM branding
 - [x] Preserve the secure existing authentication flow and avoid hardcoded credentials
 - [x] Validate login-page responsiveness, accessibility, and sign-in behavior
+
+- [x] Make the Expertaid CRM login page fit in a single viewport without page scrolling
+- [x] Validate no-scroll behavior at desktop and mobile widths without affecting secure sign-in

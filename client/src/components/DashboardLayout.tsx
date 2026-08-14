@@ -66,10 +66,10 @@ export default function DashboardLayout({
   const shellView = resolveDashboardShellView({ loading, hasUser: Boolean(user) });
 
   const signInView = (
-    <main className="relative flex min-h-screen overflow-hidden bg-[#f6f8ff] text-[#172033]">
+    <main className="relative flex h-dvh max-h-dvh min-h-0 overflow-hidden bg-[#f6f8ff] text-[#172033]">
       <div className="absolute -left-32 -top-32 h-96 w-96 rounded-full bg-[#dce5ff] blur-3xl" aria-hidden="true" />
       <div className="absolute -bottom-40 -right-20 h-[28rem] w-[28rem] rounded-full bg-[#e6ddff] blur-3xl" aria-hidden="true" />
-      <section className="relative hidden flex-1 flex-col justify-between overflow-hidden bg-[#172033] p-10 text-white lg:flex xl:p-16">
+      <section className="relative hidden min-h-0 flex-1 flex-col justify-between overflow-hidden bg-[#172033] p-8 text-white lg:flex xl:p-12">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_15%,rgba(79,92,212,0.42),transparent_36%),linear-gradient(135deg,#172033_0%,#222d56_56%,#3546a0_100%)]" aria-hidden="true" />
         <div className="relative z-10 flex items-center gap-4">
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white p-2 shadow-2xl shadow-black/20"><img src={companyBranding.companyLogoUrl} alt={companyBranding.companyName} className="block h-full w-full object-contain" /></div>
@@ -85,15 +85,15 @@ export default function DashboardLayout({
         </div>
         <p className="relative z-10 text-xs text-white/45">{companyBranding.serviceCaption}</p>
       </section>
-      <section className="relative flex w-full items-center justify-center px-5 py-10 sm:px-8 lg:max-w-[560px] lg:px-16 xl:max-w-[640px]">
+      <section className="relative flex min-h-0 w-full items-center justify-center overflow-hidden px-5 py-6 sm:px-8 lg:max-w-[560px] lg:px-12 xl:max-w-[640px] xl:px-16">
         <div className="w-full max-w-md">
-          <div className="mb-10 flex items-center gap-3 lg:hidden"><div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white p-1.5 shadow-sm ring-1 ring-slate-200"><img src={companyBranding.companyLogoUrl} alt={companyBranding.companyName} className="block h-full w-full object-contain" /></div><div><p className="font-bold tracking-tight">Expertaid CRM</p><p className="text-xs text-slate-500">Agreement operations workspace</p></div></div>
-          <div className="rounded-[2rem] border border-white/80 bg-white/85 p-7 shadow-[0_30px_90px_rgba(47,61,125,0.14)] backdrop-blur-xl sm:p-10">
+          <div className="mb-6 flex items-center gap-3 lg:hidden"><div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white p-1.5 shadow-sm ring-1 ring-slate-200"><img src={companyBranding.companyLogoUrl} alt={companyBranding.companyName} className="block h-full w-full object-contain" /></div><div><p className="font-bold tracking-tight">Expertaid CRM</p><p className="text-xs text-slate-500">Agreement operations workspace</p></div></div>
+          <div className="rounded-[2rem] border border-white/80 bg-white/85 p-6 shadow-[0_30px_90px_rgba(47,61,125,0.14)] backdrop-blur-xl sm:p-8">
             <div className="mb-8"><div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eef2ff] text-[#3157d5]"><PanelLeft className="h-5 w-5" /></div><p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#3157d5]">Welcome back</p><h2 className="font-serif text-4xl tracking-[-0.04em] text-[#172033]">Sign in to Expertaid CRM</h2><p className="mt-3 text-sm leading-6 text-slate-500">Access your agreements, client approvals, and secure signatures in one place.</p></div>
             <Button onClick={() => startLogin()} size="lg" className="h-12 w-full rounded-xl bg-[#3157d5] text-white shadow-lg shadow-[#3157d5]/20 transition-all hover:-translate-y-0.5 hover:bg-[#2748bd] hover:shadow-xl hover:shadow-[#3157d5]/25">Continue with secure sign-in <ChevronDown className="ml-2 h-4 w-4 -rotate-90" /></Button>
             <div className="mt-6 flex items-center justify-center gap-2 text-xs text-slate-400"><span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />Protected workspace access</div>
           </div>
-          <p className="mt-6 text-center text-xs leading-5 text-slate-400">By continuing, you enter the authorized Expertaid CRM workspace.<br />Need access? Contact your workspace administrator.</p>
+          <p className="mt-4 text-center text-xs leading-5 text-slate-400">By continuing, you enter the authorized Expertaid CRM workspace.<br />Need access? Contact your workspace administrator.</p>
         </div>
       </section>
     </main>
