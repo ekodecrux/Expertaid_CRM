@@ -645,3 +645,7 @@
 
 - [x] Force-register client/src/data/softwareServiceAgreement.ts so it appears in the visible Code tree
 - [x] Verify the new checkpoint Code download contains the data folder and module
+
+- [x] Prepare non-client setup data export for users, sessions, branding, quotation settings, products, and account defaults
+- [x] Exclude agreements, quotations, and client records from the export
+- [x] Validate the import package and document uploaded-asset limitations
