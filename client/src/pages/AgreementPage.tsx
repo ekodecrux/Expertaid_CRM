@@ -86,7 +86,7 @@ Company will retain all interest in and to the Service, including all documentat
 16.8 Force Majeure: A party shall not be liable for failure or delay in performance for a period that the failure or delay is beyond reasonable control, materially affects performance, and could not reasonably have been foreseen or provided against, but economic conditions or general market effects alone will not excuse failure or delay.`;
 
 function formatMoney(value: string | number) {
-  return new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 2 }).format(Number(value));
+  return new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", currencyDisplay: "narrowSymbol", maximumFractionDigits: 2 }).format(Number(value));
 }
 
 function SignatureCanvas({ onChange }: { onChange: (dataUrl: string | null) => void }) {

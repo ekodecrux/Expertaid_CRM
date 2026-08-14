@@ -38,5 +38,5 @@ export function calculateQuotationTotals(items: QuotationItem[], gstRate: number
 }
 
 export function formatCurrency(value: number) {
-  return new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 2 }).format(value);
+  return new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", currencyDisplay: "narrowSymbol", maximumFractionDigits: 2 }).format(value);
 }

@@ -15,7 +15,7 @@ import { useMemo, useState } from "react";
 type Client = { id: number; clientName: string; clientOwnerName: string; contactNumber: string; email: string; address: string; noOfStudents: number; pricingMode: "perStudent" | "package"; perStudentPrice: string | null; packagePrice: string | null; noOfYearPlan: number; startDate: string; endDate: string; totalPrice: string; description: string | null; logoUrl: string | null; instituteType: "School" | "College" | "Academy"; branchCoverage: "individual" | "multiple"; branchCount: number; signatureDate: string | null; decidedAt: Date | null };
 type Status = "all" | "Active" | "Inactive";
 
-function money(value: number | string | null | undefined) { return new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(Number(value ?? 0)); }
+function money(value: number | string | null | undefined) { return new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", currencyDisplay: "narrowSymbol", maximumFractionDigits: 0 }).format(Number(value ?? 0)); }
 function date(value: string | Date | null | undefined) { return value ? new Date(value).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }) : "—"; }
 function statusFor(client: Client): "Active" | "Inactive" { return getClientLifecycleStatus(client.endDate); }
 

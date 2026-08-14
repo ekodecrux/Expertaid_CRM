@@ -428,14 +428,18 @@
 - [x] Use the configured quotation prefix and sequential number as the estimation reference
 - [x] Preserve existing quotation records while validating the new estimation-number display
 
-- [ ] Separate Estimation No. from the global quotation number
-- [ ] Assign Estimation No. 1 to a client’s first quotation and increment it for subsequent quotations to that client
-- [ ] Validate client-wise estimation numbering while preserving existing quotation references and audit behavior
+- [x] Separate Estimation No. from the global quotation number
+- [x] Assign Estimation No. 1 to a client’s first quotation and increment it for subsequent quotations to that client
+- [x] Validate client-wise estimation numbering while preserving existing quotation references and audit behavior
 
-- [ ] Allow Estimation No. to be edited when creating and editing a quotation
-- [ ] Generate the next quotation’s client-wise Estimation No. from the latest saved value
-- [ ] Keep Estimation No. separate from the global quotation number and validate continuity
+- [x] Allow Estimation No. to be edited when creating and editing a quotation
+- [x] Generate the next quotation’s client-wise Estimation No. from the latest saved value
+- [x] Keep Estimation No. separate from the global quotation number and validate continuity
 
 - [x] Reflect all products saved in Quotations Settings in the New quotation product-line controls
 - [x] Inherit each saved product name, item name, quantity, and unit price into new quotation lines
 - [x] Validate catalog inheritance after saving Settings and preserve manual quotation-line editing
+
+- [x] Standardize all currency displays to use the compact ₹ symbol style from the reference
+- [x] Apply the same rupee styling to quotation, agreement, client, dashboard, export, and print monetary outputs
+- [x] Validate the currency presentation across responsive module views
