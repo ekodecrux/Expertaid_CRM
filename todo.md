@@ -527,3 +527,6 @@
 
 - [x] Make printed quotation exactly match the on-screen preview and fit fully on one A4 page
 - [x] Validate one-page print fit and preview/print consistency
+
+- [x] Keep the full quotation readable in one-page A4 print output, including QR, signature, and terms sections
+- [x] Validate print scaling does not clip or hide lower document content
