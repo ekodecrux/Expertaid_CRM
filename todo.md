@@ -642,3 +642,6 @@
 - [x] Ensure client/src/data/softwareServiceAgreement.ts is present in the project Code tree and latest checkpoint
 - [x] Verify the Code download contains the complete source and corrected production files
 - [x] Provide one authoritative download for Hostinger redeployment
+
+- [x] Force-register client/src/data/softwareServiceAgreement.ts so it appears in the visible Code tree
+- [x] Verify the new checkpoint Code download contains the data folder and module

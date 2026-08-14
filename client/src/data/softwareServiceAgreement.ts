@@ -92,3 +92,5 @@ export const TERMS_DOCUMENT_FULL = `Software Service Agreement
         a. Beyond the reasonable control of a party,
         b. Materially affects the performance of any of its obligations under this agreement, true.
         c. Could not reasonably have been foreseen or provided against, but will not be excused for failure or delay resulting from only general economic conditions or other general market effects.`;
+
+// Kept in the project Code tree for AgreementPage production builds.
