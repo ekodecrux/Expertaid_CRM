@@ -300,3 +300,6 @@
 
 - [x] Add a visible Sign out option at the bottom of the left sidebar
 - [x] Preserve the existing logout behavior and validate responsive sidebar layout
+
+- [x] Remove the admin name and email block from the sidebar footer
+- [x] Keep the bottom Sign out action and validate the simplified sidebar footer
