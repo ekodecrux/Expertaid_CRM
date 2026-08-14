@@ -1,4 +1,4 @@
-import { and, desc, eq } from "drizzle-orm";
+import { and, desc, eq, like, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { agreements, InsertAgreement, InsertUser, users } from "../drizzle/schema";
 import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
@@ -100,6 +100,26 @@ export async function listAgreementsForOwner(ownerId: number) {
   const db = await getDb();
   if (!db) return [];
   return db.select().from(agreements).where(eq(agreements.ownerId, ownerId)).orderBy(desc(agreements.createdAt));
+}
+
+export async function listApprovedClientsForOwner(ownerId: number, options: { page: number; pageSize: number; search?: string; instituteType?: "School" | "College" | "Academy" }) {
+  const db = await getDb();
+  if (!db) return { items: [], total: 0, page: options.page, pageSize: options.pageSize, totalPages: 0, summary: { students: 0, value: 0 } };
+  const search = options.search?.trim();
+  const filters = [eq(agreements.ownerId, ownerId), eq(agreements.status, "Approved" as const)];
+  if (options.instituteType) filters.push(eq(agreements.instituteType, options.instituteType));
+  if (search) {
+    const pattern = `%${search}%`;
+    filters.push(or(like(agreements.clientName, pattern), like(agreements.clientOwnerName, pattern), like(agreements.email, pattern), like(agreements.contactNumber, pattern), like(agreements.instituteType, pattern))!);
+  }
+  const where = and(...filters);
+  const [items, countRows, summaryRows] = await Promise.all([
+    db.select().from(agreements).where(where).orderBy(desc(agreements.createdAt)).limit(options.pageSize).offset((options.page - 1) * options.pageSize),
+    db.select({ total: sql<number>`count(*)` }).from(agreements).where(where),
+    db.select({ students: sql<number>`coalesce(sum(${agreements.noOfStudents}), 0)`, value: sql<number>`coalesce(sum(${agreements.totalPrice}), 0)` }).from(agreements).where(where),
+  ]);
+  const total = Number(countRows[0]?.total ?? 0);
+  return { items, total, page: options.page, pageSize: options.pageSize, totalPages: Math.ceil(total / options.pageSize), summary: { students: Number(summaryRows[0]?.students ?? 0), value: Number(summaryRows[0]?.value ?? 0) } };
 }
 
 export async function getAgreementByToken(publicToken: string) {

@@ -5,7 +5,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createAgreement, getAgreementByToken, listAgreementsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, getUserByEmail } from "./db";
+import { createAgreement, getAgreementByToken, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, getUserByEmail } from "./db";
 import { storagePut } from "./storage";
 import { sdk } from "./_core/sdk";
 import { validateCredentialLogin } from "./credentialLogin";
@@ -124,6 +124,9 @@ export const appRouter = router({
         ...(logoUrl ? { companyLogoUrl: logoUrl, companyLogoKey: logoKey } : {}),
       });
     }),
+  }),
+  clients: router({
+    list: protectedProcedure.input(z.object({ page: z.number().int().min(1).default(1), pageSize: z.number().int().min(10).max(100).default(25), search: z.string().trim().max(100).optional(), instituteType: z.enum(["School", "College", "Academy"]).optional() })).query(({ ctx, input }) => listApprovedClientsForOwner(ctx.user.id, input)),
   }),
   agreements: router({
     list: protectedProcedure.query(({ ctx }) => listAgreementsForOwner(ctx.user.id)),
