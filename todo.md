@@ -378,3 +378,29 @@
 - [x] Add Quotations settings icon and settings panel
 - [x] Make new quotations inherit saved defaults while preserving per-quotation overrides
 - [x] Validate settings persistence, asset previews, default inheritance, responsive UI, and existing modules
+
+- [x] Remove scanner and signature uploads from quotation creation and use saved settings assets automatically
+- [x] Start quotation creation with one default product row while retaining configurable default product settings
+- [x] Allow additional quotation product lines with custom product names
+- [x] Add Including GST and Excluding GST modes with correct total calculations
+- [x] Validate quotation totals, settings inheritance, responsive creation UI, and existing quotation workflows
+
+- [x] Add compact View, Edit, and Delete icons to each quotation row
+- [x] Add quotation edit persistence with mandatory edited-by and edited-at audit fields
+- [x] Add protected quotation update and delete procedures with confirmation-safe behavior
+- [x] Add edit form and view details dialog without changing quotation creation defaults
+- [x] Validate quotation actions, audit trail, deletion safety, and responsive layout
+
+- [ ] Add a persisted invoice-number starting value in Quotations Settings
+- [ ] Generate sequential invoice numbers from the configured starting value for new quotations
+- [ ] Preserve existing quotation numbers and validate numbering continuity
+
+- [x] Add an Add product control in Quotations Settings
+- [x] Allow editing default product category, name, and unit price
+- [x] Allow deleting default products with safe minimum-row validation
+- [x] Validate product catalog persistence and inheritance into new quotations
+
+- [x] Refine quotation View into an A4-style branded preview matching the supplied reference
+- [x] Add a clear Print quotation action inside the View dialog
+- [x] Apply print-only A4 page sizing and hide CRM controls during printing
+- [x] Validate preview readability, print layout, and responsive behavior

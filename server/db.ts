@@ -1,6 +1,6 @@
 import { and, desc, eq, gte, like, lte, lt, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, quotations, quotationSettings, sessions, users } from "../drizzle/schema";
+import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, quotationEditHistory, quotations, quotationSettings, sessions, users } from "../drizzle/schema";
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_PRODUCTS, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
 import { ENV } from './_core/env';
@@ -104,7 +104,7 @@ export async function getUserByEmail(email: string) {
 
 export async function getQuotationSettingsForOwner(ownerId: number) {
   const db = await getDb();
-  const fallback = { companyGst: DEFAULT_QUOTATION_GST, companyAddress: DEFAULT_QUOTATION_ADDRESS, validityDays: 15, gstRate: "18.00", terms: DEFAULT_QUOTATION_TERMS, products: DEFAULT_QUOTATION_PRODUCTS, logoUrl: null, logoKey: null, scannerUrl: null, scannerKey: null, signatureUrl: null, signatureKey: null };
+  const fallback = { companyGst: DEFAULT_QUOTATION_GST, companyAddress: DEFAULT_QUOTATION_ADDRESS, validityDays: 15, gstRate: "18.00", gstMode: "exclusive" as const, terms: DEFAULT_QUOTATION_TERMS, products: DEFAULT_QUOTATION_PRODUCTS, logoUrl: null, logoKey: null, scannerUrl: null, scannerKey: null, signatureUrl: null, signatureKey: null };
   if (!db) return fallback;
   const rows = await db.select().from(quotationSettings).where(eq(quotationSettings.ownerId, ownerId)).limit(1);
   const row = rows[0];
@@ -118,6 +118,32 @@ export async function updateQuotationSettingsForOwner(ownerId: number, values: O
   const { products, ...fields } = values;
   await db.insert(quotationSettings).values({ ...fields, ownerId, productsJson: JSON.stringify(products) }).onDuplicateKeyUpdate({ set: { ...fields, productsJson: JSON.stringify(products) } });
   return getQuotationSettingsForOwner(ownerId);
+}
+
+export async function updateQuotationForOwner(ownerId: number, quotationId: number, values: Partial<InsertQuotation>, editor: { id: number; name: string }) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const rows = await db.select().from(quotations).where(and(eq(quotations.id, quotationId), eq(quotations.ownerId, ownerId))).limit(1);
+  const existing = rows[0];
+  if (!existing) throw new Error("Quotation not found");
+  const snapshot = { ...existing, items: JSON.parse(existing.itemsJson) };
+  await db.update(quotations).set({ ...values, lastEditedBy: editor.id, lastEditedByName: editor.name, lastEditedAt: new Date() }).where(and(eq(quotations.id, quotationId), eq(quotations.ownerId, ownerId)));
+  await db.insert(quotationEditHistory).values({ quotationId, ownerId, editedBy: editor.id, editedByName: editor.name, snapshotJson: JSON.stringify(snapshot) });
+  const updated = await db.select().from(quotations).where(eq(quotations.id, quotationId)).limit(1);
+  return updated[0] ? { ...updated[0], items: JSON.parse(updated[0].itemsJson) as unknown[] } : null;
+}
+
+export async function deleteQuotationForOwner(ownerId: number, quotationId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  await db.delete(quotations).where(and(eq(quotations.id, quotationId), eq(quotations.ownerId, ownerId)));
+  return { success: true };
+}
+
+export async function listQuotationEditHistoryForOwner(ownerId: number, quotationId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(quotationEditHistory).where(and(eq(quotationEditHistory.ownerId, ownerId), eq(quotationEditHistory.quotationId, quotationId))).orderBy(desc(quotationEditHistory.editedAt));
 }
 
 export async function listQuotationsForOwner(ownerId: number) {

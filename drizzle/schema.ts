@@ -35,6 +35,9 @@ export const quotationSettings = mysqlTable("quotationSettings", {
   companyAddress: text("companyAddress").notNull(),
   validityDays: int("validityDays").default(15).notNull(),
   gstRate: decimal("gstRate", { precision: 5, scale: 2 }).default("18.00").notNull(),
+  gstMode: mysqlEnum("gstMode", ["inclusive", "exclusive"]).default("exclusive").notNull(),
+  invoiceNumberStart: int("invoiceNumberStart").default(129).notNull(),
+  invoiceNumberNext: int("invoiceNumberNext").default(129).notNull(),
   terms: text("terms").notNull(),
   productsJson: text("productsJson").notNull(),
   logoUrl: text("logoUrl"),
@@ -47,10 +50,21 @@ export const quotationSettings = mysqlTable("quotationSettings", {
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 
+export const quotationEditHistory = mysqlTable("quotationEditHistory", {
+  id: int("id").autoincrement().primaryKey(),
+  quotationId: int("quotationId").notNull(),
+  ownerId: int("ownerId").notNull(),
+  editedBy: int("editedBy").notNull(),
+  editedByName: varchar("editedByName", { length: 255 }).notNull(),
+  editedAt: timestamp("editedAt").defaultNow().notNull(),
+  snapshotJson: text("snapshotJson").notNull(),
+});
+
 export const quotations = mysqlTable("quotations", {
   id: int("id").autoincrement().primaryKey(),
   ownerId: int("ownerId").notNull(),
   quotationNumber: varchar("quotationNumber", { length: 32 }).notNull().unique(),
+  invoiceNumber: varchar("invoiceNumber", { length: 32 }).unique(),
   clientName: varchar("clientName", { length: 255 }).notNull(),
   clientAddress: text("clientAddress").notNull(),
   clientContact: varchar("clientContact", { length: 64 }).notNull(),
@@ -63,6 +77,7 @@ export const quotations = mysqlTable("quotations", {
   itemsJson: text("itemsJson").notNull(),
   subtotal: decimal("subtotal", { precision: 14, scale: 2 }).notNull(),
   gstRate: decimal("gstRate", { precision: 5, scale: 2 }).notNull(),
+  gstMode: mysqlEnum("gstMode", ["inclusive", "exclusive"]).default("exclusive").notNull(),
   gstAmount: decimal("gstAmount", { precision: 14, scale: 2 }).notNull(),
   grandTotal: decimal("grandTotal", { precision: 14, scale: 2 }).notNull(),
   terms: text("terms"),
@@ -70,6 +85,9 @@ export const quotations = mysqlTable("quotations", {
   scannerKey: varchar("scannerKey", { length: 512 }),
   signatureUrl: text("signatureUrl"),
   signatureKey: varchar("signatureKey", { length: 512 }),
+  lastEditedBy: int("lastEditedBy"),
+  lastEditedByName: varchar("lastEditedByName", { length: 255 }),
+  lastEditedAt: timestamp("lastEditedAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
@@ -113,6 +131,8 @@ export type Session = typeof sessions.$inferSelect;
 export type InsertSession = typeof sessions.$inferInsert;
 export type QuotationSettings = typeof quotationSettings.$inferSelect;
 export type InsertQuotationSettings = typeof quotationSettings.$inferInsert;
+export type QuotationEditHistory = typeof quotationEditHistory.$inferSelect;
+export type InsertQuotationEditHistory = typeof quotationEditHistory.$inferInsert;
 export type Quotation = typeof quotations.$inferSelect;
 export type InsertQuotation = typeof quotations.$inferInsert;
 export type Agreement = typeof agreements.$inferSelect;

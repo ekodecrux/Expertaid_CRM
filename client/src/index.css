@@ -105,3 +105,27 @@ button:active { transform: scale(0.98); }
   .login-card .mt-5 { margin-top: 0.35rem; }
   .login-card .mt-4 { margin-top: 0.3rem; }
 }
+
+/* Quotations print as a clean A4 portrait document while the CRM shell and dialog controls stay hidden. */
+.quotation-print { max-width: 210mm; margin-inline: auto; }
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  body { background: #fff !important; }
+  body * { visibility: hidden !important; }
+  #quotation-print, #quotation-print * { visibility: visible !important; }
+  #quotation-print {
+    position: absolute !important;
+    inset: 0 auto auto 0 !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 10mm !important;
+    overflow: hidden !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    color: #172033 !important;
+  }
+  #quotation-print table { page-break-inside: avoid; }
+  #quotation-print img { max-width: 100%; }
+}

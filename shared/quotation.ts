@@ -20,10 +20,16 @@ export type QuotationItem = {
   unitPrice: number;
 };
 
-export function calculateQuotationTotals(items: QuotationItem[], gstRate: number) {
-  const subtotal = items.reduce((sum, item) => sum + item.quantity * item.unitPrice, 0);
-  const gstAmount = subtotal * (gstRate / 100);
-  return { subtotal, gstAmount, grandTotal: subtotal + gstAmount };
+export type GstMode = "inclusive" | "exclusive";
+
+export function calculateQuotationTotals(items: QuotationItem[], gstRate: number, gstMode: GstMode = "exclusive") {
+  const enteredTotal = items.reduce((sum, item) => sum + item.quantity * item.unitPrice, 0);
+  if (gstMode === "inclusive") {
+    const gstAmount = gstRate > 0 ? enteredTotal * (gstRate / (100 + gstRate)) : 0;
+    return { subtotal: enteredTotal - gstAmount, gstAmount, grandTotal: enteredTotal };
+  }
+  const gstAmount = enteredTotal * (gstRate / 100);
+  return { subtotal: enteredTotal, gstAmount, grandTotal: enteredTotal + gstAmount };
 }
 
 export function formatCurrency(value: number) {

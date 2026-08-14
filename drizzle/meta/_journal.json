@@ -71,6 +71,20 @@
       "when": 1786691196187,
       "tag": "0009_glossy_loki",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1786691772550,
+      "tag": "0010_classy_cable",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1786691948158,
+      "tag": "0011_colorful_master_mold",
+      "breakpoints": true
     }
   ]
 }

@@ -1,0 +1,2 @@
+ALTER TABLE `quotationSettings` ADD `gstMode` enum('inclusive','exclusive') DEFAULT 'exclusive' NOT NULL;--> statement-breakpoint
+ALTER TABLE `quotations` ADD `gstMode` enum('inclusive','exclusive') DEFAULT 'exclusive' NOT NULL;
