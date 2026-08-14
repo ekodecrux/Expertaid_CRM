@@ -622,3 +622,19 @@
 - [x] Align package-manager metadata with Hostinger pnpm 11.21.0
 - [x] Validate installation and production build under the corrected metadata
 - [x] Prepare a fresh Hostinger redeployment package
+
+- [x] Ensure the Hostinger upload package includes client/src/data/softwareServiceAgreement.ts
+- [x] Validate the replacement ZIP against the Hostinger Vite build failure
+- [x] Provide exact replacement and redeploy instructions for the complete package
+
+- [ ] Confirm Hostinger database name, username, and host for the CRM connection
+- [ ] Provide secure DATABASE_URL configuration instructions without exposing credentials
+- [ ] Provide Hostinger schema migration and connection validation steps
+
+- [x] Generate a non-destructive SQL structure for all current CRM tables
+- [x] Review and validate the Hostinger-importable schema SQL
+- [x] Provide phpMyAdmin import instructions without exposing credentials
+
+- [x] Fix production static-file serving to use the built dist/public frontend path
+- [x] Validate Hostinger production startup and frontend asset resolution
+- [x] Prepare a replacement ZIP with the corrected server path

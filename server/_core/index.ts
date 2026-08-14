@@ -1,6 +1,8 @@
 import "dotenv/config";
 import express from "express";
 import { createServer } from "http";
+import fs from "fs";
+import path from "path";
 import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
@@ -44,8 +46,12 @@ async function startServer() {
       createContext,
     })
   );
-  // development mode uses Vite, production mode uses static files
-  if (process.env.NODE_ENV === "development") {
+  // Use Vite only when no production bundle is available. Some hosting
+  // platforms do not preserve NODE_ENV at runtime, so checking the built
+  // frontend prevents the server from looking for client/index.html after
+  // deployment.
+  const builtIndex = path.resolve(import.meta.dirname, "public", "index.html");
+  if (process.env.NODE_ENV === "development" && !fs.existsSync(builtIndex)) {
     await setupVite(app, server);
   } else {
     serveStatic(app);
