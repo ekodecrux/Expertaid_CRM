@@ -572,3 +572,6 @@
 
 - [x] Keep the quotation Terms & Conditions heading, text, and Thank You together in print
 - [x] Validate the terms card does not split across printed pages
+
+- [x] Show configured Product Name as the gray secondary label beside each quotation item name
+- [x] Validate Product Name labels in quotation preview and print output
