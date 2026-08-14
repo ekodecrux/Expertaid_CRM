@@ -285,3 +285,6 @@
 - [x] Fit the login page completely within the viewport and remove the bottom white strip
 - [x] Keep decorative curves behind content and prevent overlap with feature text/cards
 - [x] Validate desktop and mobile login sizing without changing credential authentication
+
+- [x] Remove the vertical divider lines from the frozen dashboard header
+- [x] Validate borderless header styling without affecting controls or responsive behavior
