@@ -551,3 +551,9 @@
 
 - [x] Fit the isolated quotation document onto one A4 page without losing lower sections
 - [x] Validate the actual Chrome print screen shows one page with account, QR, signature, and terms content
+
+- [ ] Preserve quotation preview scale, spacing, and proportions in print output
+- [ ] Validate visual parity between the preview document and the printed A4 page
+
+- [x] Preserve quotation preview column geometry, spacing, alignment, and lower-section arrangement in print
+- [x] Validate print design matches the quotation preview rather than only matching its content
