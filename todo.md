@@ -358,3 +358,5 @@
 
 - [x] Keep session Start and End dates visible only in Settings
 - [x] Show session labels only in the header, Agreements, and other module selectors
+
+- [x] Split the Settings session area into two responsive columns: selection on the left and session creation on the right
