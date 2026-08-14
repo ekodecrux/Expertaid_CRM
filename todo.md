@@ -407,3 +407,8 @@
 
 - [x] Fix blank quotation print output so the selected quotation content appears on the A4 page
 - [x] Validate quotation print output, preview behavior, and existing quotation actions
+
+- [x] Rebuild quotation View with the supplied invoice-style structure and purple branded visual hierarchy
+- [x] Add reference sections for header/GST, invoice panel, billed-to card, item table, GST totals, amount in words, account/QR/signature, and terms footer
+- [x] Align the dedicated A4 print window with the same reference-matching quotation document
+- [x] Validate the redesigned quotation preview and preserve existing quotation workflows

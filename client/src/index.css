@@ -107,7 +107,7 @@ button:active { transform: scale(0.98); }
 }
 
 /* Quotations print as a clean A4 portrait document while the CRM shell and dialog controls stay hidden. */
-.quotation-print { max-width: 210mm; margin-inline: auto; }
+.quotation-print { max-width: 210mm; margin-inline: auto; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 @media print {
   @page { size: A4 portrait; margin: 0; }
   body { background: #fff !important; }
