@@ -6,5 +6,6 @@ describe("credential login", () => {
     expect(validateCredentialLogin("expertsinstant@gmail.com", "123456")).toBe(true);
     expect(validateCredentialLogin("expertsinstant@gmail.com", "wrong-password")).toBe(false);
     expect(validateCredentialLogin("other@example.com", "123456")).toBe(false);
+    expect(validateCredentialLogin("  expertsinstant@gmail.com ", " 123456 ")).toBe(true);
   });
 });

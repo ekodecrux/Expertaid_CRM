@@ -649,3 +649,15 @@
 - [x] Prepare non-client setup data export for users, sessions, branding, quotation settings, products, and account defaults
 - [x] Exclude agreements, quotations, and client records from the export
 - [x] Validate the import package and document uploaded-asset limitations
+
+- [x] Diagnose the Hostinger users query failure against the deployed database
+- [x] Confirm the deployed database target and users-column compatibility
+- [x] Provide the safest correction and login validation steps
+
+- [x] Diagnose why correct Hostinger CRM credentials are rejected after database connectivity succeeds
+- [x] Align deployed credential-login validation with CRM_LOGIN_EMAIL and CRM_LOGIN_PASSWORD
+- [x] Validate login and provide the corrected Hostinger package/instructions
+
+- [x] Make credential-login validation normalize accidental whitespace in Hostinger email/password values
+- [x] Add regression coverage for Hostinger credential normalization
+- [x] Validate and publish the login fix
