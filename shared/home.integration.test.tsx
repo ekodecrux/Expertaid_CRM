@@ -84,7 +84,7 @@ describe("Home dashboard integration", () => {
     expect(markup).toContain("2027-08-12");
     expect(markup).toContain("Northview College");
     expect(markup).toContain("Approved");
-    expect(markup).toContain("View signature");
+    expect(markup).not.toContain("View signature");
     expect(markup).toContain("Copy link");
     for (const id of [42, 43]) {
       expect(markup).toContain(`data-testid="agreement-row-${id}-identity"`);
@@ -94,6 +94,6 @@ describe("Home dashboard integration", () => {
     const approvedActionsStart = markup.indexOf('data-testid="agreement-row-43-actions"');
     const approvedActions = markup.slice(approvedActionsStart);
     expect(approvedActions.indexOf("Copy link")).toBeGreaterThan(-1);
-    expect(approvedActions.indexOf("View signature")).toBeGreaterThan(approvedActions.indexOf("Copy link"));
+    expect(approvedActions.indexOf("View signature")).toBe(-1);
   });
 });

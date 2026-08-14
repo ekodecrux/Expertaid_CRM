@@ -94,7 +94,7 @@ export default function DashboardLayout({
 
   return (
     <DashboardShell loading={shellView === "loading"} hasUser={shellView === "ready"} loadingFallback={<DashboardLayoutSkeleton />} unauthenticatedFallback={signInView}>
-      <SidebarProvider className="relative min-h-screen bg-[#f8f9fd]" style={{ "--sidebar-width": `${sidebarWidth}px` } as CSSProperties}>
+      <SidebarProvider className="relative flex h-dvh max-h-dvh min-h-0 overflow-hidden bg-[#f8f9fd]" style={{ "--sidebar-width": `${sidebarWidth}px` } as CSSProperties}>
           <header className="fixed inset-x-0 top-0 z-50 hidden h-[72px] items-center bg-white/95 shadow-sm backdrop-blur lg:flex">
             <div className="flex h-full w-[230px] shrink-0 items-center px-7">
               <img src={companyBranding.companyLogoUrl} alt={companyBranding.companyName} className="block h-11 w-full max-w-[170px] object-contain object-left" />
@@ -182,7 +182,7 @@ function DashboardLayoutContent({
       <div className="relative" ref={sidebarRef}>
         <Sidebar
           collapsible="icon"
-          className="border-r-0 lg:top-[72px] lg:h-[calc(100vh-72px)]"
+          className="border-r-0 lg:top-[72px] lg:h-[calc(100dvh-72px)]"
           disableTransition={isResizing}
         >
           <SidebarHeader className={`border-b border-slate-200/70 bg-white/90 px-3 py-3 backdrop-blur-sm lg:hidden ${isCollapsed ? "min-h-24" : "min-h-20"}`}>
@@ -244,7 +244,7 @@ function DashboardLayoutContent({
         />
       </div>
 
-      <SidebarInset className="lg:pt-[72px]">
+      <SidebarInset className="min-h-0 overflow-hidden lg:pt-[72px]">
 
         {isMobile && (
           <div className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-slate-200/80 bg-white/90 px-4 shadow-sm backdrop-blur supports-[backdrop-filter]:backdrop-blur">
@@ -255,7 +255,7 @@ function DashboardLayoutContent({
             </div>
           </div>
         )}
-        <main className="min-w-0 flex-1 bg-[#f8f9fd] p-3 sm:p-4 lg:p-6">{children}</main>
+        <main className="min-h-0 min-w-0 flex-1 overflow-y-auto bg-[#f8f9fd] p-3 sm:p-4 lg:p-6">{children}</main>
       </SidebarInset>
     </>
   );

@@ -309,3 +309,11 @@
 - [x] Validate approved filtering, client details, and responsive behavior
 
 - [x] Preserve the existing Agreements list presentation and functionality while validating the Clients module does not affect it
+
+- [x] Remove the View signature action from Agreements rows without changing other actions
+- [x] Keep the dashboard header and sidebar fixed while only the main content scrolls
+- [x] Validate the updated Agreements layout and existing workflows on responsive viewports
+
+- [x] Show View signature only for signed agreements and hide it for pending or unsigned agreements (superseded by final complete removal)
+
+- [x] Remove View signature entirely from all Agreements rows, including signed agreements
