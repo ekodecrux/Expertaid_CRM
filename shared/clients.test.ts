@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { filterApprovedClients } from "./clients";
+import { filterApprovedClients, getClientLifecycleStatus } from "./clients";
 
 describe("approved client filtering", () => {
   it("returns only approved agreements", () => {
@@ -14,5 +14,10 @@ describe("approved client filtering", () => {
       { id: 2, status: "Approved" },
       { id: 4, status: "Approved" },
     ]);
+  });
+
+  it("marks clients active through their end date and inactive afterward", () => {
+    expect(getClientLifecycleStatus("2026-08-14", "2026-08-14")).toBe("Active");
+    expect(getClientLifecycleStatus("2026-08-13", "2026-08-14")).toBe("Inactive");
   });
 });

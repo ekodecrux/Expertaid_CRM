@@ -1,4 +1,4 @@
-import { and, desc, eq, like, or, sql } from "drizzle-orm";
+import { and, desc, eq, gte, like, lte, lt, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { agreements, InsertAgreement, InsertUser, users } from "../drizzle/schema";
 import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
@@ -102,12 +102,19 @@ export async function listAgreementsForOwner(ownerId: number) {
   return db.select().from(agreements).where(eq(agreements.ownerId, ownerId)).orderBy(desc(agreements.createdAt));
 }
 
-export async function listApprovedClientsForOwner(ownerId: number, options: { page: number; pageSize: number; search?: string; instituteType?: "School" | "College" | "Academy" }) {
+export async function listApprovedClientsForOwner(ownerId: number, options: { page: number; pageSize: number; search?: string; instituteType?: "School" | "College" | "Academy"; clientStatus?: "Active" | "Inactive"; startDate?: string; endDate?: string; branchCoverage?: "individual" | "multiple"; minValue?: number; maxValue?: number }) {
   const db = await getDb();
   if (!db) return { items: [], total: 0, page: options.page, pageSize: options.pageSize, totalPages: 0, summary: { students: 0, value: 0 } };
   const search = options.search?.trim();
   const filters = [eq(agreements.ownerId, ownerId), eq(agreements.status, "Approved" as const)];
   if (options.instituteType) filters.push(eq(agreements.instituteType, options.instituteType));
+  if (options.clientStatus === "Active") filters.push(gte(agreements.endDate, new Date().toISOString().slice(0, 10)));
+  if (options.clientStatus === "Inactive") filters.push(lt(agreements.endDate, new Date().toISOString().slice(0, 10)));
+  if (options.startDate) filters.push(gte(agreements.startDate, options.startDate));
+  if (options.endDate) filters.push(lte(agreements.endDate, options.endDate));
+  if (options.branchCoverage) filters.push(eq(agreements.branchCoverage, options.branchCoverage));
+  if (options.minValue !== undefined) filters.push(gte(agreements.totalPrice, options.minValue.toFixed(2)));
+  if (options.maxValue !== undefined) filters.push(lte(agreements.totalPrice, options.maxValue.toFixed(2)));
   if (search) {
     const pattern = `%${search}%`;
     filters.push(or(like(agreements.clientName, pattern), like(agreements.clientOwnerName, pattern), like(agreements.email, pattern), like(agreements.contactNumber, pattern), like(agreements.instituteType, pattern))!);

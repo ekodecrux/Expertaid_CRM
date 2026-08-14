@@ -327,3 +327,9 @@
 - [x] Replace the Clients card-only view with a manageable responsive table and details access
 - [x] Add client filters and pagination controls without changing Approved-only behavior
 - [x] Validate large-list performance and responsive client management
+
+- [x] Add derived Active/Inactive client status based on agreement end date
+- [x] Add year-to-year plan-period date filtering
+- [x] Add comprehensive Clients filters for status, plan period, branch, and agreement value
+- [x] Add Excel and PDF export options for filtered client results
+- [x] Validate client filters, exports, responsive UI, and unchanged Agreements behavior
