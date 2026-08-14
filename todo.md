@@ -267,3 +267,7 @@
 
 - [x] Correct the remaining login-page overflow so the full desktop and mobile experience is visible in one viewport
 - [x] Verify no-scroll behavior at representative desktop and mobile heights
+
+- [x] Rebuild the login screen to match the provided dark-panel and white-card reference
+- [x] Add username/email, password, remember-me, forgot-password, and Sign In controls without hardcoded credentials
+- [x] Preserve secure authentication and validate responsive single-viewport behavior
