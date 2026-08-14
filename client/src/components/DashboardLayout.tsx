@@ -34,7 +34,7 @@ import { trpc } from "@/lib/trpc";
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/", available: true },
   { icon: FileCheck2, label: "Agreements", path: "/", available: true },
-  { icon: UsersRound, label: "Clients", available: false },
+  { icon: UsersRound, label: "Clients", path: "/clients", available: true },
   { icon: Bell, label: "Reminders", available: false },
   { icon: BarChart3, label: "Reports", available: false },
   { icon: Settings2, label: "Settings", path: "/settings", available: true },
