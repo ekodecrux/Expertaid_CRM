@@ -511,3 +511,6 @@
 - [x] Ensure the scanner/QR image saved in Quotations Settings is inherited by quotation records
 - [x] Show the configured scanner in quotation View and A4 print output
 - [x] Validate scanner asset persistence and display after Settings save
+
+- [x] Fix Quotations page crash when no quotation is selected and scannerUrl is read from null
+- [x] Validate Quotations empty-selection rendering, tests, and production build after the null handling fix
