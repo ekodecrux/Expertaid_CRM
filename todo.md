@@ -597,3 +597,6 @@
 
 - [x] Remove double margin reservation when Chrome uses Default margins
 - [x] Validate default-margin pagination without large blank gaps or misplaced footer sections
+
+- [x] Preserve quotation footer geometry when the scanner/QR asset is removed
+- [x] Validate Account Details and signature alignment with and without scanner output
