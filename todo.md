@@ -514,3 +514,7 @@
 
 - [x] Fix Quotations page crash when no quotation is selected and scannerUrl is read from null
 - [x] Validate Quotations empty-selection rendering, tests, and production build after the null handling fix
+
+- [x] Add editable default account details to Quotations Settings with company name, account number, IFSC code, and branch
+- [x] Persist quotation account details and display them in View and A4 print output
+- [x] Validate account-details settings, quotation rendering, tests, and production build

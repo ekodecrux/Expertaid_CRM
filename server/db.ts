@@ -104,7 +104,7 @@ export async function getUserByEmail(email: string) {
 
 export async function getQuotationSettingsForOwner(ownerId: number) {
   const db = await getDb();
-  const fallback = { companyGst: DEFAULT_QUOTATION_GST, companyAddress: DEFAULT_QUOTATION_ADDRESS, validityDays: 15, gstRate: "18.00", gstMode: "exclusive" as const, quotationPrefix: "QT", invoiceNumberStart: 129, invoiceNumberNext: 129, terms: DEFAULT_QUOTATION_TERMS, products: DEFAULT_QUOTATION_PRODUCTS, logoUrl: null, logoKey: null, scannerUrl: null, scannerKey: null, signatureUrl: null, signatureKey: null };
+  const fallback = { companyGst: DEFAULT_QUOTATION_GST, companyAddress: DEFAULT_QUOTATION_ADDRESS, validityDays: 15, gstRate: "18.00", gstMode: "exclusive" as const, quotationPrefix: "QT", invoiceNumberStart: 129, invoiceNumberNext: 129, terms: DEFAULT_QUOTATION_TERMS, products: DEFAULT_QUOTATION_PRODUCTS, logoUrl: null, logoKey: null, scannerUrl: null, scannerKey: null, signatureUrl: null, signatureKey: null, accountCompanyName: "Expertaid Technologies Pvt Ltd.", accountNumber: "502000055251128", accountIfsc: "HDFC0009147", accountBranch: "Ameerpur Branch, Hyd, TS-502032" };
   if (!db) return fallback;
   const rows = await db.select().from(quotationSettings).where(eq(quotationSettings.ownerId, ownerId)).limit(1);
   const row = rows[0];
@@ -121,7 +121,7 @@ export async function allocateInvoiceNumberForOwner(ownerId: number) {
   if (existing[0]) {
     await db.update(quotationSettings).set({ invoiceNumberNext: next + 1 }).where(eq(quotationSettings.ownerId, ownerId));
   } else {
-    await db.insert(quotationSettings).values({ ownerId, companyGst: current.companyGst, companyAddress: current.companyAddress, validityDays: current.validityDays, gstRate: current.gstRate, gstMode: current.gstMode, quotationPrefix: current.quotationPrefix ?? "QT", invoiceNumberStart: current.invoiceNumberStart, invoiceNumberNext: next + 1, terms: current.terms, productsJson: JSON.stringify(current.products) });
+    await db.insert(quotationSettings).values({ ownerId, companyGst: current.companyGst, companyAddress: current.companyAddress, validityDays: current.validityDays, gstRate: current.gstRate, gstMode: current.gstMode, quotationPrefix: current.quotationPrefix ?? "QT", invoiceNumberStart: current.invoiceNumberStart, invoiceNumberNext: next + 1, terms: current.terms, productsJson: JSON.stringify(current.products), accountCompanyName: current.accountCompanyName, accountNumber: current.accountNumber, accountIfsc: current.accountIfsc, accountBranch: current.accountBranch });
   }
   return String(next);
 }
@@ -133,7 +133,7 @@ export async function updateQuotationSettingsForOwner(ownerId: number, values: P
   const { products, ...fields } = values;
   const nextStart = fields.invoiceNumberStart ?? current.invoiceNumberStart;
   const nextNumber = fields.invoiceNumberNext ?? (fields.invoiceNumberStart !== undefined && Number(current.invoiceNumberNext) === Number(current.invoiceNumberStart) ? nextStart : current.invoiceNumberNext);
-  const completeFields = { companyGst: fields.companyGst ?? current.companyGst, companyAddress: fields.companyAddress ?? current.companyAddress, validityDays: fields.validityDays ?? current.validityDays, gstRate: fields.gstRate ?? current.gstRate, gstMode: fields.gstMode ?? current.gstMode, quotationPrefix: fields.quotationPrefix ?? current.quotationPrefix ?? "QT", invoiceNumberStart: nextStart, invoiceNumberNext: nextNumber, terms: fields.terms ?? current.terms, logoUrl: fields.logoUrl ?? current.logoUrl, logoKey: fields.logoKey ?? current.logoKey, scannerUrl: fields.scannerUrl ?? current.scannerUrl, scannerKey: fields.scannerKey ?? current.scannerKey, signatureUrl: fields.signatureUrl ?? current.signatureUrl, signatureKey: fields.signatureKey ?? current.signatureKey };
+  const completeFields = { companyGst: fields.companyGst ?? current.companyGst, companyAddress: fields.companyAddress ?? current.companyAddress, validityDays: fields.validityDays ?? current.validityDays, gstRate: fields.gstRate ?? current.gstRate, gstMode: fields.gstMode ?? current.gstMode, quotationPrefix: fields.quotationPrefix ?? current.quotationPrefix ?? "QT", invoiceNumberStart: nextStart, invoiceNumberNext: nextNumber, terms: fields.terms ?? current.terms, logoUrl: fields.logoUrl ?? current.logoUrl, logoKey: fields.logoKey ?? current.logoKey, scannerUrl: fields.scannerUrl ?? current.scannerUrl, scannerKey: fields.scannerKey ?? current.scannerKey, signatureUrl: fields.signatureUrl ?? current.signatureUrl, signatureKey: fields.signatureKey ?? current.signatureKey, accountCompanyName: fields.accountCompanyName ?? current.accountCompanyName, accountNumber: fields.accountNumber ?? current.accountNumber, accountIfsc: fields.accountIfsc ?? current.accountIfsc, accountBranch: fields.accountBranch ?? current.accountBranch };
   await db.insert(quotationSettings).values({ ...completeFields, ownerId, productsJson: JSON.stringify(products) }).onDuplicateKeyUpdate({ set: { ...completeFields, productsJson: JSON.stringify(products) } });
   return getQuotationSettingsForOwner(ownerId);
 }
