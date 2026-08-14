@@ -618,3 +618,7 @@
 - [x] Align package-manager metadata with Hostinger pnpm 10.21.0
 - [x] Validate Hostinger-compatible dependency installation and production build
 - [x] Prepare a clean redeployment package with corrected entry settings
+
+- [x] Align package-manager metadata with Hostinger pnpm 11.21.0
+- [x] Validate installation and production build under the corrected metadata
+- [x] Prepare a fresh Hostinger redeployment package
