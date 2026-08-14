@@ -557,3 +557,6 @@
 
 - [x] Preserve quotation preview column geometry, spacing, alignment, and lower-section arrangement in print
 - [x] Validate print design matches the quotation preview rather than only matching its content
+
+- [x] Preserve the preview’s wider print geometry and typography without narrow transformed scaling
+- [ ] Validate the printed quotation against both supplied preview and print screenshots
