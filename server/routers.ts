@@ -5,7 +5,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createAgreement, getAgreementByToken, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, getUserByEmail } from "./db";
+import { createAgreement, getAgreementByToken, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getUserByEmail } from "./db";
 import { storagePut } from "./storage";
 import { sdk } from "./_core/sdk";
 import { validateCredentialLogin } from "./credentialLogin";
@@ -33,6 +33,7 @@ const agreementInput = z.object({
   perStudentPrice: z.number().nonnegative().nullable(),
   packagePrice: z.number().nonnegative().nullable(),
   noOfYearPlan: z.number().int().positive(),
+  session: z.string().regex(/^\d{4}-\d{4}$/).default("2026-2027"),
   startDate: z.string().min(1),
   endDate: z.string().min(1),
   description: z.string().optional(),
@@ -71,6 +72,7 @@ function buildAgreementValues(input: AgreementInput) {
     perStudentPrice: input.pricingMode === "perStudent" ? input.perStudentPrice?.toFixed(2) : null,
     packagePrice: input.pricingMode === "package" ? input.packagePrice?.toFixed(2) : null,
     noOfYearPlan: input.noOfYearPlan,
+    session: input.session,
     startDate: input.startDate,
     endDate: input.endDate,
     totalPrice: totalPrice.toFixed(2),
@@ -125,11 +127,16 @@ export const appRouter = router({
       });
     }),
   }),
+  session: router({
+    get: protectedProcedure.query(({ ctx }) => getSessionSettings(ctx.user.id)),
+    update: protectedProcedure.input(z.object({ sessionMode: z.enum(["all", "single"]), currentSession: z.string().regex(/^\d{4}-\d{4}$/) })).mutation(({ ctx, input }) => updateSessionSettings(ctx.user.id, input)),
+  }),
   clients: router({
-    list: protectedProcedure.input(z.object({ page: z.number().int().min(1).default(1), pageSize: z.number().int().min(10).max(1000).default(25), search: z.string().trim().max(100).optional(), instituteType: z.enum(["School", "College", "Academy"]).optional(), clientStatus: z.enum(["Active", "Inactive"]).optional(), startDate: z.string().regex(/^\\d{4}-\\d{2}-\\d{2}$/).optional(), endDate: z.string().regex(/^\\d{4}-\\d{2}-\\d{2}$/).optional(), branchCoverage: z.enum(["individual", "multiple"]).optional(), minValue: z.number().nonnegative().optional(), maxValue: z.number().nonnegative().optional() })).query(({ ctx, input }) => listApprovedClientsForOwner(ctx.user.id, input)),
+    list: protectedProcedure.input(z.object({ page: z.number().int().min(1).default(1), pageSize: z.number().int().min(10).max(1000).default(25), search: z.string().trim().max(100).optional(), instituteType: z.enum(["School", "College", "Academy"]).optional(), clientStatus: z.enum(["Active", "Inactive"]).optional(), startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(), endDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(), branchCoverage: z.enum(["individual", "multiple"]).optional(), minValue: z.number().nonnegative().optional(), maxValue: z.number().nonnegative().optional(), sessionMode: z.enum(["all", "single"]).optional(), currentSession: z.string().regex(/^\d{4}-\d{4}$/).optional() })).query(async ({ ctx, input }) => listApprovedClientsForOwner(ctx.user.id, { ...input, ...(input.sessionMode ? {} : await getSessionSettings(ctx.user.id)) })),
   }),
   agreements: router({
-    list: protectedProcedure.query(({ ctx }) => listAgreementsForOwner(ctx.user.id)),
+    sessions: protectedProcedure.query(({ ctx }) => listSessionsForOwner(ctx.user.id)),
+    list: protectedProcedure.input(z.object({ session: z.string().regex(/^\d{4}-\d{4}$/).optional() }).optional()).query(({ ctx, input }) => listAgreementsForOwner(ctx.user.id, input?.session ? { sessionMode: "single", currentSession: input.session } : { sessionMode: "all", currentSession: "" })),
     create: protectedProcedure.input(agreementInput).mutation(async ({ ctx, input }) => {
       const { logoDataUrl, ...fields } = input;
       const logo = await uploadLogo(logoDataUrl);

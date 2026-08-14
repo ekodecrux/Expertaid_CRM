@@ -333,3 +333,12 @@
 - [x] Add comprehensive Clients filters for status, plan period, branch, and agreement value
 - [x] Add Excel and PDF export options for filtered client results
 - [x] Validate client filters, exports, responsive UI, and unchanged Agreements behavior
+
+- [x] Add persisted current-session configuration with All and Single modes
+- [x] Add current-session selector to the desktop and mobile header
+- [x] Add session configuration controls in Settings
+- [x] Filter Agreements, Clients, and dashboard summary data according to the selected session (Agreements uses local All/session filter exception)
+- [x] Validate session switching, persistence, responsive UI, and existing workflows
+
+- [x] Keep Agreements independent from global session scope and default its local session filter to All
+- [x] Add a local Agreements session filter while preserving global session behavior for Clients and dashboard summaries

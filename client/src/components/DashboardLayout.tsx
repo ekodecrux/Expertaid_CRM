@@ -56,7 +56,10 @@ export default function DashboardLayout({
   });
   const { loading, user, logout } = useAuth();
   const branding = trpc.branding.get.useQuery(undefined, { enabled: Boolean(user) });
+  const sessionSettings = trpc.session.get.useQuery(undefined, { enabled: Boolean(user) });
+  const updateSession = trpc.session.update.useMutation({ onSuccess: () => window.location.reload(), onError: (error) => toast.error(error.message) });
   const companyBranding: CompanyBranding = branding.data ?? DEFAULT_BRANDING;
+  const changeSessionMode = (mode: "all" | "single") => { const currentSession = sessionSettings.data?.currentSession ?? "2026-2027"; updateSession.mutate({ sessionMode: mode, currentSession }); };
 
   useEffect(() => {
     localStorage.setItem(SIDEBAR_WIDTH_KEY, sidebarWidth.toString());
@@ -103,6 +106,7 @@ export default function DashboardLayout({
               <span className="min-w-0 truncate text-sm font-semibold text-slate-700">{companyBranding.companyName}</span>
             </div>
             <div className="flex flex-1 items-center justify-end gap-7 px-6 xl:px-8">
+              <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-2"><span className="hidden text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-400 xl:inline">Session</span><select aria-label="Current session view" value={sessionSettings.data?.sessionMode ?? "single"} onChange={(event) => changeSessionMode(event.target.value as "all" | "single")} className="h-10 max-w-[130px] bg-transparent text-xs font-semibold text-slate-700 outline-none"><option value="all">All sessions</option><option value="single">{sessionSettings.data?.currentSession ?? "2026-2027"}</option></select></div>
               <div className="relative w-full max-w-[365px]">
                 <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
                 <input aria-label="Search clients, schools, reference numbers" defaultValue="" onChange={(event) => window.dispatchEvent(new CustomEvent("agreement-search", { detail: event.target.value }))} placeholder="Search clients, schools, reference no…" className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-12 pr-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-[#3157d5] focus:ring-2 focus:ring-[#3157d5]/10" />
@@ -113,7 +117,7 @@ export default function DashboardLayout({
               <DropdownMenu><DropdownMenuTrigger asChild><button type="button" aria-label="Open admin profile menu" className="flex items-center gap-3 text-left"><Avatar className="h-12 w-12 bg-[#4b43a8] text-white"><AvatarFallback className="bg-[#4b43a8] text-lg font-semibold text-white">{user?.name?.slice(0, 2).toUpperCase() || "AD"}</AvatarFallback></Avatar><span className="hidden min-w-[120px] xl:block"><strong className="block text-sm font-semibold text-slate-800">{user?.name || "Admin User"}</strong><small className="block pt-1 text-xs text-slate-500">Super Admin</small></span><ChevronDown className="h-4 w-4 text-slate-500" /></button></DropdownMenuTrigger><DropdownMenuContent align="end" className="w-48"><DropdownMenuItem onClick={() => logout()}><LogOut className="mr-2 h-4 w-4" />Sign out</DropdownMenuItem></DropdownMenuContent></DropdownMenu>
             </div>
           </header>
-          <DashboardLayoutContent setSidebarWidth={setSidebarWidth} branding={companyBranding}>
+          <DashboardLayoutContent setSidebarWidth={setSidebarWidth} branding={companyBranding} sessionSettings={sessionSettings.data} changeSessionMode={changeSessionMode}>
             {children}
           </DashboardLayoutContent>
       </SidebarProvider>
@@ -125,12 +129,16 @@ type DashboardLayoutContentProps = {
   children: React.ReactNode;
   setSidebarWidth: (width: number) => void;
   branding: CompanyBranding;
+  sessionSettings?: { sessionMode: "all" | "single"; currentSession: string };
+  changeSessionMode: (mode: "all" | "single") => void;
 };
 
 function DashboardLayoutContent({
   children,
   setSidebarWidth,
   branding,
+  sessionSettings,
+  changeSessionMode,
 }: DashboardLayoutContentProps) {
   const { user, logout } = useAuth();
   const [location, setLocation] = useLocation();
@@ -250,6 +258,7 @@ function DashboardLayoutContent({
           <div className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-slate-200/80 bg-white/90 px-4 shadow-sm backdrop-blur supports-[backdrop-filter]:backdrop-blur">
             <img src={branding.companyLogoUrl} alt={branding.companyName} className="block h-10 w-14 object-contain object-center" />
             <div className="flex items-center gap-2">
+              <select aria-label="Current session view" value={sessionSettings?.sessionMode ?? "single"} onChange={(event) => changeSessionMode(event.target.value as "all" | "single")} className="h-9 max-w-[105px] rounded-lg border border-slate-200 bg-white px-2 text-[11px] font-semibold text-slate-700 outline-none"><option value="all">All</option><option value="single">{sessionSettings?.currentSession ?? "2026-2027"}</option></select>
               <span className="hidden text-sm font-medium text-slate-600 xs:inline">{activeMenuItem?.label ?? "Menu"}</span>
               <SidebarTrigger className="h-10 w-10 rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm hover:bg-[#eef2ff] hover:text-[#3157d5]" />
             </div>

@@ -15,6 +15,8 @@ export const users = mysqlTable("users", {
   companyName: varchar("companyName", { length: 255 }),
   serviceCaption: varchar("serviceCaption", { length: 255 }),
   footerCompanyName: varchar("footerCompanyName", { length: 255 }),
+  sessionMode: mysqlEnum("sessionMode", ["all", "single"]).default("single").notNull(),
+  currentSession: varchar("currentSession", { length: 16 }).default("2026-2027").notNull(),
 });
 
 export const agreements = mysqlTable("agreements", {
@@ -36,6 +38,7 @@ export const agreements = mysqlTable("agreements", {
   noOfYearPlan: int("noOfYearPlan").notNull(),
   startDate: varchar("startDate", { length: 32 }).notNull(),
   endDate: varchar("endDate", { length: 32 }).notNull(),
+  session: varchar("session", { length: 16 }).default("2026-2027").notNull(),
   totalPrice: decimal("totalPrice", { precision: 14, scale: 2 }).notNull(),
   description: text("description"),
   logoUrl: text("logoUrl"),

@@ -60,6 +60,20 @@ export async function getBrandingForOwner(ownerId: number) {
   return normalizeBranding(rows[0]);
 }
 
+export async function getSessionSettings(ownerId: number) {
+  const db = await getDb();
+  if (!db) return { sessionMode: "single" as const, currentSession: "2026-2027" };
+  const rows = await db.select({ sessionMode: users.sessionMode, currentSession: users.currentSession }).from(users).where(eq(users.id, ownerId)).limit(1);
+  return { sessionMode: rows[0]?.sessionMode ?? "single", currentSession: rows[0]?.currentSession ?? "2026-2027" };
+}
+
+export async function updateSessionSettings(ownerId: number, values: { sessionMode: "all" | "single"; currentSession: string }) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  await db.update(users).set(values).where(eq(users.id, ownerId));
+  return getSessionSettings(ownerId);
+}
+
 export async function updateBrandingForOwner(ownerId: number, values: {
   companyLogoUrl?: string | null;
   companyLogoKey?: string | null;
@@ -96,17 +110,26 @@ export async function createAgreement(input: InsertAgreement) {
   return rows[0];
 }
 
-export async function listAgreementsForOwner(ownerId: number) {
+export async function listSessionsForOwner(ownerId: number) {
   const db = await getDb();
   if (!db) return [];
-  return db.select().from(agreements).where(eq(agreements.ownerId, ownerId)).orderBy(desc(agreements.createdAt));
+  const rows = await db.select({ session: agreements.session }).from(agreements).where(eq(agreements.ownerId, ownerId)).groupBy(agreements.session).orderBy(agreements.session);
+  return rows.map((row) => row.session);
 }
 
-export async function listApprovedClientsForOwner(ownerId: number, options: { page: number; pageSize: number; search?: string; instituteType?: "School" | "College" | "Academy"; clientStatus?: "Active" | "Inactive"; startDate?: string; endDate?: string; branchCoverage?: "individual" | "multiple"; minValue?: number; maxValue?: number }) {
+export async function listAgreementsForOwner(ownerId: number, scope?: { sessionMode: "all" | "single"; currentSession: string }) {
+  const db = await getDb();
+  if (!db) return [];
+  const where = scope?.sessionMode === "single" ? and(eq(agreements.ownerId, ownerId), eq(agreements.session, scope.currentSession)) : eq(agreements.ownerId, ownerId);
+  return db.select().from(agreements).where(where).orderBy(desc(agreements.createdAt));
+}
+
+export async function listApprovedClientsForOwner(ownerId: number, options: { page: number; pageSize: number; search?: string; instituteType?: "School" | "College" | "Academy"; clientStatus?: "Active" | "Inactive"; startDate?: string; endDate?: string; branchCoverage?: "individual" | "multiple"; minValue?: number; maxValue?: number; sessionMode?: "all" | "single"; currentSession?: string }) {
   const db = await getDb();
   if (!db) return { items: [], total: 0, page: options.page, pageSize: options.pageSize, totalPages: 0, summary: { students: 0, value: 0 } };
   const search = options.search?.trim();
   const filters = [eq(agreements.ownerId, ownerId), eq(agreements.status, "Approved" as const)];
+  if (options.sessionMode === "single" && options.currentSession) filters.push(eq(agreements.session, options.currentSession));
   if (options.instituteType) filters.push(eq(agreements.instituteType, options.instituteType));
   if (options.clientStatus === "Active") filters.push(gte(agreements.endDate, new Date().toISOString().slice(0, 10)));
   if (options.clientStatus === "Inactive") filters.push(lt(agreements.endDate, new Date().toISOString().slice(0, 10)));
