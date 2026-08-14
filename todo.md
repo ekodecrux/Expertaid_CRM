@@ -560,3 +560,9 @@
 
 - [x] Preserve the preview’s wider print geometry and typography without narrow transformed scaling
 - [ ] Validate the printed quotation against both supplied preview and print screenshots
+
+- [ ] Keep the preview geometry while showing the complete lower quotation content in print
+- [ ] Validate Account Details, QR, signature, Terms, and Thank You are not clipped
+
+- [x] Remove forced one-page transform that narrows and clips the quotation print
+- [x] Validate the complete quotation design renders at natural preview geometry
