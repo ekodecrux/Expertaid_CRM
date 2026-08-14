@@ -575,3 +575,6 @@
 
 - [x] Show configured Product Name as the gray secondary label beside each quotation item name
 - [x] Validate Product Name labels in quotation preview and print output
+
+- [x] Diagnose and fix Agreements print output in the branded A4 layout
+- [x] Validate agreement preview and post-click print output

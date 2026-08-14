@@ -113,6 +113,9 @@ button:active { transform: scale(0.98); }
   html, body { margin: 0 !important; padding: 0 !important; background: #fff !important; }
   body * { visibility: hidden !important; }
   #quotation-print, #quotation-print * { visibility: visible !important; }
+  .agreement-page, .agreement-page * { visibility: visible !important; }
+  .agreement-page { display: block !important; width: 100% !important; min-height: 0 !important; overflow: visible !important; background: #fff !important; }
+  .agreement-page .agreement-sheet { width: 100% !important; max-width: none !important; min-height: 0 !important; overflow: visible !important; margin: 0 !important; box-shadow: none !important; }
   [role="dialog"], [data-radix-dialog-content] {
     position: static !important;
     inset: auto !important;
