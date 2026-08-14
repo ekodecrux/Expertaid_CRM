@@ -495,3 +495,7 @@
 - [x] Use the saved QT2026 prefix and start number 1 when displaying the quotation reference
 - [x] Replace stale ET-style reference display with the current configured quotation reference
 - [x] Validate the configured reference in quotation View and A4 print output
+
+- [x] Match the quotation header to the supplied large-logo, GST/address, and purple-summary-panel structure
+- [x] Keep the configured quotation reference and separate Estimation No. aligned inside the right panel
+- [x] Validate the reference-matching header in View and A4 print output
