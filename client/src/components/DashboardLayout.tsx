@@ -41,8 +41,8 @@ const menuItems = [
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
-const DEFAULT_WIDTH = 280;
-const MIN_WIDTH = 200;
+const DEFAULT_WIDTH = 230;
+const MIN_WIDTH = 190;
 const MAX_WIDTH = 480;
 
 export default function DashboardLayout({
@@ -52,7 +52,7 @@ export default function DashboardLayout({
 }) {
   const [sidebarWidth, setSidebarWidth] = useState(() => {
     const saved = localStorage.getItem(SIDEBAR_WIDTH_KEY);
-    return saved ? parseInt(saved, 10) : DEFAULT_WIDTH;
+    return saved ? Math.min(parseInt(saved, 10), 240) : DEFAULT_WIDTH;
   });
   const { loading, user, logout } = useAuth();
   const branding = trpc.branding.get.useQuery(undefined, { enabled: Boolean(user) });
@@ -96,10 +96,10 @@ export default function DashboardLayout({
     <DashboardShell loading={shellView === "loading"} hasUser={shellView === "ready"} loadingFallback={<DashboardLayoutSkeleton />} unauthenticatedFallback={signInView}>
       <SidebarProvider className="relative flex h-dvh max-h-dvh min-h-0 overflow-hidden bg-[#f8f9fd]" style={{ "--sidebar-width": `${sidebarWidth}px` } as CSSProperties}>
           <header className="fixed inset-x-0 top-0 z-50 hidden h-[72px] items-center bg-white/95 shadow-sm backdrop-blur lg:flex">
-            <div className="flex h-full w-[230px] shrink-0 items-center px-7">
+            <div className="flex h-full shrink-0 items-center px-5" style={{ width: `${sidebarWidth}px` }}>
               <img src={companyBranding.companyLogoUrl} alt={companyBranding.companyName} className="block h-11 w-full max-w-[170px] object-contain object-left" />
             </div>
-            <div className="flex h-full w-[300px] shrink-0 items-center px-5">
+            <div className="flex h-full w-[260px] shrink-0 items-center px-5">
               <span className="min-w-0 truncate text-sm font-semibold text-slate-700">{companyBranding.companyName}</span>
             </div>
             <div className="flex flex-1 items-center justify-end gap-7 px-6 xl:px-8">

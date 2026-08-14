@@ -317,3 +317,8 @@
 - [x] Show View signature only for signed agreements and hide it for pending or unsigned agreements (superseded by final complete removal)
 
 - [x] Remove View signature entirely from all Agreements rows, including signed agreements
+
+- [x] Reduce the desktop sidebar width without affecting navigation behavior
+- [x] Fit the Agreements list columns and actions within the available frame
+- [x] Replace Copy link with View signature for approved agreements while keeping Copy link for pending agreements
+- [x] Preserve the Open agreement action and validate responsive behavior
