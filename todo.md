@@ -470,3 +470,7 @@
 - [x] Clear Item name and Unit price on Custom product selection while preserving Quantity
 - [x] Keep Product name editable after Custom product selection
 - [x] Validate the clarified Custom product field behavior
+
+- [x] Keep quotation Subtotal based on product totals and invariant across GST modes
+- [x] Recalculate GST and Grand total correctly for Including and Excluding GST
+- [x] Validate both GST modes and preserve quotation line calculations
