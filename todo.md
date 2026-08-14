@@ -360,3 +360,6 @@
 - [x] Show session labels only in the header, Agreements, and other module selectors
 
 - [x] Split the Settings session area into two responsive columns: selection on the left and session creation on the right
+
+- [x] Show only session labels in the Settings Current session selector
+- [x] Use a neutral selector background distinct from the Save session settings button
