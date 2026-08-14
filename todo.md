@@ -587,4 +587,4 @@
 - [x] Validate multi-page quotation print output in Chrome
 
 - [x] Prevent the Terms & Conditions card from starting alone on a new page with excessive blank space
-- [ ] Validate footer placement for multi-page quotations without splitting the terms card internally
+- [x] Validate footer placement for multi-page quotations without splitting the terms card internally
