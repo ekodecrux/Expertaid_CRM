@@ -600,3 +600,9 @@
 
 - [x] Preserve quotation footer geometry when the scanner/QR asset is removed
 - [x] Validate Account Details and signature alignment with and without scanner output
+
+- [x] Show product count in each quotation register row
+- [x] Replace Invoice # wording with Estimation # and display quotation number clearly
+- [x] Add Awaiting, Success, and Closed quotation statuses
+- [x] Allow direct quotation status changes from the register without opening Edit
+- [x] Add tests for quotation status updates and register display data

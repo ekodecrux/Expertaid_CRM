@@ -10,7 +10,7 @@ import { storagePut } from "./storage";
 import { sdk } from "./_core/sdk";
 import { validateCredentialLogin } from "./credentialLogin";
 import { calculateAgreementEndDate, calculateAgreementTotal, PricingMode } from "@shared/pricing";
-import { calculateQuotationTotals, DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, type QuotationItem } from "@shared/quotation";
+import { calculateQuotationTotals, DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, QUOTATION_STATUSES, type QuotationItem } from "@shared/quotation";
 
 const dataUrlSchema = z.string().regex(/^data:image\/(png|jpeg|jpg|webp);base64,[A-Za-z0-9+/=]+$/).max(2_500_000);
 const brandingInput = z.object({
@@ -154,6 +154,7 @@ export const appRouter = router({
       const { subtotal, gstAmount, grandTotal } = calculateQuotationTotals(items as QuotationItem[], input.gstRate, input.gstMode);
       return updateQuotationForOwner(ctx.user.id, id, { ...fields, itemsJson: JSON.stringify(items), subtotal: subtotal.toFixed(2), gstRate: input.gstRate.toFixed(2), gstMode: input.gstMode, gstAmount: gstAmount.toFixed(2), grandTotal: grandTotal.toFixed(2) }, { id: ctx.user.id, name: ctx.user.name || ctx.user.email || "Workspace administrator" });
     }),
+    updateStatus: protectedProcedure.input(z.object({ id: z.number().int().positive(), status: z.enum(QUOTATION_STATUSES) })).mutation(({ ctx, input }) => updateQuotationForOwner(ctx.user.id, input.id, { status: input.status }, { id: ctx.user.id, name: ctx.user.name || ctx.user.email || "Workspace administrator" })),
     delete: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ ctx, input }) => deleteQuotationForOwner(ctx.user.id, input.id)),
     history: protectedProcedure.input(z.object({ id: z.number().int().positive() })).query(({ ctx, input }) => listQuotationEditHistoryForOwner(ctx.user.id, input.id)),
     create: protectedProcedure.input(quotationInput).mutation(async ({ ctx, input }) => {

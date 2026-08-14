@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculateQuotationTotals, DEFAULT_QUOTATION_PRODUCTS } from "./quotation";
+import { calculateQuotationTotals, DEFAULT_QUOTATION_PRODUCTS, QUOTATION_STATUSES } from "./quotation";
 
 describe("quotation totals", () => {
   it("calculates subtotal, GST, and grand total from product quantities", () => {
@@ -19,5 +19,9 @@ describe("quotation totals", () => {
 
   it("supports zero GST for tax-exempt quotations", () => {
     expect(calculateQuotationTotals([{ product: "WhatsApp", itemName: "WhatsApp", quantity: 3, unitPrice: 500 }], 0)).toEqual({ subtotal: 1500, gstAmount: 0, grandTotal: 1500 });
+  });
+
+  it("exposes the supported quotation register statuses in workflow order", () => {
+    expect(QUOTATION_STATUSES).toEqual(["Awaiting", "Success", "Closed"]);
   });
 });

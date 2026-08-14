@@ -1,0 +1,1 @@
+ALTER TABLE `quotations` ADD `status` enum('Awaiting','Success','Closed') DEFAULT 'Awaiting' NOT NULL;
