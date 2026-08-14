@@ -491,3 +491,7 @@
 
 - [x] Restore the configured quotation number in the purple document header while retaining the QUOTATION title
 - [x] Keep quotation number and client-wise Estimation No. clearly separate in View and A4 print
+
+- [x] Use the saved QT2026 prefix and start number 1 when displaying the quotation reference
+- [x] Replace stale ET-style reference display with the current configured quotation reference
+- [x] Validate the configured reference in quotation View and A4 print output
