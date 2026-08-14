@@ -297,3 +297,6 @@
 
 - [x] Show a menu toggle above the Dashboard icon when the left sidebar is collapsed
 - [x] Preserve expanded-sidebar, mobile navigation, and existing menu behavior
+
+- [x] Add a visible Sign out option at the bottom of the left sidebar
+- [x] Preserve the existing logout behavior and validate responsive sidebar layout

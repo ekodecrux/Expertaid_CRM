@@ -256,6 +256,10 @@ function DashboardLayoutContent({
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+            <button type="button" onClick={logout} aria-label="Sign out" className="mt-2 flex w-full items-center gap-3 rounded-lg px-1 py-2 text-left text-sm text-slate-600 transition-colors hover:bg-red-50 hover:text-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 group-data-[collapsible=icon]:justify-center">
+              <LogOut className="h-4 w-4 shrink-0" />
+              <span className="group-data-[collapsible=icon]:hidden">Sign out</span>
+            </button>
           </SidebarFooter>
         </Sidebar>
         <div
