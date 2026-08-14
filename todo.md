@@ -588,3 +588,6 @@
 
 - [x] Prevent the Terms & Conditions card from starting alone on a new page with excessive blank space
 - [x] Validate footer placement for multi-page quotations without splitting the terms card internally
+
+- [x] Keep the complete Terms & Conditions card, including Thank You, together on one printed page
+- [x] Validate the whole-card page break in multi-page quotations
