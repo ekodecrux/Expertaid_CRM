@@ -85,15 +85,15 @@ export default function DashboardLayout({
         </div>
         <p className="relative z-10 text-xs text-white/45">{companyBranding.serviceCaption}</p>
       </section>
-      <section className="relative flex min-h-0 w-full items-center justify-center overflow-hidden px-5 py-6 sm:px-8 lg:max-w-[560px] lg:px-12 xl:max-w-[640px] xl:px-16">
+      <section className="relative flex h-full min-h-0 w-full items-center justify-center overflow-hidden px-4 py-4 sm:px-8 lg:max-w-[560px] lg:px-12 xl:max-w-[640px] xl:px-16">
         <div className="w-full max-w-md">
-          <div className="mb-6 flex items-center gap-3 lg:hidden"><div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white p-1.5 shadow-sm ring-1 ring-slate-200"><img src={companyBranding.companyLogoUrl} alt={companyBranding.companyName} className="block h-full w-full object-contain" /></div><div><p className="font-bold tracking-tight">Expertaid CRM</p><p className="text-xs text-slate-500">Agreement operations workspace</p></div></div>
-          <div className="rounded-[2rem] border border-white/80 bg-white/85 p-6 shadow-[0_30px_90px_rgba(47,61,125,0.14)] backdrop-blur-xl sm:p-8">
-            <div className="mb-8"><div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eef2ff] text-[#3157d5]"><PanelLeft className="h-5 w-5" /></div><p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#3157d5]">Welcome back</p><h2 className="font-serif text-4xl tracking-[-0.04em] text-[#172033]">Sign in to Expertaid CRM</h2><p className="mt-3 text-sm leading-6 text-slate-500">Access your agreements, client approvals, and secure signatures in one place.</p></div>
+          <div className="mb-4 flex items-center gap-3 lg:hidden"><div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white p-1.5 shadow-sm ring-1 ring-slate-200"><img src={companyBranding.companyLogoUrl} alt={companyBranding.companyName} className="block h-full w-full object-contain" /></div><div><p className="font-bold tracking-tight">Expertaid CRM</p><p className="text-xs text-slate-500">Agreement operations workspace</p></div></div>
+          <div className="max-h-full overflow-hidden rounded-[2rem] border border-white/80 bg-white/85 p-5 shadow-[0_30px_90px_rgba(47,61,125,0.14)] backdrop-blur-xl sm:p-8">
+            <div className="mb-5"><div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[#eef2ff] text-[#3157d5]"><PanelLeft className="h-5 w-5" /></div><p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#3157d5]">Welcome back</p><h2 className="font-serif text-3xl tracking-[-0.04em] text-[#172033] sm:text-4xl">Sign in to Expertaid CRM</h2><p className="mt-3 text-sm leading-6 text-slate-500">Access your agreements, client approvals, and secure signatures in one place.</p></div>
             <Button onClick={() => startLogin()} size="lg" className="h-12 w-full rounded-xl bg-[#3157d5] text-white shadow-lg shadow-[#3157d5]/20 transition-all hover:-translate-y-0.5 hover:bg-[#2748bd] hover:shadow-xl hover:shadow-[#3157d5]/25">Continue with secure sign-in <ChevronDown className="ml-2 h-4 w-4 -rotate-90" /></Button>
             <div className="mt-6 flex items-center justify-center gap-2 text-xs text-slate-400"><span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />Protected workspace access</div>
           </div>
-          <p className="mt-4 text-center text-xs leading-5 text-slate-400">By continuing, you enter the authorized Expertaid CRM workspace.<br />Need access? Contact your workspace administrator.</p>
+          <p className="mt-3 text-center text-[11px] leading-4 text-slate-400 sm:text-xs sm:leading-5">By continuing, you enter the authorized Expertaid CRM workspace.<br />Need access? Contact your workspace administrator.</p>
         </div>
       </section>
     </main>

@@ -264,3 +264,6 @@
 
 - [x] Make the Expertaid CRM login page fit in a single viewport without page scrolling
 - [x] Validate no-scroll behavior at desktop and mobile widths without affecting secure sign-in
+
+- [x] Correct the remaining login-page overflow so the full desktop and mobile experience is visible in one viewport
+- [x] Verify no-scroll behavior at representative desktop and mobile heights
