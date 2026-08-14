@@ -474,3 +474,7 @@
 - [x] Keep quotation Subtotal based on product totals and invariant across GST modes
 - [x] Recalculate GST and Grand total correctly for Including and Excluding GST
 - [x] Validate both GST modes and preserve quotation line calculations
+
+- [x] Remove the ERP SOLUTIONS divider heading from quotation View
+- [x] Remove the same divider from dedicated A4 quotation print output
+- [x] Validate document flow, totals, and remaining invoice-style sections
