@@ -294,3 +294,6 @@
 
 - [x] Place the sidebar menu icon on the right side of the WORKSPACE label
 - [x] Preserve the top header arrangement and validate sidebar responsive behavior
+
+- [x] Show a menu toggle above the Dashboard icon when the left sidebar is collapsed
+- [x] Preserve expanded-sidebar, mobile navigation, and existing menu behavior

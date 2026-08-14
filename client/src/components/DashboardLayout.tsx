@@ -200,6 +200,11 @@ function DashboardLayoutContent({
           </SidebarHeader>
 
           <SidebarContent className="gap-0"><div className="flex items-center justify-between px-4 pb-2 pt-5 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400 group-data-[collapsible=icon]:hidden"><span>Workspace</span><button type="button" onClick={toggleSidebar} className="flex h-7 w-7 items-center justify-center rounded-md text-slate-500 transition hover:bg-[#eef2ff] hover:text-[#3157d5] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3157d5]" aria-label={isCollapsed ? "Expand navigation" : "Collapse navigation"}>{isCollapsed ? <Menu className="h-4 w-4" /> : <PanelLeft className="h-4 w-4" />}</button></div>
+            <div className="hidden justify-center px-2 pb-1 group-data-[collapsible=icon]:flex">
+              <button type="button" onClick={toggleSidebar} className="flex h-10 w-full items-center justify-center rounded-md text-slate-500 transition hover:bg-[#eef2ff] hover:text-[#3157d5] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3157d5]" aria-label="Expand navigation">
+                <Menu className="h-4 w-4" />
+              </button>
+            </div>
             <SidebarMenu className="px-2 py-1">
               {menuItems.map(item => {
                 const isActive = item.available && location === item.path;
