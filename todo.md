@@ -545,3 +545,6 @@
 
 - [x] Make Chrome print output use the exact quotation preview layout and proportions
 - [x] Validate the complete preview structure is not compressed or cropped in print
+
+- [x] Print only the quotation document instead of the surrounding CRM application page
+- [x] Validate one-page A4 output without blank pages or application footer content
