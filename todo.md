@@ -507,3 +507,7 @@
 - [x] Remove the empty QR column from the quotation footer when no scanner is configured
 - [x] Keep the signature block right-aligned beside Account Details without scanner
 - [x] Validate both footer layouts with and without scanner/QR information
+
+- [x] Ensure the scanner/QR image saved in Quotations Settings is inherited by quotation records
+- [x] Show the configured scanner in quotation View and A4 print output
+- [x] Validate scanner asset persistence and display after Settings save
