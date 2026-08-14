@@ -352,3 +352,9 @@
 - [x] Add session start date and end date fields with month/day precision
 - [x] Validate that session end date is after the session start date
 - [x] Display the configured date range wherever a session is selected or shown
+
+- [x] Fix valid YYYY-YYYY session labels such as 2027-2028 being rejected by browser validation
+- [x] Verify session creation still enforces chronological start and end dates
+
+- [x] Keep session Start and End dates visible only in Settings
+- [x] Show session labels only in the header, Agreements, and other module selectors
