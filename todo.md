@@ -251,3 +251,6 @@
 
 - [x] Remove the visible horizontal divider lines from the frozen dashboard header
 - [x] Validate the borderless fixed header without affecting branding, controls, or mobile behavior
+
+- [x] Cancelled: change the application title to exactly “Expertaid - CRM”
+- [x] Cancelled: validate the updated browser title and preserve existing branding and workflows
