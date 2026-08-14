@@ -518,3 +518,6 @@
 - [x] Add editable default account details to Quotations Settings with company name, account number, IFSC code, and branch
 - [x] Persist quotation account details and display them in View and A4 print output
 - [x] Validate account-details settings, quotation rendering, tests, and production build
+
+- [x] Make quotation A4 print output visually match the on-screen quotation preview
+- [x] Validate print layout consistency without changing quotation content or functionality
