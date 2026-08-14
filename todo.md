@@ -594,3 +594,6 @@
 
 - [x] Make quotations fit correctly with Chrome default print margins enabled
 - [x] Validate complete quotation layout with default margins for single and multi-page output
+
+- [x] Remove double margin reservation when Chrome uses Default margins
+- [x] Validate default-margin pagination without large blank gaps or misplaced footer sections
