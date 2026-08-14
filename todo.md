@@ -478,3 +478,7 @@
 - [x] Remove the ERP SOLUTIONS divider heading from quotation View
 - [x] Remove the same divider from dedicated A4 quotation print output
 - [x] Validate document flow, totals, and remaining invoice-style sections
+
+- [x] Change the document header label from Invoice to Quotation
+- [x] Display the existing quotation number/reference in the purple header panel
+- [x] Keep client-wise Estimation No. and quotation reference separate in View and A4 print
