@@ -404,3 +404,6 @@
 - [x] Add a clear Print quotation action inside the View dialog
 - [x] Apply print-only A4 page sizing and hide CRM controls during printing
 - [x] Validate preview readability, print layout, and responsive behavior
+
+- [x] Fix blank quotation print output so the selected quotation content appears on the A4 page
+- [x] Validate quotation print output, preview behavior, and existing quotation actions
