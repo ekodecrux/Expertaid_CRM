@@ -566,3 +566,9 @@
 
 - [x] Remove forced one-page transform that narrows and clips the quotation print
 - [x] Validate the complete quotation design renders at natural preview geometry
+
+- [x] Add X/remove controls for quotation logo, scanner/QR, and signature assets in Settings
+- [x] Validate clearing an asset and saving the updated quotation defaults
+
+- [x] Keep the quotation Terms & Conditions heading, text, and Thank You together in print
+- [x] Validate the terms card does not split across printed pages
