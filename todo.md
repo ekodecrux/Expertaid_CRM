@@ -463,9 +463,9 @@
 - [x] Replace the visible __custom__ placeholder with a clean Custom product label
 - [x] Validate Custom product selection and editable entry after the label correction
 
-- [ ] Clear only the product name when switching a quotation line to Custom product
-- [ ] Preserve item name, quantity, and unit price during Custom product selection
-- [ ] Validate the field-preservation behavior and custom typing flow
+- [x] Clear only the product name when switching a quotation line to Custom product (superseded by the clarified requirement to clear Item name and Unit price too)
+- [x] Preserve item name, quantity, and unit price during Custom product selection (superseded by the clarified requirement to clear Item name and Unit price while preserving Quantity)
+- [x] Validate the field-preservation behavior and custom typing flow (validated under the clarified Custom product behavior)
 
 - [x] Clear Item name and Unit price on Custom product selection while preserving Quantity
 - [x] Keep Product name editable after Custom product selection
