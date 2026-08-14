@@ -459,3 +459,6 @@
 
 - [x] Fix Custom product selection so the same product field becomes writable immediately
 - [x] Validate typing a custom product name and preserving item, quantity, and price editing
+
+- [x] Replace the visible __custom__ placeholder with a clean Custom product label
+- [x] Validate Custom product selection and editable entry after the label correction
