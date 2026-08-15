@@ -776,3 +776,7 @@
 - [x] Replace Manus Forge storage dependency for branding and quotation uploads
 - [x] Store uploaded assets on the Hostinger server and serve them through the app
 - [x] Validate branding save and quotation asset uploads without Forge credentials
+
+- [x] Remove branding save dependency on missing users-table branding columns
+- [x] Persist branding metadata through a Hostinger-compatible local settings path
+- [x] Validate branding save, retrieval, and local asset URLs

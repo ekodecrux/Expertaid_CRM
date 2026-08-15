@@ -5,6 +5,7 @@ import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, 
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_PRODUCTS, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
 import { ENV } from './_core/env';
+import { getLocalBranding, saveLocalBranding } from './localSettings';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -77,15 +78,7 @@ export async function upsertUser(user: InsertUser): Promise<void> {
 }
 
 export async function getBrandingForOwner(ownerId: number) {
-  const db = await getDb();
-  if (!db) return { ...DEFAULT_BRANDING };
-  const rows = await db.select({
-    companyLogoUrl: users.companyLogoUrl,
-    companyName: users.companyName,
-    serviceCaption: users.serviceCaption,
-    footerCompanyName: users.footerCompanyName,
-  }).from(users).where(eq(users.id, ownerId)).limit(1);
-  return normalizeBranding(rows[0]);
+  return getLocalBranding(ownerId);
 }
 
 export async function getSessionSettings(ownerId: number) {
@@ -109,10 +102,11 @@ export async function updateBrandingForOwner(ownerId: number, values: {
   serviceCaption: string;
   footerCompanyName: string;
 }) {
-  const db = await getDb();
-  if (!db) throw new Error("Database is not available");
-  await db.update(users).set(values).where(eq(users.id, ownerId));
-  return getBrandingForOwner(ownerId);
+  const current = await getLocalBranding(ownerId);
+  return saveLocalBranding(ownerId, normalizeBranding({
+    ...current,
+    ...values,
+  }));
 }
 
 const AUTH_USER_FIELDS = {
