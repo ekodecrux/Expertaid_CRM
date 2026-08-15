@@ -700,3 +700,7 @@
 - [x] Capture the exact sandbox users-query database error
 - [x] Align the sandbox users schema/query without destructive data changes
 - [x] Validate sandbox credential login after the schema correction
+
+- [x] Add a compact Google sign-in option to the CRM login page
+- [x] Restrict OAuth-created sessions to the verified email expertsinstant@gmail.com
+- [x] Preserve database-backed credential login without exposing database credentials

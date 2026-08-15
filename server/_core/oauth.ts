@@ -4,6 +4,12 @@ import type { Express, Request, Response } from "express";
 import * as db from "../db";
 import { getSessionCookieOptions } from "./cookies";
 import { sdk } from "./sdk";
+import { ENV } from "./env";
+
+export const APPROVED_OAUTH_EMAIL = "expertsinstant@gmail.com";
+export function isApprovedOAuthEmail(email: string | null | undefined): boolean {
+  return (email ?? "").trim().toLowerCase() === (ENV.crmLoginEmail || APPROVED_OAUTH_EMAIL).trim().toLowerCase();
+}
 
 function getQueryParam(req: Request, key: string): string | undefined {
   const value = req.query[key];
@@ -37,6 +43,10 @@ export function registerOAuthRoutes(app: Express) {
 
       if (!userInfo.openId) {
         res.status(400).json({ error: "openId missing from user info" });
+        return;
+      }
+      if (!isApprovedOAuthEmail(userInfo.email)) {
+        res.status(403).json({ error: "Only the authorized Expertaid Google account can sign in." });
         return;
       }
 
