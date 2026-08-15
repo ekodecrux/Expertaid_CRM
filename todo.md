@@ -681,3 +681,7 @@
 - [x] Add a safe Hostinger bootstrap credential path that does not fail on the users lookup
 - [x] Preserve normal database-backed user sessions by fixing the database connection before authentication
 - [x] Test and package the corrected Hostinger login flow
+
+- [x] Fix preview protected-query execution before authentication is ready
+- [x] Add regression coverage for the preview auth transition
+- [x] Validate and publish the corrected preview behavior

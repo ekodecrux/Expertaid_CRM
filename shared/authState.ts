@@ -8,10 +8,13 @@ export type AuthStateInput<User> = {
 
 export function resolveAuthState<User>({ isFetched, isLoading, liveUser, cachedUser, logoutPending }: AuthStateInput<User>) {
   const hasLiveResult = isFetched;
-  const user = hasLiveResult ? liveUser ?? null : cachedUser;
+  // A cached identity is display-only until the live session check completes.
+  // Treating it as authenticated lets protected queries fire without the
+  // preview cookie/Bearer token and produces a misleading "Please login" error.
+  const user = hasLiveResult ? liveUser ?? null : null;
   return {
     user,
-    loading: (!hasLiveResult && isLoading && !cachedUser) || logoutPending,
+    loading: !hasLiveResult || logoutPending,
     isAuthenticated: Boolean(user),
     shouldClearCache: hasLiveResult && !liveUser,
   };

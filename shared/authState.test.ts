@@ -10,11 +10,12 @@ describe("auth and dashboard loading state", () => {
     expect(resolveDashboardShellView({ loading: state.loading, hasUser: state.isAuthenticated })).toBe("loading");
   });
 
-  it("uses cached identity only while live auth is still pending", () => {
+  it("keeps protected content blocked while cached identity awaits live auth", () => {
     const state = resolveAuthState({ isFetched: false, isLoading: true, liveUser: null, cachedUser: { id: 1 }, logoutPending: false });
-    expect(state.user).toEqual({ id: 1 });
-    expect(state.isAuthenticated).toBe(true);
-    expect(resolveDashboardShellView({ loading: state.loading, hasUser: state.isAuthenticated })).toBe("ready");
+    expect(state.user).toBeNull();
+    expect(state.isAuthenticated).toBe(false);
+    expect(state.loading).toBe(true);
+    expect(resolveDashboardShellView({ loading: state.loading, hasUser: state.isAuthenticated })).toBe("loading");
   });
 
   it("clears stale identity when live auth resolves without a user", () => {
