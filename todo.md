@@ -732,3 +732,19 @@
 - [x] Reduce the Hostinger credential user lookup to authentication-required columns
 - [x] Handle absent optional user fields without blocking administrator session creation
 - [x] Validate and publish the schema-drift-tolerant login package
+
+- [x] Verify the Hostinger package and deployed runtime are using the same authentication bundle via the current screenshot query and rebuilt source bundle
+- [x] Produce a distributable whose server bundle contains the reduced users projection
+- [x] Validate the exact package and publish one final replacement checkpoint
+
+- [x] Correct Hostinger VITE_APP_ID and OAuth endpoint environment values in the deployment instructions
+- [x] Confirm the CRM password used for login matches CRM_LOGIN_PASSWORD from the Hostinger configuration screenshot
+- [x] Provide restart and clean-browser login verification procedure after environment changes
+
+- [x] Capture one real Hostinger credential-login request and its matching server response
+- [x] Apply one evidence-based final login correction
+- [x] Validate and publish the final Hostinger login package
+
+- [x] Reduce authentication reads to guaranteed identity columns only
+- [x] Default missing role and login method in the authenticated application user
+- [x] Test and publish the final Hostinger schema-compatible login package

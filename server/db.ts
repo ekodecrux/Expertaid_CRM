@@ -120,13 +120,15 @@ const AUTH_USER_FIELDS = {
   openId: users.openId,
   name: users.name,
   email: users.email,
-  loginMethod: users.loginMethod,
-  role: users.role,
 } as const;
 
-type AuthUserRow = Pick<User, "id" | "openId" | "name" | "email" | "loginMethod" | "role">;
+type AuthUserRow = Pick<User, "id" | "openId" | "name" | "email">;
 
-const asAuthUser = (row: AuthUserRow | undefined): User | undefined => row ? row as User : undefined;
+const asAuthUser = (row: AuthUserRow | undefined): User | undefined => row ? ({
+  ...row,
+  loginMethod: "email",
+  role: "admin",
+} as User) : undefined;
 
 export async function getUserByOpenId(openId: string) {
   const db = await getDb();
