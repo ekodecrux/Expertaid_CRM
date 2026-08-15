@@ -784,3 +784,7 @@
 - [x] Make session settings and session selection tolerate the legacy Hostinger sessions table
 - [x] Ensure branding reads the newly saved local settings after refresh
 - [x] Validate session save and branding retrieval without incompatible database columns
+
+- [x] Restore branding save and display in Manus preview
+- [x] Normalize both Manus-preview and Hostinger local asset paths through the shared storage interface
+- [x] Validate branding persistence paths in both environments

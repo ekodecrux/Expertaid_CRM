@@ -20,6 +20,12 @@ describe("Hostinger-local storage", () => {
     await expect(storageGet(stored.key)).resolves.toEqual({ key: stored.key, url: `/local-storage/${stored.key}` });
   });
 
+  it("accepts persisted absolute paths and local-storage URLs without duplicating uploads", () => {
+    const relative = "branding/1/logo.png";
+    expect(resolveStoragePath(`${LOCAL_STORAGE_ROOT}/${relative}`)).toBe(resolveStoragePath(relative));
+    expect(resolveStoragePath(`/local-storage/${relative}`)).toBe(resolveStoragePath(relative));
+  });
+
   it("rejects traversal outside the local storage root", () => {
     expect(() => resolveStoragePath("../outside.txt")).toThrow("Invalid storage path");
   });

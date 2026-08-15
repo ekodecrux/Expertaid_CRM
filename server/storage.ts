@@ -18,7 +18,10 @@ function appendHashSuffix(relKey: string): string {
 }
 
 function resolveStoragePath(key: string): string {
-  const normalized = normalizeKey(key);
+  const rawKey = key.replace(/\\/g, "/");
+  const localUrlKey = rawKey.replace(/^\/+local-storage\//, "");
+  let normalized = normalizeKey(localUrlKey);
+  if (path.isAbsolute(rawKey) && rawKey !== `/local-storage/${localUrlKey}`) normalized = path.relative(LOCAL_STORAGE_ROOT, rawKey);
   const resolved = path.resolve(LOCAL_STORAGE_ROOT, normalized);
   if (resolved !== LOCAL_STORAGE_ROOT && !resolved.startsWith(`${LOCAL_STORAGE_ROOT}${path.sep}`)) {
     throw new Error("Invalid storage path");
