@@ -42,7 +42,9 @@ export function getSessionCookieOptions(
   return {
     httpOnly: true,
     path: "/",
-    sameSite: "none",
-    secure: isSecureRequest(req),
+    // Hostinger terminates HTTPS at its proxy; the Node process may see HTTP.
+    // Production cookies must still be Secure, otherwise browsers reject them.
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production" || isSecureRequest(req),
   };
 }

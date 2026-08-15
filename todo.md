@@ -764,3 +764,7 @@
 - [x] Bypass the failing Hostinger users-table read for configured CRM credential authentication
 - [x] Issue the normal signed admin session from validated environment credentials
 - [x] Test and publish the final database-independent login fallback
+
+- [x] Diagnose why the successful Hostinger login session is not retained
+- [x] Correct the HTTPS cookie or session verification behavior
+- [x] Validate and publish the post-login redirect-loop fix
