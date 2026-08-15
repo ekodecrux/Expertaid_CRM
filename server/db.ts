@@ -7,10 +7,22 @@ import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
+/** Remove Hostinger's malformed JSON SSL query suffix before mysql2 parses it. */
+export function normalizeDatabaseUrl(rawUrl: string): string {
+  try {
+    const parsed = new URL(rawUrl);
+    parsed.searchParams.delete("ssl");
+    parsed.searchParams.delete("ssl-mode");
+    return parsed.toString();
+  } catch {
+    return rawUrl;
+  }
+}
+
 export async function getDb() {
   if (!_db && process.env.DATABASE_URL) {
     try {
-      _db = drizzle(process.env.DATABASE_URL);
+      _db = drizzle(normalizeDatabaseUrl(process.env.DATABASE_URL));
     } catch (error) {
       console.warn("[Database] Failed to connect:", error);
       _db = null;

@@ -661,3 +661,23 @@
 - [x] Make credential-login validation normalize accidental whitespace in Hostinger email/password values
 - [x] Add regression coverage for Hostinger credential normalization
 - [x] Validate and publish the login fix
+
+- [ ] Trace persistent Hostinger invalid-credentials behavior against runtime configuration
+- [ ] Add a secure deterministic external-deployment bootstrap login path
+- [ ] Validate and package the corrected Hostinger login flow
+
+- [ ] Diagnose the unchanged live Hostinger login failure from runtime behavior
+- [x] Add safe diagnostics or correction for the active deployment configuration
+- [ ] Validate the live login path and provide one final action
+
+- [ ] Confirm the active Hostinger deployment has DATABASE_URL without the invalid SSL suffix
+- [ ] Validate the live users query after the corrected redeploy
+- [ ] Provide the final active-deployment correction
+
+- [ ] Capture the latest Hostinger runtime error and active deployment state
+- [x] Apply the single correction indicated by that runtime error
+- [ ] Validate the live deployment and provide one final action
+
+- [x] Add a safe Hostinger bootstrap credential path that does not fail on the users lookup
+- [ ] Preserve normal database-backed user sessions after bootstrap authentication
+- [x] Test and package the corrected Hostinger login flow
