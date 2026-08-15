@@ -692,3 +692,7 @@
 
 - [x] Gate all protected page queries on confirmed live authentication in Manus preview and Hostinger
 - [x] Add coverage preventing protected requests during the unauthenticated render phase
+
+- [x] Make CRM credential login independent of Google/Manus OAuth entry points
+- [x] Verify the database-backed session uses the CRM credential path
+- [x] Test and publish credential-only authentication behavior
