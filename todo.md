@@ -704,3 +704,19 @@
 - [x] Add a compact Google sign-in option to the CRM login page
 - [x] Restrict OAuth-created sessions to the verified email expertsinstant@gmail.com
 - [x] Preserve database-backed credential login without exposing database credentials
+
+- [ ] Diagnose the Hostinger administrator-session database failure from deployment runtime evidence
+- [ ] Make credential login work with Hostinger MySQL without depending on Google OAuth
+- [ ] Validate and document the Google OAuth callback configuration for the Hostinger domain
+
+- [ ] Capture the newest Hostinger runtime error after the repeated login failure
+- [ ] Apply the exact Hostinger-specific correction identified by the runtime error
+- [ ] Validate the final Hostinger login deployment
+
+- [ ] Diagnose why the deployed login button does not complete credential submission
+- [ ] Correct the login submit and session response behavior
+- [ ] Validate and publish the corrected login button flow
+
+- [x] Diagnose why the Google login button does not start or complete OAuth on Hostinger
+- [x] Correct the Google OAuth redirect/callback path for the live domain
+- [x] Validate and publish the Google-button correction
