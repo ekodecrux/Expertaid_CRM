@@ -725,9 +725,9 @@
 - [x] Validate the supported OAuth authorization URL and callback state
 - [x] Publish the corrected Google login package
 
-- [ ] Capture the exact Hostinger database error after the latest redeploy
-- [ ] Verify the active Hostinger DATABASE_URL target and imported users schema
-- [ ] Apply and validate the final Hostinger session-creation correction
+- [x] Capture the exact Hostinger database error after the latest redeploy
+- [x] Verify the active Hostinger DATABASE_URL target and imported users schema
+- [x] Apply and validate the final Hostinger session-creation correction
 
 - [x] Reduce the Hostinger credential user lookup to authentication-required columns
 - [x] Handle absent optional user fields without blocking administrator session creation
