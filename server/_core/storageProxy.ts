@@ -1,48 +1,38 @@
 import type { Express } from "express";
-import { ENV } from "./env";
+import fs from "fs";
+import path from "path";
+import { LOCAL_STORAGE_ROOT, resolveStoragePath } from "../storage";
+
+const MIME_TYPES: Record<string, string> = {
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".webp": "image/webp",
+  ".gif": "image/gif",
+  ".svg": "image/svg+xml",
+};
 
 export function registerStorageProxy(app: Express) {
-  app.get("/manus-storage/*", async (req, res) => {
+  app.get("/local-storage/*", (req, res) => {
     const key = (req.params as Record<string, string>)[0];
     if (!key) {
       res.status(400).send("Missing storage key");
       return;
     }
 
-    if (!ENV.forgeApiUrl || !ENV.forgeApiKey) {
-      res.status(500).send("Storage proxy not configured");
-      return;
-    }
-
     try {
-      const forgeUrl = new URL(
-        "v1/storage/presign/get",
-        ENV.forgeApiUrl.replace(/\/+$/, "") + "/",
-      );
-      forgeUrl.searchParams.set("path", key);
-
-      const forgeResp = await fetch(forgeUrl, {
-        headers: { Authorization: `Bearer ${ENV.forgeApiKey}` },
-      });
-
-      if (!forgeResp.ok) {
-        const body = await forgeResp.text().catch(() => "");
-        console.error(`[StorageProxy] forge error: ${forgeResp.status} ${body}`);
-        res.status(502).send("Storage backend error");
+      const filePath = resolveStoragePath(key);
+      if (!fs.existsSync(filePath)) {
+        res.status(404).send("Asset not found");
         return;
       }
-
-      const { url } = (await forgeResp.json()) as { url: string };
-      if (!url) {
-        res.status(502).send("Empty signed URL from backend");
-        return;
-      }
-
-      res.set("Cache-Control", "no-store");
-      res.redirect(307, url);
-    } catch (err) {
-      console.error("[StorageProxy] failed:", err);
-      res.status(502).send("Storage proxy error");
+      const extension = path.extname(filePath).toLowerCase();
+      res.setHeader("Content-Type", MIME_TYPES[extension] || "application/octet-stream");
+      res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+      res.sendFile(filePath, { root: LOCAL_STORAGE_ROOT });
+    } catch (error) {
+      console.error("[LocalStorage] failed:", error);
+      res.status(400).send("Invalid storage path");
     }
   });
 }

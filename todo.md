@@ -772,3 +772,7 @@
 - [x] Diagnose the valid-credentials-only session redirect loop
 - [x] Preserve invalid-credential rejection while fixing successful session refresh
 - [x] Validate and publish the final post-login session correction
+
+- [x] Replace Manus Forge storage dependency for branding and quotation uploads
+- [x] Store uploaded assets on the Hostinger server and serve them through the app
+- [x] Validate branding save and quotation asset uploads without Forge credentials
