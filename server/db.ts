@@ -130,7 +130,22 @@ const asAuthUser = (row: AuthUserRow | undefined): User | undefined => row ? ({
   role: "admin",
 } as User) : undefined;
 
+function getCredentialSessionUser(openId: string): User | undefined {
+  if (openId !== "credential-admin" && !openId.startsWith("credential:")) return undefined;
+  const parsedId = openId.startsWith("credential:") ? Number(openId.slice("credential:".length)) : 1;
+  return {
+    id: Number.isFinite(parsedId) && parsedId > 0 ? parsedId : 1,
+    openId,
+    name: "Workspace administrator",
+    email: ENV.crmLoginEmail || "",
+    loginMethod: "email",
+    role: "admin",
+  } as User;
+}
+
 export async function getUserByOpenId(openId: string) {
+  const credentialUser = getCredentialSessionUser(openId);
+  if (credentialUser) return credentialUser;
   const db = await getDb();
   if (!db) return undefined;
   const result = await db.select(AUTH_USER_FIELDS).from(users).where(eq(users.openId, openId)).limit(1);

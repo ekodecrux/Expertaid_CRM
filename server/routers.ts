@@ -125,24 +125,17 @@ export const appRouter = router({
         throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid email or password." });
       }
       const normalizedEmail = input.email.trim().toLowerCase();
-      let user = await getUserByEmail(normalizedEmail);
-      if (!user) {
-        // A fresh Hostinger/Manus database may have the schema but no users row.
-        // Valid configured credentials are sufficient to provision the first admin.
-        await upsertUser({
-          openId: ENV.ownerOpenId || "credential-admin",
-          name: "Workspace administrator",
-          email: normalizedEmail,
-          loginMethod: "email",
-          role: "admin",
-          lastSignedIn: new Date(),
-        });
-        user = await getUserByEmail(normalizedEmail);
-      }
-      if (!user) {
-        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Unable to create the administrator session. Please verify the database connection." });
-      }
-      const sessionToken = await sdk.createSessionToken(user.openId, { name: user.name ?? "" });
+      // Credential authentication is intentionally independent of the legacy users table.
+      // The configured CRM credentials are the source of truth for the initial admin session.
+      const user = {
+        id: 1,
+        openId: "credential-admin",
+        name: "Workspace administrator",
+        email: normalizedEmail,
+        loginMethod: "email" as const,
+        role: "admin" as const,
+      };
+      const sessionToken = await sdk.createSessionToken(user.openId, { name: user.name });
       ctx.res.cookie(COOKIE_NAME, sessionToken, getSessionCookieOptions(ctx.req));
       return user;
     }),

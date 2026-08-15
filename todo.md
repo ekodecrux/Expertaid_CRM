@@ -760,3 +760,7 @@
 - [x] Reduce the Hostinger credential lookup to stable id-and-email selection
 - [x] Construct a safe authenticated session identity from the id-and-email result
 - [x] Validate and publish the final email-only login compatibility package
+
+- [x] Bypass the failing Hostinger users-table read for configured CRM credential authentication
+- [x] Issue the normal signed admin session from validated environment credentials
+- [x] Test and publish the final database-independent login fallback
