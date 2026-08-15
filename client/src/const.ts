@@ -13,7 +13,8 @@ export { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 // with "invalid oauth state". It returns void by design, so there is no URL to
 // stash across renders.
 export const startLogin = () => {
-  const oauthPortalUrl = import.meta.env.VITE_OAUTH_PORTAL_URL || "https://api.manus.im";
+  const configuredPortalUrl = import.meta.env.VITE_OAUTH_PORTAL_URL || "https://manus.im";
+  const oauthPortalUrl = configuredPortalUrl.replace("https://api.manus.im", "https://manus.im").replace(/\/+$/, "");
   const appId = import.meta.env.VITE_APP_ID || "WC4azjZYT29rMGfPcf7M4s";
   const redirectUri = `${window.location.origin}/api/oauth/callback`;
 
@@ -21,11 +22,10 @@ export const startLogin = () => {
   document.cookie = `${OAUTH_STATE_COOKIE}=${nonce}; Path=/; Max-Age=600; SameSite=None; Secure`;
   const state = encodeOAuthState({ redirectUri, nonce });
 
-  const url = new URL(`${oauthPortalUrl}/app-auth`);
-  url.searchParams.set("appId", appId);
-  url.searchParams.set("redirectUri", redirectUri);
+  const url = new URL(`${oauthPortalUrl}/login`);
+  url.searchParams.set("app_id", appId);
+  url.searchParams.set("redirect_url", redirectUri);
   url.searchParams.set("state", state);
-  url.searchParams.set("type", "signIn");
 
   window.location.href = url.toString();
 };

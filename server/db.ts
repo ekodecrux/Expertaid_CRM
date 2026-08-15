@@ -1,7 +1,7 @@
 import { and, desc, eq, gte, like, lte, lt, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
-import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, quotationEditHistory, quotations, quotationSettings, sessions, users } from "../drizzle/schema";
+import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, quotationEditHistory, quotations, quotationSettings, sessions, users, type User } from "../drizzle/schema";
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_PRODUCTS, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
 import { ENV } from './_core/env';
@@ -115,18 +115,31 @@ export async function updateBrandingForOwner(ownerId: number, values: {
   return getBrandingForOwner(ownerId);
 }
 
+const AUTH_USER_FIELDS = {
+  id: users.id,
+  openId: users.openId,
+  name: users.name,
+  email: users.email,
+  loginMethod: users.loginMethod,
+  role: users.role,
+} as const;
+
+type AuthUserRow = Pick<User, "id" | "openId" | "name" | "email" | "loginMethod" | "role">;
+
+const asAuthUser = (row: AuthUserRow | undefined): User | undefined => row ? row as User : undefined;
+
 export async function getUserByOpenId(openId: string) {
   const db = await getDb();
   if (!db) return undefined;
-  const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
-  return result[0];
+  const result = await db.select(AUTH_USER_FIELDS).from(users).where(eq(users.openId, openId)).limit(1);
+  return asAuthUser(result[0]);
 }
 
 export async function getUserByEmail(email: string) {
   const db = await getDb();
   if (!db) return undefined;
-  const result = await db.select().from(users).where(eq(users.email, email)).limit(1);
-  return result[0];
+  const result = await db.select(AUTH_USER_FIELDS).from(users).where(eq(users.email, email)).limit(1);
+  return asAuthUser(result[0]);
 }
 
 export async function getQuotationSettingsForOwner(ownerId: number) {

@@ -720,3 +720,15 @@
 - [x] Diagnose why the Google login button does not start or complete OAuth on Hostinger
 - [x] Correct the Google OAuth redirect/callback path for the live domain
 - [x] Validate and publish the Google-button correction
+
+- [x] Replace the Google button’s unsupported `/app-auth` redirect endpoint
+- [x] Validate the supported OAuth authorization URL and callback state
+- [x] Publish the corrected Google login package
+
+- [ ] Capture the exact Hostinger database error after the latest redeploy
+- [ ] Verify the active Hostinger DATABASE_URL target and imported users schema
+- [ ] Apply and validate the final Hostinger session-creation correction
+
+- [x] Reduce the Hostinger credential user lookup to authentication-required columns
+- [x] Handle absent optional user fields without blocking administrator session creation
+- [x] Validate and publish the schema-drift-tolerant login package
