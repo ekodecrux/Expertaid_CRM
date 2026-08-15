@@ -1,5 +1,6 @@
 import { and, desc, eq, gte, like, lte, lt, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
+import mysql from "mysql2/promise";
 import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, quotationEditHistory, quotations, quotationSettings, sessions, users } from "../drizzle/schema";
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_PRODUCTS, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
@@ -7,7 +8,7 @@ import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
-/** Remove Hostinger's malformed JSON SSL query suffix before mysql2 parses it. */
+/** Normalize the URL and preserve secure transport for sandbox TiDB connections. */
 export function normalizeDatabaseUrl(rawUrl: string): string {
   try {
     const parsed = new URL(rawUrl);
@@ -19,10 +20,24 @@ export function normalizeDatabaseUrl(rawUrl: string): string {
   }
 }
 
+function createDatabasePool(rawUrl: string): ReturnType<typeof mysql.createPool> {
+  const normalizedUrl = normalizeDatabaseUrl(rawUrl);
+  const parsed = new URL(normalizedUrl);
+  const requiresSecureTransport = parsed.hostname.includes("tidbcloud") || rawUrl.includes("ssl=");
+  return mysql.createPool({
+    host: parsed.hostname,
+    port: parsed.port ? Number(parsed.port) : 3306,
+    user: decodeURIComponent(parsed.username),
+    password: decodeURIComponent(parsed.password),
+    database: decodeURIComponent(parsed.pathname.replace(/^\//, "")),
+    ssl: requiresSecureTransport ? { rejectUnauthorized: true } : undefined,
+  });
+}
+
 export async function getDb() {
   if (!_db && process.env.DATABASE_URL) {
     try {
-      _db = drizzle(normalizeDatabaseUrl(process.env.DATABASE_URL));
+      _db = drizzle(createDatabasePool(process.env.DATABASE_URL) as any);
     } catch (error) {
       console.warn("[Database] Failed to connect:", error);
       _db = null;

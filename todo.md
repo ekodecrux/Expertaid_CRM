@@ -696,3 +696,7 @@
 - [x] Make CRM credential login independent of Google/Manus OAuth entry points
 - [x] Verify the database-backed session uses the CRM credential path
 - [x] Test and publish credential-only authentication behavior
+
+- [x] Capture the exact sandbox users-query database error
+- [x] Align the sandbox users schema/query without destructive data changes
+- [x] Validate sandbox credential login after the schema correction
