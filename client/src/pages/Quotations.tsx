@@ -10,6 +10,7 @@ import { Eye, FileDown, FileText, ImagePlus, Loader2, Pencil, Plus, Printer, Sav
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import DashboardLayout from "@/components/DashboardLayout";
+import { useAuth } from "@/_core/hooks/useAuth";
 import * as XLSX from "xlsx";
 import jsPDF from "jspdf";
 
@@ -26,9 +27,11 @@ const numberToWords = (value: number) => { const ones = ["", "One", "Two", "Thre
 const invoiceLabel = (quotation: any) => String(quotation?.quotationNumber ?? quotation?.invoiceNumber ?? "").trim() || "—";
 
 export default function Quotations() {
-  const branding = trpc.branding.get.useQuery();
-  const quotations = trpc.quotations.list.useQuery();
-  const quotationDefaults = trpc.quotations.settings.get.useQuery();
+  const { user } = useAuth();
+  const authReady = Boolean(user);
+  const branding = trpc.branding.get.useQuery(undefined, { enabled: authReady });
+  const quotations = trpc.quotations.list.useQuery(undefined, { enabled: authReady });
+  const quotationDefaults = trpc.quotations.settings.get.useQuery(undefined, { enabled: authReady });
   const utils = trpc.useUtils();
   const updateStatus = trpc.quotations.updateStatus.useMutation({
     onSuccess: () => {
@@ -46,7 +49,7 @@ export default function Quotations() {
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editingQuotationNumber, setEditingQuotationNumber] = useState("");
   const [selected, setSelected] = useState<any>(null);
-  const history = trpc.quotations.history.useQuery({ id: selected?.id ?? 0 }, { enabled: Boolean(selected?.id) });
+  const history = trpc.quotations.history.useQuery({ id: selected?.id ?? 0 }, { enabled: authReady && Boolean(selected?.id) });
   const create = trpc.quotations.create.useMutation({ onSuccess: async () => { await quotations.refetch(); setDialogOpen(false); setEditingId(null); setEditingQuotationNumber(""); setForm({ ...emptyForm(), items: catalogFormItems(quotationDefaults.data?.products) }); toast.success("Quotation created successfully."); }, onError: (error) => toast.error(error.message) });
   const updateQuotation = trpc.quotations.update.useMutation({ onSuccess: async () => { await quotations.refetch(); setDialogOpen(false); setEditingId(null); setEditingQuotationNumber(""); setForm({ ...emptyForm(), items: catalogFormItems(quotationDefaults.data?.products) }); toast.success("Quotation updated and audit recorded."); }, onError: (error) => toast.error(error.message) });
   const deleteQuotation = trpc.quotations.delete.useMutation({ onSuccess: async () => { await quotations.refetch(); setSelected(null); toast.success("Quotation deleted."); }, onError: (error) => toast.error(error.message) });

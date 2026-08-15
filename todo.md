@@ -685,3 +685,10 @@
 - [x] Fix preview protected-query execution before authentication is ready
 - [x] Add regression coverage for the preview auth transition
 - [x] Validate and publish the corrected preview behavior
+
+- [x] Diagnose current credential-login failure from the active login handler and runtime behavior
+- [x] Fix the credential-login path without weakening authentication security
+- [x] Validate the login flow and publish the corrected version
+
+- [x] Gate all protected page queries on confirmed live authentication in Manus preview and Hostinger
+- [x] Add coverage preventing protected requests during the unauthenticated render phase

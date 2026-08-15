@@ -1,5 +1,6 @@
 import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
+import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -19,9 +20,11 @@ const readImage = (file: File) => new Promise<string>((resolve, reject) => {
 });
 
 export default function Settings() {
-  const branding = trpc.branding.get.useQuery();
-  const sessionSettings = trpc.session.get.useQuery();
-  const sessions = trpc.session.list.useQuery();
+  const { user } = useAuth();
+  const authReady = Boolean(user);
+  const branding = trpc.branding.get.useQuery(undefined, { enabled: authReady });
+  const sessionSettings = trpc.session.get.useQuery(undefined, { enabled: authReady });
+  const sessions = trpc.session.list.useQuery(undefined, { enabled: authReady });
   const utils = trpc.useUtils();
   const createSession = trpc.session.create.useMutation({
     onSuccess: async () => { await sessions.refetch(); toast.success("Session added."); setNewSessionLabel(""); setNewSessionStart(""); setNewSessionEnd(""); },

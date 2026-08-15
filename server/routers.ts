@@ -3,9 +3,10 @@ import { TRPCError } from "@trpc/server";
 import { nanoid } from "nanoid";
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
+import { ENV } from "./_core/env";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getNextEstimationNumberForClient, getAgreementByToken, createSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getUserByEmail } from "./db";
+import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getNextEstimationNumberForClient, getAgreementByToken, createSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getUserByEmail, upsertUser } from "./db";
 import { storagePut } from "./storage";
 import { sdk } from "./_core/sdk";
 import { validateCredentialLogin } from "./credentialLogin";
@@ -123,9 +124,23 @@ export const appRouter = router({
       if (!validateCredentialLogin(input.email, input.password)) {
         throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid email or password." });
       }
-      const user = await getUserByEmail(input.email.trim().toLowerCase());
+      const normalizedEmail = input.email.trim().toLowerCase();
+      let user = await getUserByEmail(normalizedEmail);
       if (!user) {
-        throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid email or password." });
+        // A fresh Hostinger/Manus database may have the schema but no users row.
+        // Valid configured credentials are sufficient to provision the first admin.
+        await upsertUser({
+          openId: ENV.ownerOpenId || "credential-admin",
+          name: "Workspace administrator",
+          email: normalizedEmail,
+          loginMethod: "email",
+          role: "admin",
+          lastSignedIn: new Date(),
+        });
+        user = await getUserByEmail(normalizedEmail);
+      }
+      if (!user) {
+        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Unable to create the administrator session. Please verify the database connection." });
       }
       const sessionToken = await sdk.createSessionToken(user.openId, { name: user.name ?? "" });
       ctx.res.cookie(COOKIE_NAME, sessionToken, getSessionCookieOptions(ctx.req));
