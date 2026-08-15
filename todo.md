@@ -748,3 +748,7 @@
 - [x] Reduce authentication reads to guaranteed identity columns only
 - [x] Default missing role and login method in the authenticated application user
 - [x] Test and publish the final Hostinger schema-compatible login package
+
+- [x] Confirm the active deployment is using the older server bundle that selects role and loginMethod
+- [x] Prepare a clearly mapped replacement for dist/index.js and related runtime files
+- [x] Provide the final deployment verification criterion for the Hostinger runtime
