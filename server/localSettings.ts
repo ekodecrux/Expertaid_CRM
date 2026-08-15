@@ -37,4 +37,61 @@ export async function saveLocalBranding(ownerId: number, branding: CompanyBrandi
   return normalized;
 }
 
-export { BRANDING_FILE };
+export type LocalSession = {
+  id: number;
+  ownerId: number;
+  sessionLabel: string;
+  startDate: string;
+  endDate: string;
+};
+
+type SessionSettingsRecord = Record<string, { sessionMode: "all" | "single"; currentSession: string }>;
+type SessionsRecord = Record<string, LocalSession[]>;
+const SESSION_SETTINGS_FILE = path.join(LOCAL_STORAGE_ROOT, "settings", "session-settings.json");
+const SESSIONS_FILE = path.join(LOCAL_STORAGE_ROOT, "settings", "sessions.json");
+
+async function readJsonFile<T>(filePath: string, fallback: T): Promise<T> {
+  try {
+    const parsed = JSON.parse(await fs.readFile(filePath, "utf8")) as T;
+    return parsed ?? fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+async function writeJsonFile(filePath: string, value: unknown): Promise<void> {
+  await fs.mkdir(path.dirname(filePath), { recursive: true });
+  const tempFile = `${filePath}.tmp`;
+  await fs.writeFile(tempFile, JSON.stringify(value, null, 2), "utf8");
+  await fs.rename(tempFile, filePath);
+}
+
+export async function getLocalSessionSettings(ownerId: number) {
+  const records = await readJsonFile<SessionSettingsRecord>(SESSION_SETTINGS_FILE, {});
+  return records[String(ownerId)] ?? { sessionMode: "single" as const, currentSession: "2026-2027" };
+}
+
+export async function saveLocalSessionSettings(ownerId: number, values: { sessionMode: "all" | "single"; currentSession: string }) {
+  const records = await readJsonFile<SessionSettingsRecord>(SESSION_SETTINGS_FILE, {});
+  records[String(ownerId)] = values;
+  await writeJsonFile(SESSION_SETTINGS_FILE, records);
+  return values;
+}
+
+export async function listLocalSessions(ownerId: number): Promise<LocalSession[]> {
+  const records = await readJsonFile<SessionsRecord>(SESSIONS_FILE, {});
+  return records[String(ownerId)] ?? [];
+}
+
+export async function addLocalSession(ownerId: number, session: Omit<LocalSession, "id" | "ownerId">): Promise<LocalSession[]> {
+  const records = await readJsonFile<SessionsRecord>(SESSIONS_FILE, {});
+  const current = records[String(ownerId)] ?? [];
+  if (current.some((item) => item.sessionLabel === session.sessionLabel)) throw new Error("That session already exists.");
+  const nextId = current.reduce((max, item) => Math.max(max, item.id), 0) + 1;
+  current.push({ id: nextId, ownerId, ...session });
+  records[String(ownerId)] = current;
+  await writeJsonFile(SESSIONS_FILE, records);
+  return current;
+}
+
+export { BRANDING_FILE, SESSION_SETTINGS_FILE, SESSIONS_FILE };

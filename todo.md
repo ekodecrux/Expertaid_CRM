@@ -780,3 +780,7 @@
 - [x] Remove branding save dependency on missing users-table branding columns
 - [x] Persist branding metadata through a Hostinger-compatible local settings path
 - [x] Validate branding save, retrieval, and local asset URLs
+
+- [x] Make session settings and session selection tolerate the legacy Hostinger sessions table
+- [x] Ensure branding reads the newly saved local settings after refresh
+- [x] Validate session save and branding retrieval without incompatible database columns

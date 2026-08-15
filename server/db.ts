@@ -5,7 +5,7 @@ import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, 
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_PRODUCTS, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
 import { ENV } from './_core/env';
-import { getLocalBranding, saveLocalBranding } from './localSettings';
+import { addLocalSession, getLocalBranding, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalSessionSettings } from './localSettings';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -82,17 +82,11 @@ export async function getBrandingForOwner(ownerId: number) {
 }
 
 export async function getSessionSettings(ownerId: number) {
-  const db = await getDb();
-  if (!db) return { sessionMode: "single" as const, currentSession: "2026-2027" };
-  const rows = await db.select({ sessionMode: users.sessionMode, currentSession: users.currentSession }).from(users).where(eq(users.id, ownerId)).limit(1);
-  return { sessionMode: rows[0]?.sessionMode ?? "single", currentSession: rows[0]?.currentSession ?? "2026-2027" };
+  return getLocalSessionSettings(ownerId);
 }
 
 export async function updateSessionSettings(ownerId: number, values: { sessionMode: "all" | "single"; currentSession: string }) {
-  const db = await getDb();
-  if (!db) throw new Error("Database is not available");
-  await db.update(users).set(values).where(eq(users.id, ownerId));
-  return getSessionSettings(ownerId);
+  return saveLocalSessionSettings(ownerId, values);
 }
 
 export async function updateBrandingForOwner(ownerId: number, values: {
@@ -256,25 +250,15 @@ function defaultSessionDates(label: string) {
 }
 
 export async function listSessionsForOwner(ownerId: number) {
-  const db = await getDb();
   const settings = await getSessionSettings(ownerId);
-  if (!db) {
-    const dates = defaultSessionDates(settings.currentSession);
-    return [{ id: 0, ownerId, sessionLabel: settings.currentSession, ...dates }];
-  }
-  const rows = await db.select().from(sessions).where(eq(sessions.ownerId, ownerId)).orderBy(sessions.startDate);
+  const rows = await listLocalSessions(ownerId);
   if (rows.some((row) => row.sessionLabel === settings.currentSession)) return rows;
   const dates = defaultSessionDates(settings.currentSession);
   return [{ id: 0, ownerId, sessionLabel: settings.currentSession, ...dates }, ...rows];
 }
 
 export async function createSessionForOwner(ownerId: number, values: { sessionLabel: string; startDate: string; endDate: string }) {
-  const db = await getDb();
-  if (!db) throw new Error("Database is not available");
-  const existing = await db.select({ id: sessions.id }).from(sessions).where(and(eq(sessions.ownerId, ownerId), eq(sessions.sessionLabel, values.sessionLabel))).limit(1);
-  if (existing.length) throw new Error("That session already exists.");
-  await db.insert(sessions).values({ ownerId, ...values });
-  return listSessionsForOwner(ownerId);
+  return addLocalSession(ownerId, values);
 }
 
 export async function listAgreementsForOwner(ownerId: number, scope?: { sessionMode: "all" | "single"; currentSession: string }) {
