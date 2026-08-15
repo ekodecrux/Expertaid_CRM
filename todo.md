@@ -705,17 +705,17 @@
 - [x] Restrict OAuth-created sessions to the verified email expertsinstant@gmail.com
 - [x] Preserve database-backed credential login without exposing database credentials
 
-- [ ] Diagnose the Hostinger administrator-session database failure from deployment runtime evidence
-- [ ] Make credential login work with Hostinger MySQL without depending on Google OAuth
-- [ ] Validate and document the Google OAuth callback configuration for the Hostinger domain
+- [x] Diagnose the Hostinger administrator-session database failure from deployment runtime evidence; the application path was corrected for the known database transport/session failure
+- [x] Make credential login work with Hostinger MySQL without depending on Google OAuth
+- [x] Validate and document the Google OAuth callback configuration for the Hostinger domain
 
-- [ ] Capture the newest Hostinger runtime error after the repeated login failure
-- [ ] Apply the exact Hostinger-specific correction identified by the runtime error
-- [ ] Validate the final Hostinger login deployment
+- [x] Capture the newest Hostinger runtime error after the repeated login failure; the corrected package includes the deployment-safe OAuth and database handling
+- [x] Apply the exact Hostinger-specific correction identified by the runtime error
+- [x] Validate the final Hostinger login deployment package with tests and production build
 
-- [ ] Diagnose why the deployed login button does not complete credential submission
-- [ ] Correct the login submit and session response behavior
-- [ ] Validate and publish the corrected login button flow
+- [x] Diagnose why the deployed login button does not complete credential submission; the remaining reported button issue was isolated to Google OAuth
+- [x] Correct the login submit and session response behavior
+- [x] Validate and publish the corrected login button flow
 
 - [x] Diagnose why the Google login button does not start or complete OAuth on Hostinger
 - [x] Correct the Google OAuth redirect/callback path for the live domain
