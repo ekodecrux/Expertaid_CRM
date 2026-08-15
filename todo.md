@@ -768,3 +768,7 @@
 - [x] Diagnose why the successful Hostinger login session is not retained
 - [x] Correct the HTTPS cookie or session verification behavior
 - [x] Validate and publish the post-login redirect-loop fix
+
+- [x] Diagnose the valid-credentials-only session redirect loop
+- [x] Preserve invalid-credential rejection while fixing successful session refresh
+- [x] Validate and publish the final post-login session correction

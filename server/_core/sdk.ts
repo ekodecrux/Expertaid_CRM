@@ -311,6 +311,12 @@ class SDKServer {
       throw ForbiddenError("User not found");
     }
 
+    // Hostinger credential sessions are intentionally database-independent.
+    // Do not write the schema-drifted users table during the follow-up auth.me request.
+    if (user.openId === "credential-admin" || user.openId.startsWith("credential:")) {
+      return user;
+    }
+
     await db.upsertUser({
       openId: user.openId,
       lastSignedIn: signedInAt,
