@@ -117,15 +117,15 @@ export async function updateBrandingForOwner(ownerId: number, values: {
 
 const AUTH_USER_FIELDS = {
   id: users.id,
-  openId: users.openId,
-  name: users.name,
   email: users.email,
 } as const;
 
-type AuthUserRow = Pick<User, "id" | "openId" | "name" | "email">;
+type AuthUserRow = Pick<User, "id" | "email">;
 
 const asAuthUser = (row: AuthUserRow | undefined): User | undefined => row ? ({
   ...row,
+  openId: `credential:${row.id}`,
+  name: row.email,
   loginMethod: "email",
   role: "admin",
 } as User) : undefined;

@@ -752,3 +752,11 @@
 - [x] Confirm the active deployment is using the older server bundle that selects role and loginMethod
 - [x] Prepare a clearly mapped replacement for dist/index.js and related runtime files
 - [x] Provide the final deployment verification criterion for the Hostinger runtime
+
+- [x] Restore the complete Hostinger environment-variable set after deletion
+- [x] Provide a new JWT secret and exact database/OAuth values
+- [x] Provide restart and credential-login verification steps
+
+- [x] Reduce the Hostinger credential lookup to stable id-and-email selection
+- [x] Construct a safe authenticated session identity from the id-and-email result
+- [x] Validate and publish the final email-only login compatibility package
