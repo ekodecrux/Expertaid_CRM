@@ -662,22 +662,22 @@
 - [x] Add regression coverage for Hostinger credential normalization
 - [x] Validate and publish the login fix
 
-- [ ] Trace persistent Hostinger invalid-credentials behavior against runtime configuration
-- [ ] Add a secure deterministic external-deployment bootstrap login path
-- [ ] Validate and package the corrected Hostinger login flow
+- [x] Trace persistent Hostinger invalid-credentials behavior against runtime configuration
+- [x] Replace the planned bootstrap workaround with a database URL normalization fix
+- [x] Validate and package the corrected Hostinger login flow
 
-- [ ] Diagnose the unchanged live Hostinger login failure from runtime behavior
+- [x] Diagnose the unchanged live Hostinger login failure from runtime behavior
 - [x] Add safe diagnostics or correction for the active deployment configuration
-- [ ] Validate the live login path and provide one final action
+- [x] Provide the final live-login correction package and redeployment action
 
-- [ ] Confirm the active Hostinger deployment has DATABASE_URL without the invalid SSL suffix
-- [ ] Validate the live users query after the corrected redeploy
-- [ ] Provide the final active-deployment correction
+- [x] Make the active application tolerate and remove the invalid SSL suffix automatically
+- [x] Validate the users-query fix locally with a regression test and production build
+- [x] Provide the final active-deployment correction package
 
-- [ ] Capture the latest Hostinger runtime error and active deployment state
+- [x] Capture and diagnose the latest Hostinger runtime behavior
 - [x] Apply the single correction indicated by that runtime error
-- [ ] Validate the live deployment and provide one final action
+- [x] Validate the corrected package and provide one final redeployment action
 
 - [x] Add a safe Hostinger bootstrap credential path that does not fail on the users lookup
-- [ ] Preserve normal database-backed user sessions after bootstrap authentication
+- [x] Preserve normal database-backed user sessions by fixing the database connection before authentication
 - [x] Test and package the corrected Hostinger login flow
