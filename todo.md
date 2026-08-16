@@ -948,3 +948,33 @@
 - [ ] Verify local account privileges and quotation INSERT after the password correction
 
 - [x] Validate and push the complete current ERP CRM codebase to GitHub after the latest persistence and error-reporting updates; 49 tests and production build passed
+
+- [x] Keep Hostinger database credentials server-only and out of Git/frontend code; the server reads process.env.DATABASE_URL and the frontend never receives it
+- [x] Support a secure Hostinger runtime connection method without exposing DATABASE_URL; Hostinger environment variables or a server-only ignored .env file are the supported methods
+
+- [ ] Prepare a server-only Hostinger `.env` file with the provided runtime credentials
+- [ ] Verify the `.env` file is excluded from Git and provide upload/restart instructions
+
+- [ ] Reset the actual Hostinger MySQL user password or local account assignment after `.env` loading was confirmed
+- [ ] Verify quotation INSERT and profile save after the Hostinger credential reset
+
+- [x] Update the private Hostinger `.env` file with the newly provided MySQL password
+- [x] Provide the replacement file and restart instructions without committing credentials
+
+- [x] Verify Hostinger database identity, administrator user row, and full MySQL grants
+- [ ] Synchronize the deployed runtime password with the actual MySQL user password
+- [ ] Verify quotation INSERT and profile save after restart
+
+- [ ] Replace the private Hostinger `.env` password with the user-provided `Expertsinstant@2026`
+- [ ] Deliver the replacement `.env` without committing credentials to Git
+
+- [x] Prepare complete SQL for the recreated Hostinger database `u559264694_ExpertCRM`
+- [x] Create a private `.env` file using the new database credentials without committing it
+- [x] Deliver SQL import and Node.js restart instructions
+
+- [ ] Verify the recreated Hostinger settings tables and application database target
+- [ ] Ensure profile and quotation branding saves create rows in MySQL instead of only local storage
+- [ ] Verify branding rows and file references after saving
+
+- [x] Diagnose why branding saves do not persist in Manus preview; legacy quotationSettings reads failed while profile settings were already persisted
+- [x] Validate preview branding persistence after save and reload through the managed preview data path
