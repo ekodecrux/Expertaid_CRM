@@ -69,7 +69,20 @@ export async function updateProfileSettingsForOwner(ownerId: number, values: Par
   const next = normalizeProfileSettings({ ...current, ...values }, fallback);
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
-  await db.insert(profileSettingsData).values({ ownerId, profileJson: JSON.stringify(next) }).onDuplicateKeyUpdate({ set: { profileJson: JSON.stringify(next) } });
+  const profileJson = JSON.stringify(next);
+  const existing = await db.select({ id: profileSettingsData.id }).from(profileSettingsData).where(eq(profileSettingsData.ownerId, ownerId)).limit(1);
+  if (existing[0]) {
+    await db.update(profileSettingsData).set({ profileJson }).where(eq(profileSettingsData.id, existing[0].id));
+    return next;
+  }
+  try {
+    await db.insert(profileSettingsData).values({ ownerId, profileJson });
+  } catch (error) {
+    // A concurrent request or a legacy table can win the insert race. Retry as an update.
+    const duplicate = await db.select({ id: profileSettingsData.id }).from(profileSettingsData).where(eq(profileSettingsData.ownerId, ownerId)).limit(1);
+    if (!duplicate[0]) throw error;
+    await db.update(profileSettingsData).set({ profileJson }).where(eq(profileSettingsData.id, duplicate[0].id));
+  }
   return next;
 }
 
