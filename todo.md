@@ -890,3 +890,7 @@
 - [x] Fix profileSettingsData reads and saves for the live owner record using ownerId-based update fallback
 - [x] Ensure newly created quotations prefer MySQL insertion and allocate invoice numbers above existing records
 - [x] Validate both persistence flows and push the fixes to GitHub; 47 tests and production build passed, commit 5d486b6 pushed
+
+- [x] Fix live profileSettingsData update failure against the Hostinger table with owner-keyed MySQL upsert
+- [x] Validate repeated profile saves after the persistence correction with 47 passing tests and a successful production build
+- [ ] Push the corrected profile save path to GitHub

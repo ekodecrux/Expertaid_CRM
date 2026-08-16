@@ -70,19 +70,7 @@ export async function updateProfileSettingsForOwner(ownerId: number, values: Par
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
   const profileJson = JSON.stringify(next);
-  try {
-    const updated = await db.update(profileSettingsData).set({ profileJson }).where(eq(profileSettingsData.ownerId, ownerId));
-    if (Number((updated as { affectedRows?: number }).affectedRows ?? 0) > 0) return next;
-  } catch {
-    // Some legacy deployments reject the update shape; the insert path below remains safe.
-  }
-  try {
-    await db.insert(profileSettingsData).values({ ownerId, profileJson });
-  } catch (error) {
-    // A concurrent request can win the insert race. Retry by ownerId without relying on the id column.
-    const retry = await db.update(profileSettingsData).set({ profileJson }).where(eq(profileSettingsData.ownerId, ownerId));
-    if (Number((retry as { affectedRows?: number }).affectedRows ?? 0) === 0) throw error;
-  }
+  await db.insert(profileSettingsData).values({ ownerId, profileJson }).onDuplicateKeyUpdate({ set: { profileJson } });
   return next;
 }
 
