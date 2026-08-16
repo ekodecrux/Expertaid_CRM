@@ -873,4 +873,4 @@
 
 - [x] Fix duplicate-owner profile settings saves by making profile persistence idempotent
 - [x] Add regression coverage for repeated profile saves and validate the production build with 46 passing tests
-- [ ] Push the duplicate-profile-save fix to GitHub
+- [x] Push the duplicate-profile-save fix to GitHub
