@@ -834,3 +834,6 @@
 
 - [x] Push the updated Hostinger build and source changes to ekodecrux/Expertaid_CRM
 - [x] Verify the pushed branch and commit contents
+
+- [x] Remove the Google/Manus login option from the login page
+- [x] Validate credential-only login UI and production build
