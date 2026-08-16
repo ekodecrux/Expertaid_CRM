@@ -118,6 +118,7 @@ export type LocalQuotationSettings = {
 };
 
 const QUOTATION_SETTINGS_FILE = path.join(LOCAL_STORAGE_ROOT, "settings", "quotation-settings.json");
+const QUOTATIONS_FILE = path.join(LOCAL_STORAGE_ROOT, "settings", "quotations.json");
 const SESSION_SETTINGS_FILE = path.join(LOCAL_STORAGE_ROOT, "settings", "session-settings.json");
 const SESSIONS_FILE = path.join(LOCAL_STORAGE_ROOT, "settings", "sessions.json");
 
@@ -165,4 +166,56 @@ export async function addLocalSession(ownerId: number, session: Omit<LocalSessio
   return current;
 }
 
-export { BRANDING_FILE, QUOTATION_SETTINGS_FILE, SESSION_SETTINGS_FILE, SESSIONS_FILE };
+export type LocalQuotationRecord = Record<string, unknown> & {
+  id: number;
+  ownerId: number;
+  itemsJson: string;
+  items: unknown[];
+  createdAt: string;
+  updatedAt: string;
+};
+
+type QuotationsRecord = Record<string, LocalQuotationRecord[]>;
+
+export async function listLocalQuotations(ownerId: number): Promise<LocalQuotationRecord[]> {
+  const records = await readJsonFile<QuotationsRecord>(QUOTATIONS_FILE, {});
+  return (records[String(ownerId)] ?? []).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+}
+
+export async function createLocalQuotation(ownerId: number, values: Record<string, unknown>): Promise<LocalQuotationRecord> {
+  const records = await readJsonFile<QuotationsRecord>(QUOTATIONS_FILE, {});
+  const current = records[String(ownerId)] ?? [];
+  const id = current.reduce((max, item) => Math.max(max, item.id), 0) + 1;
+  const now = new Date().toISOString();
+  const itemsJson = String(values.itemsJson ?? "[]");
+  const record = { ...values, id, ownerId, itemsJson, items: JSON.parse(itemsJson), createdAt: now, updatedAt: now } as LocalQuotationRecord;
+  records[String(ownerId)] = [...current, record];
+  await writeJsonFile(QUOTATIONS_FILE, records);
+  return record;
+}
+
+export async function updateLocalQuotation(ownerId: number, quotationId: number, values: Record<string, unknown>): Promise<LocalQuotationRecord | null> {
+  const records = await readJsonFile<QuotationsRecord>(QUOTATIONS_FILE, {});
+  const current = records[String(ownerId)] ?? [];
+  const index = current.findIndex((item) => item.id === quotationId);
+  if (index < 0) return null;
+  const existing = current[index];
+  const itemsJson = String(values.itemsJson ?? existing.itemsJson);
+  const updated = { ...existing, ...values, itemsJson, items: JSON.parse(itemsJson), updatedAt: new Date().toISOString() } as LocalQuotationRecord;
+  current[index] = updated;
+  records[String(ownerId)] = current;
+  await writeJsonFile(QUOTATIONS_FILE, records);
+  return updated;
+}
+
+export async function deleteLocalQuotation(ownerId: number, quotationId: number): Promise<boolean> {
+  const records = await readJsonFile<QuotationsRecord>(QUOTATIONS_FILE, {});
+  const current = records[String(ownerId)] ?? [];
+  const next = current.filter((item) => item.id !== quotationId);
+  if (next.length === current.length) return false;
+  records[String(ownerId)] = next;
+  await writeJsonFile(QUOTATIONS_FILE, records);
+  return true;
+}
+
+export { BRANDING_FILE, QUOTATION_SETTINGS_FILE, QUOTATIONS_FILE, SESSION_SETTINGS_FILE, SESSIONS_FILE };

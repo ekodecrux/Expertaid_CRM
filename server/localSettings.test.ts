@@ -1,13 +1,22 @@
 import { afterEach, describe, expect, it } from "vitest";
 import fs from "fs/promises";
-import { BRANDING_FILE, getLocalBranding, getLocalQuotationSettings, QUOTATION_SETTINGS_FILE, saveLocalBranding, saveLocalQuotationSettings } from "./localSettings";
+import { BRANDING_FILE, createLocalQuotation, deleteLocalQuotation, getLocalBranding, getLocalQuotationSettings, listLocalQuotations, QUOTATION_SETTINGS_FILE, QUOTATIONS_FILE, saveLocalBranding, saveLocalQuotationSettings, updateLocalQuotation } from "./localSettings";
 
 let previous: string | null = null;
 let previousQuotation: string | null = null;
+let previousQuotations: string | null = null;
 
 async function readQuotationExisting() {
   try {
     return await fs.readFile(QUOTATION_SETTINGS_FILE, "utf8");
+  } catch {
+    return null;
+  }
+}
+
+async function readQuotationsExisting() {
+  try {
+    return await fs.readFile(QUOTATIONS_FILE, "utf8");
   } catch {
     return null;
   }
@@ -30,6 +39,14 @@ afterEach(async () => {
   }
   previousQuotation = null;
 
+  if (previousQuotations === null) {
+    await fs.rm(QUOTATIONS_FILE, { force: true });
+  } else {
+    await fs.mkdir(new URL(".", `file://${QUOTATIONS_FILE}`).pathname, { recursive: true }).catch(() => undefined);
+    await fs.writeFile(QUOTATIONS_FILE, previousQuotations, "utf8");
+  }
+  previousQuotations = null;
+
   if (previous === null) {
     await fs.rm(BRANDING_FILE, { force: true });
   } else {
@@ -50,6 +67,16 @@ describe("local branding settings", () => {
     });
 
     await expect(getLocalBranding(1)).resolves.toEqual(saved);
+  });
+
+  it("persists quotation records for create, list, update, and delete fallback flows", async () => {
+    previousQuotations = await readQuotationsExisting();
+    const created = await createLocalQuotation(1, { quotationNumber: "QT500", clientName: "Fallback School", itemsJson: "[]", status: "Awaiting" });
+    await expect(listLocalQuotations(1)).resolves.toHaveLength(1);
+    const updated = await updateLocalQuotation(1, created.id, { status: "Success" });
+    expect(updated?.status).toBe("Success");
+    await expect(deleteLocalQuotation(1, created.id)).resolves.toBe(true);
+    await expect(listLocalQuotations(1)).resolves.toHaveLength(0);
   });
 
   it("saves and retrieves quotation settings independently of the quotationSettings table", async () => {

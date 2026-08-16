@@ -5,7 +5,7 @@ import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, 
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_PRODUCTS, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
 import { ENV } from './_core/env';
-import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getSavedLocalQuotationSettings, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalQuotationSettings, saveLocalSessionSettings, type LocalQuotationSettings } from './localSettings';
+import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getSavedLocalQuotationSettings, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalQuotationSettings, saveLocalSessionSettings, listLocalQuotations, createLocalQuotation, updateLocalQuotation, deleteLocalQuotation, type LocalQuotationSettings } from './localSettings';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -394,6 +394,11 @@ export async function updateQuotationSettingsForOwner(ownerId: number, values: P
 }
 
 export async function updateQuotationForOwner(ownerId: number, quotationId: number, values: Partial<InsertQuotation>, editor: { id: number; name: string }) {
+  const localExisting = (await listLocalQuotations(ownerId)).find((row) => row.id === quotationId);
+  if (localExisting) {
+    const updated = await updateLocalQuotation(ownerId, quotationId, { ...values, lastEditedBy: editor.id, lastEditedByName: editor.name, lastEditedAt: new Date().toISOString() });
+    return updated;
+  }
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
   const rows = await db.select().from(quotations).where(and(eq(quotations.id, quotationId), eq(quotations.ownerId, ownerId))).limit(1);
@@ -407,6 +412,7 @@ export async function updateQuotationForOwner(ownerId: number, quotationId: numb
 }
 
 export async function deleteQuotationForOwner(ownerId: number, quotationId: number) {
+  if (await deleteLocalQuotation(ownerId, quotationId)) return { success: true };
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
   await db.delete(quotations).where(and(eq(quotations.id, quotationId), eq(quotations.ownerId, ownerId)));
@@ -421,28 +427,52 @@ export async function listQuotationEditHistoryForOwner(ownerId: number, quotatio
 
 export async function listQuotationsForOwner(ownerId: number) {
   const db = await getDb();
-  if (!db) return [];
-  const rows = await db.select().from(quotations).where(eq(quotations.ownerId, ownerId)).orderBy(desc(quotations.createdAt));
-  return rows.map((row) => ({ ...row, items: JSON.parse(row.itemsJson) as unknown[] }));
+  if (!db) return listLocalQuotations(ownerId);
+  try {
+    const rows = await db.select().from(quotations).where(eq(quotations.ownerId, ownerId)).orderBy(desc(quotations.createdAt));
+    return [...rows.map((row) => ({ ...row, items: JSON.parse(row.itemsJson) as unknown[] })), ...(await listLocalQuotations(ownerId))];
+  } catch (error) {
+    console.warn("[Quotations] Database table is unavailable; using persistent local fallback:", error);
+    return listLocalQuotations(ownerId);
+  }
 }
 
 export async function getNextEstimationNumberForClient(ownerId: number, clientName: string) {
   const db = await getDb();
-  if (!db) return 1;
-  const rows = await db.select({ latest: sql<number>`MAX(${quotations.estimationNumber})` }).from(quotations).where(and(eq(quotations.ownerId, ownerId), eq(quotations.clientName, clientName.trim())));
-  return Number(rows[0]?.latest ?? 0) + 1;
+  const local = await listLocalQuotations(ownerId);
+  const localLatest = local.filter((row) => row.clientName === clientName.trim()).reduce((max, row) => Math.max(max, Number(row.estimationNumber ?? 0)), 0);
+  if (!db) return localLatest + 1;
+  try {
+    const rows = await db.select({ latest: sql<number>`MAX(${quotations.estimationNumber})` }).from(quotations).where(and(eq(quotations.ownerId, ownerId), eq(quotations.clientName, clientName.trim())));
+    return Math.max(Number(rows[0]?.latest ?? 0), localLatest) + 1;
+  } catch {
+    return localLatest + 1;
+  }
 }
 
 export async function createQuotation(input: InsertQuotation & { quotationPrefix?: string }) {
   const db = await getDb();
-  if (!db) throw new Error("Database is not available");
   const { quotationPrefix, ...quotationInput } = input;
-  const result = await db.insert(quotations).values(quotationInput);
-  const id = Number(result[0].insertId);
-  const quotationNumber = quotationInput.invoiceNumber ? `${String(quotationPrefix || "QT").trim()}${quotationInput.invoiceNumber}` : `QT${new Date().getFullYear()}${id.toString().padStart(4, "0")}`;
-  await db.update(quotations).set({ quotationNumber }).where(eq(quotations.id, id));
-  const rows = await db.select().from(quotations).where(eq(quotations.id, id)).limit(1);
-  return rows[0] ? { ...rows[0], items: JSON.parse(rows[0].itemsJson) as unknown[] } : undefined;
+  if (!db) {
+    const local = await listLocalQuotations(input.ownerId);
+    const id = local.reduce((max, row) => Math.max(max, row.id), 0) + 1;
+    const quotationNumber = quotationInput.invoiceNumber ? `${String(quotationPrefix || "QT").trim()}${quotationInput.invoiceNumber}` : `QT${new Date().getFullYear()}${id.toString().padStart(4, "0")}`;
+    return createLocalQuotation(input.ownerId, { ...quotationInput, quotationNumber });
+  }
+  try {
+    const result = await db.insert(quotations).values(quotationInput);
+    const id = Number(result[0].insertId);
+    const quotationNumber = quotationInput.invoiceNumber ? `${String(quotationPrefix || "QT").trim()}${quotationInput.invoiceNumber}` : `QT${new Date().getFullYear()}${id.toString().padStart(4, "0")}`;
+    await db.update(quotations).set({ quotationNumber }).where(eq(quotations.id, id));
+    const rows = await db.select().from(quotations).where(eq(quotations.id, id)).limit(1);
+    return rows[0] ? { ...rows[0], items: JSON.parse(rows[0].itemsJson) as unknown[] } : undefined;
+  } catch (error) {
+    const local = await listLocalQuotations(input.ownerId);
+    const id = local.reduce((max, row) => Math.max(max, row.id), 0) + 1;
+    const quotationNumber = quotationInput.invoiceNumber ? `${String(quotationPrefix || "QT").trim()}${quotationInput.invoiceNumber}` : `QT${new Date().getFullYear()}${id.toString().padStart(4, "0")}`;
+    console.warn("[Quotations] Database insert failed; saved quotation to persistent local fallback:", error);
+    return createLocalQuotation(input.ownerId, { ...quotationInput, quotationNumber });
+  }
 }
 
 export async function createAgreement(input: InsertAgreement) {
