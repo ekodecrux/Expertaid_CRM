@@ -158,17 +158,13 @@ export const appRouter = router({
     get: protectedProcedure.query(({ ctx }) => getProfileSettingsForOwner(ctx.user.id, { name: ctx.user.name, role: ctx.user.role })),
     update: protectedProcedure.input(z.object({
       displayName: z.string().trim().min(1).max(120),
-      avatarInitials: z.string().trim().min(1).max(3),
-      avatarColor: z.string().regex(/^#[0-9a-fA-F]{6}$/),
       roleLabel: z.string().trim().min(1).max(80),
-      department: z.string().trim().min(1).max(120),
-      phone: z.string().trim().max(40),
       avatarDataUrl: z.union([dataUrlSchema, z.null()]).optional(),
     })).mutation(async ({ ctx, input }) => {
       const current = await getProfileSettingsForOwner(ctx.user.id, { name: ctx.user.name, role: ctx.user.role });
       const avatar = input.avatarDataUrl === null ? { url: null, key: null } : input.avatarDataUrl ? await uploadProfileAvatar(input.avatarDataUrl) : { url: current.avatarUrl, key: current.avatarKey };
-      const { avatarDataUrl: _avatarDataUrl, ...fields } = input;
-      return updateProfileSettingsForOwner(ctx.user.id, { ...fields, avatarUrl: avatar.url, avatarKey: avatar.key }, { name: ctx.user.name, role: ctx.user.role });
+      const generatedInitials = input.displayName.split(/\s+/).filter(Boolean).map(part => part[0]).join("").slice(0, 2).toUpperCase() || "AD";
+      return updateProfileSettingsForOwner(ctx.user.id, { displayName: input.displayName, roleLabel: input.roleLabel, avatarInitials: generatedInitials, avatarUrl: avatar.url, avatarKey: avatar.key }, { name: ctx.user.name, role: ctx.user.role });
     }),
   }),
   quotations: router({

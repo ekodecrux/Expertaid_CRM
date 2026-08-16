@@ -801,8 +801,8 @@
 - [x] Validate the shared storage backend and asset-path handling; 44 tests and production build pass
 
 - [x] Prepare the final Hostinger deployment package for the confirmed FTP destination
-- [ ] Upload the corrected verified application package to the Hostinger public_html directory
-- [ ] Verify the corrected uploaded build, runtime entrypoint, uploads directory, and environment configuration
+- [x] Upload the corrected verified application package to the Hostinger public_html directory; user confirmed deployment completed
+- [x] Verify the corrected uploaded build, runtime entrypoint, uploads directory, and environment configuration through the live working login and settings flows
 - [x] Report the Hostinger deployment result and password-rotation requirement
 
 - [x] Replace the default Manus-only logo fallback with an environment-aware application branding asset
@@ -862,3 +862,11 @@
 
 - [x] Verify profile icon URL/key and all profile fields are persisted in profileSettingsData as profileJson
 - [x] Validate profile save persistence after refresh and rebuild the deployment package
+
+- [x] Simplify Profile settings to icon upload, display name, and role label only
+- [x] Remove unnecessary profile fields from the save payload while preserving database persistence
+- [x] Validate the simplified profile dialog and production build with 45 tests and a successful production build
+
+- [x] Fit uploaded profile icons inside the avatar without distortion or overflow
+- [x] Validate profile icon rendering across desktop, tablet, and mobile layouts
+- [ ] Push the validated responsive profile icon update to GitHub
