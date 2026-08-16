@@ -19,4 +19,13 @@ describe("quotation database authority", () => {
     const databaseBranch = createSection.slice(createSection.indexOf("  try {"));
     expect(databaseBranch).not.toContain("createLocalQuotation(input.ownerId");
   });
+
+  it("persists all quotation settings through a Hostinger-compatible transaction", () => {
+    const source = readFileSync(resolve(process.cwd(), "server/db.ts"), "utf8");
+    const settingsSection = source.slice(source.indexOf("async function saveQuotationSettingsToDatabase"), source.indexOf("export async function allocateInvoiceNumberForOwner"));
+    expect(settingsSection).toContain("await tx.delete(quotationSettingsData).where(eq(quotationSettingsData.ownerId, ownerId))");
+    expect(settingsSection).toContain("await tx.insert(quotationSettingsData).values({ ownerId, settingsJson })");
+    expect(settingsSection).toContain("Quotation settings database save failed:");
+    expect(settingsSection).toContain("Quotation settings database load failed:");
+  });
 });

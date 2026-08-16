@@ -307,11 +307,14 @@ async function saveQuotationSettingsToDatabase(ownerId: number, settings: LocalQ
   const db = await getDb();
   if (!db) return false;
   try {
-    await db.insert(quotationSettingsData).values({ ownerId, settingsJson: JSON.stringify(settings) }).onDuplicateKeyUpdate({ set: { settingsJson: JSON.stringify(settings) } });
+    const settingsJson = JSON.stringify(settings);
+    await db.transaction(async (tx) => {
+      await tx.delete(quotationSettingsData).where(eq(quotationSettingsData.ownerId, ownerId));
+      await tx.insert(quotationSettingsData).values({ ownerId, settingsJson });
+    });
     return true;
   } catch (error) {
-    console.warn("[Quotation settings] Database settings table is unavailable; retaining server-side fallback:", error);
-    return false;
+    throw new Error(`Quotation settings database save failed: ${describeDatabaseError(error)}`);
   }
 }
 
@@ -323,8 +326,8 @@ export async function getQuotationSettingsForOwner(ownerId: number) {
   try {
     const storedRows = await db.select({ settingsJson: quotationSettingsData.settingsJson }).from(quotationSettingsData).where(eq(quotationSettingsData.ownerId, ownerId)).limit(1);
     stored = storedRows[0];
-  } catch {
-    stored = undefined;
+  } catch (error) {
+    throw new Error(`Quotation settings database load failed: ${describeDatabaseError(error)}`);
   }
   if (stored) {
     try {
@@ -391,7 +394,7 @@ export async function updateQuotationSettingsForOwner(ownerId: number, values: P
     accountIfsc: fields.accountIfsc ?? current.accountIfsc,
     accountBranch: fields.accountBranch ?? current.accountBranch,
   };
-  if (!(await saveQuotationSettingsToDatabase(ownerId, completeFields))) await saveLocalQuotationSettings(ownerId, completeFields);
+  if (!(await saveQuotationSettingsToDatabase(ownerId, completeFields))) throw new Error("Database is not available");
   return completeFields;
 }
 

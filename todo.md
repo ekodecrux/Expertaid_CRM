@@ -974,6 +974,7 @@
 
 - [x] Verify the recreated Hostinger settings tables and application database target
 - [ ] Ensure profile and quotation branding saves create rows in MySQL instead of only local storage
+- [x] Fix Hostinger quotation settings so all fields and asset metadata persist to quotationSettingsData and reload after save; transactional Hostinger-compatible writes and database error reporting are implemented
 - [ ] Verify branding rows and file references after saving
 - [x] Fix Hostinger Invalid URL handling for DATABASE_URL and validate the corrected Hostinger URL format with regression tests; live profile-icon verification remains pending Hostinger restart
 
@@ -982,3 +983,4 @@
 - [x] Investigate and fix brand logo upload/persistence in Manus preview; branding now persists in profileSettingsData, managed storage URLs render through the preview proxy, and the default asset is managed
 
 - [x] Tolerate Hostinger DATABASE_URL values that include the literal `DATABASE_URL=` prefix and validate the parser with regression tests; live profile-settings save verification remains pending Hostinger restart
+- [x] Verify Hostinger profile icon/settings save after the corrected DATABASE_URL deployment; user confirmed the record now saves correctly in MySQL
