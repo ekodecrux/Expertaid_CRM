@@ -170,7 +170,7 @@ class SDKServer {
     return this.signSession(
       {
         openId,
-        appId: ENV.appId,
+        appId: ENV.appId || "erp-crm-link",
         name: options.name || "",
       },
       options
@@ -210,19 +210,17 @@ class SDKServer {
         algorithms: ["HS256"],
       });
       const { openId, appId, name } = payload as Record<string, unknown>;
+      const normalizedAppId =
+        isNonEmptyString(appId) || openId === "credential-admin" ? (isNonEmptyString(appId) ? appId : "erp-crm-link") : null;
 
-      if (
-        !isNonEmptyString(openId) ||
-        !isNonEmptyString(appId) ||
-        !isNonEmptyString(name)
-      ) {
+      if (!isNonEmptyString(openId) || !normalizedAppId || !isNonEmptyString(name)) {
         console.warn("[Auth] Session payload missing required fields");
         return null;
       }
 
       return {
         openId,
-        appId,
+        appId: normalizedAppId,
         name,
       };
     } catch (error) {

@@ -815,3 +815,11 @@
 
 - [x] Make the production package’s build command succeed when Hostinger runs it against prebuilt dist files without client source files
 - [x] Rebuild and validate a replacement ZIP for Hostinger’s automatic build step
+
+- [x] Diagnose the Hostinger credential-login redirect loop after the latest deployment
+- [x] Fix the deployed login session or credential configuration without regressing invalid-credential handling
+- [x] Validate the credential-session code path, full test suite, and production build; live Hostinger verification remains pending replacement upload
+
+- [x] Diagnose the Hostinger credential-login redirect loop after the latest deployment
+- [x] Fix the deployed login session or credential configuration without regressing invalid-credential handling
+- [x] Validate the credential-session code path, full test suite, and production build; live Hostinger verification remains pending replacement upload
