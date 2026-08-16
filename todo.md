@@ -859,3 +859,6 @@
 - [x] Add local-system image upload to Profile settings
 - [x] Persist the uploaded profile icon on the server and save its database reference
 - [x] Validate icon upload, avatar rendering, and production build with 45 tests and a successful production build
+
+- [x] Verify profile icon URL/key and all profile fields are persisted in profileSettingsData as profileJson
+- [x] Validate profile save persistence after refresh and rebuild the deployment package
