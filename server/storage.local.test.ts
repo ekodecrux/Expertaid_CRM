@@ -23,6 +23,7 @@ describe("Hostinger-local storage", () => {
   it("accepts persisted absolute paths and local-storage URLs without duplicating uploads", () => {
     const relative = "branding/1/logo.png";
     expect(resolveStoragePath(`${LOCAL_STORAGE_ROOT}/${relative}`)).toBe(resolveStoragePath(relative));
+    expect(resolveStoragePath(`${LOCAL_STORAGE_ROOT}${LOCAL_STORAGE_ROOT}/${relative}`)).toBe(resolveStoragePath(relative));
     expect(resolveStoragePath(`/local-storage/${relative}`)).toBe(resolveStoragePath(relative));
   });
 

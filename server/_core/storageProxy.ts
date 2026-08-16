@@ -21,7 +21,7 @@ export function registerStorageProxy(app: Express) {
     }
     res.setHeader("Content-Type", "image/png");
     res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-    res.sendFile(filePath, { root: LOCAL_STORAGE_ROOT });
+    res.sendFile(filePath);
   });
 
   app.get("/local-storage/*", (req, res) => {
@@ -40,7 +40,7 @@ export function registerStorageProxy(app: Express) {
       const extension = path.extname(filePath).toLowerCase();
       res.setHeader("Content-Type", MIME_TYPES[extension] || "application/octet-stream");
       res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-      res.sendFile(filePath, { root: LOCAL_STORAGE_ROOT });
+      res.sendFile(filePath);
     } catch (error) {
       console.error("[LocalStorage] failed:", error);
       res.status(400).send("Invalid storage path");

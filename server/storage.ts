@@ -25,12 +25,17 @@ function appendHashSuffix(relKey: string): string {
 }
 
 export function resolveStoragePath(key: string): string {
-  const rawKey = key.replace(/\\/g, "/");
-  const localUrlKey = rawKey.replace(/^\/+local-storage\//, "");
-  let normalized = normalizeKey(localUrlKey);
-  if (path.isAbsolute(rawKey) && rawKey !== `/local-storage/${localUrlKey}`) {
-    normalized = path.relative(LOCAL_STORAGE_ROOT, rawKey);
+  let rawKey = key.replace(/\\/g, "/");
+  const rootKey = LOCAL_STORAGE_ROOT.replace(/\\/g, "/");
+  const rootIndex = rawKey.indexOf(rootKey);
+  if (rootIndex >= 0) {
+    rawKey = rawKey.slice(rootIndex);
   }
+  while (rawKey.startsWith(rootKey)) {
+    rawKey = rawKey.slice(rootKey.length);
+  }
+  const localUrlKey = rawKey.replace(/^\/+local-storage\//, "");
+  const normalized = normalizeKey(localUrlKey);
   const resolved = path.resolve(LOCAL_STORAGE_ROOT, normalized);
   if (resolved !== LOCAL_STORAGE_ROOT && !resolved.startsWith(`${LOCAL_STORAGE_ROOT}${path.sep}`)) {
     throw new Error("Invalid storage path");

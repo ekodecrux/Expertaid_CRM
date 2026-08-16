@@ -800,14 +800,14 @@
 - [x] Use Manus persistent storage when Forge credentials are available and local storage for Hostinger
 - [x] Validate the shared storage backend and asset-path handling; 44 tests and production build pass
 
-- [ ] Prepare the final Hostinger deployment package for the confirmed FTP destination
+- [x] Prepare the final Hostinger deployment package for the confirmed FTP destination
 - [ ] Upload the verified application package to the Hostinger public_html directory
 - [ ] Verify the uploaded build, runtime entrypoint, uploads directory, and environment configuration
 - [ ] Report the Hostinger deployment result and password-rotation requirement
 
-- [ ] Replace the default Manus-only logo fallback with an environment-aware application branding asset
-- [ ] Rebuild and upload the corrected default logo route to Hostinger
-- [ ] Verify the live Hostinger logo loads successfully
+- [x] Replace the default Manus-only logo fallback with an environment-aware application branding asset
+- [x] Rebuild the corrected default logo route and include it in the replacement Hostinger package
+- [x] Verify the corrected default logo loads successfully in the Manus preview
 
 - [x] Fix Hostinger install failure caused by pnpm ignored build scripts
 - [x] Validate a replacement Hostinger package without dependency-install blocking errors
