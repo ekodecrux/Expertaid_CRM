@@ -113,7 +113,7 @@ export async function updateProfileSettingsForOwner(ownerId: number, values: Par
 
 /** Normalize the URL and preserve secure transport for sandbox TiDB connections. */
 export function normalizeDatabaseUrl(rawUrl: string): string {
-  const cleaned = rawUrl.trim().replace(/^['"]|['"]$/g, "");
+  const cleaned = rawUrl.trim().replace(/^['"]|['"]$/g, "").replace(/^DATABASE_URL\s*=\s*/i, "");
   const withScheme = /^[a-z][a-z\d+.-]*:\/\//i.test(cleaned) ? cleaned : `mysql://${cleaned}`;
   const parsed = new URL(withScheme);
   if (parsed.protocol !== "mysql:" && parsed.protocol !== "mysql2:") {

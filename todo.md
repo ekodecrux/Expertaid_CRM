@@ -980,3 +980,5 @@
 - [x] Diagnose why branding saves do not persist in Manus preview; legacy quotationSettings reads failed while profile settings were already persisted
 - [x] Validate preview branding persistence after save and reload through the managed preview data path
 - [x] Investigate and fix brand logo upload/persistence in Manus preview; branding now persists in profileSettingsData, managed storage URLs render through the preview proxy, and the default asset is managed
+
+- [x] Tolerate Hostinger DATABASE_URL values that include the literal `DATABASE_URL=` prefix and validate the parser with regression tests; live profile-settings save verification remains pending Hostinger restart

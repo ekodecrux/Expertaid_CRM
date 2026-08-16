@@ -25,5 +25,6 @@ describe("normalizeDatabaseUrl", () => {
     expect(normalized.hostname).toBe("127.0.0.1");
     expect(normalized.pathname).toBe("/u559264694_ExpertCRM");
     expect(normalizeDatabaseUrl(value.replace("mysql://", ""))).toBe(normalizeDatabaseUrl(value));
+    expect(normalizeDatabaseUrl(`DATABASE_URL=${value}`)).toBe(normalizeDatabaseUrl(value));
   });
 });
