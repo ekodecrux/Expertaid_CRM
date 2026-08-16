@@ -837,3 +837,6 @@
 
 - [x] Remove the Google/Manus login option from the login page
 - [x] Validate credential-only login UI and production build
+
+- [x] Push the latest credential-only login update to ekodecrux/Expertaid_CRM
+- [x] Verify the latest GitHub main commit and login-page change
