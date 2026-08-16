@@ -792,3 +792,10 @@
 - [x] Verify the active deployment is not using the old users-table session update; current source and rebuilt bundle use local session persistence
 - [x] Verify the complete replacement contains local session and branding persistence
 - [x] Validate and publish one complete replacement package
+
+- [x] Verify the actual uploads tree and storage paths shown in the Code tree
+- [x] Report which branding and session files are present versus runtime-created
+
+- [x] Restore persistent branding logo storage and display in Manus preview
+- [x] Use Manus persistent storage when Forge credentials are available and local storage for Hostinger
+- [x] Validate the shared storage backend and asset-path handling; 44 tests and production build pass
