@@ -823,3 +823,11 @@
 - [x] Diagnose the Hostinger credential-login redirect loop after the latest deployment
 - [x] Fix the deployed login session or credential configuration without regressing invalid-credential handling
 - [x] Validate the credential-session code path, full test suite, and production build; live Hostinger verification remains pending replacement upload
+
+- [x] Diagnose the quotationSettings query failure caused by missing Hostinger columns
+- [x] Add a schema-tolerant quotation settings fallback for legacy Hostinger databases
+- [x] Validate quotation settings and rebuild the Hostinger deployment package
+
+- [x] Audit the complete Hostinger deployment for all ERP CRM modules and legacy-schema queries
+- [x] Fix all confirmed cross-module compatibility defects found by the audit
+- [x] Validate the consolidated replacement package across authentication, settings, sessions, clients, agreements, quotations, storage, and printing

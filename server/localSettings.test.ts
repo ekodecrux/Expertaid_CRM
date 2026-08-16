@@ -1,8 +1,17 @@
 import { afterEach, describe, expect, it } from "vitest";
 import fs from "fs/promises";
-import { BRANDING_FILE, getLocalBranding, saveLocalBranding } from "./localSettings";
+import { BRANDING_FILE, getLocalBranding, getLocalQuotationSettings, QUOTATION_SETTINGS_FILE, saveLocalBranding, saveLocalQuotationSettings } from "./localSettings";
 
 let previous: string | null = null;
+let previousQuotation: string | null = null;
+
+async function readQuotationExisting() {
+  try {
+    return await fs.readFile(QUOTATION_SETTINGS_FILE, "utf8");
+  } catch {
+    return null;
+  }
+}
 
 async function readExisting() {
   try {
@@ -13,6 +22,14 @@ async function readExisting() {
 }
 
 afterEach(async () => {
+  if (previousQuotation === null) {
+    await fs.rm(QUOTATION_SETTINGS_FILE, { force: true });
+  } else {
+    await fs.mkdir(new URL(".", `file://${QUOTATION_SETTINGS_FILE}`).pathname, { recursive: true }).catch(() => undefined);
+    await fs.writeFile(QUOTATION_SETTINGS_FILE, previousQuotation, "utf8");
+  }
+  previousQuotation = null;
+
   if (previous === null) {
     await fs.rm(BRANDING_FILE, { force: true });
   } else {
@@ -33,5 +50,14 @@ describe("local branding settings", () => {
     });
 
     await expect(getLocalBranding(1)).resolves.toEqual(saved);
+  });
+
+  it("saves and retrieves quotation settings independently of the quotationSettings table", async () => {
+    previousQuotation = await readQuotationExisting();
+    const defaults = await getLocalQuotationSettings(1);
+    const saved = await saveLocalQuotationSettings(1, { ...defaults, quotationPrefix: "ET", invoiceNumberStart: 500, invoiceNumberNext: 500 });
+
+    await expect(getLocalQuotationSettings(1)).resolves.toMatchObject({ quotationPrefix: "ET", invoiceNumberStart: 500, invoiceNumberNext: 500 });
+    expect(saved.products.length).toBeGreaterThan(0);
   });
 });

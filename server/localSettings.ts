@@ -2,6 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import { LOCAL_STORAGE_ROOT } from "./storage";
 import { DEFAULT_BRANDING, normalizeBranding, type CompanyBranding } from "@shared/branding";
+import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_PRODUCTS, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 
 const BRANDING_FILE = path.join(LOCAL_STORAGE_ROOT, "settings", "branding.json");
 
@@ -37,6 +38,44 @@ export async function saveLocalBranding(ownerId: number, branding: CompanyBrandi
   return normalized;
 }
 
+const defaultQuotationSettings = (): LocalQuotationSettings => ({
+  companyGst: DEFAULT_QUOTATION_GST,
+  companyAddress: DEFAULT_QUOTATION_ADDRESS,
+  validityDays: 15,
+  gstRate: "18.00",
+  gstMode: "exclusive",
+  quotationPrefix: "QT",
+  invoiceNumberStart: 129,
+  invoiceNumberNext: 129,
+  terms: DEFAULT_QUOTATION_TERMS,
+  products: DEFAULT_QUOTATION_PRODUCTS,
+  logoUrl: null,
+  logoKey: null,
+  scannerUrl: null,
+  scannerKey: null,
+  signatureUrl: null,
+  signatureKey: null,
+  accountCompanyName: "Expertaid Technologies Pvt Ltd.",
+  accountNumber: "502000055251128",
+  accountIfsc: "HDFC0009147",
+  accountBranch: "Ameerpur Branch, Hyd, TS-502032",
+});
+
+type QuotationSettingsRecord = Record<string, LocalQuotationSettings>;
+
+export async function getLocalQuotationSettings(ownerId: number): Promise<LocalQuotationSettings> {
+  const records = await readJsonFile<QuotationSettingsRecord>(QUOTATION_SETTINGS_FILE, {});
+  const saved = records[String(ownerId)];
+  return saved ? { ...defaultQuotationSettings(), ...saved, products: saved.products?.length ? saved.products : DEFAULT_QUOTATION_PRODUCTS } : defaultQuotationSettings();
+}
+
+export async function saveLocalQuotationSettings(ownerId: number, values: LocalQuotationSettings): Promise<LocalQuotationSettings> {
+  const records = await readJsonFile<QuotationSettingsRecord>(QUOTATION_SETTINGS_FILE, {});
+  records[String(ownerId)] = { ...defaultQuotationSettings(), ...values, products: values.products };
+  await writeJsonFile(QUOTATION_SETTINGS_FILE, records);
+  return records[String(ownerId)];
+}
+
 export type LocalSession = {
   id: number;
   ownerId: number;
@@ -47,6 +86,30 @@ export type LocalSession = {
 
 type SessionSettingsRecord = Record<string, { sessionMode: "all" | "single"; currentSession: string }>;
 type SessionsRecord = Record<string, LocalSession[]>;
+export type LocalQuotationSettings = {
+  companyGst: string;
+  companyAddress: string;
+  validityDays: number;
+  gstRate: string;
+  gstMode: "inclusive" | "exclusive";
+  quotationPrefix: string;
+  invoiceNumberStart: number;
+  invoiceNumberNext: number;
+  terms: string;
+  products: QuotationProduct[];
+  logoUrl: string | null;
+  logoKey: string | null;
+  scannerUrl: string | null;
+  scannerKey: string | null;
+  signatureUrl: string | null;
+  signatureKey: string | null;
+  accountCompanyName: string;
+  accountNumber: string;
+  accountIfsc: string;
+  accountBranch: string;
+};
+
+const QUOTATION_SETTINGS_FILE = path.join(LOCAL_STORAGE_ROOT, "settings", "quotation-settings.json");
 const SESSION_SETTINGS_FILE = path.join(LOCAL_STORAGE_ROOT, "settings", "session-settings.json");
 const SESSIONS_FILE = path.join(LOCAL_STORAGE_ROOT, "settings", "sessions.json");
 
@@ -94,4 +157,4 @@ export async function addLocalSession(ownerId: number, session: Omit<LocalSessio
   return current;
 }
 
-export { BRANDING_FILE, SESSION_SETTINGS_FILE, SESSIONS_FILE };
+export { BRANDING_FILE, QUOTATION_SETTINGS_FILE, SESSION_SETTINGS_FILE, SESSIONS_FILE };

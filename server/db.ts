@@ -5,7 +5,7 @@ import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, 
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_PRODUCTS, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
 import { ENV } from './_core/env';
-import { addLocalSession, getLocalBranding, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalSessionSettings } from './localSettings';
+import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalQuotationSettings, saveLocalSessionSettings, type LocalQuotationSettings } from './localSettings';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -148,39 +148,44 @@ export async function getUserByEmail(email: string) {
 }
 
 export async function getQuotationSettingsForOwner(ownerId: number) {
-  const db = await getDb();
-  const fallback = { companyGst: DEFAULT_QUOTATION_GST, companyAddress: DEFAULT_QUOTATION_ADDRESS, validityDays: 15, gstRate: "18.00", gstMode: "exclusive" as const, quotationPrefix: "QT", invoiceNumberStart: 129, invoiceNumberNext: 129, terms: DEFAULT_QUOTATION_TERMS, products: DEFAULT_QUOTATION_PRODUCTS, logoUrl: null, logoKey: null, scannerUrl: null, scannerKey: null, signatureUrl: null, signatureKey: null, accountCompanyName: "Expertaid Technologies Pvt Ltd.", accountNumber: "502000055251128", accountIfsc: "HDFC0009147", accountBranch: "Ameerpur Branch, Hyd, TS-502032" };
-  if (!db) return fallback;
-  const rows = await db.select().from(quotationSettings).where(eq(quotationSettings.ownerId, ownerId)).limit(1);
-  const row = rows[0];
-  if (!row) return fallback;
-  return { ...row, products: JSON.parse(row.productsJson) as QuotationProduct[] };
+  return getLocalQuotationSettings(ownerId);
 }
 
 export async function allocateInvoiceNumberForOwner(ownerId: number) {
-  const db = await getDb();
-  if (!db) throw new Error("Database is not available");
   const current = await getQuotationSettingsForOwner(ownerId);
   const next = Number(current.invoiceNumberNext ?? current.invoiceNumberStart ?? 129);
-  const existing = await db.select({ id: quotationSettings.id }).from(quotationSettings).where(eq(quotationSettings.ownerId, ownerId)).limit(1);
-  if (existing[0]) {
-    await db.update(quotationSettings).set({ invoiceNumberNext: next + 1 }).where(eq(quotationSettings.ownerId, ownerId));
-  } else {
-    await db.insert(quotationSettings).values({ ownerId, companyGst: current.companyGst, companyAddress: current.companyAddress, validityDays: current.validityDays, gstRate: current.gstRate, gstMode: current.gstMode, quotationPrefix: current.quotationPrefix ?? "QT", invoiceNumberStart: current.invoiceNumberStart, invoiceNumberNext: next + 1, terms: current.terms, productsJson: JSON.stringify(current.products), accountCompanyName: current.accountCompanyName, accountNumber: current.accountNumber, accountIfsc: current.accountIfsc, accountBranch: current.accountBranch });
-  }
+  await saveLocalQuotationSettings(ownerId, { ...current, invoiceNumberNext: next + 1 });
   return String(next);
 }
 
 export async function updateQuotationSettingsForOwner(ownerId: number, values: Partial<Omit<InsertQuotationSettings, "ownerId" | "productsJson">> & { products: QuotationProduct[] }) {
-  const db = await getDb();
-  if (!db) throw new Error("Database is not available");
   const current = await getQuotationSettingsForOwner(ownerId);
   const { products, ...fields } = values;
   const nextStart = fields.invoiceNumberStart ?? current.invoiceNumberStart;
   const nextNumber = fields.invoiceNumberNext ?? (fields.invoiceNumberStart !== undefined && Number(current.invoiceNumberNext) === Number(current.invoiceNumberStart) ? nextStart : current.invoiceNumberNext);
-  const completeFields = { companyGst: fields.companyGst ?? current.companyGst, companyAddress: fields.companyAddress ?? current.companyAddress, validityDays: fields.validityDays ?? current.validityDays, gstRate: fields.gstRate ?? current.gstRate, gstMode: fields.gstMode ?? current.gstMode, quotationPrefix: fields.quotationPrefix ?? current.quotationPrefix ?? "QT", invoiceNumberStart: nextStart, invoiceNumberNext: nextNumber, terms: fields.terms ?? current.terms, logoUrl: fields.logoUrl !== undefined ? fields.logoUrl : current.logoUrl, logoKey: fields.logoKey !== undefined ? fields.logoKey : current.logoKey, scannerUrl: fields.scannerUrl !== undefined ? fields.scannerUrl : current.scannerUrl, scannerKey: fields.scannerKey !== undefined ? fields.scannerKey : current.scannerKey, signatureUrl: fields.signatureUrl !== undefined ? fields.signatureUrl : current.signatureUrl, signatureKey: fields.signatureKey !== undefined ? fields.signatureKey : current.signatureKey, accountCompanyName: fields.accountCompanyName ?? current.accountCompanyName, accountNumber: fields.accountNumber ?? current.accountNumber, accountIfsc: fields.accountIfsc ?? current.accountIfsc, accountBranch: fields.accountBranch ?? current.accountBranch };
-  await db.insert(quotationSettings).values({ ...completeFields, ownerId, productsJson: JSON.stringify(products) }).onDuplicateKeyUpdate({ set: { ...completeFields, productsJson: JSON.stringify(products) } });
-  return getQuotationSettingsForOwner(ownerId);
+  const completeFields: LocalQuotationSettings = {
+    companyGst: fields.companyGst ?? current.companyGst,
+    companyAddress: fields.companyAddress ?? current.companyAddress,
+    validityDays: fields.validityDays ?? current.validityDays,
+    gstRate: fields.gstRate ?? current.gstRate,
+    gstMode: fields.gstMode ?? current.gstMode,
+    quotationPrefix: fields.quotationPrefix ?? current.quotationPrefix ?? "QT",
+    invoiceNumberStart: nextStart,
+    invoiceNumberNext: nextNumber,
+    terms: fields.terms ?? current.terms,
+    products,
+    logoUrl: fields.logoUrl !== undefined ? fields.logoUrl : current.logoUrl,
+    logoKey: fields.logoKey !== undefined ? fields.logoKey : current.logoKey,
+    scannerUrl: fields.scannerUrl !== undefined ? fields.scannerUrl : current.scannerUrl,
+    scannerKey: fields.scannerKey !== undefined ? fields.scannerKey : current.scannerKey,
+    signatureUrl: fields.signatureUrl !== undefined ? fields.signatureUrl : current.signatureUrl,
+    signatureKey: fields.signatureKey !== undefined ? fields.signatureKey : current.signatureKey,
+    accountCompanyName: fields.accountCompanyName ?? current.accountCompanyName,
+    accountNumber: fields.accountNumber ?? current.accountNumber,
+    accountIfsc: fields.accountIfsc ?? current.accountIfsc,
+    accountBranch: fields.accountBranch ?? current.accountBranch,
+  };
+  return saveLocalQuotationSettings(ownerId, completeFields);
 }
 
 export async function updateQuotationForOwner(ownerId: number, quotationId: number, values: Partial<InsertQuotation>, editor: { id: number; name: string }) {
