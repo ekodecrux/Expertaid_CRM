@@ -855,3 +855,7 @@
 - [x] Add a profile settings option to the administrator profile menu
 - [x] Allow editing and persisting profile display name, initials/icon, and account details
 - [x] Validate the profile menu, save flow, and production build with 45 tests and visual header verification
+
+- [x] Add local-system image upload to Profile settings
+- [x] Persist the uploaded profile icon on the server and save its database reference
+- [x] Validate icon upload, avatar rendering, and production build with 45 tests and a successful production build

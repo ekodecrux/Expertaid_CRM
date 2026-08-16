@@ -16,6 +16,8 @@ export type ProfileSettings = {
   roleLabel: string;
   department: string;
   phone: string;
+  avatarUrl: string | null;
+  avatarKey: string | null;
 };
 
 function defaultProfileSettings(fallback: { name?: string | null; role?: string | null }): ProfileSettings {
@@ -27,6 +29,8 @@ function defaultProfileSettings(fallback: { name?: string | null; role?: string 
     roleLabel: fallback.role === "admin" ? "Super Admin" : "Administrator",
     department: "Workspace",
     phone: "",
+    avatarUrl: null,
+    avatarKey: null,
   };
 }
 
@@ -41,6 +45,8 @@ function normalizeProfileSettings(value: unknown, fallback: { name?: string | nu
     roleLabel: String(candidate.roleLabel ?? base.roleLabel).trim() || base.roleLabel,
     department: String(candidate.department ?? base.department).trim() || base.department,
     phone: String(candidate.phone ?? "").trim(),
+    avatarUrl: typeof candidate.avatarUrl === "string" ? candidate.avatarUrl : null,
+    avatarKey: typeof candidate.avatarKey === "string" ? candidate.avatarKey : null,
   };
 }
 

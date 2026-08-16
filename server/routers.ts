@@ -83,6 +83,15 @@ async function uploadQuotationAsset(dataUrl: string | undefined, path: string) {
   return { url: stored.url, key: stored.key };
 }
 
+async function uploadProfileAvatar(dataUrl: string | undefined) {
+  if (!dataUrl) return { url: null, key: null };
+  const [header, encoded] = dataUrl.split(",");
+  const mimeType = header.match(/^data:(image\/(?:png|jpeg|jpg|webp));base64$/)?.[1] ?? "image/png";
+  const extension = mimeType === "image/jpeg" || mimeType === "image/jpg" ? "jpg" : mimeType.split("/")[1];
+  const stored = await storagePut(`profiles/${nanoid(10)}/avatar.${extension}`, Buffer.from(encoded, "base64"), mimeType);
+  return { url: stored.url, key: stored.key };
+}
+
 async function uploadLogo(logoDataUrl: string | undefined) {
   if (!logoDataUrl) return { logoUrl: null, logoKey: null };
   const [header, encoded] = logoDataUrl.split(",");
@@ -154,7 +163,13 @@ export const appRouter = router({
       roleLabel: z.string().trim().min(1).max(80),
       department: z.string().trim().min(1).max(120),
       phone: z.string().trim().max(40),
-    })).mutation(({ ctx, input }) => updateProfileSettingsForOwner(ctx.user.id, input, { name: ctx.user.name, role: ctx.user.role })),
+      avatarDataUrl: z.union([dataUrlSchema, z.null()]).optional(),
+    })).mutation(async ({ ctx, input }) => {
+      const current = await getProfileSettingsForOwner(ctx.user.id, { name: ctx.user.name, role: ctx.user.role });
+      const avatar = input.avatarDataUrl === null ? { url: null, key: null } : input.avatarDataUrl ? await uploadProfileAvatar(input.avatarDataUrl) : { url: current.avatarUrl, key: current.avatarKey };
+      const { avatarDataUrl: _avatarDataUrl, ...fields } = input;
+      return updateProfileSettingsForOwner(ctx.user.id, { ...fields, avatarUrl: avatar.url, avatarKey: avatar.key }, { name: ctx.user.name, role: ctx.user.role });
+    }),
   }),
   quotations: router({
     list: protectedProcedure.query(({ ctx }) => listQuotationsForOwner(ctx.user.id)),
