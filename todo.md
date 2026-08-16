@@ -799,3 +799,16 @@
 - [x] Restore persistent branding logo storage and display in Manus preview
 - [x] Use Manus persistent storage when Forge credentials are available and local storage for Hostinger
 - [x] Validate the shared storage backend and asset-path handling; 44 tests and production build pass
+
+- [ ] Prepare the final Hostinger deployment package for the confirmed FTP destination
+- [ ] Upload the verified application package to the Hostinger public_html directory
+- [ ] Verify the uploaded build, runtime entrypoint, uploads directory, and environment configuration
+- [ ] Report the Hostinger deployment result and password-rotation requirement
+
+- [ ] Replace the default Manus-only logo fallback with an environment-aware application branding asset
+- [ ] Rebuild and upload the corrected default logo route to Hostinger
+- [ ] Verify the live Hostinger logo loads successfully
+
+- [x] Fix Hostinger install failure caused by pnpm ignored build scripts
+- [x] Validate a replacement Hostinger package without dependency-install blocking errors
+- [x] Provide updated Hostinger upload and install instructions

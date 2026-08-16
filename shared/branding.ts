@@ -1,5 +1,5 @@
 export const DEFAULT_BRANDING = {
-  companyLogoUrl: "/manus-storage/EXPLOGO2024_3ab64898.png",
+  companyLogoUrl: "/app-branding/default-logo",
   companyName: "Expertaid Technologies Pvt. Ltd.",
   serviceCaption: "ERP Solutions • Software Development • IT Support",
   footerCompanyName: "Expertaid Technologies Pvt Ltd",
