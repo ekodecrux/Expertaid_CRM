@@ -788,3 +788,7 @@
 - [x] Restore branding save and display in Manus preview
 - [x] Normalize both Manus-preview and Hostinger local asset paths through the shared storage interface
 - [x] Validate branding persistence paths in both environments
+
+- [x] Verify the active deployment is not using the old users-table session update; current source and rebuilt bundle use local session persistence
+- [x] Verify the complete replacement contains local session and branding persistence
+- [x] Validate and publish one complete replacement package
