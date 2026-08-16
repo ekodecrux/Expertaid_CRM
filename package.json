@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
+  "author": "Expertaid",
+  "contributors": ["Ravi"],
   "scripts": {
     "dev": "NODE_ENV=development tsx watch server/_core/index.ts",
     "build": "if [ -f client/index.html ]; then vite build && esbuild server/_core/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist; else echo 'Using prebuilt dist deployment'; fi",
