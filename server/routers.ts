@@ -6,7 +6,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { ENV } from "./_core/env";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getNextEstimationNumberForClient, getAgreementByToken, createSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getUserByEmail, upsertUser } from "./db";
+import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getNextEstimationNumberForClient, getAgreementByToken, createSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getProfileSettingsForOwner, updateProfileSettingsForOwner, getUserByEmail, upsertUser } from "./db";
 import { storagePut } from "./storage";
 import { sdk } from "./_core/sdk";
 import { validateCredentialLogin } from "./credentialLogin";
@@ -144,6 +144,17 @@ export const appRouter = router({
       ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
       return { success: true } as const;
     }),
+  }),
+  profile: router({
+    get: protectedProcedure.query(({ ctx }) => getProfileSettingsForOwner(ctx.user.id, { name: ctx.user.name, role: ctx.user.role })),
+    update: protectedProcedure.input(z.object({
+      displayName: z.string().trim().min(1).max(120),
+      avatarInitials: z.string().trim().min(1).max(3),
+      avatarColor: z.string().regex(/^#[0-9a-fA-F]{6}$/),
+      roleLabel: z.string().trim().min(1).max(80),
+      department: z.string().trim().min(1).max(120),
+      phone: z.string().trim().max(40),
+    })).mutation(({ ctx, input }) => updateProfileSettingsForOwner(ctx.user.id, input, { name: ctx.user.name, role: ctx.user.role })),
   }),
   quotations: router({
     list: protectedProcedure.query(({ ctx }) => listQuotationsForOwner(ctx.user.id)),

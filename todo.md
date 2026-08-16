@@ -849,5 +849,9 @@
 - [x] Keep uploaded quotation assets in server-side storage without packaging runtime data into code deployments
 - [x] Add safe migration and deployment instructions so future Git pushes preserve production data
 
-- [ ] Push database-backed quotation persistence, migration SQL, and data-safe deployment rules to GitHub
-- [ ] Verify the pushed GitHub branch and document Hostinger automatic deployment requirements
+- [x] Push database-backed quotation persistence, migration SQL, and data-safe deployment rules to GitHub
+- [x] Verify the pushed GitHub branch and document Hostinger automatic deployment requirements
+
+- [x] Add a profile settings option to the administrator profile menu
+- [x] Allow editing and persisting profile display name, initials/icon, and account details
+- [x] Validate the profile menu, save flow, and production build with 45 tests and visual header verification

@@ -63,6 +63,14 @@ export const quotationSettingsData = mysqlTable("quotationSettingsData", {
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 
+export const profileSettingsData = mysqlTable("profileSettingsData", {
+  id: int("id").autoincrement().primaryKey(),
+  ownerId: int("ownerId").notNull().unique(),
+  profileJson: text("profileJson").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
 export const quotationEditHistory = mysqlTable("quotationEditHistory", {
   id: int("id").autoincrement().primaryKey(),
   quotationId: int("quotationId").notNull(),
@@ -151,6 +159,7 @@ export type InsertSession = typeof sessions.$inferInsert;
 export type QuotationSettings = typeof quotationSettings.$inferSelect;
 export type InsertQuotationSettings = typeof quotationSettings.$inferInsert;
 export type QuotationSettingsData = typeof quotationSettingsData.$inferSelect;
+export type ProfileSettingsData = typeof profileSettingsData.$inferSelect;
 export type QuotationEditHistory = typeof quotationEditHistory.$inferSelect;
 export type InsertQuotationEditHistory = typeof quotationEditHistory.$inferInsert;
 export type Quotation = typeof quotations.$inferSelect;

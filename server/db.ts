@@ -1,13 +1,71 @@
 import { and, desc, eq, gte, like, lte, lt, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
-import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, quotationEditHistory, quotations, quotationSettings, quotationSettingsData, sessions, users, type User } from "../drizzle/schema";
+import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, profileSettingsData, quotationEditHistory, quotations, quotationSettings, quotationSettingsData, sessions, users, type User } from "../drizzle/schema";
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_PRODUCTS, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
 import { ENV } from './_core/env';
 import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getSavedLocalQuotationSettings, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalQuotationSettings, saveLocalSessionSettings, type LocalQuotationSettings } from './localSettings';
 
 let _db: ReturnType<typeof drizzle> | null = null;
+
+export type ProfileSettings = {
+  displayName: string;
+  avatarInitials: string;
+  avatarColor: string;
+  roleLabel: string;
+  department: string;
+  phone: string;
+};
+
+function defaultProfileSettings(fallback: { name?: string | null; role?: string | null }): ProfileSettings {
+  const displayName = fallback.name?.trim() || "Workspace administrator";
+  return {
+    displayName,
+    avatarInitials: displayName.split(/\s+/).filter(Boolean).map(part => part[0]).join("").slice(0, 2).toUpperCase() || "AD",
+    avatarColor: "#4b43a8",
+    roleLabel: fallback.role === "admin" ? "Super Admin" : "Administrator",
+    department: "Workspace",
+    phone: "",
+  };
+}
+
+function normalizeProfileSettings(value: unknown, fallback: { name?: string | null; role?: string | null }): ProfileSettings {
+  const base = defaultProfileSettings(fallback);
+  if (!value || typeof value !== "object") return base;
+  const candidate = value as Partial<ProfileSettings>;
+  return {
+    displayName: String(candidate.displayName ?? base.displayName).trim() || base.displayName,
+    avatarInitials: String(candidate.avatarInitials ?? base.avatarInitials).trim().slice(0, 3).toUpperCase() || base.avatarInitials,
+    avatarColor: /^#[0-9a-f]{6}$/i.test(String(candidate.avatarColor ?? "")) ? String(candidate.avatarColor) : base.avatarColor,
+    roleLabel: String(candidate.roleLabel ?? base.roleLabel).trim() || base.roleLabel,
+    department: String(candidate.department ?? base.department).trim() || base.department,
+    phone: String(candidate.phone ?? "").trim(),
+  };
+}
+
+export async function getProfileSettingsForOwner(ownerId: number, fallback: { name?: string | null; role?: string | null }): Promise<ProfileSettings> {
+  const base = defaultProfileSettings(fallback);
+  const db = await getDb();
+  if (!db) return base;
+  try {
+    const rows = await db.select({ profileJson: profileSettingsData.profileJson }).from(profileSettingsData).where(eq(profileSettingsData.ownerId, ownerId)).limit(1);
+    if (!rows[0]) return base;
+    return normalizeProfileSettings(JSON.parse(rows[0].profileJson), fallback);
+  } catch (error) {
+    console.warn("[Profile settings] Could not load profile settings:", error);
+    return base;
+  }
+}
+
+export async function updateProfileSettingsForOwner(ownerId: number, values: Partial<ProfileSettings>, fallback: { name?: string | null; role?: string | null }): Promise<ProfileSettings> {
+  const current = await getProfileSettingsForOwner(ownerId, fallback);
+  const next = normalizeProfileSettings({ ...current, ...values }, fallback);
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  await db.insert(profileSettingsData).values({ ownerId, profileJson: JSON.stringify(next) }).onDuplicateKeyUpdate({ set: { profileJson: JSON.stringify(next) } });
+  return next;
+}
 
 /** Normalize the URL and preserve secure transport for sandbox TiDB connections. */
 export function normalizeDatabaseUrl(rawUrl: string): string {

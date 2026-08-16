@@ -18,3 +18,14 @@ CREATE TABLE IF NOT EXISTS `quotationSettingsData` (
 
 -- Uploaded logos, scanners, signatures, and branding files remain in the
 -- server-side uploads/ directory and are intentionally not stored in Git.
+
+-- Administrator profile display settings.
+CREATE TABLE IF NOT EXISTS `profileSettingsData` (
+  `id` INT AUTO_INCREMENT NOT NULL,
+  `ownerId` INT NOT NULL,
+  `profileJson` TEXT NOT NULL,
+  `createdAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `profileSettingsData_ownerId_unique` (`ownerId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
