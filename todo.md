@@ -901,30 +901,30 @@
 - [x] Create missing profileSettingsData and quotationSettingsData tables in the connected Hostinger database
 - [x] Verify the new settings tables and preserve existing legacy-table data
 
-- [ ] Diagnose Hostinger MySQL access-denied error for the deployed application
-- [ ] Verify database host, username, database assignment, and privileges
-- [ ] Confirm application readiness after Hostinger permissions are corrected
+- [x] Diagnose Hostinger MySQL access-denied error for the deployed application; credentials were confirmed externally and the live runtime issue was isolated
+- [x] Verify database host, username, database assignment, and privileges
+- [x] Confirm application readiness after Hostinger permissions are corrected; Hostinger authenticated successfully and tables are queryable
 
-- [ ] Resolve remaining Hostinger MySQL access denial after correcting the database username
-- [ ] Confirm password encoding and database-user privilege assignment
+- [x] Resolve remaining Hostinger MySQL access denial after correcting the database username
+- [x] Confirm password encoding and database-user privilege assignment
 
-- [ ] Compare project-side database connection health with the Hostinger access-denied runtime
-- [ ] Identify and correct any stale or mismatched deployed DATABASE_URL value
+- [x] Compare project-side database connection health with the Hostinger access-denied runtime
+- [x] Identify and correct any stale or mismatched deployed DATABASE_URL value; exact working URL verified externally
 
-- [ ] Apply the settings-table migration in the user’s actual Hostinger database
-- [ ] Verify the two tables from Hostinger phpMyAdmin before retesting the application
+- [x] Apply the settings-table migration in the user’s actual Hostinger database
+- [x] Verify the two tables from Hostinger phpMyAdmin before retesting the application
 
-- [ ] Diagnose why the deployed Hostinger application is not using the database that now contains the required tables
-- [ ] Verify or correct the deployed DATABASE_URL and restart state
+- [x] Diagnose why the deployed Hostinger application is not using the database that now contains the required tables
+- [x] Verify or correct the deployed DATABASE_URL and restart state
 
-- [ ] Identify why the live Hostinger Node.js process still uses rejected database credentials after external connection succeeds
-- [ ] Document the final full-stop, environment reset, and redeploy verification sequence
+- [x] Identify why the live Hostinger Node.js process still uses rejected database credentials after external connection succeeds
+- [x] Document the final full-stop, environment reset, and redeploy verification sequence
 
-- [ ] Verify the actual Hostinger profileSettingsData column names and types
-- [ ] Correct any mismatch without deleting existing profile data
+- [x] Verify the actual Hostinger profileSettingsData column names and types
+- [x] Correct any mismatch without deleting existing profile data; no mismatch was found
 
-- [ ] Verify Hostinger profileSettingsData row values and database identity
-- [ ] Verify quotationSettingsData structure before changing application code
+- [x] Verify Hostinger profileSettingsData row values and database identity
+- [x] Verify quotationSettingsData structure before changing application code
 
 - [x] Initialize empty profileSettingsData and quotationSettingsData rows safely on first save; current code defaults on empty rows and inserts on save
 - [ ] Validate first profile save and quotation settings persistence after initialization after Hostinger restart
@@ -932,3 +932,7 @@
 - [x] Set application author branding to Expertaid and developer credit to Ravi
 - [x] Remove user-facing AI-generated or template wording from the application; no user-facing AI branding was found
 - [x] Validate and push the authorship and branding update to GitHub; 47 tests passed and commit 39d07d4 was pushed
+
+- [x] Stop quotations from silently saving only to local fallback storage when MySQL persistence is expected
+- [x] Fix the remaining profile settings save/read failure in the deployed Hostinger path by requiring the settings tables and surfacing database errors
+- [ ] Verify new quotation and profile records in the Hostinger database after the correction
