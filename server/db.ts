@@ -5,7 +5,7 @@ import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, 
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_PRODUCTS, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
 import { ENV } from './_core/env';
-import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalQuotationSettings, saveLocalSessionSettings, type LocalQuotationSettings } from './localSettings';
+import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getSavedLocalQuotationSettings, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalQuotationSettings, saveLocalSessionSettings, type LocalQuotationSettings } from './localSettings';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -148,7 +148,72 @@ export async function getUserByEmail(email: string) {
 }
 
 export async function getQuotationSettingsForOwner(ownerId: number) {
-  return getLocalQuotationSettings(ownerId);
+  const saved = await getSavedLocalQuotationSettings(ownerId);
+  if (saved) return saved;
+
+  const db = await getDb();
+  if (!db) return getLocalQuotationSettings(ownerId);
+
+  try {
+    const baseRows = await db.select({
+      companyGst: quotationSettings.companyGst,
+      companyAddress: quotationSettings.companyAddress,
+      validityDays: quotationSettings.validityDays,
+      gstRate: quotationSettings.gstRate,
+      gstMode: quotationSettings.gstMode,
+      terms: quotationSettings.terms,
+      productsJson: quotationSettings.productsJson,
+    }).from(quotationSettings).where(eq(quotationSettings.ownerId, ownerId)).limit(1);
+    const base = baseRows[0];
+    if (!base) return getLocalQuotationSettings(ownerId);
+
+    const readOptional = async (selection: any): Promise<Record<string, any>> => {
+      try {
+        const rows = await db.select(selection).from(quotationSettings).where(eq(quotationSettings.ownerId, ownerId)).limit(1);
+        return (rows[0] ?? {}) as Record<string, any>;
+      } catch {
+        return {};
+      }
+    };
+    const [numbering, assets, accounts] = await Promise.all([
+      readOptional({ quotationPrefix: quotationSettings.quotationPrefix, invoiceNumberStart: quotationSettings.invoiceNumberStart, invoiceNumberNext: quotationSettings.invoiceNumberNext }),
+      readOptional({ logoUrl: quotationSettings.logoUrl, logoKey: quotationSettings.logoKey, scannerUrl: quotationSettings.scannerUrl, scannerKey: quotationSettings.scannerKey, signatureUrl: quotationSettings.signatureUrl, signatureKey: quotationSettings.signatureKey }),
+      readOptional({ accountCompanyName: quotationSettings.accountCompanyName, accountNumber: quotationSettings.accountNumber, accountIfsc: quotationSettings.accountIfsc, accountBranch: quotationSettings.accountBranch }),
+    ]);
+
+    let products: QuotationProduct[] = DEFAULT_QUOTATION_PRODUCTS;
+    try {
+      const parsed = JSON.parse(base.productsJson);
+      if (Array.isArray(parsed) && parsed.length) products = parsed as QuotationProduct[];
+    } catch {
+      // Keep the supported default product catalog when legacy JSON is invalid.
+    }
+    return saveLocalQuotationSettings(ownerId, {
+      companyGst: base.companyGst,
+      companyAddress: base.companyAddress,
+      validityDays: base.validityDays,
+      gstRate: base.gstRate,
+      gstMode: base.gstMode,
+      quotationPrefix: numbering.quotationPrefix ?? "QT",
+      invoiceNumberStart: numbering.invoiceNumberStart ?? 129,
+      invoiceNumberNext: numbering.invoiceNumberNext ?? numbering.invoiceNumberStart ?? 129,
+      terms: base.terms,
+      products,
+      logoUrl: assets.logoUrl ?? null,
+      logoKey: assets.logoKey ?? null,
+      scannerUrl: assets.scannerUrl ?? null,
+      scannerKey: assets.scannerKey ?? null,
+      signatureUrl: assets.signatureUrl ?? null,
+      signatureKey: assets.signatureKey ?? null,
+      accountCompanyName: accounts.accountCompanyName ?? "Expertaid Technologies Pvt Ltd.",
+      accountNumber: accounts.accountNumber ?? "502000055251128",
+      accountIfsc: accounts.accountIfsc ?? "HDFC0009147",
+      accountBranch: accounts.accountBranch ?? "Ameerpur Branch, Hyd, TS-502032",
+    });
+  } catch (error) {
+    console.warn("[Quotation settings] Legacy table unavailable; using local defaults:", error);
+    return getLocalQuotationSettings(ownerId);
+  }
 }
 
 export async function allocateInvoiceNumberForOwner(ownerId: number) {

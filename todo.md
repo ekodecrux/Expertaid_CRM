@@ -840,3 +840,7 @@
 
 - [x] Push the latest credential-only login update to ekodecrux/Expertaid_CRM
 - [x] Verify the latest GitHub main commit and login-page change
+
+- [x] Compare the user’s quotation-settings modifications against local and GitHub history
+- [x] Recover missing quotation-settings code without overwriting existing runtime data
+- [x] Validate quotation-settings recovery with 45 tests and a successful production build; GitHub push remains pending checkpoint

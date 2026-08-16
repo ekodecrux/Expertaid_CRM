@@ -63,10 +63,18 @@ const defaultQuotationSettings = (): LocalQuotationSettings => ({
 
 type QuotationSettingsRecord = Record<string, LocalQuotationSettings>;
 
-export async function getLocalQuotationSettings(ownerId: number): Promise<LocalQuotationSettings> {
+function mergeQuotationSettings(saved: Partial<LocalQuotationSettings> | undefined): LocalQuotationSettings {
+  return saved ? { ...defaultQuotationSettings(), ...saved, products: saved.products?.length ? saved.products : DEFAULT_QUOTATION_PRODUCTS } : defaultQuotationSettings();
+}
+
+export async function getSavedLocalQuotationSettings(ownerId: number): Promise<LocalQuotationSettings | undefined> {
   const records = await readJsonFile<QuotationSettingsRecord>(QUOTATION_SETTINGS_FILE, {});
   const saved = records[String(ownerId)];
-  return saved ? { ...defaultQuotationSettings(), ...saved, products: saved.products?.length ? saved.products : DEFAULT_QUOTATION_PRODUCTS } : defaultQuotationSettings();
+  return saved ? mergeQuotationSettings(saved) : undefined;
+}
+
+export async function getLocalQuotationSettings(ownerId: number): Promise<LocalQuotationSettings> {
+  return (await getSavedLocalQuotationSettings(ownerId)) ?? defaultQuotationSettings();
 }
 
 export async function saveLocalQuotationSettings(ownerId: number, values: LocalQuotationSettings): Promise<LocalQuotationSettings> {
