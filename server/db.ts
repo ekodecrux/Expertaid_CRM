@@ -113,18 +113,25 @@ export async function updateProfileSettingsForOwner(ownerId: number, values: Par
 
 /** Normalize the URL and preserve secure transport for sandbox TiDB connections. */
 export function normalizeDatabaseUrl(rawUrl: string): string {
-  try {
-    const parsed = new URL(rawUrl);
-    parsed.searchParams.delete("ssl");
-    parsed.searchParams.delete("ssl-mode");
-    return parsed.toString();
-  } catch {
-    return rawUrl;
+  const cleaned = rawUrl.trim().replace(/^['"]|['"]$/g, "");
+  const withScheme = /^[a-z][a-z\d+.-]*:\/\//i.test(cleaned) ? cleaned : `mysql://${cleaned}`;
+  const parsed = new URL(withScheme);
+  if (parsed.protocol !== "mysql:" && parsed.protocol !== "mysql2:") {
+    throw new Error(`Unsupported DATABASE_URL protocol: ${parsed.protocol}`);
   }
+  parsed.protocol = "mysql:";
+  parsed.searchParams.delete("ssl");
+  parsed.searchParams.delete("ssl-mode");
+  return parsed.toString();
 }
 
 function createDatabasePool(rawUrl: string): ReturnType<typeof mysql.createPool> {
-  const normalizedUrl = normalizeDatabaseUrl(rawUrl);
+  let normalizedUrl: string;
+  try {
+    normalizedUrl = normalizeDatabaseUrl(rawUrl);
+  } catch (error) {
+    throw new Error(`Invalid DATABASE_URL: ${error instanceof Error ? error.message : String(error)}. Expected mysql://USER:PASSWORD@HOST:3306/DATABASE`);
+  }
   const parsed = new URL(normalizedUrl);
   const requiresSecureTransport = parsed.hostname.includes("tidbcloud") || rawUrl.includes("ssl=");
   return mysql.createPool({

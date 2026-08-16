@@ -15,4 +15,15 @@ describe("normalizeDatabaseUrl", () => {
     expect(normalized.pathname).toBe("/u559264694_ExpertErpCRM");
     expect(normalized.search).toBe("");
   });
+
+  it("accepts the Hostinger value with or without a mysql scheme", () => {
+    const value = "mysql://u559264694_ExpertCRM:ExpertCRM2026Test@127.0.0.1:3306/u559264694_ExpertCRM";
+    const normalized = new URL(normalizeDatabaseUrl(value));
+    expect(normalized.protocol).toBe("mysql:");
+    expect(normalized.username).toBe("u559264694_ExpertCRM");
+    expect(normalized.password).toBe("ExpertCRM2026Test");
+    expect(normalized.hostname).toBe("127.0.0.1");
+    expect(normalized.pathname).toBe("/u559264694_ExpertCRM");
+    expect(normalizeDatabaseUrl(value.replace("mysql://", ""))).toBe(normalizeDatabaseUrl(value));
+  });
 });

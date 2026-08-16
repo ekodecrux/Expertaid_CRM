@@ -975,6 +975,7 @@
 - [x] Verify the recreated Hostinger settings tables and application database target
 - [ ] Ensure profile and quotation branding saves create rows in MySQL instead of only local storage
 - [ ] Verify branding rows and file references after saving
+- [x] Fix Hostinger Invalid URL handling for DATABASE_URL and validate the corrected Hostinger URL format with regression tests; live profile-icon verification remains pending Hostinger restart
 
 - [x] Diagnose why branding saves do not persist in Manus preview; legacy quotationSettings reads failed while profile settings were already persisted
 - [x] Validate preview branding persistence after save and reload through the managed preview data path
