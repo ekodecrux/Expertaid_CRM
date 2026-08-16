@@ -801,8 +801,8 @@
 - [x] Validate the shared storage backend and asset-path handling; 44 tests and production build pass
 
 - [x] Prepare the final Hostinger deployment package for the confirmed FTP destination
-- [ ] Upload the verified application package to the Hostinger public_html directory
-- [ ] Verify the uploaded build, runtime entrypoint, uploads directory, and environment configuration
+- [ ] Upload the corrected verified application package to the Hostinger public_html directory
+- [ ] Verify the corrected uploaded build, runtime entrypoint, uploads directory, and environment configuration
 - [ ] Report the Hostinger deployment result and password-rotation requirement
 
 - [x] Replace the default Manus-only logo fallback with an environment-aware application branding asset
@@ -812,3 +812,6 @@
 - [x] Fix Hostinger install failure caused by pnpm ignored build scripts
 - [x] Validate a replacement Hostinger package without dependency-install blocking errors
 - [x] Provide updated Hostinger upload and install instructions
+
+- [x] Make the production package’s build command succeed when Hostinger runs it against prebuilt dist files without client source files
+- [x] Rebuild and validate a replacement ZIP for Hostinger’s automatic build step
