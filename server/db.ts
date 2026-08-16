@@ -9,6 +9,16 @@ import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getSavedL
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
+function describeDatabaseError(error: unknown): string {
+  const candidate = error as { message?: string; code?: string; errno?: number; sqlState?: string; cause?: { message?: string; code?: string; errno?: number; sqlState?: string } };
+  const cause = candidate.cause;
+  const message = cause?.message || candidate.message || String(error);
+  const code = cause?.code || candidate.code;
+  const errno = cause?.errno ?? candidate.errno;
+  const sqlState = cause?.sqlState || candidate.sqlState;
+  return [message, code && `code=${code}`, errno !== undefined && `errno=${errno}`, sqlState && `sqlState=${sqlState}`].filter(Boolean).join(" | ");
+}
+
 export type ProfileSettings = {
   displayName: string;
   avatarInitials: string;
@@ -70,10 +80,14 @@ export async function updateProfileSettingsForOwner(ownerId: number, values: Par
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
   const profileJson = JSON.stringify(next);
-  await db.transaction(async (tx) => {
-    await tx.delete(profileSettingsData).where(eq(profileSettingsData.ownerId, ownerId));
-    await tx.insert(profileSettingsData).values({ ownerId, profileJson });
-  });
+  try {
+    await db.transaction(async (tx) => {
+      await tx.delete(profileSettingsData).where(eq(profileSettingsData.ownerId, ownerId));
+      await tx.insert(profileSettingsData).values({ ownerId, profileJson });
+    });
+  } catch (error) {
+    throw new Error(`Profile settings database save failed: ${describeDatabaseError(error)}`);
+  }
   return next;
 }
 
@@ -472,8 +486,9 @@ export async function createQuotation(input: InsertQuotation & { quotationPrefix
     const rows = await db.select().from(quotations).where(eq(quotations.id, id)).limit(1);
     return rows[0] ? { ...rows[0], items: JSON.parse(rows[0].itemsJson) as unknown[] } : undefined;
   } catch (error) {
-    console.error("[Quotations] Database insert failed; quotation was not saved:", error);
-    throw error;
+    const detail = describeDatabaseError(error);
+    console.error("[Quotations] Database insert failed; quotation was not saved:", detail);
+    throw new Error(`Quotation database save failed: ${detail}`);
   }
 }
 

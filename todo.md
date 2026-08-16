@@ -936,3 +936,7 @@
 - [x] Stop quotations from silently saving only to local fallback storage when MySQL persistence is expected
 - [x] Fix the remaining profile settings save/read failure in the deployed Hostinger path by requiring the settings tables and surfacing database errors
 - [ ] Verify new quotation and profile records in the Hostinger database after redeploying commit 83d609c
+
+- [x] Compare the Hostinger quotations table columns with the deployed insert payload; columns and enum values match the application schema
+- [ ] Fix the quotation insert schema or value-type mismatch
+- [ ] Validate and push the quotation insert correction

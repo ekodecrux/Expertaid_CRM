@@ -14,8 +14,8 @@ describe("quotation database authority", () => {
   it("surfaces database create failures instead of reporting a local-only success", () => {
     const source = readFileSync(resolve(process.cwd(), "server/db.ts"), "utf8");
     const createSection = source.slice(source.indexOf("export async function createQuotation"), source.indexOf("export async function createAgreement"));
-    expect(createSection).toContain("console.error(\"[Quotations] Database insert failed; quotation was not saved:\", error)");
-    expect(createSection).toContain("throw error;");
+    expect(createSection).toContain("console.error(\"[Quotations] Database insert failed; quotation was not saved:\", detail)");
+    expect(createSection).toContain("Quotation database save failed: ${detail}");
     const databaseBranch = createSection.slice(createSection.indexOf("  try {"));
     expect(databaseBranch).not.toContain("createLocalQuotation(input.ownerId");
   });
