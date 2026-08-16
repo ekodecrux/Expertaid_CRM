@@ -935,4 +935,4 @@
 
 - [x] Stop quotations from silently saving only to local fallback storage when MySQL persistence is expected
 - [x] Fix the remaining profile settings save/read failure in the deployed Hostinger path by requiring the settings tables and surfacing database errors
-- [ ] Verify new quotation and profile records in the Hostinger database after the correction
+- [ ] Verify new quotation and profile records in the Hostinger database after redeploying commit 83d609c
