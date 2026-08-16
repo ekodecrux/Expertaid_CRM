@@ -70,18 +70,18 @@ export async function updateProfileSettingsForOwner(ownerId: number, values: Par
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
   const profileJson = JSON.stringify(next);
-  const existing = await db.select({ id: profileSettingsData.id }).from(profileSettingsData).where(eq(profileSettingsData.ownerId, ownerId)).limit(1);
-  if (existing[0]) {
-    await db.update(profileSettingsData).set({ profileJson }).where(eq(profileSettingsData.id, existing[0].id));
-    return next;
+  try {
+    const updated = await db.update(profileSettingsData).set({ profileJson }).where(eq(profileSettingsData.ownerId, ownerId));
+    if (Number((updated as { affectedRows?: number }).affectedRows ?? 0) > 0) return next;
+  } catch {
+    // Some legacy deployments reject the update shape; the insert path below remains safe.
   }
   try {
     await db.insert(profileSettingsData).values({ ownerId, profileJson });
   } catch (error) {
-    // A concurrent request or a legacy table can win the insert race. Retry as an update.
-    const duplicate = await db.select({ id: profileSettingsData.id }).from(profileSettingsData).where(eq(profileSettingsData.ownerId, ownerId)).limit(1);
-    if (!duplicate[0]) throw error;
-    await db.update(profileSettingsData).set({ profileJson }).where(eq(profileSettingsData.id, duplicate[0].id));
+    // A concurrent request can win the insert race. Retry by ownerId without relying on the id column.
+    const retry = await db.update(profileSettingsData).set({ profileJson }).where(eq(profileSettingsData.ownerId, ownerId));
+    if (Number((retry as { affectedRows?: number }).affectedRows ?? 0) === 0) throw error;
   }
   return next;
 }
@@ -356,7 +356,20 @@ export async function getQuotationSettingsForOwner(ownerId: number) {
 
 export async function allocateInvoiceNumberForOwner(ownerId: number) {
   const current = await getQuotationSettingsForOwner(ownerId);
-  const next = Number(current.invoiceNumberNext ?? current.invoiceNumberStart ?? 129);
+  const configuredNext = Number(current.invoiceNumberNext ?? current.invoiceNumberStart ?? 129);
+  const db = await getDb();
+  let highestExisting = 0;
+  if (db) {
+    try {
+      const rows = await db.select({ latest: sql<number>`MAX(CAST(${quotations.invoiceNumber} AS UNSIGNED))` }).from(quotations).where(eq(quotations.ownerId, ownerId));
+      highestExisting = Number(rows[0]?.latest ?? 0);
+    } catch {
+      // Keep the configured counter when a legacy quotations table cannot be queried.
+    }
+  } else {
+    highestExisting = (await listLocalQuotations(ownerId)).reduce((max, row) => Math.max(max, Number(row.invoiceNumber ?? 0)), 0);
+  }
+  const next = Math.max(configuredNext, highestExisting + 1);
   const updated = { ...current, invoiceNumberNext: next + 1 };
   if (!(await saveQuotationSettingsToDatabase(ownerId, updated))) await saveLocalQuotationSettings(ownerId, updated);
   return String(next);

@@ -886,3 +886,7 @@
 - [x] Audit all connected database tables, columns, indexes, constraints, and row counts
 - [x] Compare the complete database inventory with the application schema and migration SQL
 - [x] Apply and verify only safe non-destructive corrections across all required tables
+
+- [x] Fix profileSettingsData reads and saves for the live owner record using ownerId-based update fallback
+- [x] Ensure newly created quotations prefer MySQL insertion and allocate invoice numbers above existing records
+- [ ] Validate both persistence flows and push the fixes to GitHub
