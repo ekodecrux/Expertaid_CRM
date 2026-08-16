@@ -844,3 +844,7 @@
 - [x] Compare the user’s quotation-settings modifications against local and GitHub history
 - [x] Recover missing quotation-settings code without overwriting existing runtime data
 - [x] Validate quotation-settings recovery with 45 tests and a successful production build; GitHub push remains pending checkpoint
+
+- [x] Move all mutable quotation-settings fields to production database persistence
+- [x] Keep uploaded quotation assets in server-side storage without packaging runtime data into code deployments
+- [x] Add safe migration and deployment instructions so future Git pushes preserve production data

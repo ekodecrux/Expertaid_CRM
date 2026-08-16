@@ -1,7 +1,7 @@
 import { and, desc, eq, gte, like, lte, lt, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
-import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, quotationEditHistory, quotations, quotationSettings, sessions, users, type User } from "../drizzle/schema";
+import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, quotationEditHistory, quotations, quotationSettings, quotationSettingsData, sessions, users, type User } from "../drizzle/schema";
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_PRODUCTS, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
 import { ENV } from './_core/env';
@@ -147,12 +147,71 @@ export async function getUserByEmail(email: string) {
   return asAuthUser(result[0]);
 }
 
-export async function getQuotationSettingsForOwner(ownerId: number) {
-  const saved = await getSavedLocalQuotationSettings(ownerId);
-  if (saved) return saved;
+function normalizeStoredQuotationSettings(value: unknown): LocalQuotationSettings | undefined {
+  if (!value || typeof value !== "object") return undefined;
+  const candidate = value as Partial<LocalQuotationSettings>;
+  if (typeof candidate.companyGst !== "string" || typeof candidate.companyAddress !== "string" || !Array.isArray(candidate.products)) return undefined;
+  return {
+    companyGst: candidate.companyGst,
+    companyAddress: candidate.companyAddress,
+    validityDays: Number(candidate.validityDays ?? 15),
+    gstRate: String(candidate.gstRate ?? "18.00"),
+    gstMode: candidate.gstMode === "inclusive" ? "inclusive" : "exclusive",
+    quotationPrefix: String(candidate.quotationPrefix ?? "QT"),
+    invoiceNumberStart: Number(candidate.invoiceNumberStart ?? 129),
+    invoiceNumberNext: Number(candidate.invoiceNumberNext ?? candidate.invoiceNumberStart ?? 129),
+    terms: String(candidate.terms ?? DEFAULT_QUOTATION_TERMS),
+    products: candidate.products as QuotationProduct[],
+    logoUrl: candidate.logoUrl ?? null,
+    logoKey: candidate.logoKey ?? null,
+    scannerUrl: candidate.scannerUrl ?? null,
+    scannerKey: candidate.scannerKey ?? null,
+    signatureUrl: candidate.signatureUrl ?? null,
+    signatureKey: candidate.signatureKey ?? null,
+    accountCompanyName: String(candidate.accountCompanyName ?? "Expertaid Technologies Pvt Ltd."),
+    accountNumber: String(candidate.accountNumber ?? "502000055251128"),
+    accountIfsc: String(candidate.accountIfsc ?? "HDFC0009147"),
+    accountBranch: String(candidate.accountBranch ?? "Ameerpur Branch, Hyd, TS-502032"),
+  };
+}
 
+async function saveQuotationSettingsToDatabase(ownerId: number, settings: LocalQuotationSettings) {
+  const db = await getDb();
+  if (!db) return false;
+  try {
+    await db.insert(quotationSettingsData).values({ ownerId, settingsJson: JSON.stringify(settings) }).onDuplicateKeyUpdate({ set: { settingsJson: JSON.stringify(settings) } });
+    return true;
+  } catch (error) {
+    console.warn("[Quotation settings] Database settings table is unavailable; retaining server-side fallback:", error);
+    return false;
+  }
+}
+
+export async function getQuotationSettingsForOwner(ownerId: number) {
   const db = await getDb();
   if (!db) return getLocalQuotationSettings(ownerId);
+
+  let stored: { settingsJson: string } | undefined;
+  try {
+    const storedRows = await db.select({ settingsJson: quotationSettingsData.settingsJson }).from(quotationSettingsData).where(eq(quotationSettingsData.ownerId, ownerId)).limit(1);
+    stored = storedRows[0];
+  } catch {
+    stored = undefined;
+  }
+  if (stored) {
+    try {
+      const parsed = normalizeStoredQuotationSettings(JSON.parse(stored.settingsJson));
+      if (parsed) return parsed;
+    } catch {
+      console.warn("[Quotation settings] Stored settings JSON is invalid; rebuilding from available defaults.");
+    }
+  }
+
+  const saved = await getSavedLocalQuotationSettings(ownerId);
+  if (saved) {
+    await saveQuotationSettingsToDatabase(ownerId, saved);
+    return saved;
+  }
 
   try {
     const baseRows = await db.select({
@@ -188,7 +247,7 @@ export async function getQuotationSettingsForOwner(ownerId: number) {
     } catch {
       // Keep the supported default product catalog when legacy JSON is invalid.
     }
-    return saveLocalQuotationSettings(ownerId, {
+    const migrated = {
       companyGst: base.companyGst,
       companyAddress: base.companyAddress,
       validityDays: base.validityDays,
@@ -209,7 +268,9 @@ export async function getQuotationSettingsForOwner(ownerId: number) {
       accountNumber: accounts.accountNumber ?? "502000055251128",
       accountIfsc: accounts.accountIfsc ?? "HDFC0009147",
       accountBranch: accounts.accountBranch ?? "Ameerpur Branch, Hyd, TS-502032",
-    });
+    } satisfies LocalQuotationSettings;
+    await saveQuotationSettingsToDatabase(ownerId, migrated);
+    return migrated;
   } catch (error) {
     console.warn("[Quotation settings] Legacy table unavailable; using local defaults:", error);
     return getLocalQuotationSettings(ownerId);
@@ -219,7 +280,8 @@ export async function getQuotationSettingsForOwner(ownerId: number) {
 export async function allocateInvoiceNumberForOwner(ownerId: number) {
   const current = await getQuotationSettingsForOwner(ownerId);
   const next = Number(current.invoiceNumberNext ?? current.invoiceNumberStart ?? 129);
-  await saveLocalQuotationSettings(ownerId, { ...current, invoiceNumberNext: next + 1 });
+  const updated = { ...current, invoiceNumberNext: next + 1 };
+  if (!(await saveQuotationSettingsToDatabase(ownerId, updated))) await saveLocalQuotationSettings(ownerId, updated);
   return String(next);
 }
 
@@ -250,7 +312,8 @@ export async function updateQuotationSettingsForOwner(ownerId: number, values: P
     accountIfsc: fields.accountIfsc ?? current.accountIfsc,
     accountBranch: fields.accountBranch ?? current.accountBranch,
   };
-  return saveLocalQuotationSettings(ownerId, completeFields);
+  if (!(await saveQuotationSettingsToDatabase(ownerId, completeFields))) await saveLocalQuotationSettings(ownerId, completeFields);
+  return completeFields;
 }
 
 export async function updateQuotationForOwner(ownerId: number, quotationId: number, values: Partial<InsertQuotation>, editor: { id: number; name: string }) {
