@@ -877,4 +877,4 @@
 
 - [x] Fix quotation saves failing against incomplete or legacy Hostinger quotations schemas
 - [x] Add regression coverage for quotation persistence and validate the production build with 47 passing tests
-- [ ] Push the quotation save fix to GitHub
+- [x] Push the quotation save fix to GitHub
