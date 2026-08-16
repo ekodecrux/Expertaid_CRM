@@ -3,7 +3,7 @@ import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
 import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, profileSettingsData, quotationEditHistory, quotations, quotationSettingsData, sessions, users, type User } from "../drizzle/schema";
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
-import { DEFAULT_BRANDING, normalizeBranding } from "@shared/branding";
+import { DEFAULT_BRANDING, normalizeBranding, type CompanyBranding } from "@shared/branding";
 import { ENV } from './_core/env';
 import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getSavedLocalQuotationSettings, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalQuotationSettings, saveLocalSessionSettings, listLocalQuotations, createLocalQuotation, updateLocalQuotation, deleteLocalQuotation, type LocalQuotationSettings } from './localSettings';
 
@@ -44,6 +44,26 @@ function defaultProfileSettings(fallback: { name?: string | null; role?: string 
   };
 }
 
+type SettingsEnvelope = {
+  profile?: unknown;
+  branding?: unknown;
+};
+
+function readSettingsEnvelope(profileJson: string): SettingsEnvelope {
+  const parsed = JSON.parse(profileJson) as unknown;
+  if (parsed && typeof parsed === "object" && ("profile" in parsed || "branding" in parsed)) return parsed as SettingsEnvelope;
+  return { profile: parsed };
+}
+
+function writeSettingsEnvelope(envelope: SettingsEnvelope): string {
+  return JSON.stringify(envelope);
+}
+
+async function getSettingsEnvelope(db: NonNullable<Awaited<ReturnType<typeof getDb>>>, ownerId: number): Promise<SettingsEnvelope> {
+  const rows = await db.select({ profileJson: profileSettingsData.profileJson }).from(profileSettingsData).where(eq(profileSettingsData.ownerId, ownerId)).limit(1);
+  return rows[0] ? readSettingsEnvelope(rows[0].profileJson) : {};
+}
+
 function normalizeProfileSettings(value: unknown, fallback: { name?: string | null; role?: string | null }): ProfileSettings {
   const base = defaultProfileSettings(fallback);
   if (!value || typeof value !== "object") return base;
@@ -65,9 +85,8 @@ export async function getProfileSettingsForOwner(ownerId: number, fallback: { na
   const db = await getDb();
   if (!db) return base;
   try {
-    const rows = await db.select({ profileJson: profileSettingsData.profileJson }).from(profileSettingsData).where(eq(profileSettingsData.ownerId, ownerId)).limit(1);
-    if (!rows[0]) return base;
-    return normalizeProfileSettings(JSON.parse(rows[0].profileJson), fallback);
+    const envelope = await getSettingsEnvelope(db, ownerId);
+    return normalizeProfileSettings(envelope.profile, fallback);
   } catch (error) {
     console.warn("[Profile settings] Could not load profile settings:", error);
     return base;
@@ -79,8 +98,9 @@ export async function updateProfileSettingsForOwner(ownerId: number, values: Par
   const next = normalizeProfileSettings({ ...current, ...values }, fallback);
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
-  const profileJson = JSON.stringify(next);
   try {
+    const envelope = await getSettingsEnvelope(db, ownerId);
+    const profileJson = writeSettingsEnvelope({ ...envelope, profile: next });
     await db.transaction(async (tx) => {
       await tx.delete(profileSettingsData).where(eq(profileSettingsData.ownerId, ownerId));
       await tx.insert(profileSettingsData).values({ ownerId, profileJson });
@@ -160,7 +180,16 @@ export async function upsertUser(user: InsertUser): Promise<void> {
 }
 
 export async function getBrandingForOwner(ownerId: number) {
-  return getLocalBranding(ownerId);
+  const localFallback = await getLocalBranding(ownerId);
+  const db = await getDb();
+  if (!db) return localFallback;
+  try {
+    const envelope = await getSettingsEnvelope(db, ownerId);
+    return normalizeBranding((envelope.branding ?? localFallback) as Partial<CompanyBranding>);
+  } catch (error) {
+    console.warn("[Branding] Could not load database branding; using local fallback:", error);
+    return localFallback;
+  }
 }
 
 export async function getSessionSettings(ownerId: number) {
@@ -178,11 +207,21 @@ export async function updateBrandingForOwner(ownerId: number, values: {
   serviceCaption: string;
   footerCompanyName: string;
 }) {
-  const current = await getLocalBranding(ownerId);
-  return saveLocalBranding(ownerId, normalizeBranding({
-    ...current,
-    ...values,
-  }));
+  const current = await getBrandingForOwner(ownerId);
+  const next = normalizeBranding({ ...current, ...values });
+  const db = await getDb();
+  if (!db) return saveLocalBranding(ownerId, next);
+  try {
+    const envelope = await getSettingsEnvelope(db, ownerId);
+    const profileJson = writeSettingsEnvelope({ ...envelope, branding: next });
+    await db.transaction(async (tx) => {
+      await tx.delete(profileSettingsData).where(eq(profileSettingsData.ownerId, ownerId));
+      await tx.insert(profileSettingsData).values({ ownerId, profileJson });
+    });
+    return next;
+  } catch (error) {
+    throw new Error(`Branding database save failed: ${describeDatabaseError(error)}`);
+  }
 }
 
 const AUTH_USER_FIELDS = {

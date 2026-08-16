@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import fs from "fs";
 import path from "path";
-import { LOCAL_STORAGE_ROOT, resolveStoragePath } from "../storage";
+import { LOCAL_STORAGE_ROOT, resolveStoragePath, storageGetSignedUrl } from "../storage";
 
 const MIME_TYPES: Record<string, string> = {
   ".png": "image/png",
@@ -22,6 +22,21 @@ export function registerStorageProxy(app: Express) {
     res.setHeader("Content-Type", "image/png");
     res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
     res.sendFile(filePath);
+  });
+
+  app.get("/manus-storage/*", async (req, res) => {
+    const key = (req.params as Record<string, string>)[0];
+    if (!key) {
+      res.status(400).send("Missing storage key");
+      return;
+    }
+    try {
+      const signedUrl = await storageGetSignedUrl(key);
+      res.redirect(302, signedUrl);
+    } catch (error) {
+      console.error("[ManusStorage] failed:", error);
+      res.status(404).send("Asset not found");
+    }
   });
 
   app.get("/local-storage/*", (req, res) => {

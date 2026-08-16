@@ -938,10 +938,10 @@
 - [ ] Verify new quotation and profile records in the Hostinger database after redeploying commit 83d609c
 
 - [x] Compare the Hostinger quotations table columns with the deployed insert payload; columns and enum values match the application schema
-- [ ] Fix the quotation insert schema or value-type mismatch
-- [ ] Validate and push the quotation insert correction
+- [x] Fix the quotation insert schema or value-type mismatch; live columns and enums matched, so the actual failure was MySQL authentication
+- [x] Validate and push the quotation insert correction; MySQL-authoritative persistence and detailed errors were validated and pushed
 
-- [ ] Align the Hostinger Node.js database host with the MySQL user’s allowed host scope
+- [x] Align the Hostinger Node.js database host with the MySQL user’s allowed host scope by switching the runtime URL to 127.0.0.1
 - [ ] Verify quotation INSERT authentication after the host correction
 
 - [ ] Reconcile the actual Hostinger MySQL user password for the local `127.0.0.1` account
@@ -952,8 +952,8 @@
 - [x] Keep Hostinger database credentials server-only and out of Git/frontend code; the server reads process.env.DATABASE_URL and the frontend never receives it
 - [x] Support a secure Hostinger runtime connection method without exposing DATABASE_URL; Hostinger environment variables or a server-only ignored .env file are the supported methods
 
-- [ ] Prepare a server-only Hostinger `.env` file with the provided runtime credentials
-- [ ] Verify the `.env` file is excluded from Git and provide upload/restart instructions
+- [x] Prepare a server-only Hostinger `.env` file with the provided runtime credentials
+- [x] Verify the `.env` file is excluded from Git and provide upload/restart instructions
 
 - [ ] Reset the actual Hostinger MySQL user password or local account assignment after `.env` loading was confirmed
 - [ ] Verify quotation INSERT and profile save after the Hostinger credential reset
@@ -965,16 +965,17 @@
 - [ ] Synchronize the deployed runtime password with the actual MySQL user password
 - [ ] Verify quotation INSERT and profile save after restart
 
-- [ ] Replace the private Hostinger `.env` password with the user-provided `Expertsinstant@2026`
-- [ ] Deliver the replacement `.env` without committing credentials to Git
+- [x] Replace the private Hostinger `.env` password with the user-provided `Expertsinstant@2026`
+- [x] Deliver the replacement `.env` without committing credentials to Git
 
 - [x] Prepare complete SQL for the recreated Hostinger database `u559264694_ExpertCRM`
 - [x] Create a private `.env` file using the new database credentials without committing it
 - [x] Deliver SQL import and Node.js restart instructions
 
-- [ ] Verify the recreated Hostinger settings tables and application database target
+- [x] Verify the recreated Hostinger settings tables and application database target
 - [ ] Ensure profile and quotation branding saves create rows in MySQL instead of only local storage
 - [ ] Verify branding rows and file references after saving
 
 - [x] Diagnose why branding saves do not persist in Manus preview; legacy quotationSettings reads failed while profile settings were already persisted
 - [x] Validate preview branding persistence after save and reload through the managed preview data path
+- [x] Investigate and fix brand logo upload/persistence in Manus preview; branding now persists in profileSettingsData, managed storage URLs render through the preview proxy, and the default asset is managed
