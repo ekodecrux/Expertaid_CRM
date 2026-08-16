@@ -940,3 +940,11 @@
 - [x] Compare the Hostinger quotations table columns with the deployed insert payload; columns and enum values match the application schema
 - [ ] Fix the quotation insert schema or value-type mismatch
 - [ ] Validate and push the quotation insert correction
+
+- [ ] Align the Hostinger Node.js database host with the MySQL user’s allowed host scope
+- [ ] Verify quotation INSERT authentication after the host correction
+
+- [ ] Reconcile the actual Hostinger MySQL user password for the local `127.0.0.1` account
+- [ ] Verify local account privileges and quotation INSERT after the password correction
+
+- [x] Validate and push the complete current ERP CRM codebase to GitHub after the latest persistence and error-reporting updates; 49 tests and production build passed
