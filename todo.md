@@ -894,3 +894,9 @@
 - [x] Fix live profileSettingsData update failure against the Hostinger table with owner-keyed MySQL upsert
 - [x] Validate repeated profile saves after the persistence correction with 47 passing tests and a successful production build
 - [x] Push the corrected profile save path to GitHub at commit b3d3b83
+
+- [x] Replace unsupported profileSettingsData upsert SQL with Hostinger/TiDB-compatible transactional persistence
+- [x] Validate profile saves and push the corrected deployment bundle with 47 passing tests and a successful production build
+
+- [x] Create missing profileSettingsData and quotationSettingsData tables in the connected Hostinger database
+- [x] Verify the new settings tables and preserve existing legacy-table data

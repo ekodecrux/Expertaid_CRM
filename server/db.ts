@@ -70,7 +70,10 @@ export async function updateProfileSettingsForOwner(ownerId: number, values: Par
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
   const profileJson = JSON.stringify(next);
-  await db.insert(profileSettingsData).values({ ownerId, profileJson }).onDuplicateKeyUpdate({ set: { profileJson } });
+  await db.transaction(async (tx) => {
+    await tx.delete(profileSettingsData).where(eq(profileSettingsData.ownerId, ownerId));
+    await tx.insert(profileSettingsData).values({ ownerId, profileJson });
+  });
   return next;
 }
 
