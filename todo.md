@@ -848,3 +848,6 @@
 - [x] Move all mutable quotation-settings fields to production database persistence
 - [x] Keep uploaded quotation assets in server-side storage without packaging runtime data into code deployments
 - [x] Add safe migration and deployment instructions so future Git pushes preserve production data
+
+- [ ] Push database-backed quotation persistence, migration SQL, and data-safe deployment rules to GitHub
+- [ ] Verify the pushed GitHub branch and document Hostinger automatic deployment requirements
