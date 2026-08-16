@@ -889,4 +889,4 @@
 
 - [x] Fix profileSettingsData reads and saves for the live owner record using ownerId-based update fallback
 - [x] Ensure newly created quotations prefer MySQL insertion and allocate invoice numbers above existing records
-- [ ] Validate both persistence flows and push the fixes to GitHub
+- [x] Validate both persistence flows and push the fixes to GitHub; 47 tests and production build passed, commit 5d486b6 pushed
