@@ -14,6 +14,8 @@ import { calculateAgreementEndDate, calculateAgreementPricing, calculateAgreemen
 import { calculateQuotationTotals, DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, QUOTATION_STATUSES, type QuotationItem } from "@shared/quotation";
 
 const dataUrlSchema = z.string().max(2_500_000).transform((value) => value.trim().replace(/[\r\n\t\s]+/g, "")).refine((value) => /^data:image\/[a-z0-9.+-]+(?:;[^,]*)?,[\s\S]+$/i.test(value), "Invalid image data URL");
+const quotationAssetInput = z.union([dataUrlSchema, z.string().trim().min(1).max(4096), z.null()]).optional();
+const isImageDataUrl = (value: string | null | undefined): value is string => Boolean(value && /^data:image\/[a-z0-9.+-]+(?:;[^,]*)?,[\s\S]+$/i.test(value));
 const brandingInput = z.object({
   companyName: z.string().trim().min(1).max(255),
   serviceCaption: z.string().trim().min(1).max(255),
@@ -70,8 +72,8 @@ const quotationInput = z.object({
   gstRate: z.number().nonnegative().max(100).default(18),
   gstMode: z.enum(["inclusive", "exclusive"]).default("exclusive"),
   terms: z.string().max(2000).default(DEFAULT_QUOTATION_TERMS),
-  scannerDataUrl: dataUrlSchema.optional(),
-  signatureDataUrl: dataUrlSchema.optional(),
+  scannerDataUrl: quotationAssetInput,
+  signatureDataUrl: quotationAssetInput,
 });
 
 type QuotationInput = z.infer<typeof quotationInput>;
@@ -182,11 +184,11 @@ export const appRouter = router({
     list: protectedProcedure.query(({ ctx }) => listQuotationsForOwner(ctx.user.id)),
     settings: router({
       get: protectedProcedure.query(({ ctx }) => getQuotationSettingsForOwner(ctx.user.id)),
-      update: protectedProcedure.input(z.object({ companyGst: z.string().trim().min(1).max(32), companyAddress: z.string().trim().min(1), validityDays: z.number().int().positive().max(365), gstRate: z.number().nonnegative().max(100), gstMode: z.enum(["inclusive", "exclusive"]), quotationPrefix: z.string().trim().min(1).max(24).default("QT"), invoiceNumberStart: z.number().int().positive().max(999999999).optional(), accountCompanyName: z.string().trim().min(1).max(255), accountNumber: z.string().trim().max(128), accountIfsc: z.string().trim().max(64), accountBranch: z.string().trim().max(255), terms: z.string().max(2000), products: z.array(z.object({ product: z.enum(["ERP", "Biometric", "WhatsApp"]).default("ERP"), productName: z.string().trim().min(1).max(255).optional(), itemName: z.string().trim().min(1).max(255), quantity: z.number().int().positive().default(1), unitPrice: z.number().nonnegative() })).min(1), logoDataUrl: z.union([dataUrlSchema, z.null()]).optional(), scannerDataUrl: z.union([dataUrlSchema, z.null()]).optional(), signatureDataUrl: z.union([dataUrlSchema, z.null()]).optional() })).mutation(async ({ ctx, input }) => {
+      update: protectedProcedure.input(z.object({ companyGst: z.string().trim().min(1).max(32), companyAddress: z.string().trim().min(1), validityDays: z.number().int().positive().max(365), gstRate: z.number().nonnegative().max(100), gstMode: z.enum(["inclusive", "exclusive"]), quotationPrefix: z.string().trim().min(1).max(24).default("QT"), invoiceNumberStart: z.number().int().positive().max(999999999).optional(), accountCompanyName: z.string().trim().min(1).max(255), accountNumber: z.string().trim().max(128), accountIfsc: z.string().trim().max(64), accountBranch: z.string().trim().max(255), terms: z.string().max(2000), products: z.array(z.object({ product: z.enum(["ERP", "Biometric", "WhatsApp"]).default("ERP"), productName: z.string().trim().min(1).max(255).optional(), itemName: z.string().trim().min(1).max(255), quantity: z.number().int().positive().default(1), unitPrice: z.number().nonnegative() })).min(1), logoDataUrl: quotationAssetInput, scannerDataUrl: quotationAssetInput, signatureDataUrl: quotationAssetInput })).mutation(async ({ ctx, input }) => {
         const current = await getQuotationSettingsForOwner(ctx.user.id);
-        const logo = input.logoDataUrl === null ? { url: null, key: null } : input.logoDataUrl ? await uploadQuotationAsset(input.logoDataUrl, "logo") : { url: current.logoUrl, key: current.logoKey };
-        const scanner = input.scannerDataUrl === null ? { url: null, key: null } : input.scannerDataUrl ? await uploadQuotationAsset(input.scannerDataUrl, "scanner") : { url: current.scannerUrl, key: current.scannerKey };
-        const signature = input.signatureDataUrl === null ? { url: null, key: null } : input.signatureDataUrl ? await uploadQuotationAsset(input.signatureDataUrl, "signature") : { url: current.signatureUrl, key: current.signatureKey };
+        const logo = input.logoDataUrl === null ? { url: null, key: null } : isImageDataUrl(input.logoDataUrl) ? await uploadQuotationAsset(input.logoDataUrl, "logo") : { url: input.logoDataUrl || current.logoUrl, key: current.logoKey };
+        const scanner = input.scannerDataUrl === null ? { url: null, key: null } : isImageDataUrl(input.scannerDataUrl) ? await uploadQuotationAsset(input.scannerDataUrl, "scanner") : { url: input.scannerDataUrl || current.scannerUrl, key: current.scannerKey };
+        const signature = input.signatureDataUrl === null ? { url: null, key: null } : isImageDataUrl(input.signatureDataUrl) ? await uploadQuotationAsset(input.signatureDataUrl, "signature") : { url: input.signatureDataUrl || current.signatureUrl, key: current.signatureKey };
         return updateQuotationSettingsForOwner(ctx.user.id, { companyGst: input.companyGst, companyAddress: input.companyAddress, validityDays: input.validityDays, gstRate: input.gstRate.toFixed(2), gstMode: input.gstMode, quotationPrefix: input.quotationPrefix, invoiceNumberStart: input.invoiceNumberStart, terms: input.terms, products: input.products, accountCompanyName: input.accountCompanyName, accountNumber: input.accountNumber, accountIfsc: input.accountIfsc, accountBranch: input.accountBranch, logoUrl: logo.url, logoKey: logo.key, scannerUrl: scanner.url, scannerKey: scanner.key, signatureUrl: signature.url, signatureKey: signature.key });
       }),
     }),
