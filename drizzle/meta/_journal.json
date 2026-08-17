@@ -134,6 +134,13 @@
       "when": 1786868307718,
       "tag": "0018_dusty_boom_boom",
       "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "5",
+      "when": 1786971128181,
+      "tag": "0019_high_puff_adder",
+      "breakpoints": true
     }
   ]
 }

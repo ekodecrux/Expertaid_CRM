@@ -6,11 +6,11 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { ENV } from "./_core/env";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getNextEstimationNumberForClient, getAgreementByToken, createSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getProfileSettingsForOwner, updateProfileSettingsForOwner, getUserByEmail, upsertUser } from "./db";
+import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getNextEstimationNumberForClient, getAgreementByToken, createSessionForOwner, updateSessionRecordForOwner, deleteSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getProfileSettingsForOwner, updateProfileSettingsForOwner, getUserByEmail, upsertUser } from "./db";
 import { storagePut } from "./storage";
 import { sdk } from "./_core/sdk";
 import { validateCredentialLogin } from "./credentialLogin";
-import { calculateAgreementEndDate, calculateAgreementTotal, PricingMode } from "@shared/pricing";
+import { calculateAgreementEndDate, calculateAgreementPricing, calculateAgreementTotal, PricingMode } from "@shared/pricing";
 import { calculateQuotationTotals, DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, QUOTATION_STATUSES, type QuotationItem } from "@shared/quotation";
 
 const dataUrlSchema = z.string().regex(/^data:image\/(png|jpeg|jpg|webp);base64,[A-Za-z0-9+/=]+$/).max(2_500_000);
@@ -38,6 +38,8 @@ const agreementInput = z.object({
   session: z.string().regex(/^\d{4}-\d{4}$/).default("2026-2027"),
   startDate: z.string().min(1),
   endDate: z.string().min(1),
+  gstRate: z.number().nonnegative().max(100).default(18),
+  gstMode: z.enum(["inclusive", "exclusive"]).default("exclusive"),
   description: z.string().optional(),
   logoDataUrl: dataUrlSchema.optional(),
 }).superRefine((value, ctx) => {
@@ -102,7 +104,8 @@ async function uploadLogo(logoDataUrl: string | undefined) {
 }
 
 function buildAgreementValues(input: AgreementInput) {
-  const totalPrice = calculateAgreementTotal(input.pricingMode as PricingMode, input.noOfStudents, input.perStudentPrice, input.packagePrice, input.noOfYearPlan);
+  const baseTotal = calculateAgreementTotal(input.pricingMode as PricingMode, input.noOfStudents, input.perStudentPrice, input.packagePrice, input.noOfYearPlan);
+  const pricing = calculateAgreementPricing(baseTotal, input.gstMode, input.gstRate);
   return {
     clientName: input.clientName,
     clientOwnerName: input.clientOwnerName,
@@ -120,7 +123,11 @@ function buildAgreementValues(input: AgreementInput) {
     session: input.session,
     startDate: input.startDate,
     endDate: input.endDate,
-    totalPrice: totalPrice.toFixed(2),
+    subtotal: pricing.subtotal.toFixed(2),
+    gstRate: input.gstRate.toFixed(2),
+    gstMode: input.gstMode,
+    gstAmount: pricing.gstAmount.toFixed(2),
+    totalPrice: pricing.total.toFixed(2),
     description: input.description || null,
   };
 }
@@ -229,6 +236,8 @@ export const appRouter = router({
     get: protectedProcedure.query(({ ctx }) => getSessionSettings(ctx.user.id)),
     list: protectedProcedure.query(({ ctx }) => listSessionsForOwner(ctx.user.id)),
     create: protectedProcedure.input(z.object({ sessionLabel: z.string().regex(/^\d{4}-\d{4}$/), startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), endDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) }).superRefine((value, ctx) => { if (value.endDate <= value.startDate) ctx.addIssue({ code: "custom", path: ["endDate"], message: "End date must be after start date." }); })).mutation(({ ctx, input }) => createSessionForOwner(ctx.user.id, input)),
+    updateRecord: protectedProcedure.input(z.object({ id: z.number().int().positive(), sessionLabel: z.string().regex(/^\d{4}-\d{4}$/), startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), endDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) }).superRefine((value, ctx) => { if (value.endDate <= value.startDate) ctx.addIssue({ code: "custom", path: ["endDate"], message: "End date must be after start date." }); })).mutation(({ ctx, input }) => updateSessionRecordForOwner(ctx.user.id, input.id, { sessionLabel: input.sessionLabel, startDate: input.startDate, endDate: input.endDate })),
+    delete: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ ctx, input }) => deleteSessionForOwner(ctx.user.id, input.id)),
     update: protectedProcedure.input(z.object({ sessionMode: z.enum(["all", "single"]), currentSession: z.string().regex(/^\d{4}-\d{4}$/) })).mutation(({ ctx, input }) => updateSessionSettings(ctx.user.id, input)),
   }),
   clients: router({

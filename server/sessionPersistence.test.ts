@@ -17,5 +17,10 @@ describe("session database authority", () => {
     expect(section).toContain("db.select().from(sessions)");
     expect(section).toContain("db.insert(sessions).values");
     expect(section).toContain("Session database save failed:");
+    expect(section).toContain("if (!rows.some((row) => row.sessionLabel === settings.currentSession))");
+    expect(section).toContain("export async function updateSessionRecordForOwner");
+    expect(section).toContain("db.update(sessions).set(values)");
+    expect(section).toContain("export async function deleteSessionForOwner");
+    expect(section).toContain("db.delete(sessions)");
   });
 });

@@ -92,7 +92,7 @@ describe("agreement workflow", () => {
       endDate: "2028-08-12",
       description: "Updated package",
     });
-    expect(updateAgreement).toHaveBeenCalledWith("new-public-token-123", 1, expect.objectContaining({ pricingMode: "package", packagePrice: "125000.00", perStudentPrice: null, totalPrice: "250000.00", endDate: "2028-08-12", instituteType: "College", branchCoverage: "multiple", branchCount: 3 }));
+    expect(updateAgreement).toHaveBeenCalledWith("new-public-token-123", 1, expect.objectContaining({ pricingMode: "package", packagePrice: "125000.00", perStudentPrice: null, subtotal: "250000.00", gstRate: "18.00", gstMode: "exclusive", gstAmount: "45000.00", totalPrice: "295000.00", endDate: "2028-08-12", instituteType: "College", branchCoverage: "multiple", branchCount: 3 }));
     expect(result.pricingMode).toBe("package");
   });
 

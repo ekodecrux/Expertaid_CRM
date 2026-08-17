@@ -975,11 +975,14 @@
 - [x] Verify the recreated Hostinger settings tables and application database target
 - [ ] Ensure profile and quotation branding saves create rows in MySQL instead of only local storage
 - [x] Audit and fix all Hostinger database persistence paths for quotation settings, quotations, agreements, clients, and sessions; quotation/agreement writes are database-authoritative and session settings/records were moved from local-only storage to MySQL
+- [x] Add session edit/delete actions and persist the current 2026-2027 session in MySQL; current sessions are auto-inserted when missing and delete protects the active session
 - [x] Fix Hostinger quotation settings so all fields and asset metadata persist to quotationSettingsData and reload after save; transactional Hostinger-compatible writes and database error reporting are implemented
 - [x] Verify every visible quotation-default field is included in settingsJson and fix any omitted fields; all fields are also mirrored to the columnized quotationSettings table
 - [x] Migrate quotation settings to use only quotationSettings and remove the quotationSettingsData code dependency; quotationSettings is now the sole application table for quotation defaults
 - [x] Verify Hostinger phpMyAdmin is checking quotationSettingsData rather than legacy quotationSettings, and confirm the deployed quotation-settings source targets quotationSettingsData; live Hostinger row verification remains a deployment check
 - [ ] Verify branding rows and file references after saving
+- [x] Add Agreement GST inclusive/exclusive pricing with subtotal, GST rate, GST amount, and final total persistence; schema migration 0019 adds the four persisted fields and the form/API calculate both modes
+- [x] Change Agreement client-name placeholder to Expertaid Technologies
 - [x] Fix Hostinger Invalid URL handling for DATABASE_URL and validate the corrected Hostinger URL format with regression tests; live profile-icon verification remains pending Hostinger restart
 
 - [x] Diagnose why branding saves do not persist in Manus preview; legacy quotationSettings reads failed while profile settings were already persisted

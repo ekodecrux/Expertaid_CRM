@@ -538,21 +538,66 @@ function defaultSessionDates(label: string) {
 export async function listSessionsForOwner(ownerId: number) {
   const settings = await getSessionSettings(ownerId);
   const db = await getDb();
-  const rows = db ? await db.select().from(sessions).where(eq(sessions.ownerId, ownerId)).orderBy(desc(sessions.createdAt)) : await listLocalSessions(ownerId);
-  if (rows.some((row) => row.sessionLabel === settings.currentSession)) return rows;
-  const dates = defaultSessionDates(settings.currentSession);
-  return [{ id: 0, ownerId, sessionLabel: settings.currentSession, ...dates }, ...rows];
+  if (!db) {
+    const rows = await listLocalSessions(ownerId);
+    if (rows.some((row) => row.sessionLabel === settings.currentSession)) return rows;
+    const dates = defaultSessionDates(settings.currentSession);
+    return [{ id: 0, ownerId, sessionLabel: settings.currentSession, ...dates }, ...rows];
+  }
+  try {
+    let rows = await db.select().from(sessions).where(eq(sessions.ownerId, ownerId)).orderBy(desc(sessions.createdAt));
+    if (!rows.some((row) => row.sessionLabel === settings.currentSession)) {
+      const dates = defaultSessionDates(settings.currentSession);
+      await db.insert(sessions).values({ ownerId, sessionLabel: settings.currentSession, ...dates });
+      rows = await db.select().from(sessions).where(eq(sessions.ownerId, ownerId)).orderBy(desc(sessions.createdAt));
+    }
+    return rows;
+  } catch (error) {
+    throw new Error(`Session database load failed: ${describeDatabaseError(error)}`);
+  }
 }
 
 export async function createSessionForOwner(ownerId: number, values: { sessionLabel: string; startDate: string; endDate: string }) {
   const db = await getDb();
   if (!db) return addLocalSession(ownerId, values);
   try {
+    const existing = await db.select({ id: sessions.id }).from(sessions).where(and(eq(sessions.ownerId, ownerId), eq(sessions.sessionLabel, values.sessionLabel))).limit(1);
+    if (existing[0]) throw new Error("That session already exists.");
     const result = await db.insert(sessions).values({ ownerId, ...values });
     const rows = await db.select().from(sessions).where(eq(sessions.id, Number(result[0].insertId))).limit(1);
     return rows[0];
   } catch (error) {
     throw new Error(`Session database save failed: ${describeDatabaseError(error)}`);
+  }
+}
+
+export async function updateSessionRecordForOwner(ownerId: number, sessionId: number, values: { sessionLabel: string; startDate: string; endDate: string }) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  try {
+    const duplicate = await db.select({ id: sessions.id }).from(sessions).where(and(eq(sessions.ownerId, ownerId), eq(sessions.sessionLabel, values.sessionLabel), sql`${sessions.id} <> ${sessionId}`)).limit(1);
+    if (duplicate[0]) throw new Error("That session already exists.");
+    await db.update(sessions).set(values).where(and(eq(sessions.id, sessionId), eq(sessions.ownerId, ownerId)));
+    const rows = await db.select().from(sessions).where(and(eq(sessions.id, sessionId), eq(sessions.ownerId, ownerId))).limit(1);
+    if (!rows[0]) throw new Error("Session not found");
+    return rows[0];
+  } catch (error) {
+    throw new Error(`Session database update failed: ${describeDatabaseError(error)}`);
+  }
+}
+
+export async function deleteSessionForOwner(ownerId: number, sessionId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  try {
+    const rows = await db.select({ sessionLabel: sessions.sessionLabel }).from(sessions).where(and(eq(sessions.id, sessionId), eq(sessions.ownerId, ownerId))).limit(1);
+    if (!rows[0]) throw new Error("Session not found");
+    const settings = await getSessionSettings(ownerId);
+    if (rows[0].sessionLabel === settings.currentSession) throw new Error("Change the current session before deleting it.");
+    await db.delete(sessions).where(and(eq(sessions.id, sessionId), eq(sessions.ownerId, ownerId)));
+    return { success: true };
+  } catch (error) {
+    throw new Error(`Session database delete failed: ${describeDatabaseError(error)}`);
   }
 }
 
