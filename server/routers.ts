@@ -13,7 +13,7 @@ import { validateCredentialLogin } from "./credentialLogin";
 import { calculateAgreementEndDate, calculateAgreementPricing, calculateAgreementTotal, PricingMode } from "@shared/pricing";
 import { calculateQuotationTotals, DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, QUOTATION_STATUSES, type QuotationItem } from "@shared/quotation";
 
-const dataUrlSchema = z.string().regex(/^data:image\/(png|jpeg|jpg|webp);base64,[A-Za-z0-9+/=]+$/).max(2_500_000);
+const dataUrlSchema = z.string().max(2_500_000).refine((value) => /^data:image\/(png|jpeg|jpg|webp);base64,[A-Za-z0-9+/_=-]+$/i.test(value.trim()), "Invalid image data URL");
 const brandingInput = z.object({
   companyName: z.string().trim().min(1).max(255),
   serviceCaption: z.string().trim().min(1).max(255),
