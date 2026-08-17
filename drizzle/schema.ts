@@ -104,6 +104,8 @@ export const quotations = mysqlTable("quotations", {
   gstAmount: decimal("gstAmount", { precision: 14, scale: 2 }).notNull(),
   grandTotal: decimal("grandTotal", { precision: 14, scale: 2 }).notNull(),
   terms: text("terms"),
+  logoUrl: text("logoUrl"),
+  logoKey: varchar("logoKey", { length: 512 }),
   scannerUrl: text("scannerUrl"),
   scannerKey: varchar("scannerKey", { length: 512 }),
   signatureUrl: text("signatureUrl"),

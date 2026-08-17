@@ -32,4 +32,15 @@ describe("quotation database authority", () => {
       expect(settingsSection).toContain(field === "productsJson" ? "productsJson: JSON.stringify(settings.products)" : `${field}: settings.${field}`);
     }
   });
+
+  it("inherits quotation settings assets into created quotations and renders fallbacks", () => {
+    const routerSource = readFileSync(resolve(process.cwd(), "server/routers.ts"), "utf8");
+    const pageSource = readFileSync(resolve(process.cwd(), "client/src/pages/Quotations.tsx"), "utf8");
+    expect(routerSource).toContain("logoUrl: defaults.logoUrl");
+    expect(routerSource).toContain("scannerUrl: scanner.url");
+    expect(routerSource).toContain("signatureUrl: signature.url");
+    expect(pageSource).toContain("selected?.logoUrl ?? quotationDefaults.data?.logoUrl");
+    expect(pageSource).toContain("selected?.scannerUrl ?? quotationDefaults.data?.scannerUrl");
+    expect(pageSource).toContain("selected?.signatureUrl ?? quotationDefaults.data?.signatureUrl");
+  });
 });
