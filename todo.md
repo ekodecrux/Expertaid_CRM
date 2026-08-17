@@ -987,6 +987,7 @@
 - [x] Fix quotation Settings logo, QR, and signature inheritance/rendering in quotation View and print output; quotation rows now persist logo URL/key and View falls back to saved settings assets
 - [x] Ensure quotation-specific QR and signature uploads override settings defaults in quotation View and print output; create submits selected assets and update uploads new assets while preserving existing ones
 - [x] Accept valid PNG, JPEG, and WebP quotation QR/signature data URLs rejected by the current strict validator; validator now trims input and accepts standard or URL-safe base64 payloads
+- [x] Resolve the recurring production invalid_format validator path for scannerDataUrl and signatureDataUrl and push a final compatibility fix; the validator now normalizes whitespace before checking standard and URL-safe base64
 - [x] Add Agreement GST inclusive/exclusive pricing with subtotal, GST rate, GST amount, and final total persistence; schema migration 0019 adds the four persisted fields and the form/API calculate both modes
 - [x] Change Agreement client-name placeholder to Expertaid Technologies
 - [x] Fix Hostinger Invalid URL handling for DATABASE_URL and validate the corrected Hostinger URL format with regression tests; live profile-icon verification remains pending Hostinger restart
