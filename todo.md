@@ -977,6 +977,7 @@
 - [x] Audit and fix all Hostinger database persistence paths for quotation settings, quotations, agreements, clients, and sessions; quotation/agreement writes are database-authoritative and session settings/records were moved from local-only storage to MySQL
 - [x] Fix Hostinger quotation settings so all fields and asset metadata persist to quotationSettingsData and reload after save; transactional Hostinger-compatible writes and database error reporting are implemented
 - [x] Verify every visible quotation-default field is included in settingsJson and fix any omitted fields; all fields are also mirrored to the columnized quotationSettings table
+- [x] Migrate quotation settings to use only quotationSettings and remove the quotationSettingsData code dependency; quotationSettings is now the sole application table for quotation defaults
 - [x] Verify Hostinger phpMyAdmin is checking quotationSettingsData rather than legacy quotationSettings, and confirm the deployed quotation-settings source targets quotationSettingsData; live Hostinger row verification remains a deployment check
 - [ ] Verify branding rows and file references after saving
 - [x] Fix Hostinger Invalid URL handling for DATABASE_URL and validate the corrected Hostinger URL format with regression tests; live profile-icon verification remains pending Hostinger restart

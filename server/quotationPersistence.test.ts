@@ -20,14 +20,14 @@ describe("quotation database authority", () => {
     expect(databaseBranch).not.toContain("createLocalQuotation(input.ownerId");
   });
 
-  it("persists all quotation settings through a Hostinger-compatible transaction", () => {
+  it("persists every quotation-default field through the single quotationSettings table", () => {
     const source = readFileSync(resolve(process.cwd(), "server/db.ts"), "utf8");
-    const settingsSection = source.slice(source.indexOf("async function syncLegacyQuotationSettingsTable"), source.indexOf("export async function allocateInvoiceNumberForOwner"));
-    expect(settingsSection).toContain("await tx.delete(quotationSettingsData).where(eq(quotationSettingsData.ownerId, ownerId))");
-    expect(settingsSection).toContain("await tx.insert(quotationSettingsData).values({ ownerId, settingsJson })");
+    const settingsSection = source.slice(source.indexOf("function quotationSettingsRowToLocal"), source.indexOf("export async function allocateInvoiceNumberForOwner"));
+    expect(settingsSection).toContain("await tx.delete(quotationSettings).where(eq(quotationSettings.ownerId, ownerId))");
+    expect(settingsSection).toContain("await tx.insert(quotationSettings).values(values)");
     expect(settingsSection).toContain("Quotation settings database save failed:");
     expect(settingsSection).toContain("Quotation settings database load failed:");
-    expect(settingsSection).toContain("async function syncLegacyQuotationSettingsTable");
+    expect(settingsSection).not.toContain("quotationSettingsData");
     for (const field of ["companyGst", "companyAddress", "validityDays", "gstRate", "gstMode", "quotationPrefix", "invoiceNumberStart", "invoiceNumberNext", "terms", "productsJson", "logoUrl", "logoKey", "scannerUrl", "scannerKey", "signatureUrl", "signatureKey", "accountCompanyName", "accountNumber", "accountIfsc", "accountBranch"]) {
       expect(settingsSection).toContain(field === "productsJson" ? "productsJson: JSON.stringify(settings.products)" : `${field}: settings.${field}`);
     }
