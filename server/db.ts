@@ -1,7 +1,7 @@
 import { and, desc, eq, gte, like, lte, lt, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
-import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, profileSettingsData, quotationEditHistory, quotations, quotationSettingsData, sessions, users, type User } from "../drizzle/schema";
+import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, profileSettingsData, quotationEditHistory, quotations, quotationSettings, quotationSettingsData, sessions, users, type User } from "../drizzle/schema";
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding, type CompanyBranding } from "@shared/branding";
 import { ENV } from './_core/env';
@@ -319,6 +319,36 @@ function normalizeStoredQuotationSettings(value: unknown): LocalQuotationSetting
   };
 }
 
+async function syncLegacyQuotationSettingsTable(db: ReturnType<typeof drizzle>, ownerId: number, settings: LocalQuotationSettings) {
+  const legacy: InsertQuotationSettings = {
+    ownerId,
+    companyGst: settings.companyGst,
+    companyAddress: settings.companyAddress,
+    validityDays: settings.validityDays,
+    gstRate: settings.gstRate,
+    gstMode: settings.gstMode,
+    quotationPrefix: settings.quotationPrefix,
+    invoiceNumberStart: settings.invoiceNumberStart,
+    invoiceNumberNext: settings.invoiceNumberNext,
+    terms: settings.terms,
+    productsJson: JSON.stringify(settings.products),
+    logoUrl: settings.logoUrl,
+    logoKey: settings.logoKey,
+    scannerUrl: settings.scannerUrl,
+    scannerKey: settings.scannerKey,
+    signatureUrl: settings.signatureUrl,
+    signatureKey: settings.signatureKey,
+    accountCompanyName: settings.accountCompanyName,
+    accountNumber: settings.accountNumber,
+    accountIfsc: settings.accountIfsc,
+    accountBranch: settings.accountBranch,
+  };
+  await db.transaction(async (tx) => {
+    await tx.delete(quotationSettings).where(eq(quotationSettings.ownerId, ownerId));
+    await tx.insert(quotationSettings).values(legacy);
+  });
+}
+
 async function saveQuotationSettingsToDatabase(ownerId: number, settings: LocalQuotationSettings) {
   const db = await getDb();
   if (!db) return false;
@@ -328,6 +358,11 @@ async function saveQuotationSettingsToDatabase(ownerId: number, settings: LocalQ
       await tx.delete(quotationSettingsData).where(eq(quotationSettingsData.ownerId, ownerId));
       await tx.insert(quotationSettingsData).values({ ownerId, settingsJson });
     });
+    try {
+      await syncLegacyQuotationSettingsTable(db, ownerId, settings);
+    } catch (legacyError) {
+      console.warn(`[Quotation settings] Legacy quotationSettings mirror unavailable: ${describeDatabaseError(legacyError)}`);
+    }
     return true;
   } catch (error) {
     throw new Error(`Quotation settings database save failed: ${describeDatabaseError(error)}`);
