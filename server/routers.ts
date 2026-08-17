@@ -13,7 +13,7 @@ import { validateCredentialLogin } from "./credentialLogin";
 import { calculateAgreementEndDate, calculateAgreementPricing, calculateAgreementTotal, PricingMode } from "@shared/pricing";
 import { calculateQuotationTotals, DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, QUOTATION_STATUSES, type QuotationItem } from "@shared/quotation";
 
-const dataUrlSchema = z.string().max(2_500_000).transform((value) => value.trim().replace(/[\r\n\t\s]+/g, "")).refine((value) => /^data:image\/[a-z0-9.+-]+;base64,[A-Za-z0-9+/_=-]+$/i.test(value), "Invalid image data URL");
+const dataUrlSchema = z.string().max(2_500_000).transform((value) => value.trim().replace(/[\r\n\t\s]+/g, "")).refine((value) => /^data:image\/[a-z0-9.+-]+(?:;[^,]*)?,[\s\S]+$/i.test(value), "Invalid image data URL");
 const brandingInput = z.object({
   companyName: z.string().trim().min(1).max(255),
   serviceCaption: z.string().trim().min(1).max(255),
@@ -78,10 +78,14 @@ type QuotationInput = z.infer<typeof quotationInput>;
 
 async function uploadQuotationAsset(dataUrl: string | undefined, path: string) {
   if (!dataUrl) return { url: null, key: null };
-  const [header, encoded] = dataUrl.split(",");
-  const mimeType = header.match(/^data:(image\/[a-z0-9.+-]+);base64$/i)?.[1]?.toLowerCase() ?? "image/png";
+  const [header, encoded] = dataUrl.split(",", 2);
+  const headerMatch = header.match(/^data:(image\/[a-z0-9.+-]+)(?:;([^,]*))?$/i);
+  if (!headerMatch || !encoded) throw new TRPCError({ code: "BAD_REQUEST", message: "Invalid quotation image payload." });
+  const mimeType = headerMatch[1].toLowerCase();
+  const isBase64 = /(?:^|;)base64$/i.test(headerMatch[2] ?? "");
+  const bytes = isBase64 ? Buffer.from(encoded, "base64") : Buffer.from(decodeURIComponent(encoded));
   const extension = mimeType === "image/jpeg" || mimeType === "image/jpg" ? "jpg" : (mimeType.split("/")[1]?.replace(/[^a-z0-9]+/g, "") || "png");
-  const stored = await storagePut(`quotations/${nanoid(10)}/${path}.${extension}`, Buffer.from(encoded, "base64"), mimeType);
+  const stored = await storagePut(`quotations/${nanoid(10)}/${path}.${extension}`, bytes, mimeType);
   return { url: stored.url, key: stored.key };
 }
 

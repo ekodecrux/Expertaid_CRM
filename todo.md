@@ -990,6 +990,7 @@
 - [x] Resolve the recurring production invalid_format validator path for scannerDataUrl and signatureDataUrl and push a final compatibility fix; the validator now normalizes whitespace before checking standard and URL-safe base64
 - [x] Broaden production quotation image data URL validation and change the quotation client-name placeholder to Expertaid Technologies; quotation uploads now accept any image MIME subtype and the form uses the Expertaid placeholder
 - [x] Replace fragile quotation QR/signature data-URL submission with a production-safe upload representation; quotation image parsing now accepts normalized browser data URLs and preserves MIME type
+- [x] Remove the recurring production QR/signature invalid image data URL regression with a robust upload contract; parser now accepts image MIME parameters, base64 and URL-encoded payloads, and preserves MIME type
 - [x] Add Agreement GST inclusive/exclusive pricing with subtotal, GST rate, GST amount, and final total persistence; schema migration 0019 adds the four persisted fields and the form/API calculate both modes
 - [x] Change Agreement client-name placeholder to Expertaid Technologies
 - [x] Fix Hostinger Invalid URL handling for DATABASE_URL and validate the corrected Hostinger URL format with regression tests; live profile-icon verification remains pending Hostinger restart
