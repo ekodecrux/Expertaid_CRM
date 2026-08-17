@@ -982,6 +982,7 @@
 - [x] Migrate quotation settings to use only quotationSettings and remove the quotationSettingsData code dependency; quotationSettings is now the sole application table for quotation defaults
 - [x] Verify Hostinger phpMyAdmin is checking quotationSettingsData rather than legacy quotationSettings, and confirm the deployed quotation-settings source targets quotationSettingsData; live Hostinger row verification remains a deployment check
 - [ ] Verify branding rows and file references after saving
+- [x] Remove duplicate session labels from dashboard and Settings rendering so 2026-2027 has one unique React key; DashboardLayout now deduplicates session records by label
 - [x] Fix quotation Settings logo, QR, and signature inheritance/rendering in quotation View and print output; quotation rows now persist logo URL/key and View falls back to saved settings assets
 - [x] Ensure quotation-specific QR and signature uploads override settings defaults in quotation View and print output; create submits selected assets and update uploads new assets while preserving existing ones
 - [x] Accept valid PNG, JPEG, and WebP quotation QR/signature data URLs rejected by the current strict validator; validator now trims input and accepts standard or URL-safe base64 payloads
