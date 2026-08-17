@@ -200,11 +200,27 @@ export async function getBrandingForOwner(ownerId: number) {
 }
 
 export async function getSessionSettings(ownerId: number) {
-  return getLocalSessionSettings(ownerId);
+  const db = await getDb();
+  if (!db) return getLocalSessionSettings(ownerId);
+  try {
+    const rows = await db.select({ sessionMode: users.sessionMode, currentSession: users.currentSession }).from(users).where(eq(users.id, ownerId)).limit(1);
+    const stored = rows[0];
+    if (!stored) throw new Error(`User ${ownerId} was not found`);
+    return { sessionMode: stored.sessionMode, currentSession: stored.currentSession };
+  } catch (error) {
+    throw new Error(`Session settings database load failed: ${describeDatabaseError(error)}`);
+  }
 }
 
 export async function updateSessionSettings(ownerId: number, values: { sessionMode: "all" | "single"; currentSession: string }) {
-  return saveLocalSessionSettings(ownerId, values);
+  const db = await getDb();
+  if (!db) return saveLocalSessionSettings(ownerId, values);
+  try {
+    await db.update(users).set(values).where(eq(users.id, ownerId));
+    return values;
+  } catch (error) {
+    throw new Error(`Session settings database save failed: ${describeDatabaseError(error)}`);
+  }
 }
 
 export async function updateBrandingForOwner(ownerId: number, values: {
@@ -495,14 +511,23 @@ function defaultSessionDates(label: string) {
 
 export async function listSessionsForOwner(ownerId: number) {
   const settings = await getSessionSettings(ownerId);
-  const rows = await listLocalSessions(ownerId);
+  const db = await getDb();
+  const rows = db ? await db.select().from(sessions).where(eq(sessions.ownerId, ownerId)).orderBy(desc(sessions.createdAt)) : await listLocalSessions(ownerId);
   if (rows.some((row) => row.sessionLabel === settings.currentSession)) return rows;
   const dates = defaultSessionDates(settings.currentSession);
   return [{ id: 0, ownerId, sessionLabel: settings.currentSession, ...dates }, ...rows];
 }
 
 export async function createSessionForOwner(ownerId: number, values: { sessionLabel: string; startDate: string; endDate: string }) {
-  return addLocalSession(ownerId, values);
+  const db = await getDb();
+  if (!db) return addLocalSession(ownerId, values);
+  try {
+    const result = await db.insert(sessions).values({ ownerId, ...values });
+    const rows = await db.select().from(sessions).where(eq(sessions.id, Number(result[0].insertId))).limit(1);
+    return rows[0];
+  } catch (error) {
+    throw new Error(`Session database save failed: ${describeDatabaseError(error)}`);
+  }
 }
 
 export async function listAgreementsForOwner(ownerId: number, scope?: { sessionMode: "all" | "single"; currentSession: string }) {
