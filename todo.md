@@ -976,6 +976,7 @@
 - [ ] Ensure profile and quotation branding saves create rows in MySQL instead of only local storage
 - [x] Audit and fix all Hostinger database persistence paths for quotation settings, quotations, agreements, clients, and sessions; quotation/agreement writes are database-authoritative and session settings/records were moved from local-only storage to MySQL
 - [x] Add session edit/delete actions and persist the current 2026-2027 session in MySQL; current sessions are auto-inserted when missing and delete protects the active session
+- [x] Make session edit/delete controls icon-only so the full date range remains visible
 - [x] Fix Hostinger quotation settings so all fields and asset metadata persist to quotationSettingsData and reload after save; transactional Hostinger-compatible writes and database error reporting are implemented
 - [x] Verify every visible quotation-default field is included in settingsJson and fix any omitted fields; all fields are also mirrored to the columnized quotationSettings table
 - [x] Migrate quotation settings to use only quotationSettings and remove the quotationSettingsData code dependency; quotationSettings is now the sole application table for quotation defaults
