@@ -189,7 +189,9 @@ export const appRouter = router({
     update: protectedProcedure.input(quotationInput.extend({ id: z.number().int().positive() })).mutation(async ({ ctx, input }) => {
       const { id, scannerDataUrl, signatureDataUrl, items, ...fields } = input;
       const { subtotal, gstAmount, grandTotal } = calculateQuotationTotals(items as QuotationItem[], input.gstRate, input.gstMode);
-      return updateQuotationForOwner(ctx.user.id, id, { ...fields, itemsJson: JSON.stringify(items), subtotal: subtotal.toFixed(2), gstRate: input.gstRate.toFixed(2), gstMode: input.gstMode, gstAmount: gstAmount.toFixed(2), grandTotal: grandTotal.toFixed(2) }, { id: ctx.user.id, name: ctx.user.name || ctx.user.email || "Workspace administrator" });
+      const scanner = scannerDataUrl ? await uploadQuotationAsset(scannerDataUrl, "scanner") : undefined;
+      const signature = signatureDataUrl ? await uploadQuotationAsset(signatureDataUrl, "signature") : undefined;
+      return updateQuotationForOwner(ctx.user.id, id, { ...fields, ...(scanner ? { scannerUrl: scanner.url, scannerKey: scanner.key } : {}), ...(signature ? { signatureUrl: signature.url, signatureKey: signature.key } : {}), itemsJson: JSON.stringify(items), subtotal: subtotal.toFixed(2), gstRate: input.gstRate.toFixed(2), gstMode: input.gstMode, gstAmount: gstAmount.toFixed(2), grandTotal: grandTotal.toFixed(2) }, { id: ctx.user.id, name: ctx.user.name || ctx.user.email || "Workspace administrator" });
     }),
     updateStatus: protectedProcedure.input(z.object({ id: z.number().int().positive(), status: z.enum(QUOTATION_STATUSES) })).mutation(({ ctx, input }) => updateQuotationForOwner(ctx.user.id, input.id, { status: input.status }, { id: ctx.user.id, name: ctx.user.name || ctx.user.email || "Workspace administrator" })),
     delete: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ ctx, input }) => deleteQuotationForOwner(ctx.user.id, input.id)),
