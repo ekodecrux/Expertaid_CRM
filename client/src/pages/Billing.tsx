@@ -1842,7 +1842,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             (item: any, index: number) => (
                               <tr
                                 key={`invoice-item-${selected.id}-${index}`}
-                                className="border-b border-slate-200 bg-white last:border-b-0"
+                                className="border-b border-slate-200 bg-white last:border-b-2 last:border-slate-300"
                               >
                                 <td className="px-3 py-3 text-center text-slate-700">
                                   {index + 1}

@@ -1075,3 +1075,5 @@
 - [x] Move the plain Invoice client name from the BILLED TO heading row into the right Client Details Email area
 
 - [x] Restore the plain Invoice client name directly to the right of the BILLED TO label
+
+- [x] Add a visible full-width border directly after the final Invoice item row
