@@ -1606,7 +1606,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                   {isInvoice ? (
                     <>
                       <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-[0_2px_8px_rgba(30,45,80,0.04)] sm:p-5">
-                        <div className="grid gap-4 sm:grid-cols-[1.15fr_1fr_1.15fr] sm:items-stretch">
+                        <div className="grid gap-4 sm:grid-cols-[minmax(260px,1.15fr)_minmax(180px,0.85fr)_minmax(220px,1fr)] sm:items-stretch">
                           <div className="flex min-w-0 items-center gap-4 sm:pr-4">
                             {selected.logoUrl ||
                             (isInvoice
@@ -1619,20 +1619,12 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                                     ? invoiceSettings.data?.logoUrl
                                     : receiptSettings.data?.logoUrl)
                                 }
-                                className="h-20 w-32 shrink-0 object-contain"
+                                className="h-20 w-40 shrink-0 object-contain"
                                 alt="Expertaid logo"
                               />
                             ) : (
                               <div className="h-20 w-32 shrink-0 rounded-lg bg-[#f0efff]" />
                             )}
-                            <div className="min-w-0">
-                              <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#43239d]">
-                                Expertaid
-                              </p>
-                              <p className="mt-1 text-xs font-semibold text-slate-600">
-                                Technologies Pvt. Ltd.
-                              </p>
-                            </div>
                           </div>
                           <div className="border-y border-slate-200 py-3 text-xs text-slate-600 sm:border-y-0 sm:border-x sm:px-5">
                             <p className="font-bold uppercase tracking-wider text-[#43239d]">
