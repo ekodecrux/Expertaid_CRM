@@ -1010,3 +1010,4 @@
 - [x] Add Invoice and Receipt settings screens with database persistence and asset-safe behavior
 - [x] Add regression tests and responsive verification for Invoice and Receipt workflows; 62 tests pass and both new routes were visually verified
 - [x] Provide and verify complete Hostinger SQL for separate `invoices`, `invoiceSettings`, `receipts`, and `receiptSettings` tables, with independent defaults tables; added `docs/hostinger-invoice-receipt.sql` with idempotent DDL, optional owner-1 defaults, and verification queries
+- [x] Fix Invoice and Receipt settings and transaction forms sending HTML numeric inputs as strings; client conversion and server zod coercion now normalize GST rates, numbering, due days, quantities, prices, and receipt amounts before API validation
