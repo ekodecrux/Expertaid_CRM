@@ -1619,7 +1619,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                 >
                   {isInvoice ? (
                     <>
-                      <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-[0_2px_8px_rgba(30,45,80,0.04)] sm:p-5">
+                      <div className="rounded-none border-0 bg-white p-0 shadow-none sm:p-0">
                         <div className="grid gap-4 sm:grid-cols-[minmax(260px,1.15fr)_minmax(180px,0.85fr)_minmax(220px,1fr)] sm:items-stretch">
                           <div className="flex min-w-0 items-center gap-4 sm:pr-4">
                             {selected.logoUrl ||
@@ -1633,11 +1633,11 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                                     ? invoiceSettings.data?.logoUrl
                                     : receiptSettings.data?.logoUrl)
                                 }
-                                className="h-20 w-40 shrink-0 object-contain"
+                                className="h-24 w-52 shrink-0 object-contain"
                                 alt="Expertaid logo"
                               />
                             ) : (
-                              <div className="h-20 w-40 shrink-0 rounded-lg bg-[#f0efff]" />
+                              <div className="h-24 w-52 shrink-0 rounded-lg bg-[#f0efff]" />
                             )}
                           </div>
                           <div className="border-y border-slate-200 py-3 text-xs text-slate-600 sm:border-y-0 sm:border-x sm:px-5">
