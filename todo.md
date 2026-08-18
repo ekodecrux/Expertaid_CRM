@@ -1013,3 +1013,4 @@
 - [x] Fix Invoice and Receipt settings and transaction forms sending HTML numeric inputs as strings; client conversion and server zod coercion now normalize GST rates, numbering, due days, quantities, prices, and receipt amounts before API validation
 - [x] Replace generic Invoice and Receipt validation errors with field-level messages explaining exactly what is missing or invalid in settings and creation forms; dialogs now show actionable correction summaries and server errors are mapped to readable field names
 - [x] Remove GST inclusive/exclusive from Invoice defaults and keep GST mode selectable only while generating each Invoice; settings retain only the default GST rate, while the New Invoice form controls the mode
+- [x] Keep Invoice and Receipt validation guidance visible in long dialogs and add a direct action to focus the first invalid field; validation banner is sticky and Review fields scrolls to the first marked input
