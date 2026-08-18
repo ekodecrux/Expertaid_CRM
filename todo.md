@@ -1087,3 +1087,5 @@
 
 - [x] Fix manual Receipt creation so it inserts successfully with the live Receipt schema (schema-repair SQL prepared and verified against the project database)
 - [x] Re-verify automatic Paid-invoice Receipt creation after the manual insert fix (project database columns verified; Hostinger repair script included)
+
+- [x] Redesign the payment Receipt to use the same branded header, logo, company details, gradient styling, Billed To, products, totals, account details, amount in words, and signature layout as the Invoice

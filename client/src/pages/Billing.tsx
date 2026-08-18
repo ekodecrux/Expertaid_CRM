@@ -386,7 +386,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     ? selected.signatureUrl ||
       (isInvoice
         ? quotationSettings.data?.signatureUrl
-        : receiptSettings.data?.signatureUrl)
+        : receiptSettings.data?.signatureUrl || invoiceSettings.data?.signatureUrl || quotationSettings.data?.signatureUrl)
     : null;
   const selectedInvoiceSubtotal = selected ? Number(selected.subtotal) : 0;
   const selectedInvoiceGst = selected ? Number(selected.gstAmount) : 0;
@@ -1682,13 +1682,13 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             {selected.logoUrl ||
                             (isInvoice
                               ? invoiceSettings.data?.logoUrl
-                              : receiptSettings.data?.logoUrl) ? (
+                              : receiptSettings.data?.logoUrl || invoiceSettings.data?.logoUrl || quotationSettings.data?.logoUrl) ? (
                               <img
                                 src={
                                   selected.logoUrl ||
                                   (isInvoice
                                     ? invoiceSettings.data?.logoUrl
-                                    : receiptSettings.data?.logoUrl)
+                                    : receiptSettings.data?.logoUrl || invoiceSettings.data?.logoUrl || quotationSettings.data?.logoUrl)
                                 }
                                 className="h-24 w-52 shrink-0 object-contain"
                                 alt="Expertaid logo"
@@ -1707,6 +1707,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                                   ? invoiceSettings.data?.companyGst ||
                                       selected.companyGst
                                   : receiptSettings.data?.companyGst ||
+                                      invoiceSettings.data?.companyGst ||
                                       selected.companyGst
                               )}
                             </p>
@@ -1716,7 +1717,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             <p className="mt-2 whitespace-pre-line">
                               {(isInvoice
                                 ? invoiceSettings.data?.companyAddress
-                                : receiptSettings.data?.companyAddress) ||
+                                : receiptSettings.data?.companyAddress ||
+                                  invoiceSettings.data?.companyAddress ||
+                                  selected.companyAddress) ||
                                 "Not configured"}
                             </p>
                           </div>
@@ -1943,64 +1946,35 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                       </div>
                     </>
                   ) : (
-                    <div className="mt-8 overflow-hidden rounded-xl border-2 border-[#d7d0ff] bg-white">
-                      <div className="bg-gradient-to-r from-[#43239d] via-[#4d35ad] to-[#3157d5] px-5 py-3 text-sm font-bold uppercase tracking-wider text-white">
-                        Payment received
-                      </div>
-                      <div className="grid gap-0 sm:grid-cols-2">
-                        <div className="border-b border-[#e3defd] p-5 sm:border-b-0 sm:border-r">
-                          <p className="text-[10px] font-bold uppercase tracking-wider text-[#43239d]">
-                            Billed to
-                          </p>
-                          <p className="mt-2 text-base font-bold text-[#2f236d]">
-                            {selected.clientName}
-                          </p>
+                    <>
+                      <div className="relative mt-6 overflow-hidden rounded-2xl border-2 border-[#d7d0ff] bg-white shadow-[0_2px_8px_rgba(30,45,80,0.04)]">
+                        <div className="relative flex min-w-0 items-center gap-4 px-5 py-3">
+                          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#f0efff] text-[#43239d]">
+                            <FileText className="h-6 w-6" />
+                          </div>
+                          <div className="flex min-w-0 flex-1 items-center gap-4">
+                            <p className="shrink-0 text-[10px] font-bold uppercase tracking-wider text-[#43239d]">Billed to</p>
+                            <p className="min-w-0 truncate text-sm font-bold text-[#2f236d]">{selected.clientName || "—"}</p>
+                          </div>
                         </div>
-                        <div className="border-b border-[#e3defd] p-5">
-                          <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">
-                            Client details
-                          </p>
-                          <div className="mt-2 space-y-1 text-sm text-slate-600">
-                            <p><strong className="text-[#18275b]">Address:</strong> {selected.clientAddress || "—"}</p>
-                            <p><strong className="text-[#18275b]">Email:</strong> {selected.clientEmail || "—"}</p>
-                            <p><strong className="text-[#18275b]">Phone:</strong> {selected.clientContact || "—"}</p>
-                            <p><strong className="text-[#18275b]">GST No.:</strong> {selected.clientGst || "—"}</p>
+                        <div className="relative border-t border-[#d7d0ff] p-4 text-left">
+                          <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">Client details</p>
+                          <div className="mt-3 grid gap-x-8 gap-y-4 text-sm text-slate-600 sm:grid-cols-2">
+                            <div className="border-b border-dashed border-[#e3defd] pb-3"><strong className="block font-semibold text-[#18275b]">Address</strong><span className="mt-0.5 block break-words">{selected.clientAddress || "—"}</span></div>
+                            <div className="border-b border-dashed border-[#e3defd] pb-3"><strong className="block font-semibold text-[#18275b]">Email</strong><span className="mt-0.5 block break-words">{selected.clientEmail || "—"}</span></div>
+                            <div><strong className="block font-semibold text-[#18275b]">Phone</strong><span className="mt-0.5 block break-words">{selected.clientContact || "—"}</span></div>
+                            <div><strong className="block font-semibold text-[#18275b]">GST No.</strong><span className="mt-0.5 block break-words">{selected.clientGst || "—"}</span></div>
                           </div>
                         </div>
                       </div>
-                      <table className="w-full border-collapse text-sm">
-                        <thead className="bg-gradient-to-r from-[#43239d] via-[#4d35ad] to-[#3157d5] text-left text-[10px] font-bold uppercase tracking-wide text-white">
-                          <tr>
-                            <th className="px-3 py-3">S.NO</th>
-                            <th className="px-3 py-3">ITEM NAME</th>
-                            <th className="px-3 py-3 text-center">QTY</th>
-                            <th className="px-3 py-3 text-right">PER UNIT</th>
-                            <th className="px-3 py-3 text-right">TOTAL PRICE</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {(selected.itemsJson ? JSON.parse(selected.itemsJson) : [{ itemName: selected.receivedFor, quantity: 1, unitPrice: selected.amount }]).map((item: any, index: number) => (
-                            <tr key={`receipt-item-${selected.id}-${index}`} className="border-b border-slate-200">
-                              <td className="px-3 py-3 text-center">{index + 1}</td>
-                              <td className="px-3 py-3 font-semibold text-[#2f236d]">{item.itemName || item.productName || "Item"}{item.description ? ` (${item.description})` : ""}</td>
-                              <td className="px-3 py-3 text-center">{item.quantity}</td>
-                              <td className="px-3 py-3 text-right">{formatCurrency(Number(item.unitPrice))}</td>
-                              <td className="px-3 py-3 text-right font-semibold">{formatCurrency(Number(item.unitPrice) * Number(item.quantity))}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                      <div className="grid grid-cols-2 border-t-2 border-slate-300 text-sm">
-                        <span className="border-r border-b border-slate-200 px-4 py-3 text-xs uppercase text-slate-600">Amount received</span>
-                        <strong className="border-b border-slate-200 px-4 py-3 text-right text-[#18275b]">{formatCurrency(Number(selected.amount))}</strong>
-                        <span className="border-r border-slate-200 px-4 py-3 text-xs uppercase text-slate-600">Payment mode</span>
-                        <strong className="px-4 py-3 text-right text-[#18275b]">{selected.paymentMode}</strong>
+                      <div className="mt-8 overflow-hidden rounded-xl border-2 border-slate-300 bg-white">
+                        <table className="w-full border-collapse border-spacing-0 text-sm">
+                          <thead className="bg-gradient-to-r from-[#43239d] via-[#4d35ad] to-[#3157d5] text-left text-[10px] font-bold uppercase tracking-wide text-white"><tr><th className="w-12 px-3 py-3 text-center">S.NO</th><th className="px-3 py-3">ITEM NAME</th><th className="w-20 px-3 py-3 text-center">QTY</th><th className="w-32 px-3 py-3 text-right">PER UNIT</th><th className="w-32 px-3 py-3 text-right">TOTAL PRICE</th></tr></thead>
+                          <tbody>{(selected.itemsJson ? JSON.parse(selected.itemsJson) : [{ itemName: selected.receivedFor, quantity: 1, unitPrice: selected.amount }]).map((item: any, index: number) => <tr key={`receipt-item-${selected.id}-${index}`} className="border-b border-slate-200 bg-white last:border-b-2 last:border-slate-300"><td className="px-3 py-3 text-center text-slate-700">{index + 1}</td><td className="px-3 py-3"><strong className="text-[#2f236d]">{item.itemName || item.productName || item.product || "Item"}</strong>{item.description && <span className="ml-1 text-xs text-slate-500">({item.description})</span>}</td><td className="px-3 py-3 text-center text-slate-700">{item.quantity}</td><td className="px-3 py-3 text-right text-slate-700">{formatCurrency(Number(item.unitPrice))}</td><td className="px-3 py-3 text-right font-semibold text-slate-800">{formatCurrency(Number(item.unitPrice) * Number(item.quantity))}</td></tr>)}</tbody>
+                        </table>
+                        <div className="grid grid-cols-2 bg-white"><div className="flex items-center justify-center border-r border-slate-200 px-4 py-6 text-center text-xs font-bold uppercase tracking-wide text-[#43239d]">Payment received</div><div className="grid grid-cols-[minmax(0,1fr)_112px] text-right text-sm"><span className="border-b border-l border-slate-200 px-4 py-3 text-center text-xs uppercase leading-tight text-slate-600">Total</span><strong className="border-b border-slate-200 px-4 py-3 text-slate-800">{formatCurrency(Number(selected.subtotal ?? selected.amount))}</strong><span className="border-b border-l border-slate-200 px-4 py-3 text-center text-xs uppercase leading-tight text-slate-600">Tax amount ({selected.gstRate ?? 0}%)</span><strong className="border-b border-slate-200 px-4 py-3 text-slate-800">{formatCurrency(Number(selected.gstAmount ?? 0))}</strong><span className="border-l border-t border-slate-200 px-4 py-3 text-center text-base font-bold uppercase leading-tight text-[#43239d]">Grand total amount</span><strong className="border-t border-slate-200 bg-[#43239d] px-4 py-3 text-base text-white">{formatCurrency(Number(selected.grandTotal ?? selected.amount))}</strong></div><div className="col-span-2 flex min-h-[52px] items-center gap-3 border-t-2 border-b-2 border-slate-300 px-4 py-3"><span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#43239d] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white">Onwards <span aria-hidden="true">›</span></span><span className="text-sm font-medium text-slate-700">{amountInWords(Number(selected.grandTotal ?? selected.amount))}</span></div></div>
                       </div>
-                      <div className="flex items-center justify-between border-t-2 border-slate-300 px-5 py-4">
-                        <span className="text-xs font-bold uppercase tracking-wide text-[#43239d]">Authorized signature</span>
-                        {selected.signatureUrl ? <img src={selected.signatureUrl} alt="Authorized signature" className="h-12 max-w-[180px] object-contain" /> : <span className="text-sm text-slate-400">Not configured</span>}
-                      </div>
-                    </div>
+                    </>
                   )}
                   {isInvoice ? (
                     <div className="mt-8 grid gap-0 border-y border-slate-200 bg-white sm:grid-cols-[minmax(0,1.55fr)_190px_minmax(180px,1fr)]">
@@ -2073,41 +2047,23 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                       </div>
                     </div>
                   ) : (
-                    <div className="mt-8 grid gap-6 border-y border-slate-200 bg-white py-6 sm:grid-cols-2">
-                      <div>
-                        <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">
-                          Company details
-                        </p>
-                        <p className="mt-2 text-sm font-semibold text-slate-700">
-                          Company:{" "}
-                          {selected.accountCompanyName ||
-                            "Expertaid Technologies Pvt. Ltd."}
-                        </p>
-                        <p className="whitespace-pre-line text-sm text-slate-600">
-                          Address: {selected.companyAddress || "—"}
-                        </p>
-                        <p className="text-sm text-slate-600">
-                          GSTIN / Registration: {selected.companyGst || "—"}
-                        </p>
-                        {selected.notes && (
-                          <p className="mt-3 text-sm text-slate-600">
-                            Notes: {selected.notes}
-                          </p>
-                        )}
+                    <div className="mt-8 grid gap-0 border-y border-slate-200 bg-white sm:grid-cols-[minmax(0,1.55fr)_190px_minmax(180px,1fr)]">
+                      <div className="min-w-0 border-b border-slate-200 py-6 sm:border-b-0 sm:border-r sm:pr-6">
+                        <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">Account details:</p>
+                        <p className="mt-3 whitespace-nowrap text-[13px]"><strong>Company:</strong> {selected.accountCompanyName || invoiceSettings.data?.accountCompanyName || receiptSettings.data?.accountCompanyName || "Not configured"}</p>
+                        <p className="mt-2 text-sm"><strong>A/C No:</strong> {selected.accountNumber || invoiceSettings.data?.accountNumber || receiptSettings.data?.accountNumber || "Not configured"}</p>
+                        <p className="mt-2 text-sm"><strong>IFSC Code:</strong> {selected.accountIfsc || invoiceSettings.data?.accountIfsc || receiptSettings.data?.accountIfsc || "Not configured"}</p>
+                        <p className="mt-2 text-sm"><strong>Branch:</strong> {selected.accountBranch || invoiceSettings.data?.accountBranch || receiptSettings.data?.accountBranch || "Not configured"}</p>
+                        <p className="mt-3 text-sm"><strong>Payment mode:</strong> {selected.paymentMode}</p>
+                        <p className="mt-2 text-sm"><strong>Reference:</strong> {selected.transactionReference || "—"}</p>
                       </div>
-                      <div className="text-center">
-                        <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">
-                          Authorised by
-                        </p>
-                        {selectedSignatureUrl ? (
-                          <img
-                            src={selectedSignatureUrl}
-                            alt="Authorised signature"
-                            className="mx-auto mt-3 h-16 w-28 object-contain"
-                          />
-                        ) : (
-                          <div className="mx-auto h-16" />
-                        )}
+                      <div className="flex min-h-[178px] min-w-0 items-center justify-center border-b border-slate-200 py-6 sm:border-b-0 sm:border-r sm:px-4">
+                        {invoiceSettings.data?.scannerUrl && <div className="flex h-full flex-col items-center justify-center text-center"><img src={invoiceSettings.data.scannerUrl} alt="UPI QR scanner" className="mx-auto h-28 w-28 object-contain" /><p className="mt-3 text-xs font-semibold text-[#43239d]">UPI ID / Payment QR</p></div>}
+                      </div>
+                      <div className="flex min-h-[178px] min-w-0 flex-col items-center justify-center py-6 sm:pl-4">
+                        <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">Your sincerely,</p>
+                        {selectedSignatureUrl ? <img src={selectedSignatureUrl} alt="Authorised signature" className="mx-auto mt-4 h-24 w-40 object-contain" /> : <div className="h-24" />}
+                        <p className="mt-3 text-sm font-semibold">Authorised Signatory</p>
                       </div>
                     </div>
                   )}
