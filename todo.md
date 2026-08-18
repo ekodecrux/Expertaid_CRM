@@ -1002,3 +1002,4 @@
 - [x] Tolerate Hostinger DATABASE_URL values that include the literal `DATABASE_URL=` prefix and validate the parser with regression tests; live profile-settings save verification remains pending Hostinger restart
 - [x] Verify Hostinger profile icon/settings save after the corrected DATABASE_URL deployment; user confirmed the record now saves correctly in MySQL
 - [x] Diagnose and eliminate the remaining production invalid image data URL errors reported for scannerDataUrl and signatureDataUrl after deployment of commit 547019d; client now submits only pending data URLs, while server preserves existing asset references and uploads only genuine image data URLs
+- [x] Diagnose why previously uploaded branding logo and profile icon are no longer available after deployment, and verify MySQL URL/key references plus server-side file continuity; Hostinger fallback storage now uses a stable home-directory `.expertaid-storage` path instead of deployment-local `uploads`

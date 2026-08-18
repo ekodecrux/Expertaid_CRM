@@ -4,7 +4,7 @@ import crypto from "crypto";
 import { ENV } from "./_core/env";
 
 const LOCAL_STORAGE_ROOT = path.resolve(
-  process.env.LOCAL_STORAGE_PATH || path.resolve(process.cwd(), "uploads"),
+  process.env.LOCAL_STORAGE_PATH || path.join(process.env.HOME || process.env.USERPROFILE || "/tmp", ".expertaid-storage"),
 );
 
 export function hasManusStorage(): boolean {
