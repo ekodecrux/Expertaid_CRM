@@ -1005,3 +1005,7 @@
 - [x] Diagnose why previously uploaded branding logo and profile icon are no longer available after deployment, and verify MySQL URL/key references plus server-side file continuity; Hostinger fallback storage now uses a stable home-directory `.expertaid-storage` path instead of deployment-local `uploads`
 - [x] Fix production quotation-settings validation when scannerDataUrl and signatureDataUrl are submitted as empty strings; server preprocessing now converts empty or whitespace-only assets to omitted values, with regression coverage
 - [x] Hide the quotation scanner panel and label entirely when no valid scanner/QR asset is configured; preserve valid scanner rendering and suppress broken stored image references on load failure
+- [x] Add Invoice module with persistent defaults, GST-aware line items, numbering, client/payment details, branded A4 view, print, and navigation entry
+- [x] Add Receipt module with persistent defaults, receipt numbering, payment details, branded A4 view, print, and navigation entry
+- [x] Add Invoice and Receipt settings screens with database persistence and asset-safe behavior
+- [x] Add regression tests and responsive verification for Invoice and Receipt workflows; 62 tests pass and both new routes were visually verified

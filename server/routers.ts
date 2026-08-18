@@ -12,6 +12,7 @@ import { sdk } from "./_core/sdk";
 import { validateCredentialLogin } from "./credentialLogin";
 import { calculateAgreementEndDate, calculateAgreementPricing, calculateAgreementTotal, PricingMode } from "@shared/pricing";
 import { calculateQuotationTotals, DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, QUOTATION_STATUSES, type QuotationItem } from "@shared/quotation";
+import { createInvoiceForOwner, createReceiptForOwner, deleteInvoiceForOwner, deleteReceiptForOwner, getInvoiceSettingsForOwner, getReceiptSettingsForOwner, listInvoicesForOwner, listReceiptsForOwner, updateInvoiceSettingsForOwner, updateInvoiceStatusForOwner, updateReceiptSettingsForOwner, updateReceiptStatusForOwner } from "./billing";
 
 const dataUrlSchema = z.string().max(2_500_000).transform((value) => value.trim().replace(/[\r\n\t\s]+/g, "")).refine((value) => /^data:image\/[a-z0-9.+-]+(?:;[^,]*)?,[\s\S]+$/i.test(value), "Invalid image data URL");
 export const quotationAssetInput = z.preprocess((value) => typeof value === "string" && value.trim() === "" ? undefined : value, z.union([dataUrlSchema, z.string().trim().min(1).max(4096), z.null()]).optional());
@@ -77,6 +78,11 @@ const quotationInput = z.object({
 });
 
 type QuotationInput = z.infer<typeof quotationInput>;
+const billingItemInput = z.object({ itemName: z.string().trim().min(1).max(255), description: z.string().trim().max(500).optional(), quantity: z.number().positive(), unitPrice: z.number().nonnegative() });
+const invoiceInput = z.object({ clientName: z.string().trim().min(1).max(255), clientAddress: z.string().trim().min(1), clientContact: z.string().trim().max(64).optional(), clientEmail: z.string().trim().email().max(320).optional(), clientGst: z.string().trim().max(32).optional(), invoiceDate: z.string().min(1), dueDate: z.string().min(1), items: z.array(billingItemInput).min(1), gstRate: z.number().nonnegative().max(100).default(18), gstMode: z.enum(["inclusive", "exclusive"]).default("exclusive"), notes: z.string().trim().max(2000).optional(), invoiceNumber: z.string().trim().max(32).optional() });
+const invoiceSettingsInput = z.object({ companyGst: z.string().trim().min(1).max(32), companyAddress: z.string().trim().min(1), invoicePrefix: z.string().trim().min(1).max(24), invoiceNumberStart: z.number().int().positive(), gstRate: z.number().nonnegative().max(100), gstMode: z.enum(["inclusive", "exclusive"]), defaultDueDays: z.number().int().positive().max(365), terms: z.string().max(4000), accountCompanyName: z.string().trim().max(255).optional(), accountNumber: z.string().trim().max(128).optional(), accountIfsc: z.string().trim().max(64).optional(), accountBranch: z.string().trim().max(255).optional() });
+const receiptInput = z.object({ clientName: z.string().trim().min(1).max(255), clientAddress: z.string().trim().min(1), clientContact: z.string().trim().max(64).optional(), clientEmail: z.string().trim().email().max(320).optional(), receiptDate: z.string().min(1), paymentDate: z.string().min(1), amount: z.number().nonnegative(), paymentMode: z.enum(["Cash", "UPI", "Bank Transfer", "Card", "Cheque", "Other"]), transactionReference: z.string().trim().max(128).optional(), receivedFor: z.string().trim().min(1).max(255), notes: z.string().trim().max(2000).optional(), receiptNumber: z.string().trim().max(32).optional() });
+const receiptSettingsInput = z.object({ companyGst: z.string().trim().min(1).max(32), companyAddress: z.string().trim().min(1), receiptPrefix: z.string().trim().min(1).max(24), receiptNumberStart: z.number().int().positive(), terms: z.string().max(4000), accountCompanyName: z.string().trim().max(255).optional(), accountNumber: z.string().trim().max(128).optional(), accountIfsc: z.string().trim().max(64).optional(), accountBranch: z.string().trim().max(255).optional() });
 
 async function uploadQuotationAsset(dataUrl: string | undefined, path: string) {
   if (!dataUrl) return { url: null, key: null };
@@ -139,6 +145,33 @@ function buildAgreementValues(input: AgreementInput) {
 }
 
 export const appRouter = router({
+  invoices: router({
+    settings: router({
+      get: protectedProcedure.query(({ ctx }) => getInvoiceSettingsForOwner(ctx.user.id)),
+      update: protectedProcedure.input(invoiceSettingsInput).mutation(({ ctx, input }) => updateInvoiceSettingsForOwner(ctx.user.id, input)),
+    }),
+    list: protectedProcedure.query(({ ctx }) => listInvoicesForOwner(ctx.user.id)),
+    create: protectedProcedure.input(invoiceInput).mutation(async ({ ctx, input }) => {
+      const settings = await getInvoiceSettingsForOwner(ctx.user.id);
+      const totals = calculateQuotationTotals(input.items.map((item) => ({ ...item, product: "ERP" as const })), input.gstRate, input.gstMode);
+      return createInvoiceForOwner(ctx.user.id, { ...input, items: undefined, itemsJson: JSON.stringify(input.items), subtotal: totals.subtotal.toFixed(2), gstRate: input.gstRate.toFixed(2), gstMode: input.gstMode, gstAmount: totals.gstAmount.toFixed(2), grandTotal: totals.grandTotal.toFixed(2), companyGst: settings.companyGst, companyAddress: settings.companyAddress, terms: settings.terms, accountCompanyName: settings.accountCompanyName, accountNumber: settings.accountNumber, accountIfsc: settings.accountIfsc, accountBranch: settings.accountBranch, logoUrl: settings.logoUrl, logoKey: settings.logoKey, signatureUrl: settings.signatureUrl, signatureKey: settings.signatureKey });
+    }),
+    updateStatus: protectedProcedure.input(z.object({ id: z.number().int().positive(), status: z.enum(["Draft", "Sent", "Paid", "Cancelled"]) })).mutation(({ ctx, input }) => updateInvoiceStatusForOwner(ctx.user.id, input.id, input.status)),
+    delete: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ ctx, input }) => deleteInvoiceForOwner(ctx.user.id, input.id)),
+  }),
+  receipts: router({
+    settings: router({
+      get: protectedProcedure.query(({ ctx }) => getReceiptSettingsForOwner(ctx.user.id)),
+      update: protectedProcedure.input(receiptSettingsInput).mutation(({ ctx, input }) => updateReceiptSettingsForOwner(ctx.user.id, input)),
+    }),
+    list: protectedProcedure.query(({ ctx }) => listReceiptsForOwner(ctx.user.id)),
+    create: protectedProcedure.input(receiptInput).mutation(async ({ ctx, input }) => {
+      const settings = await getReceiptSettingsForOwner(ctx.user.id);
+      return createReceiptForOwner(ctx.user.id, { ...input, companyGst: settings.companyGst, companyAddress: settings.companyAddress, terms: settings.terms, accountCompanyName: settings.accountCompanyName, accountNumber: settings.accountNumber, accountIfsc: settings.accountIfsc, accountBranch: settings.accountBranch, logoUrl: settings.logoUrl, logoKey: settings.logoKey, signatureUrl: settings.signatureUrl, signatureKey: settings.signatureKey });
+    }),
+    updateStatus: protectedProcedure.input(z.object({ id: z.number().int().positive(), status: z.enum(["Issued", "Cancelled"]) })).mutation(({ ctx, input }) => updateReceiptStatusForOwner(ctx.user.id, input.id, input.status)),
+    delete: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ ctx, input }) => deleteReceiptForOwner(ctx.user.id, input.id)),
+  }),
   system: systemRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),

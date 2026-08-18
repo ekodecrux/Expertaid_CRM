@@ -150,3 +150,10 @@ button:active { transform: scale(0.98); }
   #quotation-print table { page-break-inside: avoid; }
   #quotation-print img { max-width: 100%; }
 }
+
+.billing-document { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+@media print {
+  #billing-print, #billing-print * { visibility: visible !important; }
+  #billing-print { position: static !important; width: 210mm !important; max-width: none !important; margin: 0 auto !important; padding: 10mm !important; background: #fff !important; box-shadow: none !important; }
+  #billing-print [class~="print:hidden"] { display: none !important; }
+}

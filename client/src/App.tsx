@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Settings from "./pages/Settings";
 import Clients from "./pages/Clients";
 import Quotations from "./pages/Quotations";
+import { InvoicePage, ReceiptPage } from "./pages/Billing";
 
 function Router() {
   return <Switch>
@@ -16,6 +17,8 @@ function Router() {
     <Route path="/settings" component={Settings} />
     <Route path="/clients" component={Clients} />
     <Route path="/quotations" component={Quotations} />
+    <Route path="/invoices" component={InvoicePage} />
+    <Route path="/receipts" component={ReceiptPage} />
     <Route path="/agreement/:token" component={AgreementPage} />
     <Route path="/404" component={NotFound} />
     <Route component={NotFound} />

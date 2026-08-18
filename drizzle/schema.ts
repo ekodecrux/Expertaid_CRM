@@ -158,6 +158,116 @@ export const agreements = mysqlTable("agreements", {
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 
+export const invoiceSettings = mysqlTable("invoiceSettings", {
+  id: int("id").autoincrement().primaryKey(),
+  ownerId: int("ownerId").notNull().unique(),
+  companyGst: varchar("companyGst", { length: 32 }).notNull(),
+  companyAddress: text("companyAddress").notNull(),
+  invoicePrefix: varchar("invoicePrefix", { length: 24 }).default("INV").notNull(),
+  invoiceNumberStart: int("invoiceNumberStart").default(1).notNull(),
+  invoiceNumberNext: int("invoiceNumberNext").default(1).notNull(),
+  gstRate: decimal("gstRate", { precision: 5, scale: 2 }).default("18.00").notNull(),
+  gstMode: mysqlEnum("gstMode", ["inclusive", "exclusive"]).default("exclusive").notNull(),
+  defaultDueDays: int("defaultDueDays").default(15).notNull(),
+  terms: text("terms").notNull(),
+  accountCompanyName: varchar("accountCompanyName", { length: 255 }),
+  accountNumber: varchar("accountNumber", { length: 128 }),
+  accountIfsc: varchar("accountIfsc", { length: 64 }),
+  accountBranch: varchar("accountBranch", { length: 255 }),
+  logoUrl: text("logoUrl"),
+  logoKey: varchar("logoKey", { length: 512 }),
+  signatureUrl: text("signatureUrl"),
+  signatureKey: varchar("signatureKey", { length: 512 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export const invoices = mysqlTable("invoices", {
+  id: int("id").autoincrement().primaryKey(),
+  ownerId: int("ownerId").notNull(),
+  invoiceNumber: varchar("invoiceNumber", { length: 32 }).notNull().unique(),
+  status: mysqlEnum("status", ["Draft", "Sent", "Paid", "Cancelled"]).default("Draft").notNull(),
+  clientName: varchar("clientName", { length: 255 }).notNull(),
+  clientAddress: text("clientAddress").notNull(),
+  clientContact: varchar("clientContact", { length: 64 }),
+  clientEmail: varchar("clientEmail", { length: 320 }),
+  clientGst: varchar("clientGst", { length: 32 }),
+  invoiceDate: varchar("invoiceDate", { length: 32 }).notNull(),
+  dueDate: varchar("dueDate", { length: 32 }).notNull(),
+  itemsJson: text("itemsJson").notNull(),
+  subtotal: decimal("subtotal", { precision: 14, scale: 2 }).notNull(),
+  gstRate: decimal("gstRate", { precision: 5, scale: 2 }).notNull(),
+  gstMode: mysqlEnum("gstMode", ["inclusive", "exclusive"]).default("exclusive").notNull(),
+  gstAmount: decimal("gstAmount", { precision: 14, scale: 2 }).notNull(),
+  grandTotal: decimal("grandTotal", { precision: 14, scale: 2 }).notNull(),
+  notes: text("notes"),
+  terms: text("terms"),
+  companyGst: varchar("companyGst", { length: 32 }).notNull(),
+  companyAddress: text("companyAddress").notNull(),
+  accountCompanyName: varchar("accountCompanyName", { length: 255 }),
+  accountNumber: varchar("accountNumber", { length: 128 }),
+  accountIfsc: varchar("accountIfsc", { length: 64 }),
+  accountBranch: varchar("accountBranch", { length: 255 }),
+  logoUrl: text("logoUrl"),
+  logoKey: varchar("logoKey", { length: 512 }),
+  signatureUrl: text("signatureUrl"),
+  signatureKey: varchar("signatureKey", { length: 512 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export const receiptSettings = mysqlTable("receiptSettings", {
+  id: int("id").autoincrement().primaryKey(),
+  ownerId: int("ownerId").notNull().unique(),
+  companyGst: varchar("companyGst", { length: 32 }).notNull(),
+  companyAddress: text("companyAddress").notNull(),
+  receiptPrefix: varchar("receiptPrefix", { length: 24 }).default("RCT").notNull(),
+  receiptNumberStart: int("receiptNumberStart").default(1).notNull(),
+  receiptNumberNext: int("receiptNumberNext").default(1).notNull(),
+  terms: text("terms").notNull(),
+  accountCompanyName: varchar("accountCompanyName", { length: 255 }),
+  accountNumber: varchar("accountNumber", { length: 128 }),
+  accountIfsc: varchar("accountIfsc", { length: 64 }),
+  accountBranch: varchar("accountBranch", { length: 255 }),
+  logoUrl: text("logoUrl"),
+  logoKey: varchar("logoKey", { length: 512 }),
+  signatureUrl: text("signatureUrl"),
+  signatureKey: varchar("signatureKey", { length: 512 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export const receipts = mysqlTable("receipts", {
+  id: int("id").autoincrement().primaryKey(),
+  ownerId: int("ownerId").notNull(),
+  receiptNumber: varchar("receiptNumber", { length: 32 }).notNull().unique(),
+  status: mysqlEnum("status", ["Issued", "Cancelled"]).default("Issued").notNull(),
+  clientName: varchar("clientName", { length: 255 }).notNull(),
+  clientAddress: text("clientAddress").notNull(),
+  clientContact: varchar("clientContact", { length: 64 }),
+  clientEmail: varchar("clientEmail", { length: 320 }),
+  receiptDate: varchar("receiptDate", { length: 32 }).notNull(),
+  paymentDate: varchar("paymentDate", { length: 32 }).notNull(),
+  amount: decimal("amount", { precision: 14, scale: 2 }).notNull(),
+  paymentMode: mysqlEnum("paymentMode", ["Cash", "UPI", "Bank Transfer", "Card", "Cheque", "Other"]).default("Bank Transfer").notNull(),
+  transactionReference: varchar("transactionReference", { length: 128 }),
+  receivedFor: varchar("receivedFor", { length: 255 }).notNull(),
+  notes: text("notes"),
+  terms: text("terms"),
+  companyGst: varchar("companyGst", { length: 32 }).notNull(),
+  companyAddress: text("companyAddress").notNull(),
+  accountCompanyName: varchar("accountCompanyName", { length: 255 }),
+  accountNumber: varchar("accountNumber", { length: 128 }),
+  accountIfsc: varchar("accountIfsc", { length: 64 }),
+  accountBranch: varchar("accountBranch", { length: 255 }),
+  logoUrl: text("logoUrl"),
+  logoKey: varchar("logoKey", { length: 512 }),
+  signatureUrl: text("signatureUrl"),
+  signatureKey: varchar("signatureKey", { length: 512 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 export type Session = typeof sessions.$inferSelect;
@@ -172,3 +282,11 @@ export type Quotation = typeof quotations.$inferSelect;
 export type InsertQuotation = typeof quotations.$inferInsert;
 export type Agreement = typeof agreements.$inferSelect;
 export type InsertAgreement = typeof agreements.$inferInsert;
+export type InvoiceSettings = typeof invoiceSettings.$inferSelect;
+export type InsertInvoiceSettings = typeof invoiceSettings.$inferInsert;
+export type Invoice = typeof invoices.$inferSelect;
+export type InsertInvoice = typeof invoices.$inferInsert;
+export type ReceiptSettings = typeof receiptSettings.$inferSelect;
+export type InsertReceiptSettings = typeof receiptSettings.$inferInsert;
+export type Receipt = typeof receipts.$inferSelect;
+export type InsertReceipt = typeof receipts.$inferInsert;

@@ -21,7 +21,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useIsMobile } from "@/hooks/useMobile";
-import { BarChart3, Bell, BriefcaseBusiness, CheckCircle2, ChevronDown, Eye, EyeOff, FileCheck2, FileText, LayoutDashboard, LockKeyhole, LogOut, Mail, Menu, PanelLeft, Search, Settings2, ShieldCheck, UsersRound, UserRoundPlus } from "lucide-react";
+import { BarChart3, Bell, BriefcaseBusiness, CheckCircle2, ChevronDown, Eye, EyeOff, FileCheck2, FileText, LayoutDashboard, LockKeyhole, LogOut, Mail, Menu, PanelLeft, ReceiptText, Search, Settings2, ShieldCheck, UsersRound, UserRoundPlus } from "lucide-react";
 import React, { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
@@ -37,6 +37,8 @@ const menuItems = [
   { icon: FileCheck2, label: "Agreements", path: "/", available: true },
   { icon: UsersRound, label: "Clients", path: "/clients", available: true },
   { icon: FileText, label: "Quotations", path: "/quotations", available: true },
+  { icon: FileText, label: "Invoices", path: "/invoices", available: true },
+  { icon: ReceiptText, label: "Receipts", path: "/receipts", available: true },
   { icon: Bell, label: "Reminders", available: false },
   { icon: BarChart3, label: "Reports", available: false },
   { icon: Settings2, label: "Settings", path: "/settings", available: true },
