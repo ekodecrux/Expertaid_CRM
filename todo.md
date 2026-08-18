@@ -1053,3 +1053,5 @@
 - [x] Add a non-destructive live-schema migration for missing Invoice and Receipt settings asset columns, including scannerUrl/scannerKey and verification queries
 - [x] Provide a base idempotent SQL script that creates missing invoiceSettings, invoices, receiptSettings, and receipts tables before any repair migration
 - [x] Redesign Invoice Billed To card with large centered client name, highlighted border, document icon, divider, and two-column Address/Phone/Email/GST grid
+- [x] Reduce Invoice Billed To card to about 60% height, with BILLED TO left and client name right in the top row
+- [x] Reduce the compact Invoice Billed To card height by an additional 20% while preserving readable label/value alignment
