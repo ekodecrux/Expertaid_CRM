@@ -1022,3 +1022,4 @@
 
 - [x] Compact Invoice A4 print layout so four line items fit on one page while descriptions, totals, company details, and signature remain readable; print spacing, typography, table layout, and wrapping were tightened
 
+- [x] Make Invoice settings authoritative for account details, logo, QR/UPI scanner, and authorized signature, and render all configured assets in Invoice preview and A4 print; added Invoice settings asset uploads, persisted scanner columns, account-details rendering, and QR/signature/logo fallbacks

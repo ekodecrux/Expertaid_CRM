@@ -18,6 +18,8 @@ export const DEFAULT_INVOICE_SETTINGS = {
   accountBranch: "",
   logoUrl: null,
   logoKey: null,
+  scannerUrl: null,
+  scannerKey: null,
   signatureUrl: null,
   signatureKey: null,
 };

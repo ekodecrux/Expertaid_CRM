@@ -8,6 +8,7 @@ describe("billing defaults and input contracts", () => {
     expect(DEFAULT_INVOICE_SETTINGS.invoiceNumberStart).toBe(1);
     expect(DEFAULT_INVOICE_SETTINGS.invoiceNumberNext).toBe(1);
     expect(DEFAULT_INVOICE_SETTINGS.gstMode).toBe("exclusive");
+    expect(DEFAULT_INVOICE_SETTINGS.scannerUrl).toBeNull();
   });
 
   it("starts receipts with a stable RCT numbering contract", () => {
@@ -23,6 +24,13 @@ describe("billing defaults and input contracts", () => {
     expect(parsed.gstRate).toBe(18);
     expect(parsed.defaultDueDays).toBe(15);
     expect("gstMode" in parsed).toBe(false);
+  });
+
+  it("accepts persisted Invoice asset references in settings", () => {
+    const parsed = invoiceSettingsInput.parse({ companyGst: "GSTIN", companyAddress: "Address", invoicePrefix: "INV", invoiceNumberStart: 1, gstRate: 18, defaultDueDays: 15, terms: "Terms", logoDataUrl: "https://cdn.example/logo.png", scannerDataUrl: "https://cdn.example/qr.png", signatureDataUrl: "https://cdn.example/signature.png" });
+    expect(parsed.logoDataUrl).toBe("https://cdn.example/logo.png");
+    expect(parsed.scannerDataUrl).toBe("https://cdn.example/qr.png");
+    expect(parsed.signatureDataUrl).toBe("https://cdn.example/signature.png");
   });
 
   it("coerces Receipt settings, amount, and Invoice item numeric strings", () => {

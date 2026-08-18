@@ -176,6 +176,8 @@ export const invoiceSettings = mysqlTable("invoiceSettings", {
   accountBranch: varchar("accountBranch", { length: 255 }),
   logoUrl: text("logoUrl"),
   logoKey: varchar("logoKey", { length: 512 }),
+  scannerUrl: text("scannerUrl"),
+  scannerKey: varchar("scannerKey", { length: 512 }),
   signatureUrl: text("signatureUrl"),
   signatureKey: varchar("signatureKey", { length: 512 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
