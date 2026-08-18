@@ -1735,12 +1735,16 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             <FileText className="h-6 w-6" />
                           </div>
                           <div
-                            className={`min-w-0 ${isInvoice ? "grid flex-1 grid-cols-2 items-center gap-4" : ""}`}
+                            className={`min-w-0 ${isInvoice ? "flex flex-1 items-center gap-4" : ""}`}
                           >
-                            <p className="text-[10px] font-bold uppercase tracking-wider text-[#43239d]">
+                            <p className="shrink-0 text-[10px] font-bold uppercase tracking-wider text-[#43239d]">
                               Billed to
                             </p>
-                            {!isInvoice && (
+                            {isInvoice ? (
+                              <p className="min-w-0 truncate text-sm font-bold text-[#2f236d]">
+                                {selected.clientName || "—"}
+                              </p>
+                            ) : (
                               <p className="mt-2 inline-flex max-w-full rounded-md bg-[#ede9ff] px-3 py-2 text-base font-bold text-[#2f236d] shadow-sm">
                                 {selected.clientName || "—"}
                               </p>
@@ -1764,14 +1768,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                                 </span>
                               </div>
                               <div className="border-b border-dashed border-[#e3defd] pb-3">
-                                <div className="flex items-baseline justify-between gap-3">
-                                  <strong className="font-semibold text-[#18275b]">
-                                    Email
-                                  </strong>
-                                  <strong className="min-w-0 text-right font-bold text-[#2f236d]">
-                                    {selected.clientName || "—"}
-                                  </strong>
-                                </div>
+                                <strong className="block font-semibold text-[#18275b]">
+                                  Email
+                                </strong>
                                 <span className="mt-0.5 block break-words">
                                   {selected.clientEmail || "—"}
                                 </span>

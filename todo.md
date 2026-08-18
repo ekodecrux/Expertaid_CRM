@@ -1073,3 +1073,5 @@
 - [x] Remove the client-name background and right-side dotted decoration from the Invoice client card
 
 - [x] Move the plain Invoice client name from the BILLED TO heading row into the right Client Details Email area
+
+- [x] Restore the plain Invoice client name directly to the right of the BILLED TO label
