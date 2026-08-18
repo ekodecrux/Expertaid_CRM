@@ -1745,13 +1745,13 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             <FileText className="h-6 w-6" />
                           </div>
                           <div
-                            className={`min-w-0 ${isInvoice ? "flex flex-1 items-center justify-between gap-4" : ""}`}
+                            className={`min-w-0 ${isInvoice ? "grid flex-1 grid-cols-2 items-center gap-4" : ""}`}
                           >
                             <p className="text-[10px] font-bold uppercase tracking-wider text-[#43239d]">
                               Billed to
                             </p>
                             <p
-                              className={`max-w-full font-bold text-[#18275b] ${isInvoice ? "text-right text-xl leading-tight sm:text-2xl" : "mt-2 inline-flex rounded-md bg-[#ede9ff] px-3 py-2 text-base text-[#2f236d] shadow-sm"}`}
+                              className={`max-w-full font-bold text-[#18275b] ${isInvoice ? "text-left text-xl leading-tight sm:text-2xl" : "mt-2 inline-flex rounded-md bg-[#ede9ff] px-3 py-2 text-base text-[#2f236d] shadow-sm"}`}
                             >
                               {selected.clientName}
                             </p>

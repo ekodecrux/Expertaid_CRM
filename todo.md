@@ -1056,3 +1056,4 @@
 - [x] Reduce Invoice Billed To card to about 60% height, with BILLED TO left and client name right in the top row
 - [x] Reduce the compact Invoice Billed To card height by an additional 20% while preserving readable label/value alignment
 - [x] Align Invoice client name with the right-side detail values and restore visible left/right borders around the complete item table and totals area
+- [x] Align Invoice client name to the exact same horizontal value column as the Email value in Client Details
