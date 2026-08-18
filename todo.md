@@ -1018,3 +1018,7 @@
 - [x] Remove the extra Expertaid text beneath the authorized signature in Invoice preview
 - [x] Add an editable Invoice list action with persisted updates for client, dates, GST, line items, notes, and totals; owner-scoped update API recalculates and saves Invoice totals without changing the Invoice number
 - [x] Clarify Invoice GST-inclusive totals as taxable value plus included GST equaling the entered total, and label GST-exclusive totals as base amount plus GST; creation and preview now show mode-aware labels and explanatory copy
+- [x] Show Invoice company address and GSTIN as distinct details, and center the authorized signature beneath its label; company name, address, and GSTIN/registration are separate lines and the signature is centered
+
+- [x] Compact Invoice A4 print layout so four line items fit on one page while descriptions, totals, company details, and signature remain readable; print spacing, typography, table layout, and wrapping were tightened
+
