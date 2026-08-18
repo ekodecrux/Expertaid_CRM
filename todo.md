@@ -1017,3 +1017,4 @@
 - [x] Add an explicit Invoice view action, inherit the quotation authorized signature, match quotation colors, and correct Invoice A4 print layout; Eye action and accessible label added, quotation signature fallback wired, and print CSS now isolates a full A4 billing document
 - [x] Remove the extra Expertaid text beneath the authorized signature in Invoice preview
 - [x] Add an editable Invoice list action with persisted updates for client, dates, GST, line items, notes, and totals; owner-scoped update API recalculates and saves Invoice totals without changing the Invoice number
+- [x] Clarify Invoice GST-inclusive totals as taxable value plus included GST equaling the entered total, and label GST-exclusive totals as base amount plus GST; creation and preview now show mode-aware labels and explanatory copy
