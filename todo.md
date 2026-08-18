@@ -1063,3 +1063,5 @@
 - [x] Add continuous left, right, and bottom borders around the Invoice items and totals block to match the supplied reference
 
 - [x] Add a visible bottom border beneath the complete Invoice totals and amount-in-words area
+
+- [x] Place the Invoice client name on the same horizontal row as the Email label/value in Client Details

@@ -1750,9 +1750,11 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             <p className="text-[10px] font-bold uppercase tracking-wider text-[#43239d]">
                               Billed to
                             </p>
-                            <p className="mt-2 inline-flex max-w-full rounded-md bg-[#ede9ff] px-3 py-2 text-base font-bold text-[#2f236d] shadow-sm">
-                              {selected.clientName || "—"}
-                            </p>
+                            {!isInvoice && (
+                              <p className="mt-2 inline-flex max-w-full rounded-md bg-[#ede9ff] px-3 py-2 text-base font-bold text-[#2f236d] shadow-sm">
+                                {selected.clientName || "—"}
+                              </p>
+                            )}
                           </div>
                         </div>
                         <div
@@ -1772,9 +1774,14 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                                 </span>
                               </div>
                               <div className="border-b border-dashed border-[#e3defd] pb-3">
-                                <strong className="block font-semibold text-[#18275b]">
-                                  Email
-                                </strong>
+                                <div className="flex items-center justify-between gap-3">
+                                  <strong className="font-semibold text-[#18275b]">
+                                    Email
+                                  </strong>
+                                  <span className="inline-flex max-w-[70%] rounded-md bg-[#ede9ff] px-2.5 py-1 text-right font-bold text-[#2f236d]">
+                                    {selected.clientName || "—"}
+                                  </span>
+                                </div>
                                 <span className="mt-0.5 block break-words">
                                   {selected.clientEmail || "—"}
                                 </span>
