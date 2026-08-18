@@ -579,13 +579,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       window.print();
       return;
     }
-    const styles = Array.from(
-      document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]')
-    )
-      .map(link => `<link rel="stylesheet" href="${link.href}">`)
-      .join("");
+    const headMarkup = document.head.innerHTML;
     printWindow.document
-      .write(`<!doctype html><html><head><meta charset="UTF-8"><title>${title}</title>${styles}<style>
+      .write(`<!doctype html><html><head><meta charset="UTF-8"><title>${title}</title>${headMarkup}<style>
       @page { size: A4 portrait; margin: 0; }
       html, body { margin: 0 !important; padding: 0 !important; background: #fff !important; }
       body { display: block !important; }

@@ -1048,3 +1048,4 @@
 - [x] Tighten Invoice print-only spacing and page-break rules so the A4 document does not expand to three pages
 - [ ] Make the Invoice A4 print readable and single-page when content fits by correcting print scale and footer overflow
 - [x] Make Invoice printing reuse the exact preview layout and styling, removing only controls and applying standard A4 page settings
+- [x] Replace cloned-window Invoice printing with an isolated print-safe A4 document using explicit logo bounds and preview-matched data/layout
