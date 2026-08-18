@@ -1750,11 +1750,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             <p className="text-[10px] font-bold uppercase tracking-wider text-[#43239d]">
                               Billed to
                             </p>
-                            {!isInvoice && (
-                              <p className="mt-2 inline-flex max-w-full rounded-md bg-[#ede9ff] px-3 py-2 text-base font-bold text-[#2f236d] shadow-sm">
-                                {selected.clientName}
-                              </p>
-                            )}
+                            <p className="mt-2 inline-flex max-w-full rounded-md bg-[#ede9ff] px-3 py-2 text-base font-bold text-[#2f236d] shadow-sm">
+                              {selected.clientName || "—"}
+                            </p>
                           </div>
                         </div>
                         <div
@@ -1777,13 +1775,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                                 <strong className="block font-semibold text-[#18275b]">
                                   Email
                                 </strong>
-                                <span className="mt-0.5 flex min-w-0 items-baseline gap-3 break-words">
-                                  <span className="shrink-0 font-bold text-[#18275b]">
-                                    {selected.clientName}
-                                  </span>
-                                  <span className="min-w-0 break-words">
-                                    {selected.clientEmail || "—"}
-                                  </span>
+                                <span className="mt-0.5 block break-words">
+                                  {selected.clientEmail || "—"}
                                 </span>
                               </div>
                               <div>
@@ -1833,7 +1826,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           )}
                         </div>
                       </div>
-                      <table className="mt-8 w-full overflow-hidden rounded-xl border-x-2 border-t-2 border-slate-300 border-collapse-separate border-spacing-0 text-sm">
+                      <div className="mt-8 overflow-hidden rounded-xl border-2 border-slate-300 bg-white">
+                        <table className="w-full border-collapse border-spacing-0 text-sm">
                         <thead className="bg-gradient-to-r from-[#43239d] via-[#4d35ad] to-[#3157d5] text-left text-[10px] font-bold uppercase tracking-wide text-white">
                           <tr>
                             <th className="w-12 px-3 py-3 text-center">S.NO</th>
@@ -1886,8 +1880,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             )
                           )}
                         </tbody>
-                      </table>
-                      <div className="grid grid-cols-2 border-x-2 border-b-2 border-slate-300 bg-white">
+                        </table>
+                        <div className="grid grid-cols-2 bg-white">
                         <div className="flex items-center justify-center border-r border-slate-200 px-4 py-6 text-center text-xs font-bold uppercase tracking-wide text-[#43239d]">
                           Total price including tax
                         </div>
@@ -1918,6 +1912,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           <span className="text-sm font-medium text-slate-700">
                             {amountInWords(Number(selected.grandTotal))}
                           </span>
+                        </div>
                         </div>
                       </div>
                     </>

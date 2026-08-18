@@ -1058,3 +1058,6 @@
 - [x] Align Invoice client name with the right-side detail values and restore visible left/right borders around the complete item table and totals area
 - [x] Align Invoice client name to the exact same horizontal value column as the Email value in Client Details
 - [x] Move the Invoice school/client name into the right Client Details Email row so it shares the Email value line
+
+- [x] Restore the client name under the Invoice BILLED TO panel while retaining the Client Details fields
+- [x] Add continuous left, right, and bottom borders around the Invoice items and totals block to match the supplied reference
