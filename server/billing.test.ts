@@ -22,6 +22,7 @@ describe("billing defaults and input contracts", () => {
     expect(parsed.invoiceNumberStart).toBe(12);
     expect(parsed.gstRate).toBe(18);
     expect(parsed.defaultDueDays).toBe(15);
+    expect("gstMode" in parsed).toBe(false);
   });
 
   it("coerces Receipt settings, amount, and Invoice item numeric strings", () => {
@@ -31,6 +32,7 @@ describe("billing defaults and input contracts", () => {
     expect(receiptSettings.receiptNumberStart).toBe(4);
     expect(receipt.amount).toBe(1250.5);
     expect(invoice.gstRate).toBe(18);
+    expect(invoice.gstMode).toBe("exclusive");
     expect(invoice.items[0].quantity).toBe(2);
     expect(invoice.items[0].unitPrice).toBe(500);
   });

@@ -1011,3 +1011,5 @@
 - [x] Add regression tests and responsive verification for Invoice and Receipt workflows; 62 tests pass and both new routes were visually verified
 - [x] Provide and verify complete Hostinger SQL for separate `invoices`, `invoiceSettings`, `receipts`, and `receiptSettings` tables, with independent defaults tables; added `docs/hostinger-invoice-receipt.sql` with idempotent DDL, optional owner-1 defaults, and verification queries
 - [x] Fix Invoice and Receipt settings and transaction forms sending HTML numeric inputs as strings; client conversion and server zod coercion now normalize GST rates, numbering, due days, quantities, prices, and receipt amounts before API validation
+- [x] Replace generic Invoice and Receipt validation errors with field-level messages explaining exactly what is missing or invalid in settings and creation forms; dialogs now show actionable correction summaries and server errors are mapped to readable field names
+- [x] Remove GST inclusive/exclusive from Invoice defaults and keep GST mode selectable only while generating each Invoice; settings retain only the default GST rate, while the New Invoice form controls the mode
