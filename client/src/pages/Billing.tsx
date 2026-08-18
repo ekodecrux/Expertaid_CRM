@@ -1729,20 +1729,11 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                         className={`relative mt-6 overflow-hidden rounded-2xl border-2 bg-white shadow-[0_2px_8px_rgba(30,45,80,0.04)] ${isInvoice ? "border-[#d7d0ff]" : "border-slate-200"}`}
                       >
                         {isInvoice && (
-                          <div className="absolute left-1/2 top-3 z-10 ml-4 hidden max-w-[calc(50%-1.5rem)] -translate-y-0 rounded-md bg-[#ede9ff] px-3 py-2 text-sm font-bold text-[#2f236d] shadow-sm sm:block">
+                          <div className="absolute left-1/2 top-3 z-10 ml-4 hidden max-w-[calc(50%-1.5rem)] -translate-y-0 text-sm font-bold text-[#2f236d] sm:block">
                             {selected.clientName || "—"}
                           </div>
                         )}
-                        {isInvoice && (
-                          <div
-                            className="pointer-events-none absolute right-0 top-0 h-24 w-48 opacity-60"
-                            style={{
-                              backgroundImage:
-                                "radial-gradient(circle, #dcd5ff 2px, transparent 2px)",
-                              backgroundSize: "16px 16px",
-                            }}
-                          />
-                        )}
+
                         <div
                           className={`relative flex min-w-0 items-center gap-4 ${isInvoice ? "px-5 py-3" : "bg-[#faf9ff] p-5 sm:border-r sm:border-slate-200"}`}
                         >

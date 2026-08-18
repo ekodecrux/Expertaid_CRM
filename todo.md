@@ -1069,3 +1069,5 @@
 - [ ] Align the Invoice client name with the vertical divider/right-column start between BILLED TO and Client Details
 
 - [x] Remove the added vertical divider line from the Invoice BILLED TO/Client Details card
+
+- [x] Remove the client-name background and right-side dotted decoration from the Invoice client card
