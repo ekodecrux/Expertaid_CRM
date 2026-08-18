@@ -296,10 +296,10 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     },
   });
   const updateInvoiceStatus = trpc.invoices.updateStatus.useMutation({
-    onSuccess: () => {
+    onSuccess: result => {
       invoices.refetch();
       receipts.refetch();
-      toast.success("Invoice status updated.");
+      toast.success(result?.receipt ? "Paid. Receipt created — open Receipts to View or Print." : "Invoice status updated.");
     },
     onError: error => showMutationError(error),
   });

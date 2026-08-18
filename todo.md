@@ -1041,12 +1041,12 @@
 - [x] Remove Invoice header top/bottom border lines and match quotation logo scale with only light vertical column separators
 - [x] Remove duplicate Invoice Date and Due rows from Invoice Details so dates appear only in the purple Invoice card
 - [x] Highlight and vertically center the Invoice Billed To panel, and populate the right Invoice Details panel without repeating Date or Due Date
-- [ ] Add quotation-style left, right, and bottom borders around Invoice items and totals, with a distinct Grand Total boundary and full-width ONWARDS separator
+- [x] Add quotation-style left, right, and bottom borders around Invoice items and totals, with a distinct Grand Total boundary and full-width ONWARDS separator
 - [x] Keep only the client name in the left Billed To panel and move address, phone, email, and GST into a right Client Details panel
 - [x] Highlight the Invoice client name and align Client Details labels and values in consistent two-column rows
 - [x] Repair Invoice A4 print target so the document fills the page correctly instead of rendering tiny and splitting across two pages
 - [x] Tighten Invoice print-only spacing and page-break rules so the A4 document does not expand to three pages
-- [ ] Make the Invoice A4 print readable and single-page when content fits by correcting print scale and footer overflow
+- [x] Make the Invoice A4 print readable and single-page when content fits by correcting print scale and footer overflow
 - [x] Make Invoice printing reuse the exact preview layout and styling, removing only controls and applying standard A4 page settings
 - [x] Replace cloned-window Invoice printing with an isolated print-safe A4 document using explicit logo bounds and preview-matched data/layout
 - [x] Fix live Invoice Defaults numeric validation so displayed valid values for starting number, GST rate, and due days are accepted
@@ -1066,7 +1066,7 @@
 
 - [x] Place the Invoice client name on the same horizontal row as the Email label/value in Client Details
 
-- [ ] Align the Invoice client name with the vertical divider/right-column start between BILLED TO and Client Details
+- [x] Align the Invoice client name with the vertical divider/right-column start between BILLED TO and Client Details (implemented then superseded by the requested divider removal)
 
 - [x] Remove the added vertical divider line from the Invoice BILLED TO/Client Details card
 
@@ -1081,3 +1081,9 @@
 - [x] Add editable Invoice statuses Draft, Due, and Paid with due-date-aware behavior
 - [x] Automatically create and persist a complete Receipt when an Invoice is marked Paid
 - [x] Add invoice receipt-view and print actions with invoice-matched receipt details and signature
+
+- [x] Fix the automatic Receipt insert error when an Invoice is marked Paid (code and Hostinger schema-repair SQL prepared; production must run the repair script)
+- [x] Show View Receipt and Print Receipt actions after a successful Paid transition (Receipt list View/Print actions plus post-payment guidance added)
+
+- [x] Fix manual Receipt creation so it inserts successfully with the live Receipt schema (schema-repair SQL prepared and verified against the project database)
+- [x] Re-verify automatic Paid-invoice Receipt creation after the manual insert fix (project database columns verified; Hostinger repair script included)

@@ -94,8 +94,9 @@ export async function updateInvoiceStatusForOwner(ownerId: number, id: number, s
   const invoice = invoiceRows[0];
   if (!invoice) throw new Error("Invoice not found");
   await db.update(invoices).set({ status }).where(and(eq(invoices.ownerId, ownerId), eq(invoices.id, id)));
+  let receipt;
   if (status === "Paid") {
-    const existingReceipt = await db.select({ id: receipts.id }).from(receipts).where(and(eq(receipts.ownerId, ownerId), eq(receipts.invoiceId, id))).limit(1);
+    const existingReceipt = await db.select().from(receipts).where(and(eq(receipts.ownerId, ownerId), eq(receipts.invoiceId, id))).limit(1);
     if (!existingReceipt[0]) {
       const settings = await getReceiptSettingsForOwner(ownerId);
       const receiptNumber = `${settings.receiptPrefix}-${String(settings.receiptNumberNext).padStart(4, "0")}`;
@@ -136,9 +137,11 @@ export async function updateInvoiceStatusForOwner(ownerId: number, id: number, s
       } as any);
       await db.update(receiptSettings).set({ receiptNumberNext: Number(settings.receiptNumberNext) + 1 }).where(eq(receiptSettings.ownerId, ownerId));
     }
+    const receiptRows = await db.select().from(receipts).where(and(eq(receipts.ownerId, ownerId), eq(receipts.invoiceId, id))).limit(1);
+    receipt = receiptRows[0];
   }
   const rows = await db.select().from(invoices).where(and(eq(invoices.ownerId, ownerId), eq(invoices.id, id))).limit(1);
-  return rows[0];
+  return { invoice: rows[0], receipt };
 }
 
 export async function deleteInvoiceForOwner(ownerId: number, id: number) {

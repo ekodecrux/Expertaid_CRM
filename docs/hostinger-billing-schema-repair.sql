@@ -130,3 +130,41 @@ FROM `receiptSettings` WHERE `ownerId` = 1 LIMIT 1;
 -- Potentially dangerous statements intentionally omitted:
 -- DROP TABLE, TRUNCATE, DELETE, and DROP COLUMN.
 
+
+-- Invoice payment lifecycle: replace legacy Sent with the editable Due status.
+SET @sql = IF(
+  EXISTS (
+    SELECT 1 FROM information_schema.columns
+    WHERE table_schema = @db_name AND table_name = 'invoices' AND column_name = 'status'
+  ),
+  'ALTER TABLE `invoices` MODIFY COLUMN `status` ENUM(''Draft'',''Due'',''Paid'',''Cancelled'') NOT NULL DEFAULT ''Draft''',
+  'SELECT 1'
+);
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+-- Receipt transaction linkage and invoice-matched product/GST details.
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receipts' AND column_name = 'invoiceId'), 'SELECT 1', 'ALTER TABLE `receipts` ADD COLUMN `invoiceId` INT NULL AFTER `status`');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receipts' AND column_name = 'invoiceNumber'), 'SELECT 1', 'ALTER TABLE `receipts` ADD COLUMN `invoiceNumber` VARCHAR(32) NULL AFTER `invoiceId`');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receipts' AND column_name = 'clientGst'), 'SELECT 1', 'ALTER TABLE `receipts` ADD COLUMN `clientGst` VARCHAR(32) NULL AFTER `clientEmail`');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receipts' AND column_name = 'itemsJson'), 'SELECT 1', 'ALTER TABLE `receipts` ADD COLUMN `itemsJson` TEXT NULL AFTER `amount`');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receipts' AND column_name = 'subtotal'), 'SELECT 1', 'ALTER TABLE `receipts` ADD COLUMN `subtotal` DECIMAL(14,2) NULL AFTER `itemsJson`');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receipts' AND column_name = 'gstRate'), 'SELECT 1', 'ALTER TABLE `receipts` ADD COLUMN `gstRate` DECIMAL(5,2) NULL AFTER `subtotal`');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receipts' AND column_name = 'gstMode'), 'SELECT 1', 'ALTER TABLE `receipts` ADD COLUMN `gstMode` ENUM(''inclusive'',''exclusive'') NULL AFTER `gstRate`');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receipts' AND column_name = 'gstAmount'), 'SELECT 1', 'ALTER TABLE `receipts` ADD COLUMN `gstAmount` DECIMAL(14,2) NULL AFTER `gstMode`');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receipts' AND column_name = 'grandTotal'), 'SELECT 1', 'ALTER TABLE `receipts` ADD COLUMN `grandTotal` DECIMAL(14,2) NULL AFTER `gstAmount`');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+SELECT table_name, column_name, column_type
+FROM information_schema.columns
+WHERE table_schema = @db_name
+  AND ((table_name = 'invoices' AND column_name = 'status')
+    OR (table_name = 'receipts' AND column_name IN ('invoiceId','invoiceNumber','clientGst','itemsJson','subtotal','gstRate','gstMode','gstAmount','grandTotal')))
+ORDER BY table_name, ordinal_position;
