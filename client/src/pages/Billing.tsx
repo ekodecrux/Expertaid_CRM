@@ -1964,7 +1964,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             <FileText className="h-6 w-6" />
                           </div>
                           <div className="flex min-w-0 flex-1 items-center gap-4">
-                            <p className="shrink-0 text-[10px] font-bold uppercase tracking-wider text-[#43239d]">Billed to</p>
+                            <p className="shrink-0 text-[10px] font-bold uppercase tracking-wider text-[#43239d]">{isInvoice ? "Billed to" : "Received from"}</p>
                             <p className="min-w-0 truncate text-sm font-bold text-[#2f236d]">{selected.clientName || "—"}</p>
                           </div>
                         </div>
