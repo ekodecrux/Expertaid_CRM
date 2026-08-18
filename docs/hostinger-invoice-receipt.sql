@@ -20,6 +20,8 @@ CREATE TABLE IF NOT EXISTS `invoiceSettings` (
   `accountBranch` varchar(255) DEFAULT NULL,
   `logoUrl` text,
   `logoKey` varchar(512) DEFAULT NULL,
+  `scannerUrl` text,
+  `scannerKey` varchar(512) DEFAULT NULL,
   `signatureUrl` text,
   `signatureKey` varchar(512) DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,

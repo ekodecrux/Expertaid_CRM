@@ -1050,3 +1050,5 @@
 - [x] Make Invoice printing reuse the exact preview layout and styling, removing only controls and applying standard A4 page settings
 - [x] Replace cloned-window Invoice printing with an isolated print-safe A4 document using explicit logo bounds and preview-matched data/layout
 - [x] Fix live Invoice Defaults numeric validation so displayed valid values for starting number, GST rate, and due days are accepted
+- [x] Add a non-destructive live-schema migration for missing Invoice and Receipt settings asset columns, including scannerUrl/scannerKey and verification queries
+- [x] Provide a base idempotent SQL script that creates missing invoiceSettings, invoices, receiptSettings, and receipts tables before any repair migration
