@@ -1027,3 +1027,4 @@
 - [x] Ensure Invoice account column displays Company, A/C No, IFSC Code, and Branch fields, with clear missing-field guidance when values are not configured; existing Invoice rows now fall back to Invoice Settings and saved Quotation Settings values
 - [x] Keep Invoice account, QR, and signature columns fixed like Quotation so missing QR content leaves the center space reserved and never shifts the signature; fixed grid geometry now reserves a 190px QR column and stable signature position
 - [x] Refine Invoice footer proportions, QR size, signature scale, heading typography, and separators to closely match the quotation reference image; fixed proportions and print-safe dimensions applied
+- [x] Keep the Invoice company name on one line where possible and apply quotation-style purple header, accent borders, totals, highlights, and footer colors; widened the account column, prevented company wrapping, and added lavender/purple document accents
