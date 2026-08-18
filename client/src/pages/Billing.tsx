@@ -232,7 +232,7 @@ function ValidationSummary({
 export function BillingPage({ kind }: { kind: BillingKind }) {
   const isInvoice = kind === "invoice";
   const invoiceSettings = trpc.invoices.settings.get.useQuery(undefined, {
-    enabled: isInvoice,
+    enabled: true,
   });
   const quotationSettings = trpc.quotations.settings.get.useQuery(undefined, {
     enabled: isInvoice,

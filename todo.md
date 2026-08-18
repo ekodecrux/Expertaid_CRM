@@ -1101,3 +1101,5 @@
 - [x] Add Receipt Edit action and save flow while preserving View and Print actions
 
 - [x] Make Receipt top logo and bottom authorized signature inherit from Invoice branding, with Receipt assets only as fallback
+
+- [x] Repair Receipt asset propagation so existing and newly created Receipts display the Invoice logo and authorized signature reliably
