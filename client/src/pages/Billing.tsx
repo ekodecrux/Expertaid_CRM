@@ -1710,32 +1710,23 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             <p className="mt-2 font-semibold text-[#2f236d]">
                               {selected.clientName}
                             </p>
-                            <p className="whitespace-pre-line text-sm text-slate-600">
-                              Address: {selected.clientAddress}
-                            </p>
-                            <p className="text-sm text-slate-600">
-                              {selected.clientContact}
-                            </p>
-                            <p className="text-sm text-slate-600">
-                              {selected.clientEmail}
-                            </p>
                           </div>
                         </div>
                         <div className="flex flex-col justify-center p-5 text-left sm:text-right">
                           <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">
-                            {isInvoice ? "Invoice details" : "Receipt details"}
+                            {isInvoice ? "Client details" : "Receipt details"}
                           </p>
                           {isInvoice ? (
                             <div className="mt-3 space-y-1 text-sm text-slate-600">
                               <p>
                                 <strong className="text-slate-800">
-                                  Invoice No:
+                                  Address:
                                 </strong>{" "}
-                                {selected.invoiceNumber}
+                                {selected.clientAddress || "—"}
                               </p>
                               <p>
                                 <strong className="text-slate-800">
-                                  Contact:
+                                  Phone:
                                 </strong>{" "}
                                 {selected.clientContact || "—"}
                               </p>
@@ -1749,10 +1740,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                                 <strong className="text-slate-800">
                                   GST No:
                                 </strong>{" "}
-                                {cleanGstValue(
-                                  invoiceSettings.data?.companyGst ||
-                                    selected.companyGst
-                                )}
+                                {selected.clientGst || "—"}
                               </p>
                             </div>
                           ) : (
@@ -1785,7 +1773,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           )}
                         </div>
                       </div>
-                      <table className="mt-8 w-full overflow-hidden rounded-xl border border-slate-200 text-sm">
+                      <table className="mt-8 w-full overflow-hidden rounded-xl border border-slate-200 border-collapse-separate border-spacing-0 text-sm">
                         <thead className="bg-gradient-to-r from-[#43239d] via-[#4d35ad] to-[#3157d5] text-left text-[10px] font-bold uppercase tracking-wide text-white">
                           <tr>
                             <th className="w-12 px-3 py-3 text-center">S.NO</th>
@@ -1839,8 +1827,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           )}
                         </tbody>
                       </table>
-                      <div className="grid grid-cols-2 border-x border-b border-slate-200 bg-white">
-                        <div className="flex items-center justify-center px-4 py-6 text-center text-xs font-bold uppercase tracking-wide text-[#43239d]">
+                      <div className="grid grid-cols-2 border border-slate-200 bg-white">
+                        <div className="flex items-center justify-center border-r border-slate-200 px-4 py-6 text-center text-xs font-bold uppercase tracking-wide text-[#43239d]">
                           Total price including tax
                         </div>
                         <div className="grid grid-cols-[minmax(0,1fr)_112px] text-right text-sm">
@@ -1856,10 +1844,10 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           <strong className="border-b border-slate-200 px-4 py-3 text-slate-800">
                             {formatCurrency(selectedInvoiceGst)}
                           </strong>
-                          <span className="px-4 py-3 text-center text-base font-bold uppercase leading-tight text-[#43239d]">
+                          <span className="border-l border-t border-slate-200 px-4 py-3 text-center text-base font-bold uppercase leading-tight text-[#43239d]">
                             Grand total amount
                           </span>
-                          <strong className="bg-[#43239d] px-4 py-3 text-base text-white">
+                          <strong className="border-t border-slate-200 bg-[#43239d] px-4 py-3 text-base text-white">
                             {formatCurrency(Number(selected.grandTotal))}
                           </strong>
                         </div>

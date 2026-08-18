@@ -1041,3 +1041,5 @@
 - [x] Remove Invoice header top/bottom border lines and match quotation logo scale with only light vertical column separators
 - [x] Remove duplicate Invoice Date and Due rows from Invoice Details so dates appear only in the purple Invoice card
 - [x] Highlight and vertically center the Invoice Billed To panel, and populate the right Invoice Details panel without repeating Date or Due Date
+- [ ] Add quotation-style left, right, and bottom borders around Invoice items and totals, with a distinct Grand Total boundary and full-width ONWARDS separator
+- [x] Keep only the client name in the left Billed To panel and move address, phone, email, and GST into a right Client Details panel
