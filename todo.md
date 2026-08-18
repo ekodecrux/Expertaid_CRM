@@ -1037,3 +1037,4 @@
 - [x] Restyle Invoice header to match quotation reference: three-part company/GST/address block, purple invoice card, and rounded billed-to/details panel with dynamic logo and invoice data
 - [x] Fix Invoice header proportions so the logo/company block stays separate from the GST/address column and the purple Invoice card remains stable at desktop and A4 widths
 - [x] Remove duplicate Invoice company data, enlarge the quotation-style logo area, match top-block proportions, and repair complete A4 Invoice printing
+- [x] Make the saved Invoice Settings GST number authoritative in the Invoice header and preserve valid configured GST values

@@ -1646,10 +1646,11 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             </p>
                             <p className="mt-2 break-words">
                               {cleanGstValue(
-                                selected.companyGst ||
-                                  (isInvoice
-                                    ? invoiceSettings.data?.companyGst
-                                    : receiptSettings.data?.companyGst)
+                                isInvoice
+                                  ? invoiceSettings.data?.companyGst ||
+                                      selected.companyGst
+                                  : receiptSettings.data?.companyGst ||
+                                      selected.companyGst
                               )}
                             </p>
                             <p className="mt-3 font-bold uppercase tracking-wider text-[#43239d]">
