@@ -1905,7 +1905,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             {formatCurrency(Number(selected.grandTotal))}
                           </strong>
                         </div>
-                        <div className="col-span-2 flex min-h-[52px] items-center gap-3 border-t border-slate-200 px-4 py-3">
+                        <div className="col-span-2 flex min-h-[52px] items-center gap-3 border-t-2 border-b-2 border-slate-300 px-4 py-3">
                           <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#43239d] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white">
                             Onwards <span aria-hidden="true">›</span>
                           </span>

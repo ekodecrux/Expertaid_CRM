@@ -1061,3 +1061,5 @@
 
 - [x] Restore the client name under the Invoice BILLED TO panel while retaining the Client Details fields
 - [x] Add continuous left, right, and bottom borders around the Invoice items and totals block to match the supplied reference
+
+- [x] Add a visible bottom border beneath the complete Invoice totals and amount-in-words area
