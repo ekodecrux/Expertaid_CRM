@@ -1044,5 +1044,7 @@
 - [ ] Add quotation-style left, right, and bottom borders around Invoice items and totals, with a distinct Grand Total boundary and full-width ONWARDS separator
 - [x] Keep only the client name in the left Billed To panel and move address, phone, email, and GST into a right Client Details panel
 - [x] Highlight the Invoice client name and align Client Details labels and values in consistent two-column rows
-- [ ] Repair Invoice A4 print target so the document fills the page correctly instead of rendering tiny and splitting across two pages
+- [x] Repair Invoice A4 print target so the document fills the page correctly instead of rendering tiny and splitting across two pages
 - [x] Tighten Invoice print-only spacing and page-break rules so the A4 document does not expand to three pages
+- [ ] Make the Invoice A4 print readable and single-page when content fits by correcting print scale and footer overflow
+- [x] Make Invoice printing reuse the exact preview layout and styling, removing only controls and applying standard A4 page settings
