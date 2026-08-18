@@ -1750,11 +1750,11 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             <p className="text-[10px] font-bold uppercase tracking-wider text-[#43239d]">
                               Billed to
                             </p>
-                            <p
-                              className={`max-w-full font-bold text-[#18275b] ${isInvoice ? "text-left text-xl leading-tight sm:text-2xl" : "mt-2 inline-flex rounded-md bg-[#ede9ff] px-3 py-2 text-base text-[#2f236d] shadow-sm"}`}
-                            >
-                              {selected.clientName}
-                            </p>
+                            {!isInvoice && (
+                              <p className="mt-2 inline-flex max-w-full rounded-md bg-[#ede9ff] px-3 py-2 text-base font-bold text-[#2f236d] shadow-sm">
+                                {selected.clientName}
+                              </p>
+                            )}
                           </div>
                         </div>
                         <div
@@ -1777,8 +1777,13 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                                 <strong className="block font-semibold text-[#18275b]">
                                   Email
                                 </strong>
-                                <span className="mt-0.5 block break-words">
-                                  {selected.clientEmail || "—"}
+                                <span className="mt-0.5 flex min-w-0 items-baseline gap-3 break-words">
+                                  <span className="shrink-0 font-bold text-[#18275b]">
+                                    {selected.clientName}
+                                  </span>
+                                  <span className="min-w-0 break-words">
+                                    {selected.clientEmail || "—"}
+                                  </span>
                                 </span>
                               </div>
                               <div>
