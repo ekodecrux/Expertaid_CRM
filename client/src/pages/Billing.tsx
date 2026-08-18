@@ -571,15 +571,52 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     setCreateOpen(true);
   };
   const printSelected = () => {
-    if (!selected) return;
-    const previousTitle = document.title;
-    document.title = `${isInvoice ? "Invoice" : "Receipt"} ${isInvoice ? selected.invoiceNumber : selected.receiptNumber}`;
-    const restoreTitle = () => {
-      document.title = previousTitle;
-      window.removeEventListener("afterprint", restoreTitle);
+    const source = document.getElementById("billing-print");
+    if (!selected || !source) return;
+    const title = `${isInvoice ? "Invoice" : "Receipt"} ${isInvoice ? selected.invoiceNumber : selected.receiptNumber}`;
+    const printWindow = window.open("", "_blank", "width=900,height=1200");
+    if (!printWindow) {
+      window.print();
+      return;
+    }
+    const styles = Array.from(
+      document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]')
+    )
+      .map(link => `<link rel="stylesheet" href="${link.href}">`)
+      .join("");
+    printWindow.document
+      .write(`<!doctype html><html><head><meta charset="UTF-8"><title>${title}</title>${styles}<style>
+      @page { size: A4 portrait; margin: 0; }
+      html, body { margin: 0 !important; padding: 0 !important; background: #fff !important; }
+      body { display: block !important; }
+      #billing-print { box-sizing: border-box !important; display: block !important; width: 210mm !important; max-width: 210mm !important; min-height: 0 !important; margin: 0 !important; padding: 5mm !important; background: #fff !important; color: #172033 !important; overflow: visible !important; box-shadow: none !important; font-size: 9px !important; line-height: 1.15 !important; }
+      #billing-print .mt-8 { margin-top: 0.45rem !important; }
+      #billing-print .mt-6 { margin-top: 0.35rem !important; }
+      #billing-print .mt-4 { margin-top: 0.25rem !important; }
+      #billing-print .mt-3 { margin-top: 0.2rem !important; }
+      #billing-print .mt-2 { margin-top: 0.15rem !important; }
+      #billing-print .p-5 { padding: 0.45rem !important; }
+      #billing-print .p-6 { padding: 0.5rem !important; }
+      #billing-print .py-6 { padding-top: 0.45rem !important; padding-bottom: 0.45rem !important; }
+      #billing-print .py-4 { padding-top: 0.35rem !important; padding-bottom: 0.35rem !important; }
+      #billing-print .py-3 { padding-top: 0.28rem !important; padding-bottom: 0.28rem !important; }
+      #billing-print .px-4 { padding-left: 0.45rem !important; padding-right: 0.45rem !important; }
+      #billing-print .px-3 { padding-left: 0.35rem !important; padding-right: 0.35rem !important; }
+      #billing-print table th, #billing-print table td { padding-top: 0.28rem !important; padding-bottom: 0.28rem !important; }
+      #billing-print .h-24 { height: 4.5rem !important; }
+      #billing-print .w-52 { width: 11rem !important; }
+      #billing-print table { table-layout: fixed; page-break-inside: avoid; }
+      #billing-print img { max-width: 100%; page-break-inside: avoid; }
+      #billing-print .print\\:hidden { display: none !important; }
+    </style></head><body>${source.outerHTML}</body></html>`);
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.onload = () => {
+      window.setTimeout(() => {
+        printWindow.print();
+        printWindow.close();
+      }, 250);
     };
-    window.addEventListener("afterprint", restoreTitle);
-    window.requestAnimationFrame(() => window.print());
   };
   const focusFirstError = () => {
     window.requestAnimationFrame(() => {
