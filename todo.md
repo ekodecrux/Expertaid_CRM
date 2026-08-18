@@ -1077,3 +1077,7 @@
 - [x] Restore the plain Invoice client name directly to the right of the BILLED TO label
 
 - [x] Add a visible full-width border directly after the final Invoice item row
+
+- [x] Add editable Invoice statuses Draft, Due, and Paid with due-date-aware behavior
+- [x] Automatically create and persist a complete Receipt when an Invoice is marked Paid
+- [x] Add invoice receipt-view and print actions with invoice-matched receipt details and signature

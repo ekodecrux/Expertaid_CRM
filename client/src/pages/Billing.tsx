@@ -295,6 +295,14 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       toast.error(message);
     },
   });
+  const updateInvoiceStatus = trpc.invoices.updateStatus.useMutation({
+    onSuccess: () => {
+      invoices.refetch();
+      receipts.refetch();
+      toast.success("Invoice status updated.");
+    },
+    onError: error => showMutationError(error),
+  });
   const createReceipt = trpc.receipts.create.useMutation({
     onSuccess: () => {
       receipts.refetch();
@@ -762,9 +770,31 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           )}
                         </td>
                         <td className="px-5 py-4">
-                          <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-[#43239d]">
-                            {row.status}
-                          </span>
+                          {isInvoice ? (
+                            <Select
+                              value={row.status}
+                              onValueChange={value =>
+                                updateInvoiceStatus.mutate({
+                                  id: row.id,
+                                  status: value as "Draft" | "Due" | "Paid" | "Cancelled",
+                                })
+                              }
+                            >
+                              <SelectTrigger className="h-8 w-[108px] rounded-full border-indigo-100 bg-indigo-50 px-3 text-xs font-semibold text-[#43239d]">
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="Draft">Draft</SelectItem>
+                                <SelectItem value="Due">Due</SelectItem>
+                                <SelectItem value="Paid">Paid</SelectItem>
+                                <SelectItem value="Cancelled">Cancelled</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          ) : (
+                            <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-[#43239d]">
+                              {row.status}
+                            </span>
+                          )}
                         </td>
                         <td className="px-5 py-4">
                           <div className="flex justify-end gap-2">
@@ -1913,23 +1943,62 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                       </div>
                     </>
                   ) : (
-                    <div className="mt-10 overflow-hidden rounded-xl border border-slate-200 bg-white text-center">
-                      <p className="bg-gradient-to-r from-[#43239d] via-[#4d35ad] to-[#3157d5] px-4 py-3 text-sm font-bold uppercase tracking-wider text-white">
+                    <div className="mt-8 overflow-hidden rounded-xl border-2 border-[#d7d0ff] bg-white">
+                      <div className="bg-gradient-to-r from-[#43239d] via-[#4d35ad] to-[#3157d5] px-5 py-3 text-sm font-bold uppercase tracking-wider text-white">
                         Payment received
-                      </p>
-                      <div className="p-8">
-                        <p className="text-sm uppercase tracking-wider text-[#43239d]">
-                          Amount received
-                        </p>
-                        <p className="mt-3 text-5xl font-bold text-[#43239d]">
-                          {formatCurrency(Number(selected.amount))}
-                        </p>
-                        <p className="mt-4 text-lg text-slate-700">
-                          Received towards{" "}
-                          <strong className="text-[#2f236d]">
-                            {selected.receivedFor}
-                          </strong>
-                        </p>
+                      </div>
+                      <div className="grid gap-0 sm:grid-cols-2">
+                        <div className="border-b border-[#e3defd] p-5 sm:border-b-0 sm:border-r">
+                          <p className="text-[10px] font-bold uppercase tracking-wider text-[#43239d]">
+                            Billed to
+                          </p>
+                          <p className="mt-2 text-base font-bold text-[#2f236d]">
+                            {selected.clientName}
+                          </p>
+                        </div>
+                        <div className="border-b border-[#e3defd] p-5">
+                          <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">
+                            Client details
+                          </p>
+                          <div className="mt-2 space-y-1 text-sm text-slate-600">
+                            <p><strong className="text-[#18275b]">Address:</strong> {selected.clientAddress || "—"}</p>
+                            <p><strong className="text-[#18275b]">Email:</strong> {selected.clientEmail || "—"}</p>
+                            <p><strong className="text-[#18275b]">Phone:</strong> {selected.clientContact || "—"}</p>
+                            <p><strong className="text-[#18275b]">GST No.:</strong> {selected.clientGst || "—"}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <table className="w-full border-collapse text-sm">
+                        <thead className="bg-gradient-to-r from-[#43239d] via-[#4d35ad] to-[#3157d5] text-left text-[10px] font-bold uppercase tracking-wide text-white">
+                          <tr>
+                            <th className="px-3 py-3">S.NO</th>
+                            <th className="px-3 py-3">ITEM NAME</th>
+                            <th className="px-3 py-3 text-center">QTY</th>
+                            <th className="px-3 py-3 text-right">PER UNIT</th>
+                            <th className="px-3 py-3 text-right">TOTAL PRICE</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {(selected.itemsJson ? JSON.parse(selected.itemsJson) : [{ itemName: selected.receivedFor, quantity: 1, unitPrice: selected.amount }]).map((item: any, index: number) => (
+                            <tr key={`receipt-item-${selected.id}-${index}`} className="border-b border-slate-200">
+                              <td className="px-3 py-3 text-center">{index + 1}</td>
+                              <td className="px-3 py-3 font-semibold text-[#2f236d]">{item.itemName || item.productName || "Item"}{item.description ? ` (${item.description})` : ""}</td>
+                              <td className="px-3 py-3 text-center">{item.quantity}</td>
+                              <td className="px-3 py-3 text-right">{formatCurrency(Number(item.unitPrice))}</td>
+                              <td className="px-3 py-3 text-right font-semibold">{formatCurrency(Number(item.unitPrice) * Number(item.quantity))}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                      <div className="grid grid-cols-2 border-t-2 border-slate-300 text-sm">
+                        <span className="border-r border-b border-slate-200 px-4 py-3 text-xs uppercase text-slate-600">Amount received</span>
+                        <strong className="border-b border-slate-200 px-4 py-3 text-right text-[#18275b]">{formatCurrency(Number(selected.amount))}</strong>
+                        <span className="border-r border-slate-200 px-4 py-3 text-xs uppercase text-slate-600">Payment mode</span>
+                        <strong className="px-4 py-3 text-right text-[#18275b]">{selected.paymentMode}</strong>
+                      </div>
+                      <div className="flex items-center justify-between border-t-2 border-slate-300 px-5 py-4">
+                        <span className="text-xs font-bold uppercase tracking-wide text-[#43239d]">Authorized signature</span>
+                        {selected.signatureUrl ? <img src={selected.signatureUrl} alt="Authorized signature" className="h-12 max-w-[180px] object-contain" /> : <span className="text-sm text-slate-400">Not configured</span>}
                       </div>
                     </div>
                   )}

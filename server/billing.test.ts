@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { DEFAULT_INVOICE_SETTINGS, DEFAULT_RECEIPT_SETTINGS } from "./billing";
-import { invoiceInput, invoiceSettingsInput, receiptInput, receiptSettingsInput } from "./routers";
+import { invoiceInput, invoiceSettingsInput, invoiceStatusInput, receiptInput, receiptSettingsInput } from "./routers";
+import { receipts } from "../drizzle/schema";
 
 describe("billing defaults and input contracts", () => {
   it("starts invoices with a stable INV numbering contract", () => {
@@ -31,6 +32,21 @@ describe("billing defaults and input contracts", () => {
     expect(parsed.logoDataUrl).toBe("https://cdn.example/logo.png");
     expect(parsed.scannerDataUrl).toBe("https://cdn.example/qr.png");
     expect(parsed.signatureDataUrl).toBe("https://cdn.example/signature.png");
+  });
+
+  it("supports invoice-linked receipt detail columns", () => {
+    expect(receipts.invoiceId).toBeDefined();
+    expect(receipts.invoiceNumber).toBeDefined();
+    expect(receipts.itemsJson).toBeDefined();
+    expect(receipts.gstAmount).toBeDefined();
+  });
+
+  it("accepts the editable Invoice status lifecycle", () => {
+    expect(invoiceStatusInput.parse("Draft")).toBe("Draft");
+    expect(invoiceStatusInput.parse("Due")).toBe("Due");
+    expect(invoiceStatusInput.parse("Paid")).toBe("Paid");
+    expect(invoiceStatusInput.parse("Cancelled")).toBe("Cancelled");
+    expect(() => invoiceStatusInput.parse("Sent")).toThrow();
   });
 
   it("coerces Receipt settings, amount, and Invoice item numeric strings", () => {

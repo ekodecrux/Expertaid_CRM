@@ -88,9 +88,55 @@ export async function updateInvoiceForOwner(ownerId: number, id: number, input: 
   return rows[0];
 }
 
-export async function updateInvoiceStatusForOwner(ownerId: number, id: number, status: "Draft" | "Sent" | "Paid" | "Cancelled") {
+export async function updateInvoiceStatusForOwner(ownerId: number, id: number, status: "Draft" | "Due" | "Paid" | "Cancelled") {
   const db = await requireDb();
+  const invoiceRows = await db.select().from(invoices).where(and(eq(invoices.ownerId, ownerId), eq(invoices.id, id))).limit(1);
+  const invoice = invoiceRows[0];
+  if (!invoice) throw new Error("Invoice not found");
   await db.update(invoices).set({ status }).where(and(eq(invoices.ownerId, ownerId), eq(invoices.id, id)));
+  if (status === "Paid") {
+    const existingReceipt = await db.select({ id: receipts.id }).from(receipts).where(and(eq(receipts.ownerId, ownerId), eq(receipts.invoiceId, id))).limit(1);
+    if (!existingReceipt[0]) {
+      const settings = await getReceiptSettingsForOwner(ownerId);
+      const receiptNumber = `${settings.receiptPrefix}-${String(settings.receiptNumberNext).padStart(4, "0")}`;
+      await db.insert(receipts).values({
+        ownerId,
+        receiptNumber,
+        status: "Issued",
+        invoiceId: invoice.id,
+        invoiceNumber: invoice.invoiceNumber,
+        clientName: invoice.clientName,
+        clientAddress: invoice.clientAddress,
+        clientContact: invoice.clientContact,
+        clientEmail: invoice.clientEmail,
+        clientGst: invoice.clientGst,
+        receiptDate: new Date().toISOString().slice(0, 10),
+        paymentDate: new Date().toISOString().slice(0, 10),
+        amount: invoice.grandTotal,
+        itemsJson: invoice.itemsJson,
+        subtotal: invoice.subtotal,
+        gstRate: invoice.gstRate,
+        gstMode: invoice.gstMode,
+        gstAmount: invoice.gstAmount,
+        grandTotal: invoice.grandTotal,
+        paymentMode: "Bank Transfer",
+        receivedFor: invoice.invoiceNumber,
+        notes: invoice.notes,
+        terms: invoice.terms || settings.terms,
+        companyGst: invoice.companyGst || settings.companyGst,
+        companyAddress: invoice.companyAddress || settings.companyAddress,
+        accountCompanyName: invoice.accountCompanyName || settings.accountCompanyName,
+        accountNumber: invoice.accountNumber || settings.accountNumber,
+        accountIfsc: invoice.accountIfsc || settings.accountIfsc,
+        accountBranch: invoice.accountBranch || settings.accountBranch,
+        logoUrl: invoice.logoUrl || settings.logoUrl,
+        logoKey: invoice.logoKey || settings.logoKey,
+        signatureUrl: invoice.signatureUrl || settings.signatureUrl,
+        signatureKey: invoice.signatureKey || settings.signatureKey,
+      } as any);
+      await db.update(receiptSettings).set({ receiptNumberNext: Number(settings.receiptNumberNext) + 1 }).where(eq(receiptSettings.ownerId, ownerId));
+    }
+  }
   const rows = await db.select().from(invoices).where(and(eq(invoices.ownerId, ownerId), eq(invoices.id, id))).limit(1);
   return rows[0];
 }
