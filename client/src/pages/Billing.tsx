@@ -406,6 +406,14 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     [invoiceForm.items, invoiceForm.gstRate, invoiceForm.gstMode]
   );
 
+  const clearSettingsError = (key: string) => {
+    setFormErrors(current => {
+      const next = { ...current };
+      delete next[key];
+      delete next.form;
+      return next;
+    });
+  };
   const validateSettings = () => {
     const errors: Record<string, string> = {};
     if (!settingsForm?.companyGst?.trim())
@@ -884,14 +892,15 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             : "receiptNumberStart"
                         ] ?? 1
                       }
-                      onChange={e =>
+                      onChange={e => {
+                        clearSettingsError("numberStart");
                         setSettingsForm({
                           ...settingsForm,
                           [isInvoice
                             ? "invoiceNumberStart"
                             : "receiptNumberStart"]: Number(e.target.value),
-                        })
-                      }
+                        });
+                      }}
                     />
                   </div>
                   {isInvoice && (
@@ -904,12 +913,13 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           min="0"
                           step="0.01"
                           value={settingsForm.gstRate ?? 18}
-                          onChange={e =>
+                          onChange={e => {
+                            clearSettingsError("gstRate");
                             setSettingsForm({
                               ...settingsForm,
                               gstRate: Number(e.target.value),
-                            })
-                          }
+                            });
+                          }}
                         />
                       </div>
                       <div>
@@ -921,12 +931,13 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           type="number"
                           min="1"
                           value={settingsForm.defaultDueDays ?? 15}
-                          onChange={e =>
+                          onChange={e => {
+                            clearSettingsError("defaultDueDays");
                             setSettingsForm({
                               ...settingsForm,
                               defaultDueDays: Number(e.target.value),
-                            })
-                          }
+                            });
+                          }}
                         />
                       </div>
                     </>
