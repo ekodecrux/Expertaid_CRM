@@ -1707,7 +1707,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             <p className="text-[10px] font-bold uppercase tracking-wider text-[#43239d]">
                               Billed to
                             </p>
-                            <p className="mt-2 font-semibold text-[#2f236d]">
+                            <p className="mt-2 inline-flex max-w-full rounded-md bg-[#ede9ff] px-3 py-2 text-base font-bold text-[#2f236d] shadow-sm">
                               {selected.clientName}
                             </p>
                           </div>
@@ -1717,31 +1717,31 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             {isInvoice ? "Client details" : "Receipt details"}
                           </p>
                           {isInvoice ? (
-                            <div className="mt-3 space-y-1 text-sm text-slate-600">
-                              <p>
-                                <strong className="text-slate-800">
-                                  Address:
-                                </strong>{" "}
+                            <div className="mt-3 grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4 gap-y-2 text-sm text-slate-600">
+                              <strong className="text-left font-semibold text-slate-800">
+                                Address:
+                              </strong>
+                              <span className="min-w-0 text-right break-words">
                                 {selected.clientAddress || "—"}
-                              </p>
-                              <p>
-                                <strong className="text-slate-800">
-                                  Phone:
-                                </strong>{" "}
+                              </span>
+                              <strong className="text-left font-semibold text-slate-800">
+                                Phone:
+                              </strong>
+                              <span className="min-w-0 text-right break-words">
                                 {selected.clientContact || "—"}
-                              </p>
-                              <p>
-                                <strong className="text-slate-800">
-                                  Email:
-                                </strong>{" "}
+                              </span>
+                              <strong className="text-left font-semibold text-slate-800">
+                                Email:
+                              </strong>
+                              <span className="min-w-0 text-right break-words">
                                 {selected.clientEmail || "—"}
-                              </p>
-                              <p>
-                                <strong className="text-slate-800">
-                                  GST No:
-                                </strong>{" "}
+                              </span>
+                              <strong className="text-left font-semibold text-slate-800">
+                                GST No:
+                              </strong>
+                              <span className="min-w-0 text-right break-words">
                                 {selected.clientGst || "—"}
-                              </p>
+                              </span>
                             </div>
                           ) : (
                             <div className="mt-3 space-y-1 text-sm text-slate-600">

@@ -1043,3 +1043,4 @@
 - [x] Highlight and vertically center the Invoice Billed To panel, and populate the right Invoice Details panel without repeating Date or Due Date
 - [ ] Add quotation-style left, right, and bottom borders around Invoice items and totals, with a distinct Grand Total boundary and full-width ONWARDS separator
 - [x] Keep only the client name in the left Billed To panel and move address, phone, email, and GST into a right Client Details panel
+- [x] Highlight the Invoice client name and align Client Details labels and values in consistent two-column rows
