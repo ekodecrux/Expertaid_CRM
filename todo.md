@@ -1093,3 +1093,5 @@
 - [x] Match Receipt configuration and A4 output to the supplied reference image, including header, received-from card, item columns, totals, amount-in-words strip, footer, QR, signature, and thank-you bar
 
 - [x] Match Receipt geometry to the Invoice reference while using RECEIVED FROM, RECEIPT, RECEIPT DATE, and PAYMENT MODE labels
+
+- [x] Match the new Receipt reference with Transaction ID, contact strip, Rate/Amount columns, payment-information row, terms/signature panels, and thank-you footer
