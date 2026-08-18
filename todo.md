@@ -1033,3 +1033,4 @@
 - [x] Audit and align Receipt header, amount block, account/QR/signature footer, colors, spacing, and A4 print layout with the quotation reference; Receipt amount and footer now use the same gradient, white-card, light-border, and purple-label hierarchy
 - [x] Add Invoice amount in words and widen/rebalance the quotation-style totals block so inclusive/exclusive tax and final total display without awkward wrapping
 - [x] Match Invoice item columns and totals to the quotation reference: compact S.NO/item/QTY/per-unit/total-price table, right-side total/tax/grand-total block, and ONWARDS amount-in-words row
+- [x] Correct Invoice totals geometry to match quotation reference: compact left total-price-including-tax label, balanced right Total/Tax/Grand Total rows, aligned borders, and amount-in-words directly below

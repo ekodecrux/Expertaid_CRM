@@ -1738,31 +1738,31 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           )}
                         </tbody>
                       </table>
-                      <div className="grid grid-cols-[minmax(0,1fr)_minmax(260px,44%)] border-x border-b border-slate-200 bg-white">
-                        <div className="flex items-center px-4 py-6 text-xs font-bold uppercase tracking-wide text-[#43239d]">
+                      <div className="grid grid-cols-2 border-x border-b border-slate-200 bg-white">
+                        <div className="flex items-center justify-center px-4 py-6 text-center text-xs font-bold uppercase tracking-wide text-[#43239d]">
                           Total price including tax
                         </div>
-                        <div className="grid grid-cols-[minmax(0,1fr)_auto] text-right text-sm">
-                          <span className="border-b border-l border-slate-200 px-4 py-3 uppercase text-slate-600">
+                        <div className="grid grid-cols-[minmax(0,1fr)_112px] text-right text-sm">
+                          <span className="border-b border-l border-slate-200 px-4 py-3 text-center text-xs uppercase leading-tight text-slate-600">
                             Total
                           </span>
                           <strong className="border-b border-slate-200 px-4 py-3 text-slate-800">
                             {formatCurrency(selectedInvoiceTaxable)}
                           </strong>
-                          <span className="border-b border-l border-slate-200 px-4 py-3 uppercase text-slate-600">
+                          <span className="border-b border-l border-slate-200 px-4 py-3 text-center text-xs uppercase leading-tight text-slate-600">
                             Tax amount ({selected.gstRate}%)
                           </span>
                           <strong className="border-b border-slate-200 px-4 py-3 text-slate-800">
                             {formatCurrency(selectedInvoiceGst)}
                           </strong>
-                          <span className="px-4 py-3 text-base font-bold uppercase text-[#43239d]">
+                          <span className="px-4 py-3 text-center text-base font-bold uppercase leading-tight text-[#43239d]">
                             Grand total amount
                           </span>
                           <strong className="bg-[#43239d] px-4 py-3 text-base text-white">
                             {formatCurrency(Number(selected.grandTotal))}
                           </strong>
                         </div>
-                        <div className="col-span-2 flex items-center gap-3 border-t border-slate-200 px-4 py-3">
+                        <div className="col-span-2 flex min-h-[52px] items-center gap-3 border-t border-slate-200 px-4 py-3">
                           <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#43239d] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white">
                             Onwards <span aria-hidden="true">›</span>
                           </span>
