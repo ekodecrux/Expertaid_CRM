@@ -1028,3 +1028,6 @@
 - [x] Keep Invoice account, QR, and signature columns fixed like Quotation so missing QR content leaves the center space reserved and never shifts the signature; fixed grid geometry now reserves a 190px QR column and stable signature position
 - [x] Refine Invoice footer proportions, QR size, signature scale, heading typography, and separators to closely match the quotation reference image; fixed proportions and print-safe dimensions applied
 - [x] Keep the Invoice company name on one line where possible and apply quotation-style purple header, accent borders, totals, highlights, and footer colors; widened the account column, prevented company wrapping, and added lavender/purple document accents
+- [x] Remove the lavender fill from the Invoice bottom three-column section and match Quotation’s plain white background with light gray separators
+- [x] Match Invoice color hierarchy to Quotation: purple-to-blue table header, dark-purple labels, light gray cell borders, solid purple grand-total block, and purple payment accent; Invoice table and totals now use quotation-style colors
+- [x] Audit and align Receipt header, amount block, account/QR/signature footer, colors, spacing, and A4 print layout with the quotation reference; Receipt amount and footer now use the same gradient, white-card, light-border, and purple-label hierarchy
