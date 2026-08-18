@@ -397,10 +397,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   );
   const rows = isInvoice ? invoiceRows : receiptRows;
   const selectedSignatureUrl = selected
-    ? selected.signatureUrl ||
-      (isInvoice
-        ? quotationSettings.data?.signatureUrl
-        : receiptSettings.data?.signatureUrl || invoiceSettings.data?.signatureUrl || quotationSettings.data?.signatureUrl)
+    ? isInvoice
+      ? selected.signatureUrl || quotationSettings.data?.signatureUrl
+      : invoiceSettings.data?.signatureUrl || selected.signatureUrl || receiptSettings.data?.signatureUrl || quotationSettings.data?.signatureUrl
     : null;
   const selectedInvoiceSubtotal = selected ? Number(selected.subtotal) : 0;
   const selectedInvoiceGst = selected ? Number(selected.gstAmount) : 0;
@@ -1987,7 +1986,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     <>
                       <div className="rounded-none border-0 bg-white p-0 shadow-none sm:p-0">
                         <div className="grid gap-4 sm:grid-cols-[minmax(260px,1.15fr)_minmax(180px,0.85fr)_minmax(220px,1fr)] sm:items-stretch">
-                          <div className="flex min-w-0 items-center gap-4 sm:pr-4">{selected.logoUrl || receiptSettings.data?.logoUrl || invoiceSettings.data?.logoUrl || quotationSettings.data?.logoUrl ? <img src={selected.logoUrl || receiptSettings.data?.logoUrl || invoiceSettings.data?.logoUrl || quotationSettings.data?.logoUrl} className="h-24 w-52 shrink-0 object-contain" alt="Expertaid logo" /> : <div className="h-24 w-52 shrink-0 rounded-lg bg-[#f0efff]" />}</div>
+                          <div className="flex min-w-0 items-center gap-4 sm:pr-4">{invoiceSettings.data?.logoUrl || selected.logoUrl || receiptSettings.data?.logoUrl || quotationSettings.data?.logoUrl ? <img src={invoiceSettings.data?.logoUrl || selected.logoUrl || receiptSettings.data?.logoUrl || quotationSettings.data?.logoUrl} className="h-24 w-52 shrink-0 object-contain" alt="Expertaid logo" /> : <div className="h-24 w-52 shrink-0 rounded-lg bg-[#f0efff]" />}</div>
                           <div className="border-y border-slate-200 py-3 text-xs text-slate-600 sm:border-y-0 sm:border-x sm:px-5"><p className="font-bold uppercase tracking-wider text-[#43239d]">GST No.</p><p className="mt-2 break-words">{cleanGstValue(receiptSettings.data?.companyGst || invoiceSettings.data?.companyGst || selected.companyGst)}</p><p className="mt-3 font-bold uppercase tracking-wider text-[#43239d]">Address</p><p className="mt-2 whitespace-pre-line">{receiptSettings.data?.companyAddress || invoiceSettings.data?.companyAddress || selected.companyAddress || "Not configured"}</p></div>
                           <div className="rounded-xl bg-gradient-to-br from-[#43239d] via-[#4d35ad] to-[#3157d5] px-4 py-4 text-white shadow-sm"><p className="text-xl font-bold uppercase tracking-wide">Receipt</p><p className="mt-1 text-lg font-semibold">#{selected.receiptNumber}</p><div className="mt-3 grid grid-cols-2 gap-3 border-t border-white/40 pt-3 text-[10px] uppercase tracking-wide"><div><p className="opacity-75">Receipt date</p><p className="mt-1 text-xs font-bold normal-case">{selected.receiptDate}</p></div><div><p className="opacity-75">Payment mode</p><p className="mt-1 text-xs font-bold normal-case">{selected.paymentMode}</p></div></div><div className="mt-3 border-t border-white/40 pt-3 text-[10px] uppercase tracking-wide"><p className="opacity-75">Transaction ID</p><p className="mt-1 text-xs font-bold normal-case">{selected.transactionReference || "—"}</p></div></div>
                         </div>

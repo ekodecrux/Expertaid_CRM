@@ -1099,3 +1099,5 @@
 - [x] Restore the full branded Receipt header and correct the preview totals/footer so the complete reference document is visible without clipping
 
 - [x] Add Receipt Edit action and save flow while preserving View and Print actions
+
+- [x] Make Receipt top logo and bottom authorized signature inherit from Invoice branding, with Receipt assets only as fallback
