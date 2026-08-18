@@ -168,3 +168,17 @@ WHERE table_schema = @db_name
   AND ((table_name = 'invoices' AND column_name = 'status')
     OR (table_name = 'receipts' AND column_name IN ('invoiceId','invoiceNumber','clientGst','itemsJson','subtotal','gstRate','gstMode','gstAmount','grandTotal')))
 ORDER BY table_name, ordinal_position;
+
+-- Reference-style Receipt configuration fields.
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receiptSettings' AND column_name = 'footerCompanyName'), 'SELECT 1', 'ALTER TABLE `receiptSettings` ADD COLUMN `footerCompanyName` VARCHAR(255) DEFAULT ''FOR EXPERTAID TECHNOLOGIES PVT LTD.''');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receiptSettings' AND column_name = 'footerMessage'), 'SELECT 1', 'ALTER TABLE `receiptSettings` ADD COLUMN `footerMessage` VARCHAR(255) DEFAULT ''Thank you for your business!''');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receiptSettings' AND column_name = 'qrLabel'), 'SELECT 1', 'ALTER TABLE `receiptSettings` ADD COLUMN `qrLabel` VARCHAR(64) DEFAULT ''SCAN & PAY''');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receipts' AND column_name = 'footerCompanyName'), 'SELECT 1', 'ALTER TABLE `receipts` ADD COLUMN `footerCompanyName` VARCHAR(255) NULL');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receipts' AND column_name = 'footerMessage'), 'SELECT 1', 'ALTER TABLE `receipts` ADD COLUMN `footerMessage` VARCHAR(255) NULL');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receipts' AND column_name = 'qrLabel'), 'SELECT 1', 'ALTER TABLE `receipts` ADD COLUMN `qrLabel` VARCHAR(64) NULL');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;

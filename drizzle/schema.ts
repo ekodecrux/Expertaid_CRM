@@ -235,6 +235,9 @@ export const receiptSettings = mysqlTable("receiptSettings", {
   logoKey: varchar("logoKey", { length: 512 }),
   signatureUrl: text("signatureUrl"),
   signatureKey: varchar("signatureKey", { length: 512 }),
+  footerCompanyName: varchar("footerCompanyName", { length: 255 }).default("FOR EXPERTAID TECHNOLOGIES PVT LTD."),
+  footerMessage: varchar("footerMessage", { length: 255 }).default("Thank you for your business!"),
+  qrLabel: varchar("qrLabel", { length: 64 }).default("SCAN & PAY"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
@@ -275,6 +278,9 @@ export const receipts = mysqlTable("receipts", {
   logoKey: varchar("logoKey", { length: 512 }),
   signatureUrl: text("signatureUrl"),
   signatureKey: varchar("signatureKey", { length: 512 }),
+  footerCompanyName: varchar("footerCompanyName", { length: 255 }),
+  footerMessage: varchar("footerMessage", { length: 255 }),
+  qrLabel: varchar("qrLabel", { length: 64 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });

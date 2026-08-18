@@ -39,6 +39,9 @@ export const DEFAULT_RECEIPT_SETTINGS = {
   logoKey: null,
   signatureUrl: null,
   signatureKey: null,
+  footerCompanyName: "FOR EXPERTAID TECHNOLOGIES PVT LTD.",
+  footerMessage: "Thank you for your business!",
+  qrLabel: "SCAN & PAY",
 };
 
 async function requireDb() {
@@ -134,6 +137,9 @@ export async function updateInvoiceStatusForOwner(ownerId: number, id: number, s
         logoKey: invoice.logoKey || settings.logoKey,
         signatureUrl: invoice.signatureUrl || settings.signatureUrl,
         signatureKey: invoice.signatureKey || settings.signatureKey,
+        footerCompanyName: settings.footerCompanyName,
+        footerMessage: settings.footerMessage,
+        qrLabel: settings.qrLabel,
       } as any);
       await db.update(receiptSettings).set({ receiptNumberNext: Number(settings.receiptNumberNext) + 1 }).where(eq(receiptSettings.ownerId, ownerId));
     }

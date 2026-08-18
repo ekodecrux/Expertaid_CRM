@@ -1033,6 +1033,17 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                       }
                     />
                   </div>
+                  {!isInvoice && (
+                    <div className="sm:col-span-2 rounded-xl border border-[#d7d0ff] bg-[#faf9ff] p-4">
+                      <p className="text-sm font-semibold text-[#43239d]">Receipt reference configuration</p>
+                      <p className="mt-1 text-xs text-slate-500">These values control the footer and QR caption shown on the reference-style Receipt.</p>
+                      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                        <div><Label>Footer company line</Label><Input value={settingsForm.footerCompanyName ?? ""} onChange={e => setSettingsForm({ ...settingsForm, footerCompanyName: e.target.value })} placeholder="FOR EXPERTAID TECHNOLOGIES PVT LTD." /></div>
+                        <div><Label>QR caption</Label><Input value={settingsForm.qrLabel ?? ""} onChange={e => setSettingsForm({ ...settingsForm, qrLabel: e.target.value })} placeholder="SCAN & PAY" /></div>
+                        <div className="sm:col-span-2"><Label>Thank-you footer message</Label><Input value={settingsForm.footerMessage ?? ""} onChange={e => setSettingsForm({ ...settingsForm, footerMessage: e.target.value })} placeholder="Thank you for your business!" /></div>
+                      </div>
+                    </div>
+                  )}
                   {isInvoice && (
                     <div className="sm:col-span-2 rounded-xl border border-slate-200 bg-slate-50 p-4">
                       <p className="text-sm font-semibold text-slate-700">
@@ -2058,7 +2069,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                         <p className="mt-2 text-sm"><strong>Reference:</strong> {selected.transactionReference || "—"}</p>
                       </div>
                       <div className="flex min-h-[178px] min-w-0 items-center justify-center border-b border-slate-200 py-6 sm:border-b-0 sm:border-r sm:px-4">
-                        {invoiceSettings.data?.scannerUrl && <div className="flex h-full flex-col items-center justify-center text-center"><img src={invoiceSettings.data.scannerUrl} alt="UPI QR scanner" className="mx-auto h-28 w-28 object-contain" /><p className="mt-3 text-xs font-semibold text-[#43239d]">UPI ID / Payment QR</p></div>}
+                        {invoiceSettings.data?.scannerUrl && <div className="flex h-full flex-col items-center justify-center text-center"><img src={invoiceSettings.data.scannerUrl} alt="UPI QR scanner" className="mx-auto h-28 w-28 object-contain" /><p className="mt-3 text-xs font-semibold text-[#43239d]">{selected.qrLabel || receiptSettings.data?.qrLabel || "SCAN & PAY"}</p></div>}
                       </div>
                       <div className="flex min-h-[178px] min-w-0 flex-col items-center justify-center py-6 sm:pl-4">
                         <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">Your sincerely,</p>
@@ -2066,6 +2077,16 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                         <p className="mt-3 text-sm font-semibold">Authorised Signatory</p>
                       </div>
                     </div>
+                  )}
+                  {!isInvoice && (
+                    <div className="mt-8 overflow-hidden rounded-xl bg-gradient-to-r from-[#43239d] to-[#3157d5] px-5 py-3 text-center text-sm font-bold text-white">
+                      {selected.footerMessage || receiptSettings.data?.footerMessage || "Thank you for your business!"}
+                    </div>
+                  )}
+                  {!isInvoice && (
+                    <p className="mt-3 text-center text-xs font-bold uppercase tracking-wide text-[#43239d]">
+                      {selected.footerCompanyName || receiptSettings.data?.footerCompanyName || "FOR EXPERTAID TECHNOLOGIES PVT LTD."}
+                    </p>
                   )}
                   <p className="mt-8 border-t border-slate-100 pt-4 text-xs text-slate-500">
                     {selected.terms}

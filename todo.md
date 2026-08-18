@@ -1089,3 +1089,5 @@
 - [x] Re-verify automatic Paid-invoice Receipt creation after the manual insert fix (project database columns verified; Hostinger repair script included)
 
 - [x] Redesign the payment Receipt to use the same branded header, logo, company details, gradient styling, Billed To, products, totals, account details, amount in words, and signature layout as the Invoice
+
+- [x] Match Receipt configuration and A4 output to the supplied reference image, including header, received-from card, item columns, totals, amount-in-words strip, footer, QR, signature, and thank-you bar
