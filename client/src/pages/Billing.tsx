@@ -1725,18 +1725,11 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">
                             {isInvoice ? "Invoice details" : "Receipt details"}
                           </p>
-                          <p className="mt-2 text-sm">
-                            <strong>Date:</strong>{" "}
-                            {isInvoice
-                              ? selected.invoiceDate
-                              : selected.receiptDate}
-                          </p>
-                          {isInvoice ? (
-                            <p className="text-sm">
-                              <strong>Due:</strong> {selected.dueDate}
-                            </p>
-                          ) : (
+                          {!isInvoice && (
                             <>
+                              <p className="mt-2 text-sm">
+                                <strong>Date:</strong> {selected.receiptDate}
+                              </p>
                               <p className="text-sm">
                                 <strong>Payment date:</strong>{" "}
                                 {selected.paymentDate}

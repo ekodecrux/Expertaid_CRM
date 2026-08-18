@@ -1039,3 +1039,4 @@
 - [x] Remove duplicate Invoice company data, enlarge the quotation-style logo area, match top-block proportions, and repair complete A4 Invoice printing
 - [x] Make the saved Invoice Settings GST number authoritative in the Invoice header and preserve valid configured GST values
 - [x] Remove Invoice header top/bottom border lines and match quotation logo scale with only light vertical column separators
+- [x] Remove duplicate Invoice Date and Due rows from Invoice Details so dates appear only in the purple Invoice card
