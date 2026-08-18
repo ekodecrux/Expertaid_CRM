@@ -12,7 +12,7 @@ import { sdk } from "./_core/sdk";
 import { validateCredentialLogin } from "./credentialLogin";
 import { calculateAgreementEndDate, calculateAgreementPricing, calculateAgreementTotal, PricingMode } from "@shared/pricing";
 import { calculateQuotationTotals, DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, QUOTATION_STATUSES, type QuotationItem } from "@shared/quotation";
-import { createInvoiceForOwner, createReceiptForOwner, deleteInvoiceForOwner, deleteReceiptForOwner, getInvoiceSettingsForOwner, getReceiptSettingsForOwner, listInvoicesForOwner, listReceiptsForOwner, updateInvoiceForOwner, updateInvoiceSettingsForOwner, updateInvoiceStatusForOwner, updateReceiptSettingsForOwner, updateReceiptStatusForOwner } from "./billing";
+import { createInvoiceForOwner, createReceiptForOwner, updateReceiptForOwner, deleteInvoiceForOwner, deleteReceiptForOwner, getInvoiceSettingsForOwner, getReceiptSettingsForOwner, listInvoicesForOwner, listReceiptsForOwner, updateInvoiceForOwner, updateInvoiceSettingsForOwner, updateInvoiceStatusForOwner, updateReceiptSettingsForOwner, updateReceiptStatusForOwner } from "./billing";
 
 const dataUrlSchema = z.string().max(2_500_000).transform((value) => value.trim().replace(/[\r\n\t\s]+/g, "")).refine((value) => /^data:image\/[a-z0-9.+-]+(?:;[^,]*)?,[\s\S]+$/i.test(value), "Invalid image data URL");
 export const quotationAssetInput = z.preprocess((value) => typeof value === "string" && value.trim() === "" ? undefined : value, z.union([dataUrlSchema, z.string().trim().min(1).max(4096), z.null()]).optional());
@@ -170,6 +170,11 @@ export const appRouter = router({
     create: protectedProcedure.input(receiptInput).mutation(async ({ ctx, input }) => {
       const settings = await getReceiptSettingsForOwner(ctx.user.id);
       return createReceiptForOwner(ctx.user.id, { ...input, companyGst: settings.companyGst, companyAddress: settings.companyAddress, terms: settings.terms, accountCompanyName: settings.accountCompanyName, accountNumber: settings.accountNumber, accountIfsc: settings.accountIfsc, accountBranch: settings.accountBranch, logoUrl: settings.logoUrl, logoKey: settings.logoKey, signatureUrl: settings.signatureUrl, signatureKey: settings.signatureKey, footerCompanyName: settings.footerCompanyName, footerMessage: settings.footerMessage, qrLabel: settings.qrLabel });
+    }),
+    update: protectedProcedure.input(receiptInput.extend({ id: z.number().int().positive() })).mutation(async ({ ctx, input }) => {
+      const { id, ...fields } = input;
+      const settings = await getReceiptSettingsForOwner(ctx.user.id);
+      return updateReceiptForOwner(ctx.user.id, id, { ...fields, amount: fields.amount, companyGst: settings.companyGst, companyAddress: settings.companyAddress, terms: settings.terms, accountCompanyName: settings.accountCompanyName, accountNumber: settings.accountNumber, accountIfsc: settings.accountIfsc, accountBranch: settings.accountBranch, logoUrl: settings.logoUrl, logoKey: settings.logoKey, signatureUrl: settings.signatureUrl, signatureKey: settings.signatureKey, footerCompanyName: settings.footerCompanyName, footerMessage: settings.footerMessage, qrLabel: settings.qrLabel });
     }),
     updateStatus: protectedProcedure.input(z.object({ id: z.number().int().positive(), status: z.enum(["Issued", "Cancelled"]) })).mutation(({ ctx, input }) => updateReceiptStatusForOwner(ctx.user.id, input.id, input.status)),
     delete: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ ctx, input }) => deleteReceiptForOwner(ctx.user.id, input.id)),

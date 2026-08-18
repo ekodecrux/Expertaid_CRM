@@ -189,6 +189,14 @@ export async function createReceiptForOwner(ownerId: number, input: Record<strin
   return rows[0];
 }
 
+export async function updateReceiptForOwner(ownerId: number, id: number, input: Record<string, unknown>) {
+  const db = await requireDb();
+  const { receiptNumber: _ignored, ownerId: _ownerIgnored, id: _idIgnored, ...values } = input as any;
+  await db.update(receipts).set(values).where(and(eq(receipts.ownerId, ownerId), eq(receipts.id, id)));
+  const rows = await db.select().from(receipts).where(and(eq(receipts.ownerId, ownerId), eq(receipts.id, id))).limit(1);
+  return rows[0];
+}
+
 export async function updateReceiptStatusForOwner(ownerId: number, id: number, status: "Issued" | "Cancelled") {
   const db = await requireDb();
   await db.update(receipts).set({ status }).where(and(eq(receipts.ownerId, ownerId), eq(receipts.id, id)));

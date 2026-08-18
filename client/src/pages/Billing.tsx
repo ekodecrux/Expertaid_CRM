@@ -315,6 +315,19 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       toast.error(message);
     },
   });
+  const updateReceipt = trpc.receipts.update.useMutation({
+    onSuccess: () => {
+      receipts.refetch();
+      setCreateOpen(false);
+      setEditingReceiptId(null);
+      toast.success("Receipt updated.");
+    },
+    onError: error => {
+      const message = mutationErrorMessage(error);
+      setFormErrors({ form: message });
+      toast.error(message);
+    },
+  });
   const deleteInvoice = trpc.invoices.delete.useMutation({
     onSuccess: () => {
       invoices.refetch();
@@ -343,6 +356,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const [createOpen, setCreateOpen] = useState(false);
   const [selected, setSelected] = useState<any>(null);
   const [editingInvoiceId, setEditingInvoiceId] = useState<number | null>(null);
+  const [editingReceiptId, setEditingReceiptId] = useState<number | null>(null);
   const [settingsForm, setSettingsForm] = useState<any>(null);
   const [invoiceForm, setInvoiceForm] = useState(emptyInvoice());
   const [receiptForm, setReceiptForm] = useState(emptyReceipt());
@@ -528,6 +542,24 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     setFormErrors({});
     setCreateOpen(true);
   };
+  const openEditReceipt = (row: any) => {
+    setEditingReceiptId(Number(row.id));
+    setReceiptForm({
+      clientName: row.clientName ?? "",
+      clientAddress: row.clientAddress ?? "",
+      clientContact: row.clientContact ?? "",
+      clientEmail: row.clientEmail ?? "",
+      receiptDate: row.receiptDate ?? today(),
+      paymentDate: row.paymentDate ?? today(),
+      amount: String(row.amount ?? row.grandTotal ?? ""),
+      paymentMode: row.paymentMode ?? "Bank Transfer",
+      transactionReference: row.transactionReference ?? "",
+      receivedFor: row.receivedFor ?? "",
+      notes: row.notes ?? "",
+    });
+    setFormErrors({});
+    setCreateOpen(true);
+  };
   const submitCreate = (event: React.FormEvent) => {
     event.preventDefault();
     const errors: Record<string, string> = {};
@@ -572,15 +604,16 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       if (editingInvoiceId)
         updateInvoice.mutate({ id: editingInvoiceId, ...payload });
       else createInvoice.mutate(payload);
-    } else
-      createReceipt.mutate({
-        ...receiptForm,
-        amount: Number(receiptForm.amount),
-      });
+    } else {
+      const payload = { ...receiptForm, amount: Number(receiptForm.amount) };
+      if (editingReceiptId) updateReceipt.mutate({ id: editingReceiptId, ...payload });
+      else createReceipt.mutate(payload);
+    }
   };
   const openCreate = () => {
     setSelected(null);
     setEditingInvoiceId(null);
+    setEditingReceiptId(null);
     setFormErrors({});
     setInvoiceForm(emptyInvoice());
     setReceiptForm(emptyReceipt());
@@ -807,17 +840,15 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             >
                               <Eye className="h-4 w-4 text-[#43239d]" />
                             </Button>
-                            {isInvoice && (
-                              <Button
-                                size="icon"
-                                variant="outline"
-                                title="Edit invoice"
-                                aria-label="Edit invoice"
-                                onClick={() => openEditInvoice(row)}
-                              >
-                                <Pencil className="h-4 w-4 text-[#43239d]" />
-                              </Button>
-                            )}
+                            <Button
+                              size="icon"
+                              variant="outline"
+                              title={`Edit ${isInvoice ? "invoice" : "receipt"}`}
+                              aria-label={`Edit ${isInvoice ? "invoice" : "receipt"}`}
+                              onClick={() => isInvoice ? openEditInvoice(row) : openEditReceipt(row)}
+                            >
+                              <Pencil className="h-4 w-4 text-[#43239d]" />
+                            </Button>
                             <Button
                               size="icon"
                               variant="outline"
@@ -1163,7 +1194,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                 <DialogTitle className="font-serif text-2xl">
                   {editingInvoiceId
                     ? "Edit invoice"
-                    : `New ${isInvoice ? "invoice" : "receipt"}`}
+                    : editingReceiptId
+                      ? "Edit receipt"
+                      : `New ${isInvoice ? "invoice" : "receipt"}`}
                 </DialogTitle>
               </DialogHeader>
               <ValidationSummary
@@ -1663,7 +1696,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     >
                       Cancel
                     </Button>
-                    <Button type="submit">Create receipt</Button>
+                    <Button type="submit">{editingReceiptId ? "Save receipt changes" : "Create receipt"}</Button>
                   </div>
                 </form>
               )}

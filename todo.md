@@ -1097,3 +1097,5 @@
 - [x] Match the new Receipt reference with Transaction ID, contact strip, Rate/Amount columns, payment-information row, terms/signature panels, and thank-you footer
 
 - [x] Restore the full branded Receipt header and correct the preview totals/footer so the complete reference document is visible without clipping
+
+- [x] Add Receipt Edit action and save flow while preserving View and Print actions
