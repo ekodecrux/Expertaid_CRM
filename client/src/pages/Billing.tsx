@@ -1728,12 +1728,6 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                       <div
                         className={`relative mt-6 overflow-hidden rounded-2xl border-2 bg-white shadow-[0_2px_8px_rgba(30,45,80,0.04)] ${isInvoice ? "border-[#d7d0ff]" : "border-slate-200"}`}
                       >
-                        {isInvoice && (
-                          <div className="absolute left-1/2 top-3 z-10 ml-4 hidden max-w-[calc(50%-1.5rem)] -translate-y-0 text-sm font-bold text-[#2f236d] sm:block">
-                            {selected.clientName || "—"}
-                          </div>
-                        )}
-
                         <div
                           className={`relative flex min-w-0 items-center gap-4 ${isInvoice ? "px-5 py-3" : "bg-[#faf9ff] p-5 sm:border-r sm:border-slate-200"}`}
                         >
@@ -1770,9 +1764,14 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                                 </span>
                               </div>
                               <div className="border-b border-dashed border-[#e3defd] pb-3">
-                                <strong className="block font-semibold text-[#18275b]">
-                                  Email
-                                </strong>
+                                <div className="flex items-baseline justify-between gap-3">
+                                  <strong className="font-semibold text-[#18275b]">
+                                    Email
+                                  </strong>
+                                  <strong className="min-w-0 text-right font-bold text-[#2f236d]">
+                                    {selected.clientName || "—"}
+                                  </strong>
+                                </div>
                                 <span className="mt-0.5 block break-words">
                                   {selected.clientEmail || "—"}
                                 </span>

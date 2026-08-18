@@ -1071,3 +1071,5 @@
 - [x] Remove the added vertical divider line from the Invoice BILLED TO/Client Details card
 
 - [x] Remove the client-name background and right-side dotted decoration from the Invoice client card
+
+- [x] Move the plain Invoice client name from the BILLED TO heading row into the right Client Details Email area
