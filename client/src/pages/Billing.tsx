@@ -1699,7 +1699,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                         </div>
                       </div>
                       <div className="mt-6 grid overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_2px_8px_rgba(30,45,80,0.04)] sm:grid-cols-[1.35fr_1fr]">
-                        <div className="flex min-w-0 items-start gap-4 p-5 sm:border-r sm:border-slate-200">
+                        <div className="flex min-w-0 items-center gap-4 bg-[#faf9ff] p-5 sm:border-r sm:border-slate-200">
                           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#f0efff] text-[#43239d]">
                             <FileText className="h-6 w-6" />
                           </div>
@@ -1721,27 +1721,67 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             </p>
                           </div>
                         </div>
-                        <div className="p-5 text-left sm:text-right">
+                        <div className="flex flex-col justify-center p-5 text-left sm:text-right">
                           <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">
                             {isInvoice ? "Invoice details" : "Receipt details"}
                           </p>
-                          {!isInvoice && (
-                            <>
-                              <p className="mt-2 text-sm">
-                                <strong>Date:</strong> {selected.receiptDate}
+                          {isInvoice ? (
+                            <div className="mt-3 space-y-1 text-sm text-slate-600">
+                              <p>
+                                <strong className="text-slate-800">
+                                  Invoice No:
+                                </strong>{" "}
+                                {selected.invoiceNumber}
                               </p>
-                              <p className="text-sm">
-                                <strong>Payment date:</strong>{" "}
+                              <p>
+                                <strong className="text-slate-800">
+                                  Contact:
+                                </strong>{" "}
+                                {selected.clientContact || "—"}
+                              </p>
+                              <p>
+                                <strong className="text-slate-800">
+                                  Email:
+                                </strong>{" "}
+                                {selected.clientEmail || "—"}
+                              </p>
+                              <p>
+                                <strong className="text-slate-800">
+                                  GST No:
+                                </strong>{" "}
+                                {cleanGstValue(
+                                  invoiceSettings.data?.companyGst ||
+                                    selected.companyGst
+                                )}
+                              </p>
+                            </div>
+                          ) : (
+                            <div className="mt-3 space-y-1 text-sm text-slate-600">
+                              <p>
+                                <strong className="text-slate-800">
+                                  Date:
+                                </strong>{" "}
+                                {selected.receiptDate}
+                              </p>
+                              <p>
+                                <strong className="text-slate-800">
+                                  Payment date:
+                                </strong>{" "}
                                 {selected.paymentDate}
                               </p>
-                              <p className="text-sm">
-                                <strong>Mode:</strong> {selected.paymentMode}
+                              <p>
+                                <strong className="text-slate-800">
+                                  Mode:
+                                </strong>{" "}
+                                {selected.paymentMode}
                               </p>
-                              <p className="text-sm">
-                                <strong>Reference:</strong>{" "}
+                              <p>
+                                <strong className="text-slate-800">
+                                  Reference:
+                                </strong>{" "}
                                 {selected.transactionReference || "—"}
                               </p>
-                            </>
+                            </div>
                           )}
                         </div>
                       </div>
