@@ -1729,6 +1729,11 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                         className={`relative mt-6 overflow-hidden rounded-2xl border-2 bg-white shadow-[0_2px_8px_rgba(30,45,80,0.04)] ${isInvoice ? "border-[#d7d0ff]" : "border-slate-200"}`}
                       >
                         {isInvoice && (
+                          <div className="absolute left-1/2 top-3 z-10 ml-4 hidden max-w-[calc(50%-1.5rem)] -translate-y-0 rounded-md bg-[#ede9ff] px-3 py-2 text-sm font-bold text-[#2f236d] shadow-sm sm:block">
+                            {selected.clientName || "—"}
+                          </div>
+                        )}
+                        {isInvoice && (
                           <div
                             className="pointer-events-none absolute right-0 top-0 h-24 w-48 opacity-60"
                             style={{
@@ -1774,14 +1779,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                                 </span>
                               </div>
                               <div className="border-b border-dashed border-[#e3defd] pb-3">
-                                <div className="flex items-center justify-between gap-3">
-                                  <strong className="font-semibold text-[#18275b]">
-                                    Email
-                                  </strong>
-                                  <span className="inline-flex max-w-[70%] rounded-md bg-[#ede9ff] px-2.5 py-1 text-right font-bold text-[#2f236d]">
-                                    {selected.clientName || "—"}
-                                  </span>
-                                </div>
+                                <strong className="block font-semibold text-[#18275b]">
+                                  Email
+                                </strong>
                                 <span className="mt-0.5 block break-words">
                                   {selected.clientEmail || "—"}
                                 </span>

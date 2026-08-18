@@ -1065,3 +1065,7 @@
 - [x] Add a visible bottom border beneath the complete Invoice totals and amount-in-words area
 
 - [x] Place the Invoice client name on the same horizontal row as the Email label/value in Client Details
+
+- [ ] Align the Invoice client name with the vertical divider/right-column start between BILLED TO and Client Details
+
+- [x] Remove the added vertical divider line from the Invoice BILLED TO/Client Details card
