@@ -1725,8 +1725,22 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           </div>
                         </div>
                       </div>
-                      <div className="mt-6 grid overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_2px_8px_rgba(30,45,80,0.04)] sm:grid-cols-[1.35fr_1fr]">
-                        <div className="flex min-w-0 items-center gap-4 bg-[#faf9ff] p-5 sm:border-r sm:border-slate-200">
+                      <div
+                        className={`relative mt-6 overflow-hidden rounded-2xl border-2 bg-white shadow-[0_2px_8px_rgba(30,45,80,0.04)] ${isInvoice ? "border-[#d7d0ff]" : "border-slate-200"}`}
+                      >
+                        {isInvoice && (
+                          <div
+                            className="pointer-events-none absolute right-0 top-0 h-24 w-48 opacity-60"
+                            style={{
+                              backgroundImage:
+                                "radial-gradient(circle, #dcd5ff 2px, transparent 2px)",
+                              backgroundSize: "16px 16px",
+                            }}
+                          />
+                        )}
+                        <div
+                          className={`relative flex min-w-0 items-center gap-4 p-6 ${isInvoice ? "flex-col justify-center text-center" : "bg-[#faf9ff] sm:border-r sm:border-slate-200"}`}
+                        >
                           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#f0efff] text-[#43239d]">
                             <FileText className="h-6 w-6" />
                           </div>
@@ -1734,41 +1748,60 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             <p className="text-[10px] font-bold uppercase tracking-wider text-[#43239d]">
                               Billed to
                             </p>
-                            <p className="mt-2 inline-flex max-w-full rounded-md bg-[#ede9ff] px-3 py-2 text-base font-bold text-[#2f236d] shadow-sm">
+                            <p
+                              className={`mt-2 max-w-full font-bold text-[#18275b] ${isInvoice ? "text-4xl leading-tight sm:text-5xl" : "inline-flex rounded-md bg-[#ede9ff] px-3 py-2 text-base text-[#2f236d] shadow-sm"}`}
+                            >
                               {selected.clientName}
                             </p>
+                            {isInvoice && (
+                              <div className="mt-3 flex items-center justify-center gap-2 text-[#43239d]">
+                                <span className="h-1 w-16 rounded-full bg-[#43239d]" />
+                                <span className="h-2 w-2 rounded-full bg-[#43239d]" />
+                                <span className="h-2 w-2 rounded-full bg-[#43239d]" />
+                              </div>
+                            )}
                           </div>
                         </div>
-                        <div className="flex flex-col justify-center p-5 text-left sm:text-right">
+                        <div
+                          className={`relative flex flex-col justify-center p-6 text-left ${isInvoice ? "border-t border-[#d7d0ff]" : "sm:text-right"}`}
+                        >
                           <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">
                             {isInvoice ? "Client details" : "Receipt details"}
                           </p>
                           {isInvoice ? (
-                            <div className="mt-3 grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4 gap-y-2 text-sm text-slate-600">
-                              <strong className="text-left font-semibold text-slate-800">
-                                Address:
-                              </strong>
-                              <span className="min-w-0 text-right break-words">
-                                {selected.clientAddress || "—"}
-                              </span>
-                              <strong className="text-left font-semibold text-slate-800">
-                                Phone:
-                              </strong>
-                              <span className="min-w-0 text-right break-words">
-                                {selected.clientContact || "—"}
-                              </span>
-                              <strong className="text-left font-semibold text-slate-800">
-                                Email:
-                              </strong>
-                              <span className="min-w-0 text-right break-words">
-                                {selected.clientEmail || "—"}
-                              </span>
-                              <strong className="text-left font-semibold text-slate-800">
-                                GST No:
-                              </strong>
-                              <span className="min-w-0 text-right break-words">
-                                {selected.clientGst || "—"}
-                              </span>
+                            <div className="mt-4 grid gap-x-8 gap-y-5 text-sm text-slate-600 sm:grid-cols-2">
+                              <div className="border-b border-dashed border-[#e3defd] pb-3">
+                                <strong className="block font-semibold text-[#18275b]">
+                                  Address
+                                </strong>
+                                <span className="mt-1 block break-words">
+                                  {selected.clientAddress || "—"}
+                                </span>
+                              </div>
+                              <div className="border-b border-dashed border-[#e3defd] pb-3">
+                                <strong className="block font-semibold text-[#18275b]">
+                                  Email
+                                </strong>
+                                <span className="mt-1 block break-words">
+                                  {selected.clientEmail || "—"}
+                                </span>
+                              </div>
+                              <div>
+                                <strong className="block font-semibold text-[#18275b]">
+                                  Phone
+                                </strong>
+                                <span className="mt-1 block break-words">
+                                  {selected.clientContact || "—"}
+                                </span>
+                              </div>
+                              <div>
+                                <strong className="block font-semibold text-[#18275b]">
+                                  GST No.
+                                </strong>
+                                <span className="mt-1 block break-words">
+                                  {selected.clientGst || "—"}
+                                </span>
+                              </div>
                             </div>
                           ) : (
                             <div className="mt-3 space-y-1 text-sm text-slate-600">

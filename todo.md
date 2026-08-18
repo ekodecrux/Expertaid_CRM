@@ -1052,3 +1052,4 @@
 - [x] Fix live Invoice Defaults numeric validation so displayed valid values for starting number, GST rate, and due days are accepted
 - [x] Add a non-destructive live-schema migration for missing Invoice and Receipt settings asset columns, including scannerUrl/scannerKey and verification queries
 - [x] Provide a base idempotent SQL script that creates missing invoiceSettings, invoices, receiptSettings, and receipts tables before any repair migration
+- [x] Redesign Invoice Billed To card with large centered client name, highlighted border, document icon, divider, and two-column Address/Phone/Email/GST grid
