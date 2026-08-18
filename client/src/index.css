@@ -153,7 +153,13 @@ button:active { transform: scale(0.98); }
 
 .billing-document { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 @media print {
+  @page { size: A4 portrait; margin: 0; }
+  html, body { margin: 0 !important; padding: 0 !important; background: #fff !important; }
+  body * { visibility: hidden !important; }
   #billing-print, #billing-print * { visibility: visible !important; }
-  #billing-print { position: static !important; width: 210mm !important; max-width: none !important; margin: 0 auto !important; padding: 10mm !important; background: #fff !important; box-shadow: none !important; }
+  [role="dialog"], [data-radix-dialog-content] { position: static !important; inset: auto !important; display: block !important; width: 210mm !important; max-width: none !important; max-height: none !important; height: auto !important; overflow: visible !important; transform: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; margin: 0 auto !important; }
+  #billing-print { position: static !important; width: 210mm !important; max-width: none !important; min-height: 297mm !important; margin: 0 auto !important; padding: 12mm !important; background: #fff !important; box-shadow: none !important; color: #172033 !important; }
   #billing-print [class~="print:hidden"] { display: none !important; }
+  #billing-print table, #billing-print tr, #billing-print img { page-break-inside: avoid; }
+  #billing-print img { max-width: 100%; }
 }

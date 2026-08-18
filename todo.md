@@ -1014,3 +1014,4 @@
 - [x] Replace generic Invoice and Receipt validation errors with field-level messages explaining exactly what is missing or invalid in settings and creation forms; dialogs now show actionable correction summaries and server errors are mapped to readable field names
 - [x] Remove GST inclusive/exclusive from Invoice defaults and keep GST mode selectable only while generating each Invoice; settings retain only the default GST rate, while the New Invoice form controls the mode
 - [x] Keep Invoice and Receipt validation guidance visible in long dialogs and add a direct action to focus the first invalid field; validation banner is sticky and Review fields scrolls to the first marked input
+- [x] Add an explicit Invoice view action, inherit the quotation authorized signature, match quotation colors, and correct Invoice A4 print layout; Eye action and accessible label added, quotation signature fallback wired, and print CSS now isolates a full A4 billing document
