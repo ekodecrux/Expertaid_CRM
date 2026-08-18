@@ -1603,87 +1603,147 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                   id="billing-print"
                   className="billing-document mx-auto mt-3 max-w-[794px] bg-white p-6 text-[#172033] shadow-sm sm:p-12"
                 >
-                  <div className="rounded-sm border-b-2 border-[#43239d] bg-[#f5f1ff] px-5 pb-6 pt-5">
-                    {" "}
-                    <div className="flex items-start justify-between gap-6">
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#43239d]">
-                          Expertaid Technologies Pvt. Ltd.
-                        </p>
-                        <h2 className="mt-2 font-serif text-3xl font-bold">
-                          {isInvoice ? "TAX INVOICE" : "PAYMENT RECEIPT"}
-                        </h2>
-                        <p className="mt-2 text-sm text-slate-500">
-                          {isInvoice
-                            ? selected.invoiceNumber
-                            : selected.receiptNumber}
-                        </p>
-                      </div>
-                      {(selected.logoUrl ||
-                        (isInvoice
-                          ? invoiceSettings.data?.logoUrl
-                          : receiptSettings.data?.logoUrl)) && (
-                        <img
-                          src={
-                            selected.logoUrl ||
-                            (isInvoice
-                              ? invoiceSettings.data?.logoUrl
-                              : receiptSettings.data?.logoUrl)
-                          }
-                          className="h-16 w-28 object-contain"
-                          alt="Expertaid logo"
-                        />
-                      )}
-                    </div>
-                  </div>
-                  <div className="mt-8 grid gap-6 sm:grid-cols-2">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-[#7b6aa8]">
-                        Billed / received from
-                      </p>
-                      <p className="mt-2 font-semibold">
-                        {selected.clientName}
-                      </p>
-                      <p className="whitespace-pre-line text-sm text-slate-600">
-                        {selected.clientAddress}
-                      </p>
-                      <p className="text-sm text-slate-600">
-                        {selected.clientContact}
-                      </p>
-                      <p className="text-sm text-slate-600">
-                        {selected.clientEmail}
-                      </p>
-                    </div>
-                    <div className="text-left sm:text-right">
-                      <p className="text-sm">
-                        <strong>Date:</strong>{" "}
-                        {isInvoice
-                          ? selected.invoiceDate
-                          : selected.receiptDate}
-                      </p>
-                      {isInvoice ? (
-                        <p className="text-sm">
-                          <strong>Due:</strong> {selected.dueDate}
-                        </p>
-                      ) : (
-                        <>
-                          <p className="text-sm">
-                            <strong>Payment date:</strong>{" "}
-                            {selected.paymentDate}
-                          </p>
-                          <p className="text-sm">
-                            <strong>Mode:</strong> {selected.paymentMode}
-                          </p>
-                          <p className="text-sm">
-                            <strong>Reference:</strong>{" "}
-                            {selected.transactionReference || "—"}
-                          </p>
-                        </>
-                      )}
-                    </div>
-                  </div>
                   {isInvoice ? (
                     <>
+                      <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-[0_2px_8px_rgba(30,45,80,0.04)] sm:p-5">
+                        <div className="grid gap-4 sm:grid-cols-[1.15fr_1fr_1.15fr] sm:items-stretch">
+                          <div className="flex min-w-0 items-center gap-4 sm:pr-4">
+                            {selected.logoUrl ||
+                            (isInvoice
+                              ? invoiceSettings.data?.logoUrl
+                              : receiptSettings.data?.logoUrl) ? (
+                              <img
+                                src={
+                                  selected.logoUrl ||
+                                  (isInvoice
+                                    ? invoiceSettings.data?.logoUrl
+                                    : receiptSettings.data?.logoUrl)
+                                }
+                                className="h-20 w-32 shrink-0 object-contain"
+                                alt="Expertaid logo"
+                              />
+                            ) : (
+                              <div className="h-20 w-32 shrink-0 rounded-lg bg-[#f0efff]" />
+                            )}
+                            <div className="min-w-0">
+                              <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#43239d]">
+                                Expertaid
+                              </p>
+                              <p className="mt-1 text-xs font-semibold text-slate-600">
+                                Technologies Pvt. Ltd.
+                              </p>
+                            </div>
+                          </div>
+                          <div className="border-y border-slate-200 py-3 text-xs text-slate-600 sm:border-y-0 sm:border-x sm:px-5">
+                            <p className="font-bold uppercase tracking-wider text-[#43239d]">
+                              GST No.
+                            </p>
+                            <p className="mt-2 break-words">
+                              {selected.companyGst ||
+                                (isInvoice
+                                  ? invoiceSettings.data?.companyGst
+                                  : receiptSettings.data?.companyGst) ||
+                                "Not configured"}
+                            </p>
+                            <p className="mt-3 font-bold uppercase tracking-wider text-[#43239d]">
+                              Address
+                            </p>
+                            <p className="mt-2 whitespace-pre-line">
+                              {(isInvoice
+                                ? invoiceSettings.data?.companyAddress
+                                : receiptSettings.data?.companyAddress) ||
+                                "Not configured"}
+                            </p>
+                          </div>
+                          <div className="rounded-xl bg-gradient-to-br from-[#43239d] via-[#4d35ad] to-[#3157d5] px-4 py-4 text-white shadow-sm">
+                            <p className="text-xl font-bold uppercase tracking-wide">
+                              {isInvoice ? "Invoice" : "Receipt"}
+                            </p>
+                            <p className="mt-1 text-lg font-semibold">
+                              #
+                              {isInvoice
+                                ? selected.invoiceNumber
+                                : selected.receiptNumber}
+                            </p>
+                            <div className="mt-3 grid grid-cols-2 gap-3 border-t border-white/40 pt-3 text-[10px] uppercase tracking-wide">
+                              <div>
+                                <p className="opacity-75">
+                                  {isInvoice ? "Invoice date" : "Receipt date"}
+                                </p>
+                                <p className="mt-1 text-xs font-bold normal-case">
+                                  {isInvoice
+                                    ? selected.invoiceDate
+                                    : selected.receiptDate}
+                                </p>
+                              </div>
+                              <div>
+                                <p className="opacity-75">
+                                  {isInvoice ? "Due date" : "Payment mode"}
+                                </p>
+                                <p className="mt-1 text-xs font-bold normal-case">
+                                  {isInvoice
+                                    ? selected.dueDate
+                                    : selected.paymentMode}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mt-6 grid overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_2px_8px_rgba(30,45,80,0.04)] sm:grid-cols-[1.35fr_1fr]">
+                        <div className="flex min-w-0 items-start gap-4 p-5 sm:border-r sm:border-slate-200">
+                          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#f0efff] text-[#43239d]">
+                            <FileText className="h-6 w-6" />
+                          </div>
+                          <div className="min-w-0">
+                            <p className="text-[10px] font-bold uppercase tracking-wider text-[#43239d]">
+                              Billed to
+                            </p>
+                            <p className="mt-2 font-semibold text-[#2f236d]">
+                              {selected.clientName}
+                            </p>
+                            <p className="whitespace-pre-line text-sm text-slate-600">
+                              Address: {selected.clientAddress}
+                            </p>
+                            <p className="text-sm text-slate-600">
+                              {selected.clientContact}
+                            </p>
+                            <p className="text-sm text-slate-600">
+                              {selected.clientEmail}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="p-5 text-left sm:text-right">
+                          <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">
+                            {isInvoice ? "Invoice details" : "Receipt details"}
+                          </p>
+                          <p className="mt-2 text-sm">
+                            <strong>Date:</strong>{" "}
+                            {isInvoice
+                              ? selected.invoiceDate
+                              : selected.receiptDate}
+                          </p>
+                          {isInvoice ? (
+                            <p className="text-sm">
+                              <strong>Due:</strong> {selected.dueDate}
+                            </p>
+                          ) : (
+                            <>
+                              <p className="text-sm">
+                                <strong>Payment date:</strong>{" "}
+                                {selected.paymentDate}
+                              </p>
+                              <p className="text-sm">
+                                <strong>Mode:</strong> {selected.paymentMode}
+                              </p>
+                              <p className="text-sm">
+                                <strong>Reference:</strong>{" "}
+                                {selected.transactionReference || "—"}
+                              </p>
+                            </>
+                          )}
+                        </div>
+                      </div>
                       <table className="mt-8 w-full overflow-hidden rounded-xl border border-slate-200 text-sm">
                         <thead className="bg-gradient-to-r from-[#43239d] via-[#4d35ad] to-[#3157d5] text-left text-[10px] font-bold uppercase tracking-wide text-white">
                           <tr>
@@ -1770,7 +1830,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             {amountInWords(Number(selected.grandTotal))}
                           </span>
                         </div>
-                      </div>{" "}
+                      </div>
                     </>
                   ) : (
                     <div className="mt-10 overflow-hidden rounded-xl border border-slate-200 bg-white text-center">

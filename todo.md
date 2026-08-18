@@ -1034,3 +1034,4 @@
 - [x] Add Invoice amount in words and widen/rebalance the quotation-style totals block so inclusive/exclusive tax and final total display without awkward wrapping
 - [x] Match Invoice item columns and totals to the quotation reference: compact S.NO/item/QTY/per-unit/total-price table, right-side total/tax/grand-total block, and ONWARDS amount-in-words row
 - [x] Correct Invoice totals geometry to match quotation reference: compact left total-price-including-tax label, balanced right Total/Tax/Grand Total rows, aligned borders, and amount-in-words directly below
+- [x] Restyle Invoice header to match quotation reference: three-part company/GST/address block, purple invoice card, and rounded billed-to/details panel with dynamic logo and invoice data
