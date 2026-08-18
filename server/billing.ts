@@ -78,6 +78,14 @@ export async function createInvoiceForOwner(ownerId: number, input: Record<strin
   return rows[0];
 }
 
+export async function updateInvoiceForOwner(ownerId: number, id: number, input: Record<string, unknown>) {
+  const db = await requireDb();
+  const { invoiceNumber: _invoiceNumber, id: _id, items: _items, ...values } = input;
+  await db.update(invoices).set(values as any).where(and(eq(invoices.ownerId, ownerId), eq(invoices.id, id)));
+  const rows = await db.select().from(invoices).where(and(eq(invoices.ownerId, ownerId), eq(invoices.id, id))).limit(1);
+  return rows[0];
+}
+
 export async function updateInvoiceStatusForOwner(ownerId: number, id: number, status: "Draft" | "Sent" | "Paid" | "Cancelled") {
   const db = await requireDb();
   await db.update(invoices).set({ status }).where(and(eq(invoices.ownerId, ownerId), eq(invoices.id, id)));

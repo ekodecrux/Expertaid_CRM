@@ -1015,3 +1015,5 @@
 - [x] Remove GST inclusive/exclusive from Invoice defaults and keep GST mode selectable only while generating each Invoice; settings retain only the default GST rate, while the New Invoice form controls the mode
 - [x] Keep Invoice and Receipt validation guidance visible in long dialogs and add a direct action to focus the first invalid field; validation banner is sticky and Review fields scrolls to the first marked input
 - [x] Add an explicit Invoice view action, inherit the quotation authorized signature, match quotation colors, and correct Invoice A4 print layout; Eye action and accessible label added, quotation signature fallback wired, and print CSS now isolates a full A4 billing document
+- [x] Remove the extra Expertaid text beneath the authorized signature in Invoice preview
+- [x] Add an editable Invoice list action with persisted updates for client, dates, GST, line items, notes, and totals; owner-scoped update API recalculates and saves Invoice totals without changing the Invoice number
