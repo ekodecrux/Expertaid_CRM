@@ -1685,37 +1685,49 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                   {isInvoice ? (
                     <>
                       <table className="mt-8 w-full overflow-hidden rounded-xl border border-slate-200 text-sm">
-                        <thead className="bg-gradient-to-r from-[#43239d] via-[#4d35ad] to-[#3157d5] text-left text-xs uppercase text-white">
+                        <thead className="bg-gradient-to-r from-[#43239d] via-[#4d35ad] to-[#3157d5] text-left text-[10px] font-bold uppercase tracking-wide text-white">
                           <tr>
-                            <th className="px-3 py-3">Description</th>
-                            <th className="px-3 py-3 text-center">Qty</th>
-                            <th className="px-3 py-3 text-right">Rate</th>
-                            <th className="px-3 py-3 text-right">Amount</th>
+                            <th className="w-12 px-3 py-3 text-center">S.NO</th>
+                            <th className="px-3 py-3">ITEM NAME</th>
+                            <th className="w-20 px-3 py-3 text-center">QTY</th>
+                            <th className="w-32 px-3 py-3 text-right">
+                              PER UNIT
+                            </th>
+                            <th className="w-32 px-3 py-3 text-right">
+                              TOTAL PRICE
+                            </th>
                           </tr>
                         </thead>
                         <tbody>
                           {JSON.parse(selected.itemsJson).map(
                             (item: any, index: number) => (
                               <tr
-                                key={index}
-                                className="border-b border-slate-200 bg-white"
+                                key={`invoice-item-${selected.id}-${index}`}
+                                className="border-b border-slate-200 bg-white last:border-b-0"
                               >
+                                <td className="px-3 py-3 text-center text-slate-700">
+                                  {index + 1}
+                                </td>
                                 <td className="px-3 py-3">
                                   <strong className="text-[#2f236d]">
-                                    {item.itemName}
+                                    {item.itemName ||
+                                      item.productName ||
+                                      item.product ||
+                                      "Item"}
                                   </strong>
-                                  <br />
-                                  <span className="text-xs text-slate-500">
-                                    {item.description}
-                                  </span>
+                                  {item.description && (
+                                    <span className="ml-1 text-xs text-slate-500">
+                                      ({item.description})
+                                    </span>
+                                  )}
                                 </td>
-                                <td className="px-3 py-3 text-center">
+                                <td className="px-3 py-3 text-center text-slate-700">
                                   {item.quantity}
                                 </td>
-                                <td className="px-3 py-3 text-right">
+                                <td className="px-3 py-3 text-right text-slate-700">
                                   {formatCurrency(Number(item.unitPrice))}
                                 </td>
-                                <td className="px-3 py-3 text-right font-semibold">
+                                <td className="px-3 py-3 text-right font-semibold text-slate-800">
                                   {formatCurrency(
                                     Number(item.unitPrice) *
                                       Number(item.quantity)
@@ -1726,59 +1738,39 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           )}
                         </tbody>
                       </table>
-                      <div className="ml-auto mt-6 grid w-full max-w-sm grid-cols-2 overflow-hidden rounded-lg border border-slate-200 bg-white text-right text-sm">
-                        {selected.gstMode === "inclusive" ? (
-                          <>
-                            <span>Taxable value</span>
-                            <strong>
-                              {formatCurrency(selectedInvoiceTaxable)}
-                            </strong>
-                            <span>Included GST ({selected.gstRate}%)</span>
-                            <strong>
-                              {formatCurrency(selectedInvoiceGst)}
-                            </strong>
-                            <span className="whitespace-nowrap border-t border-slate-200 px-3 py-3 text-base font-bold text-[#43239d]">
-                              Total including GST
-                            </span>
-                            <strong className="border-t border-slate-200 bg-[#43239d] px-3 py-3 text-base text-white">
-                              {formatCurrency(Number(selected.grandTotal))}
-                            </strong>
-                            <div className="mt-3 rounded-lg border border-slate-200 bg-white px-4 py-3 text-left sm:col-span-2">
-                              <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">
-                                Amount in words
-                              </p>
-                              <p className="mt-1 break-words text-sm font-semibold text-slate-700">
-                                {amountInWords(Number(selected.grandTotal))}
-                              </p>
-                            </div>
-                          </>
-                        ) : (
-                          <>
-                            <span>Subtotal</span>
-                            <strong>
-                              {formatCurrency(selectedInvoiceSubtotal)}
-                            </strong>
-                            <span>GST ({selected.gstRate}%)</span>
-                            <strong>
-                              {formatCurrency(selectedInvoiceGst)}
-                            </strong>
-                            <span className="whitespace-nowrap border-t border-slate-200 px-3 py-3 text-base font-bold text-[#43239d]">
-                              Total including GST
-                            </span>
-                            <strong className="border-t border-slate-200 bg-[#43239d] px-3 py-3 text-base text-white">
-                              {formatCurrency(Number(selected.grandTotal))}
-                            </strong>
-                            <div className="mt-3 rounded-lg border border-slate-200 bg-white px-4 py-3 text-left sm:col-span-2">
-                              <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">
-                                Amount in words
-                              </p>
-                              <p className="mt-1 break-words text-sm font-semibold text-slate-700">
-                                {amountInWords(Number(selected.grandTotal))}
-                              </p>
-                            </div>
-                          </>
-                        )}
-                      </div>
+                      <div className="grid grid-cols-[minmax(0,1fr)_minmax(260px,44%)] border-x border-b border-slate-200 bg-white">
+                        <div className="flex items-center px-4 py-6 text-xs font-bold uppercase tracking-wide text-[#43239d]">
+                          Total price including tax
+                        </div>
+                        <div className="grid grid-cols-[minmax(0,1fr)_auto] text-right text-sm">
+                          <span className="border-b border-l border-slate-200 px-4 py-3 uppercase text-slate-600">
+                            Total
+                          </span>
+                          <strong className="border-b border-slate-200 px-4 py-3 text-slate-800">
+                            {formatCurrency(selectedInvoiceTaxable)}
+                          </strong>
+                          <span className="border-b border-l border-slate-200 px-4 py-3 uppercase text-slate-600">
+                            Tax amount ({selected.gstRate}%)
+                          </span>
+                          <strong className="border-b border-slate-200 px-4 py-3 text-slate-800">
+                            {formatCurrency(selectedInvoiceGst)}
+                          </strong>
+                          <span className="px-4 py-3 text-base font-bold uppercase text-[#43239d]">
+                            Grand total amount
+                          </span>
+                          <strong className="bg-[#43239d] px-4 py-3 text-base text-white">
+                            {formatCurrency(Number(selected.grandTotal))}
+                          </strong>
+                        </div>
+                        <div className="col-span-2 flex items-center gap-3 border-t border-slate-200 px-4 py-3">
+                          <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#43239d] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white">
+                            Onwards <span aria-hidden="true">›</span>
+                          </span>
+                          <span className="text-sm font-medium text-slate-700">
+                            {amountInWords(Number(selected.grandTotal))}
+                          </span>
+                        </div>
+                      </div>{" "}
                     </>
                   ) : (
                     <div className="mt-10 overflow-hidden rounded-xl border border-slate-200 bg-white text-center">

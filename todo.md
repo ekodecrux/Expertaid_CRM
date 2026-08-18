@@ -1032,3 +1032,4 @@
 - [x] Match Invoice color hierarchy to Quotation: purple-to-blue table header, dark-purple labels, light gray cell borders, solid purple grand-total block, and purple payment accent; Invoice table and totals now use quotation-style colors
 - [x] Audit and align Receipt header, amount block, account/QR/signature footer, colors, spacing, and A4 print layout with the quotation reference; Receipt amount and footer now use the same gradient, white-card, light-border, and purple-label hierarchy
 - [x] Add Invoice amount in words and widen/rebalance the quotation-style totals block so inclusive/exclusive tax and final total display without awkward wrapping
+- [x] Match Invoice item columns and totals to the quotation reference: compact S.NO/item/QTY/per-unit/total-price table, right-side total/tax/grand-total block, and ONWARDS amount-in-words row
