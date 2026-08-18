@@ -14,7 +14,7 @@ import { calculateAgreementEndDate, calculateAgreementPricing, calculateAgreemen
 import { calculateQuotationTotals, DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, QUOTATION_STATUSES, type QuotationItem } from "@shared/quotation";
 
 const dataUrlSchema = z.string().max(2_500_000).transform((value) => value.trim().replace(/[\r\n\t\s]+/g, "")).refine((value) => /^data:image\/[a-z0-9.+-]+(?:;[^,]*)?,[\s\S]+$/i.test(value), "Invalid image data URL");
-const quotationAssetInput = z.union([dataUrlSchema, z.string().trim().min(1).max(4096), z.null()]).optional();
+export const quotationAssetInput = z.preprocess((value) => typeof value === "string" && value.trim() === "" ? undefined : value, z.union([dataUrlSchema, z.string().trim().min(1).max(4096), z.null()]).optional());
 const isImageDataUrl = (value: string | null | undefined): value is string => Boolean(value && /^data:image\/[a-z0-9.+-]+(?:;[^,]*)?,[\s\S]+$/i.test(value));
 const brandingInput = z.object({
   companyName: z.string().trim().min(1).max(255),
