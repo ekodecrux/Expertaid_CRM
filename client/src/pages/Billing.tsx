@@ -167,6 +167,12 @@ function amountInWords(value: number) {
     " Only"
   );
 }
+function cleanGstValue(value: unknown) {
+  const text = String(value ?? "").trim();
+  return text && !/expertaid|technologies|pvt\.?\s*\.??\s*ltd/i.test(text)
+    ? text
+    : "Not configured";
+}
 function readableFieldName(path: string) {
   return path
     .replace(/([A-Z])/g, " $1")
@@ -565,7 +571,15 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     setCreateOpen(true);
   };
   const printSelected = () => {
-    window.print();
+    if (!selected) return;
+    const previousTitle = document.title;
+    document.title = `${isInvoice ? "Invoice" : "Receipt"} ${isInvoice ? selected.invoiceNumber : selected.receiptNumber}`;
+    const restoreTitle = () => {
+      document.title = previousTitle;
+      window.removeEventListener("afterprint", restoreTitle);
+    };
+    window.addEventListener("afterprint", restoreTitle);
+    window.requestAnimationFrame(() => window.print());
   };
   const focusFirstError = () => {
     window.requestAnimationFrame(() => {
@@ -1623,7 +1637,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                                 alt="Expertaid logo"
                               />
                             ) : (
-                              <div className="h-20 w-32 shrink-0 rounded-lg bg-[#f0efff]" />
+                              <div className="h-20 w-40 shrink-0 rounded-lg bg-[#f0efff]" />
                             )}
                           </div>
                           <div className="border-y border-slate-200 py-3 text-xs text-slate-600 sm:border-y-0 sm:border-x sm:px-5">
@@ -1631,11 +1645,12 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                               GST No.
                             </p>
                             <p className="mt-2 break-words">
-                              {selected.companyGst ||
-                                (isInvoice
-                                  ? invoiceSettings.data?.companyGst
-                                  : receiptSettings.data?.companyGst) ||
-                                "Not configured"}
+                              {cleanGstValue(
+                                selected.companyGst ||
+                                  (isInvoice
+                                    ? invoiceSettings.data?.companyGst
+                                    : receiptSettings.data?.companyGst)
+                              )}
                             </p>
                             <p className="mt-3 font-bold uppercase tracking-wider text-[#43239d]">
                               Address
