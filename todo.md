@@ -1180,3 +1180,7 @@
 - [x] Keep School, College, and Academy as Institute Type values under the ERP project; do not create separate projects for them.
 - [x] Seed or recommend the ERP project as the default project with its own Client ID prefix and sequence.
 - [x] Ensure Agreement project selection and Client ID generation use the ERP project while retaining the Institute Type field.
+
+- [x] Keep Institute Type and Branch Coverage visible only when the selected project is ERP.
+- [x] For non-ERP projects, display No. of Employees and Per Employee Price instead of student terminology.
+- [x] Preserve backend compatibility while applying project-aware labels and validation in Agreement creation and editing.
