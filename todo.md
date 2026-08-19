@@ -1144,3 +1144,7 @@
 - [x] Remove the Transaction ID block from the blue Receipt header card and retain it only in the bottom payment row
 
 - [x] Restore Reference / Notes as the fourth field in the bottom Receipt payment-information row
+
+- [x] Remove the empty Transaction ID block and divider spacing from the blue Receipt header
+
+- [x] Fix active sandbox Receipt preview still rendering the Transaction ID block in the blue header
