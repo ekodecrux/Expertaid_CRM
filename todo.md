@@ -1127,3 +1127,8 @@
 
 - [x] Correct Receipt GST-inclusive taxable subtotal/GST labels so the entered grand total remains unchanged and the GST component is clear
 - [x] Restore the Receipt payment-information row to its prior position below the totals section
+
+- [x] Superseded custom Receipt GST rule request; standard GST behavior restored per user confirmation
+- [x] Superseded custom Receipt GST label/test request; standard GST behavior restored per user confirmation
+
+- [x] Restore standard GST Inclusive extraction: GST is the portion contained within the final entered amount, while GST Exclusive adds GST to the product value
