@@ -1229,3 +1229,10 @@
 - [x] Increase the Client View display size for easier reading.
 - [x] Redesign Client View into clearly separated, spacious information sections.
 - [x] Improve responsive layout, typography, spacing, and visual hierarchy without hiding Agreement details.
+
+- [x] Use the full available Client View width without squeezing the detail content.
+- [x] Change the detail layout to readable columns and prevent vertical word wrapping.
+- [x] Verify the layout at desktop and narrow responsive widths.
+
+- [x] Move the Client View detail grid outside the identity header card.
+- [x] Remove the large empty left boundary area so details span the full dialog width.
