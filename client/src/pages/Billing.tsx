@@ -2113,44 +2113,26 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           )}
                         </div>
                         <div
-                          className={`relative flex flex-col justify-center p-4 text-left ${isInvoice ? "" : "sm:text-right"}`}
+                          className={`relative flex flex-col justify-center ${isInvoice ? "p-0" : "p-4 text-left sm:text-right"}`}
                         >
-                          <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">
-                            {isInvoice ? "Client details" : "Receipt details"}
-                          </p>
+                          {!isInvoice && (
+                            <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">
+                              Receipt details
+                            </p>
+                          )}
                           {isInvoice ? (
-                            <div className="mt-3 grid gap-x-8 gap-y-4 text-sm text-slate-600 sm:grid-cols-2">
-                              <div className="border-b border-dashed border-[#e3defd] pb-3">
-                                <strong className="block font-semibold text-[#18275b]">
-                                  Address
-                                </strong>
-                                <span className="mt-0.5 block break-words">
-                                  {selected.clientAddress || "—"}
-                                </span>
+                            <div className="grid overflow-hidden bg-white sm:grid-cols-3">
+                              <div className="border-b border-slate-200 p-3 text-center sm:border-b-0 sm:border-r">
+                                <p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Phone</p>
+                                <p className="mt-2 break-words text-xs text-slate-700">{selected.clientContact || "—"}</p>
                               </div>
-                              <div className="border-b border-dashed border-[#e3defd] pb-3">
-                                <strong className="block font-semibold text-[#18275b]">
-                                  Email
-                                </strong>
-                                <span className="mt-0.5 block break-words">
-                                  {selected.clientEmail || "—"}
-                                </span>
+                              <div className="border-b border-slate-200 p-3 text-center sm:border-b-0 sm:border-r">
+                                <p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Email</p>
+                                <p className="mt-2 break-words text-xs text-slate-700">{selected.clientEmail || "—"}</p>
                               </div>
-                              <div>
-                                <strong className="block font-semibold text-[#18275b]">
-                                  Phone
-                                </strong>
-                                <span className="mt-0.5 block break-words">
-                                  {selected.clientContact || "—"}
-                                </span>
-                              </div>
-                              <div>
-                                <strong className="block font-semibold text-[#18275b]">
-                                  GST No.
-                                </strong>
-                                <span className="mt-0.5 block break-words">
-                                  {selected.clientGst || "—"}
-                                </span>
+                              <div className="p-3 text-center">
+                                <p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Address</p>
+                                <p className="mt-2 break-words text-xs text-slate-700">{selected.clientAddress || "—"}</p>
                               </div>
                             </div>
                           ) : (

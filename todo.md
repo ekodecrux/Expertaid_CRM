@@ -1164,3 +1164,7 @@
 - [x] Copy the exact Receipt RECEIVED FROM card design into Invoice BILLED TO, changing only the label and retaining Invoice client data
 
 - [x] Copy the Receipt RECEIVED FROM card exactly into Invoice BILLED TO, with client GST on the right side of the header row
+
+- [x] Replace the actual active Invoice preview branch still rendering the old two-column Client Details card with the exact Receipt client-card design
+
+- [x] Match Invoice BILLED TO to Receipt RECEIVED FROM by showing GST on the header right and removing the extra CLIENT DETAILS heading
