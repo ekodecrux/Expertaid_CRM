@@ -1211,3 +1211,6 @@
 - [x] Remove employee/student count, per-unit price, pricing mode, and no. of years from the Add Client form.
 - [x] Add one client price field and GST Inclusive/Exclusive selection.
 - [x] Calculate and persist the new client GST amount and final total while keeping old columns compatible.
+
+- [x] Fix Add Client Session validation so the valid 2026-2027 format is accepted by the browser and API.
+- [x] Keep strict four-digit-year session validation for invalid values.
