@@ -1168,3 +1168,5 @@
 - [x] Replace the actual active Invoice preview branch still rendering the old two-column Client Details card with the exact Receipt client-card design
 
 - [x] Match Invoice BILLED TO to Receipt RECEIVED FROM by showing GST on the header right and removing the extra CLIENT DETAILS heading
+
+- [x] Left-align Invoice Phone, Email, and Address labels and values exactly like the Receipt card

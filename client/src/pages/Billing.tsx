@@ -2122,15 +2122,15 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           )}
                           {isInvoice ? (
                             <div className="grid overflow-hidden bg-white sm:grid-cols-3">
-                              <div className="border-b border-slate-200 p-3 text-center sm:border-b-0 sm:border-r">
+                              <div className="border-b border-slate-200 p-3 text-left sm:border-b-0 sm:border-r">
                                 <p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Phone</p>
                                 <p className="mt-2 break-words text-xs text-slate-700">{selected.clientContact || "—"}</p>
                               </div>
-                              <div className="border-b border-slate-200 p-3 text-center sm:border-b-0 sm:border-r">
+                              <div className="border-b border-slate-200 p-3 text-left sm:border-b-0 sm:border-r">
                                 <p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Email</p>
                                 <p className="mt-2 break-words text-xs text-slate-700">{selected.clientEmail || "—"}</p>
                               </div>
-                              <div className="p-3 text-center">
+                              <div className="p-3 text-left">
                                 <p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Address</p>
                                 <p className="mt-2 break-words text-xs text-slate-700">{selected.clientAddress || "—"}</p>
                               </div>
