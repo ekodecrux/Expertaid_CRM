@@ -1,0 +1,1 @@
+ALTER TABLE `receiptSettings` ADD `defaultProductsJson` text;

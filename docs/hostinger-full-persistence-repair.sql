@@ -310,7 +310,7 @@ DESCRIBE `receiptSettings`;
 SELECT `id`, `ownerId`, `companyGst`, `companyAddress`, `invoicePrefix`, `invoiceNumberStart`, `invoiceNumberNext`, `gstRate`, `gstMode`, `defaultDueDays`, `terms`, `accountCompanyName`, `accountNumber`, `accountIfsc`, `accountBranch`, `logoUrl`, `logoKey`, `scannerUrl`, `scannerKey`, `signatureUrl`, `signatureKey`, `createdAt`, `updatedAt`
 FROM `invoiceSettings` WHERE `ownerId` = 1 LIMIT 1;
 
-SELECT `id`, `ownerId`, `companyGst`, `companyAddress`, `receiptPrefix`, `receiptNumberStart`, `receiptNumberNext`, `terms`, `accountCompanyName`, `accountNumber`, `accountIfsc`, `accountBranch`, `logoUrl`, `logoKey`, `signatureUrl`, `signatureKey`, `createdAt`, `updatedAt`
+SELECT `id`, `ownerId`, `companyGst`, `companyAddress`, `receiptPrefix`, `receiptNumberStart`, `receiptNumberNext`, `terms`, `accountCompanyName`, `accountNumber`, `accountIfsc`, `accountBranch`, `logoUrl`, `logoKey`, `signatureUrl`, `signatureKey`, `defaultProductsJson`, `createdAt`, `updatedAt`
 FROM `receiptSettings` WHERE `ownerId` = 1 LIMIT 1;
 
 -- Important: this script does not insert passwords, URLs, or credentials.
@@ -355,7 +355,8 @@ SELECT table_name, column_name, column_type
 FROM information_schema.columns
 WHERE table_schema = @db_name
   AND ((table_name = 'invoices' AND column_name = 'status')
-    OR (table_name = 'receipts' AND column_name IN ('invoiceId','invoiceNumber','clientGst','itemsJson','subtotal','gstRate','gstMode','gstAmount','grandTotal')))
+    OR (table_name = 'receipts' AND column_name IN ('invoiceId','invoiceNumber','clientGst','itemsJson','subtotal','gstRate','gstMode','gstAmount','grandTotal'))
+    OR (table_name = 'receiptSettings' AND column_name = 'defaultProductsJson'))
 ORDER BY table_name, ordinal_position;
 
 -- Reference-style Receipt configuration fields.
@@ -364,6 +365,8 @@ PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
 SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receiptSettings' AND column_name = 'footerMessage'), 'SELECT 1', 'ALTER TABLE `receiptSettings` ADD COLUMN `footerMessage` VARCHAR(255) DEFAULT ''Thank you for your business!''');
 PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
 SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receiptSettings' AND column_name = 'qrLabel'), 'SELECT 1', 'ALTER TABLE `receiptSettings` ADD COLUMN `qrLabel` VARCHAR(64) DEFAULT ''SCAN & PAY''');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receiptSettings' AND column_name = 'defaultProductsJson'), 'SELECT 1', 'ALTER TABLE `receiptSettings` ADD COLUMN `defaultProductsJson` TEXT NULL');
 PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
 SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receipts' AND column_name = 'footerCompanyName'), 'SELECT 1', 'ALTER TABLE `receipts` ADD COLUMN `footerCompanyName` VARCHAR(255) NULL');
 PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;

@@ -176,6 +176,20 @@
       "when": 1787057392489,
       "tag": "0024_pink_molten_man",
       "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "5",
+      "when": 1787122567051,
+      "tag": "0025_motionless_union_jack",
+      "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "5",
+      "when": 1787122609088,
+      "tag": "0026_common_moira_mactaggert",
+      "breakpoints": true
     }
   ]
 }

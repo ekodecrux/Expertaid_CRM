@@ -2,6 +2,38 @@ import { and, desc, eq } from "drizzle-orm";
 import { getDb } from "./db";
 import { invoiceSettings, invoices, receiptSettings, receipts } from "../drizzle/schema";
 
+type ReceiptProduct = {
+  itemName: string;
+  description?: string;
+  quantity: number;
+  unitPrice: number;
+};
+
+function parseReceiptProducts(value: unknown): ReceiptProduct[] {
+  if (typeof value !== "string") return [];
+  try {
+    const parsed = JSON.parse(value);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter(
+      item =>
+        item &&
+        typeof item.itemName === "string" &&
+        item.itemName.trim() &&
+        Number.isFinite(Number(item.quantity)) &&
+        Number(item.quantity) > 0 &&
+        Number.isFinite(Number(item.unitPrice)) &&
+        Number(item.unitPrice) >= 0
+    ).map(item => ({
+      itemName: item.itemName.trim(),
+      description: typeof item.description === "string" ? item.description.trim() : undefined,
+      quantity: Number(item.quantity),
+      unitPrice: Number(item.unitPrice),
+    }));
+  } catch {
+    return [];
+  }
+}
+
 export const DEFAULT_INVOICE_SETTINGS = {
   companyGst: "Expertaid Technologies Pvt. Ltd.",
   companyAddress: "",
@@ -42,6 +74,7 @@ export const DEFAULT_RECEIPT_SETTINGS = {
   footerCompanyName: "FOR EXPERTAID TECHNOLOGIES PVT LTD.",
   footerMessage: "Thank you for your business!",
   qrLabel: "SCAN & PAY",
+  defaultProducts: [] as ReceiptProduct[],
 };
 
 async function requireDb() {
@@ -160,13 +193,21 @@ export async function getReceiptSettingsForOwner(ownerId: number) {
   const db = await getDb();
   if (!db) return { ownerId, ...DEFAULT_RECEIPT_SETTINGS };
   const rows = await db.select().from(receiptSettings).where(eq(receiptSettings.ownerId, ownerId)).limit(1);
-  return rows[0] ?? { ownerId, ...DEFAULT_RECEIPT_SETTINGS };
+  const row = rows[0];
+  return row
+    ? { ...row, defaultProducts: parseReceiptProducts(row.defaultProductsJson) }
+    : { ownerId, ...DEFAULT_RECEIPT_SETTINGS };
 }
 
 export async function updateReceiptSettingsForOwner(ownerId: number, values: Record<string, unknown>) {
   const db = await requireDb();
-  const existing = await db.select({ id: receiptSettings.id }).from(receiptSettings).where(eq(receiptSettings.ownerId, ownerId)).limit(1);
-  const payload = { ...DEFAULT_RECEIPT_SETTINGS, ...values, ownerId } as any;
+  const existing = await db.select().from(receiptSettings).where(eq(receiptSettings.ownerId, ownerId)).limit(1);
+  const { defaultProducts, ...settingsValues } = values;
+  const defaultProductsJson = defaultProducts === undefined
+    ? existing[0]?.defaultProductsJson ?? "[]"
+    : JSON.stringify(Array.isArray(defaultProducts) ? defaultProducts : []);
+  const { defaultProducts: _ignoredDefaultProducts, ...defaultSettings } = DEFAULT_RECEIPT_SETTINGS;
+  const payload = { ...defaultSettings, ...settingsValues, defaultProductsJson, ownerId } as any;
   if (existing[0]) await db.update(receiptSettings).set(payload).where(eq(receiptSettings.ownerId, ownerId));
   else await db.insert(receiptSettings).values(payload);
   return getReceiptSettingsForOwner(ownerId);
@@ -182,7 +223,7 @@ export async function createReceiptForOwner(ownerId: number, input: Record<strin
   const db = await requireDb();
   const settings = await getReceiptSettingsForOwner(ownerId);
   const number = String(input.receiptNumber || `${settings.receiptPrefix}-${String(settings.receiptNumberNext).padStart(4, "0")}`);
-  const { receiptNumber: _ignored, ...values } = input;
+  const { receiptNumber: _ignored, items: _items, ...values } = input;
   await db.insert(receipts).values({ ...values, ownerId, receiptNumber: number } as any);
   await db.update(receiptSettings).set({ receiptNumberNext: Number(settings.receiptNumberNext) + 1 }).where(eq(receiptSettings.ownerId, ownerId));
   const rows = await db.select().from(receipts).where(and(eq(receipts.ownerId, ownerId), eq(receipts.receiptNumber, number))).limit(1);
@@ -191,7 +232,7 @@ export async function createReceiptForOwner(ownerId: number, input: Record<strin
 
 export async function updateReceiptForOwner(ownerId: number, id: number, input: Record<string, unknown>) {
   const db = await requireDb();
-  const { receiptNumber: _ignored, ownerId: _ownerIgnored, id: _idIgnored, ...values } = input as any;
+  const { receiptNumber: _ignored, ownerId: _ownerIgnored, id: _idIgnored, items: _items, ...values } = input as any;
   await db.update(receipts).set(values).where(and(eq(receipts.ownerId, ownerId), eq(receipts.id, id)));
   const rows = await db.select().from(receipts).where(and(eq(receipts.ownerId, ownerId), eq(receipts.id, id))).limit(1);
   return rows[0];

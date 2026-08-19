@@ -85,6 +85,7 @@ const emptyReceipt = () => ({
   transactionReference: "",
   receivedFor: "",
   notes: "",
+  items: [emptyItem()],
 });
 
 function fieldDate(days: number) {
@@ -427,6 +428,10 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       ),
     [invoiceForm.items, invoiceForm.gstRate, invoiceForm.gstMode]
   );
+  const receiptItemsTotal = receiptForm.items.reduce(
+    (sum, item) => sum + (Number(item.quantity) || 0) * (Number(item.unitPrice) || 0),
+    0
+  );
 
   const clearSettingsError = (key: string) => {
     setFormErrors(current => {
@@ -463,6 +468,16 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     }
     if (!settingsForm?.terms?.trim())
       errors.terms = "Terms and conditions are required.";
+    if (!isInvoice) {
+      (settingsForm?.defaultProducts ?? []).forEach((item: any, index: number) => {
+        if (!String(item.itemName ?? "").trim())
+          errors.defaultProducts = `Default product ${index + 1} needs a product name.`;
+        if (!(Number(item.quantity) > 0))
+          errors.defaultProducts = `Default product ${index + 1} quantity must be greater than 0.`;
+        if (!(Number(item.unitPrice) >= 0))
+          errors.defaultProducts = `Default product ${index + 1} rate cannot be negative.`;
+      });
+    }
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -557,6 +572,21 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       transactionReference: row.transactionReference ?? "",
       receivedFor: row.receivedFor ?? "",
       notes: row.notes ?? "",
+      items: (() => {
+        try {
+          const parsed = row.itemsJson ? JSON.parse(row.itemsJson) : [];
+          return Array.isArray(parsed) && parsed.length
+            ? parsed.map((item: any) => ({
+                itemName: String(item.itemName ?? ""),
+                description: String(item.description ?? ""),
+                quantity: String(item.quantity ?? "1"),
+                unitPrice: String(item.unitPrice ?? "0"),
+              }))
+            : [emptyItem()];
+        } catch {
+          return [emptyItem()];
+        }
+      })(),
     });
     setFormErrors({});
     setCreateOpen(true);
@@ -589,6 +619,14 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
         errors.amount = "Amount received must be zero or greater.";
       if (!form.receivedFor.trim())
         errors.receivedFor = "Received for is required.";
+      form.items.forEach((item: Item, index: number) => {
+        if (!item.itemName.trim())
+          errors[`item.${index}`] = `Line item ${index + 1} needs an item name.`;
+        if (!(Number(item.quantity) > 0))
+          errors[`quantity.${index}`] = `Line item ${index + 1} quantity must be greater than 0.`;
+        if (!(Number(item.unitPrice) >= 0))
+          errors[`unitPrice.${index}`] = `Line item ${index + 1} price cannot be negative.`;
+      });
     }
     setFormErrors(errors);
     if (Object.keys(errors).length) return;
@@ -606,7 +644,15 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
         updateInvoice.mutate({ id: editingInvoiceId, ...payload });
       else createInvoice.mutate(payload);
     } else {
-      const payload = { ...receiptForm, amount: Number(receiptForm.amount) };
+      const payload = {
+        ...receiptForm,
+        amount: Number(receiptForm.amount),
+        items: receiptForm.items.map(item => ({
+          ...item,
+          quantity: Number(item.quantity),
+          unitPrice: Number(item.unitPrice),
+        })),
+      };
       if (editingReceiptId) updateReceipt.mutate({ id: editingReceiptId, ...payload });
       else createReceipt.mutate(payload);
     }
@@ -617,7 +663,17 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     setEditingReceiptId(null);
     setFormErrors({});
     setInvoiceForm(emptyInvoice());
-    setReceiptForm(emptyReceipt());
+    setReceiptForm({
+      ...emptyReceipt(),
+      items: receiptSettings.data?.defaultProducts?.length
+        ? receiptSettings.data.defaultProducts.map((item: any) => ({
+            itemName: String(item.itemName ?? ""),
+            description: String(item.description ?? ""),
+            quantity: String(item.quantity ?? "1"),
+            unitPrice: String(item.unitPrice ?? "0"),
+          }))
+        : [emptyItem()],
+    });
     setCreateOpen(true);
   };
   const printSelected = () => {
@@ -1070,15 +1126,118 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     />
                   </div>
                   {!isInvoice && (
-                    <div className="sm:col-span-2 rounded-xl border border-[#d7d0ff] bg-[#faf9ff] p-4">
-                      <p className="text-sm font-semibold text-[#43239d]">Receipt reference configuration</p>
-                      <p className="mt-1 text-xs text-slate-500">These values control the footer and QR caption shown on the reference-style Receipt.</p>
-                      <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                        <div><Label>Footer company line</Label><Input value={settingsForm.footerCompanyName ?? ""} onChange={e => setSettingsForm({ ...settingsForm, footerCompanyName: e.target.value })} placeholder="FOR EXPERTAID TECHNOLOGIES PVT LTD." /></div>
-                        <div><Label>QR caption</Label><Input value={settingsForm.qrLabel ?? ""} onChange={e => setSettingsForm({ ...settingsForm, qrLabel: e.target.value })} placeholder="SCAN & PAY" /></div>
-                        <div className="sm:col-span-2"><Label>Thank-you footer message</Label><Input value={settingsForm.footerMessage ?? ""} onChange={e => setSettingsForm({ ...settingsForm, footerMessage: e.target.value })} placeholder="Thank you for your business!" /></div>
+                    <>
+                      <div className="sm:col-span-2 rounded-xl border border-[#d7d0ff] bg-[#faf9ff] p-4">
+                        <div className="flex items-center justify-between gap-3">
+                          <div>
+                            <p className="text-sm font-semibold text-[#43239d]">Default Receipt products</p>
+                            <p className="mt-1 text-xs text-slate-500">These products are loaded automatically when you create a new Receipt.</p>
+                          </div>
+                          <Button
+                            type="button"
+                            size="sm"
+                            variant="outline"
+                            onClick={() =>
+                              setSettingsForm({
+                                ...settingsForm,
+                                defaultProducts: [
+                                  ...(settingsForm.defaultProducts ?? []),
+                                  { itemName: "", description: "", quantity: 1, unitPrice: 0 },
+                                ],
+                              })
+                            }
+                          >
+                            <Plus className="mr-1 h-4 w-4" /> Add product
+                          </Button>
+                        </div>
+                        <div className="mt-4 space-y-3">
+                          {(settingsForm.defaultProducts ?? []).map((item: any, index: number) => (
+                            <div key={`receipt-default-${index}`} className="grid gap-2 rounded-lg border border-slate-200 bg-white p-3 sm:grid-cols-[1.4fr_1.2fr_90px_120px_auto]">
+                              <Input
+                                placeholder="Product name"
+                                value={item.itemName ?? ""}
+                                onChange={e =>
+                                  setSettingsForm({
+                                    ...settingsForm,
+                                    defaultProducts: settingsForm.defaultProducts.map((current: any, itemIndex: number) =>
+                                      itemIndex === index ? { ...current, itemName: e.target.value } : current
+                                    ),
+                                  })
+                                }
+                              />
+                              <Input
+                                placeholder="Description"
+                                value={item.description ?? ""}
+                                onChange={e =>
+                                  setSettingsForm({
+                                    ...settingsForm,
+                                    defaultProducts: settingsForm.defaultProducts.map((current: any, itemIndex: number) =>
+                                      itemIndex === index ? { ...current, description: e.target.value } : current
+                                    ),
+                                  })
+                                }
+                              />
+                              <Input
+                                type="number"
+                                min="0.01"
+                                step="0.01"
+                                placeholder="Qty"
+                                value={item.quantity ?? 1}
+                                onChange={e =>
+                                  setSettingsForm({
+                                    ...settingsForm,
+                                    defaultProducts: settingsForm.defaultProducts.map((current: any, itemIndex: number) =>
+                                      itemIndex === index ? { ...current, quantity: e.target.value } : current
+                                    ),
+                                  })
+                                }
+                              />
+                              <Input
+                                type="number"
+                                min="0"
+                                step="0.01"
+                                placeholder="Rate"
+                                value={item.unitPrice ?? 0}
+                                onChange={e =>
+                                  setSettingsForm({
+                                    ...settingsForm,
+                                    defaultProducts: settingsForm.defaultProducts.map((current: any, itemIndex: number) =>
+                                      itemIndex === index ? { ...current, unitPrice: e.target.value } : current
+                                    ),
+                                  })
+                                }
+                              />
+                              <Button
+                                type="button"
+                                size="icon"
+                                variant="outline"
+                                aria-label={`Remove default product ${index + 1}`}
+                                onClick={() =>
+                                  setSettingsForm({
+                                    ...settingsForm,
+                                    defaultProducts: settingsForm.defaultProducts.filter((_: any, itemIndex: number) => itemIndex !== index),
+                                  })
+                                }
+                              >
+                                <X className="h-4 w-4" />
+                              </Button>
+                            </div>
+                          ))}
+                          {!(settingsForm.defaultProducts ?? []).length && (
+                            <p className="rounded-lg border border-dashed border-slate-300 px-3 py-4 text-center text-xs text-slate-500">No default products configured.</p>
+                          )}
+                        </div>
                       </div>
-                    </div>
+                      <div className="sm:col-span-2 rounded-xl border border-[#d7d0ff] bg-[#faf9ff] p-4">
+                        <p className="text-sm font-semibold text-[#43239d]">Receipt reference configuration</p>
+                        <p className="mt-1 text-xs text-slate-500">These values control the footer and QR caption shown on the reference-style Receipt.</p>
+                        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                          <div><Label>Footer company line</Label><Input value={settingsForm.footerCompanyName ?? ""} onChange={e => setSettingsForm({ ...settingsForm, footerCompanyName: e.target.value })} placeholder="FOR EXPERTAID TECHNOLOGIES PVT LTD." /></div>
+                          <div><Label>QR caption</Label><Input value={settingsForm.qrLabel ?? ""} onChange={e => setSettingsForm({ ...settingsForm, qrLabel: e.target.value })} placeholder="SCAN & PAY" /></div>
+                          <div className="sm:col-span-2"><Label>Thank-you footer message</Label><Input value={settingsForm.footerMessage ?? ""} onChange={e => setSettingsForm({ ...settingsForm, footerMessage: e.target.value })} placeholder="Thank you for your business!" /></div>
+                        </div>
+                      </div>
+                    </>
                   )}
                   {isInvoice && (
                     <div className="sm:col-span-2 rounded-xl border border-slate-200 bg-slate-50 p-4">
@@ -1693,6 +1852,111 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                       }
                       placeholder="Annual ERP subscription"
                     />
+                  </div>
+                  <div className="sm:col-span-2 rounded-xl border border-[#d7d0ff] bg-[#faf9ff] p-4">
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <Label>Receipt products</Label>
+                        <p className="mt-1 text-xs text-slate-500">Add all products or services covered by this Receipt.</p>
+                      </div>
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant="outline"
+                        onClick={() =>
+                          setReceiptForm({
+                            ...receiptForm,
+                            items: [...receiptForm.items, emptyItem()],
+                          })
+                        }
+                      >
+                        <Plus className="mr-1 h-4 w-4" /> Add item
+                      </Button>
+                    </div>
+                    <div className="mt-4 space-y-3">
+                      {receiptForm.items.map((item, index) => (
+                        <div key={`receipt-item-form-${index}`} className="grid gap-2 rounded-lg border border-slate-200 bg-white p-3 sm:grid-cols-[1.4fr_1.2fr_90px_120px_auto]">
+                          <Input
+                            data-billing-error={Boolean(formErrors[`item.${index}`])}
+                            required
+                            placeholder="Product name"
+                            value={item.itemName}
+                            onChange={e =>
+                              setReceiptForm({
+                                ...receiptForm,
+                                items: receiptForm.items.map((current, itemIndex) =>
+                                  itemIndex === index ? { ...current, itemName: e.target.value } : current
+                                ),
+                              })
+                            }
+                          />
+                          <Input
+                            placeholder="Description"
+                            value={item.description ?? ""}
+                            onChange={e =>
+                              setReceiptForm({
+                                ...receiptForm,
+                                items: receiptForm.items.map((current, itemIndex) =>
+                                  itemIndex === index ? { ...current, description: e.target.value } : current
+                                ),
+                              })
+                            }
+                          />
+                          <Input
+                            data-billing-error={Boolean(formErrors[`quantity.${index}`])}
+                            required
+                            type="number"
+                            min="0.01"
+                            step="0.01"
+                            placeholder="Qty"
+                            value={item.quantity}
+                            onChange={e =>
+                              setReceiptForm({
+                                ...receiptForm,
+                                items: receiptForm.items.map((current, itemIndex) =>
+                                  itemIndex === index ? { ...current, quantity: e.target.value } : current
+                                ),
+                              })
+                            }
+                          />
+                          <Input
+                            data-billing-error={Boolean(formErrors[`unitPrice.${index}`])}
+                            required
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            placeholder="Rate"
+                            value={item.unitPrice}
+                            onChange={e =>
+                              setReceiptForm({
+                                ...receiptForm,
+                                items: receiptForm.items.map((current, itemIndex) =>
+                                  itemIndex === index ? { ...current, unitPrice: e.target.value } : current
+                                ),
+                              })
+                            }
+                          />
+                          <Button
+                            type="button"
+                            size="icon"
+                            variant="outline"
+                            disabled={receiptForm.items.length === 1}
+                            aria-label={`Remove Receipt item ${index + 1}`}
+                            onClick={() =>
+                              setReceiptForm({
+                                ...receiptForm,
+                                items: receiptForm.items.filter((_, itemIndex) => itemIndex !== index),
+                              })
+                            }
+                          >
+                            <X className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-3 text-right text-sm text-slate-700">
+                      Items total: <strong className="text-[#43239d]">{formatCurrency(receiptItemsTotal)}</strong>
+                    </div>
                   </div>
                   <div className="sm:col-span-2">
                     <Label>Notes</Label>

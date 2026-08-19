@@ -1,0 +1,1 @@
+ALTER TABLE `receiptSettings` MODIFY COLUMN `defaultProductsJson` text;

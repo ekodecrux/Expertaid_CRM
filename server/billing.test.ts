@@ -50,11 +50,13 @@ describe("billing defaults and input contracts", () => {
   });
 
   it("accepts Receipt settings, amount, and Invoice item numeric strings", () => {
-    const receiptSettings = receiptSettingsInput.parse({ companyGst: "GSTIN", companyAddress: "Address", receiptPrefix: "RCT", terms: "Terms" });
-    const receipt = receiptInput.parse({ clientName: "Client", clientAddress: "Address", receiptDate: "2026-01-01", paymentDate: "2026-01-01", amount: "1250.50", paymentMode: "UPI", receivedFor: "Subscription" });
+    const receiptSettings = receiptSettingsInput.parse({ companyGst: "GSTIN", companyAddress: "Address", receiptPrefix: "RCT", terms: "Terms", defaultProducts: [{ itemName: "ERP Support", quantity: "2", unitPrice: "500" }] });
+    const receipt = receiptInput.parse({ clientName: "Client", clientAddress: "Address", receiptDate: "2026-01-01", paymentDate: "2026-01-01", amount: "1250.50", paymentMode: "UPI", receivedFor: "Subscription", items: [{ itemName: "ERP Support", quantity: "2", unitPrice: "500" }, { itemName: "Setup", quantity: "1", unitPrice: "250.50" }] });
     const invoice = invoiceInput.parse({ clientName: "Client", clientAddress: "Address", invoiceDate: "2026-01-01", dueDate: "2026-01-15", gstRate: "18", items: [{ itemName: "ERP", quantity: "2", unitPrice: "500" }] });
     expect(receiptSettings.receiptPrefix).toBe("RCT");
+    expect(receiptSettings.defaultProducts?.[0].quantity).toBe(2);
     expect(receipt.amount).toBe(1250.5);
+    expect(receipt.items?.[1].unitPrice).toBe(250.5);
     expect(invoice.gstRate).toBe(18);
     expect(invoice.gstMode).toBe("exclusive");
     expect(invoice.items[0].quantity).toBe(2);

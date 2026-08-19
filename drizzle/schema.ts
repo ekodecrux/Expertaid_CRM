@@ -238,6 +238,7 @@ export const receiptSettings = mysqlTable("receiptSettings", {
   footerCompanyName: varchar("footerCompanyName", { length: 255 }).default("FOR EXPERTAID TECHNOLOGIES PVT LTD."),
   footerMessage: varchar("footerMessage", { length: 255 }).default("Thank you for your business!"),
   qrLabel: varchar("qrLabel", { length: 64 }).default("SCAN & PAY"),
+  defaultProductsJson: text("defaultProductsJson"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
