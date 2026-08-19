@@ -1221,3 +1221,7 @@
 
 - [x] Support Client statuses Active, Inactive, Hold, and Close in persistence and validation.
 - [x] Display and filter all four Client statuses consistently in the Clients module.
+
+- [x] Show complete Agreement-derived client details in the Clients View option.
+- [x] Include project, Client ID, institute/branch data, contacts, plan dates, pricing/GST, total, status, approval/signature, and notes where present.
+- [x] Keep standalone Client View details accurate without displaying unavailable Agreement-only data.
