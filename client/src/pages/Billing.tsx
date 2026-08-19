@@ -2077,12 +2077,6 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                                 <p className="mt-1 text-xs font-bold normal-case">{isInvoice ? selected.dueDate : selected.paymentMode}</p>
                               </div>
                             </div>
-                            {!isInvoice && (
-                              <div className="mt-3 border-t border-white/40 pt-3 text-[10px] uppercase tracking-wide">
-                                <p className="opacity-75">Transaction ID</p>
-                                <p className="mt-1 text-xs font-bold normal-case">{selected.transactionReference || "—"}</p>
-                              </div>
-                            )}
                           </div>
                         </div>
                       </div>

@@ -1140,3 +1140,5 @@
 - [x] Remove the Receipt Product value wording and use the reference-style total-price label without changing GST calculations
 
 - [x] Remove the duplicate Transaction ID from the top Receipt header while retaining the bottom payment-row Transaction ID
+
+- [x] Remove the Transaction ID block from the blue Receipt header card and retain it only in the bottom payment row
