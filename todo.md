@@ -1225,3 +1225,7 @@
 - [x] Show complete Agreement-derived client details in the Clients View option.
 - [x] Include project, Client ID, institute/branch data, contacts, plan dates, pricing/GST, total, status, approval/signature, and notes where present.
 - [x] Keep standalone Client View details accurate without displaying unavailable Agreement-only data.
+
+- [x] Increase the Client View display size for easier reading.
+- [x] Redesign Client View into clearly separated, spacious information sections.
+- [x] Improve responsive layout, typography, spacing, and visual hierarchy without hiding Agreement details.
