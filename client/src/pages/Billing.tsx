@@ -2100,22 +2100,17 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#f0efff] text-[#43239d]">
                             <FileText className="h-6 w-6" />
                           </div>
-                          <div
-                            className={`min-w-0 ${isInvoice ? "flex flex-1 items-center gap-4" : ""}`}
-                          >
-                            <p className="shrink-0 text-[10px] font-bold uppercase tracking-wider text-[#43239d]">
-                              Billed to
+                          <p className="shrink-0 text-[10px] font-bold uppercase tracking-wider text-[#43239d]">
+                            {isInvoice ? "Billed to" : "Billed to"}
+                          </p>
+                          <p className="min-w-0 truncate text-sm font-bold text-[#2f236d]">
+                            {selected.clientName || "—"}
+                          </p>
+                          {isInvoice && selected.clientGst && (
+                            <p className="ml-auto shrink-0 text-right text-xs font-semibold text-[#43239d]">
+                              GST No.: {selected.clientGst}
                             </p>
-                            {isInvoice ? (
-                              <p className="min-w-0 truncate text-sm font-bold text-[#2f236d]">
-                                {selected.clientName || "—"}
-                              </p>
-                            ) : (
-                              <p className="mt-2 inline-flex max-w-full rounded-md bg-[#ede9ff] px-3 py-2 text-base font-bold text-[#2f236d] shadow-sm">
-                                {selected.clientName || "—"}
-                              </p>
-                            )}
-                          </div>
+                          )}
                         </div>
                         <div
                           className={`relative flex flex-col justify-center p-4 text-left ${isInvoice ? "" : "sm:text-right"}`}

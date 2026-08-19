@@ -1156,3 +1156,11 @@
 - [x] Fix New Receipt form so saved Receipt Settings default products load automatically into the item editor
 
 - [x] Match the Invoice Billed To card to the Receipt layout with client name header and Address, Email, Phone, and GST No. details grid
+
+- [x] Make the Invoice Billed To card spacing and field arrangement match the supplied Receipt-style reference exactly
+
+- [x] Reuse the exact Receipt client-card markup and spacing for the Invoice Billed To card, changing only the label from RECEIVED FROM to BILLED TO
+
+- [x] Copy the exact Receipt RECEIVED FROM card design into Invoice BILLED TO, changing only the label and retaining Invoice client data
+
+- [x] Copy the Receipt RECEIVED FROM card exactly into Invoice BILLED TO, with client GST on the right side of the header row
