@@ -1246,4 +1246,4 @@
 
 - [x] Add the agreement total amount to the Clients Plan summary column.
 
-- [ ] Remove the duplicate Total line from agreement Plan summary while keeping the GST-aware Total value column.
+- [x] Remove the duplicate Total line from agreement Plan summary while keeping the GST-aware Total value column.
