@@ -1114,3 +1114,5 @@
 - [x] Remove unused Account Company Name, Account Number, IFSC Code, and Branch fields from Receipt Settings
 
 - [x] Refine Receipt generation with optional Client GST No. beside RECEIVED FROM, remove Bank Name from payment information, and hide unused account fields from Receipt Settings
+
+- [x] Position the optional Receipt Client GST No. on the right side of the client name in the RECEIVED FROM header, matching the supplied reference

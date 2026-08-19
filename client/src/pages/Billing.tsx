@@ -2015,7 +2015,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#f0efff] text-[#43239d]"><FileText className="h-6 w-6" /></div>
                           <p className="shrink-0 text-[10px] font-bold uppercase tracking-wider text-[#43239d]">Received from</p>
                           <p className="min-w-0 truncate text-sm font-bold text-[#2f236d]">{selected.clientName || "—"}</p>
-                          {selected.clientGst && <p className="shrink-0 text-xs font-semibold text-[#43239d]">GST No.: {selected.clientGst}</p>}
+                          {selected.clientGst && <p className="ml-auto shrink-0 text-right text-xs font-semibold text-[#43239d]">GST No.: {selected.clientGst}</p>}
                         </div>
                         <div className="grid gap-0 p-4 text-sm text-slate-600 sm:grid-cols-3">
                           <div className="border-b border-slate-200 pb-3 sm:border-b-0 sm:border-r sm:pr-4"><strong className="block text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Phone</strong><span className="mt-2 block break-words">{selected.clientContact || "—"}</span></div>
