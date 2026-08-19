@@ -2173,12 +2173,6 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                                 </strong>{" "}
                                 {selected.paymentMode}
                               </p>
-                              <p>
-                                <strong className="text-slate-800">
-                                  Reference:
-                                </strong>{" "}
-                                {selected.transactionReference || "—"}
-                              </p>
                             </div>
                           )}
                         </div>
