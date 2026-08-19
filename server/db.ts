@@ -9,6 +9,10 @@ import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getSavedL
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
+function hasConfiguredDatabase() {
+  return Boolean(process.env.DATABASE_URL?.trim());
+}
+
 function describeDatabaseError(error: unknown): string {
   const candidate = error as { message?: string; code?: string; errno?: number; sqlState?: string; cause?: { message?: string; code?: string; errno?: number; sqlState?: string } };
   const cause = candidate.cause;
@@ -88,6 +92,7 @@ export async function getProfileSettingsForOwner(ownerId: number, fallback: { na
     const envelope = await getSettingsEnvelope(db, ownerId);
     return normalizeProfileSettings(envelope.profile, fallback);
   } catch (error) {
+    if (hasConfiguredDatabase()) throw new Error(`Profile settings database load failed: ${describeDatabaseError(error)}`);
     console.warn("[Profile settings] Could not load profile settings:", error);
     return base;
   }
@@ -101,10 +106,7 @@ export async function updateProfileSettingsForOwner(ownerId: number, values: Par
   try {
     const envelope = await getSettingsEnvelope(db, ownerId);
     const profileJson = writeSettingsEnvelope({ ...envelope, profile: next });
-    await db.transaction(async (tx) => {
-      await tx.delete(profileSettingsData).where(eq(profileSettingsData.ownerId, ownerId));
-      await tx.insert(profileSettingsData).values({ ownerId, profileJson });
-    });
+    await db.insert(profileSettingsData).values({ ownerId, profileJson }).onDuplicateKeyUpdate({ set: { profileJson } });
   } catch (error) {
     throw new Error(`Profile settings database save failed: ${describeDatabaseError(error)}`);
   }
@@ -192,8 +194,9 @@ export async function getBrandingForOwner(ownerId: number) {
   if (!db) return localFallback;
   try {
     const envelope = await getSettingsEnvelope(db, ownerId);
-    return normalizeBranding((envelope.branding ?? localFallback) as Partial<CompanyBranding>);
+    return normalizeBranding((envelope.branding ?? {}) as Partial<CompanyBranding>);
   } catch (error) {
+    if (hasConfiguredDatabase()) throw new Error(`Branding database load failed: ${describeDatabaseError(error)}`);
     console.warn("[Branding] Could not load database branding; using local fallback:", error);
     return localFallback;
   }
@@ -201,7 +204,10 @@ export async function getBrandingForOwner(ownerId: number) {
 
 export async function getSessionSettings(ownerId: number) {
   const db = await getDb();
-  if (!db) return getLocalSessionSettings(ownerId);
+  if (!db) {
+    if (hasConfiguredDatabase()) throw new Error("Session settings database is unavailable");
+    return getLocalSessionSettings(ownerId);
+  }
   try {
     const rows = await db.select({ sessionMode: users.sessionMode, currentSession: users.currentSession }).from(users).where(eq(users.id, ownerId)).limit(1);
     const stored = rows[0];
@@ -214,7 +220,10 @@ export async function getSessionSettings(ownerId: number) {
 
 export async function updateSessionSettings(ownerId: number, values: { sessionMode: "all" | "single"; currentSession: string }) {
   const db = await getDb();
-  if (!db) return saveLocalSessionSettings(ownerId, values);
+  if (!db) {
+    if (hasConfiguredDatabase()) throw new Error("Session settings database is unavailable");
+    return saveLocalSessionSettings(ownerId, values);
+  }
   try {
     await db.update(users).set(values).where(eq(users.id, ownerId));
     return values;
@@ -233,14 +242,14 @@ export async function updateBrandingForOwner(ownerId: number, values: {
   const current = await getBrandingForOwner(ownerId);
   const next = normalizeBranding({ ...current, ...values });
   const db = await getDb();
-  if (!db) return saveLocalBranding(ownerId, next);
+  if (!db) {
+    if (hasConfiguredDatabase()) throw new Error("Branding database is unavailable");
+    return saveLocalBranding(ownerId, next);
+  }
   try {
     const envelope = await getSettingsEnvelope(db, ownerId);
     const profileJson = writeSettingsEnvelope({ ...envelope, branding: next });
-    await db.transaction(async (tx) => {
-      await tx.delete(profileSettingsData).where(eq(profileSettingsData.ownerId, ownerId));
-      await tx.insert(profileSettingsData).values({ ownerId, profileJson });
-    });
+    await db.insert(profileSettingsData).values({ ownerId, profileJson }).onDuplicateKeyUpdate({ set: { profileJson } });
     return next;
   } catch (error) {
     throw new Error(`Branding database save failed: ${describeDatabaseError(error)}`);
@@ -370,7 +379,10 @@ async function saveQuotationSettingsToDatabase(ownerId: number, settings: LocalQ
 
 export async function getQuotationSettingsForOwner(ownerId: number) {
   const db = await getDb();
-  if (!db) return getLocalQuotationSettings(ownerId);
+  if (!db) {
+    if (hasConfiguredDatabase()) throw new Error("Quotation settings database is unavailable");
+    return getLocalQuotationSettings(ownerId);
+  }
 
   try {
     const storedRows = await db.select().from(quotationSettings).where(eq(quotationSettings.ownerId, ownerId)).limit(1);
@@ -475,7 +487,10 @@ export async function listQuotationEditHistoryForOwner(ownerId: number, quotatio
 
 export async function listQuotationsForOwner(ownerId: number) {
   const db = await getDb();
-  if (!db) return listLocalQuotations(ownerId);
+  if (!db) {
+    if (hasConfiguredDatabase()) throw new Error("Quotation database is unavailable");
+    return listLocalQuotations(ownerId);
+  }
   try {
     const rows = await db.select().from(quotations).where(eq(quotations.ownerId, ownerId)).orderBy(desc(quotations.createdAt));
     return rows.map((row) => ({ ...row, items: JSON.parse(row.itemsJson) as unknown[] }));
@@ -559,7 +574,10 @@ export async function listSessionsForOwner(ownerId: number) {
 
 export async function createSessionForOwner(ownerId: number, values: { sessionLabel: string; startDate: string; endDate: string }) {
   const db = await getDb();
-  if (!db) return addLocalSession(ownerId, values);
+  if (!db) {
+    if (hasConfiguredDatabase()) throw new Error("Session database is unavailable");
+    return addLocalSession(ownerId, values);
+  }
   try {
     const existing = await db.select({ id: sessions.id }).from(sessions).where(and(eq(sessions.ownerId, ownerId), eq(sessions.sessionLabel, values.sessionLabel))).limit(1);
     if (existing[0]) throw new Error("That session already exists.");
