@@ -1245,3 +1245,5 @@
 - [x] Show compact agreement-derived plan summaries with student count, per-student price or package price, and branch count.
 
 - [x] Add the agreement total amount to the Clients Plan summary column.
+
+- [ ] Remove the duplicate Total line from agreement Plan summary while keeping the GST-aware Total value column.
