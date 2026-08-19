@@ -1134,3 +1134,5 @@
 - [x] Restore standard GST Inclusive extraction: GST is the portion contained within the final entered amount, while GST Exclusive adds GST to the product value
 
 - [x] Display the selected GST Inclusive or GST Exclusive mode clearly in the Receipt form totals and printed Receipt totals section
+
+- [x] Show GST Inclusive or GST Exclusive directly inside the Receipt Product Value panel label
