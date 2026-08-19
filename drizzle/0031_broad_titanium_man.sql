@@ -1,0 +1,1 @@
+ALTER TABLE `clients` MODIFY COLUMN `status` enum('Active','Inactive','Hold','Close') NOT NULL DEFAULT 'Active';

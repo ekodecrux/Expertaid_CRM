@@ -162,7 +162,7 @@ export const clients = mysqlTable("clients", {
   description: text("description"),
   logoUrl: text("logoUrl"),
   logoKey: varchar("logoKey", { length: 512 }),
-  status: mysqlEnum("status", ["Active", "Inactive"]).default("Active").notNull(),
+  status: mysqlEnum("status", ["Active", "Inactive", "Hold", "Close"]).default("Active").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });

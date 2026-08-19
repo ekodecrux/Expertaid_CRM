@@ -712,7 +712,15 @@ export async function createClientForOwner(ownerId: number, projectId: number, v
   });
 }
 
-export async function listApprovedClientsForOwner(ownerId: number, options: { page: number; pageSize: number; search?: string; instituteType?: "School" | "College" | "Academy"; clientStatus?: "Active" | "Inactive"; startDate?: string; endDate?: string; branchCoverage?: "individual" | "multiple"; minValue?: number; maxValue?: number; sessionMode?: "all" | "single"; currentSession?: string }) {
+export async function updateClientForOwner(ownerId: number, clientId: number, values: Partial<Omit<InsertClient, "id" | "ownerId" | "projectId" | "clientId" | "createdAt" | "updatedAt">>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  await db.update(clients).set(values).where(and(eq(clients.id, clientId), eq(clients.ownerId, ownerId)));
+  const rows = await db.select().from(clients).where(and(eq(clients.id, clientId), eq(clients.ownerId, ownerId))).limit(1);
+  if (!rows[0]) throw new Error("Client not found or you do not have permission to edit it.");
+  return rows[0];
+}
+export async function listApprovedClientsForOwner(ownerId: number, options: { page: number; pageSize: number; search?: string; instituteType?: "School" | "College" | "Academy"; clientStatus?: "Active" | "Inactive" | "Hold" | "Close"; startDate?: string; endDate?: string; branchCoverage?: "individual" | "multiple"; minValue?: number; maxValue?: number; sessionMode?: "all" | "single"; currentSession?: string }) {
   const db = await getDb();
   if (!db) return { items: [], total: 0, page: options.page, pageSize: options.pageSize, totalPages: 0, summary: { students: 0, value: 0 } };
   const search = options.search?.trim();
@@ -729,11 +737,15 @@ export async function listApprovedClientsForOwner(ownerId: number, options: { pa
   }
   if (options.clientStatus === "Active") {
     agreementFilters.push(gte(agreements.endDate, today));
-    clientFilters.push(gte(clients.endDate, today));
+    clientFilters.push(eq(clients.status, "Active"));
   }
   if (options.clientStatus === "Inactive") {
     agreementFilters.push(lt(agreements.endDate, today));
-    clientFilters.push(lt(clients.endDate, today));
+    clientFilters.push(eq(clients.status, "Inactive"));
+  }
+  if (options.clientStatus === "Hold" || options.clientStatus === "Close") {
+    agreementFilters.push(sql`1 = 0`);
+    clientFilters.push(eq(clients.status, options.clientStatus));
   }
   if (options.startDate) {
     agreementFilters.push(gte(agreements.startDate, options.startDate));

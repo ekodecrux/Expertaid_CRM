@@ -444,3 +444,6 @@ SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schem
 PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
 SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'clients' AND column_name = 'gstAmount'), 'SELECT 1', 'ALTER TABLE `clients` ADD COLUMN `gstAmount` DECIMAL(14,2) NOT NULL DEFAULT 0.00');
 PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+-- Expand standalone Client statuses for edit and lifecycle management.
+ALTER TABLE `clients` MODIFY COLUMN `status` enum('Active','Inactive','Hold','Close') NOT NULL DEFAULT 'Active';

@@ -1214,3 +1214,10 @@
 
 - [x] Fix Add Client Session validation so the valid 2026-2027 format is accepted by the browser and API.
 - [x] Keep strict four-digit-year session validation for invalid values.
+
+- [x] Add Edit action to each standalone Client row.
+- [x] Persist editable Client fields and Active/Inactive status changes.
+- [x] Refresh the Clients list and details after edits or status updates.
+
+- [x] Support Client statuses Active, Inactive, Hold, and Close in persistence and validation.
+- [x] Display and filter all four Client statuses consistently in the Clients module.
