@@ -1207,3 +1207,7 @@
 - [x] Add an Add Client action to the Clients module.
 - [x] Provide the existing ERP CRM client fields in the Add Client form, including project-aware institute or employee fields, contact details, plan, pricing, dates, total, and notes.
 - [x] Persist newly added clients and refresh the Clients list with the generated Client ID.
+
+- [x] Remove employee/student count, per-unit price, pricing mode, and no. of years from the Add Client form.
+- [x] Add one client price field and GST Inclusive/Exclusive selection.
+- [x] Calculate and persist the new client GST amount and final total while keeping old columns compatible.

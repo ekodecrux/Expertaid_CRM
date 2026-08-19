@@ -433,3 +433,14 @@ CREATE TABLE IF NOT EXISTS `clients` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `clients_clientId_unique` (`clientId`)
 );
+
+-- Add Client price and standard GST fields for the simplified Add Client workflow.
+SET @db_name = DATABASE();
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'clients' AND column_name = 'price'), 'SELECT 1', 'ALTER TABLE `clients` ADD COLUMN `price` DECIMAL(14,2) NOT NULL DEFAULT 0.00');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'clients' AND column_name = 'gstRate'), 'SELECT 1', 'ALTER TABLE `clients` ADD COLUMN `gstRate` DECIMAL(5,2) NOT NULL DEFAULT 18.00');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'clients' AND column_name = 'gstMode'), 'SELECT 1', 'ALTER TABLE `clients` ADD COLUMN `gstMode` ENUM(''inclusive'',''exclusive'') NOT NULL DEFAULT ''exclusive''');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'clients' AND column_name = 'gstAmount'), 'SELECT 1', 'ALTER TABLE `clients` ADD COLUMN `gstAmount` DECIMAL(14,2) NOT NULL DEFAULT 0.00');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
