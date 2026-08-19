@@ -1124,3 +1124,6 @@
 - [x] Remove Amount received and Received for from manual Receipt creation and derive the Receipt total from product lines
 - [x] Add Receipt GST including/excluding selection with calculated taxable amount, GST, and grand total
 - [x] Move Payment Mode and Transaction ID below the Receipt product table in the form and document preview
+
+- [x] Correct Receipt GST-inclusive taxable subtotal/GST labels so the entered grand total remains unchanged and the GST component is clear
+- [x] Restore the Receipt payment-information row to its prior position below the totals section

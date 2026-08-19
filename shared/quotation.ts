@@ -34,7 +34,7 @@ export function calculateQuotationTotals(items: QuotationItem[], gstRate: number
   const enteredTotal = items.reduce((sum, item) => sum + item.quantity * item.unitPrice, 0);
   if (gstMode === "inclusive") {
     const gstAmount = gstRate > 0 ? enteredTotal * (gstRate / (100 + gstRate)) : 0;
-    return { subtotal: enteredTotal, gstAmount, grandTotal: enteredTotal };
+    return { subtotal: enteredTotal - gstAmount, gstAmount, grandTotal: enteredTotal };
   }
   const gstAmount = enteredTotal * (gstRate / 100);
   return { subtotal: enteredTotal, gstAmount, grandTotal: enteredTotal + gstAmount };
