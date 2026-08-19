@@ -1250,3 +1250,6 @@
 
 - [x] Redesign Client View to match the supplied reference with a branded header and structured overview/detail sections.
 - [x] Add a responsive institute overview panel, detail cards, status timeline, and full-width description area.
+
+- [x] Place branch count immediately after student count with clear spacing in agreement Plan summary.
+- [x] Show the pre-GST plan amount at the bottom of Plan summary, calculated as students × per-student price or package price.
