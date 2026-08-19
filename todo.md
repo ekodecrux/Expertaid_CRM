@@ -1240,3 +1240,6 @@
 - [x] Reduce oversized Client View cards and excessive spacing.
 - [x] Present labels and values compactly with clear hierarchy and readable scrolling.
 - [x] Keep complete Agreement-derived details accessible without making every field visually large.
+
+- [x] Use only a view icon for the Clients list action control; remove visible Details text and standalone edit action from the list.
+- [x] Show compact agreement-derived plan summaries with student count, per-student price or package price, and branch count.
