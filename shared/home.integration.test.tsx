@@ -79,7 +79,7 @@ describe("Home dashboard integration", () => {
     authQueryState.isFetched = true;
     const markup = renderToStaticMarkup(<DashboardLayout><Home /></DashboardLayout>);
     expect(markup).toContain("Greenfield Public School");
-    expect(markup).toContain("Ref ERP26042");
+    expect(markup).toContain("Client ID ERP26042");
     expect(markup).toContain("2026-08-13");
     expect(markup).toContain("2027-08-12");
     expect(markup).toContain("Northview College");

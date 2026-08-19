@@ -1188,3 +1188,6 @@
 - [x] Add a persisted main-project designation in Settings for identifying the ERP project.
 - [x] Use the Settings main project for Agreement field visibility instead of checking whether the project name is ERP.
 - [x] Preserve the original ERP fields for the configured main project and apply employee fields only to other projects.
+
+- [x] Display the stored per-project Client ID in the Agreement list instead of the legacy Agreement reference number.
+- [x] Use a safe legacy fallback only when an older Agreement has no stored Client ID.
