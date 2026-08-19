@@ -1243,3 +1243,5 @@
 
 - [x] Use only a view icon for the Clients list action control; remove visible Details text and standalone edit action from the list.
 - [x] Show compact agreement-derived plan summaries with student count, per-student price or package price, and branch count.
+
+- [x] Add the agreement total amount to the Clients Plan summary column.
