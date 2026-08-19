@@ -1154,3 +1154,5 @@
 - [x] Verify project receiptSettings.defaultProductsJson exists; Hostinger requires the guarded SQL repair previously provided
 
 - [x] Fix New Receipt form so saved Receipt Settings default products load automatically into the item editor
+
+- [x] Match the Invoice Billed To card to the Receipt layout with client name header and Address, Email, Phone, and GST No. details grid

@@ -2095,7 +2095,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                         className={`relative mt-6 overflow-hidden rounded-2xl border-2 bg-white shadow-[0_2px_8px_rgba(30,45,80,0.04)] ${isInvoice ? "border-[#d7d0ff]" : "border-slate-200"}`}
                       >
                         <div
-                          className={`relative flex min-w-0 items-center gap-4 ${isInvoice ? "px-5 py-3" : "bg-[#faf9ff] p-5 sm:border-r sm:border-slate-200"}`}
+                          className={`relative flex min-w-0 items-center gap-4 ${isInvoice ? "border-b border-[#d7d0ff] bg-[#faf9ff] px-5 py-3" : "bg-[#faf9ff] p-5 sm:border-r sm:border-slate-200"}`}
                         >
                           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#f0efff] text-[#43239d]">
                             <FileText className="h-6 w-6" />
@@ -2118,7 +2118,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           </div>
                         </div>
                         <div
-                          className={`relative flex flex-col justify-center p-4 text-left ${isInvoice ? "border-t border-[#d7d0ff]" : "sm:text-right"}`}
+                          className={`relative flex flex-col justify-center p-4 text-left ${isInvoice ? "" : "sm:text-right"}`}
                         >
                           <p className="text-xs font-bold uppercase tracking-wider text-[#43239d]">
                             {isInvoice ? "Client details" : "Receipt details"}
