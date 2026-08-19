@@ -46,6 +46,14 @@ async function startServer() {
       createContext,
     })
   );
+  // Never allow unmatched API requests to fall through to the frontend HTML
+  // fallback. A JSON response keeps tRPC errors parseable and exposes routing
+  // problems clearly instead of producing `Unexpected token '<'` in the client.
+  app.use("/api/trpc", (_req, res) => {
+    if (!res.headersSent) {
+      res.status(404).json({ error: { message: "Unknown tRPC procedure" } });
+    }
+  });
   // Use Vite only when no production bundle is available. Some hosting
   // platforms do not preserve NODE_ENV at runtime, so checking the built
   // frontend prevents the server from looking for client/index.html after

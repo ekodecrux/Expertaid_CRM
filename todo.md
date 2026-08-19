@@ -1200,3 +1200,6 @@
 - [x] Ensure the next future Client ID is calculated without resetting over existing IDs.
 
 - [x] Highlight each Agreement list Client ID as a distinct ERP-style identifier, for example ERP26001.
+
+- [x] Fix the dashboard tRPC query returning HTML (`<!doctype`) instead of JSON.
+- [x] Verify the authenticated dashboard API route and client endpoint remain aligned in development and production builds.
