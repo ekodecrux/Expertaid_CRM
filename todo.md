@@ -1136,3 +1136,5 @@
 - [x] Display the selected GST Inclusive or GST Exclusive mode clearly in the Receipt form totals and printed Receipt totals section
 
 - [x] Show GST Inclusive or GST Exclusive directly inside the Receipt Product Value panel label
+
+- [x] Remove the Receipt Product value wording and use the reference-style total-price label without changing GST calculations
