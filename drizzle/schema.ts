@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, decimal } from "drizzle-orm/mysql-core";
+import { boolean, int, mysqlEnum, mysqlTable, text, timestamp, varchar, decimal } from "drizzle-orm/mysql-core";
 
 export const users = mysqlTable("users", {
   id: int("id").autoincrement().primaryKey(),
@@ -126,6 +126,7 @@ export const projects = mysqlTable("projects", {
   ownerId: int("ownerId").notNull(),
   name: varchar("name", { length: 255 }).notNull(),
   clientIdPrefix: varchar("clientIdPrefix", { length: 24 }).notNull(),
+  isMain: boolean("isMain").default(false).notNull(),
   clientIdStart: int("clientIdStart").default(1).notNull(),
   nextClientId: int("nextClientId").default(1).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),

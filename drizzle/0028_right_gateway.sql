@@ -1,0 +1,1 @@
+ALTER TABLE `projects` ADD `isMain` boolean DEFAULT false NOT NULL;

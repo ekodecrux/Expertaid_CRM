@@ -1184,3 +1184,7 @@
 - [x] Keep Institute Type and Branch Coverage visible only when the selected project is ERP.
 - [x] For non-ERP projects, display No. of Employees and Per Employee Price instead of student terminology.
 - [x] Preserve backend compatibility while applying project-aware labels and validation in Agreement creation and editing.
+
+- [x] Add a persisted main-project designation in Settings for identifying the ERP project.
+- [x] Use the Settings main project for Agreement field visibility instead of checking whether the project name is ERP.
+- [x] Preserve the original ERP fields for the configured main project and apply employee fields only to other projects.

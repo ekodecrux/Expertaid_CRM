@@ -394,3 +394,9 @@ PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
 INSERT INTO `projects` (`ownerId`, `name`, `clientIdPrefix`, `clientIdStart`, `nextClientId`)
 SELECT 1, 'ERP', 'ERP', 1, 1 FROM DUAL
 WHERE NOT EXISTS (SELECT 1 FROM `projects` WHERE `ownerId` = 1 AND LOWER(`name`) = 'erp');
+
+-- Settings main-project designation. The marked project controls ERP-specific Agreement fields.
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'projects' AND column_name = 'isMain'), 'SELECT 1', 'ALTER TABLE `projects` ADD COLUMN `isMain` BOOLEAN NOT NULL DEFAULT FALSE AFTER `clientIdPrefix`');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+UPDATE `projects` SET `isMain` = CASE WHEN LOWER(`name`) = 'erp' THEN 1 ELSE 0 END WHERE `ownerId` = 1 AND EXISTS (SELECT 1 FROM `projects` WHERE `ownerId` = 1 AND LOWER(`name`) = 'erp');
+SELECT `id`, `name`, `clientIdPrefix`, `isMain`, `nextClientId` FROM `projects` WHERE `ownerId` = 1 ORDER BY `isMain` DESC, `name`;

@@ -34,11 +34,11 @@ export default function Home() {
   useEffect(() => { const handleWorkspaceSearch = (event: Event) => setSearch(String((event as CustomEvent<string>).detail ?? "")); window.addEventListener("agreement-search", handleWorkspaceSearch); return () => window.removeEventListener("agreement-search", handleWorkspaceSearch); }, []);
   const { data: agreementSessions } = trpc.agreements.sessions.useQuery(undefined, { enabled: authReady });
   const projectsQuery = trpc.projects?.list?.useQuery;
-  const projects = projectsQuery ? projectsQuery(undefined, { enabled: authReady }) : { data: [] as Array<{ id: number; name: string; clientIdPrefix: string; nextClientId: number }> };
+  const projects = projectsQuery ? projectsQuery(undefined, { enabled: authReady }) : { data: [] as Array<{ id: number; name: string; clientIdPrefix: string; nextClientId: number; isMain: boolean }> };
   const uniqueAgreementSessions = Array.from(new Map((agreementSessions ?? []).map((session) => [session.sessionLabel, session])).values());
   const selectedProject = (projects.data ?? []).find((project) => String(project.id) === form.projectId);
-  const isErpProject = selectedProject?.name.trim().toLowerCase() === "erp" || !form.projectId;
-  const isAgreementErp = (agreement: NonNullable<typeof agreements>[number]) => !agreement.projectId || (projects.data ?? []).find((project) => project.id === agreement.projectId)?.name.trim().toLowerCase() === "erp";
+  const isErpProject = selectedProject?.isMain === true || !form.projectId;
+  const isAgreementErp = (agreement: NonNullable<typeof agreements>[number]) => !agreement.projectId || (projects.data ?? []).find((project) => project.id === agreement.projectId)?.isMain === true;
   const { data: agreements, isLoading, refetch } = trpc.agreements.list.useQuery(agreementSession === "all" ? undefined : { session: agreementSession }, { enabled: authReady });
   const { data: branding } = trpc.branding.get.useQuery(undefined, { enabled: authReady });
   const { data: sessionSettings } = trpc.session.get.useQuery(undefined, { enabled: authReady });

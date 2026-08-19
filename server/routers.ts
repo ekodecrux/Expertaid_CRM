@@ -6,7 +6,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { ENV } from "./_core/env";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getNextEstimationNumberForClient, getAgreementByToken, createSessionForOwner, updateSessionRecordForOwner, deleteSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getProfileSettingsForOwner, updateProfileSettingsForOwner, getUserByEmail, upsertUser, listProjectsForOwner, createProjectForOwner, updateProjectForOwner, deleteProjectForOwner, createAgreementForProject } from "./db";
+import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getNextEstimationNumberForClient, getAgreementByToken, createSessionForOwner, updateSessionRecordForOwner, deleteSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getProfileSettingsForOwner, updateProfileSettingsForOwner, getUserByEmail, upsertUser, listProjectsForOwner, createProjectForOwner, updateProjectForOwner, deleteProjectForOwner, setMainProjectForOwner, createAgreementForProject } from "./db";
 import { storagePut } from "./storage";
 import { sdk } from "./_core/sdk";
 import { validateCredentialLogin } from "./credentialLogin";
@@ -289,6 +289,7 @@ export const appRouter = router({
     list: protectedProcedure.query(({ ctx }) => listProjectsForOwner(ctx.user.id)),
     create: protectedProcedure.input(z.object({ name: z.string().trim().min(1).max(255), clientIdPrefix: z.string().trim().min(1).max(24), clientIdStart: z.number().int().positive().max(999999999) })).mutation(({ ctx, input }) => createProjectForOwner(ctx.user.id, input)),
     update: protectedProcedure.input(z.object({ id: z.number().int().positive(), name: z.string().trim().min(1).max(255), clientIdPrefix: z.string().trim().min(1).max(24), clientIdStart: z.number().int().positive().max(999999999) })).mutation(({ ctx, input }) => updateProjectForOwner(ctx.user.id, input.id, input)),
+    setMain: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ ctx, input }) => setMainProjectForOwner(ctx.user.id, input.id)),
     delete: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ ctx, input }) => deleteProjectForOwner(ctx.user.id, input.id)),
   }),
   session: router({

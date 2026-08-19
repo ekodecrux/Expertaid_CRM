@@ -566,6 +566,19 @@ export async function updateProjectForOwner(ownerId: number, id: number, values:
   return rows[0];
 }
 
+export async function setMainProjectForOwner(ownerId: number, id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  return db.transaction(async (tx) => {
+    const target = await tx.select().from(projects).where(and(eq(projects.ownerId, ownerId), eq(projects.id, id))).limit(1);
+    if (!target[0]) throw new Error("Project not found");
+    await tx.update(projects).set({ isMain: false }).where(eq(projects.ownerId, ownerId));
+    await tx.update(projects).set({ isMain: true }).where(and(eq(projects.ownerId, ownerId), eq(projects.id, id)));
+    const rows = await tx.select().from(projects).where(and(eq(projects.ownerId, ownerId), eq(projects.id, id))).limit(1);
+    return rows[0];
+  });
+}
+
 export async function deleteProjectForOwner(ownerId: number, id: number) {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
