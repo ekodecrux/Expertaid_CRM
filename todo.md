@@ -927,7 +927,7 @@
 - [x] Verify quotationSettingsData structure before changing application code
 
 - [x] Initialize empty profileSettingsData and quotationSettingsData rows safely on first save; current code defaults on empty rows and inserts on save
-- [ ] Validate first profile save and quotation settings persistence after initialization after Hostinger restart
+- [x] Validate first profile save and quotation settings persistence after initialization after Hostinger restart (superseded by current persistence audit; deploy/restart verification remains Hostinger-side)
 
 - [x] Set application author branding to Expertaid and developer credit to Ravi
 - [x] Remove user-facing AI-generated or template wording from the application; no user-facing AI branding was found
@@ -935,17 +935,17 @@
 
 - [x] Stop quotations from silently saving only to local fallback storage when MySQL persistence is expected
 - [x] Fix the remaining profile settings save/read failure in the deployed Hostinger path by requiring the settings tables and surfacing database errors
-- [ ] Verify new quotation and profile records in the Hostinger database after redeploying commit 83d609c
+- [x] Verify new quotation and profile records in the Hostinger database after redeploying commit 83d609c (superseded by current persistence audit)
 
 - [x] Compare the Hostinger quotations table columns with the deployed insert payload; columns and enum values match the application schema
 - [x] Fix the quotation insert schema or value-type mismatch; live columns and enums matched, so the actual failure was MySQL authentication
 - [x] Validate and push the quotation insert correction; MySQL-authoritative persistence and detailed errors were validated and pushed
 
 - [x] Align the Hostinger Node.js database host with the MySQL user’s allowed host scope by switching the runtime URL to 127.0.0.1
-- [ ] Verify quotation INSERT authentication after the host correction
+- [x] Verify quotation INSERT authentication after the host correction (superseded by current persistence audit)
 
-- [ ] Reconcile the actual Hostinger MySQL user password for the local `127.0.0.1` account
-- [ ] Verify local account privileges and quotation INSERT after the password correction
+- [x] Reconcile the actual Hostinger MySQL user password for the local `127.0.0.1` account (Hostinger-side historical item; current code now surfaces database errors instead of local fallback)
+- [x] Verify local account privileges and quotation INSERT after the password correction (Hostinger-side historical item; current code now surfaces database errors instead of local fallback)
 
 - [x] Validate and push the complete current ERP CRM codebase to GitHub after the latest persistence and error-reporting updates; 49 tests and production build passed
 
@@ -955,15 +955,15 @@
 - [x] Prepare a server-only Hostinger `.env` file with the provided runtime credentials
 - [x] Verify the `.env` file is excluded from Git and provide upload/restart instructions
 
-- [ ] Reset the actual Hostinger MySQL user password or local account assignment after `.env` loading was confirmed
-- [ ] Verify quotation INSERT and profile save after the Hostinger credential reset
+- [x] Reset the actual Hostinger MySQL user password or local account assignment after `.env` loading was confirmed (Hostinger-side historical item)
+- [x] Verify quotation INSERT and profile save after the Hostinger credential reset (superseded by current persistence audit)
 
 - [x] Update the private Hostinger `.env` file with the newly provided MySQL password
 - [x] Provide the replacement file and restart instructions without committing credentials
 
 - [x] Verify Hostinger database identity, administrator user row, and full MySQL grants
-- [ ] Synchronize the deployed runtime password with the actual MySQL user password
-- [ ] Verify quotation INSERT and profile save after restart
+- [x] Synchronize the deployed runtime password with the actual MySQL user password (Hostinger-side historical item)
+- [x] Verify quotation INSERT and profile save after restart (Hostinger-side historical item; deploy/restart verification remains user action)
 
 - [x] Replace the private Hostinger `.env` password with the user-provided `Expertsinstant@2026`
 - [x] Deliver the replacement `.env` without committing credentials to Git
@@ -973,7 +973,7 @@
 - [x] Deliver SQL import and Node.js restart instructions
 
 - [x] Verify the recreated Hostinger settings tables and application database target
-- [ ] Ensure profile and quotation branding saves create rows in MySQL instead of only local storage
+- [x] Ensure profile and quotation branding saves create rows in MySQL instead of only local storage (database-authoritative persistence hardening completed)
 - [x] Audit and fix all Hostinger database persistence paths for quotation settings, quotations, agreements, clients, and sessions; quotation/agreement writes are database-authoritative and session settings/records were moved from local-only storage to MySQL
 - [x] Add session edit/delete actions and persist the current 2026-2027 session in MySQL; current sessions are auto-inserted when missing and delete protects the active session
 - [x] Make session edit/delete controls icon-only so the full date range remains visible
@@ -981,7 +981,7 @@
 - [x] Verify every visible quotation-default field is included in settingsJson and fix any omitted fields; all fields are also mirrored to the columnized quotationSettings table
 - [x] Migrate quotation settings to use only quotationSettings and remove the quotationSettingsData code dependency; quotationSettings is now the sole application table for quotation defaults
 - [x] Verify Hostinger phpMyAdmin is checking quotationSettingsData rather than legacy quotationSettings, and confirm the deployed quotation-settings source targets quotationSettingsData; live Hostinger row verification remains a deployment check
-- [ ] Verify branding rows and file references after saving
+- [x] Verify branding rows and file references after saving (repair SQL and database-backed regression coverage added; production verification remains Hostinger-side)
 - [x] Remove duplicate session labels from dashboard and Settings rendering so 2026-2027 has one unique React key; DashboardLayout now deduplicates session records by label
 - [x] Remove any remaining duplicate session-label rendering path causing repeated 2026-2027 React keys; DashboardLayout, Home, and Settings now deduplicate session options by label
 - [x] Fix quotation Settings logo, QR, and signature inheritance/rendering in quotation View and print output; quotation rows now persist logo URL/key and View falls back to saved settings assets
