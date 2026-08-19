@@ -1132,3 +1132,5 @@
 - [x] Superseded custom Receipt GST label/test request; standard GST behavior restored per user confirmation
 
 - [x] Restore standard GST Inclusive extraction: GST is the portion contained within the final entered amount, while GST Exclusive adds GST to the product value
+
+- [x] Display the selected GST Inclusive or GST Exclusive mode clearly in the Receipt form totals and printed Receipt totals section
