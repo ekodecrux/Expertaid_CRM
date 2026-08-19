@@ -671,10 +671,21 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     setEditingReceiptId(null);
     setFormErrors({});
     setInvoiceForm(emptyInvoice());
+    const rawDefaultProducts = receiptSettings.data?.defaultProducts ?? (receiptSettings.data as any)?.defaultProductsJson;
+    let defaultProducts: any[] = [];
+    if (Array.isArray(rawDefaultProducts)) defaultProducts = rawDefaultProducts;
+    else if (typeof rawDefaultProducts === "string") {
+      try {
+        const parsed = JSON.parse(rawDefaultProducts);
+        if (Array.isArray(parsed)) defaultProducts = parsed;
+      } catch {
+        defaultProducts = [];
+      }
+    }
     setReceiptForm({
       ...emptyReceipt(),
-      items: receiptSettings.data?.defaultProducts?.length
-        ? receiptSettings.data.defaultProducts.map((item: any) => ({
+      items: defaultProducts.length
+        ? defaultProducts.map((item: any) => ({
             itemName: String(item.itemName ?? ""),
             description: String(item.description ?? ""),
             quantity: String(item.quantity ?? "1"),

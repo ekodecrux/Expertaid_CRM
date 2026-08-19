@@ -1150,3 +1150,7 @@
 - [x] Fix active sandbox Receipt preview still rendering the Transaction ID block in the blue header
 
 - [x] Trace and remove every active Receipt preview header Transaction ID rendering path confirmed by the latest sandbox screenshot
+
+- [x] Verify project receiptSettings.defaultProductsJson exists; Hostinger requires the guarded SQL repair previously provided
+
+- [x] Fix New Receipt form so saved Receipt Settings default products load automatically into the item editor
