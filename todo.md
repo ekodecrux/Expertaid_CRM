@@ -1198,3 +1198,5 @@
 - [x] Preserve all existing Agreement Client IDs when a project prefix or starting number is edited.
 - [x] Apply changed project prefix and starting number only to newly created Agreements.
 - [x] Ensure the next future Client ID is calculated without resetting over existing IDs.
+
+- [x] Highlight each Agreement list Client ID as a distinct ERP-style identifier, for example ERP26001.
