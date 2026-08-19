@@ -1,9 +1,10 @@
 import { and, desc, eq, gte, like, lte, lt, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
-import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, profileSettingsData, quotationEditHistory, quotations, quotationSettings, sessions, users, type User } from "../drizzle/schema";
+import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, profileSettingsData, projects, quotationEditHistory, quotations, quotationSettings, sessions, users, type InsertProject, type User } from "../drizzle/schema";
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding, type CompanyBranding } from "@shared/branding";
+import { formatProjectClientId } from "@shared/project";
 import { ENV } from './_core/env';
 import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getSavedLocalQuotationSettings, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalQuotationSettings, saveLocalSessionSettings, listLocalQuotations, createLocalQuotation, updateLocalQuotation, deleteLocalQuotation, type LocalQuotationSettings } from './localSettings';
 
@@ -534,6 +535,60 @@ export async function createQuotation(input: InsertQuotation & { quotationPrefix
     console.error("[Quotations] Database insert failed; quotation was not saved:", detail);
     throw new Error(`Quotation database save failed: ${detail}`);
   }
+}
+
+export async function listProjectsForOwner(ownerId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  const rows = await db.select().from(projects).where(eq(projects.ownerId, ownerId)).orderBy(desc(projects.createdAt));
+  const counts = await db.select({ projectId: agreements.projectId, count: sql<number>`count(*)` }).from(agreements).where(eq(agreements.ownerId, ownerId)).groupBy(agreements.projectId);
+  const countMap = new Map(counts.filter((row) => row.projectId != null).map((row) => [Number(row.projectId), Number(row.count)]));
+  return rows.map((project) => ({ ...project, linkedClientCount: countMap.get(project.id) ?? 0 }));
+}
+
+export async function createProjectForOwner(ownerId: number, values: Pick<InsertProject, "name" | "clientIdPrefix" | "clientIdStart">) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const start = Math.max(1, Math.trunc(Number(values.clientIdStart ?? 1)));
+  const result = await db.insert(projects).values({ ownerId, name: values.name.trim(), clientIdPrefix: values.clientIdPrefix.trim(), clientIdStart: start, nextClientId: start });
+  const rows = await db.select().from(projects).where(eq(projects.id, Number(result[0].insertId))).limit(1);
+  return rows[0];
+}
+
+export async function updateProjectForOwner(ownerId: number, id: number, values: Pick<InsertProject, "name" | "clientIdPrefix" | "clientIdStart">) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const current = await db.select().from(projects).where(and(eq(projects.ownerId, ownerId), eq(projects.id, id))).limit(1);
+  if (!current[0]) throw new Error("Project not found");
+  const start = Math.max(1, Math.trunc(Number(values.clientIdStart ?? 1)));
+  await db.update(projects).set({ name: values.name.trim(), clientIdPrefix: values.clientIdPrefix.trim(), clientIdStart: start }).where(and(eq(projects.ownerId, ownerId), eq(projects.id, id)));
+  const rows = await db.select().from(projects).where(eq(projects.id, id)).limit(1);
+  return rows[0];
+}
+
+export async function deleteProjectForOwner(ownerId: number, id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const linked = await db.select({ count: sql<number>`count(*)` }).from(agreements).where(and(eq(agreements.ownerId, ownerId), eq(agreements.projectId, id)));
+  if (Number(linked[0]?.count ?? 0) > 0) throw new Error("This project cannot be deleted because it has linked clients or agreements.");
+  await db.delete(projects).where(and(eq(projects.ownerId, ownerId), eq(projects.id, id)));
+  return { success: true } as const;
+}
+
+export async function createAgreementForProject(ownerId: number, projectId: number, input: Omit<InsertAgreement, "ownerId" | "projectId" | "clientId">) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  return db.transaction(async (tx) => {
+    const projectRows = await tx.select().from(projects).where(and(eq(projects.ownerId, ownerId), eq(projects.id, projectId))).limit(1);
+    const project = projectRows[0];
+    if (!project) throw new Error("Selected project was not found");
+    const number = project.nextClientId;
+    const clientId = formatProjectClientId(project.clientIdPrefix, number);
+    await tx.update(projects).set({ nextClientId: number + 1 }).where(and(eq(projects.id, projectId), eq(projects.ownerId, ownerId), eq(projects.nextClientId, number)));
+    const result = await tx.insert(agreements).values({ ...input, ownerId, projectId, clientId });
+    const rows = await tx.select().from(agreements).where(eq(agreements.id, Number(result[0].insertId))).limit(1);
+    return rows[0];
+  });
 }
 
 export async function createAgreement(input: InsertAgreement) {

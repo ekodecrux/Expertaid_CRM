@@ -121,8 +121,21 @@ export const quotations = mysqlTable("quotations", {
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 
+export const projects = mysqlTable("projects", {
+  id: int("id").autoincrement().primaryKey(),
+  ownerId: int("ownerId").notNull(),
+  name: varchar("name", { length: 255 }).notNull(),
+  clientIdPrefix: varchar("clientIdPrefix", { length: 24 }).notNull(),
+  clientIdStart: int("clientIdStart").default(1).notNull(),
+  nextClientId: int("nextClientId").default(1).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
 export const agreements = mysqlTable("agreements", {
   id: int("id").autoincrement().primaryKey(),
+  projectId: int("projectId"),
+  clientId: varchar("clientId", { length: 64 }),
   ownerId: int("ownerId").notNull(),
   publicToken: varchar("publicToken", { length: 32 }).notNull().unique(),
   clientName: varchar("clientName", { length: 255 }).notNull(),
@@ -298,6 +311,8 @@ export type QuotationEditHistory = typeof quotationEditHistory.$inferSelect;
 export type InsertQuotationEditHistory = typeof quotationEditHistory.$inferInsert;
 export type Quotation = typeof quotations.$inferSelect;
 export type InsertQuotation = typeof quotations.$inferInsert;
+export type Project = typeof projects.$inferSelect;
+export type InsertProject = typeof projects.$inferInsert;
 export type Agreement = typeof agreements.$inferSelect;
 export type InsertAgreement = typeof agreements.$inferInsert;
 export type InvoiceSettings = typeof invoiceSettings.$inferSelect;

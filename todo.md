@@ -1170,3 +1170,13 @@
 - [x] Match Invoice BILLED TO to Receipt RECEIVED FROM by showing GST on the header right and removing the extra CLIENT DETAILS heading
 
 - [x] Left-align Invoice Phone, Email, and Address labels and values exactly like the Receipt card
+
+- [x] Add Projects management in Settings with create, edit, and delete controls
+- [x] Protect Projects from deletion when linked clients or agreements exist
+- [x] Add per-project Client ID prefix and starting-number configuration with persistent numbering
+- [x] Add Project selection to Agreement creation and generate the Client ID from the selected Project instead of the old Agreement reference display
+- [x] Prepare one consolidated Hostinger SQL query only if the schema migration requires it
+
+- [x] Keep School, College, and Academy as Institute Type values under the ERP project; do not create separate projects for them.
+- [x] Seed or recommend the ERP project as the default project with its own Client ID prefix and sequence.
+- [x] Ensure Agreement project selection and Client ID generation use the ERP project while retaining the Institute Type field.

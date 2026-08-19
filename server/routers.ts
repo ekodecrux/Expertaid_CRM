@@ -6,7 +6,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { ENV } from "./_core/env";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getNextEstimationNumberForClient, getAgreementByToken, createSessionForOwner, updateSessionRecordForOwner, deleteSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getProfileSettingsForOwner, updateProfileSettingsForOwner, getUserByEmail, upsertUser } from "./db";
+import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getNextEstimationNumberForClient, getAgreementByToken, createSessionForOwner, updateSessionRecordForOwner, deleteSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getProfileSettingsForOwner, updateProfileSettingsForOwner, getUserByEmail, upsertUser, listProjectsForOwner, createProjectForOwner, updateProjectForOwner, deleteProjectForOwner, createAgreementForProject } from "./db";
 import { storagePut } from "./storage";
 import { sdk } from "./_core/sdk";
 import { validateCredentialLogin } from "./credentialLogin";
@@ -25,6 +25,7 @@ const brandingInput = z.object({
 });
 
 const agreementInput = z.object({
+  projectId: z.number().int().positive().optional(),
   clientName: z.string().trim().min(1).max(255),
   clientOwnerName: z.string().trim().min(1).max(255),
   instituteType: z.enum(["School", "College", "Academy"]),
@@ -120,6 +121,7 @@ function buildAgreementValues(input: AgreementInput) {
   const baseTotal = calculateAgreementTotal(input.pricingMode as PricingMode, input.noOfStudents, input.perStudentPrice, input.packagePrice, input.noOfYearPlan);
   const pricing = calculateAgreementPricing(baseTotal, input.gstMode, input.gstRate);
   return {
+    projectId: input.projectId,
     clientName: input.clientName,
     clientOwnerName: input.clientOwnerName,
     instituteType: input.instituteType,
@@ -283,6 +285,12 @@ export const appRouter = router({
       });
     }),
   }),
+  projects: router({
+    list: protectedProcedure.query(({ ctx }) => listProjectsForOwner(ctx.user.id)),
+    create: protectedProcedure.input(z.object({ name: z.string().trim().min(1).max(255), clientIdPrefix: z.string().trim().min(1).max(24), clientIdStart: z.number().int().positive().max(999999999) })).mutation(({ ctx, input }) => createProjectForOwner(ctx.user.id, input)),
+    update: protectedProcedure.input(z.object({ id: z.number().int().positive(), name: z.string().trim().min(1).max(255), clientIdPrefix: z.string().trim().min(1).max(24), clientIdStart: z.number().int().positive().max(999999999) })).mutation(({ ctx, input }) => updateProjectForOwner(ctx.user.id, input.id, input)),
+    delete: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ ctx, input }) => deleteProjectForOwner(ctx.user.id, input.id)),
+  }),
   session: router({
     get: protectedProcedure.query(({ ctx }) => getSessionSettings(ctx.user.id)),
     list: protectedProcedure.query(({ ctx }) => listSessionsForOwner(ctx.user.id)),
@@ -300,7 +308,8 @@ export const appRouter = router({
     create: protectedProcedure.input(agreementInput).mutation(async ({ ctx, input }) => {
       const { logoDataUrl, ...fields } = input;
       const logo = await uploadLogo(logoDataUrl);
-      return createAgreement({ ...buildAgreementValues(fields as AgreementInput), ...logo, ownerId: ctx.user.id, publicToken: nanoid(24), status: "Pending" });
+      const values: Omit<import("../drizzle/schema").InsertAgreement, "ownerId" | "projectId" | "clientId"> = { ...buildAgreementValues(fields as AgreementInput), ...logo, publicToken: nanoid(24), status: "Pending" as const };
+      return input.projectId ? createAgreementForProject(ctx.user.id, input.projectId, values) : createAgreement({ ...values, ownerId: ctx.user.id });
     }),
     update: protectedProcedure.input(agreementInput.safeExtend({ publicToken: z.string().min(12).max(32) })).mutation(async ({ ctx, input }) => {
       const { publicToken, logoDataUrl, ...fields } = input;

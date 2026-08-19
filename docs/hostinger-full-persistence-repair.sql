@@ -374,3 +374,23 @@ SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schem
 PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
 SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'receipts' AND column_name = 'qrLabel'), 'SELECT 1', 'ALTER TABLE `receipts` ADD COLUMN `qrLabel` VARCHAR(64) NULL');
 PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+-- Project management: School, College, and Academy remain institute types under the ERP project.
+CREATE TABLE IF NOT EXISTS `projects` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `ownerId` INT NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `clientIdPrefix` VARCHAR(24) NOT NULL,
+  `clientIdStart` INT NOT NULL DEFAULT 1,
+  `nextClientId` INT NOT NULL DEFAULT 1,
+  `createdAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'agreements' AND column_name = 'projectId'), 'SELECT 1', 'ALTER TABLE `agreements` ADD COLUMN `projectId` INT NULL AFTER `id`');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'agreements' AND column_name = 'clientId'), 'SELECT 1', 'ALTER TABLE `agreements` ADD COLUMN `clientId` VARCHAR(64) NULL AFTER `projectId`');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+INSERT INTO `projects` (`ownerId`, `name`, `clientIdPrefix`, `clientIdStart`, `nextClientId`)
+SELECT 1, 'ERP', 'ERP', 1, 1 FROM DUAL
+WHERE NOT EXISTS (SELECT 1 FROM `projects` WHERE `ownerId` = 1 AND LOWER(`name`) = 'erp');
