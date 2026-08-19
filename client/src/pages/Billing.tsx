@@ -77,6 +77,7 @@ const emptyReceipt = () => ({
   clientAddress: "",
   clientContact: "",
   clientEmail: "",
+  clientGst: "",
   receiptDate: today(),
   paymentDate: today(),
   amount: "",
@@ -548,6 +549,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       clientAddress: row.clientAddress ?? "",
       clientContact: row.clientContact ?? "",
       clientEmail: row.clientEmail ?? "",
+      clientGst: row.clientGst ?? "",
       receiptDate: row.receiptDate ?? today(),
       paymentDate: row.paymentDate ?? today(),
       amount: String(row.amount ?? row.grandTotal ?? ""),
@@ -1002,54 +1004,58 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                       </div>
                     </>
                   )}
-                  <div>
-                    <Label>Account company name</Label>
-                    <Input
-                      value={settingsForm.accountCompanyName ?? ""}
-                      onChange={e =>
-                        setSettingsForm({
-                          ...settingsForm,
-                          accountCompanyName: e.target.value,
-                        })
-                      }
-                    />
-                  </div>
-                  <div>
-                    <Label>Account number</Label>
-                    <Input
-                      value={settingsForm.accountNumber ?? ""}
-                      onChange={e =>
-                        setSettingsForm({
-                          ...settingsForm,
-                          accountNumber: e.target.value,
-                        })
-                      }
-                    />
-                  </div>
-                  <div>
-                    <Label>IFSC code</Label>
-                    <Input
-                      value={settingsForm.accountIfsc ?? ""}
-                      onChange={e =>
-                        setSettingsForm({
-                          ...settingsForm,
-                          accountIfsc: e.target.value,
-                        })
-                      }
-                    />
-                  </div>
-                  <div>
-                    <Label>Branch</Label>
-                    <Input
-                      value={settingsForm.accountBranch ?? ""}
-                      onChange={e =>
-                        setSettingsForm({
-                          ...settingsForm,
-                          accountBranch: e.target.value,
-                        })
-                      }
-                    />
-                  </div>
+                  {isInvoice && (
+                    <>
+                      <div>
+                        <Label>Account company name</Label>
+                        <Input
+                          value={settingsForm.accountCompanyName ?? ""}
+                          onChange={e =>
+                            setSettingsForm({
+                              ...settingsForm,
+                              accountCompanyName: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                      <div>
+                        <Label>Account number</Label>
+                        <Input
+                          value={settingsForm.accountNumber ?? ""}
+                          onChange={e =>
+                            setSettingsForm({
+                              ...settingsForm,
+                              accountNumber: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                      <div>
+                        <Label>IFSC code</Label>
+                        <Input
+                          value={settingsForm.accountIfsc ?? ""}
+                          onChange={e =>
+                            setSettingsForm({
+                              ...settingsForm,
+                              accountIfsc: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                      <div>
+                        <Label>Branch</Label>
+                        <Input
+                          value={settingsForm.accountBranch ?? ""}
+                          onChange={e =>
+                            setSettingsForm({
+                              ...settingsForm,
+                              accountBranch: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                    </>
+                  )}
                   <div className="sm:col-span-2">
                     <Label>Default terms</Label>
                     <Textarea
@@ -1553,6 +1559,19 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                       }
                     />
                   </div>
+                  <div>
+                    <Label>Client GST No. (optional)</Label>
+                    <Input
+                      value={receiptForm.clientGst}
+                      onChange={e =>
+                        setReceiptForm({
+                          ...receiptForm,
+                          clientGst: e.target.value,
+                        })
+                      }
+                      placeholder="Optional GSTIN"
+                    />
+                  </div>
                   <div className="sm:col-span-2">
                     <Label>Client address</Label>
                     <Textarea
@@ -1996,6 +2015,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#f0efff] text-[#43239d]"><FileText className="h-6 w-6" /></div>
                           <p className="shrink-0 text-[10px] font-bold uppercase tracking-wider text-[#43239d]">Received from</p>
                           <p className="min-w-0 truncate text-sm font-bold text-[#2f236d]">{selected.clientName || "—"}</p>
+                          {selected.clientGst && <p className="shrink-0 text-xs font-semibold text-[#43239d]">GST No.: {selected.clientGst}</p>}
                         </div>
                         <div className="grid gap-0 p-4 text-sm text-slate-600 sm:grid-cols-3">
                           <div className="border-b border-slate-200 pb-3 sm:border-b-0 sm:border-r sm:pr-4"><strong className="block text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Phone</strong><span className="mt-2 block break-words">{selected.clientContact || "—"}</span></div>
@@ -2084,11 +2104,10 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     </div>
                   ) : (
                     <>
-                      <div className="mt-8 grid overflow-hidden rounded-xl border-2 border-[#d7d0ff] bg-white sm:grid-cols-5">
+                      <div className="mt-8 grid overflow-hidden rounded-xl border-2 border-[#d7d0ff] bg-white sm:grid-cols-4">
                         <div className="border-b border-slate-200 p-3 text-center sm:border-b-0 sm:border-r"><p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Payment mode</p><p className="mt-3 text-xs text-slate-700">{selected.paymentMode || "—"}</p></div>
                         <div className="border-b border-slate-200 p-3 text-center sm:border-b-0 sm:border-r"><p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Transaction ID</p><p className="mt-3 break-words text-xs text-slate-700">{selected.transactionReference || "—"}</p></div>
                         <div className="border-b border-slate-200 p-3 text-center sm:border-b-0 sm:border-r"><p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Payment date</p><p className="mt-3 text-xs text-slate-700">{selected.paymentDate || "—"}</p></div>
-                        <div className="border-b border-slate-200 p-3 text-center sm:border-b-0 sm:border-r"><p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Bank name</p><p className="mt-3 break-words text-xs text-slate-700">{selected.accountBranch || receiptSettings.data?.accountBranch || "—"}</p></div>
                         <div className="p-3 text-center"><p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Reference / Notes</p><p className="mt-3 break-words text-xs text-slate-700">{selected.notes || selected.receivedFor || "—"}</p></div>
                       </div>
                       <div className="mt-5 grid gap-5 sm:grid-cols-2">

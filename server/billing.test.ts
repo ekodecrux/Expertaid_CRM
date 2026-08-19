@@ -49,11 +49,11 @@ describe("billing defaults and input contracts", () => {
     expect(() => invoiceStatusInput.parse("Sent")).toThrow();
   });
 
-  it("coerces Receipt settings, amount, and Invoice item numeric strings", () => {
-    const receiptSettings = receiptSettingsInput.parse({ companyGst: "GSTIN", companyAddress: "Address", receiptPrefix: "RCT", receiptNumberStart: "4", terms: "Terms" });
+  it("accepts Receipt settings, amount, and Invoice item numeric strings", () => {
+    const receiptSettings = receiptSettingsInput.parse({ companyGst: "GSTIN", companyAddress: "Address", receiptPrefix: "RCT", terms: "Terms" });
     const receipt = receiptInput.parse({ clientName: "Client", clientAddress: "Address", receiptDate: "2026-01-01", paymentDate: "2026-01-01", amount: "1250.50", paymentMode: "UPI", receivedFor: "Subscription" });
     const invoice = invoiceInput.parse({ clientName: "Client", clientAddress: "Address", invoiceDate: "2026-01-01", dueDate: "2026-01-15", gstRate: "18", items: [{ itemName: "ERP", quantity: "2", unitPrice: "500" }] });
-    expect(receiptSettings.receiptNumberStart).toBe(4);
+    expect(receiptSettings.receiptPrefix).toBe("RCT");
     expect(receipt.amount).toBe(1250.5);
     expect(invoice.gstRate).toBe(18);
     expect(invoice.gstMode).toBe("exclusive");

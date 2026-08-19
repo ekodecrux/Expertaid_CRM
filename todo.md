@@ -1107,3 +1107,10 @@
 - [x] Ensure saved branding logo and signature survive restarts/deployments through durable database-backed storage and Receipt inheritance (atomic database upserts, Invoice-to-Receipt asset inheritance, and Hostinger repair script added)
 
 - [x] Audit and harden durable persistence for Branding, Profile, Invoice, Receipt, Quotation, Agreement, Client, Session, and related settings/data flows (database paths reviewed; configured MySQL no longer silently falls back for profile, branding, quotation, or session settings)
+
+- [x] Remove Bank Name from the Receipt payment-information row
+- [x] Add optional Client GST No. to Receipt create/edit data and display it beside the client name
+
+- [x] Remove unused Account Company Name, Account Number, IFSC Code, and Branch fields from Receipt Settings
+
+- [x] Refine Receipt generation with optional Client GST No. beside RECEIVED FROM, remove Bank Name from payment information, and hide unused account fields from Receipt Settings
