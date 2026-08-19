@@ -1247,3 +1247,6 @@
 - [x] Add the agreement total amount to the Clients Plan summary column.
 
 - [x] Remove the duplicate Total line from agreement Plan summary while keeping the GST-aware Total value column.
+
+- [x] Redesign Client View to match the supplied reference with a branded header and structured overview/detail sections.
+- [x] Add a responsive institute overview panel, detail cards, status timeline, and full-width description area.
