@@ -1142,3 +1142,5 @@
 - [x] Remove the duplicate Transaction ID from the top Receipt header while retaining the bottom payment-row Transaction ID
 
 - [x] Remove the Transaction ID block from the blue Receipt header card and retain it only in the bottom payment row
+
+- [x] Restore Reference / Notes as the fourth field in the bottom Receipt payment-information row
