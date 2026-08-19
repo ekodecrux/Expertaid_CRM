@@ -1236,3 +1236,7 @@
 
 - [x] Move the Client View detail grid outside the identity header card.
 - [x] Remove the large empty left boundary area so details span the full dialog width.
+
+- [x] Reduce oversized Client View cards and excessive spacing.
+- [x] Present labels and values compactly with clear hierarchy and readable scrolling.
+- [x] Keep complete Agreement-derived details accessible without making every field visually large.
