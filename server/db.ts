@@ -4,7 +4,7 @@ import mysql from "mysql2/promise";
 import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, profileSettingsData, projects, quotationEditHistory, quotations, quotationSettings, sessions, users, type InsertProject, type User } from "../drizzle/schema";
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding, type CompanyBranding } from "@shared/branding";
-import { formatProjectClientId } from "@shared/project";
+import { formatProjectClientId, nextFutureProjectClientNumber } from "@shared/project";
 import { ENV } from './_core/env';
 import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getSavedLocalQuotationSettings, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalQuotationSettings, saveLocalSessionSettings, listLocalQuotations, createLocalQuotation, updateLocalQuotation, deleteLocalQuotation, type LocalQuotationSettings } from './localSettings';
 
@@ -561,7 +561,8 @@ export async function updateProjectForOwner(ownerId: number, id: number, values:
   const current = await db.select().from(projects).where(and(eq(projects.ownerId, ownerId), eq(projects.id, id))).limit(1);
   if (!current[0]) throw new Error("Project not found");
   const start = Math.max(1, Math.trunc(Number(values.clientIdStart ?? 1)));
-  await db.update(projects).set({ name: values.name.trim(), clientIdPrefix: values.clientIdPrefix.trim(), clientIdStart: start }).where(and(eq(projects.ownerId, ownerId), eq(projects.id, id)));
+  const nextClientId = nextFutureProjectClientNumber(current[0].nextClientId, start);
+  await db.update(projects).set({ name: values.name.trim(), clientIdPrefix: values.clientIdPrefix.trim(), clientIdStart: start, nextClientId }).where(and(eq(projects.ownerId, ownerId), eq(projects.id, id)));
   const rows = await db.select().from(projects).where(eq(projects.id, id)).limit(1);
   return rows[0];
 }
