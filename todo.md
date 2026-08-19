@@ -1148,3 +1148,5 @@
 - [x] Remove the empty Transaction ID block and divider spacing from the blue Receipt header
 
 - [x] Fix active sandbox Receipt preview still rendering the Transaction ID block in the blue header
+
+- [x] Trace and remove every active Receipt preview header Transaction ID rendering path confirmed by the latest sandbox screenshot
