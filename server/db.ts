@@ -1,7 +1,7 @@
 import { and, desc, eq, gte, like, lte, lt, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
-import { agreements, InsertAgreement, InsertQuotation, InsertQuotationSettings, InsertUser, profileSettingsData, projects, quotationEditHistory, quotations, quotationSettings, sessions, users, type InsertProject, type User } from "../drizzle/schema";
+import { agreements, clients, InsertAgreement, InsertClient, InsertQuotation, InsertQuotationSettings, InsertUser, profileSettingsData, projects, quotationEditHistory, quotations, quotationSettings, quotationSettingsData, sessions, users, type InsertProject, type User } from "../drizzle/schema";
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding, type CompanyBranding } from "@shared/branding";
 import { formatProjectClientId, nextFutureProjectClientNumber } from "@shared/project";
@@ -584,7 +584,8 @@ export async function deleteProjectForOwner(ownerId: number, id: number) {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
   const linked = await db.select({ count: sql<number>`count(*)` }).from(agreements).where(and(eq(agreements.ownerId, ownerId), eq(agreements.projectId, id)));
-  if (Number(linked[0]?.count ?? 0) > 0) throw new Error("This project cannot be deleted because it has linked clients or agreements.");
+  const linkedClients = await db.select({ count: sql<number>`count(*)` }).from(clients).where(and(eq(clients.ownerId, ownerId), eq(clients.projectId, id)));
+  if (Number(linked[0]?.count ?? 0) + Number(linkedClients[0]?.count ?? 0) > 0) throw new Error("This project cannot be deleted because it has linked clients or agreements.");
   await db.delete(projects).where(and(eq(projects.ownerId, ownerId), eq(projects.id, id)));
   return { success: true } as const;
 }
@@ -695,32 +696,81 @@ export async function listAgreementsForOwner(ownerId: number, scope?: { sessionM
   return db.select().from(agreements).where(where).orderBy(desc(agreements.createdAt));
 }
 
+export async function createClientForOwner(ownerId: number, projectId: number, values: Omit<InsertClient, "ownerId" | "projectId" | "clientId">) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  return db.transaction(async (tx) => {
+    const projectRows = await tx.select().from(projects).where(and(eq(projects.ownerId, ownerId), eq(projects.id, projectId))).limit(1);
+    const project = projectRows[0];
+    if (!project) throw new Error("Project not found");
+    const sequence = Math.max(1, Math.trunc(Number(project.nextClientId)));
+    const clientId = formatProjectClientId(project.clientIdPrefix, sequence);
+    const inserted = await tx.insert(clients).values({ ...values, ownerId, projectId, clientId });
+    await tx.update(projects).set({ nextClientId: sequence + 1 }).where(and(eq(projects.ownerId, ownerId), eq(projects.id, projectId)));
+    const rows = await tx.select().from(clients).where(eq(clients.id, Number(inserted[0].insertId))).limit(1);
+    return rows[0];
+  });
+}
+
 export async function listApprovedClientsForOwner(ownerId: number, options: { page: number; pageSize: number; search?: string; instituteType?: "School" | "College" | "Academy"; clientStatus?: "Active" | "Inactive"; startDate?: string; endDate?: string; branchCoverage?: "individual" | "multiple"; minValue?: number; maxValue?: number; sessionMode?: "all" | "single"; currentSession?: string }) {
   const db = await getDb();
   if (!db) return { items: [], total: 0, page: options.page, pageSize: options.pageSize, totalPages: 0, summary: { students: 0, value: 0 } };
   const search = options.search?.trim();
-  const filters = [eq(agreements.ownerId, ownerId), eq(agreements.status, "Approved" as const)];
-  if (options.sessionMode === "single" && options.currentSession) filters.push(eq(agreements.session, options.currentSession));
-  if (options.instituteType) filters.push(eq(agreements.instituteType, options.instituteType));
-  if (options.clientStatus === "Active") filters.push(gte(agreements.endDate, new Date().toISOString().slice(0, 10)));
-  if (options.clientStatus === "Inactive") filters.push(lt(agreements.endDate, new Date().toISOString().slice(0, 10)));
-  if (options.startDate) filters.push(gte(agreements.startDate, options.startDate));
-  if (options.endDate) filters.push(lte(agreements.endDate, options.endDate));
-  if (options.branchCoverage) filters.push(eq(agreements.branchCoverage, options.branchCoverage));
-  if (options.minValue !== undefined) filters.push(gte(agreements.totalPrice, options.minValue.toFixed(2)));
-  if (options.maxValue !== undefined) filters.push(lte(agreements.totalPrice, options.maxValue.toFixed(2)));
+  const today = new Date().toISOString().slice(0, 10);
+  const agreementFilters = [eq(agreements.ownerId, ownerId), eq(agreements.status, "Approved" as const)];
+  const clientFilters = [eq(clients.ownerId, ownerId)];
+  if (options.sessionMode === "single" && options.currentSession) {
+    agreementFilters.push(eq(agreements.session, options.currentSession));
+    clientFilters.push(eq(clients.session, options.currentSession));
+  }
+  if (options.instituteType) {
+    agreementFilters.push(eq(agreements.instituteType, options.instituteType));
+    clientFilters.push(eq(clients.instituteType, options.instituteType));
+  }
+  if (options.clientStatus === "Active") {
+    agreementFilters.push(gte(agreements.endDate, today));
+    clientFilters.push(gte(clients.endDate, today));
+  }
+  if (options.clientStatus === "Inactive") {
+    agreementFilters.push(lt(agreements.endDate, today));
+    clientFilters.push(lt(clients.endDate, today));
+  }
+  if (options.startDate) {
+    agreementFilters.push(gte(agreements.startDate, options.startDate));
+    clientFilters.push(gte(clients.startDate, options.startDate));
+  }
+  if (options.endDate) {
+    agreementFilters.push(lte(agreements.endDate, options.endDate));
+    clientFilters.push(lte(clients.endDate, options.endDate));
+  }
+  if (options.branchCoverage) {
+    agreementFilters.push(eq(agreements.branchCoverage, options.branchCoverage));
+    clientFilters.push(eq(clients.branchCoverage, options.branchCoverage));
+  }
+  if (options.minValue !== undefined) {
+    agreementFilters.push(gte(agreements.totalPrice, options.minValue.toFixed(2)));
+    clientFilters.push(gte(clients.totalPrice, options.minValue.toFixed(2)));
+  }
+  if (options.maxValue !== undefined) {
+    agreementFilters.push(lte(agreements.totalPrice, options.maxValue.toFixed(2)));
+    clientFilters.push(lte(clients.totalPrice, options.maxValue.toFixed(2)));
+  }
   if (search) {
     const pattern = `%${search}%`;
-    filters.push(or(like(agreements.clientName, pattern), like(agreements.clientOwnerName, pattern), like(agreements.email, pattern), like(agreements.contactNumber, pattern), like(agreements.instituteType, pattern))!);
+    agreementFilters.push(or(like(agreements.clientName, pattern), like(agreements.clientOwnerName, pattern), like(agreements.email, pattern), like(agreements.contactNumber, pattern), like(agreements.instituteType, pattern))!);
+    clientFilters.push(or(like(clients.clientName, pattern), like(clients.clientOwnerName, pattern), like(clients.email, pattern), like(clients.contactNumber, pattern), like(clients.instituteType, pattern))!);
   }
-  const where = and(...filters);
-  const [items, countRows, summaryRows] = await Promise.all([
-    db.select().from(agreements).where(where).orderBy(desc(agreements.createdAt)).limit(options.pageSize).offset((options.page - 1) * options.pageSize),
-    db.select({ total: sql<number>`count(*)` }).from(agreements).where(where),
-    db.select({ students: sql<number>`coalesce(sum(${agreements.noOfStudents}), 0)`, value: sql<number>`coalesce(sum(${agreements.totalPrice}), 0)` }).from(agreements).where(where),
+  const [agreementItems, standaloneItems] = await Promise.all([
+    db.select().from(agreements).where(and(...agreementFilters)).orderBy(desc(agreements.createdAt)),
+    db.select().from(clients).where(and(...clientFilters)).orderBy(desc(clients.createdAt)),
   ]);
-  const total = Number(countRows[0]?.total ?? 0);
-  return { items, total, page: options.page, pageSize: options.pageSize, totalPages: Math.ceil(total / options.pageSize), summary: { students: Number(summaryRows[0]?.students ?? 0), value: Number(summaryRows[0]?.value ?? 0) } };
+  const normalizedStandalone = standaloneItems.map((client) => ({ ...client, id: -client.id, signatureDate: null, decidedAt: null }));
+  const combined = [...agreementItems, ...normalizedStandalone].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  const total = combined.length;
+  const pageItems = combined.slice((options.page - 1) * options.pageSize, options.page * options.pageSize);
+  const students = combined.reduce((sum, item) => sum + Number(item.noOfStudents ?? 0), 0);
+  const value = combined.reduce((sum, item) => sum + Number(item.totalPrice ?? 0), 0);
+  return { items: pageItems, total, page: options.page, pageSize: options.pageSize, totalPages: Math.ceil(total / options.pageSize), summary: { students, value } };
 }
 
 export async function getAgreementByToken(publicToken: string) {

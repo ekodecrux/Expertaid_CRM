@@ -400,3 +400,36 @@ SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schem
 PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
 UPDATE `projects` SET `isMain` = CASE WHEN LOWER(`name`) = 'erp' THEN 1 ELSE 0 END WHERE `ownerId` = 1 AND EXISTS (SELECT 1 FROM `projects` WHERE `ownerId` = 1 AND LOWER(`name`) = 'erp');
 SELECT `id`, `name`, `clientIdPrefix`, `isMain`, `nextClientId` FROM `projects` WHERE `ownerId` = 1 ORDER BY `isMain` DESC, `name`;
+
+-- Standalone Clients module: Add Client records with project-generated Client IDs.
+CREATE TABLE IF NOT EXISTS `clients` (
+  `id` int AUTO_INCREMENT NOT NULL,
+  `projectId` int,
+  `clientId` varchar(64) NOT NULL,
+  `ownerId` int NOT NULL,
+  `clientName` varchar(255) NOT NULL,
+  `clientOwnerName` varchar(255) NOT NULL,
+  `instituteType` enum('School','College','Academy') NOT NULL DEFAULT 'School',
+  `branchCoverage` enum('individual','multiple') NOT NULL DEFAULT 'individual',
+  `branchCount` int NOT NULL DEFAULT 1,
+  `contactNumber` varchar(64) NOT NULL,
+  `email` varchar(320) NOT NULL,
+  `address` text NOT NULL,
+  `noOfStudents` int NOT NULL DEFAULT 0,
+  `pricingMode` enum('perStudent','package') NOT NULL DEFAULT 'perStudent',
+  `perStudentPrice` decimal(12,2),
+  `packagePrice` decimal(14,2),
+  `noOfYearPlan` int NOT NULL DEFAULT 1,
+  `startDate` varchar(32) NOT NULL,
+  `endDate` varchar(32) NOT NULL,
+  `session` varchar(16) NOT NULL DEFAULT '2026-2027',
+  `totalPrice` decimal(14,2) NOT NULL DEFAULT '0.00',
+  `description` text,
+  `logoUrl` text,
+  `logoKey` varchar(512),
+  `status` enum('Active','Inactive') NOT NULL DEFAULT 'Active',
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `clients_clientId_unique` (`clientId`)
+);

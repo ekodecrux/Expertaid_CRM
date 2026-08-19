@@ -133,6 +133,36 @@ export const projects = mysqlTable("projects", {
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 
+export const clients = mysqlTable("clients", {
+  id: int("id").autoincrement().primaryKey(),
+  projectId: int("projectId"),
+  clientId: varchar("clientId", { length: 64 }).notNull().unique(),
+  ownerId: int("ownerId").notNull(),
+  clientName: varchar("clientName", { length: 255 }).notNull(),
+  clientOwnerName: varchar("clientOwnerName", { length: 255 }).notNull(),
+  instituteType: mysqlEnum("instituteType", ["School", "College", "Academy"]).default("School").notNull(),
+  branchCoverage: mysqlEnum("branchCoverage", ["individual", "multiple"]).default("individual").notNull(),
+  branchCount: int("branchCount").default(1).notNull(),
+  contactNumber: varchar("contactNumber", { length: 64 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  address: text("address").notNull(),
+  noOfStudents: int("noOfStudents").notNull().default(0),
+  pricingMode: mysqlEnum("pricingMode", ["perStudent", "package"]).default("perStudent").notNull(),
+  perStudentPrice: decimal("perStudentPrice", { precision: 12, scale: 2 }),
+  packagePrice: decimal("packagePrice", { precision: 14, scale: 2 }),
+  noOfYearPlan: int("noOfYearPlan").notNull().default(1),
+  startDate: varchar("startDate", { length: 32 }).notNull(),
+  endDate: varchar("endDate", { length: 32 }).notNull(),
+  session: varchar("session", { length: 16 }).default("2026-2027").notNull(),
+  totalPrice: decimal("totalPrice", { precision: 14, scale: 2 }).notNull().default("0.00"),
+  description: text("description"),
+  logoUrl: text("logoUrl"),
+  logoKey: varchar("logoKey", { length: 512 }),
+  status: mysqlEnum("status", ["Active", "Inactive"]).default("Active").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
 export const agreements = mysqlTable("agreements", {
   id: int("id").autoincrement().primaryKey(),
   projectId: int("projectId"),
@@ -313,6 +343,8 @@ export type InsertQuotationEditHistory = typeof quotationEditHistory.$inferInser
 export type Quotation = typeof quotations.$inferSelect;
 export type InsertQuotation = typeof quotations.$inferInsert;
 export type Project = typeof projects.$inferSelect;
+export type Client = typeof clients.$inferSelect;
+export type InsertClient = typeof clients.$inferInsert;
 export type InsertProject = typeof projects.$inferInsert;
 export type Agreement = typeof agreements.$inferSelect;
 export type InsertAgreement = typeof agreements.$inferInsert;
