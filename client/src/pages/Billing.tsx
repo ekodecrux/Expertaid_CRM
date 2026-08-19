@@ -80,10 +80,10 @@ const emptyReceipt = () => ({
   clientGst: "",
   receiptDate: today(),
   paymentDate: today(),
-  amount: "",
+  gstRate: "18",
+  gstMode: "exclusive" as GstMode,
   paymentMode: "Bank Transfer" as const,
   transactionReference: "",
-  receivedFor: "",
   notes: "",
   items: [emptyItem()],
 });
@@ -428,9 +428,19 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       ),
     [invoiceForm.items, invoiceForm.gstRate, invoiceForm.gstMode]
   );
-  const receiptItemsTotal = receiptForm.items.reduce(
-    (sum, item) => sum + (Number(item.quantity) || 0) * (Number(item.unitPrice) || 0),
-    0
+  const receiptTotals = useMemo(
+    () =>
+      calculateQuotationTotals(
+        receiptForm.items.map(item => ({
+          product: "ERP" as const,
+          itemName: item.itemName || "Item",
+          quantity: Number(item.quantity) || 0,
+          unitPrice: Number(item.unitPrice) || 0,
+        })),
+        Number(receiptForm.gstRate) || 0,
+        receiptForm.gstMode
+      ),
+    [receiptForm.items, receiptForm.gstRate, receiptForm.gstMode]
   );
 
   const clearSettingsError = (key: string) => {
@@ -567,10 +577,10 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       clientGst: row.clientGst ?? "",
       receiptDate: row.receiptDate ?? today(),
       paymentDate: row.paymentDate ?? today(),
-      amount: String(row.amount ?? row.grandTotal ?? ""),
+      gstRate: String(row.gstRate ?? 18),
+      gstMode: row.gstMode ?? "exclusive",
       paymentMode: row.paymentMode ?? "Bank Transfer",
       transactionReference: row.transactionReference ?? "",
-      receivedFor: row.receivedFor ?? "",
       notes: row.notes ?? "",
       items: (() => {
         try {
@@ -615,10 +625,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     } else {
       if (!form.receiptDate) errors.receiptDate = "Receipt date is required.";
       if (!form.paymentDate) errors.paymentDate = "Payment date is required.";
-      if (!(Number(form.amount) >= 0) || form.amount === "")
-        errors.amount = "Amount received must be zero or greater.";
-      if (!form.receivedFor.trim())
-        errors.receivedFor = "Received for is required.";
+      if (!(Number(form.gstRate) >= 0) || Number(form.gstRate) > 100)
+        errors.gstRate = "GST rate must be between 0 and 100.";
       form.items.forEach((item: Item, index: number) => {
         if (!item.itemName.trim())
           errors[`item.${index}`] = `Line item ${index + 1} needs an item name.`;
@@ -646,7 +654,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     } else {
       const payload = {
         ...receiptForm,
-        amount: Number(receiptForm.amount),
+        gstRate: Number(receiptForm.gstRate),
         items: receiptForm.items.map(item => ({
           ...item,
           quantity: Number(item.quantity),
@@ -1757,20 +1765,39 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     />
                   </div>
                   <div>
-                    <Label>Amount received</Label>
+                    <Label>GST rate (%)</Label>
                     <Input
+                      data-billing-error={Boolean(formErrors.gstRate)}
                       required
                       type="number"
                       min="0"
+                      max="100"
                       step="0.01"
-                      value={receiptForm.amount}
+                      value={receiptForm.gstRate}
                       onChange={e =>
                         setReceiptForm({
                           ...receiptForm,
-                          amount: e.target.value,
+                          gstRate: e.target.value,
                         })
                       }
                     />
+                  </div>
+                  <div>
+                    <Label>GST calculation</Label>
+                    <Select
+                      value={receiptForm.gstMode}
+                      onValueChange={(value: GstMode) =>
+                        setReceiptForm({ ...receiptForm, gstMode: value })
+                      }
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="exclusive">GST exclusive</SelectItem>
+                        <SelectItem value="inclusive">GST inclusive</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                   <div>
                     <Label>Receipt date</Label>
@@ -1798,59 +1825,6 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           paymentDate: e.target.value,
                         })
                       }
-                    />
-                  </div>
-                  <div>
-                    <Label>Payment mode</Label>
-                    <Select
-                      value={receiptForm.paymentMode}
-                      onValueChange={(value: any) =>
-                        setReceiptForm({ ...receiptForm, paymentMode: value })
-                      }
-                    >
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {[
-                          "Cash",
-                          "UPI",
-                          "Bank Transfer",
-                          "Card",
-                          "Cheque",
-                          "Other",
-                        ].map(value => (
-                          <SelectItem key={value} value={value}>
-                            {value}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <Label>Transaction reference</Label>
-                    <Input
-                      value={receiptForm.transactionReference}
-                      onChange={e =>
-                        setReceiptForm({
-                          ...receiptForm,
-                          transactionReference: e.target.value,
-                        })
-                      }
-                    />
-                  </div>
-                  <div className="sm:col-span-2">
-                    <Label>Received for</Label>
-                    <Input
-                      required
-                      value={receiptForm.receivedFor}
-                      onChange={e =>
-                        setReceiptForm({
-                          ...receiptForm,
-                          receivedFor: e.target.value,
-                        })
-                      }
-                      placeholder="Annual ERP subscription"
                     />
                   </div>
                   <div className="sm:col-span-2 rounded-xl border border-[#d7d0ff] bg-[#faf9ff] p-4">
@@ -1954,8 +1928,42 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                         </div>
                       ))}
                     </div>
-                    <div className="mt-3 text-right text-sm text-slate-700">
-                      Items total: <strong className="text-[#43239d]">{formatCurrency(receiptItemsTotal)}</strong>
+                    <div className="mt-3 grid gap-1 text-right text-sm text-slate-700">
+                      <p>{receiptForm.gstMode === "inclusive" ? "Entered total including GST" : "Taxable subtotal"}: <strong>{formatCurrency(receiptTotals.subtotal)}</strong></p>
+                      <p>GST ({receiptForm.gstRate}%): <strong>{formatCurrency(receiptTotals.gstAmount)}</strong></p>
+                      <p className="text-base text-[#43239d]">Grand total: <strong>{formatCurrency(receiptTotals.grandTotal)}</strong></p>
+                    </div>
+                  </div>
+                  <div className="grid gap-4 sm:col-span-2 sm:grid-cols-2">
+                    <div>
+                      <Label>Payment mode</Label>
+                      <Select
+                        value={receiptForm.paymentMode}
+                        onValueChange={(value: any) =>
+                          setReceiptForm({ ...receiptForm, paymentMode: value })
+                        }
+                      >
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {["Cash", "UPI", "Bank Transfer", "Card", "Cheque", "Other"].map(value => (
+                            <SelectItem key={value} value={value}>{value}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div>
+                      <Label>Transaction reference</Label>
+                      <Input
+                        value={receiptForm.transactionReference}
+                        onChange={e =>
+                          setReceiptForm({
+                            ...receiptForm,
+                            transactionReference: e.target.value,
+                          })
+                        }
+                      />
                     </div>
                   </div>
                   <div className="sm:col-span-2">
@@ -2292,7 +2300,12 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           <thead className="bg-gradient-to-r from-[#43239d] via-[#4d35ad] to-[#3157d5] text-left text-[10px] font-bold uppercase tracking-wide text-white"><tr><th className="w-12 px-3 py-3 text-center">S.NO</th><th className="px-3 py-3">ITEM NAME</th><th className="w-20 px-3 py-3 text-center">QTY</th><th className="w-32 px-3 py-3 text-right">{isInvoice ? "PER UNIT" : "RATE (₹)"}</th><th className="w-32 px-3 py-3 text-right">{isInvoice ? "TOTAL PRICE" : "AMOUNT (₹)"}</th></tr></thead>
                           <tbody>{(selected.itemsJson ? JSON.parse(selected.itemsJson) : [{ itemName: selected.receivedFor, quantity: 1, unitPrice: selected.amount }]).map((item: any, index: number) => <tr key={`receipt-item-${selected.id}-${index}`} className="border-b border-slate-200 bg-white last:border-b-2 last:border-slate-300"><td className="px-3 py-3 text-center text-slate-700">{index + 1}</td><td className="px-3 py-3"><strong className="text-[#2f236d]">{item.itemName || item.productName || item.product || "Item"}</strong>{item.description && <span className="ml-1 text-xs text-slate-500">({item.description})</span>}</td><td className="px-3 py-3 text-center text-slate-700">{item.quantity}</td><td className="px-3 py-3 text-right text-slate-700">{formatCurrency(Number(item.unitPrice))}</td><td className="px-3 py-3 text-right font-semibold text-slate-800">{formatCurrency(Number(item.unitPrice) * Number(item.quantity))}</td></tr>)}</tbody>
                         </table>
-                        <div className="grid grid-cols-2 bg-white"><div className="flex items-center justify-center border-r border-slate-200 px-4 py-6 text-center text-xs font-bold uppercase tracking-wide text-[#43239d]">Total price including tax</div><div className="grid grid-cols-[minmax(0,1fr)_112px] text-right text-sm"><span className="border-b border-l border-slate-200 px-4 py-3 text-center text-xs uppercase leading-tight text-slate-600">Total</span><strong className="border-b border-slate-200 px-4 py-3 text-slate-800">{formatCurrency(Number(selected.subtotal ?? selected.amount))}</strong><span className="border-b border-l border-slate-200 px-4 py-3 text-center text-xs uppercase leading-tight text-slate-600">Tax amount ({selected.gstRate ?? 0}%)</span><strong className="border-b border-slate-200 px-4 py-3 text-slate-800">{formatCurrency(Number(selected.gstAmount ?? 0))}</strong><span className="border-l border-t border-slate-200 px-4 py-3 text-center text-base font-bold uppercase leading-tight text-[#43239d]">Grand total amount</span><strong className="border-t border-slate-200 bg-[#43239d] px-4 py-3 text-base text-white">{formatCurrency(Number(selected.grandTotal ?? selected.amount))}</strong></div><div className="col-span-2 flex min-h-[52px] items-center gap-3 border-t-2 border-b-2 border-slate-300 px-4 py-3"><span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#43239d] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white">Amount in words <span aria-hidden="true">:</span></span><span className="text-sm font-medium text-slate-700">{amountInWords(Number(selected.grandTotal ?? selected.amount))}</span></div></div>
+                        <div className="grid overflow-hidden border-t border-slate-200 bg-white sm:grid-cols-3">
+                          <div className="border-b border-slate-200 p-3 text-center sm:border-b-0 sm:border-r"><p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Payment mode</p><p className="mt-2 text-xs text-slate-700">{selected.paymentMode || "—"}</p></div>
+                          <div className="border-b border-slate-200 p-3 text-center sm:border-b-0 sm:border-r"><p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Transaction ID</p><p className="mt-2 break-words text-xs text-slate-700">{selected.transactionReference || "—"}</p></div>
+                          <div className="p-3 text-center"><p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Payment date</p><p className="mt-2 text-xs text-slate-700">{selected.paymentDate || "—"}</p></div>
+                        </div>
+                        <div className="grid grid-cols-2 bg-white"><div className="flex items-center justify-center border-r border-slate-200 px-4 py-6 text-center text-xs font-bold uppercase tracking-wide text-[#43239d]">{selected.gstMode === "inclusive" ? "Total including GST" : "Taxable subtotal"}</div><div className="grid grid-cols-[minmax(0,1fr)_112px] text-right text-sm"><span className="border-b border-l border-slate-200 px-4 py-3 text-center text-xs uppercase leading-tight text-slate-600">Total</span><strong className="border-b border-slate-200 px-4 py-3 text-slate-800">{formatCurrency(Number(selected.subtotal ?? selected.amount))}</strong><span className="border-b border-l border-slate-200 px-4 py-3 text-center text-xs uppercase leading-tight text-slate-600">Tax amount ({selected.gstRate ?? 0}%)</span><strong className="border-b border-slate-200 px-4 py-3 text-slate-800">{formatCurrency(Number(selected.gstAmount ?? 0))}</strong><span className="border-l border-t border-slate-200 px-4 py-3 text-center text-base font-bold uppercase leading-tight text-[#43239d]">Grand total amount</span><strong className="border-t border-slate-200 bg-[#43239d] px-4 py-3 text-base text-white">{formatCurrency(Number(selected.grandTotal ?? selected.amount))}</strong></div><div className="col-span-2 flex min-h-[52px] items-center gap-3 border-t-2 border-b-2 border-slate-300 px-4 py-3"><span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#43239d] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white">Amount in words <span aria-hidden="true">:</span></span><span className="text-sm font-medium text-slate-700">{amountInWords(Number(selected.grandTotal ?? selected.amount))}</span></div></div>
                       </div>
                     </>
                   )}
@@ -2368,12 +2381,6 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     </div>
                   ) : (
                     <>
-                      <div className="mt-8 grid overflow-hidden rounded-xl border-2 border-[#d7d0ff] bg-white sm:grid-cols-4">
-                        <div className="border-b border-slate-200 p-3 text-center sm:border-b-0 sm:border-r"><p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Payment mode</p><p className="mt-3 text-xs text-slate-700">{selected.paymentMode || "—"}</p></div>
-                        <div className="border-b border-slate-200 p-3 text-center sm:border-b-0 sm:border-r"><p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Transaction ID</p><p className="mt-3 break-words text-xs text-slate-700">{selected.transactionReference || "—"}</p></div>
-                        <div className="border-b border-slate-200 p-3 text-center sm:border-b-0 sm:border-r"><p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Payment date</p><p className="mt-3 text-xs text-slate-700">{selected.paymentDate || "—"}</p></div>
-                        <div className="p-3 text-center"><p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Reference / Notes</p><p className="mt-3 break-words text-xs text-slate-700">{selected.notes || selected.receivedFor || "—"}</p></div>
-                      </div>
                       <div className="mt-5 grid gap-5 sm:grid-cols-2">
                         <div className="rounded-xl border-2 border-[#d7d0ff] bg-white p-5"><p className="text-xs font-bold uppercase tracking-wide text-[#43239d]">Terms & Conditions</p><p className="mt-3 whitespace-pre-line text-sm leading-6 text-slate-700">{selected.terms || "This receipt is valid subject to realization of payment."}</p></div>
                         <div className="flex min-h-[180px] flex-col items-center justify-center rounded-xl border-2 border-[#d7d0ff] bg-white p-5 text-center"><p className="text-xs font-bold uppercase tracking-wide text-[#43239d]">{selected.footerCompanyName || receiptSettings.data?.footerCompanyName || "FOR EXPERTAID TECHNOLOGIES PVT LTD."}</p>{selectedSignatureUrl ? <img src={selectedSignatureUrl} alt="Authorised signature" className="mx-auto mt-4 h-24 w-40 object-contain" /> : <div className="h-24" />}<p className="mt-3 text-xs font-bold uppercase tracking-wide text-[#43239d]">Authorized Signature</p></div>

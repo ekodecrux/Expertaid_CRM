@@ -1120,3 +1120,7 @@
 - [x] Add persistent default Receipt products with item name, description, quantity, and rate controls in Receipt Settings
 - [x] Support adding, editing, removing, and saving multiple Receipt items during Receipt creation and editing
 - [x] Load Receipt default products into new Receipt forms and preserve itemized totals in Receipt previews and prints
+
+- [x] Remove Amount received and Received for from manual Receipt creation and derive the Receipt total from product lines
+- [x] Add Receipt GST including/excluding selection with calculated taxable amount, GST, and grand total
+- [x] Move Payment Mode and Transaction ID below the Receipt product table in the form and document preview
