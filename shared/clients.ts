@@ -9,6 +9,10 @@ export function filterApprovedClients<T extends ApprovedAgreementLike>(agreement
 export type ClientManualStatus = "Active" | "Inactive" | "Hold" | "Cancelled" | "Renewal" | "Extended" | "Closed";
 export type AutomaticClientStatus = "Active" | "Ready to Expire" | "Expired";
 
+export function getManualClientStatuses(isMainProject: boolean): ClientManualStatus[] {
+  return isMainProject ? ["Active", "Inactive", "Hold", "Cancelled"] : ["Active", "Inactive", "Extended", "Renewal", "Closed"];
+}
+
 export function getClientLifecycleStatus(endDate: string, today = new Date().toISOString().slice(0, 10)): AutomaticClientStatus {
   const end = new Date(`${endDate}T00:00:00Z`).getTime();
   const current = new Date(`${today}T00:00:00Z`).getTime();

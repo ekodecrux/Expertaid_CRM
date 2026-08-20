@@ -1347,3 +1347,7 @@
 - [x] Match Project and Client ID labels and controls to the same spacing, border, height, width, and typography as the remaining invoice and receipt fields.
 
 - [x] Diagnose and fix the receipt insert-query failure while preserving Client ID linkage and receipt details.
+
+- [x] Add payment details editing to the Clients edit workflow.
+- [x] Add upcoming instalment amounts and due-date handling to the Clients edit workflow.
+- [x] Allow ERP and other-project client statuses to be updated by clicking the status in the Clients list using their project-specific allowed statuses.

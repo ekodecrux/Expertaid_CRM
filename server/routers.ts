@@ -161,6 +161,7 @@ export const appRouter = router({
     }),
     update: protectedProcedure.input(invoiceInput.extend({ id: z.number().int().positive() })).mutation(async ({ ctx, input }) => { const { id, items, ...fields } = input; const totals = calculateQuotationTotals(items.map((item) => ({ ...item, product: "ERP" as const })), input.gstRate, input.gstMode); return updateInvoiceForOwner(ctx.user.id, id, { ...fields, itemsJson: JSON.stringify(items), subtotal: totals.subtotal.toFixed(2), gstRate: input.gstRate.toFixed(2), gstMode: input.gstMode, gstAmount: totals.gstAmount.toFixed(2), grandTotal: totals.grandTotal.toFixed(2) }); }),
     updateStatus: protectedProcedure.input(z.object({ id: z.number().int().positive(), status: invoiceStatusInput })).mutation(({ ctx, input }) => updateInvoiceStatusForOwner(ctx.user.id, input.id, input.status)),
+    updateDueDate: protectedProcedure.input(z.object({ id: z.number().int().positive(), dueDate: z.string().min(1) })).mutation(({ ctx, input }) => updateInvoiceForOwner(ctx.user.id, input.id, { dueDate: input.dueDate })),
     delete: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ ctx, input }) => deleteInvoiceForOwner(ctx.user.id, input.id)),
   }),
   receipts: router({
