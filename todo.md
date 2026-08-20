@@ -1285,3 +1285,5 @@
 - [x] Use the exact primary row sections: Client Name, Collaboration, Financials, Total Status, and Actions.
 
 - [x] Show the Edit pencil icon for agreement-derived ERP rows as well as standalone Client rows.
+
+- [x] Remove the circular-arrow Renewal icon from the Clients Actions group while preserving Payment, History, View, and Edit.
