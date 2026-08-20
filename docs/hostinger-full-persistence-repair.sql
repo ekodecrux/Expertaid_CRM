@@ -427,7 +427,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `description` text,
   `logoUrl` text,
   `logoKey` varchar(512),
-  `status` enum('Active','Inactive') NOT NULL DEFAULT 'Active',
+  `status` enum('Active','Inactive','Hold','Cancelled','Renewal','Extended','Closed') NOT NULL DEFAULT 'Active',
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -446,4 +446,8 @@ SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schem
 PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
 
 -- Expand standalone Client statuses for edit and lifecycle management.
-ALTER TABLE `clients` MODIFY COLUMN `status` enum('Active','Inactive','Hold','Close') NOT NULL DEFAULT 'Active';
+ALTER TABLE `clients` MODIFY COLUMN `status` enum('Active','Inactive','Hold','Cancelled','Renewal','Extended','Closed') NOT NULL DEFAULT 'Active';
+
+-- Persist the client lifecycle status separately from the agreement approval status.
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'agreements' AND column_name = 'clientStatus'), 'SELECT 1', 'ALTER TABLE `agreements` ADD COLUMN `clientStatus` ENUM(''Active'',''Inactive'',''Hold'',''Cancelled'',''Renewal'',''Extended'',''Closed'') NULL AFTER `status`');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;

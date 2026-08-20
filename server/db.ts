@@ -720,7 +720,19 @@ export async function updateClientForOwner(ownerId: number, clientId: number, va
   if (!rows[0]) throw new Error("Client not found or you do not have permission to edit it.");
   return rows[0];
 }
-export async function listApprovedClientsForOwner(ownerId: number, options: { page: number; pageSize: number; search?: string; instituteType?: "School" | "College" | "Academy"; clientStatus?: "Active" | "Inactive" | "Hold" | "Close"; startDate?: string; endDate?: string; branchCoverage?: "individual" | "multiple"; minValue?: number; maxValue?: number; sessionMode?: "all" | "single"; currentSession?: string }) {
+export type ClientManualStatus = "Active" | "Inactive" | "Hold" | "Cancelled" | "Renewal" | "Extended" | "Closed";
+
+export async function updateAgreementClientStatus(ownerId: number, agreementId: number, status: ClientManualStatus) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  await db.update(agreements).set({ clientStatus: status }).where(and(eq(agreements.id, agreementId), eq(agreements.ownerId, ownerId)));
+  const predicate = and(eq(agreements.id, agreementId), eq(agreements.ownerId, ownerId));
+  const rows = await db.select().from(agreements).where(predicate).limit(1);
+  if (!rows[0]) throw new Error("Client agreement not found or you do not have permission to edit it.");
+  return rows[0];
+}
+
+export async function listApprovedClientsForOwner(ownerId: number, options: { page: number; pageSize: number; search?: string; instituteType?: "School" | "College" | "Academy"; clientStatus?: ClientManualStatus | "Ready to Expire" | "Expired"; startDate?: string; endDate?: string; branchCoverage?: "individual" | "multiple"; minValue?: number; maxValue?: number; sessionMode?: "all" | "single"; currentSession?: string }) {
   const db = await getDb();
   if (!db) return { items: [], total: 0, page: options.page, pageSize: options.pageSize, totalPages: 0, summary: { students: 0, value: 0 } };
   const search = options.search?.trim();
@@ -736,16 +748,20 @@ export async function listApprovedClientsForOwner(ownerId: number, options: { pa
     clientFilters.push(eq(clients.instituteType, options.instituteType));
   }
   if (options.clientStatus === "Active") {
-    agreementFilters.push(gte(agreements.endDate, today));
+    agreementFilters.push(gte(agreements.endDate, today), sql`(${agreements.clientStatus} IS NULL OR ${agreements.clientStatus} = 'Active')`);
     clientFilters.push(eq(clients.status, "Active"));
   }
-  if (options.clientStatus === "Inactive") {
-    agreementFilters.push(lt(agreements.endDate, today));
-    clientFilters.push(eq(clients.status, "Inactive"));
+  if (options.clientStatus === "Ready to Expire") {
+    agreementFilters.push(sql`${agreements.endDate} BETWEEN ${today} AND DATE_ADD(${today}, INTERVAL 5 DAY)`);
+    clientFilters.push(sql`${clients.endDate} BETWEEN ${today} AND DATE_ADD(${today}, INTERVAL 5 DAY)`);
   }
-  if (options.clientStatus === "Hold" || options.clientStatus === "Close") {
-    agreementFilters.push(sql`1 = 0`);
-    clientFilters.push(eq(clients.status, options.clientStatus));
+  if (options.clientStatus === "Expired") {
+    agreementFilters.push(lt(agreements.endDate, today));
+    clientFilters.push(lt(clients.endDate, today));
+  }
+  if (["Inactive", "Hold", "Cancelled", "Renewal", "Extended", "Closed"].includes(options.clientStatus ?? "")) {
+    agreementFilters.push(eq(agreements.clientStatus, options.clientStatus as ClientManualStatus));
+    clientFilters.push(eq(clients.status, options.clientStatus as ClientManualStatus));
   }
   if (options.startDate) {
     agreementFilters.push(gte(agreements.startDate, options.startDate));

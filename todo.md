@@ -1261,3 +1261,8 @@
 - [x] Verify the published live domain reaches the published sign-in page; sandbox confirms the latest Clients layout while authenticated live comparison remains pending.
 
 - [x] Fix the live Clients table so the complete list row and Action column are not clipped on the right.
+
+- [x] Add ERP Client status editing for Hold, Cancelled, and Renewal, with automatic Expired and Ready to Expire lifecycle statuses.
+- [x] Add other-project Client status editing for Extended, Renewal, and Closed.
+- [x] Add an Edit action in the Clients list without changing Client IDs or project linkage.
+- [x] Update schema, API validation, and Hostinger SQL for the expanded status model.

@@ -1,0 +1,2 @@
+ALTER TABLE `clients` MODIFY COLUMN `status` enum('Active','Inactive','Hold','Cancelled','Renewal','Extended','Closed') NOT NULL DEFAULT 'Active';--> statement-breakpoint
+ALTER TABLE `agreements` ADD `clientStatus` enum('Active','Inactive','Hold','Cancelled','Renewal','Extended','Closed');

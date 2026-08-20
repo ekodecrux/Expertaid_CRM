@@ -6,6 +6,14 @@ export function filterApprovedClients<T extends ApprovedAgreementLike>(agreement
   return agreements.filter((agreement) => agreement.status === "Approved");
 }
 
-export function getClientLifecycleStatus(endDate: string, today = new Date().toISOString().slice(0, 10)): "Active" | "Inactive" {
-  return endDate >= today ? "Active" : "Inactive";
+export type ClientManualStatus = "Active" | "Inactive" | "Hold" | "Cancelled" | "Renewal" | "Extended" | "Closed";
+export type AutomaticClientStatus = "Active" | "Ready to Expire" | "Expired";
+
+export function getClientLifecycleStatus(endDate: string, today = new Date().toISOString().slice(0, 10)): AutomaticClientStatus {
+  const end = new Date(`${endDate}T00:00:00Z`).getTime();
+  const current = new Date(`${today}T00:00:00Z`).getTime();
+  if (!Number.isFinite(end) || !Number.isFinite(current)) return "Active";
+  if (end < current) return "Expired";
+  const daysRemaining = Math.ceil((end - current) / 86_400_000);
+  return daysRemaining <= 5 ? "Ready to Expire" : "Active";
 }

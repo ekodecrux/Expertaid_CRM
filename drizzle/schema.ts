@@ -162,7 +162,7 @@ export const clients = mysqlTable("clients", {
   description: text("description"),
   logoUrl: text("logoUrl"),
   logoKey: varchar("logoKey", { length: 512 }),
-  status: mysqlEnum("status", ["Active", "Inactive", "Hold", "Close"]).default("Active").notNull(),
+  status: mysqlEnum("status", ["Active", "Inactive", "Hold", "Cancelled", "Renewal", "Extended", "Closed"]).default("Active").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
@@ -198,6 +198,7 @@ export const agreements = mysqlTable("agreements", {
   logoUrl: text("logoUrl"),
   logoKey: varchar("logoKey", { length: 512 }),
   status: mysqlEnum("status", ["Pending", "Approved", "Rejected"]).default("Pending").notNull(),
+  clientStatus: mysqlEnum("clientStatus", ["Active", "Inactive", "Hold", "Cancelled", "Renewal", "Extended", "Closed"]),
   signatureUrl: text("signatureUrl"),
   signatureKey: varchar("signatureKey", { length: 512 }),
   signatureDate: varchar("signatureDate", { length: 32 }),

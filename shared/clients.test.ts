@@ -16,8 +16,10 @@ describe("approved client filtering", () => {
     ]);
   });
 
-  it("marks clients active through their end date and inactive afterward", () => {
-    expect(getClientLifecycleStatus("2026-08-14", "2026-08-14")).toBe("Active");
-    expect(getClientLifecycleStatus("2026-08-13", "2026-08-14")).toBe("Inactive");
+  it("marks clients active, ready to expire within five days, and expired after the end date", () => {
+    expect(getClientLifecycleStatus("2026-09-01", "2026-08-14")).toBe("Active");
+    expect(getClientLifecycleStatus("2026-08-19", "2026-08-14")).toBe("Ready to Expire");
+    expect(getClientLifecycleStatus("2026-08-14", "2026-08-14")).toBe("Ready to Expire");
+    expect(getClientLifecycleStatus("2026-08-13", "2026-08-14")).toBe("Expired");
   });
 });
