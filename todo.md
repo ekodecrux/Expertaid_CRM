@@ -1321,3 +1321,5 @@
 - [x] Show the client phone number directly above the email address in the Clients identity block.
 
 - [x] Add phone and email icons beside the contact lines in the Clients identity block while keeping phone above email.
+
+- [x] Show final total, paid amount, balance amount, and payment progress bar inside the Clients Total Status column as in the supplied reference.
