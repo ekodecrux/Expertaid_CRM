@@ -1315,3 +1315,5 @@
 - [x] Replace the clock-style action with a dedicated payment history icon.
 - [x] Show Client ID-linked payment details, paid amount, due amount, payment dates, methods, transaction references, and upcoming instalments.
 - [x] Preserve the other Clients actions and avoid double-counting invoice and receipt payments.
+
+- [x] Move the ERP branch count so it appears immediately after the School/College/Academy type badge in the Clients identity row, matching the supplied reference.
