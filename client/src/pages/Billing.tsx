@@ -1447,7 +1447,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                   <div className="sm:col-span-2 grid gap-3 sm:grid-cols-2">
                     <div>
                       <Label>Project</Label>
-                      <select className="filter-select mt-1 w-full" value={invoiceForm.projectId || "none"} onChange={event => applyProjectToForm(event.target.value === "none" ? "" : event.target.value)}>
+                      <select className="mt-1 h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50" value={invoiceForm.projectId || "none"} onChange={event => applyProjectToForm(event.target.value === "none" ? "" : event.target.value)}>
                         <option value="none">Select project</option>
                         {projectOptions.map((project: any) => <option key={project.id} value={String(project.id)}>{project.name}{project.isMain ? " (ERP)" : ""}</option>)}
                       </select>
@@ -1455,7 +1455,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     </div>
                     <div>
                       <Label>Client ID</Label>
-                      <select className="filter-select mt-1 w-full" value={invoiceForm.clientId || "none"} onChange={event => applyClientToForm(event.target.value === "none" ? "" : event.target.value)} disabled={!selectedProjectId}>
+                      <select className="mt-1 h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50" value={invoiceForm.clientId || "none"} onChange={event => applyClientToForm(event.target.value === "none" ? "" : event.target.value)} disabled={!selectedProjectId}>
                         <option value="none">Select Client ID</option>
                         {filteredClientOptions.map((client: any) => <option key={`${client.projectId}-${client.clientId}`} value={String(client.clientId)}>{client.clientId} · {client.clientName}</option>)}
                       </select>
@@ -1784,7 +1784,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                   <div className="sm:col-span-2 grid gap-3 sm:grid-cols-2">
                     <div>
                       <Label>Project</Label>
-                      <select className="filter-select mt-1 w-full" value={receiptForm.projectId || "none"} onChange={event => applyProjectToForm(event.target.value === "none" ? "" : event.target.value)}>
+                      <select className="mt-1 h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50" value={receiptForm.projectId || "none"} onChange={event => applyProjectToForm(event.target.value === "none" ? "" : event.target.value)}>
                         <option value="none">Select project</option>
                         {projectOptions.map((project: any) => <option key={project.id} value={String(project.id)}>{project.name}{project.isMain ? " (ERP)" : ""}</option>)}
                       </select>
@@ -1792,7 +1792,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     </div>
                     <div>
                       <Label>Client ID</Label>
-                      <select className="filter-select mt-1 w-full" value={receiptForm.clientId || "none"} onChange={event => applyClientToForm(event.target.value === "none" ? "" : event.target.value)} disabled={!selectedProjectId}>
+                      <select className="mt-1 h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50" value={receiptForm.clientId || "none"} onChange={event => applyClientToForm(event.target.value === "none" ? "" : event.target.value)} disabled={!selectedProjectId}>
                         <option value="none">Select Client ID</option>
                         {filteredClientOptions.map((client: any) => <option key={`${client.projectId}-${client.clientId}`} value={String(client.clientId)}>{client.clientId} · {client.clientName}</option>)}
                       </select>

@@ -1343,3 +1343,5 @@
 - [x] Make the Client ID field match the Project field’s native select appearance and interaction exactly, while retaining project filtering and autofill.
 
 - [x] Show assigned total, paid amount, pending balance, and payment progress after selecting a Client ID in invoice and receipt forms.
+
+- [x] Match Project and Client ID labels and controls to the same spacing, border, height, width, and typography as the remaining invoice and receipt fields.
