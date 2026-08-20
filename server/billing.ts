@@ -105,13 +105,25 @@ export async function listInvoicesForOwner(ownerId: number) {
   return db.select().from(invoices).where(eq(invoices.ownerId, ownerId)).orderBy(desc(invoices.createdAt));
 }
 
+async function nextAvailableNumber(db: any, table: any, ownerId: number, prefix: string, startingNumber: unknown, field: any) {
+  let counter = Math.max(1, Number(startingNumber) || 1);
+  for (let attempt = 0; attempt < 10000; attempt += 1) {
+    const number = `${prefix}-${String(counter).padStart(4, "0")}`;
+    const existing = await db.select({ id: table.id }).from(table).where(and(eq(table.ownerId, ownerId), eq(field, number))).limit(1);
+    if (!existing[0]) return { number, nextCounter: counter + 1 };
+    counter += 1;
+  }
+  throw new Error(`Unable to allocate a unique ${prefix} document number.`);
+}
+
 export async function createInvoiceForOwner(ownerId: number, input: Record<string, unknown>) {
   const db = await requireDb();
   const settings = await getInvoiceSettingsForOwner(ownerId);
-  const number = String(input.invoiceNumber || `${settings.invoicePrefix}-${String(settings.invoiceNumberNext).padStart(4, "0")}`);
+  const allocated = await nextAvailableNumber(db, invoices, ownerId, String(settings.invoicePrefix), settings.invoiceNumberNext, invoices.invoiceNumber);
+  const number = String(input.invoiceNumber || allocated.number);
   const { invoiceNumber: _ignored, items: _items, ...values } = input;
   await db.insert(invoices).values({ ...values, ownerId, invoiceNumber: number } as any);
-  await db.update(invoiceSettings).set({ invoiceNumberNext: Number(settings.invoiceNumberNext) + 1 }).where(eq(invoiceSettings.ownerId, ownerId));
+  await db.update(invoiceSettings).set({ invoiceNumberNext: allocated.nextCounter }).where(eq(invoiceSettings.ownerId, ownerId));
   const rows = await db.select().from(invoices).where(and(eq(invoices.ownerId, ownerId), eq(invoices.invoiceNumber, number))).limit(1);
   return rows[0];
 }
@@ -135,7 +147,8 @@ export async function updateInvoiceStatusForOwner(ownerId: number, id: number, s
     const existingReceipt = await db.select().from(receipts).where(and(eq(receipts.ownerId, ownerId), eq(receipts.invoiceId, id))).limit(1);
     if (!existingReceipt[0]) {
       const settings = await getReceiptSettingsForOwner(ownerId);
-      const receiptNumber = `${settings.receiptPrefix}-${String(settings.receiptNumberNext).padStart(4, "0")}`;
+      const allocated = await nextAvailableNumber(db, receipts, ownerId, String(settings.receiptPrefix), settings.receiptNumberNext, receipts.receiptNumber);
+      const receiptNumber = allocated.number;
       await db.insert(receipts).values({
         ownerId,
         receiptNumber,
@@ -175,7 +188,7 @@ export async function updateInvoiceStatusForOwner(ownerId: number, id: number, s
         footerMessage: settings.footerMessage,
         qrLabel: settings.qrLabel,
       } as any);
-      await db.update(receiptSettings).set({ receiptNumberNext: Number(settings.receiptNumberNext) + 1 }).where(eq(receiptSettings.ownerId, ownerId));
+      await db.update(receiptSettings).set({ receiptNumberNext: allocated.nextCounter }).where(eq(receiptSettings.ownerId, ownerId));
     }
     const receiptRows = await db.select().from(receipts).where(and(eq(receipts.ownerId, ownerId), eq(receipts.invoiceId, id))).limit(1);
     receipt = receiptRows[0];
@@ -223,10 +236,11 @@ export async function listReceiptsForOwner(ownerId: number) {
 export async function createReceiptForOwner(ownerId: number, input: Record<string, unknown>) {
   const db = await requireDb();
   const settings = await getReceiptSettingsForOwner(ownerId);
-  const number = String(input.receiptNumber || `${settings.receiptPrefix}-${String(settings.receiptNumberNext).padStart(4, "0")}`);
+  const allocated = await nextAvailableNumber(db, receipts, ownerId, String(settings.receiptPrefix), settings.receiptNumberNext, receipts.receiptNumber);
+  const number = String(input.receiptNumber || allocated.number);
   const { receiptNumber: _ignored, items: _items, ...values } = input;
   await db.insert(receipts).values({ ...values, ownerId, receiptNumber: number } as any);
-  await db.update(receiptSettings).set({ receiptNumberNext: Number(settings.receiptNumberNext) + 1 }).where(eq(receiptSettings.ownerId, ownerId));
+  await db.update(receiptSettings).set({ receiptNumberNext: allocated.nextCounter }).where(eq(receiptSettings.ownerId, ownerId));
   const rows = await db.select().from(receipts).where(and(eq(receipts.ownerId, ownerId), eq(receipts.receiptNumber, number))).limit(1);
   return rows[0];
 }

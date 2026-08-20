@@ -1345,3 +1345,5 @@
 - [x] Show assigned total, paid amount, pending balance, and payment progress after selecting a Client ID in invoice and receipt forms.
 
 - [x] Match Project and Client ID labels and controls to the same spacing, border, height, width, and typography as the remaining invoice and receipt fields.
+
+- [x] Diagnose and fix the receipt insert-query failure while preserving Client ID linkage and receipt details.
