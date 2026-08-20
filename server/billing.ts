@@ -142,6 +142,7 @@ export async function updateInvoiceStatusForOwner(ownerId: number, id: number, s
         status: "Issued",
         invoiceId: invoice.id,
         invoiceNumber: invoice.invoiceNumber,
+        clientId: invoice.clientId,
         clientName: invoice.clientName,
         clientAddress: invoice.clientAddress,
         clientContact: invoice.clientContact,

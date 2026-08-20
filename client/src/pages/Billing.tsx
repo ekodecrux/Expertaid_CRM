@@ -37,6 +37,7 @@ import {
   formatCurrency,
   type GstMode,
 } from "@shared/quotation";
+import { filterProjectClients } from "@shared/clients";
 
 type BillingKind = "invoice" | "receipt";
 type Item = {
@@ -60,6 +61,8 @@ const emptyItem = (): Item => ({
   unitPrice: "0",
 });
 const emptyInvoice = () => ({
+  projectId: "",
+  clientId: "",
   clientName: "",
   clientAddress: "",
   clientContact: "",
@@ -73,6 +76,8 @@ const emptyInvoice = () => ({
   items: [emptyItem()],
 });
 const emptyReceipt = () => ({
+  projectId: "",
+  clientId: "",
   clientName: "",
   clientAddress: "",
   clientContact: "",
@@ -248,6 +253,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const receipts = trpc.receipts.list.useQuery(undefined, {
     enabled: !isInvoice,
   });
+  const clients = trpc.clients.list.useQuery({ page: 1, pageSize: 200 });
+  const projects = trpc.projects.list.useQuery();
   const updateInvoiceSettings = trpc.invoices.settings.update.useMutation({
     onSuccess: () => {
       invoiceSettings.refetch();
@@ -364,6 +371,31 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const [receiptForm, setReceiptForm] = useState(emptyReceipt());
   const [search, setSearch] = useState("");
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [clientSearch, setClientSearch] = useState("");
+  const clientOptions: any[] = (clients.data as any)?.items ?? [];
+  const projectOptions: any[] = (projects.data as any) ?? [];
+  const selectedProjectId = Number(isInvoice ? invoiceForm.projectId : receiptForm.projectId) || 0;
+  const selectedProject = projectOptions.find((project: any) => Number(project.id) === selectedProjectId);
+  const filteredClientOptions = selectedProjectId > 0 ? filterProjectClients(clientOptions, selectedProjectId, clientSearch) : [];
+  const applyProjectToForm = (projectId: string) => {
+    setClientSearch("");
+    const cleared = { projectId, clientId: "", clientName: "", clientAddress: "", clientContact: "", clientEmail: "", clientGst: "" };
+    if (isInvoice) setInvoiceForm(current => ({ ...current, ...cleared }));
+    else setReceiptForm(current => ({ ...current, ...cleared }));
+  };
+  const applyClientToForm = (clientId: string) => {
+    const client = clientOptions.find((row: any) => String(row.clientId ?? "") === clientId && Number(row.projectId) === selectedProjectId);
+    if (!client) return;
+    const details = { clientId, projectId: String(client.projectId ?? selectedProjectId), clientName: client.clientName ?? "", clientAddress: client.address ?? "", clientContact: client.contactNumber ?? "", clientEmail: client.email ?? "", clientGst: client.clientGst ?? "" };
+    if (isInvoice) setInvoiceForm(current => ({ ...current, ...details }));
+    else setReceiptForm(current => ({ ...current, ...details }));
+  };
+  useEffect(() => {
+    if (!createOpen || !projectOptions.length) return;
+    const mainProject = projectOptions.find((project: any) => project.isMain) ?? projectOptions[0];
+    const currentProjectId = isInvoice ? invoiceForm.projectId : receiptForm.projectId;
+    if (!currentProjectId && mainProject) applyProjectToForm(String(mainProject.id));
+  }, [createOpen, projectOptions.length, isInvoice]);
   const showMutationError = (error: any) => {
     const message = mutationErrorMessage(error);
     setFormErrors({ form: message });
@@ -552,6 +584,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     }
     setEditingInvoiceId(Number(row.id));
     setInvoiceForm({
+      projectId: row.projectId ?? "",
+      clientId: row.clientId ?? "",
       clientName: row.clientName ?? "",
       clientAddress: row.clientAddress ?? "",
       clientContact: row.clientContact ?? "",
@@ -570,6 +604,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const openEditReceipt = (row: any) => {
     setEditingReceiptId(Number(row.id));
     setReceiptForm({
+      projectId: row.projectId ?? "",
+      clientId: row.clientId ?? "",
       clientName: row.clientName ?? "",
       clientAddress: row.clientAddress ?? "",
       clientContact: row.clientContact ?? "",
@@ -605,6 +641,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     event.preventDefault();
     const errors: Record<string, string> = {};
     const form: any = isInvoice ? invoiceForm : receiptForm;
+    if (!form.projectId) errors.projectId = "Select a project first.";
+    if (!form.clientId) errors.clientId = "Select a Client ID so payment details link to the client.";
     if (!form.clientName.trim()) errors.clientName = "Client name is required.";
     if (!form.clientAddress.trim())
       errors.clientAddress = "Client address is required.";
@@ -670,6 +708,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     setEditingInvoiceId(null);
     setEditingReceiptId(null);
     setFormErrors({});
+    setClientSearch("");
     setInvoiceForm(emptyInvoice());
     const rawDefaultProducts = receiptSettings.data?.defaultProducts ?? (receiptSettings.data as any)?.defaultProductsJson;
     let defaultProducts: any[] = [];
@@ -1391,6 +1430,24 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                   onSubmit={submitCreate}
                   className="grid gap-4 sm:grid-cols-2"
                 >
+                  <div className="sm:col-span-2 grid gap-3 sm:grid-cols-2">
+                    <div>
+                      <Label>Project</Label>
+                      <select className="filter-select mt-1 w-full" value={invoiceForm.projectId || "none"} onChange={event => applyProjectToForm(event.target.value === "none" ? "" : event.target.value)}>
+                        <option value="none">Select project</option>
+                        {projectOptions.map((project: any) => <option key={project.id} value={String(project.id)}>{project.name}{project.isMain ? " (ERP)" : ""}</option>)}
+                      </select>
+                      {selectedProject && <p className="mt-1 text-xs text-slate-500">Client IDs for {selectedProject.name} only.</p>}
+                    </div>
+                    <div>
+                      <Label>Client ID</Label>
+                      <Input className="mt-1" placeholder="Search Client ID or name..." value={clientSearch} onChange={event => setClientSearch(event.target.value)} />
+                      <select className="filter-select mt-2 w-full" value={invoiceForm.clientId || "none"} onChange={event => applyClientToForm(event.target.value === "none" ? "" : event.target.value)} disabled={!selectedProjectId}>
+                        <option value="none">Select Client ID</option>
+                        {filteredClientOptions.map((client: any) => <option key={`${client.projectId}-${client.clientId}`} value={String(client.clientId)}>{client.clientId} · {client.clientName}</option>)}
+                      </select>
+                    </div>
+                  </div>
                   <div>
                     <Label>Client name</Label>
                     <Input
@@ -1710,6 +1767,24 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                   onSubmit={submitCreate}
                   className="grid gap-4 sm:grid-cols-2"
                 >
+                  <div className="sm:col-span-2 grid gap-3 sm:grid-cols-2">
+                    <div>
+                      <Label>Project</Label>
+                      <select className="filter-select mt-1 w-full" value={receiptForm.projectId || "none"} onChange={event => applyProjectToForm(event.target.value === "none" ? "" : event.target.value)}>
+                        <option value="none">Select project</option>
+                        {projectOptions.map((project: any) => <option key={project.id} value={String(project.id)}>{project.name}{project.isMain ? " (ERP)" : ""}</option>)}
+                      </select>
+                      {selectedProject && <p className="mt-1 text-xs text-slate-500">Client IDs for {selectedProject.name} only.</p>}
+                    </div>
+                    <div>
+                      <Label>Client ID</Label>
+                      <Input className="mt-1" placeholder="Search Client ID or name..." value={clientSearch} onChange={event => setClientSearch(event.target.value)} />
+                      <select className="filter-select mt-2 w-full" value={receiptForm.clientId || "none"} onChange={event => applyClientToForm(event.target.value === "none" ? "" : event.target.value)} disabled={!selectedProjectId}>
+                        <option value="none">Select Client ID</option>
+                        {filteredClientOptions.map((client: any) => <option key={`${client.projectId}-${client.clientId}`} value={String(client.clientId)}>{client.clientId} · {client.clientName}</option>)}
+                      </select>
+                    </div>
+                  </div>
                   <div>
                     <Label>Client name</Label>
                     <Input

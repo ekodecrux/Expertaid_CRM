@@ -17,3 +17,12 @@ export function getClientLifecycleStatus(endDate: string, today = new Date().toI
   const daysRemaining = Math.ceil((end - current) / 86_400_000);
   return daysRemaining <= 5 ? "Ready to Expire" : "Active";
 }
+
+export function filterProjectClients<T extends { projectId?: number | null; clientId?: string | null; clientName?: string | null }>(clients: T[], projectId: number, search = ""): T[] {
+  const query = search.trim().toLowerCase();
+  return clients.filter((client) => {
+    if (Number(client.projectId) !== projectId) return false;
+    if (!query) return true;
+    return `${client.clientId ?? ""} ${client.clientName ?? ""}`.toLowerCase().includes(query);
+  });
+}

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { filterApprovedClients, getClientLifecycleStatus } from "./clients";
+import { filterApprovedClients, filterProjectClients, getClientLifecycleStatus } from "./clients";
 
 describe("approved client filtering", () => {
   it("returns only approved agreements", () => {
@@ -14,6 +14,17 @@ describe("approved client filtering", () => {
       { id: 2, status: "Approved" },
       { id: 4, status: "Approved" },
     ]);
+  });
+
+  it("filters billing clients by project and searches Client ID or client name", () => {
+    const clients = [
+      { projectId: 1, clientId: "ERP26001", clientName: "Nirmala High School" },
+      { projectId: 1, clientId: "ERP26002", clientName: "Another School" },
+      { projectId: 2, clientId: "EMP26001", clientName: "Acme Ltd" },
+    ];
+    expect(filterProjectClients(clients, 1).map((client) => client.clientId)).toEqual(["ERP26001", "ERP26002"]);
+    expect(filterProjectClients(clients, 1, "erp26002").map((client) => client.clientName)).toEqual(["Another School"]);
+    expect(filterProjectClients(clients, 2, "acme").map((client) => client.clientId)).toEqual(["EMP26001"]);
   });
 
   it("marks clients active, ready to expire within five days, and expired after the end date", () => {

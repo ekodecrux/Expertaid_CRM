@@ -1323,3 +1323,13 @@
 - [x] Add phone and email icons beside the contact lines in the Clients identity block while keeping phone above email.
 
 - [x] Show final total, paid amount, balance amount, and payment progress bar inside the Clients Total Status column as in the supplied reference.
+
+- [x] Add Client ID selection to invoice creation and persist it on the invoice record.
+- [x] Add Client ID selection to receipt creation and persist it on the receipt record.
+- [x] Ensure Client ID-linked invoice and receipt payments appear in the matching Clients summary and payment history.
+
+- [x] Make Project the first invoice/receipt selection field and default it to the Main ERP project.
+- [x] Filter the Client ID selector by the selected project and support searching by Client ID and client name.
+- [x] Show ERP client IDs and project-specific client details consistently in invoice and receipt forms.
+
+- [x] After Client ID selection, autofill saved client name, address, phone, email, and GST where available; keep dates, GST mode, payment fields, products, notes, and other document-specific fields editable.
