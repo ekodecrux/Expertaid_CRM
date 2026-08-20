@@ -1271,3 +1271,7 @@
 - [x] Add ERP Renewal action to resend the agreement to the client and return the record to a signable renewal workflow.
 - [x] Track renewal start continuity: same start date for continuous renewal, or a six-month/one-year gap when explicitly selected.
 - [x] Persist renewal tracking fields and update the Hostinger SQL repair file.
+
+- [x] Rework the Clients list toward compact identity, collaboration, financial, total/status, and action columns like the supplied reference.
+- [x] Add grouped Payment, History, Edit, View, and ERP Renewal actions; replace any destructive delete-style action with View.
+- [x] Keep actions safe for agreement and standalone records and preserve the existing status and renewal rules.
