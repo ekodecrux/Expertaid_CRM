@@ -1283,3 +1283,5 @@
 - [x] Match the reference filter strip with compact search, type, status, year, and ID filters.
 - [x] Remove oversized list-view KPI space and tighten the table rows to the reference proportions.
 - [x] Use the exact primary row sections: Client Name, Collaboration, Financials, Total Status, and Actions.
+
+- [x] Show the Edit pencil icon for agreement-derived ERP rows as well as standalone Client rows.
