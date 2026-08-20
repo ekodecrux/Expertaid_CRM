@@ -1339,3 +1339,5 @@
 - [x] Preserve all autofilled client details after selecting a Client ID and reopening or interacting with the selector.
 
 - [x] Replace the separate Client ID search input and native dropdown with one searchable Client ID combobox for invoice and receipt forms.
+
+- [x] Make the Client ID field match the Project field’s native select appearance and interaction exactly, while retaining project filtering and autofill.

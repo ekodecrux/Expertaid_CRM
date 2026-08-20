@@ -1,7 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 import {
-  Check,
-  ChevronsUpDown,
   Eye,
   FileText,
   IndianRupee,
@@ -23,8 +21,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -44,14 +40,6 @@ import {
 import { filterProjectClients } from "@shared/clients";
 
 type BillingKind = "invoice" | "receipt";
-type ClientOption = { projectId?: number | null; clientId?: string | null; clientName?: string | null };
-
-function ClientIdCombobox({ clients, value, onSelect, disabled }: { clients: ClientOption[]; value: string; onSelect: (clientId: string) => void; disabled?: boolean }) {
-  const [open, setOpen] = useState(false);
-  const selected = clients.find((client) => String(client.clientId ?? "") === value);
-  return <Popover open={open} onOpenChange={setOpen}><PopoverTrigger asChild><Button type="button" variant="outline" disabled={disabled} className="mt-1 w-full justify-between font-normal"><span className={selected ? "truncate text-slate-800" : "text-slate-400"}>{selected ? `${selected.clientId} · ${selected.clientName}` : "Select Client ID"}</span><ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" /></Button></PopoverTrigger><PopoverContent align="start" className="w-[var(--radix-popover-trigger-width)] p-0"><Command><CommandInput placeholder="Search Client ID or name..." /><CommandList><CommandEmpty>No clients found.</CommandEmpty><CommandGroup>{clients.map((client) => <CommandItem key={`${client.projectId}-${client.clientId}`} value={`${client.clientId ?? ""} ${client.clientName ?? ""}`} onSelect={() => { onSelect(String(client.clientId ?? "")); setOpen(false); }}><Check className={`mr-2 h-4 w-4 ${selected?.clientId === client.clientId ? "opacity-100" : "opacity-0"}`} /><span className="truncate">{client.clientId} · {client.clientName}</span></CommandItem>)}</CommandGroup></CommandList></Command></PopoverContent></Popover>;
-}
-
 type Item = {
   itemName: string;
   description?: string;
@@ -1450,7 +1438,10 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     </div>
                     <div>
                       <Label>Client ID</Label>
-                      <ClientIdCombobox clients={filteredClientOptions} value={invoiceForm.clientId} onSelect={applyClientToForm} disabled={!selectedProjectId} />
+                      <select className="filter-select mt-1 w-full" value={invoiceForm.clientId || "none"} onChange={event => applyClientToForm(event.target.value === "none" ? "" : event.target.value)} disabled={!selectedProjectId}>
+                        <option value="none">Select Client ID</option>
+                        {filteredClientOptions.map((client: any) => <option key={`${client.projectId}-${client.clientId}`} value={String(client.clientId)}>{client.clientId} · {client.clientName}</option>)}
+                      </select>
                     </div>
                   </div>
                   <div>
@@ -1783,7 +1774,10 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     </div>
                     <div>
                       <Label>Client ID</Label>
-                      <ClientIdCombobox clients={filteredClientOptions} value={receiptForm.clientId} onSelect={applyClientToForm} disabled={!selectedProjectId} />
+                      <select className="filter-select mt-1 w-full" value={receiptForm.clientId || "none"} onChange={event => applyClientToForm(event.target.value === "none" ? "" : event.target.value)} disabled={!selectedProjectId}>
+                        <option value="none">Select Client ID</option>
+                        {filteredClientOptions.map((client: any) => <option key={`${client.projectId}-${client.clientId}`} value={String(client.clientId)}>{client.clientId} · {client.clientName}</option>)}
+                      </select>
                     </div>
                   </div>
                   <div>
