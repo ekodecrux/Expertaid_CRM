@@ -1351,3 +1351,5 @@
 - [x] Add payment details editing to the Clients edit workflow.
 - [x] Add upcoming instalment amounts and due-date handling to the Clients edit workflow.
 - [x] Allow ERP and other-project client statuses to be updated by clicking the status in the Clients list using their project-specific allowed statuses.
+
+- [x] Make every Clients list Edit action open the direct Client Edit dialog with payment, instalment, due-date, and project-aware status controls instead of navigating to /agreements.

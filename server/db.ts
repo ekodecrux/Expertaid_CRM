@@ -843,6 +843,15 @@ export async function updateAgreement(publicToken: string, ownerId: number, valu
   return rows[0];
 }
 
+export async function updateAgreementByIdForOwner(ownerId: number, agreementId: number, values: Partial<InsertAgreement>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  await db.update(agreements).set(values).where(and(eq(agreements.id, agreementId), eq(agreements.ownerId, ownerId)));
+  const rows = await db.select().from(agreements).where(and(eq(agreements.id, agreementId), eq(agreements.ownerId, ownerId))).limit(1);
+  if (!rows[0]) throw new Error("Client agreement not found or you do not have permission to edit it.");
+  return rows[0];
+}
+
 export async function updateAgreementDecision(publicToken: string, values: Pick<InsertAgreement, "status" | "signatureUrl" | "signatureKey" | "signatureDate" | "decidedAt">) {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
