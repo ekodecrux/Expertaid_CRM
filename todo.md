@@ -1302,3 +1302,16 @@
 
 - [x] Add a separate Status column beside Total Status and move the clickable status control into it.
 - [x] Keep Total Status as the final amount only.
+
+- [x] Remove the status dot from the Client Name identity block.
+- [x] Highlight Client IDs with a distinct bordered badge style.
+
+- [x] Show the highlighted Client ID badge directly beside the client name in the Clients identity block.
+
+- [x] Match client payments by Client ID and aggregate paid amounts for each client row.
+- [x] Show Paid, Due, and a progress bar beneath Total Status using the client’s actual payment records.
+- [x] Confirm whether payment schema or Hostinger SQL changes are required.
+
+- [x] Replace the clock-style action with a dedicated payment history icon.
+- [x] Show Client ID-linked payment details, paid amount, due amount, payment dates, methods, transaction references, and upcoming instalments.
+- [x] Preserve the other Clients actions and avoid double-counting invoice and receipt payments.

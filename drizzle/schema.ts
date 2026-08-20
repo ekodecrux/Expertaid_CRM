@@ -238,6 +238,7 @@ export const invoiceSettings = mysqlTable("invoiceSettings", {
 export const invoices = mysqlTable("invoices", {
   id: int("id").autoincrement().primaryKey(),
   ownerId: int("ownerId").notNull(),
+  clientId: varchar("clientId", { length: 64 }),
   invoiceNumber: varchar("invoiceNumber", { length: 32 }).notNull().unique(),
   status: mysqlEnum("status", ["Draft", "Due", "Paid", "Cancelled"]).default("Draft").notNull(),
   clientName: varchar("clientName", { length: 255 }).notNull(),
@@ -297,6 +298,7 @@ export const receiptSettings = mysqlTable("receiptSettings", {
 export const receipts = mysqlTable("receipts", {
   id: int("id").autoincrement().primaryKey(),
   ownerId: int("ownerId").notNull(),
+  clientId: varchar("clientId", { length: 64 }),
   receiptNumber: varchar("receiptNumber", { length: 32 }).notNull().unique(),
   status: mysqlEnum("status", ["Issued", "Cancelled"]).default("Issued").notNull(),
   invoiceId: int("invoiceId"),

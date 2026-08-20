@@ -457,3 +457,12 @@ SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schem
 PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
 SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'agreements' AND column_name = 'renewalType'), 'SELECT 1', 'ALTER TABLE `agreements` ADD COLUMN `renewalType` ENUM(''continuous'',''sixMonths'',''oneYear'') NULL');
 PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+-- Payment ledger linkage: match invoices and receipts directly to the persistent Client ID.
+SET @has_invoice_client_id := (SELECT COUNT(*) FROM information_schema.columns WHERE table_schema = DATABASE() AND table_name = 'invoices' AND column_name = 'clientId');
+SET @sql = IF(@has_invoice_client_id = 0, 'ALTER TABLE `invoices` ADD COLUMN `clientId` VARCHAR(64) NULL AFTER `ownerId`', 'SELECT 1');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+SET @has_receipt_client_id := (SELECT COUNT(*) FROM information_schema.columns WHERE table_schema = DATABASE() AND table_name = 'receipts' AND column_name = 'clientId');
+SET @sql = IF(@has_receipt_client_id = 0, 'ALTER TABLE `receipts` ADD COLUMN `clientId` VARCHAR(64) NULL AFTER `ownerId`', 'SELECT 1');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
