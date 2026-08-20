@@ -1353,3 +1353,8 @@
 - [x] Allow ERP and other-project client statuses to be updated by clicking the status in the Clients list using their project-specific allowed statuses.
 
 - [x] Make every Clients list Edit action open the direct Client Edit dialog with payment, instalment, due-date, and project-aware status controls instead of navigating to /agreements.
+
+- [x] Replace the Client Edit dialog with a full-page client payment planning view.
+- [x] Add single-payment and terms-based payment cycle selection with add-term and distribute-amount controls.
+- [x] Persist instalment labels, due dates, planned amounts, initial payment allocation, and remaining-balance reminders.
+- [x] Keep invoice and receipt creation able to collect any amount independently of the reminder schedule.

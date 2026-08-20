@@ -339,6 +339,28 @@ export const receipts = mysqlTable("receipts", {
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 
+export const paymentPlans = mysqlTable("paymentPlans", {
+  id: int("id").autoincrement().primaryKey(),
+  ownerId: int("ownerId").notNull(),
+  clientId: varchar("clientId", { length: 64 }).notNull(),
+  projectId: int("projectId"),
+  paymentCycle: mysqlEnum("paymentCycle", ["single", "terms"]).default("terms").notNull(),
+  totalAmount: decimal("totalAmount", { precision: 14, scale: 2 }).notNull(),
+  initialPayment: decimal("initialPayment", { precision: 14, scale: 2 }).default("0.00").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export const paymentPlanTerms = mysqlTable("paymentPlanTerms", {
+  id: int("id").autoincrement().primaryKey(),
+  paymentPlanId: int("paymentPlanId").notNull(),
+  label: varchar("label", { length: 128 }).notNull(),
+  dueDate: varchar("dueDate", { length: 32 }).notNull(),
+  amount: decimal("amount", { precision: 14, scale: 2 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 export type Session = typeof sessions.$inferSelect;

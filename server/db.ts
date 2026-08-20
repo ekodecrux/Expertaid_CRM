@@ -1,7 +1,7 @@
 import { and, desc, eq, gte, like, lte, lt, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
-import { agreements, clients, InsertAgreement, InsertClient, InsertQuotation, InsertQuotationSettings, InsertUser, profileSettingsData, projects, quotationEditHistory, quotations, quotationSettings, quotationSettingsData, sessions, users, type InsertProject, type User } from "../drizzle/schema";
+import { agreements, clients, paymentPlans, paymentPlanTerms, InsertAgreement, InsertClient, InsertQuotation, InsertQuotationSettings, InsertUser, profileSettingsData, projects, quotationEditHistory, quotations, quotationSettings, quotationSettingsData, sessions, users, type InsertProject, type User } from "../drizzle/schema";
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding, type CompanyBranding } from "@shared/branding";
 import { formatProjectClientId, nextFutureProjectClientNumber } from "@shared/project";
@@ -850,6 +850,32 @@ export async function updateAgreementByIdForOwner(ownerId: number, agreementId: 
   const rows = await db.select().from(agreements).where(and(eq(agreements.id, agreementId), eq(agreements.ownerId, ownerId))).limit(1);
   if (!rows[0]) throw new Error("Client agreement not found or you do not have permission to edit it.");
   return rows[0];
+}
+
+export async function getPaymentPlanForOwner(ownerId: number, clientId: string) {
+  const db = await getDb();
+  if (!db) return null;
+  const plans = await db.select().from(paymentPlans).where(and(eq(paymentPlans.ownerId, ownerId), eq(paymentPlans.clientId, clientId))).orderBy(desc(paymentPlans.id)).limit(1);
+  const plan = plans[0];
+  if (!plan) return null;
+  const terms = await db.select().from(paymentPlanTerms).where(eq(paymentPlanTerms.paymentPlanId, plan.id)).orderBy(paymentPlanTerms.id);
+  return { ...plan, terms };
+}
+
+export async function savePaymentPlanForOwner(ownerId: number, input: { clientId: string; projectId?: number | null; paymentCycle: "single" | "terms"; totalAmount: string; initialPayment: string; terms: Array<{ label: string; dueDate: string; amount: string }> }) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const existing = await db.select({ id: paymentPlans.id }).from(paymentPlans).where(and(eq(paymentPlans.ownerId, ownerId), eq(paymentPlans.clientId, input.clientId))).orderBy(desc(paymentPlans.id)).limit(1);
+  let paymentPlanId = existing[0]?.id;
+  if (paymentPlanId) {
+    await db.update(paymentPlans).set({ projectId: input.projectId ?? null, paymentCycle: input.paymentCycle, totalAmount: input.totalAmount, initialPayment: input.initialPayment }).where(and(eq(paymentPlans.id, paymentPlanId), eq(paymentPlans.ownerId, ownerId)));
+    await db.delete(paymentPlanTerms).where(eq(paymentPlanTerms.paymentPlanId, paymentPlanId));
+  } else {
+    const inserted = await db.insert(paymentPlans).values({ ownerId, clientId: input.clientId, projectId: input.projectId ?? null, paymentCycle: input.paymentCycle, totalAmount: input.totalAmount, initialPayment: input.initialPayment });
+    paymentPlanId = Number(inserted[0].insertId);
+  }
+  if (input.terms.length) await db.insert(paymentPlanTerms).values(input.terms.map((term) => ({ paymentPlanId: paymentPlanId!, label: term.label, dueDate: term.dueDate, amount: term.amount })));
+  return getPaymentPlanForOwner(ownerId, input.clientId);
 }
 
 export async function updateAgreementDecision(publicToken: string, values: Pick<InsertAgreement, "status" | "signatureUrl" | "signatureKey" | "signatureDate" | "decidedAt">) {
