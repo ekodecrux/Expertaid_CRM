@@ -232,6 +232,13 @@
       "when": 1787205443292,
       "tag": "0032_jittery_madelyne_pryor",
       "breakpoints": true
+    },
+    {
+      "idx": 33,
+      "version": "5",
+      "when": 1787206444838,
+      "tag": "0033_little_earthquake",
+      "breakpoints": true
     }
   ]
 }

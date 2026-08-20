@@ -6,6 +6,7 @@ import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TER
 import { DEFAULT_BRANDING, normalizeBranding, type CompanyBranding } from "@shared/branding";
 import { formatProjectClientId, nextFutureProjectClientNumber } from "@shared/project";
 import { ENV } from './_core/env';
+import { nanoid } from "nanoid";
 import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getSavedLocalQuotationSettings, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalQuotationSettings, saveLocalSessionSettings, listLocalQuotations, createLocalQuotation, updateLocalQuotation, deleteLocalQuotation, type LocalQuotationSettings } from './localSettings';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -613,6 +614,32 @@ export async function createAgreement(input: InsertAgreement) {
   const id = Number(result[0].insertId);
   const rows = await db.select().from(agreements).where(eq(agreements.id, id)).limit(1);
   return rows[0];
+}
+
+function addMonthsToDate(value: string, months: number) {
+  const date = new Date(`${value}T00:00:00Z`);
+  date.setUTCMonth(date.getUTCMonth() + months);
+  return date.toISOString().slice(0, 10);
+}
+
+export async function renewAgreementForOwner(ownerId: number, agreementId: number, renewalType: "continuous" | "sixMonths" | "oneYear") {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  return db.transaction(async (tx) => {
+    const rows = await tx.select().from(agreements).where(and(eq(agreements.id, agreementId), eq(agreements.ownerId, ownerId))).limit(1);
+    const original = rows[0];
+    if (!original) throw new Error("Agreement not found or you do not have permission to renew it.");
+    if (original.status !== "Approved") throw new Error("Only an approved ERP agreement can be renewed.");
+    const project = original.projectId ? (await tx.select().from(projects).where(and(eq(projects.id, original.projectId), eq(projects.ownerId, ownerId))).limit(1))[0] : undefined;
+    if (!project?.isMain) throw new Error("Renewal is available only for the Main ERP project.");
+    const startDate = renewalType === "continuous" ? original.startDate : addMonthsToDate(original.endDate, renewalType === "sixMonths" ? 6 : 12);
+    const endDate = addMonthsToDate(original.endDate, Math.max(1, original.noOfYearPlan) * 12 + (renewalType === "continuous" ? 0 : renewalType === "sixMonths" ? 6 : 12));
+    await tx.update(agreements).set({ clientStatus: "Renewal" }).where(eq(agreements.id, original.id));
+    const { id: _id, createdAt: _createdAt, updatedAt: _updatedAt, status: _status, clientStatus: _clientStatus, renewalOfAgreementId: _renewalOfAgreementId, renewalType: _renewalType, signatureUrl: _signatureUrl, signatureKey: _signatureKey, signatureDate: _signatureDate, decidedAt: _decidedAt, publicToken: _publicToken, ...copy } = original;
+    const result = await tx.insert(agreements).values({ ...copy, ownerId, projectId: original.projectId, clientId: original.clientId, publicToken: nanoid(24), status: "Pending", clientStatus: "Renewal", renewalOfAgreementId: original.id, renewalType, signatureUrl: null, signatureKey: null, signatureDate: null, decidedAt: null, startDate, endDate });
+    const created = await tx.select().from(agreements).where(eq(agreements.id, Number(result[0].insertId))).limit(1);
+    return created[0];
+  });
 }
 
 function defaultSessionDates(label: string) {

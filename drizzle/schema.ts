@@ -199,6 +199,8 @@ export const agreements = mysqlTable("agreements", {
   logoKey: varchar("logoKey", { length: 512 }),
   status: mysqlEnum("status", ["Pending", "Approved", "Rejected"]).default("Pending").notNull(),
   clientStatus: mysqlEnum("clientStatus", ["Active", "Inactive", "Hold", "Cancelled", "Renewal", "Extended", "Closed"]),
+  renewalOfAgreementId: int("renewalOfAgreementId"),
+  renewalType: mysqlEnum("renewalType", ["continuous", "sixMonths", "oneYear"]),
   signatureUrl: text("signatureUrl"),
   signatureKey: varchar("signatureKey", { length: 512 }),
   signatureDate: varchar("signatureDate", { length: 32 }),

@@ -6,7 +6,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { ENV } from "./_core/env";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getNextEstimationNumberForClient, getAgreementByToken, createSessionForOwner, updateSessionRecordForOwner, deleteSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getProfileSettingsForOwner, updateProfileSettingsForOwner, getUserByEmail, upsertUser, listProjectsForOwner, createProjectForOwner, updateProjectForOwner, deleteProjectForOwner, setMainProjectForOwner, createAgreementForProject, createClientForOwner, updateClientForOwner, updateAgreementClientStatus } from "./db";
+import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getNextEstimationNumberForClient, getAgreementByToken, createSessionForOwner, updateSessionRecordForOwner, deleteSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getProfileSettingsForOwner, updateProfileSettingsForOwner, getUserByEmail, upsertUser, listProjectsForOwner, createProjectForOwner, updateProjectForOwner, deleteProjectForOwner, setMainProjectForOwner, createAgreementForProject, createClientForOwner, updateClientForOwner, updateAgreementClientStatus, renewAgreementForOwner } from "./db";
 import { storagePut } from "./storage";
 import { sdk } from "./_core/sdk";
 import { validateCredentialLogin } from "./credentialLogin";
@@ -322,6 +322,7 @@ export const appRouter = router({
       if (!updated) throw new TRPCError({ code: "NOT_FOUND", message: "Agreement not found or you do not have permission to edit it." });
       return updated;
     }),
+    renew: protectedProcedure.input(z.object({ agreementId: z.number().int().positive(), renewalType: z.enum(["continuous", "sixMonths", "oneYear"]) })).mutation(({ ctx, input }) => renewAgreementForOwner(ctx.user.id, input.agreementId, input.renewalType)),
     byToken: publicProcedure.input(z.object({ token: z.string().min(12).max(32) })).query(({ input }) => getAgreementByToken(input.token)),
     respond: publicProcedure.input(z.object({
       token: z.string().min(12).max(32),

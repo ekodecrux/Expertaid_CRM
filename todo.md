@@ -1266,3 +1266,8 @@
 - [x] Add other-project Client status editing for Extended, Renewal, and Closed.
 - [x] Add an Edit action in the Clients list without changing Client IDs or project linkage.
 - [x] Update schema, API validation, and Hostinger SQL for the expanded status model.
+
+- [x] Keep automatic status results out of editable dropdown choices; display only the automatic Expired result when the end date has passed.
+- [x] Add ERP Renewal action to resend the agreement to the client and return the record to a signable renewal workflow.
+- [x] Track renewal start continuity: same start date for continuous renewal, or a six-month/one-year gap when explicitly selected.
+- [x] Persist renewal tracking fields and update the Hostinger SQL repair file.

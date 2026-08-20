@@ -451,3 +451,9 @@ ALTER TABLE `clients` MODIFY COLUMN `status` enum('Active','Inactive','Hold','Ca
 -- Persist the client lifecycle status separately from the agreement approval status.
 SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'agreements' AND column_name = 'clientStatus'), 'SELECT 1', 'ALTER TABLE `agreements` ADD COLUMN `clientStatus` ENUM(''Active'',''Inactive'',''Hold'',''Cancelled'',''Renewal'',''Extended'',''Closed'') NULL AFTER `status`');
 PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+-- Renewal lineage and gap tracking for ERP agreements.
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'agreements' AND column_name = 'renewalOfAgreementId'), 'SELECT 1', 'ALTER TABLE `agreements` ADD COLUMN `renewalOfAgreementId` INT NULL');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+SET @sql = IF(EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema = @db_name AND table_name = 'agreements' AND column_name = 'renewalType'), 'SELECT 1', 'ALTER TABLE `agreements` ADD COLUMN `renewalType` ENUM(''continuous'',''sixMonths'',''oneYear'') NULL');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
