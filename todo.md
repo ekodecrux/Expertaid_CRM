@@ -1317,3 +1317,7 @@
 - [x] Preserve the other Clients actions and avoid double-counting invoice and receipt payments.
 
 - [x] Move the ERP branch count so it appears immediately after the School/College/Academy type badge in the Clients identity row, matching the supplied reference.
+
+- [x] Show the client phone number directly above the email address in the Clients identity block.
+
+- [x] Add phone and email icons beside the contact lines in the Clients identity block while keeping phone above email.
