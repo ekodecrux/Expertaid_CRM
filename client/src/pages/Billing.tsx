@@ -40,6 +40,13 @@ import {
 import { filterProjectClients } from "@shared/clients";
 
 type BillingKind = "invoice" | "receipt";
+
+type ClientPaymentSummary = { total: number; paid: number; due: number; progress: number };
+
+function ClientPaymentSummaryPanel({ summary }: { summary: ClientPaymentSummary }) {
+  return <div className="sm:col-span-2 rounded-xl border border-[#e3defc] bg-[#faf9ff] p-3"><div className="mb-3 flex items-center justify-between gap-3"><div><p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-400">Client payment position</p><p className="mt-1 text-xs text-slate-500">Use this balance when preparing the invoice or receipt.</p></div><p className="text-xs font-semibold text-[#4f2ad3]">{Math.round(summary.progress)}% paid</p></div><div className="grid gap-3 sm:grid-cols-3"><div><p className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Assigned total</p><p className="mt-1 font-bold text-[#4f2ad3]">{formatCurrency(summary.total)}</p></div><div><p className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Paid</p><p className="mt-1 font-bold text-emerald-600">{formatCurrency(summary.paid)}</p></div><div><p className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Pending</p><p className="mt-1 font-bold text-rose-600">{formatCurrency(summary.due)}</p></div></div><div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-200"><div className="h-full rounded-full bg-[#5b45e5] transition-all" style={{ width: `${summary.progress}%` }} /></div></div>;
+}
+
 type Item = {
   itemName: string;
   description?: string;
@@ -247,12 +254,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const receiptSettings = trpc.receipts.settings.get.useQuery(undefined, {
     enabled: !isInvoice,
   });
-  const invoices = trpc.invoices.list.useQuery(undefined, {
-    enabled: isInvoice,
-  });
-  const receipts = trpc.receipts.list.useQuery(undefined, {
-    enabled: !isInvoice,
-  });
+  const invoices = trpc.invoices.list.useQuery();
+  const receipts = trpc.receipts.list.useQuery();
   const clients = trpc.clients.list.useQuery({ page: 1, pageSize: 200 });
   const projects = trpc.projects.list.useQuery();
   const updateInvoiceSettings = trpc.invoices.settings.update.useMutation({
@@ -375,7 +378,21 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const projectOptions: any[] = (projects.data as any) ?? [];
   const selectedProjectId = Number(isInvoice ? invoiceForm.projectId : receiptForm.projectId) || 0;
   const selectedProject = projectOptions.find((project: any) => Number(project.id) === selectedProjectId);
+  const selectedClient = clientOptions.find((client: any) => String(client.clientId ?? "") === String(isInvoice ? invoiceForm.clientId : receiptForm.clientId) && Number(client.projectId) === selectedProjectId);
   const filteredClientOptions = selectedProjectId > 0 ? filterProjectClients(clientOptions, selectedProjectId) : [];
+  const selectedClientPayment = useMemo<ClientPaymentSummary | null>(() => {
+    if (!selectedClient) return null;
+    const matches = (row: any) => selectedClient.clientId && row.clientId
+      ? String(row.clientId).toLowerCase() === String(selectedClient.clientId).toLowerCase()
+      : String(row.clientName ?? "").trim().toLowerCase() === String(selectedClient.clientName ?? "").trim().toLowerCase();
+    const clientInvoices = ((invoices.data ?? []) as any[]).filter(matches);
+    const clientReceipts = ((receipts.data ?? []) as any[]).filter((row) => matches(row) && row.status !== "Cancelled");
+    const receiptInvoiceIds = new Set(clientReceipts.map((row) => row.invoiceId).filter(Boolean));
+    const paid = clientReceipts.reduce((sum, row) => sum + Number(row.amount ?? row.grandTotal ?? 0), 0) + clientInvoices.filter((row) => row.status === "Paid" && !receiptInvoiceIds.has(row.id)).reduce((sum, row) => sum + Number(row.grandTotal ?? 0), 0);
+    const total = Number(selectedClient.totalPrice ?? selectedClient.price ?? 0);
+    const due = Math.max(total - paid, 0);
+    return { total, paid, due, progress: total > 0 ? Math.min(100, (paid / total) * 100) : 0 };
+  }, [selectedClient, invoices.data, receipts.data]);
   const applyProjectToForm = (projectId: string) => {
     const cleared = { projectId, clientId: "", clientName: "", clientAddress: "", clientContact: "", clientEmail: "", clientGst: "" };
     if (isInvoice) setInvoiceForm(current => ({ ...current, ...cleared }));
@@ -1444,6 +1461,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                       </select>
                     </div>
                   </div>
+                  {selectedClientPayment && <ClientPaymentSummaryPanel summary={selectedClientPayment} />}
                   <div>
                     <Label>Client name</Label>
                     <Input
@@ -1780,6 +1798,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                       </select>
                     </div>
                   </div>
+                  {selectedClientPayment && <ClientPaymentSummaryPanel summary={selectedClientPayment} />}
                   <div>
                     <Label>Client name</Label>
                     <Input
