@@ -1295,3 +1295,10 @@
 - [x] Show tenure and School, College, or Academy badges in each ERP Client identity block.
 - [x] Add a colored status dot beside the Client identity details.
 - [x] Replace the status dropdown with click-to-cycle manual status control for Active, Inactive, Hold, and Cancelled.
+
+- [x] Removal of the Active/manual status control canceled by user; keep the Total Status control unchanged.
+
+- [x] Confirmed: remove the Active/manual status control from Total Status while retaining identity-area status editing.
+
+- [x] Add a separate Status column beside Total Status and move the clickable status control into it.
+- [x] Keep Total Status as the final amount only.
