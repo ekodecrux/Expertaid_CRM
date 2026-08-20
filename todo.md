@@ -1337,3 +1337,5 @@
 - [x] Refine Project and Client ID fields to match the supplied billing form layout.
 - [x] Use the Client ID search box to control the filtered dropdown without a separate redundant search interaction.
 - [x] Preserve all autofilled client details after selecting a Client ID and reopening or interacting with the selector.
+
+- [x] Replace the separate Client ID search input and native dropdown with one searchable Client ID combobox for invoice and receipt forms.
