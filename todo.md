@@ -1275,3 +1275,7 @@
 - [x] Rework the Clients list toward compact identity, collaboration, financial, total/status, and action columns like the supplied reference.
 - [x] Add grouped Payment, History, Edit, View, and ERP Renewal actions; replace any destructive delete-style action with View.
 - [x] Keep actions safe for agreement and standalone records and preserve the existing status and renewal rules.
+
+- [x] Show Client ID and branch count inside the Client Name identity block.
+- [x] Use green for Active and red for Expired, with matching lifecycle colors for other statuses.
+- [x] Make status editing discoverable on hover with a clear tooltip while keeping automatic statuses non-editable.
