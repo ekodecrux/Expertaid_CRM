@@ -1253,3 +1253,11 @@
 
 - [x] Place branch count immediately after student count with clear spacing in agreement Plan summary.
 - [x] Show the pre-GST plan amount at the bottom of Plan summary, calculated as students × per-student price or package price.
+
+- [x] Reduce the empty horizontal space between the sidebar and Clients content.
+- [x] Keep the Clients table horizontal scrollbar contained inside the list card while preserving access to the Action column.
+- [x] Verify the tightened Clients layout on desktop and mobile widths.
+
+- [x] Verify the published live domain reaches the published sign-in page; sandbox confirms the latest Clients layout while authenticated live comparison remains pending.
+
+- [x] Fix the live Clients table so the complete list row and Action column are not clipped on the right.
