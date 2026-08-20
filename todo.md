@@ -1291,3 +1291,7 @@
 - [x] Change the per-student Financials label from “/std” to “Per Std.” while preserving package labels.
 
 - [x] Hide “Br. 1” from standalone and other-project clients while retaining branch count for ERP agreement rows.
+
+- [x] Show tenure and School, College, or Academy badges in each ERP Client identity block.
+- [x] Add a colored status dot beside the Client identity details.
+- [x] Replace the status dropdown with click-to-cycle manual status control for Active, Inactive, Hold, and Cancelled.
