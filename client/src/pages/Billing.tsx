@@ -376,7 +376,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const projectOptions: any[] = (projects.data as any) ?? [];
   const selectedProjectId = Number(isInvoice ? invoiceForm.projectId : receiptForm.projectId) || 0;
   const selectedProject = projectOptions.find((project: any) => Number(project.id) === selectedProjectId);
-  const filteredClientOptions = selectedProjectId > 0 ? filterProjectClients(clientOptions, selectedProjectId, clientSearch) : [];
+  const selectedClient = clientOptions.find((client: any) => String(client.clientId ?? "") === String(isInvoice ? invoiceForm.clientId : receiptForm.clientId) && Number(client.projectId) === selectedProjectId);
+  const searchedClientOptions = selectedProjectId > 0 ? filterProjectClients(clientOptions, selectedProjectId, clientSearch) : [];
+  const filteredClientOptions = selectedClient && !searchedClientOptions.some((client: any) => String(client.clientId) === String(selectedClient.clientId)) ? [selectedClient, ...searchedClientOptions] : searchedClientOptions;
   const applyProjectToForm = (projectId: string) => {
     setClientSearch("");
     const cleared = { projectId, clientId: "", clientName: "", clientAddress: "", clientContact: "", clientEmail: "", clientGst: "" };

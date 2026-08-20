@@ -1333,3 +1333,7 @@
 - [x] Show ERP client IDs and project-specific client details consistently in invoice and receipt forms.
 
 - [x] After Client ID selection, autofill saved client name, address, phone, email, and GST where available; keep dates, GST mode, payment fields, products, notes, and other document-specific fields editable.
+
+- [x] Refine Project and Client ID fields to match the supplied billing form layout.
+- [x] Use the Client ID search box to control the filtered dropdown without a separate redundant search interaction.
+- [x] Preserve all autofilled client details after selecting a Client ID and reopening or interacting with the selector.
