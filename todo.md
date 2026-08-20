@@ -1279,3 +1279,7 @@
 - [x] Show Client ID and branch count inside the Client Name identity block.
 - [x] Use green for Active and red for Expired, with matching lifecycle colors for other statuses.
 - [x] Make status editing discoverable on hover with a clear tooltip while keeping automatic statuses non-editable.
+
+- [x] Match the reference filter strip with compact search, type, status, year, and ID filters.
+- [x] Remove oversized list-view KPI space and tighten the table rows to the reference proportions.
+- [x] Use the exact primary row sections: Client Name, Collaboration, Financials, Total Status, and Actions.
