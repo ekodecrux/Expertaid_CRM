@@ -13018,3 +13018,6 @@
 
 - [x] Show TOTAL AMOUNT (TAX INCLUSIVE) in invoice summaries when GST mode is inclusive
 - [x] Preserve existing total wording for exclusive GST invoices
+
+- [x] Correct the exact invoice preview label shown as TOTAL PRICE INCLUDING TAX
+- [x] Verify the rendered inclusive invoice preview displays TOTAL AMOUNT (TAX INCLUSIVE)

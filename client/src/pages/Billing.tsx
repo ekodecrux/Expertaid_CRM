@@ -2386,7 +2386,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                         </table>
                         <div className="grid grid-cols-2 bg-white">
                         <div className="flex items-center justify-center border-r border-slate-200 px-4 py-6 text-center text-xs font-bold uppercase tracking-wide text-[#43239d]">
-                          Total price including tax
+                          {selected.gstMode === "inclusive" ? "TOTAL AMOUNT (TAX INCLUSIVE)" : "Total price excluding tax"}
                         </div>
                         <div className="grid grid-cols-[minmax(0,1fr)_112px] text-right text-sm">
                           <span className="border-b border-l border-slate-200 px-4 py-3 text-center text-xs uppercase leading-tight text-slate-600">
