@@ -12867,6 +12867,6 @@
 - [x] Display product-level GST, assigned, paid, pending, and payment status details
 - [x] Verify product totals reconcile with the overall financial summary
 
-- [ ] Standardize primary and additional product cards with identical aligned financial fields
-- [ ] Show GST amount and assigned total consistently for every product
-- [ ] Verify product cards remain compact and readable on desktop and mobile
+- [x] Standardize primary and additional product cards with identical aligned financial fields
+- [x] Show GST amount and assigned total consistently for every product
+- [x] Verify product cards remain compact and readable on desktop and mobile
