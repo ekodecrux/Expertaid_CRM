@@ -12770,3 +12770,7 @@
 
 - [x] Automatically close the sidebar when opening Client Edit
 - [x] Verify the collapsed sidebar and full-width Client Edit layout on desktop and mobile
+
+- [x] Keep No. of students visible in ERP Package mode on Add Client and Client Edit
+- [x] Require a valid student count for ERP Package mode and preserve it when saving
+- [x] Verify Package and Per Student modes in both workflows
