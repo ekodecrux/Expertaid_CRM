@@ -12835,3 +12835,7 @@
 - [x] Normalize Invoice and Receipt field outer borders and focus rings
 - [x] Preserve visible keyboard focus accessibility without persistent blue outlines
 - [x] Verify field styling across Invoice and Receipt desktop/mobile layouts
+
+- [x] Load saved payment-plan instalments for the selected client in payment history
+- [x] Show upcoming reminder instalments while keeping actual receipts separate
+- [x] Verify ERP26003 payment history modal displays the saved schedule

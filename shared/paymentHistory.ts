@@ -12,6 +12,40 @@ export type PlannedPaymentTerm = {
   amount: string | number;
 };
 
+export type PaymentPlanSchedule = {
+  totalAmount?: string | number | null;
+  initialPayment?: string | number | null;
+  terms?: PlannedPaymentTerm[] | null;
+};
+
+/**
+ * Returns the persisted schedule for display. Older planner saves could persist
+ * the reminder dates before distributing the remaining balance, leaving every
+ * term at zero. In that case, allocate the plan balance evenly across the
+ * dated terms so the client history still shows the upcoming payment schedule.
+ */
+export function displayPlannedPaymentTerms(plan: PaymentPlanSchedule | null | undefined): PlannedPaymentTerm[] {
+  const terms = Array.isArray(plan?.terms) ? plan.terms : [];
+  const datedTerms = terms.filter((term) => Boolean(term.dueDate));
+  const hasPositiveAmount = datedTerms.some((term) => Number(term.amount) > 0);
+  if (hasPositiveAmount || datedTerms.length === 0) return terms;
+
+  const remaining = Math.max(Number(plan?.totalAmount ?? 0) - Number(plan?.initialPayment ?? 0), 0);
+  if (remaining <= 0) return terms;
+
+  const base = Math.floor((remaining / datedTerms.length) * 100) / 100;
+  let allocated = 0;
+  return terms.map((term) => {
+    if (!term.dueDate) return term;
+    const index = datedTerms.indexOf(term);
+    const amount = index === datedTerms.length - 1
+      ? Math.max(0, Math.round((remaining - allocated) * 100) / 100)
+      : base;
+    allocated += amount;
+    return { ...term, amount: amount.toFixed(2) };
+  });
+}
+
 export function mergeUpcomingPaymentItems(
   invoiceItems: UpcomingPaymentItem[],
   plannedTerms: PlannedPaymentTerm[] = [],

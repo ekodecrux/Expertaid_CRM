@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { mergeUpcomingPaymentItems } from "./paymentHistory";
+import { displayPlannedPaymentTerms, mergeUpcomingPaymentItems } from "./paymentHistory";
 
 describe("mergeUpcomingPaymentItems", () => {
   it("includes saved planned terms alongside invoice due items in date order", () => {
@@ -19,5 +19,22 @@ describe("mergeUpcomingPaymentItems", () => {
       { label: "Empty", dueDate: "2026-08-30", amount: 0 },
       { label: "No date", dueDate: "", amount: 1000 },
     ])).toEqual([]);
+  });
+});
+
+describe("displayPlannedPaymentTerms", () => {
+  it("reconstructs equal instalments from the remaining plan balance when saved terms are zero", () => {
+    const terms = displayPlannedPaymentTerms({
+      totalAmount: "23600.00",
+      initialPayment: "1000.00",
+      terms: [
+        { label: "Installment 1", dueDate: "2026-09-01", amount: "0.00" },
+        { label: "Installment 2", dueDate: "2026-10-01", amount: "0.00" },
+        { label: "Installment 3", dueDate: "2026-11-01", amount: "0.00" },
+      ],
+    });
+
+    expect(terms.map((term) => term.amount)).toEqual(["7533.33", "7533.33", "7533.34"]);
+    expect(mergeUpcomingPaymentItems([], terms).map((item) => item.amount)).toEqual([7533.33, 7533.33, 7533.34]);
   });
 });
