@@ -12898,3 +12898,7 @@
 - [x] Use the available left-side space in product financial cards
 - [x] Align Amount, GST Amount, Total Amount, Paid, and Pending headers and values evenly
 - [x] Verify product-card spacing remains readable on desktop and mobile
+
+- [x] Display taxable Amount before GST as the first product financial value
+- [x] Keep GST Amount and Total Amount including GST correctly calculated for inclusive and exclusive modes
+- [x] Verify Paid and Pending reconcile with the displayed product total
