@@ -12374,7 +12374,7 @@
 - [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
 - [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
 
-- [ ] Show ERP primary base amount, GST rate/mode, GST amount, total, and pending in Client Edit
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, and pending in Client Edit
 - [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
 - [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
 
@@ -12766,4 +12766,4 @@
 - [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
 - [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
 
-- [ ] Show ERP primary
+- [x] Show ERP primary
