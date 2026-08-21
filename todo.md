@@ -1360,3 +1360,5 @@
 - [x] Keep invoice and receipt creation able to collect any amount independently of the reminder schedule.
 
 - [x] Rename the payment planner cycle and related schedule labels from Terms to Installments while preserving Single payment behavior.
+
+- [x] Rename remaining schedule-row labels from Term to Installment and preserve edited installment label, due date, and amount values after saving.

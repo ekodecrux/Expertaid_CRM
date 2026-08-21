@@ -59,7 +59,7 @@ export default function ClientPaymentPlan() {
     setCycle(saved?.paymentCycle ?? "terms");
     setTotalAmount(String(Number(saved?.totalAmount ?? total)));
     setInitialPayment(String(Number(saved?.initialPayment ?? Math.min(paid, total))));
-    setTerms(saved?.terms?.length ? saved.terms.map((term) => ({ label: term.label, dueDate: term.dueDate, amount: String(Number(term.amount)) })) : [{ label: "Term 1", dueDate: client.endDate || addMonths(todayIso(), 1), amount: String(Math.max(total - Math.min(paid, total), 0)) }]);
+    setTerms(saved?.terms?.length ? saved.terms.map((term) => ({ label: term.label, dueDate: term.dueDate, amount: String(Number(term.amount)) })) : [{ label: "Installment 1", dueDate: client.endDate || addMonths(todayIso(), 1), amount: String(Math.max(total - Math.min(paid, total), 0)) }]);
     setClientForm({ clientName: client.clientName, clientOwnerName: client.clientOwnerName, contactNumber: client.contactNumber, email: client.email, address: client.address, status: client.clientStatus ?? client.status ?? "Active" });
     setInitializedFor(key);
   }, [client, payment?.paid, planQuery.data, planQuery.isLoading, initializedFor]);
@@ -68,8 +68,8 @@ export default function ClientPaymentPlan() {
   const scheduled = terms.reduce((sum, term) => sum + Number(term.amount || 0), 0);
   const scheduleDifference = calculateScheduleDifference(terms, remaining);
   const updateTerm = (index: number, key: keyof Term, value: string) => setTerms((current) => current.map((term, termIndex) => termIndex === index ? { ...term, [key]: value } : term));
-  const addTerm = () => setTerms((current) => [...current, { label: `Term ${current.length + 1}`, dueDate: addMonths(current[current.length - 1]?.dueDate || todayIso(), 1), amount: "0" }]);
-  const removeTerm = (index: number) => setTerms((current) => current.length <= 1 ? current : current.filter((_, termIndex) => termIndex !== index).map((term, termIndex) => ({ ...term, label: `Term ${termIndex + 1}` })));
+  const addTerm = () => setTerms((current) => [...current, { label: `Installment ${current.length + 1}`, dueDate: addMonths(current[current.length - 1]?.dueDate || todayIso(), 1), amount: "0" }]);
+  const removeTerm = (index: number) => setTerms((current) => current.length <= 1 ? current : current.filter((_, termIndex) => termIndex !== index).map((term, termIndex) => ({ ...term, label: `Installment ${termIndex + 1}` })));
   const distributeAmount = () => { if (!terms.length) return; setTerms((current) => distributeRemainingPayment(current, remaining)); };
   const saveSchedule = () => { if (!client?.clientId) return toast.error("This client does not have a Client ID yet."); if (Number(initialPayment) > Number(totalAmount)) return toast.error("Initial payment cannot exceed the assigned total."); if (cycle === "terms" && terms.some((term) => !term.dueDate || Number(term.amount) < 0)) return toast.error("Complete each instalment due date and amount."); savePlan.mutate({ clientId: client.clientId, projectId: client.projectId ?? null, paymentCycle: cycle, totalAmount: Number(totalAmount || 0), initialPayment: Number(initialPayment || 0), terms: cycle === "terms" ? terms.map((term) => ({ ...term, amount: Number(term.amount || 0) })) : [] }); };
   const saveClientDetails = () => { if (!client) return; updateClient.mutate({ id: client.id, clientName: clientForm.clientName, clientOwnerName: clientForm.clientOwnerName, instituteType: client.instituteType, branchCoverage: client.branchCoverage, branchCount: client.branchCount, contactNumber: clientForm.contactNumber, email: clientForm.email, address: clientForm.address, price: Number(client.price ?? client.totalPrice ?? 0), gstRate: Number(client.gstRate ?? 18), gstMode: client.gstMode ?? "exclusive", startDate: client.startDate, endDate: client.endDate, session: client.session, description: client.description, status: clientForm.status }); };
