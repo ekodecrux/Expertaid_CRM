@@ -78,6 +78,7 @@ export default function DashboardLayout({
     reader.readAsDataURL(file);
   };
   const companyBranding: CompanyBranding = branding.data ?? DEFAULT_BRANDING;
+  const activeSessionLabel = sessionSettings.data?.currentSession ?? "2026-2027";
   const changeSessionSelection = (value: string) => { const currentSession = value === "all" ? (sessionSettings.data?.currentSession ?? "2026-2027") : value; updateSession.mutate({ sessionMode: value === "all" ? "all" : "single", currentSession }); };
 
   useEffect(() => {
@@ -125,7 +126,7 @@ export default function DashboardLayout({
               <span className="min-w-0 truncate text-sm font-semibold text-slate-700">{companyBranding.companyName}</span>
             </div>
             <div className="flex flex-1 items-center justify-end gap-7 px-6 xl:px-8">
-              <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-2"><span className="hidden text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-400 xl:inline">Session</span><select aria-label="Current session view" value={sessionSettings.data?.sessionMode === "all" ? "all" : (sessionSettings.data?.currentSession ?? "2026-2027")} onChange={(event) => changeSessionSelection(event.target.value)} className="h-10 max-w-[190px] bg-transparent text-xs font-semibold text-slate-700 outline-none"><option value="all">All sessions</option>{uniqueSessionRecords.map((session) => <option key={session.sessionLabel} value={session.sessionLabel}>{session.sessionLabel}</option>)}</select></div>
+              <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-2"><span className="hidden text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-400 xl:inline">Session</span><select aria-label="Current session view" value={sessionSettings.data?.sessionMode === "all" ? "all" : (sessionSettings.data?.currentSession ?? "2026-2027")} onChange={(event) => changeSessionSelection(event.target.value)} className="h-10 max-w-[190px] bg-transparent text-xs font-semibold text-slate-700 outline-none"><option value="all">All sessions</option>{uniqueSessionRecords.map((session) => <option key={session.sessionLabel} value={session.sessionLabel}>{session.sessionLabel}{session.sessionLabel === activeSessionLabel ? " · Active" : ""}</option>)}</select></div>
               <div className="relative w-full max-w-[365px]">
                 <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
                 <input aria-label="Search clients, schools, reference numbers" defaultValue="" onChange={(event) => window.dispatchEvent(new CustomEvent("agreement-search", { detail: event.target.value }))} placeholder="Search clients, schools, reference no…" className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-12 pr-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-[#3157d5] focus:ring-2 focus:ring-[#3157d5]/10" />
@@ -167,6 +168,7 @@ function DashboardLayoutContent({
   const { state, toggleSidebar } = useSidebar();
   const isCollapsed = state === "collapsed";
   const [isResizing, setIsResizing] = useState(false);
+  const activeSessionLabel = sessionSettings?.currentSession ?? "2026-2027";
   const sidebarRef = useRef<HTMLDivElement>(null);
   const activeMenuItem = menuItems.find(item => item.available && item.path === location);
   const isMobile = useIsMobile();
@@ -286,7 +288,7 @@ function DashboardLayoutContent({
           <div className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-slate-200/80 bg-white/90 px-4 shadow-sm backdrop-blur supports-[backdrop-filter]:backdrop-blur">
             <img src={branding.companyLogoUrl} alt={branding.companyName} className="block h-10 w-14 object-contain object-center" />
             <div className="flex items-center gap-2">
-              <select aria-label="Current session view" value={sessionSettings?.sessionMode === "all" ? "all" : (sessionSettings?.currentSession ?? "2026-2027")} onChange={(event) => changeSessionSelection(event.target.value)} className="h-9 max-w-[125px] rounded-lg border border-slate-200 bg-white px-2 text-[11px] font-semibold text-slate-700 outline-none"><option value="all">All</option>{Array.from(new Map((sessionRecords ?? []).map((session) => [session.sessionLabel, session])).values()).map((session) => <option key={session.sessionLabel} value={session.sessionLabel}>{session.sessionLabel}</option>)}</select>
+              <select aria-label="Current session view" value={sessionSettings?.sessionMode === "all" ? "all" : (sessionSettings?.currentSession ?? "2026-2027")} onChange={(event) => changeSessionSelection(event.target.value)} className="h-9 max-w-[125px] rounded-lg border border-slate-200 bg-white px-2 text-[11px] font-semibold text-slate-700 outline-none"><option value="all">All</option>{Array.from(new Map((sessionRecords ?? []).map((session) => [session.sessionLabel, session])).values()).map((session) => <option key={session.sessionLabel} value={session.sessionLabel}>{session.sessionLabel}{session.sessionLabel === activeSessionLabel ? " · Active" : ""}</option>)}</select>
               <span className="hidden text-sm font-medium text-slate-600 xs:inline">{activeMenuItem?.label ?? "Menu"}</span>
               <SidebarTrigger className="h-10 w-10 rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm hover:bg-[#eef2ff] hover:text-[#3157d5]" />
             </div>

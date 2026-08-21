@@ -12960,3 +12960,8 @@
 - [x] Make Clients search match Client ID values reliably
 - [x] Prevent full-page shaking while typing in the Clients search field
 - [x] Add regression coverage for Client ID search matching and stable search state
+
+- [x] Highlight the active session in the session dropdown
+- [x] Keep All sessions and other sessions available without changing session filtering behavior
+
+- [x] Remove duplicate ERP suffix from the Clients Project dropdown label
