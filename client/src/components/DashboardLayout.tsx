@@ -38,7 +38,7 @@ const menuItems = [
   { icon: UsersRound, label: "Clients", path: "/clients", available: true },
   { icon: FileText, label: "Invoices", path: "/invoices", available: true },
   { icon: ReceiptText, label: "Receipts", path: "/receipts", available: true },
-  { icon: FileCheck2, label: "Agreements", path: "/", available: true },
+  { icon: FileCheck2, label: "Agreements", path: "/agreements", available: true },
   { icon: Bell, label: "Reminders", available: false },
   { icon: BarChart3, label: "Reports", available: false },
   { icon: Settings2, label: "Settings", path: "/settings", available: true },
