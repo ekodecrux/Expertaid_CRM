@@ -12852,3 +12852,7 @@
 
 - [x] Compact Client View field rows and section spacing without removing complete client details
 - [x] Verify compact Client View readability on desktop and mobile
+
+- [x] Move project, ERP institute type, project type, and session into the Client View top header
+- [x] Consolidate pricing, plan duration, dates, GST, total, paid, and pending into one overall summary block
+- [x] Verify ERP and non-ERP Client View header and summary behavior
