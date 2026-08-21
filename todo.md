@@ -1599,7 +1599,7 @@
 
 - [x] Prepare an automatic receipt draft from product-level collected amounts
 - [x] Ask for and validate missing receipt details before final submission
-- [ ] Show the generated receipt preview and complete visual/runtime verification for product-payment receipt flow
+- [x] Show the generated receipt preview and complete visual/runtime verification for product-payment receipt flow
 
 - [x] Prepare an automatic receipt draft from product-level collected amounts
 - [x] Ask for and validate missing receipt details before final submission
@@ -1939,7 +1939,7 @@
 
 - [x] Prepare an automatic receipt draft from product-level collected amounts
 - [x] Ask for and validate missing receipt details before final submission
-- [ ] Show the generated receipt preview and preserve Client ID/product linkage
+- [x] Show the generated receipt preview and preserve Client ID/product linkage
 - [x] Add tests and complete visual/runtime verification for product-payment receipt flow
 
 - [x] Prepare an automatic receipt draft from product-level collected amounts
@@ -4093,4 +4093,4 @@
 - [x] Prepare an automatic receipt draft from product-level collected amounts
 - [x] Ask for and validate missing receipt details before final submission
 - [x] Show the generated receipt preview and submit only after confirmation
-- [ ] Prevent duplicate receipts and preserve Client ID
+- [x] Prevent duplicate receipts and preserve Client ID
