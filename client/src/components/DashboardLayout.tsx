@@ -252,7 +252,7 @@ function DashboardLayoutContent({
                       isActive={isActive}
                       onClick={() => item.available ? setLocation(item.path!) : toast.info(`${item.label} is coming soon.`)}
                       tooltip={item.label}
-                      className={`h-10 transition-all font-normal`}
+                      className={`h-9 transition-all font-normal`}
                     >
                       <item.icon
                         className={`h-4 w-4 ${isActive ? "text-primary" : ""}`}

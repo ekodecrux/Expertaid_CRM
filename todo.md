@@ -13042,3 +13042,5 @@
 - [x] Reorder sidebar pipeline after Dashboard as Quotations, Clients, Invoices, Receipts
 
 - [x] Redesign the default Dashboard as an advanced overview with pipeline, client, financial, payment, reminder, and recent activity details
+
+- [x] Reduce vertical spacing between sidebar menu names to match the compact reference layout
