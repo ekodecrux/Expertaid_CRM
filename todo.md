@@ -12990,3 +12990,8 @@
 
 - [x] Remove the All clients title/count row entirely
 - [x] Preserve clean border and spacing between the Clients header, filters, and table
+
+- [x] Remove PDF export control from Quotations
+- [x] Export complete quotation details to Excel, including every product/item
+- [x] Include product amounts, GST, and grand total in quotation Excel export
+- [x] Add regression coverage for complete quotation export fields and totals
