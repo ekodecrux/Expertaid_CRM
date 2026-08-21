@@ -12975,3 +12975,12 @@
 - [x] Export Pricing Mode as Per Student or Package labels
 - [x] Verify Project Type and Institute Type are distinct and accurately labeled
 - [x] Add regression coverage for pricing-mode export values and type columns
+
+- [x] Remove PDF export control from the Clients page
+- [x] Move Excel export control to immediately after Clear filters
+
+- [x] Merge Clients title/subtitle header into the All clients card top section
+- [x] Keep Add Client and Approved + direct actions aligned within the unified section
+
+- [x] Right-align the Excel export button in the Clients filter area
+- [x] Keep Clear filters beside Search and preserve responsive layout
