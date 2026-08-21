@@ -438,7 +438,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   };
   useEffect(() => {
     if (!createOpen || !selectedClient?.clientId || (!selectedClientProducts.data?.length && !primaryProductBalance)) return;
-    const additionalItems = (selectedClientProducts.data as any[]).map(product => ({
+    const clientProductRows = Array.isArray(selectedClientProducts.data) ? selectedClientProducts.data : [];
+    const additionalItems = clientProductRows.map(product => ({
       itemName: String(product.productName ?? ""),
       description: String(product.description ?? ""),
       quantity: "1",

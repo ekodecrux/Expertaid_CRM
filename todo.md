@@ -12807,3 +12807,7 @@
 - [x] Include genuine additional-product totals in Client Edit assigned, paid, pending, and progress calculations
 - [x] Remove the incorrect duplicate filter from balance calculations while keeping all product cards visible
 - [x] Verify combined primary-plus-additional totals and GST details
+
+- [x] Prevent Billing from calling map on undefined selected-client product data
+- [x] Keep Invoice and Receipt client selection and product collection behavior intact after the null-safe fix
+- [x] Verify client selection, error-free rendering, and responsive billing flows
