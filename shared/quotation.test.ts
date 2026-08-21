@@ -10,7 +10,9 @@ describe("quotation totals", () => {
   });
 
   it("separates GST from an entered inclusive total", () => {
-    expect(calculateQuotationTotals([{ product: "ERP", itemName: "ERP Software", quantity: 1, unitPrice: 11000 }], 18, "inclusive")).toEqual({ subtotal: 9322.033898305085, gstAmount: 1677.9661016949153, grandTotal: 11000 });
+    const totals = calculateQuotationTotals([{ product: "ERP", itemName: "ERP Software", quantity: 1, unitPrice: 11000 }], 18, "inclusive");
+    expect(totals).toEqual({ subtotal: 9322.033898305085, gstAmount: 1677.9661016949153, grandTotal: 11000 });
+    expect(totals.subtotal + totals.gstAmount).toBeCloseTo(totals.grandTotal, 10);
   });
 
   it("includes the three configurable default product categories", () => {

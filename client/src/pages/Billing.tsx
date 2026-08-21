@@ -520,7 +520,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const selectedInvoiceGst = selected ? Number(selected.gstAmount) : 0;
   const selectedInvoiceTaxable =
     selected?.gstMode === "inclusive"
-      ? selectedInvoiceSubtotal - selectedInvoiceGst
+      ? selectedInvoiceSubtotal
       : selectedInvoiceSubtotal;
   const totalValue = rows.reduce(
     (sum: number, row: any) =>
@@ -1777,7 +1777,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           Taxable value:{" "}
                           <strong>
                             {formatCurrency(
-                              invoiceTotals.subtotal - invoiceTotals.gstAmount
+                              invoiceTotals.subtotal
                             )}
                           </strong>
                         </p>

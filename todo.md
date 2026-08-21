@@ -12995,3 +12995,7 @@
 - [x] Export complete quotation details to Excel, including every product/item
 - [x] Include product amounts, GST, and grand total in quotation Excel export
 - [x] Add regression coverage for complete quotation export fields and totals
+
+- [x] Make inclusive GST invoice grand total equal the actual sum of entered product values
+- [x] Display included GST as a component without adding it again to the inclusive total
+- [x] Add regression coverage for inclusive invoice totals while preserving exclusive GST behavior
