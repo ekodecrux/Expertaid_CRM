@@ -12887,3 +12887,6 @@
 - [x] Match Client View to the supplied reference hierarchy and section order
 - [x] Add reference-style Financial Summary and Invoice Summary blocks using live totals
 - [x] Verify reference-style Client View on desktop and mobile without changing financial calculations
+
+- [x] Remove the standalone duplicate Financial Summary section from Client View
+- [x] Verify assigned, paid, and pending totals remain available in the remaining summaries
