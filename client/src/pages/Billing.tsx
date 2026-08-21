@@ -9,7 +9,6 @@ import {
   Printer,
   Receipt as ReceiptIcon,
   Settings2,
-  Trash2,
   X,
 } from "lucide-react";
 import DashboardLayout from "@/components/DashboardLayout";
@@ -378,18 +377,6 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       invoices.refetch();
       setSelected(null);
       toast.success("Invoice deleted.");
-    },
-    onError: error => {
-      const message = mutationErrorMessage(error);
-      setFormErrors({ form: message });
-      toast.error(message);
-    },
-  });
-  const deleteReceipt = trpc.receipts.delete.useMutation({
-    onSuccess: () => {
-      receipts.refetch();
-      setSelected(null);
-      toast.success("Receipt deleted.");
     },
     onError: error => {
       const message = mutationErrorMessage(error);
@@ -1063,18 +1050,19 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             >
                               <Pencil className="h-4 w-4 text-[#43239d]" />
                             </Button>
-                            <Button
+                            {isInvoice && <Button
                               size="icon"
                               variant="outline"
-                              title="Delete"
-                              onClick={() =>
-                                isInvoice
-                                  ? deleteInvoice.mutate({ id: row.id })
-                                  : deleteReceipt.mutate({ id: row.id })
-                              }
+                              title="Delete invoice"
+                              aria-label={`Delete invoice ${row.invoiceNumber}`}
+                              onClick={() => {
+                                if (window.confirm(`Delete invoice ${row.invoiceNumber}? This cannot be undone.`)) {
+                                  deleteInvoice.mutate({ id: row.id });
+                                }
+                              }}
                             >
-                              <Trash2 className="h-4 w-4 text-rose-500" />
-                            </Button>
+                              <X className="h-4 w-4 text-rose-500" />
+                            </Button>}
                           </div>
                         </td>
                       </tr>
