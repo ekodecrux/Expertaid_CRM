@@ -12946,3 +12946,13 @@
 - [x] Require confirmation before deleting invoices
 - [x] Require confirmation before deleting quotations
 - [x] Remove receipt delete actions from the interface
+
+- [x] Put Session first and add Project filter with ERP selected by default
+- [x] Order remaining Clients filters as Type, Status, and ERP-only Branches before the reference filters
+- [x] Hide Branches when a non-ERP project is selected and preserve filtering behavior
+
+- [x] Remove ID Filter from the Clients filter area
+- [x] Remove Plan From and Plan To from the Clients filter area
+- [x] Preserve the remaining requested filters and remove obsolete filter state from the query
+
+- [x] Remove All Years from the Clients filter area and stop applying date-range filtering from that control

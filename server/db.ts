@@ -759,7 +759,7 @@ export async function updateAgreementClientStatus(ownerId: number, agreementId: 
   return rows[0];
 }
 
-export async function listApprovedClientsForOwner(ownerId: number, options: { page: number; pageSize: number; search?: string; instituteType?: "School" | "College" | "Academy"; clientStatus?: ClientManualStatus | "Ready to Expire" | "Expired"; startDate?: string; endDate?: string; branchCoverage?: "individual" | "multiple"; minValue?: number; maxValue?: number; sessionMode?: "all" | "single"; currentSession?: string }) {
+export async function listApprovedClientsForOwner(ownerId: number, options: { page: number; pageSize: number; search?: string; instituteType?: "School" | "College" | "Academy"; clientStatus?: ClientManualStatus | "Ready to Expire" | "Expired"; startDate?: string; endDate?: string; branchCoverage?: "individual" | "multiple"; minValue?: number; maxValue?: number; sessionMode?: "all" | "single"; currentSession?: string; projectId?: number }) {
   const db = await getDb();
   if (!db) return { items: [], total: 0, page: options.page, pageSize: options.pageSize, totalPages: 0, summary: { students: 0, value: 0 } };
   const search = options.search?.trim();
@@ -769,6 +769,10 @@ export async function listApprovedClientsForOwner(ownerId: number, options: { pa
   if (options.sessionMode === "single" && options.currentSession) {
     agreementFilters.push(eq(agreements.session, options.currentSession));
     clientFilters.push(eq(clients.session, options.currentSession));
+  }
+  if (options.projectId !== undefined) {
+    agreementFilters.push(eq(agreements.projectId, options.projectId));
+    clientFilters.push(eq(clients.projectId, options.projectId));
   }
   if (options.instituteType) {
     agreementFilters.push(eq(agreements.instituteType, options.instituteType));
