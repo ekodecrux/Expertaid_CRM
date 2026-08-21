@@ -12883,3 +12883,7 @@
 
 - [x] Add Total Amount after GST Amount for primary and additional products
 - [x] Verify Amount, GST Amount, Total Amount, Paid, and Pending alignment and calculations
+
+- [x] Match Client View to the supplied reference hierarchy and section order
+- [x] Add reference-style Financial Summary and Invoice Summary blocks using live totals
+- [x] Verify reference-style Client View on desktop and mobile without changing financial calculations
