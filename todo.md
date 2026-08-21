@@ -12902,3 +12902,7 @@
 - [x] Display taxable Amount before GST as the first product financial value
 - [x] Keep GST Amount and Total Amount including GST correctly calculated for inclusive and exclusive modes
 - [x] Verify Paid and Pending reconcile with the displayed product total
+
+- [x] Correct additional-product base amount source so Biometric displays ₹10,000 before GST
+- [x] Reconcile Biometric GST ₹1,800, total ₹11,800, paid ₹1,000, and pending ₹10,800
+- [x] Add regression coverage for the corrected additional-product amount case
