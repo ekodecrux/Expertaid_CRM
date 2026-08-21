@@ -276,7 +276,7 @@ function ValidationSummary({
 
 export function BillingPage({ kind }: { kind: BillingKind }) {
   const isInvoice = kind === "invoice";
-  const [location] = useLocation();
+  const [location, navigate] = useLocation();
   const invoiceSettings = trpc.invoices.settings.get.useQuery(undefined, {
     enabled: true,
   });
@@ -2175,7 +2175,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
 
           <Dialog
             open={Boolean(selected)}
-            onOpenChange={open => !open && setSelected(null)}
+            onOpenChange={open => { if (open) return; setSelected(null); if (new URLSearchParams(window.location.search).has("receipt")) navigate("/receipts"); }}
           >
             <DialogContent className="max-h-[92vh] w-[min(900px,calc(100vw-2rem))] !max-w-none overflow-y-auto bg-slate-50 p-4 sm:p-8">
               <DialogHeader className="print:hidden">

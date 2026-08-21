@@ -12932,3 +12932,6 @@
 
 - [x] Make Payment history View open the selected receipt document directly
 - [x] Verify direct receipt preview shows product, GST, amount, payment details, and Print
+
+- [x] Make directly opened receipt preview close reliably with X, Escape, and outside click
+- [x] Return to the previous payment-history context after closing a direct receipt preview
