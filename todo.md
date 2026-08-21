@@ -12767,3 +12767,6 @@
 - [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
 
 - [x] Show ERP primary
+
+- [x] Automatically close the sidebar when opening Client Edit
+- [x] Verify the collapsed sidebar and full-width Client Edit layout on desktop and mobile

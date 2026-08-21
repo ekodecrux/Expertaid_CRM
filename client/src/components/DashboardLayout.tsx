@@ -178,6 +178,12 @@ function DashboardLayoutContent({
   }, [isCollapsed]);
 
   useEffect(() => {
+    if (location.startsWith("/clients/edit/") && !isCollapsed) {
+      toggleSidebar();
+    }
+  }, [location, isCollapsed, toggleSidebar]);
+
+  useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!isResizing) return;
 
