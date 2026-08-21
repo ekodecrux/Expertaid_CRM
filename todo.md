@@ -1358,3 +1358,5 @@
 - [x] Add single-payment and terms-based payment cycle selection with add-term and distribute-amount controls.
 - [x] Persist instalment labels, due dates, planned amounts, initial payment allocation, and remaining-balance reminders.
 - [x] Keep invoice and receipt creation able to collect any amount independently of the reminder schedule.
+
+- [x] Rename the payment planner cycle and related schedule labels from Terms to Installments while preserving Single payment behavior.
