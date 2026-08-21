@@ -13007,3 +13007,7 @@
 - [x] Persist all selected client details when saving an edited invoice
 - [x] Restore persisted project, Client ID, name, address, contact, email, and GSTIN when reopening the invoice
 - [x] Add regression coverage for invoice edit-save client-detail persistence
+
+- [x] Make Active status filter exclude Ready to Expire clients
+- [x] Keep Ready to Expire visible only when explicitly selected
+- [x] Add regression coverage for automatic client status filtering

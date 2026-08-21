@@ -779,8 +779,8 @@ export async function listApprovedClientsForOwner(ownerId: number, options: { pa
     clientFilters.push(eq(clients.instituteType, options.instituteType));
   }
   if (options.clientStatus === "Active") {
-    agreementFilters.push(gte(agreements.endDate, today), sql`(${agreements.clientStatus} IS NULL OR ${agreements.clientStatus} = 'Active')`);
-    clientFilters.push(eq(clients.status, "Active"));
+    agreementFilters.push(sql`${agreements.endDate} > DATE_ADD(${today}, INTERVAL 5 DAY)`, sql`(${agreements.clientStatus} IS NULL OR ${agreements.clientStatus} = 'Active')`);
+    clientFilters.push(sql`${clients.endDate} > DATE_ADD(${today}, INTERVAL 5 DAY)`, eq(clients.status, "Active"));
   }
   if (options.clientStatus === "Ready to Expire") {
     agreementFilters.push(sql`${agreements.endDate} BETWEEN ${today} AND DATE_ADD(${today}, INTERVAL 5 DAY)`);
