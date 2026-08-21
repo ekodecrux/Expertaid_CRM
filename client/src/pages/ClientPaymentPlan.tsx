@@ -75,10 +75,7 @@ export default function ClientPaymentPlan() {
   const primaryFallbackBreakdown = gstBreakdown(primarySubtotal, Number(clientForm.gstRate || 0), clientForm.gstMode);
   const primaryBreakdown = { taxable: primarySubtotal, gst: primaryPricing?.gstAmount ?? primaryFallbackBreakdown.gst, total: primaryPricing?.totalPrice ?? primaryFallbackBreakdown.total };
   const primaryTotal = clientPrimaryTotal({ price: client?.price, gstAmount: client?.gstAmount, gstMode: clientForm.gstMode, totalPrice: primaryBreakdown.total });
-  const paymentProducts = useMemo(() => products.filter((product, index) => {
-    const duplicatePrimary = isMainProject && index === 0 && Math.abs(productTotal(product) - primaryTotal) < 0.01 && Math.abs(Number(product.gstAmount ?? 0) - Number(client?.gstAmount ?? 0)) < 0.01;
-    return !duplicatePrimary;
-  }), [products, isMainProject, primaryTotal, client?.gstAmount]);
+  const paymentProducts = products;
   const productsPaid = paymentProducts.reduce((sum, product) => sum + productPaid(product), 0);
   const payment = client ? paymentPosition(client, invoicesQuery.data ?? [], receiptsQuery.data ?? [], paymentProducts) : null;
   const primaryPaid = Math.min(Math.max((payment?.paid ?? 0) - productsPaid, 0), primaryTotal);

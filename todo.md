@@ -12799,3 +12799,11 @@
 - [x] Keep additional-product financial details visible in Client Edit
 - [x] Exclude only duplicate legacy primary rows from balance totals, not from the visible product breakdown
 - [x] Verify Client Edit shows primary and additional details with correct summary totals
+
+- [x] Reviewed Biometric and confirmed it is a genuine additional product; keep it visible
+- [x] Preserve genuine additional products in the Client Edit breakdown
+- [x] Verify no duplicate total counting remains while the genuine product row stays visible
+
+- [x] Include genuine additional-product totals in Client Edit assigned, paid, pending, and progress calculations
+- [x] Remove the incorrect duplicate filter from balance calculations while keeping all product cards visible
+- [x] Verify combined primary-plus-additional totals and GST details
