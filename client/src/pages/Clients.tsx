@@ -20,6 +20,7 @@ import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { useLocation } from "wouter";
 import { buildClientReceiptPath } from "@shared/receiptNavigation";
 import { matchesClientSearch } from "@shared/clientSearch";
+import { buildClientExportRecord } from "@shared/clientExport";
 import { toast } from "sonner";
 
 type ClientStatus = ClientManualStatus | AutomaticClientStatus;
@@ -124,9 +125,21 @@ export default function Clients() {
   const editingRecord = editingId ? ((data?.items ?? []) as Client[]).find((client) => Math.abs(client.id) === editingId) ?? null : null;
   const editPayment = editingRecord ? paymentSummary(editingRecord, invoicesQuery.data ?? [], receiptsQuery.data ?? [], null) : null;
   const exportRows = async () => { const result = await exportQuery.refetch(); return (result.data?.items ?? []) as Client[]; };
+  const exportRecordForClient = (client: Client) => {
+    const project = projects.find((entry) => entry.id === client.projectId);
+    const paymentPosition = paymentSummary(client, invoicesQuery.data ?? [], receiptsQuery.data ?? []);
+    return buildClientExportRecord(client, {
+      projectName: project?.name ?? "—",
+      projectType: project?.isMain ? "ERP" : "Other",
+      status: statusFor(client),
+      approvedOn: date(client.decidedAt ?? client.signatureDate),
+      paid: paymentPosition.paid,
+      pending: paymentPosition.due,
+    });
+  };
   const clearFilters = () => { setSearch(""); setClientStatus("all"); setInstituteType("all"); setBranchCoverage("all"); setMinValue(""); setMaxValue(""); setSessionFilter("2026-2027"); const erpProject = projects.find((project) => project.isMain) ?? projects[0]; setProjectFilter(erpProject ? String(erpProject.id) : ""); setPage(1); };
-  const exportExcel = async () => { const rows = await exportRows(); const sheet = XLSX.utils.json_to_sheet(rows.map((client) => exportRecord(client))); const workbook = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(workbook, sheet, "Approved Clients"); XLSX.writeFile(workbook, "approved-clients.xlsx"); };
-  const exportPdf = async () => { const rows = await exportRows(); const pdf = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" }); pdf.setFontSize(16); pdf.text("Approved Clients", 14, 15); pdf.setFontSize(8); pdf.text(`Generated ${new Date().toLocaleDateString("en-IN")} · ${rows.length} clients`, 14, 21); let y = 30; const columns = ["Client", "Reference", "Owner", "Students", "Value", "Plan period", "Status"]; pdf.setFont("helvetica", "bold"); pdf.text(columns.join("     "), 14, y); y += 6; pdf.setFont("helvetica", "normal"); rows.forEach((client) => { if (y > 190) { pdf.addPage(); y = 18; pdf.setFont("helvetica", "bold"); pdf.text(columns.join("     "), 14, y); y += 6; pdf.setFont("helvetica", "normal"); } const line = [client.clientName, formatAgreementReference(client.id), client.clientOwnerName, String(client.noOfStudents), money(client.totalPrice), `${client.startDate} to ${client.endDate}`, statusFor(client)].map((value) => String(value).slice(0, 24)); pdf.text(line.join("     "), 14, y); y += 5; }); pdf.save("approved-clients.pdf"); };
+  const exportExcel = async () => { const rows = await exportRows(); const sheet = XLSX.utils.json_to_sheet(rows.map(exportRecordForClient)); const workbook = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(workbook, sheet, "Complete Client Details"); XLSX.writeFile(workbook, "approved-clients-complete.xlsx"); };
+  const exportPdf = async () => { const rows = await exportRows(); const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" }); const records = rows.map(exportRecordForClient); pdf.setFont("helvetica", "bold"); pdf.setFontSize(16); pdf.text("Complete Client Details", 14, 16); pdf.setFont("helvetica", "normal"); pdf.setFontSize(8); pdf.text(`Generated ${new Date().toLocaleDateString("en-IN")} · ${records.length} clients`, 14, 22); let y = 30; records.forEach((record, index) => { if (index > 0) { pdf.addPage(); y = 18; } pdf.setFont("helvetica", "bold"); pdf.setFontSize(12); pdf.text(String(record["Client Name"]), 14, y); y += 7; pdf.setFont("helvetica", "normal"); pdf.setFontSize(8.5); Object.entries(record).forEach(([label, value]) => { if (label === "Client Name") return; const lines = pdf.splitTextToSize(`${label}: ${String(value ?? "—")}`, 182); if (y + lines.length * 4.5 > 282) { pdf.addPage(); y = 18; } pdf.text(lines, 14, y); y += lines.length * 4.5; }); }); pdf.save("approved-clients-complete.pdf"); };
   const change = (setter: (value: string) => void) => (event: React.ChangeEvent<HTMLInputElement>) => { setter(event.target.value); setPage(1); };
   const submitNewClient = (event: FormEvent) => {
     event.preventDefault();

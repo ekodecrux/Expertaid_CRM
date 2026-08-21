@@ -12965,3 +12965,8 @@
 - [x] Keep All sessions and other sessions available without changing session filtering behavior
 
 - [x] Remove duplicate ERP suffix from the Clients Project dropdown label
+
+- [x] Export all client details in the Clients Excel export
+- [x] Export all client details in the Clients PDF export
+- [x] Ensure exports use the currently filtered client dataset and include financial/product details
+- [x] Add regression coverage for complete client export fields
