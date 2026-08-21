@@ -12935,3 +12935,10 @@
 
 - [x] Make directly opened receipt preview close reliably with X, Escape, and outside click
 - [x] Return to the previous payment-history context after closing a direct receipt preview
+
+- [ ] Pass Client-list return context when opening a receipt from Payment history
+- [ ] Restore the Client list and payment-history modal after closing that receipt
+- [ ] Preserve normal Receipts-module close behavior when no Client context is present
+
+- [x] Reorder Clients filters to Search, All Types, All Status, All Years, then ID Filter as shown in the reference
+- [x] Keep remaining filters available after the primary reference controls without breaking responsive layout

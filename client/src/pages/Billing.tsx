@@ -40,6 +40,7 @@ import {
 } from "@shared/quotation";
 import { filterProjectClients } from "@shared/clients";
 import { clientPrimaryTotal } from "@shared/clientBalance";
+import { buildReceiptClosePath } from "@shared/receiptNavigation";
 
 type BillingKind = "invoice" | "receipt";
 
@@ -2175,7 +2176,13 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
 
           <Dialog
             open={Boolean(selected)}
-            onOpenChange={open => { if (open) return; setSelected(null); if (new URLSearchParams(window.location.search).has("receipt")) navigate("/receipts"); }}
+            onOpenChange={open => {
+              if (open) return;
+              setSelected(null);
+              const params = new URLSearchParams(window.location.search);
+              if (!params.has("receipt")) return;
+              navigate(buildReceiptClosePath(window.location.search));
+            }}
           >
             <DialogContent className="max-h-[92vh] w-[min(900px,calc(100vw-2rem))] !max-w-none overflow-y-auto bg-slate-50 p-4 sm:p-8">
               <DialogHeader className="print:hidden">
