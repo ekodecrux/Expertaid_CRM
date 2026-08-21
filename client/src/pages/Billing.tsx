@@ -48,6 +48,24 @@ function ClientPaymentSummaryPanel({ summary }: { summary: ClientPaymentSummary 
   return <div className="sm:col-span-2 rounded-xl border border-[#e3defc] bg-[#faf9ff] p-3"><div className="mb-3 flex items-center justify-between gap-3"><div><p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-400">Client payment position</p><p className="mt-1 text-xs text-slate-500">Use this balance when preparing the invoice or receipt.</p></div><p className="text-xs font-semibold text-[#4f2ad3]">{Math.round(summary.progress)}% paid</p></div><div className="grid gap-3 sm:grid-cols-3"><div><p className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Assigned total</p><p className="mt-1 font-bold text-[#4f2ad3]">{formatCurrency(summary.total)}</p></div><div><p className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Paid</p><p className="mt-1 font-bold text-emerald-600">{formatCurrency(summary.paid)}</p></div><div><p className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Pending</p><p className="mt-1 font-bold text-rose-600">{formatCurrency(summary.due)}</p></div></div><div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-200"><div className="h-full rounded-full bg-[#5b45e5] transition-all" style={{ width: `${summary.progress}%` }} /></div></div>;
 }
 
+function ClientSearchSelect({ clients, value, disabled, onChange }: { clients: any[]; value: string; disabled?: boolean; onChange: (value: string) => void }) {
+  const [query, setQuery] = useState("");
+  const [open, setOpen] = useState(false);
+  const selected = clients.find(client => String(client.clientId) === value);
+  const filtered = clients.filter(client => {
+    const text = `${client.clientId ?? ""} ${client.clientName ?? ""}`.toLowerCase();
+    return text.includes(query.trim().toLowerCase());
+  });
+  return <div className="relative mt-1">
+    <Input disabled={disabled} value={open ? query : selected ? `${selected.clientId} · ${selected.clientName}` : ""} placeholder="Search Client ID or name" onFocus={() => setOpen(true)} onChange={event => { setQuery(event.target.value); setOpen(true); }} onBlur={() => window.setTimeout(() => setOpen(false), 150)} />
+    {open && !disabled && <div className="absolute z-30 mt-1 max-h-56 w-full overflow-auto rounded-md border border-slate-200 bg-white p-1 shadow-lg">
+      <button type="button" className="w-full rounded px-3 py-2 text-left text-sm text-slate-500 hover:bg-slate-50" onMouseDown={event => event.preventDefault()} onClick={() => { onChange(""); setQuery(""); setOpen(false); }}>Select Client ID</button>
+      {filtered.map(client => <button type="button" key={`${client.projectId}-${client.clientId}`} className="w-full rounded px-3 py-2 text-left text-sm text-slate-700 hover:bg-[#f4f1ff]" onMouseDown={event => event.preventDefault()} onClick={() => { onChange(String(client.clientId)); setQuery(""); setOpen(false); }}>{client.clientId} · {client.clientName}</button>)}
+      {!filtered.length && <p className="px-3 py-2 text-sm text-slate-500">No matching clients</p>}
+    </div>}
+  </div>;
+}
+
 type Item = {
   itemName: string;
   description?: string;
@@ -435,7 +453,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       .filter((row: any) => String(row.clientId ?? "") === clientId && Number(row.projectId) === selectedProjectId)
       .sort((a: any, b: any) => Number(b.id >= 0) - Number(a.id >= 0))[0];
     if (!client) return;
-    const details = { clientId, projectId: String(client.projectId ?? selectedProjectId), clientName: client.clientName ?? "", clientAddress: client.address ?? "", clientContact: client.contactNumber ?? "", clientEmail: client.email ?? "", clientGst: client.clientGst ?? "", gstRate: String(client.gstRate ?? 18), gstMode: String(client.gstMode ?? "exclusive").toLowerCase() as GstMode };
+    const details = { clientId, projectId: String(client.projectId ?? selectedProjectId), clientName: client.clientName ?? "", clientAddress: client.address ?? "", clientContact: client.contactNumber ?? "", clientEmail: client.email ?? "", clientGst: client.clientGst ?? "", gstRate: String(client.gstRate ?? 18), gstMode: "inclusive" as GstMode };
     if (isInvoice) setInvoiceForm(current => ({ ...current, ...details }));
     else setReceiptForm(current => ({ ...current, ...details }));
   };
@@ -1512,10 +1530,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     </div>
                     <div>
                       <Label>Client ID</Label>
-                      <select className="mt-1 h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50" value={invoiceForm.clientId || "none"} onChange={event => applyClientToForm(event.target.value === "none" ? "" : event.target.value)} disabled={!selectedProjectId}>
-                        <option value="none">Select Client ID</option>
-                        {filteredClientOptions.map((client: any) => <option key={`${client.projectId}-${client.clientId}`} value={String(client.clientId)}>{client.clientId} · {client.clientName}</option>)}
-                      </select>
+                      <ClientSearchSelect clients={filteredClientOptions} value={invoiceForm.clientId} onChange={applyClientToForm} disabled={!selectedProjectId} />
                     </div>
                   </div>
                   {selectedClientPayment && <ClientPaymentSummaryPanel summary={selectedClientPayment} />}
@@ -1850,10 +1865,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     </div>
                     <div>
                       <Label>Client ID</Label>
-                      <select className="mt-1 h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50" value={receiptForm.clientId || "none"} onChange={event => applyClientToForm(event.target.value === "none" ? "" : event.target.value)} disabled={!selectedProjectId}>
-                        <option value="none">Select Client ID</option>
-                        {filteredClientOptions.map((client: any) => <option key={`${client.projectId}-${client.clientId}`} value={String(client.clientId)}>{client.clientId} · {client.clientName}</option>)}
-                      </select>
+                      <ClientSearchSelect clients={filteredClientOptions} value={receiptForm.clientId} onChange={applyClientToForm} disabled={!selectedProjectId} />
                     </div>
                   </div>
                   {selectedClientPayment && <ClientPaymentSummaryPanel summary={selectedClientPayment} />}

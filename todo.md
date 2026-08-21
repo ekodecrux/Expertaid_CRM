@@ -12823,3 +12823,11 @@
 - [x] Count the Client primary and genuine additional products exactly once in Billing
 - [x] Reconcile Billing paid and pending values against the same client product rows
 - [x] Verify the corrected selected-client totals and publish the fix
+
+- [x] Search clients by Client ID in Invoice and Receipt
+- [x] Search clients by client name while respecting selected project filtering
+- [x] Preserve client payment-detail hydration after searchable selection
+
+- [x] Default Invoice GST mode to Inclusive after client selection
+- [x] Default Receipt GST mode to Inclusive after client selection
+- [x] Preserve manual GST-mode changes after the default is applied
