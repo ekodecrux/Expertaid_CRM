@@ -12811,3 +12811,11 @@
 - [x] Prevent Billing from calling map on undefined selected-client product data
 - [x] Keep Invoice and Receipt client selection and product collection behavior intact after the null-safe fix
 - [x] Verify client selection, error-free rendering, and responsive billing flows
+
+- [x] Include all selected client products in the Invoice and Receipt payment-position total
+- [x] Match Billing assigned, paid, and pending values with Client Edit for the same client
+- [x] Verify selected-client summary and product collection rows use the same complete product set
+
+- [x] Use the complete Client module record for selected Invoice and Receipt client details
+- [x] Load primary and additional client products with assigned, paid, pending, GST, and payment history data
+- [x] Match Billing payment position and collection rows with Client Edit for the same Client ID

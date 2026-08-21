@@ -391,8 +391,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const selectedProject = projectOptions.find((project: any) => Number(project.id) === selectedProjectId);
   const selectedClient = clientOptions
     .filter((client: any) => String(client.clientId ?? "") === String(isInvoice ? invoiceForm.clientId : receiptForm.clientId) && Number(client.projectId) === selectedProjectId)
-    .sort((a: any, b: any) => Number(a.id >= 0) - Number(b.id >= 0))[0];
-  const selectedClientProducts = trpc.clients.products.useQuery({ clientId: String(selectedClient?.clientId ?? "") }, { enabled: Boolean(createOpen && selectedClient?.clientId) });
+    .sort((a: any, b: any) => Number(b.id >= 0) - Number(a.id >= 0))[0];
+  const selectedClientProducts = trpc.clients.products.useQuery({ clientId: String(selectedClient?.clientId ?? "") }, { enabled: Boolean(selectedClient?.clientId) });
   const filteredClientOptions = selectedProjectId > 0 ? filterProjectClients(clientOptions, selectedProjectId) : [];
   const selectedClientPayment = useMemo<ClientPaymentSummary | null>(() => {
     if (!selectedClient) return null;
@@ -403,10 +403,12 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     const clientReceipts = ((receipts.data ?? []) as any[]).filter((row) => matches(row) && row.status !== "Cancelled");
     const receiptInvoiceIds = new Set(clientReceipts.map((row) => row.invoiceId).filter(Boolean));
     const documentPaid = clientReceipts.reduce((sum, row) => sum + Number(row.amount ?? row.grandTotal ?? 0), 0) + clientInvoices.filter((row) => row.status === "Paid" && !receiptInvoiceIds.has(row.id)).reduce((sum, row) => sum + Number(row.grandTotal ?? 0), 0);
-    const productTotal = (selectedClientProducts.data as any[] | undefined)?.reduce((sum, product) => sum + Number(product.totalAmount ?? 0), 0) ?? 0;
-    const productPaid = (selectedClientProducts.data as any[] | undefined)?.reduce((sum, product) => sum + Number(product.paidAmount ?? 0), 0) ?? 0;
-    const total = productTotal > 0 ? productTotal : Number(selectedClient.totalPrice ?? selectedClient.price ?? 0);
-    const paid = productTotal > 0 ? productPaid : documentPaid;
+    const clientProductRows = Array.isArray(selectedClientProducts.data) ? selectedClientProducts.data : [];
+    const primaryTotal = Number(selectedClient.totalPrice ?? selectedClient.price ?? 0);
+    const productTotal = clientProductRows.reduce((sum, product) => sum + Number(product.totalAmount ?? 0), 0);
+    const productPaid = clientProductRows.reduce((sum, product) => sum + Number(product.paidAmount ?? 0), 0);
+    const total = primaryTotal + productTotal;
+    const paid = clientProductRows.length ? productPaid : documentPaid;
     const due = Math.max(total - paid, 0);
     return { total, paid, due, progress: total > 0 ? Math.min(100, (paid / total) * 100) : 0 };
   }, [selectedClient, selectedClientProducts.data, invoices.data, receipts.data]);
@@ -430,7 +432,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const applyClientToForm = (clientId: string) => {
     const client = clientOptions
       .filter((row: any) => String(row.clientId ?? "") === clientId && Number(row.projectId) === selectedProjectId)
-      .sort((a: any, b: any) => Number(a.id >= 0) - Number(b.id >= 0))[0];
+      .sort((a: any, b: any) => Number(b.id >= 0) - Number(a.id >= 0))[0];
     if (!client) return;
     const details = { clientId, projectId: String(client.projectId ?? selectedProjectId), clientName: client.clientName ?? "", clientAddress: client.address ?? "", clientContact: client.contactNumber ?? "", clientEmail: client.email ?? "", clientGst: client.clientGst ?? "", gstRate: String(client.gstRate ?? 18), gstMode: String(client.gstMode ?? "exclusive").toLowerCase() as GstMode };
     if (isInvoice) setInvoiceForm(current => ({ ...current, ...details }));
