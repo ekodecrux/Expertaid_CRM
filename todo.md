@@ -12870,3 +12870,7 @@
 - [x] Standardize primary and additional product cards with identical aligned financial fields
 - [x] Show GST amount and assigned total consistently for every product
 - [x] Verify product cards remain compact and readable on desktop and mobile
+
+- [x] Display a dedicated GST amount field for the primary product
+- [x] Display a dedicated GST amount field for every additional product
+- [x] Verify per-product GST amounts match the selected GST mode and rate
