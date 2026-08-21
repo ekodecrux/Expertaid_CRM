@@ -13046,3 +13046,5 @@
 - [x] Reduce vertical spacing between sidebar menu names to match the compact reference layout
 
 - [x] Further reduce sidebar container, header, menu, button, and footer spacing to match the compact reference
+
+- [x] Rebuild the default Dashboard to match the compact reference with operational cards, financial KPIs, due-payment chart, invoice-aging chart, and recent-activity table
