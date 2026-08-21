@@ -389,7 +389,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const projectOptions: any[] = (projects.data as any) ?? [];
   const selectedProjectId = Number(isInvoice ? invoiceForm.projectId : receiptForm.projectId) || 0;
   const selectedProject = projectOptions.find((project: any) => Number(project.id) === selectedProjectId);
-  const selectedClient = clientOptions.find((client: any) => String(client.clientId ?? "") === String(isInvoice ? invoiceForm.clientId : receiptForm.clientId) && Number(client.projectId) === selectedProjectId);
+  const selectedClient = clientOptions
+    .filter((client: any) => String(client.clientId ?? "") === String(isInvoice ? invoiceForm.clientId : receiptForm.clientId) && Number(client.projectId) === selectedProjectId)
+    .sort((a: any, b: any) => Number(a.id >= 0) - Number(b.id >= 0))[0];
   const selectedClientProducts = trpc.clients.products.useQuery({ clientId: String(selectedClient?.clientId ?? "") }, { enabled: Boolean(createOpen && selectedClient?.clientId) });
   const filteredClientOptions = selectedProjectId > 0 ? filterProjectClients(clientOptions, selectedProjectId) : [];
   const selectedClientPayment = useMemo<ClientPaymentSummary | null>(() => {
@@ -426,7 +428,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     else setReceiptForm(current => ({ ...current, ...cleared }));
   };
   const applyClientToForm = (clientId: string) => {
-    const client = clientOptions.find((row: any) => String(row.clientId ?? "") === clientId && Number(row.projectId) === selectedProjectId);
+    const client = clientOptions
+      .filter((row: any) => String(row.clientId ?? "") === clientId && Number(row.projectId) === selectedProjectId)
+      .sort((a: any, b: any) => Number(a.id >= 0) - Number(b.id >= 0))[0];
     if (!client) return;
     const details = { clientId, projectId: String(client.projectId ?? selectedProjectId), clientName: client.clientName ?? "", clientAddress: client.address ?? "", clientContact: client.contactNumber ?? "", clientEmail: client.email ?? "", clientGst: client.clientGst ?? "", gstRate: String(client.gstRate ?? 18), gstMode: String(client.gstMode ?? "exclusive").toLowerCase() as GstMode };
     if (isInvoice) setInvoiceForm(current => ({ ...current, ...details }));

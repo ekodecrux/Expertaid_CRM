@@ -12787,3 +12787,7 @@
 - [x] Include the primary ERP product in Invoice and Receipt client-product collection rows
 - [x] Use the client primary GST rate and GST mode instead of defaulting the collection form to Inclusive
 - [x] Verify primary-plus-additional product allocation and GST calculations
+
+- [x] Calculate Invoice and Receipt assigned, paid, pending, and progress from the selected Client and client products only
+- [x] Exclude Agreement totals and agreement payment history from the client payment-position panel
+- [x] Verify client-only payment position and publish the correction
