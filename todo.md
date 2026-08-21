@@ -12956,3 +12956,7 @@
 - [x] Preserve the remaining requested filters and remove obsolete filter state from the query
 
 - [x] Remove All Years from the Clients filter area and stop applying date-range filtering from that control
+
+- [x] Make Clients search match Client ID values reliably
+- [x] Prevent full-page shaking while typing in the Clients search field
+- [x] Add regression coverage for Client ID search matching and stable search state

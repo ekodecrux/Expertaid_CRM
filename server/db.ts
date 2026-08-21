@@ -816,8 +816,8 @@ export async function listApprovedClientsForOwner(ownerId: number, options: { pa
   }
   if (search) {
     const pattern = `%${search}%`;
-    agreementFilters.push(or(like(agreements.clientName, pattern), like(agreements.clientOwnerName, pattern), like(agreements.email, pattern), like(agreements.contactNumber, pattern), like(agreements.instituteType, pattern))!);
-    clientFilters.push(or(like(clients.clientName, pattern), like(clients.clientOwnerName, pattern), like(clients.email, pattern), like(clients.contactNumber, pattern), like(clients.instituteType, pattern))!);
+    agreementFilters.push(or(like(agreements.clientId, pattern), like(agreements.clientName, pattern), like(agreements.clientOwnerName, pattern), like(agreements.email, pattern), like(agreements.contactNumber, pattern), like(agreements.instituteType, pattern))!);
+    clientFilters.push(or(like(clients.clientId, pattern), like(clients.clientName, pattern), like(clients.clientOwnerName, pattern), like(clients.email, pattern), like(clients.contactNumber, pattern), like(clients.instituteType, pattern))!);
   }
   const [agreementItems, standaloneItems, productTotals] = await Promise.all([
     db.select().from(agreements).where(and(...agreementFilters)).orderBy(desc(agreements.createdAt)),
