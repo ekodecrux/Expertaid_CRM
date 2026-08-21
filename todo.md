@@ -12984,3 +12984,6 @@
 
 - [x] Right-align the Excel export button in the Clients filter area
 - [x] Keep Clear filters beside Search and preserve responsive layout
+
+- [x] Remove the Approved + direct badge from the All clients summary row
+- [x] Preserve clean spacing and the All clients count after badge removal
