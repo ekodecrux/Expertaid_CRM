@@ -1517,7 +1517,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
               {isInvoice ? (
                 <form
                   onSubmit={submitCreate}
-                  className="grid gap-4 sm:grid-cols-2"
+                  className="billing-form grid gap-4 sm:grid-cols-2"
                 >
                   <div className="sm:col-span-2 grid gap-3 sm:grid-cols-2">
                     <div>
@@ -1852,7 +1852,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
               ) : (
                 <form
                   onSubmit={submitCreate}
-                  className="grid gap-4 sm:grid-cols-2"
+                  className="billing-form grid gap-4 sm:grid-cols-2"
                 >
                   <div className="sm:col-span-2 grid gap-3 sm:grid-cols-2">
                     <div>

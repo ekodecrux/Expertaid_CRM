@@ -12831,3 +12831,7 @@
 - [x] Default Invoice GST mode to Inclusive after client selection
 - [x] Default Receipt GST mode to Inclusive after client selection
 - [x] Preserve manual GST-mode changes after the default is applied
+
+- [x] Normalize Invoice and Receipt field outer borders and focus rings
+- [x] Preserve visible keyboard focus accessibility without persistent blue outlines
+- [x] Verify field styling across Invoice and Receipt desktop/mobile layouts

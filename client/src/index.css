@@ -52,6 +52,15 @@
 * {
   border-color: var(--border);
 }
+
+/* Billing fields keep a stable border and use a restrained keyboard focus cue. */
+.billing-form [data-slot="input"]:focus-visible,
+.billing-form textarea:focus-visible,
+.billing-form select:focus-visible {
+  border-color: #8b7be8 !important;
+  box-shadow: 0 0 0 1px rgba(91, 69, 229, 0.18) !important;
+  outline: none !important;
+}
 html {
   background: var(--background);
 }
