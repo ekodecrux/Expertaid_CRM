@@ -12862,3 +12862,7 @@
 
 - [x] Reformat overall pricing and plan summary as an aligned right-side panel beside client details
 - [x] Verify readable labels, values, and payment totals in the right-side summary
+
+- [x] Show primary ERP product and all additional products below the financial summary
+- [x] Display product-level GST, assigned, paid, pending, and payment status details
+- [x] Verify product totals reconcile with the overall financial summary
