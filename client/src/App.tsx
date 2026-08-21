@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Settings from "./pages/Settings";
 import Clients from "./pages/Clients";
 import ClientPaymentPlan from "./pages/ClientPaymentPlan";
+import ClientCreatePaymentPlan from "./pages/ClientCreatePaymentPlan";
 import Quotations from "./pages/Quotations";
 import { InvoicePage, ReceiptPage } from "./pages/Billing";
 
@@ -17,6 +18,7 @@ function Router() {
     <Route path="/" component={Home} />
     <Route path="/settings" component={Settings} />
     <Route path="/clients" component={Clients} />
+    <Route path="/clients/new" component={ClientCreatePaymentPlan} />
     <Route path="/clients/edit/:id" component={ClientPaymentPlan} />
     <Route path="/quotations" component={Quotations} />
     <Route path="/invoices" component={InvoicePage} />

@@ -4094,3 +4094,9 @@
 - [x] Ask for and validate missing receipt details before final submission
 - [x] Show the generated receipt preview and submit only after confirmation
 - [x] Prevent duplicate receipts and preserve Client ID
+
+- [x] Make Add New Client use the same full-page layout and client details fields as Client Edit
+- [x] Add products/services and product-level payment details to new-client creation
+- [x] Add payment planning, automatic totals, and pending balance calculations for new clients
+- [x] Support receipt draft, preview, and submission after creating a new client
+- [x] Add tests and complete visual/runtime verification for Add New Client parity
