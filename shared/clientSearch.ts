@@ -10,6 +10,10 @@ export function normalizeClientSearchTerm(value: string): string {
   return value.trim().toLocaleLowerCase();
 }
 
+export function matchesClientId(recordClientId: string | number | null | undefined, selectedClientId: string | number | null | undefined): boolean {
+  return String(recordClientId ?? "") === String(selectedClientId ?? "");
+}
+
 export function matchesClientSearch(record: ClientSearchRecord, value: string): boolean {
   const term = normalizeClientSearchTerm(value);
   if (!term) return true;

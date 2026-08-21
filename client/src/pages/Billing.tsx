@@ -38,6 +38,7 @@ import {
   type GstMode,
 } from "@shared/quotation";
 import { filterProjectClients } from "@shared/clients";
+import { matchesClientId } from "@shared/clientSearch";
 import { clientPrimaryTotal } from "@shared/clientBalance";
 import { buildReceiptClosePath } from "@shared/receiptNavigation";
 
@@ -52,7 +53,7 @@ function ClientPaymentSummaryPanel({ summary }: { summary: ClientPaymentSummary 
 function ClientSearchSelect({ clients, value, disabled, onChange }: { clients: any[]; value: string; disabled?: boolean; onChange: (value: string) => void }) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
-  const selected = clients.find(client => String(client.clientId) === value);
+  const selected = clients.find(client => matchesClientId(client.clientId, value));
   const filtered = clients.filter(client => {
     const text = `${client.clientId ?? ""} ${client.clientName ?? ""}`.toLowerCase();
     return text.includes(query.trim().toLowerCase());
@@ -447,7 +448,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   };
   const applyClientToForm = (clientId: string) => {
     const client = clientOptions
-      .filter((row: any) => String(row.clientId ?? "") === clientId && Number(row.projectId) === selectedProjectId)
+      .filter((row: any) => matchesClientId(row.clientId, clientId) && Number(row.projectId) === selectedProjectId)
       .sort((a: any, b: any) => Number(b.id >= 0) - Number(a.id >= 0))[0];
     if (!client) return;
     const details = { clientId, projectId: String(client.projectId ?? selectedProjectId), clientName: client.clientName ?? "", clientAddress: client.address ?? "", clientContact: client.contactNumber ?? "", clientEmail: client.email ?? "", clientGst: client.clientGst ?? "", gstRate: String(client.gstRate ?? 18), gstMode: "inclusive" as GstMode };

@@ -1,7 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { matchesClientSearch } from "./clientSearch";
+import { matchesClientId, matchesClientSearch } from "./clientSearch";
 
 describe("client search matching", () => {
+  it("matches saved numeric and string Client IDs for edit hydration", () => {
+    expect(matchesClientId(26003, "26003")).toBe(true);
+    expect(matchesClientId("ERP26003", "ERP26003")).toBe(true);
+    expect(matchesClientId("ERP26003", "ERP26004")).toBe(false);
+  });
+
   const client = {
     clientId: "ERP26003",
     clientName: "Add client ERP",

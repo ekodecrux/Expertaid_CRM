@@ -12999,3 +12999,7 @@
 - [x] Make inclusive GST invoice grand total equal the actual sum of entered product values
 - [x] Display included GST as a component without adding it again to the inclusive total
 - [x] Add regression coverage for inclusive invoice totals while preserving exclusive GST behavior
+
+- [x] Preserve the saved client selection when reopening an invoice in edit mode
+- [x] Preserve the saved project selection and client details during invoice editing
+- [x] Add regression coverage for invoice edit hydration and client selector matching
