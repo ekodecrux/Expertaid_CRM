@@ -12859,3 +12859,6 @@
 
 - [x] Remove duplicate inner Client View header and retain one top header with project and ERP details
 - [x] Verify single-header Client View spacing and summary placement
+
+- [x] Reformat overall pricing and plan summary as an aligned right-side panel beside client details
+- [x] Verify readable labels, values, and payment totals in the right-side summary
