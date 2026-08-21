@@ -12845,3 +12845,7 @@
 
 - [x] Expand Client View to show complete client profile, project, plan, pricing, GST, products, payments, and status details
 - [x] Verify Client View responsive layout and complete data coverage
+
+- [x] Redesign Client View as a structured full profile with aligned label/value sections
+- [x] Present complete plan, financial, product, payment, status, and notes information without compact-card ambiguity
+- [x] Verify the redesigned Client View on desktop and mobile
