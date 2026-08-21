@@ -12856,3 +12856,6 @@
 - [x] Move project, ERP institute type, project type, and session into the Client View top header
 - [x] Consolidate pricing, plan duration, dates, GST, total, paid, and pending into one overall summary block
 - [x] Verify ERP and non-ERP Client View header and summary behavior
+
+- [x] Remove duplicate inner Client View header and retain one top header with project and ERP details
+- [x] Verify single-header Client View spacing and summary placement
