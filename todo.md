@@ -12890,3 +12890,11 @@
 
 - [x] Remove the standalone duplicate Financial Summary section from Client View
 - [x] Verify assigned, paid, and pending totals remain available in the remaining summaries
+
+- [x] Verify Invoice Summary GST equals the primary plus additional product GST amounts
+- [x] Correct inclusive/exclusive GST handling if the summary total is inconsistent
+- [ ] Add regression coverage for Invoice Summary GST reconciliation
+
+- [x] Use the available left-side space in product financial cards
+- [x] Align Amount, GST Amount, Total Amount, Paid, and Pending headers and values evenly
+- [x] Verify product-card spacing remains readable on desktop and mobile
