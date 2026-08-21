@@ -12987,3 +12987,6 @@
 
 - [x] Remove the Approved + direct badge from the All clients summary row
 - [x] Preserve clean spacing and the All clients count after badge removal
+
+- [x] Remove the All clients title/count row entirely
+- [x] Preserve clean border and spacing between the Clients header, filters, and table
