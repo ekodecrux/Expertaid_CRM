@@ -13024,3 +13024,7 @@
 
 - [x] Show TOTAL AMOUNT (TAX INCLUSIVE) in receipt previews when GST mode is inclusive
 - [x] Preserve exclusive-GST receipt wording and validate the receipt preview path
+
+- [x] Count only issued receipt amounts as collected payments
+- [x] Keep invoice amounts assigned/due without increasing collected totals
+- [x] Add regression coverage for receipt-only collection and pending balances
