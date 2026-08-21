@@ -6733,7 +6733,7 @@
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
@@ -7078,7 +7078,7 @@
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
@@ -7298,7 +7298,7 @@
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
@@ -7363,12 +7363,12 @@
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
@@ -7528,7 +7528,7 @@
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
@@ -7598,222 +7598,222 @@
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
@@ -7878,22 +7878,22 @@
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
@@ -8023,7 +8023,7 @@
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
@@ -8208,12 +8208,12 @@
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
@@ -8473,7 +8473,7 @@
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST amount, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
@@ -8498,152 +8498,152 @@
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details for the ERP primary amount in Live Payment Position
-- [ ] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
+- [x] Show each additional product separately with taxable amount, GST rate, GST mode, and final amount
 - [x] Keep paid and pending values aligned with product-level GST-inclusive totals
 - [x] Add tests and responsive visual verification for GST detail presentation
 
