@@ -38,6 +38,7 @@ import {
   type GstMode,
 } from "@shared/quotation";
 import { filterProjectClients } from "@shared/clients";
+import { clientPrimaryTotal } from "@shared/clientBalance";
 
 type BillingKind = "invoice" | "receipt";
 
@@ -404,7 +405,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     const receiptInvoiceIds = new Set(clientReceipts.map((row) => row.invoiceId).filter(Boolean));
     const documentPaid = clientReceipts.reduce((sum, row) => sum + Number(row.amount ?? row.grandTotal ?? 0), 0) + clientInvoices.filter((row) => row.status === "Paid" && !receiptInvoiceIds.has(row.id)).reduce((sum, row) => sum + Number(row.grandTotal ?? 0), 0);
     const clientProductRows = Array.isArray(selectedClientProducts.data) ? selectedClientProducts.data : [];
-    const primaryTotal = Number(selectedClient.totalPrice ?? selectedClient.price ?? 0);
+    const primaryTotal = clientPrimaryTotal({ price: selectedClient.price, gstAmount: selectedClient.gstAmount, gstMode: selectedClient.gstMode, totalPrice: selectedClient.totalPrice });
     const productTotal = clientProductRows.reduce((sum, product) => sum + Number(product.totalAmount ?? 0), 0);
     const productPaid = clientProductRows.reduce((sum, product) => sum + Number(product.paidAmount ?? 0), 0);
     const total = primaryTotal + productTotal;
@@ -414,7 +415,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   }, [selectedClient, selectedClientProducts.data, invoices.data, receipts.data]);
   const primaryProductBalance = useMemo(() => {
     if (!selectedClient || !selectedProject?.isMain) return null;
-    const assigned = Number(selectedClient.totalPrice ?? selectedClient.price ?? 0);
+    const assigned = clientPrimaryTotal({ price: selectedClient.price, gstAmount: selectedClient.gstAmount, gstMode: selectedClient.gstMode, totalPrice: selectedClient.totalPrice });
     if (assigned <= 0) return null;
     const hasAdditionalProducts = Boolean(selectedClientProducts.data?.length);
     const paid = hasAdditionalProducts ? 0 : Number(selectedClientPayment?.paid ?? 0);

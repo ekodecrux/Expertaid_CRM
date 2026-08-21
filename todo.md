@@ -12819,3 +12819,7 @@
 - [x] Use the complete Client module record for selected Invoice and Receipt client details
 - [x] Load primary and additional client products with assigned, paid, pending, GST, and payment history data
 - [x] Match Billing payment position and collection rows with Client Edit for the same Client ID
+
+- [x] Count the Client primary and genuine additional products exactly once in Billing
+- [x] Reconcile Billing paid and pending values against the same client product rows
+- [x] Verify the corrected selected-client totals and publish the fix
