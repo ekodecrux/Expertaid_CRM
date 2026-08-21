@@ -13035,3 +13035,6 @@
 
 - [x] Trace and fix the actual rendered saved receipt preview branch still showing 0% exclusive GST
 - [x] Verify the selected Biometric additional-product receipt displays inclusive GST values in the preview
+
+- [x] Push the verified ERP CRM changes to ekodecrux/Expertaid_CRM
+- [x] Generate and deliver a consolidated SQL file for the current schema and required database updates
