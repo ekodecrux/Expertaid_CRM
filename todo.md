@@ -12791,3 +12791,7 @@
 - [x] Calculate Invoice and Receipt assigned, paid, pending, and progress from the selected Client and client products only
 - [x] Exclude Agreement totals and agreement payment history from the client payment-position panel
 - [x] Verify client-only payment position and publish the correction
+
+- [x] Prevent the Client Edit payment position from counting the primary ERP amount twice
+- [x] Align Client Edit assigned, paid, and pending totals with the client-only Invoice/Receipt balance
+- [x] Verify the corrected primary/additional product breakdown across Client Edit, Invoice, and Receipt
