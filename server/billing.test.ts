@@ -4,6 +4,13 @@ import { invoiceInput, invoiceSettingsInput, invoiceStatusInput, receiptInput, r
 import { receipts } from "../drizzle/schema";
 
 describe("billing defaults and input contracts", () => {
+  it("preserves projectId and client details in the invoice edit input contract", () => {
+    const parsed = invoiceInput.parse({ projectId: "7", clientId: "ERP26003", clientName: "Client", clientAddress: "Address", clientContact: "123", clientEmail: "client@example.com", clientGst: "GST123", invoiceDate: "2026-01-01", dueDate: "2026-01-15", gstRate: "18", items: [{ itemName: "ERP", quantity: "2", unitPrice: "500" }] });
+    expect(parsed.projectId).toBe(7);
+    expect(parsed.clientId).toBe("ERP26003");
+    expect(parsed.clientGst).toBe("GST123");
+  });
+
   it("starts invoices with a stable INV numbering contract", () => {
     expect(DEFAULT_INVOICE_SETTINGS.invoicePrefix).toBe("INV");
     expect(DEFAULT_INVOICE_SETTINGS.invoiceNumberStart).toBe(1);

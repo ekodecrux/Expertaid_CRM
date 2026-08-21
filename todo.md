@@ -13003,3 +13003,7 @@
 - [x] Preserve the saved client selection when reopening an invoice in edit mode
 - [x] Preserve the saved project selection and client details during invoice editing
 - [x] Add regression coverage for invoice edit hydration and client selector matching
+
+- [x] Persist all selected client details when saving an edited invoice
+- [x] Restore persisted project, Client ID, name, address, contact, email, and GSTIN when reopening the invoice
+- [x] Add regression coverage for invoice edit-save client-detail persistence

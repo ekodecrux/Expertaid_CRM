@@ -476,7 +476,11 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     if (!createOpen || !projectOptions.length) return;
     const mainProject = projectOptions.find((project: any) => project.isMain) ?? projectOptions[0];
     const currentProjectId = isInvoice ? invoiceForm.projectId : receiptForm.projectId;
-    if (!currentProjectId && mainProject) applyProjectToForm(String(mainProject.id));
+    if (!currentProjectId && mainProject) {
+      if (isInvoice && editingInvoiceId) setInvoiceForm(current => ({ ...current, projectId: String(mainProject.id) }));
+      else if (!isInvoice && editingReceiptId) setReceiptForm(current => ({ ...current, projectId: String(mainProject.id) }));
+      else applyProjectToForm(String(mainProject.id));
+    }
   }, [createOpen, projectOptions.length, isInvoice]);
   const showMutationError = (error: any) => {
     const message = mutationErrorMessage(error);
@@ -664,9 +668,10 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       });
       return;
     }
+    const savedClient = clientOptions.find((client: any) => matchesClientId(client.clientId, row.clientId));
     setEditingInvoiceId(Number(row.id));
     setInvoiceForm({
-      projectId: row.projectId ?? "",
+      projectId: row.projectId ?? savedClient?.projectId ?? "",
       clientId: row.clientId ?? "",
       clientName: row.clientName ?? "",
       clientAddress: row.clientAddress ?? "",

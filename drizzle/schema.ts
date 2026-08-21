@@ -238,6 +238,7 @@ export const invoiceSettings = mysqlTable("invoiceSettings", {
 export const invoices = mysqlTable("invoices", {
   id: int("id").autoincrement().primaryKey(),
   ownerId: int("ownerId").notNull(),
+  projectId: int("projectId"),
   clientId: varchar("clientId", { length: 64 }),
   invoiceNumber: varchar("invoiceNumber", { length: 32 }).notNull().unique(),
   status: mysqlEnum("status", ["Draft", "Due", "Paid", "Cancelled"]).default("Draft").notNull(),
