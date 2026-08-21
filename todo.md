@@ -13021,3 +13021,6 @@
 
 - [x] Correct the exact invoice preview label shown as TOTAL PRICE INCLUDING TAX
 - [x] Verify the rendered inclusive invoice preview displays TOTAL AMOUNT (TAX INCLUSIVE)
+
+- [x] Show TOTAL AMOUNT (TAX INCLUSIVE) in receipt previews when GST mode is inclusive
+- [x] Preserve exclusive-GST receipt wording and validate the receipt preview path
