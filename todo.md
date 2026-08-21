@@ -12795,3 +12795,7 @@
 - [x] Prevent the Client Edit payment position from counting the primary ERP amount twice
 - [x] Align Client Edit assigned, paid, and pending totals with the client-only Invoice/Receipt balance
 - [x] Verify the corrected primary/additional product breakdown across Client Edit, Invoice, and Receipt
+
+- [x] Keep additional-product financial details visible in Client Edit
+- [x] Exclude only duplicate legacy primary rows from balance totals, not from the visible product breakdown
+- [x] Verify Client Edit shows primary and additional details with correct summary totals
