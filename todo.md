@@ -12839,3 +12839,6 @@
 - [x] Load saved payment-plan instalments for the selected client in payment history
 - [x] Show upcoming reminder instalments while keeping actual receipts separate
 - [x] Verify ERP26003 payment history modal displays the saved schedule
+
+- [x] Fix payment history so it retrieves the same saved reminder schedule shown in Client Edit
+- [x] Add regression coverage for the ERP26003 payment-plan lookup path

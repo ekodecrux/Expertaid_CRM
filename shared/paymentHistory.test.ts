@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { displayPlannedPaymentTerms, mergeUpcomingPaymentItems } from "./paymentHistory";
+import { displayPlannedPaymentTerms, fallbackPlannedPaymentTerms, mergeUpcomingPaymentItems } from "./paymentHistory";
 
 describe("mergeUpcomingPaymentItems", () => {
   it("includes saved planned terms alongside invoice due items in date order", () => {
@@ -36,5 +36,13 @@ describe("displayPlannedPaymentTerms", () => {
 
     expect(terms.map((term) => term.amount)).toEqual(["7533.33", "7533.33", "7533.34"]);
     expect(mergeUpcomingPaymentItems([], terms).map((item) => item.amount)).toEqual([7533.33, 7533.33, 7533.34]);
+  });
+});
+
+describe("fallbackPlannedPaymentTerms", () => {
+  it("shows the remaining balance on the client end date when no saved terms are returned", () => {
+    expect(fallbackPlannedPaymentTerms({ totalAmount: 23600, paidAmount: 1000, dueDate: "2026-08-21" })).toEqual([
+      { label: "Installment 1", dueDate: "2026-08-21", amount: "22600.00" },
+    ]);
   });
 });

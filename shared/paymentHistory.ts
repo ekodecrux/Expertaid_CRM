@@ -46,6 +46,13 @@ export function displayPlannedPaymentTerms(plan: PaymentPlanSchedule | null | un
   });
 }
 
+export function fallbackPlannedPaymentTerms(input: { totalAmount: number; paidAmount: number; dueDate: string | null | undefined }): PlannedPaymentTerm[] {
+  const remaining = Math.max(Number(input.totalAmount || 0) - Number(input.paidAmount || 0), 0);
+  return remaining > 0 && input.dueDate
+    ? [{ label: "Installment 1", dueDate: input.dueDate, amount: remaining.toFixed(2) }]
+    : [];
+}
+
 export function mergeUpcomingPaymentItems(
   invoiceItems: UpcomingPaymentItem[],
   plannedTerms: PlannedPaymentTerm[] = [],
