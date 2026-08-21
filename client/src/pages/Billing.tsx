@@ -52,7 +52,18 @@ type Item = {
   description?: string;
   quantity: string;
   unitPrice: string;
+  productId?: number;
+  collectionAmount?: string;
+  isPrimary?: boolean;
 };
+function ClientProductBalanceLine({ item, products, primary }: { item: Item; products: any[]; primary?: any }) {
+  const product = item.productId ? products.find(row => Number(row.id) === item.productId) : item.isPrimary ? primary : null;
+  if (!product) return null;
+  const assigned = Number(product.totalAmount ?? 0);
+  const paid = Number(product.paidAmount ?? 0);
+  const pending = Math.max(0, assigned - paid);
+  return <div className="sm:col-span-5 rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600"><div className="flex flex-wrap items-center justify-between gap-2"><span className="font-semibold text-slate-800">{product.productName}</span><span>Assigned {formatCurrency(assigned)} · Paid {formatCurrency(paid)} · Pending {formatCurrency(pending)} · GST {product.gstRate}% {product.gstMode}</span></div></div>;
+}
 const today = () => new Date().toISOString().slice(0, 10);
 const readImageFile = (file: File) =>
   new Promise<string>((resolve, reject) => {
@@ -379,6 +390,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const selectedProjectId = Number(isInvoice ? invoiceForm.projectId : receiptForm.projectId) || 0;
   const selectedProject = projectOptions.find((project: any) => Number(project.id) === selectedProjectId);
   const selectedClient = clientOptions.find((client: any) => String(client.clientId ?? "") === String(isInvoice ? invoiceForm.clientId : receiptForm.clientId) && Number(client.projectId) === selectedProjectId);
+  const selectedClientProducts = trpc.clients.products.useQuery({ clientId: String(selectedClient?.clientId ?? "") }, { enabled: Boolean(createOpen && selectedClient?.clientId) });
   const filteredClientOptions = selectedProjectId > 0 ? filterProjectClients(clientOptions, selectedProjectId) : [];
   const selectedClientPayment = useMemo<ClientPaymentSummary | null>(() => {
     if (!selectedClient) return null;
@@ -388,11 +400,26 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     const clientInvoices = ((invoices.data ?? []) as any[]).filter(matches);
     const clientReceipts = ((receipts.data ?? []) as any[]).filter((row) => matches(row) && row.status !== "Cancelled");
     const receiptInvoiceIds = new Set(clientReceipts.map((row) => row.invoiceId).filter(Boolean));
-    const paid = clientReceipts.reduce((sum, row) => sum + Number(row.amount ?? row.grandTotal ?? 0), 0) + clientInvoices.filter((row) => row.status === "Paid" && !receiptInvoiceIds.has(row.id)).reduce((sum, row) => sum + Number(row.grandTotal ?? 0), 0);
-    const total = Number(selectedClient.totalPrice ?? selectedClient.price ?? 0);
+    const documentPaid = clientReceipts.reduce((sum, row) => sum + Number(row.amount ?? row.grandTotal ?? 0), 0) + clientInvoices.filter((row) => row.status === "Paid" && !receiptInvoiceIds.has(row.id)).reduce((sum, row) => sum + Number(row.grandTotal ?? 0), 0);
+    const productTotal = (selectedClientProducts.data as any[] | undefined)?.reduce((sum, product) => sum + Number(product.totalAmount ?? 0), 0) ?? 0;
+    const productPaid = (selectedClientProducts.data as any[] | undefined)?.reduce((sum, product) => sum + Number(product.paidAmount ?? 0), 0) ?? 0;
+    const total = productTotal > 0 ? productTotal : Number(selectedClient.totalPrice ?? selectedClient.price ?? 0);
+    const paid = productTotal > 0 ? productPaid : documentPaid;
     const due = Math.max(total - paid, 0);
     return { total, paid, due, progress: total > 0 ? Math.min(100, (paid / total) * 100) : 0 };
-  }, [selectedClient, invoices.data, receipts.data]);
+  }, [selectedClient, selectedClientProducts.data, invoices.data, receipts.data]);
+  const primaryProductBalance = useMemo(() => {
+    if (!selectedClient || !selectedProject?.isMain) return null;
+    const assigned = Number(selectedClient.totalPrice ?? selectedClient.price ?? 0);
+    if (assigned <= 0) return null;
+    const hasAdditionalProducts = Boolean(selectedClientProducts.data?.length);
+    const paid = hasAdditionalProducts ? 0 : Number(selectedClientPayment?.paid ?? 0);
+    const pricingMode = selectedClient.pricingMode === "package" ? "Package" : "Per Student";
+    const taxable = selectedClient.pricingMode === "package"
+      ? Number(selectedClient.packagePrice ?? selectedClient.price ?? 0)
+      : Number(selectedClient.noOfStudents ?? 0) * Number(selectedClient.perStudentPrice ?? 0);
+    return { productName: `ERP Primary · ${pricingMode}`, totalAmount: assigned, paidAmount: paid, gstRate: Number(selectedClient.gstRate ?? 0), gstMode: String(selectedClient.gstMode ?? "exclusive").toLowerCase(), taxable };
+  }, [selectedClient, selectedProject?.isMain, selectedClientProducts.data, selectedClientPayment?.paid]);
   const applyProjectToForm = (projectId: string) => {
     const cleared = { projectId, clientId: "", clientName: "", clientAddress: "", clientContact: "", clientEmail: "", clientGst: "" };
     if (isInvoice) setInvoiceForm(current => ({ ...current, ...cleared }));
@@ -401,10 +428,26 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const applyClientToForm = (clientId: string) => {
     const client = clientOptions.find((row: any) => String(row.clientId ?? "") === clientId && Number(row.projectId) === selectedProjectId);
     if (!client) return;
-    const details = { clientId, projectId: String(client.projectId ?? selectedProjectId), clientName: client.clientName ?? "", clientAddress: client.address ?? "", clientContact: client.contactNumber ?? "", clientEmail: client.email ?? "", clientGst: client.clientGst ?? "" };
+    const details = { clientId, projectId: String(client.projectId ?? selectedProjectId), clientName: client.clientName ?? "", clientAddress: client.address ?? "", clientContact: client.contactNumber ?? "", clientEmail: client.email ?? "", clientGst: client.clientGst ?? "", gstRate: String(client.gstRate ?? 18), gstMode: String(client.gstMode ?? "exclusive").toLowerCase() as GstMode };
     if (isInvoice) setInvoiceForm(current => ({ ...current, ...details }));
     else setReceiptForm(current => ({ ...current, ...details }));
   };
+  useEffect(() => {
+    if (!createOpen || !selectedClient?.clientId || (!selectedClientProducts.data?.length && !primaryProductBalance)) return;
+    const additionalItems = (selectedClientProducts.data as any[]).map(product => ({
+      itemName: String(product.productName ?? ""),
+      description: String(product.description ?? ""),
+      quantity: "1",
+      unitPrice: String(Math.max(0, Number(product.totalAmount ?? 0) - Number(product.paidAmount ?? 0))),
+      productId: Number(product.id),
+      collectionAmount: String(Math.max(0, Number(product.totalAmount ?? 0) - Number(product.paidAmount ?? 0))),
+    }));
+    const mappedItems = primaryProductBalance
+      ? [{ itemName: primaryProductBalance.productName, description: "Primary ERP service", quantity: "1", unitPrice: String(Math.max(0, primaryProductBalance.totalAmount - primaryProductBalance.paidAmount)), collectionAmount: String(Math.max(0, primaryProductBalance.totalAmount - primaryProductBalance.paidAmount)), isPrimary: true }, ...additionalItems]
+      : additionalItems;
+    if (isInvoice) setInvoiceForm(current => ({ ...current, items: mappedItems }));
+    else setReceiptForm(current => ({ ...current, items: mappedItems }));
+  }, [createOpen, selectedClient?.clientId, selectedClientProducts.data, primaryProductBalance, isInvoice]);
   useEffect(() => {
     if (!createOpen || !projectOptions.length) return;
     const mainProject = projectOptions.find((project: any) => project.isMain) ?? projectOptions[0];
@@ -641,7 +684,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                 itemName: String(item.itemName ?? ""),
                 description: String(item.description ?? ""),
                 quantity: String(item.quantity ?? "1"),
-                unitPrice: String(item.unitPrice ?? "0"),
+                unitPrice: String(item.unitPrice ?? item.collectionAmount ?? "0"),
+                productId: item.productId ? Number(item.productId) : undefined,
+                collectionAmount: item.collectionAmount != null ? String(item.collectionAmount) : undefined,
               }))
             : [emptyItem()];
         } catch {
@@ -699,6 +744,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
           ...item,
           quantity: Number(item.quantity),
           unitPrice: Number(item.unitPrice),
+          productId: item.productId,
+          collectionAmount: item.productId ? Number(item.collectionAmount ?? item.unitPrice) : undefined,
         })),
       };
       if (editingInvoiceId)
@@ -712,6 +759,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
           ...item,
           quantity: Number(item.quantity),
           unitPrice: Number(item.unitPrice),
+          productId: item.productId,
+          collectionAmount: item.productId ? Number(item.collectionAmount ?? item.unitPrice) : undefined,
         })),
       };
       if (editingReceiptId) updateReceipt.mutate({ id: editingReceiptId, ...payload });
@@ -1608,6 +1657,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                         key={index}
                         className="grid gap-2 rounded-xl border border-slate-200 p-3 sm:grid-cols-[1fr_1fr_100px_140px_40px]"
                       >
+                        <ClientProductBalanceLine item={item} products={(selectedClientProducts.data as any[]) ?? []} primary={primaryProductBalance} />
                         <Input
                           required
                           placeholder="Item name"
@@ -1666,7 +1716,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           type="number"
                           min="0"
                           step="0.01"
-                          placeholder="Rate"
+                          placeholder={item.productId ? "Collection amount" : "Rate"}
                           value={item.unitPrice}
                           onChange={e =>
                             setInvoiceForm({
@@ -1674,7 +1724,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                               items: invoiceForm.items.map(
                                 (current, itemIndex) =>
                                   itemIndex === index
-                                    ? { ...current, unitPrice: e.target.value }
+                                    ? { ...current, unitPrice: e.target.value, collectionAmount: current.productId ? e.target.value : current.collectionAmount }
                                     : current
                               ),
                             })
@@ -1950,6 +2000,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     <div className="mt-4 space-y-3">
                       {receiptForm.items.map((item, index) => (
                         <div key={`receipt-item-form-${index}`} className="grid gap-2 rounded-lg border border-slate-200 bg-white p-3 sm:grid-cols-[1.4fr_1.2fr_90px_120px_auto]">
+                          <ClientProductBalanceLine item={item} products={(selectedClientProducts.data as any[]) ?? []} primary={primaryProductBalance} />
                           <Input
                             data-billing-error={Boolean(formErrors[`item.${index}`])}
                             required
@@ -1999,13 +2050,13 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             type="number"
                             min="0"
                             step="0.01"
-                            placeholder="Rate"
+                            placeholder={item.productId ? "Collection amount" : "Rate"}
                             value={item.unitPrice}
                             onChange={e =>
                               setReceiptForm({
                                 ...receiptForm,
                                 items: receiptForm.items.map((current, itemIndex) =>
-                                  itemIndex === index ? { ...current, unitPrice: e.target.value } : current
+                                  itemIndex === index ? { ...current, unitPrice: e.target.value, collectionAmount: current.productId ? e.target.value : current.collectionAmount } : current
                                 ),
                               })
                             }

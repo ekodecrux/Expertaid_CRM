@@ -12778,3 +12778,12 @@
 - [x] Show saved upcoming reminder instalments in the payment history modal
 - [x] Keep actual receipts separate from planned reminder instalments
 - [x] Verify reminder retrieval, display mapping, and payment history visual behavior
+
+- [x] Load selected client products and product-level assigned, paid, and pending amounts in Invoice and Receipt
+- [x] Support single-product, split multi-product, and combined multi-product collections
+- [x] Calculate GST and totals per selected product and validate against each product’s pending balance
+- [x] Add tests and responsive visual verification for client-linked product collection
+
+- [x] Include the primary ERP product in Invoice and Receipt client-product collection rows
+- [x] Use the client primary GST rate and GST mode instead of defaulting the collection form to Inclusive
+- [x] Verify primary-plus-additional product allocation and GST calculations

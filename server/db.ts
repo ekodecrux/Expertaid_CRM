@@ -912,3 +912,22 @@ export async function updateAgreementDecision(publicToken: string, values: Pick<
   await db.update(agreements).set(values).where(eq(agreements.publicToken, publicToken));
   return getAgreementByToken(publicToken);
 }
+
+export async function applyClientProductCollectionsForOwner(ownerId: number, input: { clientId: string; allocations: Array<{ productId: number; amount: number }>; paymentDate?: string; paymentMode?: string; transactionReference?: string }) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const products = await listClientProductsForOwner(ownerId, input.clientId);
+  for (const allocation of input.allocations) {
+    const product = products.find(row => row.id === allocation.productId);
+    if (!product) throw new Error("Selected client product was not found.");
+    const pending = Math.max(0, Number(product.totalAmount) - Number(product.paidAmount));
+    const amount = Number(allocation.amount);
+    if (!Number.isFinite(amount) || amount <= 0 || amount > pending + 0.005) {
+      throw new Error(`Collection for ${product.productName} exceeds the pending balance.`);
+    }
+    const paidAmount = Math.min(Number(product.totalAmount), Number(product.paidAmount) + amount);
+    const paymentStatus = paidAmount >= Number(product.totalAmount) ? "Paid" as const : paidAmount > 0 ? "Partially Paid" as const : "Pending" as const;
+    await db.update(clientProducts).set({ paidAmount: paidAmount.toFixed(2), paymentStatus, paymentDate: input.paymentDate || null, paymentMode: input.paymentMode || null, transactionReference: input.transactionReference || null }).where(and(eq(clientProducts.id, product.id), eq(clientProducts.ownerId, ownerId), eq(clientProducts.clientId, input.clientId)));
+  }
+  return listClientProductsForOwner(ownerId, input.clientId);
+}
