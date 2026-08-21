@@ -13011,3 +13011,10 @@
 - [x] Make Active status filter exclude Ready to Expire clients
 - [x] Keep Ready to Expire visible only when explicitly selected
 - [x] Add regression coverage for automatic client status filtering
+
+- [ ] Reconcile client product total price including tax with stored GST-inclusive totals
+- [ ] Show paid and pending payment allocation against the reconciled grand total
+- [ ] Add regression coverage for client GST and payment-total reconciliation
+
+- [x] Show TOTAL AMOUNT (TAX INCLUSIVE) in invoice summaries when GST mode is inclusive
+- [x] Preserve existing total wording for exclusive GST invoices
