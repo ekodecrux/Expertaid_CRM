@@ -10973,3 +10973,1797 @@
 - [x] Show the selected non-ERP project name as the primary project/product in payment position
 - [x] Keep additional products listed separately for both ERP and non-ERP projects
 - [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [ ] Show ERP primary base amount, GST rate/mode, GST amount, total, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [x] Show ERP primary base amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Show each additional product amount, GST rate/mode, GST amount, total, paid, and pending in Client Edit
+- [x] Add calculation coverage and responsive visual verification for the complete Client Edit payment breakdown
+
+- [ ] Show ERP primary
