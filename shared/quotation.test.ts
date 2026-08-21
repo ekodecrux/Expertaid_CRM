@@ -15,6 +15,10 @@ describe("quotation totals", () => {
     expect(totals.subtotal + totals.gstAmount).toBeCloseTo(totals.grandTotal, 10);
   });
 
+  it("calculates a 1000 inclusive additional-product collection as 847.46 taxable plus 152.54 GST", () => {
+    expect(calculateQuotationTotals([{ product: "Biometric", itemName: "Biometric", quantity: 1, unitPrice: 1000 }], 18, "inclusive")).toEqual({ subtotal: 847.457627118644, gstAmount: 152.54237288135593, grandTotal: 1000 });
+  });
+
   it("includes the three configurable default product categories", () => {
     expect(DEFAULT_QUOTATION_PRODUCTS.map((product) => product.product)).toEqual(["ERP", "Biometric", "WhatsApp"]);
   });

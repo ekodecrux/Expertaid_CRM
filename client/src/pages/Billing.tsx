@@ -410,6 +410,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     .filter((client: any) => String(client.clientId ?? "") === String(isInvoice ? invoiceForm.clientId : receiptForm.clientId) && Number(client.projectId) === selectedProjectId)
     .sort((a: any, b: any) => Number(b.id >= 0) - Number(a.id >= 0))[0];
   const selectedClientProducts = trpc.clients.products.useQuery({ clientId: String(selectedClient?.clientId ?? "") }, { enabled: Boolean(selectedClient?.clientId) });
+  const selectedReceiptProducts = trpc.clients.products.useQuery({ clientId: String(selected?.clientId ?? "") }, { enabled: Boolean(selected && !isInvoice && selected.clientId) });
   const filteredClientOptions = selectedProjectId > 0 ? filterProjectClients(clientOptions, selectedProjectId) : [];
   const selectedClientPayment = useMemo<ClientPaymentSummary | null>(() => {
     if (!selectedClient) return null;
@@ -469,8 +470,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     const mappedItems = primaryProductBalance
       ? [{ itemName: primaryProductBalance.productName, description: "Primary ERP service", quantity: "1", unitPrice: String(Math.max(0, primaryProductBalance.totalAmount - primaryProductBalance.paidAmount)), collectionAmount: String(Math.max(0, primaryProductBalance.totalAmount - primaryProductBalance.paidAmount)), isPrimary: true }, ...additionalItems]
       : additionalItems;
+    const gstSource = clientProductRows.find(product => Math.max(0, Number(product.totalAmount ?? 0) - Number(product.paidAmount ?? 0)) > 0) ?? clientProductRows[0] ?? primaryProductBalance;
     if (isInvoice) setInvoiceForm(current => ({ ...current, items: mappedItems }));
-    else setReceiptForm(current => ({ ...current, items: mappedItems }));
+    else setReceiptForm(current => ({ ...current, items: mappedItems, gstRate: gstSource ? String(gstSource.gstRate ?? current.gstRate) : current.gstRate, gstMode: gstSource?.gstMode === "inclusive" ? "inclusive" : gstSource?.gstMode === "exclusive" ? "exclusive" : current.gstMode }));
   }, [createOpen, selectedClient?.clientId, selectedClientProducts.data, primaryProductBalance, isInvoice]);
   useEffect(() => {
     if (!createOpen || !projectOptions.length) return;
@@ -521,12 +523,27 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       ? selected.signatureUrl || quotationSettings.data?.signatureUrl
       : invoiceSettings.data?.signatureUrl || selected.signatureUrl || receiptSettings.data?.signatureUrl || quotationSettings.data?.signatureUrl
     : null;
+  const selectedReceiptProduct = useMemo(() => {
+    if (!selected || isInvoice) return null;
+    let items: any[] = [];
+    try { items = selected.itemsJson ? JSON.parse(selected.itemsJson) : []; } catch { items = []; }
+    return (selectedReceiptProducts.data as any[] | undefined)?.find((product: any) => items.some((item: any) => Number(item.productId) === Number(product.id) || String(item.itemName ?? item.productName ?? "").trim().toLowerCase() === String(product.productName ?? "").trim().toLowerCase())) ?? null;
+  }, [isInvoice, selected, selectedReceiptProducts.data]);
+  const selectedReceiptRate = !isInvoice && selectedReceiptProduct && Number(selected?.gstRate ?? 0) === 0
+    ? Number(selectedReceiptProduct.gstRate ?? 0)
+    : Number(selected?.gstRate ?? 0);
+  const selectedReceiptMode = !isInvoice && selectedReceiptProduct && Number(selected?.gstRate ?? 0) === 0
+    ? selectedReceiptProduct.gstMode
+    : selected?.gstMode;
+  const selectedReceiptTotals = useMemo(() => {
+    if (!selected || isInvoice) return null;
+    let items: any[] = [];
+    try { items = selected.itemsJson ? JSON.parse(selected.itemsJson) : [{ itemName: selected.receivedFor, quantity: 1, unitPrice: selected.amount }]; } catch { items = [{ itemName: selected.receivedFor, quantity: 1, unitPrice: selected.amount }]; }
+    return calculateQuotationTotals(items.map((item: any) => ({ product: "ERP" as const, itemName: item.itemName || item.productName || "Item", quantity: Number(item.quantity) || 1, unitPrice: Number(item.unitPrice) || 0 })), selectedReceiptRate, selectedReceiptMode === "inclusive" ? "inclusive" : "exclusive");
+  }, [isInvoice, selected, selectedReceiptMode, selectedReceiptRate]);
   const selectedInvoiceSubtotal = selected ? Number(selected.subtotal) : 0;
   const selectedInvoiceGst = selected ? Number(selected.gstAmount) : 0;
-  const selectedInvoiceTaxable =
-    selected?.gstMode === "inclusive"
-      ? selectedInvoiceSubtotal
-      : selectedInvoiceSubtotal;
+  const selectedInvoiceTaxable = selected?.gstMode === "inclusive" ? selectedInvoiceSubtotal : selectedInvoiceSubtotal;
   const totalValue = rows.reduce(
     (sum: number, row: any) =>
       sum + Number(isInvoice ? row.grandTotal : row.amount),
@@ -2446,7 +2463,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           <thead className="bg-gradient-to-r from-[#43239d] via-[#4d35ad] to-[#3157d5] text-left text-[10px] font-bold uppercase tracking-wide text-white"><tr><th className="w-12 px-3 py-3 text-center">S.NO</th><th className="px-3 py-3">ITEM NAME</th><th className="w-20 px-3 py-3 text-center">QTY</th><th className="w-32 px-3 py-3 text-right">{isInvoice ? "PER UNIT" : "RATE (₹)"}</th><th className="w-32 px-3 py-3 text-right">{isInvoice ? "TOTAL PRICE" : "AMOUNT (₹)"}</th></tr></thead>
                           <tbody>{(selected.itemsJson ? JSON.parse(selected.itemsJson) : [{ itemName: selected.receivedFor, quantity: 1, unitPrice: selected.amount }]).map((item: any, index: number) => <tr key={`receipt-item-${selected.id}-${index}`} className="border-b border-slate-200 bg-white last:border-b-2 last:border-slate-300"><td className="px-3 py-3 text-center text-slate-700">{index + 1}</td><td className="px-3 py-3"><strong className="text-[#2f236d]">{item.itemName || item.productName || item.product || "Item"}</strong>{item.description && <span className="ml-1 text-xs text-slate-500">({item.description})</span>}</td><td className="px-3 py-3 text-center text-slate-700">{item.quantity}</td><td className="px-3 py-3 text-right text-slate-700">{formatCurrency(Number(item.unitPrice))}</td><td className="px-3 py-3 text-right font-semibold text-slate-800">{formatCurrency(Number(item.unitPrice) * Number(item.quantity))}</td></tr>)}</tbody>
                         </table>
-                        <div className="grid grid-cols-2 bg-white"><div className="flex items-center justify-center border-r border-slate-200 px-4 py-6 text-center text-xs font-bold uppercase tracking-wide text-[#43239d]">{selected.gstMode === "inclusive" ? "TOTAL AMOUNT (TAX INCLUSIVE)" : "Total price excluding tax"}</div><div className="grid grid-cols-[minmax(0,1fr)_112px] text-right text-sm"><span className="border-b border-l border-slate-200 px-4 py-3 text-center text-xs uppercase leading-tight text-slate-600">Total</span><strong className="border-b border-slate-200 px-4 py-3 text-slate-800">{formatCurrency(Number(selected.subtotal ?? selected.amount))}</strong><span className="border-b border-l border-slate-200 px-4 py-3 text-center text-xs uppercase leading-tight text-slate-600">Tax amount ({selected.gstRate ?? 0}% · {selected.gstMode === "inclusive" ? "Inclusive" : "Exclusive"})</span><strong className="border-b border-slate-200 px-4 py-3 text-slate-800">{formatCurrency(Number(selected.gstAmount ?? 0))}</strong><span className="border-l border-t border-slate-200 px-4 py-3 text-center text-base font-bold uppercase leading-tight text-[#43239d]">Grand total amount</span><strong className="border-t border-slate-200 bg-[#43239d] px-4 py-3 text-base text-white">{formatCurrency(Number(selected.grandTotal ?? selected.amount))}</strong></div><div className="col-span-2 flex min-h-[52px] items-center gap-3 border-t-2 border-b-2 border-slate-300 px-4 py-3"><span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#43239d] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white">Amount in words <span aria-hidden="true">:</span></span><span className="text-sm font-medium text-slate-700">{amountInWords(Number(selected.grandTotal ?? selected.amount))}</span></div></div>
+                        <div className="grid grid-cols-2 bg-white"><div className="flex items-center justify-center border-r border-slate-200 px-4 py-6 text-center text-xs font-bold uppercase tracking-wide text-[#43239d]">{selectedReceiptMode === "inclusive" ? "TOTAL AMOUNT (TAX INCLUSIVE)" : "Total price excluding tax"}</div><div className="grid grid-cols-[minmax(0,1fr)_112px] text-right text-sm"><span className="border-b border-l border-slate-200 px-4 py-3 text-center text-xs uppercase leading-tight text-slate-600">Total</span><strong className="border-b border-slate-200 px-4 py-3 text-slate-800">{formatCurrency(Number(selectedReceiptTotals?.subtotal ?? selected.subtotal ?? selected.amount))}</strong><span className="border-b border-l border-slate-200 px-4 py-3 text-center text-xs uppercase leading-tight text-slate-600">Tax amount ({selectedReceiptRate}% · {selectedReceiptMode === "inclusive" ? "Inclusive" : "Exclusive"})</span><strong className="border-b border-slate-200 px-4 py-3 text-slate-800">{formatCurrency(Number(selectedReceiptTotals?.gstAmount ?? selected.gstAmount ?? 0))}</strong><span className="border-l border-t border-slate-200 px-4 py-3 text-center text-base font-bold uppercase leading-tight text-[#43239d]">Grand total amount</span><strong className="border-t border-slate-200 bg-[#43239d] px-4 py-3 text-base text-white">{formatCurrency(Number(selectedReceiptTotals?.grandTotal ?? selected.grandTotal ?? selected.amount))}</strong></div><div className="col-span-2 flex min-h-[52px] items-center gap-3 border-t-2 border-b-2 border-slate-300 px-4 py-3"><span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#43239d] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white">Amount in words <span aria-hidden="true">:</span></span><span className="text-sm font-medium text-slate-700">{amountInWords(Number(selectedReceiptTotals?.grandTotal ?? selected.grandTotal ?? selected.amount))}</span></div></div>
                         <div className="grid overflow-hidden border-t border-slate-200 bg-white sm:grid-cols-4">
                           <div className="border-b border-slate-200 p-3 text-center sm:border-b-0 sm:border-r"><p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Payment mode</p><p className="mt-2 text-xs text-slate-700">{selected.paymentMode || "—"}</p></div>
                           <div className="border-b border-slate-200 p-3 text-center sm:border-b-0 sm:border-r"><p className="text-[10px] font-bold uppercase tracking-wide text-[#43239d]">Transaction ID</p><p className="mt-2 break-words text-xs text-slate-700">{selected.transactionReference || "—"}</p></div>

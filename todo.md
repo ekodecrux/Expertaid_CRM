@@ -13028,3 +13028,10 @@
 - [x] Count only issued receipt amounts as collected payments
 - [x] Keep invoice amounts assigned/due without increasing collected totals
 - [x] Add regression coverage for receipt-only collection and pending balances
+
+- [x] Fix additional-product receipt preview showing 0% exclusive tax instead of saved GST-inclusive mode
+- [x] Display inclusive GST component and TOTAL AMOUNT (TAX INCLUSIVE) for additional-product receipts
+- [x] Add regression coverage for additional-product inclusive receipt preview calculations
+
+- [x] Trace and fix the actual rendered saved receipt preview branch still showing 0% exclusive GST
+- [x] Verify the selected Biometric additional-product receipt displays inclusive GST values in the preview
