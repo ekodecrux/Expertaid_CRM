@@ -12877,3 +12877,9 @@
 
 - [x] Align GST amount, assigned total, paid, and pending in one four-column row for every product
 - [x] Verify product financial rows remain readable on desktop and mobile
+
+- [x] Reorder product financial columns to Amount, GST Amount, Paid, Pending
+- [x] Verify the reordered product financial row remains aligned and readable
+
+- [x] Add Total Amount after GST Amount for primary and additional products
+- [x] Verify Amount, GST Amount, Total Amount, Paid, and Pending alignment and calculations
