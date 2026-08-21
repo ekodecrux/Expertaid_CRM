@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useLocation } from "wouter";
 import {
   Eye,
   FileText,
@@ -275,6 +276,7 @@ function ValidationSummary({
 
 export function BillingPage({ kind }: { kind: BillingKind }) {
   const isInvoice = kind === "invoice";
+  const [location] = useLocation();
   const invoiceSettings = trpc.invoices.settings.get.useQuery(undefined, {
     enabled: true,
   });
@@ -404,6 +406,13 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const [receiptForm, setReceiptForm] = useState(emptyReceipt());
   const [search, setSearch] = useState("");
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  useEffect(() => {
+    if (isInvoice || selected || !receipts.data) return;
+    const receiptNumber = new URLSearchParams(window.location.search).get("receipt");
+    if (!receiptNumber) return;
+    const receipt = (receipts.data as any[]).find((row) => String(row.receiptNumber) === receiptNumber);
+    if (receipt) setSelected(receipt);
+  }, [isInvoice, location, receipts.data, selected]);
   const clientOptions: any[] = (clients.data as any)?.items ?? [];
   const projectOptions: any[] = (projects.data as any) ?? [];
   const selectedProjectId = Number(isInvoice ? invoiceForm.projectId : receiptForm.projectId) || 0;

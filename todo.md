@@ -12915,9 +12915,20 @@
 - [x] Update Overall Pricing Summary GST using the same product-level GST source
 - [x] Add regression coverage for primary ₹1,800 plus additional ₹1,800 GST
 
-- [ ] Fix home-page tRPC request returning HTML instead of JSON
-- [ ] Verify the home page loads without Unexpected token '<' API errors
-- [ ] Add regression coverage for the corrected home-page API route
+- [x] Fix home-page tRPC request returning HTML instead of JSON
+- [x] Verify the home page loads without Unexpected token '<' API errors
+- [x] Add regression coverage for the corrected home-page API route
 
 - [x] Add View and Print actions beside each paid receipt in Payment history
 - [x] Verify receipt preview and print actions preserve the existing receipt layout
+
+- [x] Fix home-page tRPC request returning HTML instead of JSON
+- [x] Verify the home page loads without Unexpected token '<' API errors
+- [x] Add regression coverage for the corrected home-page API route
+
+- [x] Make Payment history View reuse the full Receipts-module receipt preview
+- [x] Preserve branding, items, GST, payment details, signature, and Print in the reused preview
+- [x] Verify receipt preview parity from both Receipts and Payment history
+
+- [x] Make Payment history View open the selected receipt document directly
+- [x] Verify direct receipt preview shows product, GST, amount, payment details, and Print

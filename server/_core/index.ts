@@ -10,6 +10,7 @@ import { registerStorageProxy } from "./storageProxy";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
+import { apiResponseContentType, unknownApiPayload, unknownTrpcPayload } from "@shared/apiFallback";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -51,7 +52,13 @@ async function startServer() {
   // problems clearly instead of producing `Unexpected token '<'` in the client.
   app.use("/api/trpc", (_req, res) => {
     if (!res.headersSent) {
-      res.status(404).json({ error: { message: "Unknown tRPC procedure" } });
+      res.status(404).type(apiResponseContentType()).json(unknownTrpcPayload());
+    }
+  });
+  // Keep all unmatched API requests JSON so they never fall through to the SPA HTML shell.
+  app.use("/api", (req, res) => {
+    if (!res.headersSent) {
+      res.status(404).type(apiResponseContentType()).json(unknownApiPayload(req.originalUrl));
     }
   });
   // Use Vite only when no production bundle is available. Some hosting
