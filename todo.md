@@ -12906,3 +12906,11 @@
 - [x] Correct additional-product base amount source so Biometric displays ₹10,000 before GST
 - [x] Reconcile Biometric GST ₹1,800, total ₹11,800, paid ₹1,000, and pending ₹10,800
 - [x] Add regression coverage for the corrected additional-product amount case
+
+- [x] Update Overall Pricing Summary GST to include primary and additional product GST
+- [x] Verify combined GST ₹3,600 for the shown client while preserving total, paid, and pending
+- [x] Add regression coverage for the combined Overall Pricing Summary GST
+
+- [x] Reconcile Invoice Summary GST with stored product GST amounts so this client shows ₹3,600
+- [x] Update Overall Pricing Summary GST using the same product-level GST source
+- [x] Add regression coverage for primary ₹1,800 plus additional ₹1,800 GST
