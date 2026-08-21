@@ -12842,3 +12842,6 @@
 
 - [x] Fix payment history so it retrieves the same saved reminder schedule shown in Client Edit
 - [x] Add regression coverage for the ERP26003 payment-plan lookup path
+
+- [x] Expand Client View to show complete client profile, project, plan, pricing, GST, products, payments, and status details
+- [x] Verify Client View responsive layout and complete data coverage
