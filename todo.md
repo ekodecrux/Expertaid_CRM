@@ -13038,3 +13038,5 @@
 
 - [x] Push the verified ERP CRM changes to ekodecrux/Expertaid_CRM
 - [x] Generate and deliver a consolidated SQL file for the current schema and required database updates
+
+- [x] Reorder sidebar pipeline after Dashboard as Quotations, Clients, Invoices, Receipts
