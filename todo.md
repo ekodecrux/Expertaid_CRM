@@ -4100,3 +4100,8 @@
 - [x] Add payment planning, automatic totals, and pending balance calculations for new clients
 - [x] Support receipt draft, preview, and submission after creating a new client
 - [x] Add tests and complete visual/runtime verification for Add New Client parity
+
+- [x] Recheck Add Client against Client Edit and identify which products, installments, totals, or receipt controls are missing or inaccessible
+- [x] Fix the Add Client workflow so all required sections are available at the correct point in the creation flow
+- [x] Verify persistence and receipt preview/submission for a newly added client
+- [x] Add regression tests and complete visual/runtime verification for the corrected Add Client flow
