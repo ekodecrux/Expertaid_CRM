@@ -8763,3 +8763,2213 @@
 - [x] Add tests and responsive visual verification for GST detail presentation
 
 - [x] Show GST details
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
+
+- [x] Hide ERP primary labels and ERP GST details until ERP project is selected
+- [x] Show the selected non-ERP project name as the primary project/product in payment position
+- [x] Keep additional products listed separately for both ERP and non-ERP projects
+- [x] Verify project switching, totals, and GST detail visibility with tests and visual QA
