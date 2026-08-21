@@ -12774,3 +12774,7 @@
 - [x] Keep No. of students visible in ERP Package mode on Add Client and Client Edit
 - [x] Require a valid student count for ERP Package mode and preserve it when saving
 - [x] Verify Package and Per Student modes in both workflows
+
+- [x] Show saved upcoming reminder instalments in the payment history modal
+- [x] Keep actual receipts separate from planned reminder instalments
+- [x] Verify reminder retrieval, display mapping, and payment history visual behavior
