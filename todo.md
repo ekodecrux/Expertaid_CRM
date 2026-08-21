@@ -12874,3 +12874,6 @@
 - [x] Display a dedicated GST amount field for the primary product
 - [x] Display a dedicated GST amount field for every additional product
 - [x] Verify per-product GST amounts match the selected GST mode and rate
+
+- [x] Align GST amount, assigned total, paid, and pending in one four-column row for every product
+- [x] Verify product financial rows remain readable on desktop and mobile
