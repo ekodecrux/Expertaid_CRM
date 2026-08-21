@@ -12970,3 +12970,8 @@
 - [x] Export all client details in the Clients PDF export
 - [x] Ensure exports use the currently filtered client dataset and include financial/product details
 - [x] Add regression coverage for complete client export fields
+
+- [x] Correct Excel Per Student / Employee Price and Package Price values by pricing mode
+- [x] Export Pricing Mode as Per Student or Package labels
+- [x] Verify Project Type and Institute Type are distinct and accurately labeled
+- [x] Add regression coverage for pricing-mode export values and type columns
