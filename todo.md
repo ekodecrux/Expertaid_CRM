@@ -12849,3 +12849,6 @@
 - [x] Redesign Client View as a structured full profile with aligned label/value sections
 - [x] Present complete plan, financial, product, payment, status, and notes information without compact-card ambiguity
 - [x] Verify the redesigned Client View on desktop and mobile
+
+- [x] Compact Client View field rows and section spacing without removing complete client details
+- [x] Verify compact Client View readability on desktop and mobile
