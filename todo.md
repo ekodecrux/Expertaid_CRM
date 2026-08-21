@@ -4105,3 +4105,2369 @@
 - [x] Fix the Add Client workflow so all required sections are available at the correct point in the creation flow
 - [x] Verify persistence and receipt preview/submission for a newly added client
 - [x] Add regression tests and complete visual/runtime verification for the corrected Add Client flow
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing mode selection for Per Student and Package on Add Client and Client Edit
+- [x] Calculate ERP primary amount correctly for Per Student and Package modes
+- [x] Keep additional products separately tracked and included in overall totals
+- [x] Update payment-position labels to distinguish ERP primary amount from additional products
+- [x] Add tests and visual verification for ERP pricing modes and product roll-up
+
+- [x] Add ERP pricing
