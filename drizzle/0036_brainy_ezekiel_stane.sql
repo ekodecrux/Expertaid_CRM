@@ -1,0 +1,1 @@
+ALTER TABLE `paymentPlans` MODIFY COLUMN `paymentCycle` enum('single','terms','installments','months') NOT NULL DEFAULT 'installments';

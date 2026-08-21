@@ -1,7 +1,7 @@
 import { and, desc, eq, gte, like, lte, lt, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
-import { agreements, clients, paymentPlans, paymentPlanTerms, InsertAgreement, InsertClient, InsertQuotation, InsertQuotationSettings, InsertUser, profileSettingsData, projects, quotationEditHistory, quotations, quotationSettings, quotationSettingsData, sessions, users, type InsertProject, type User } from "../drizzle/schema";
+import { agreements, clients, clientProducts, paymentPlans, paymentPlanTerms, InsertAgreement, InsertClient, InsertQuotation, InsertQuotationSettings, InsertUser, profileSettingsData, projects, quotationEditHistory, quotations, quotationSettings, quotationSettingsData, sessions, users, type InsertProject, type User } from "../drizzle/schema";
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding, type CompanyBranding } from "@shared/branding";
 import { formatProjectClientId, nextFutureProjectClientNumber } from "@shared/project";
@@ -815,16 +815,19 @@ export async function listApprovedClientsForOwner(ownerId: number, options: { pa
     agreementFilters.push(or(like(agreements.clientName, pattern), like(agreements.clientOwnerName, pattern), like(agreements.email, pattern), like(agreements.contactNumber, pattern), like(agreements.instituteType, pattern))!);
     clientFilters.push(or(like(clients.clientName, pattern), like(clients.clientOwnerName, pattern), like(clients.email, pattern), like(clients.contactNumber, pattern), like(clients.instituteType, pattern))!);
   }
-  const [agreementItems, standaloneItems] = await Promise.all([
+  const [agreementItems, standaloneItems, productTotals] = await Promise.all([
     db.select().from(agreements).where(and(...agreementFilters)).orderBy(desc(agreements.createdAt)),
     db.select().from(clients).where(and(...clientFilters)).orderBy(desc(clients.createdAt)),
+    db.select({ clientId: clientProducts.clientId, total: sql<string>`COALESCE(SUM(${clientProducts.totalAmount}), 0)` }).from(clientProducts).where(eq(clientProducts.ownerId, ownerId)).groupBy(clientProducts.clientId),
   ]);
+  const productTotalByClientId = new Map(productTotals.map((row) => [row.clientId, Number(row.total ?? 0)]));
+  const addProductTotals = <T extends { clientId: string | null; totalPrice: string | null }>(item: T) => ({ ...item, totalPrice: (Number(item.totalPrice ?? 0) + (productTotalByClientId.get(item.clientId ?? "") ?? 0)).toFixed(2) });
   const normalizedStandalone = standaloneItems.map((client) => ({ ...client, id: -client.id, signatureDate: null, decidedAt: null }));
-  const combined = [...agreementItems, ...normalizedStandalone].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  const combined: any[] = [...agreementItems, ...normalizedStandalone].map(addProductTotals).sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   const total = combined.length;
   const pageItems = combined.slice((options.page - 1) * options.pageSize, options.page * options.pageSize);
-  const students = combined.reduce((sum, item) => sum + Number(item.noOfStudents ?? 0), 0);
-  const value = combined.reduce((sum, item) => sum + Number(item.totalPrice ?? 0), 0);
+  const students = combined.reduce<number>((sum, item) => sum + Number(item.noOfStudents ?? 0), 0);
+  const value = combined.reduce<number>((sum, item) => sum + Number(item.totalPrice ?? 0), 0);
   return { items: pageItems, total, page: options.page, pageSize: options.pageSize, totalPages: Math.ceil(total / options.pageSize), summary: { students, value } };
 }
 
@@ -862,7 +865,7 @@ export async function getPaymentPlanForOwner(ownerId: number, clientId: string) 
   return { ...plan, terms };
 }
 
-export async function savePaymentPlanForOwner(ownerId: number, input: { clientId: string; projectId?: number | null; paymentCycle: "single" | "terms"; totalAmount: string; initialPayment: string; terms: Array<{ label: string; dueDate: string; amount: string }> }) {
+export async function savePaymentPlanForOwner(ownerId: number, input: { clientId: string; projectId?: number | null; paymentCycle: "single" | "terms" | "installments" | "months"; totalAmount: string; initialPayment: string; terms: Array<{ label: string; dueDate: string; amount: string }> }) {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
   const existing = await db.select({ id: paymentPlans.id }).from(paymentPlans).where(and(eq(paymentPlans.ownerId, ownerId), eq(paymentPlans.clientId, input.clientId))).orderBy(desc(paymentPlans.id)).limit(1);
@@ -876,6 +879,31 @@ export async function savePaymentPlanForOwner(ownerId: number, input: { clientId
   }
   if (input.terms.length) await db.insert(paymentPlanTerms).values(input.terms.map((term) => ({ paymentPlanId: paymentPlanId!, label: term.label, dueDate: term.dueDate, amount: term.amount })));
   return getPaymentPlanForOwner(ownerId, input.clientId);
+}
+
+export async function listClientProductsForOwner(ownerId: number, clientId: string) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(clientProducts).where(and(eq(clientProducts.ownerId, ownerId), eq(clientProducts.clientId, clientId))).orderBy(clientProducts.id);
+}
+
+export async function saveClientProductsForOwner(ownerId: number, input: { clientId: string; projectId?: number | null; products: Array<{ productName: string; description?: string | null; quantity: number; unitPrice: number; gstRate: number; gstMode: "inclusive" | "exclusive"; paidAmount: number; dueDate?: string | null; paymentDate?: string | null; paymentMode?: string | null; transactionReference?: string | null }> }) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  await db.delete(clientProducts).where(and(eq(clientProducts.ownerId, ownerId), eq(clientProducts.clientId, input.clientId)));
+  if (input.products.length) {
+    const values = input.products.map((product) => {
+      const subtotal = Math.max(0, product.quantity) * Math.max(0, product.unitPrice);
+      const rate = Math.max(0, product.gstRate);
+      const gstAmount = product.gstMode === "inclusive" ? subtotal - subtotal / (1 + rate / 100) : subtotal * rate / 100;
+      const totalAmount = product.gstMode === "inclusive" ? subtotal : subtotal + gstAmount;
+      const paidAmount = Math.min(Math.max(0, product.paidAmount), totalAmount);
+      const paymentStatus = paidAmount >= totalAmount ? "Paid" as const : paidAmount > 0 ? "Partially Paid" as const : "Pending" as const;
+      return { ownerId, clientId: input.clientId, projectId: input.projectId ?? null, productName: product.productName.trim(), description: product.description?.trim() || null, quantity: product.quantity.toFixed(2), unitPrice: product.unitPrice.toFixed(2), gstRate: rate.toFixed(2), gstMode: product.gstMode, subtotal: subtotal.toFixed(2), gstAmount: gstAmount.toFixed(2), totalAmount: totalAmount.toFixed(2), paidAmount: paidAmount.toFixed(2), paymentStatus, dueDate: product.dueDate || null, paymentDate: product.paymentDate || null, paymentMode: product.paymentMode?.trim() || null, transactionReference: product.transactionReference?.trim() || null };
+    });
+    await db.insert(clientProducts).values(values);
+  }
+  return listClientProductsForOwner(ownerId, input.clientId);
 }
 
 export async function updateAgreementDecision(publicToken: string, values: Pick<InsertAgreement, "status" | "signatureUrl" | "signatureKey" | "signatureDate" | "decidedAt">) {

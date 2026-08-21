@@ -1362,3 +1362,2735 @@
 - [x] Rename the payment planner cycle and related schedule labels from Terms to Installments while preserving Single payment behavior.
 
 - [x] Rename remaining schedule-row labels from Term to Installment and preserve edited installment label, due date, and amount values after saving.
+
+- [x] Add Terms and Months as payment-cycle options alongside Installments and Single payment, with cycle-specific schedule labels and editable due dates and amounts.
+
+- [x] Add editable products/services to the full-page Client Edit workflow with quantity and amount fields.
+- [x] Add product-level payment details and persist them without overwriting existing client payment history.
+- [x] Include newly added product totals in assigned total, pending balance, payment progress, and payment-plan calculations.
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [ ] Show the generated receipt preview and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [ ] Show the generated receipt preview and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [x] Prevent duplicate receipts and preserve Client ID/product linkage
+- [x] Add tests and complete visual/runtime verification for product-payment receipt flow
+
+- [x] Prepare an automatic receipt draft from product-level collected amounts
+- [x] Ask for and validate missing receipt details before final submission
+- [x] Show the generated receipt preview and submit only after confirmation
+- [ ] Prevent duplicate receipts and preserve Client ID
