@@ -13156,3 +13156,6 @@
 - [x] Preserve exact GST-inclusive reminder amount when opening a prefilled receipt
 - [x] Ensure receipt summary and grand total match the reminder amount for small balances such as ₹7
 - [x] Add regression coverage for inclusive GST reminder receipt prefilling
+- [x] Reconcile ERP26001 assigned, paid, and pending values with the authoritative client total
+- [x] Ensure GST-inclusive receipt prefilling preserves the exact outstanding balance without rounding mismatch
+- [x] Add regression coverage for rounded display versus exact financial values
