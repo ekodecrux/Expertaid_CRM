@@ -13170,3 +13170,6 @@
 - [x] Align ERP26001 installment row amount with the displayed ₹7 remaining balance
 - [x] Keep payment schedule total, reminder amount, and receipt Pay amount consistent
 - [x] Add regression coverage for schedule amount consistency
+- [x] Make the payment schedule installment row display the same rounded whole-rupee amount as the reconciled reminder
+- [x] Preserve exact underlying paise for receipt accounting while showing whole rupees in the schedule editor
+- [x] Add regression coverage for schedule display rounding
