@@ -13052,3 +13052,5 @@
 - [x] Fix login-page logo so it loads on first unauthenticated visit and after logout
 
 - [x] Place Quotations directly above Agreements in the left sidebar navigation
+
+- [x] Tighten Dashboard KPI card top and bottom spacing and highlight primary values
