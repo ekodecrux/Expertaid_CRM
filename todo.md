@@ -13200,3 +13200,6 @@
 - [x] Move Session, Search, and Refresh controls below the complete Reports module
 - [x] Preserve session, multiple-session, all-session, search, and refresh behavior
 - [x] Add regression coverage, visually verify the new position, and publish
+- [x] Remove Excel, PDF, and Print icons from the report card header
+- [x] Move Session, Search, and Refresh controls into the report card header
+- [x] Preserve export actions in the main Reports toolbar and verify the new layout
