@@ -1,0 +1,16 @@
+import fs from "node:fs";
+const path = "client/src/pages/Clients.tsx";
+let source = fs.readFileSync(path, "utf8");
+source = source.replace("ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Copy,", "ChevronLeft, ChevronRight, Copy,");
+source = source.replace("  const [showAllFinancials, setShowAllFinancials] = useState(false);\n", "  const [expandedHistoryPlanId, setExpandedHistoryPlanId] = useState<number | null>(null);\n");
+source = source.replace("onClick={() => { setSelected(client); setShowAllFinancials(false); }}", "onClick={() => { setSelected(client); setExpandedHistoryPlanId(null); }}");
+const oldStart = source.indexOf('<div className="flex justify-end"><Button type="button" variant="outline" size="sm" className="border-[#cfc5ff]');
+const oldEnd = source.indexOf('{/* invoice summary */}<section', oldStart);
+if (oldStart < 0 || oldEnd < 0) throw new Error(`old expansion block not found: ${oldStart}, ${oldEnd}`);
+source = source.slice(0, oldStart) + source.slice(oldEnd + "{/* invoice summary */}".length);
+const historyStart = source.indexOf('{selected.renewalHistory?.length ? <section className="overflow-hidden rounded-2xl border border-amber-200');
+const historyEnd = source.indexOf(': null}{selected.description &&', historyStart);
+if (historyStart < 0 || historyEnd < 0) throw new Error(`history block not found: ${historyStart}, ${historyEnd}`);
+const historyBlock = fs.readFileSync("scripts/history-block.txt", "utf8").trim();
+source = source.slice(0, historyStart) + historyBlock + source.slice(historyEnd + ": null".length);
+fs.writeFileSync(path, source);
