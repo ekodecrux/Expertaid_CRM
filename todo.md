@@ -13242,3 +13242,6 @@
 - [x] Change Reports PDF and Print exports to default A4 portrait format
 - [x] Adjust portrait table sizing and wrapping for readable exports
 - [x] Test, visually verify, and publish the portrait export update
+- [x] Add Portrait/Landscape orientation selection for Reports PDF and Print
+- [x] Add Fit to page, Fit to width, and 100% paper-fitting options
+- [x] Apply settings to active report export and verify printing
