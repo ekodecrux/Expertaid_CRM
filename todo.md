@@ -13187,3 +13187,6 @@
 - [x] Add PDF export for the active report
 - [x] Keep report output focused on data without extra descriptive details
 - [x] Add regression coverage, visually verify the toolbar, and publish
+- [x] Make PDF and Print exports contain only the selected report data table
+- [x] Keep Excel export aligned with the active report data
+- [x] Add export-target regression coverage and verify the browser print preview

@@ -537,9 +537,9 @@ button:active {
 
 @media print {
   body.reports-printing * { visibility: hidden !important; }
-  body.reports-printing #reports-print,
-  body.reports-printing #reports-print * { visibility: visible !important; }
-  body.reports-printing #reports-print { position: absolute; inset: 0; width: 100%; max-width: none; padding: 1rem; background: #fff; }
-  body.reports-printing #reports-print .print\:hidden { display: none !important; }
-  body.reports-printing #reports-print table { font-size: 10px; }
+  body.reports-printing #report-export,
+  body.reports-printing #report-export * { visibility: visible !important; }
+  body.reports-printing #report-export { position: absolute; inset: 0; width: 100%; max-width: none; padding: 1rem; background: #fff; }
+  body.reports-printing #report-export .print\:hidden { display: none !important; }
+  body.reports-printing #report-export table { font-size: 10px; }
 }
