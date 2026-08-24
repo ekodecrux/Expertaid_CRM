@@ -13146,3 +13146,6 @@
 - [x] Add Excel export for each report view with complete report fields
 - [x] Add print actions where a report is suitable for printable output
 - [x] Add Reports regression tests and verify responsive UI
+- [x] Make Reminders module functional with overdue, upcoming, and pending payment items
+- [x] Connect the header bell icon to live reminder data with unread count and quick navigation
+- [x] Add reminder status handling, export/print actions where useful, and regression tests
