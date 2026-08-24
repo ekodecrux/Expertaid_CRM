@@ -13065,4 +13065,4 @@
 
 - [x] Replace Dashboard calendar-year labels and chart grouping with the active/current session
 
-- [ ] Make the generated ERP renewal link visible and copyable after renewal creation
+- [x] Make the generated ERP renewal link visible and copyable after renewal creation
