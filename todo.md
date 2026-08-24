@@ -13190,3 +13190,7 @@
 - [x] Make PDF and Print exports contain only the selected report data table
 - [x] Keep Excel export aligned with the active report data
 - [x] Add export-target regression coverage and verify the browser print preview
+- [x] Move session selector into the lower Reports search/filter area
+- [x] Remove the separate session filter card above the report tabs
+- [x] Add Search and Refresh controls at the bottom of the report area
+- [x] Add regression coverage, visually verify the new layout, and publish
