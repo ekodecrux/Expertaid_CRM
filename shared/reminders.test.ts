@@ -1,5 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { buildReminderItems } from "./reminders";
+import { buildReminderItems, reminderPayAmount } from "./reminders";
+
+describe("reminder Pay amount", () => {
+  it("matches the displayed whole-rupee payment-plan amount", () => {
+    expect(reminderPayAmount({ source: "Payment plan", amount: 6.8 })).toBe(7);
+  });
+  it("preserves exact product balances", () => {
+    expect(reminderPayAmount({ source: "Product", amount: 6.8 })).toBe(6.8);
+  });
+});
 
 describe("reminder aggregation", () => {
   const client = { id: -3, clientId: "ERP26003", clientName: "Add client ERP" };

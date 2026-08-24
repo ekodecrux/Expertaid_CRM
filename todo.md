@@ -13162,3 +13162,6 @@
 - [x] Fix bottom Close/Cancel action in the receipt creation dialog
 - [x] Ensure closing from reminder Pay does not submit or mutate the receipt
 - [x] Add regression coverage for receipt dialog close behavior
+- [x] Make the Pay flow use the displayed installment amount, not the unrounded stored amount
+- [x] Ensure the receipt line, inclusive GST total, and submitted amount all match ₹7 for this reminder
+- [x] Add regression coverage for rounded installment Pay prefilling

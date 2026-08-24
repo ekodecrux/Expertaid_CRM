@@ -4,6 +4,7 @@ export type ReminderItem = { id: string; clientId: string; clientName: string; s
 
 const sameClient = (client: any, row: any) => client.clientId && row.clientId ? String(client.clientId).toLowerCase() === String(row.clientId).toLowerCase() : String(client.clientName ?? "").trim().toLowerCase() === String(row.clientName ?? "").trim().toLowerCase();
 const positive = (value: unknown) => Math.max(0, Number(value ?? 0) || 0);
+export function reminderPayAmount(row: Pick<ReminderItem, "source" | "amount">) { return row.source === "Payment plan" ? Math.round(row.amount) : row.amount; }
 
 export function buildReminderItems({ clients, products, plans, invoices, receipts, now = new Date() }: { clients: any[]; products: any[]; plans: any[]; invoices: any[]; receipts: any[]; now?: Date }) {
   const rows: ReminderItem[] = [];
