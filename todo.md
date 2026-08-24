@@ -13096,3 +13096,5 @@
 - [x] Show completed elapsed service in Collaboration Service, not the full taken/contracted period
 
 - [x] Format completed Service duration compactly as M or Y values without the word completed
+
+- [x] Add a top Cancel/Close icon to the public agreement link page without submitting the client decision
