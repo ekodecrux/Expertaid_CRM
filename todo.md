@@ -13183,3 +13183,7 @@
 - [x] Support multiple selected sessions and an All Sessions option across collection and due reports
 - [x] Preserve Excel export and print support for the new report views
 - [x] Add regression tests and visually verify the expanded Reports module
+- [x] Replace Reports text export controls with Excel, PDF, Print, and Refresh icons
+- [x] Add PDF export for the active report
+- [x] Keep report output focused on data without extra descriptive details
+- [x] Add regression coverage, visually verify the toolbar, and publish
