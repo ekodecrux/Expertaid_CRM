@@ -483,6 +483,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     else setReceiptForm(current => ({ ...current, ...details }));
   };
   useEffect(() => {
+    if (conversionInvoiceId) return;
     if (!createOpen || !selectedClient?.clientId || (!selectedClientProducts.data?.length && !primaryProductBalance)) return;
     const clientProductRows = Array.isArray(selectedClientProducts.data) ? selectedClientProducts.data : [];
     const additionalItems = clientProductRows.map(product => ({
@@ -565,6 +566,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     : selected?.gstMode;
   const selectedReceiptTotals = useMemo(() => {
     if (!selected || isInvoice) return null;
+    if (selected.invoiceId && selected.subtotal != null && selected.grandTotal != null) {
+      return { subtotal: Number(selected.subtotal), gstAmount: Number(selected.gstAmount ?? 0), grandTotal: Number(selected.grandTotal) };
+    }
     let items: any[] = [];
     try { items = selected.itemsJson ? JSON.parse(selected.itemsJson) : [{ itemName: selected.receivedFor, quantity: 1, unitPrice: selected.amount }]; } catch { items = [{ itemName: selected.receivedFor, quantity: 1, unitPrice: selected.amount }]; }
     return calculateQuotationTotals(items.map((item: any) => ({ product: "ERP" as const, itemName: item.itemName || item.productName || "Item", quantity: Number(item.quantity) || 1, unitPrice: Number(item.unitPrice) || 0 })), selectedReceiptRate, selectedReceiptMode === "inclusive" ? "inclusive" : "exclusive");
