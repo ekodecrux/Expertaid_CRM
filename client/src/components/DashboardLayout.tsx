@@ -34,10 +34,10 @@ import { trpc } from "@/lib/trpc";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/", available: true },
-  { icon: FileText, label: "Quotations", path: "/quotations", available: true },
   { icon: UsersRound, label: "Clients", path: "/clients", available: true },
   { icon: FileText, label: "Invoices", path: "/invoices", available: true },
   { icon: ReceiptText, label: "Receipts", path: "/receipts", available: true },
+  { icon: FileText, label: "Quotations", path: "/quotations", available: true },
   { icon: FileCheck2, label: "Agreements", path: "/agreements", available: true },
   { icon: Bell, label: "Reminders", available: false },
   { icon: BarChart3, label: "Reports", available: false },
