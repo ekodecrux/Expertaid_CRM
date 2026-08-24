@@ -13159,3 +13159,6 @@
 - [x] Reconcile ERP26001 assigned, paid, and pending values with the authoritative client total
 - [x] Ensure GST-inclusive receipt prefilling preserves the exact outstanding balance without rounding mismatch
 - [x] Add regression coverage for rounded display versus exact financial values
+- [x] Fix bottom Close/Cancel action in the receipt creation dialog
+- [x] Ensure closing from reminder Pay does not submit or mutate the receipt
+- [x] Add regression coverage for receipt dialog close behavior

@@ -897,6 +897,15 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     });
     setCreateOpen(true);
   };
+  const closeCreateDialog = () => {
+    const cameFromInvoice = Boolean(conversionInvoiceId);
+    setCreateOpen(false);
+    setConversionInvoiceId(null);
+    setReminderPrefill(false);
+    setEditingInvoiceId(null);
+    setEditingReceiptId(null);
+    if (cameFromInvoice) navigate("/invoices");
+  };
   const printSelected = () => {
     const source = document.getElementById("billing-print");
     if (!selected || !source) return;
@@ -1578,7 +1587,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
             </DialogContent>
           </Dialog>
 
-          <Dialog open={createOpen} onOpenChange={open => { setCreateOpen(open); if (!open) setConversionInvoiceId(null); }}>
+          <Dialog open={createOpen} onOpenChange={open => { if (!open) closeCreateDialog(); }}>
             <DialogContent className="max-h-[92vh] overflow-y-auto bg-white text-[#172033] sm:max-w-4xl">
               <DialogHeader>
                 <DialogTitle className="font-serif text-2xl">
@@ -2233,11 +2242,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     <Button
                       type="button"
                       variant="outline"
-                      onClick={() => {
-                        setCreateOpen(false);
-                        setConversionInvoiceId(null);
-                        if (conversionInvoiceId) navigate("/invoices");
-                      }}
+                      onClick={closeCreateDialog}
                     >
                       Cancel
                     </Button>
