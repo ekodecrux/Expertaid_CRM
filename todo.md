@@ -13110,3 +13110,6 @@
 - [x] Fix bottom Cancel/Close on invoice-opened receipt form so it returns to the invoice without submitting payment
 
 - [x] Keep quotation signature on the right regardless of whether an optional QR code is present
+
+- [x] Add a Successful invoices view for paid/converted invoices while keeping active invoices separate
+- [x] Calculate Dashboard Invoiced Value from due/open invoices only

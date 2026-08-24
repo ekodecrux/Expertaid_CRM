@@ -403,6 +403,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const [invoiceForm, setInvoiceForm] = useState(emptyInvoice());
   const [receiptForm, setReceiptForm] = useState(emptyReceipt());
   const [conversionInvoiceId, setConversionInvoiceId] = useState<number | null>(null);
+  const [showSuccessfulInvoices, setShowSuccessfulInvoices] = useState(false);
   const [search, setSearch] = useState("");
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   useEffect(() => {
@@ -531,14 +532,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   }, [isInvoice, invoiceSettings.data, createOpen]);
 
   const convertedInvoiceIds = new Set((receipts.data ?? []).map((row: any) => Number(row.invoiceId)).filter((id: number) => Number.isInteger(id) && id > 0));
-  const invoiceRows = (invoices.data ?? []).filter(
-    (row: any) => !convertedInvoiceIds.has(Number(row.id)) && (
-      !search ||
-      `${row.invoiceNumber} ${row.clientName}`
-        .toLowerCase()
-        .includes(search.toLowerCase())
-    )
-  );
+  const searchedInvoiceRows = (invoices.data ?? []).filter((row: any) => !search || `${row.invoiceNumber} ${row.clientName}`.toLowerCase().includes(search.toLowerCase()));
+  const successfulInvoiceRows = searchedInvoiceRows.filter((row: any) => convertedInvoiceIds.has(Number(row.id)) || row.status === "Paid");
+  const invoiceRows = searchedInvoiceRows.filter((row: any) => !successfulInvoiceRows.includes(row));
   const receiptRows = (receipts.data ?? []).filter(
     (row: any) =>
       !search ||
@@ -546,7 +542,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
         .toLowerCase()
         .includes(search.toLowerCase())
   );
-  const rows = isInvoice ? invoiceRows : receiptRows;
+  const rows = isInvoice ? (showSuccessfulInvoices ? successfulInvoiceRows : invoiceRows) : receiptRows;
   const selectedSignatureUrl = selected
     ? isInvoice
       ? selected.signatureUrl || quotationSettings.data?.signatureUrl
@@ -923,7 +919,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                 Finance workspace
               </p>
               <h1 className="mt-2 font-serif text-[2.7rem] leading-[1.08] tracking-[-0.03em] sm:text-5xl">
-                {isInvoice ? "Invoices" : "Receipts"}
+                {isInvoice ? (showSuccessfulInvoices ? "Successful invoices" : "Invoices") : "Receipts"}
               </h1>
               <p className="mt-3 text-sm text-slate-500">
                 {isInvoice
@@ -947,6 +943,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                 <Settings2 className="mr-2 h-4 w-4" />
                 Settings
               </Button>
+              {isInvoice && <Button variant="outline" onClick={() => setShowSuccessfulInvoices(current => !current)}>{showSuccessfulInvoices ? "Active invoices" : `Successful invoices (${successfulInvoiceRows.length})`}</Button>}
               <Button
                 onClick={openCreate}
                 className="bg-[#3157d5] text-white hover:bg-[#2748bd]"
@@ -1009,7 +1006,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
           <Card className="border-0 shadow-sm">
             <CardHeader className="flex flex-col gap-4 border-b border-slate-100 sm:flex-row sm:items-center sm:justify-between">
               <CardTitle className="font-serif text-2xl">
-                All {isInvoice ? "invoices" : "receipts"}
+                {showSuccessfulInvoices ? "Successful invoices" : `All ${isInvoice ? "invoices" : "receipts"}`}
               </CardTitle>
               <Input
                 value={search}
