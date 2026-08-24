@@ -13219,9 +13219,9 @@
 - [x] Add Project, Payment Mode, Transaction ID, and required financial fields to report data
 - [x] Align visible report columns with Excel, PDF, and Print exports
 - [x] Add regression coverage and verify complete report details
-- [ ] Remove Client Portfolio Value, Monthly Collections, and Open Due summary cards from Reports
-- [ ] Preserve report tabs, Session/Search/actions, and data tables
-- [ ] Test, visually verify, and publish the simplified Reports layout
+- [x] Remove Client Portfolio Value, Monthly Collections, and Open Due summary cards from Reports
+- [x] Preserve report tabs, Session/Search/actions, and data tables
+- [x] Test, visually verify, and publish the simplified Reports layout
 - [x] Remove the remaining Overview summary cards shown below the Reports filters
 - [x] Re-verify that no Reports summary cards remain
 - [x] Keep the four top Reports summary frames and reduce their vertical spacing
