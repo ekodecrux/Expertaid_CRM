@@ -1,0 +1,10 @@
+import fs from "node:fs";
+const path = "client/src/pages/Clients.tsx";
+let s = fs.readFileSync(path, "utf8");
+const start = s.indexOf("{projects.find((project) => project.id === client.projectId)?.isMain ? <Button", s.indexOf("title={`View ${client.clientName}`"));
+if (start < 0) throw new Error("list renewal conditional not found");
+const endMarker = " : <Button variant=\"outline\" size=\"icon\" title={`Extend service for ${client.clientName}`}";
+const end = s.indexOf(endMarker, start);
+if (end < 0) throw new Error("non-ERP extension branch not found");
+s = s.slice(0, start) + s.slice(end + 3);
+fs.writeFileSync(path, s);

@@ -13082,3 +13082,5 @@
 - [x] Move payment/product expansion into Previous Plans and scope it to each historical plan, leaving current-plan summary unchanged
 
 - [x] Add Renewal action in client Edit that opens an editable prefilled agreement, generates a share link with optional client approval, marks the new agreement Renewal with session, and keeps the old agreement Expired with full history
+
+- [x] Remove Renewal from client-list row actions and keep it only inside client Edit
