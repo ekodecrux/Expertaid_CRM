@@ -13149,3 +13149,7 @@
 - [x] Make Reminders module functional with overdue, upcoming, and pending payment items
 - [x] Connect the header bell icon to live reminder data with unread count and quick navigation
 - [x] Add reminder status handling, export/print actions where useful, and regression tests
+- [x] Add separate Open client and Pay actions to each reminder
+- [x] Open a prefilled receipt flow for the selected reminder amount and item
+- [x] Keep the reminder visible until receipt submission successfully records payment
+- [x] Add regression coverage for reminder action routing and payment completion

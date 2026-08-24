@@ -402,6 +402,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const [settingsForm, setSettingsForm] = useState<any>(null);
   const [invoiceForm, setInvoiceForm] = useState(emptyInvoice());
   const [receiptForm, setReceiptForm] = useState(emptyReceipt());
+  const [reminderPrefill, setReminderPrefill] = useState(false);
   const [conversionInvoiceId, setConversionInvoiceId] = useState<number | null>(null);
   const [showSuccessfulInvoices, setShowSuccessfulInvoices] = useState(false);
   const [search, setSearch] = useState("");
@@ -429,6 +430,26 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     const receipt = (receipts.data as any[]).find((row) => String(row.receiptNumber) === receiptNumber);
     if (receipt) setSelected(receipt);
   }, [isInvoice, location, receipts.data, selected]);
+  useEffect(() => {
+    if (isInvoice || createOpen || !clients.data || !projects.data) return;
+    const params = new URLSearchParams(window.location.search);
+    const reminderClient = params.get("reminderClient");
+    const reminderAmount = Number(params.get("reminderAmount"));
+    if (!reminderClient || !Number.isFinite(reminderAmount) || reminderAmount <= 0) return;
+    const options = ((clients.data as any)?.items ?? []) as any[];
+    const client = options.filter((row) => matchesClientId(row.clientId, reminderClient)).sort((a, b) => Number(b.id >= 0) - Number(a.id >= 0))[0];
+    if (!client) return;
+    const productId = Number(params.get("reminderProductId"));
+    const itemName = params.get("reminderItem") || "Payment reminder";
+    const projectId = params.get("projectId") || String(client.projectId ?? "");
+    window.history.replaceState({}, "", "/receipts");
+    setReminderPrefill(true);
+    setConversionInvoiceId(null);
+    setEditingReceiptId(null);
+    setFormErrors({});
+    setReceiptForm({ ...emptyReceipt(), projectId, clientId: String(client.clientId ?? reminderClient), clientName: String(client.clientName ?? params.get("reminderName") ?? ""), clientAddress: String(client.address ?? ""), clientContact: String(client.contactNumber ?? ""), clientEmail: String(client.email ?? ""), clientGst: String(client.clientGst ?? ""), gstRate: String(client.gstRate ?? "18"), gstMode: "inclusive", items: [{ itemName, description: "Payment collected against reminder", quantity: "1", unitPrice: reminderAmount.toFixed(2), productId: Number.isInteger(productId) && productId > 0 ? productId : undefined, collectionAmount: reminderAmount.toFixed(2) }] });
+    setCreateOpen(true);
+  }, [clients.data, projects.data, isInvoice, createOpen, location]);
   const clientOptions: any[] = (clients.data as any)?.items ?? [];
   const projectOptions: any[] = (projects.data as any) ?? [];
   const selectedProjectId = Number(isInvoice ? invoiceForm.projectId : receiptForm.projectId) || 0;
@@ -484,7 +505,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     else setReceiptForm(current => ({ ...current, ...details }));
   };
   useEffect(() => {
-    if (conversionInvoiceId) return;
+    if (conversionInvoiceId || reminderPrefill) return;
     if (!createOpen || !selectedClient?.clientId || (!selectedClientProducts.data?.length && !primaryProductBalance)) return;
     const clientProductRows = Array.isArray(selectedClientProducts.data) ? selectedClientProducts.data : [];
     const additionalItems = clientProductRows.map(product => ({
@@ -501,7 +522,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     const gstSource = clientProductRows.find(product => Math.max(0, Number(product.totalAmount ?? 0) - Number(product.paidAmount ?? 0)) > 0) ?? clientProductRows[0] ?? primaryProductBalance;
     if (isInvoice) setInvoiceForm(current => ({ ...current, items: mappedItems }));
     else setReceiptForm(current => ({ ...current, items: mappedItems, gstRate: gstSource ? String(gstSource.gstRate ?? current.gstRate) : current.gstRate, gstMode: gstSource?.gstMode === "inclusive" ? "inclusive" : gstSource?.gstMode === "exclusive" ? "exclusive" : current.gstMode }));
-  }, [createOpen, selectedClient?.clientId, selectedClientProducts.data, primaryProductBalance, isInvoice]);
+  }, [createOpen, selectedClient?.clientId, selectedClientProducts.data, primaryProductBalance, isInvoice, reminderPrefill]);
   useEffect(() => {
     if (!createOpen || !projectOptions.length) return;
     const mainProject = projectOptions.find((project: any) => project.isMain) ?? projectOptions[0];
@@ -843,6 +864,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     }
   };
   const openCreate = () => {
+    setReminderPrefill(false);
     setSelected(null);
     setEditingInvoiceId(null);
     setEditingReceiptId(null);
