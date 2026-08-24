@@ -13203,3 +13203,9 @@
 - [x] Remove Excel, PDF, and Print icons from the report card header
 - [x] Move Session, Search, and Refresh controls into the report card header
 - [x] Preserve export actions in the main Reports toolbar and verify the new layout
+- [x] Place Session below the Daily Collections/report data area
+- [x] Place Search directly after Session in the lower report controls
+- [x] Preserve filters and verify the revised layout before publishing
+- [x] Move Session, Search, and Refresh above the report data table below the tabs
+- [x] Keep report-card export icons removed
+- [x] Verify the corrected placement and publish
