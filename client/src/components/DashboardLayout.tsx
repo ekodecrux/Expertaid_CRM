@@ -294,7 +294,7 @@ function DashboardLayoutContent({
             </div>
           </div>
         )}
-        <main className="min-h-0 min-w-0 flex-1 overflow-y-auto bg-[#f8f9fd] p-3 sm:p-4 lg:p-6">{children}</main>
+        <main className="min-h-0 min-w-0 flex-1 overflow-y-auto bg-[#f8f9fd] p-3 sm:p-4 lg:py-6 lg:pl-1 lg:pr-6">{children}</main>
       </SidebarInset>
     </>
   );

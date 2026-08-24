@@ -13090,3 +13090,5 @@
 - [x] Make Renewal visible in the actual /clients/edit/:id page opened by the existing pen icon
 
 - [x] Calculate renewal start from expiry gap, use current date when gap exceeds three months, and show editable Plan From/Plan To dates
+
+- [x] Preserve sidebar label size and reduce the horizontal space between the side menu and right-side data
