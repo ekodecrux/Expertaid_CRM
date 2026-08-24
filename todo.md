@@ -13209,3 +13209,7 @@
 - [x] Move Session, Search, and Refresh above the report data table below the tabs
 - [x] Keep report-card export icons removed
 - [x] Verify the corrected placement and publish
+- [x] Place Reports module/card above the Session and Search controls
+- [x] Place report data below the Session and Search controls
+- [x] Remove Session and Search from the report header and keep Refresh with them
+- [x] Verify the exact visual hierarchy and publish
