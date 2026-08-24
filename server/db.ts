@@ -6,6 +6,7 @@ import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TER
 import { DEFAULT_BRANDING, normalizeBranding, type CompanyBranding } from "@shared/branding";
 import { formatProjectClientId, nextFutureProjectClientNumber } from "@shared/project";
 import { groupPlansByClientId } from "@shared/clientRenewalHistory";
+import { renewalDates } from "@shared/renewalDates";
 import { ENV } from './_core/env';
 import { nanoid } from "nanoid";
 import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getSavedLocalQuotationSettings, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalQuotationSettings, saveLocalSessionSettings, listLocalQuotations, createLocalQuotation, updateLocalQuotation, deleteLocalQuotation, type LocalQuotationSettings } from './localSettings';
@@ -623,7 +624,7 @@ function addMonthsToDate(value: string, months: number) {
   return date.toISOString().slice(0, 10);
 }
 
-export async function renewAgreementForOwner(ownerId: number, agreementId: number, renewalType: "continuous" | "sixMonths" | "oneYear") {
+export async function renewAgreementForOwner(ownerId: number, agreementId: number, renewalType: "continuous" | "sixMonths" | "oneYear", selectedDates?: { startDate?: string; endDate?: string }) {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
   return db.transaction(async (tx) => {
@@ -633,8 +634,8 @@ export async function renewAgreementForOwner(ownerId: number, agreementId: numbe
     if (original.status !== "Approved") throw new Error("Only an approved ERP agreement can be renewed.");
     const project = original.projectId ? (await tx.select().from(projects).where(and(eq(projects.id, original.projectId), eq(projects.ownerId, ownerId))).limit(1))[0] : undefined;
     if (!project?.isMain) throw new Error("Renewal is available only for the Main ERP project.");
-    const startDate = renewalType === "continuous" ? original.startDate : addMonthsToDate(original.endDate, renewalType === "sixMonths" ? 6 : 12);
-    const endDate = addMonthsToDate(original.endDate, Math.max(1, original.noOfYearPlan) * 12 + (renewalType === "continuous" ? 0 : renewalType === "sixMonths" ? 6 : 12));
+    const today = new Date().toISOString().slice(0, 10);
+    const { startDate, endDate } = renewalDates({ previousStartDate: original.startDate, previousEndDate: original.endDate, planYears: original.noOfYearPlan, renewalType, today, startDate: selectedDates?.startDate, endDate: selectedDates?.endDate });
     await tx.update(agreements).set({ clientStatus: "Renewal" }).where(eq(agreements.id, original.id));
     const { id: _id, createdAt: _createdAt, updatedAt: _updatedAt, status: _status, clientStatus: _clientStatus, renewalOfAgreementId: _renewalOfAgreementId, renewalType: _renewalType, signatureUrl: _signatureUrl, signatureKey: _signatureKey, signatureDate: _signatureDate, decidedAt: _decidedAt, publicToken: _publicToken, ...copy } = original;
     const result = await tx.insert(agreements).values({ ...copy, ownerId, projectId: original.projectId, clientId: original.clientId, publicToken: nanoid(24), status: "Pending", clientStatus: "Renewal", renewalOfAgreementId: original.id, renewalType, signatureUrl: null, signatureKey: null, signatureDate: null, decidedAt: null, startDate, endDate });

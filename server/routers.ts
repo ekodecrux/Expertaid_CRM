@@ -340,7 +340,7 @@ export const appRouter = router({
       if (!updated) throw new TRPCError({ code: "NOT_FOUND", message: "Agreement not found or you do not have permission to edit it." });
       return updated;
     }),
-    renew: protectedProcedure.input(z.object({ agreementId: z.number().int().positive(), renewalType: z.enum(["continuous", "sixMonths", "oneYear"]) })).mutation(({ ctx, input }) => renewAgreementForOwner(ctx.user.id, input.agreementId, input.renewalType)),
+    renew: protectedProcedure.input(z.object({ agreementId: z.number().int().positive(), renewalType: z.enum(["continuous", "sixMonths", "oneYear"]), startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(), endDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional() })).mutation(({ ctx, input }) => renewAgreementForOwner(ctx.user.id, input.agreementId, input.renewalType, { startDate: input.startDate, endDate: input.endDate })),
     byToken: publicProcedure.input(z.object({ token: z.string().min(12).max(32) })).query(({ input }) => getAgreementByToken(input.token)),
     respond: publicProcedure.input(z.object({
       token: z.string().min(12).max(32),

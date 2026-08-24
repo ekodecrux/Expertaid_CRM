@@ -13088,3 +13088,5 @@
 - [x] Keep only the existing pen icon for client Edit and remove any duplicate edit action
 
 - [x] Make Renewal visible in the actual /clients/edit/:id page opened by the existing pen icon
+
+- [x] Calculate renewal start from expiry gap, use current date when gap exceeds three months, and show editable Plan From/Plan To dates
