@@ -13137,3 +13137,5 @@
 - [x] Reset or create fresh payment tracking for the renewed plan after payment clearance
 - [x] Show the renewed From date and To date clearly in client Edit
 - [x] Allow expiry extension on the renewed plan and add regression coverage
+- [x] Stop upcoming reminders for ERP26003 when the payment or schedule item is closed or fully paid
+- [x] Add regression coverage so genuinely pending reminders remain visible
