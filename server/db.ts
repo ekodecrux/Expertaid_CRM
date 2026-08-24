@@ -1,12 +1,13 @@
 import { and, desc, eq, gte, like, lte, lt, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
-import { agreements, clients, clientProducts, paymentPlans, paymentPlanTerms, InsertAgreement, InsertClient, InsertQuotation, InsertQuotationSettings, InsertUser, profileSettingsData, projects, quotationEditHistory, quotations, quotationSettings, quotationSettingsData, sessions, users, type InsertProject, type User } from "../drizzle/schema";
+import { agreements, clients, clientProducts, paymentPlans, paymentPlanTerms, invoices, receipts, InsertAgreement, InsertClient, InsertQuotation, InsertQuotationSettings, InsertUser, profileSettingsData, projects, quotationEditHistory, quotations, quotationSettings, quotationSettingsData, sessions, users, type InsertProject, type User } from "../drizzle/schema";
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding, type CompanyBranding } from "@shared/branding";
 import { formatProjectClientId, nextFutureProjectClientNumber } from "@shared/project";
 import { groupPlansByClientId } from "@shared/clientRenewalHistory";
 import { renewalDates } from "@shared/renewalDates";
+import { renewalPaymentDue } from "@shared/renewalPayment";
 import { ENV } from './_core/env';
 import { nanoid } from "nanoid";
 import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getSavedLocalQuotationSettings, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalQuotationSettings, saveLocalSessionSettings, listLocalQuotations, createLocalQuotation, updateLocalQuotation, deleteLocalQuotation, type LocalQuotationSettings } from './localSettings';
@@ -624,6 +625,30 @@ function addMonthsToDate(value: string, months: number) {
   return date.toISOString().slice(0, 10);
 }
 
+async function assertPlanPaid(tx: any, ownerId: number, clientId: string | null, baseTotal: string | number, startDate: string) {
+  if (!clientId) return;
+  const [productRows, invoiceRows, receiptRows] = await Promise.all([
+    tx.select().from(clientProducts).where(and(eq(clientProducts.ownerId, ownerId), eq(clientProducts.clientId, clientId))),
+    tx.select().from(invoices).where(and(eq(invoices.ownerId, ownerId), eq(invoices.clientId, clientId))),
+    tx.select().from(receipts).where(and(eq(receipts.ownerId, ownerId), eq(receipts.clientId, clientId))),
+  ]);
+  const productTotal = productRows.reduce((sum: number, row: any) => sum + Number(row.totalAmount ?? 0), 0);
+  const activeInvoices = invoiceRows.filter((row: any) => String(row.invoiceDate ?? "") >= startDate && row.status !== "Cancelled");
+  const activeReceipts = receiptRows.filter((row: any) => String(row.paymentDate ?? "") >= startDate && row.status !== "Cancelled");
+  const receiptInvoiceIds = new Set(activeReceipts.map((row: any) => row.invoiceId).filter(Boolean));
+  const paid = activeReceipts.reduce((sum: number, row: any) => sum + Number(row.amount ?? row.grandTotal ?? 0), 0) + activeInvoices.filter((row: any) => row.status === "Paid" && !receiptInvoiceIds.has(row.id)).reduce((sum: number, row: any) => sum + Number(row.grandTotal ?? 0), 0);
+  const pending = renewalPaymentDue(Number(baseTotal ?? 0) + productTotal, paid);
+  if (pending > 0.005) throw new Error(`Clear the current plan pending payment of ₹${pending.toFixed(2)} before renewal.`);
+}
+
+async function resetPaymentTracking(tx: any, ownerId: number, clientId: string | null, projectId: number | null) {
+  if (!clientId) return;
+  const plans = await tx.select({ id: paymentPlans.id }).from(paymentPlans).where(and(eq(paymentPlans.ownerId, ownerId), eq(paymentPlans.clientId, clientId)));
+  for (const plan of plans) await tx.delete(paymentPlanTerms).where(eq(paymentPlanTerms.paymentPlanId, plan.id));
+  await tx.delete(paymentPlans).where(and(eq(paymentPlans.ownerId, ownerId), eq(paymentPlans.clientId, clientId)));
+  await tx.update(clientProducts).set({ paidAmount: "0.00", paymentStatus: "Pending", paymentDate: null, paymentMode: null, transactionReference: null, projectId }).where(and(eq(clientProducts.ownerId, ownerId), eq(clientProducts.clientId, clientId)));
+}
+
 export async function renewAgreementForOwner(ownerId: number, agreementId: number, renewalType: "continuous" | "sixMonths" | "oneYear", selectedDates?: { startDate?: string; endDate?: string }) {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
@@ -636,6 +661,8 @@ export async function renewAgreementForOwner(ownerId: number, agreementId: numbe
     if (!project?.isMain) throw new Error("Renewal is available only for the Main ERP project.");
     const today = new Date().toISOString().slice(0, 10);
     const { startDate, endDate } = renewalDates({ previousStartDate: original.startDate, previousEndDate: original.endDate, planYears: original.noOfYearPlan, renewalType, today, startDate: selectedDates?.startDate, endDate: selectedDates?.endDate });
+    await assertPlanPaid(tx, ownerId, original.clientId, original.totalPrice, original.startDate);
+    await resetPaymentTracking(tx, ownerId, original.clientId, original.projectId);
     await tx.update(agreements).set({ clientStatus: "Renewal" }).where(eq(agreements.id, original.id));
     const { id: _id, createdAt: _createdAt, updatedAt: _updatedAt, status: _status, clientStatus: _clientStatus, renewalOfAgreementId: _renewalOfAgreementId, renewalType: _renewalType, signatureUrl: _signatureUrl, signatureKey: _signatureKey, signatureDate: _signatureDate, decidedAt: _decidedAt, publicToken: _publicToken, ...copy } = original;
     const result = await tx.insert(agreements).values({ ...copy, ownerId, projectId: original.projectId, clientId: original.clientId, publicToken: nanoid(24), status: "Pending", clientStatus: "Renewal", renewalOfAgreementId: original.id, renewalType, signatureUrl: null, signatureKey: null, signatureDate: null, decidedAt: null, startDate, endDate });
@@ -752,12 +779,16 @@ export async function updateClientForOwner(ownerId: number, clientId: number, va
 export async function renewClientForOwner(ownerId: number, clientId: number, renewalType: "continuous" | "sixMonths" | "oneYear", selectedDates?: { startDate?: string; endDate?: string }) {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
-  const rows = await db.select().from(clients).where(and(eq(clients.id, clientId), eq(clients.ownerId, ownerId))).limit(1);
-  const original = rows[0];
-  if (!original) throw new Error("Client not found or you do not have permission to renew it.");
-  const dates = renewalDates({ previousStartDate: original.startDate, previousEndDate: original.endDate, planYears: original.noOfYearPlan, renewalType, today: new Date().toISOString().slice(0, 10), startDate: selectedDates?.startDate, endDate: selectedDates?.endDate });
-  await db.update(clients).set({ status: "Renewal", startDate: dates.startDate, endDate: dates.endDate }).where(and(eq(clients.id, clientId), eq(clients.ownerId, ownerId)));
-  return { ...original, status: "Renewal" as const, startDate: dates.startDate, endDate: dates.endDate };
+  return db.transaction(async (tx) => {
+    const rows = await tx.select().from(clients).where(and(eq(clients.id, clientId), eq(clients.ownerId, ownerId))).limit(1);
+    const original = rows[0];
+    if (!original) throw new Error("Client not found or you do not have permission to renew it.");
+    const dates = renewalDates({ previousStartDate: original.startDate, previousEndDate: original.endDate, planYears: original.noOfYearPlan, renewalType, today: new Date().toISOString().slice(0, 10), startDate: selectedDates?.startDate, endDate: selectedDates?.endDate });
+    await assertPlanPaid(tx, ownerId, original.clientId, original.totalPrice, original.startDate);
+    await resetPaymentTracking(tx, ownerId, original.clientId, original.projectId);
+    await tx.update(clients).set({ status: "Renewal", startDate: dates.startDate, endDate: dates.endDate }).where(and(eq(clients.id, clientId), eq(clients.ownerId, ownerId)));
+    return { ...original, status: "Renewal" as const, startDate: dates.startDate, endDate: dates.endDate };
+  });
 }
 export type ClientManualStatus = "Active" | "Inactive" | "Hold" | "Cancelled" | "Renewal" | "Extended" | "Closed";
 

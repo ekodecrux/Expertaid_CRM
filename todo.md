@@ -13133,3 +13133,7 @@
 - [x] Add regression coverage for client-to-agreement ID resolution before renewal
 - [x] Allow direct Clients-module records without agreements to renew using their underlying client record
 - [x] Preserve agreement-backed renewal routing and add regression coverage for both record types
+- [x] Prevent renewal completion while the current plan has pending payment
+- [x] Reset or create fresh payment tracking for the renewed plan after payment clearance
+- [x] Show the renewed From date and To date clearly in client Edit
+- [x] Allow expiry extension on the renewed plan and add regression coverage
