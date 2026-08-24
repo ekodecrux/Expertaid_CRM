@@ -142,61 +142,9 @@ export async function updateInvoiceStatusForOwner(ownerId: number, id: number, s
   const invoice = invoiceRows[0];
   if (!invoice) throw new Error("Invoice not found");
   await db.update(invoices).set({ status }).where(and(eq(invoices.ownerId, ownerId), eq(invoices.id, id)));
-  let receipt;
-  if (status === "Paid") {
-    const existingReceipt = await db.select().from(receipts).where(and(eq(receipts.ownerId, ownerId), eq(receipts.invoiceId, id))).limit(1);
-    if (!existingReceipt[0]) {
-      const settings = await getReceiptSettingsForOwner(ownerId);
-      const allocated = await nextAvailableNumber(db, receipts, ownerId, String(settings.receiptPrefix), settings.receiptNumberNext, receipts.receiptNumber);
-      const receiptNumber = allocated.number;
-      await db.insert(receipts).values({
-        ownerId,
-        receiptNumber,
-        status: "Issued",
-        invoiceId: invoice.id,
-        invoiceNumber: invoice.invoiceNumber,
-        clientId: invoice.clientId,
-        clientName: invoice.clientName,
-        clientAddress: invoice.clientAddress,
-        clientContact: invoice.clientContact,
-        clientEmail: invoice.clientEmail,
-        clientGst: invoice.clientGst,
-        receiptDate: new Date().toISOString().slice(0, 10),
-        paymentDate: new Date().toISOString().slice(0, 10),
-        amount: invoice.grandTotal,
-        itemsJson: invoice.itemsJson,
-        subtotal: invoice.subtotal,
-        gstRate: invoice.gstRate,
-        gstMode: invoice.gstMode,
-        gstAmount: invoice.gstAmount,
-        grandTotal: invoice.grandTotal,
-        paymentMode: "Bank Transfer",
-        receivedFor: invoice.invoiceNumber,
-        notes: invoice.notes,
-        terms: invoice.terms || settings.terms,
-        companyGst: invoice.companyGst || settings.companyGst,
-        companyAddress: invoice.companyAddress || settings.companyAddress,
-        accountCompanyName: invoice.accountCompanyName || settings.accountCompanyName,
-        accountNumber: invoice.accountNumber || settings.accountNumber,
-        accountIfsc: invoice.accountIfsc || settings.accountIfsc,
-        accountBranch: invoice.accountBranch || settings.accountBranch,
-        logoUrl: invoice.logoUrl || settings.logoUrl,
-        logoKey: invoice.logoKey || settings.logoKey,
-        signatureUrl: invoice.signatureUrl || settings.signatureUrl,
-        signatureKey: invoice.signatureKey || settings.signatureKey,
-        footerCompanyName: settings.footerCompanyName,
-        footerMessage: settings.footerMessage,
-        qrLabel: settings.qrLabel,
-      } as any);
-      await db.update(receiptSettings).set({ receiptNumberNext: allocated.nextCounter }).where(eq(receiptSettings.ownerId, ownerId));
-    }
-    const receiptRows = await db.select().from(receipts).where(and(eq(receipts.ownerId, ownerId), eq(receipts.invoiceId, id))).limit(1);
-    receipt = receiptRows[0];
-  }
   const rows = await db.select().from(invoices).where(and(eq(invoices.ownerId, ownerId), eq(invoices.id, id))).limit(1);
-  return { invoice: rows[0], receipt };
+  return { invoice: rows[0], receipt: undefined };
 }
-
 export async function deleteInvoiceForOwner(ownerId: number, id: number) {
   const db = await requireDb();
   await db.delete(invoices).where(and(eq(invoices.ownerId, ownerId), eq(invoices.id, id)));

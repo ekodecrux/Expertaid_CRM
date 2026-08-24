@@ -115,6 +115,7 @@ const emptyInvoice = () => ({
   items: [emptyItem()],
 });
 const emptyReceipt = () => ({
+  invoiceId: undefined as number | undefined,
   projectId: "",
   clientId: "",
   clientName: "",
@@ -344,15 +345,23 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     onSuccess: result => {
       invoices.refetch();
       receipts.refetch();
-      toast.success(result?.receipt ? "Paid. Receipt created — open Receipts to View or Print." : "Invoice status updated.");
+      if (result?.invoice?.status === "Paid") {
+        toast.success("Invoice marked Paid. Complete the receipt details to issue the receipt.");
+        navigate(`/receipts?fromInvoice=${result.invoice.id}`);
+      } else {
+        toast.success("Invoice status updated.");
+      }
     },
     onError: error => showMutationError(error),
   });
   const createReceipt = trpc.receipts.create.useMutation({
-    onSuccess: () => {
+    onSuccess: receipt => {
       receipts.refetch();
+      invoices.refetch();
       setCreateOpen(false);
-      toast.success("Receipt created.");
+      setConversionInvoiceId(null);
+      toast.success("Receipt created successfully.");
+      if (receipt?.receiptNumber) navigate(`/receipts?receipt=${encodeURIComponent(receipt.receiptNumber)}`);
     },
     onError: error => {
       const message = mutationErrorMessage(error);
@@ -393,10 +402,27 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const [settingsForm, setSettingsForm] = useState<any>(null);
   const [invoiceForm, setInvoiceForm] = useState(emptyInvoice());
   const [receiptForm, setReceiptForm] = useState(emptyReceipt());
+  const [conversionInvoiceId, setConversionInvoiceId] = useState<number | null>(null);
   const [search, setSearch] = useState("");
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   useEffect(() => {
-    if (isInvoice || selected || !receipts.data) return;
+    if (isInvoice || createOpen || !invoices.data) return;
+    const invoiceId = Number(new URLSearchParams(window.location.search).get("fromInvoice"));
+    if (Number.isInteger(invoiceId) && invoiceId > 0) {
+      const invoice = (invoices.data as any[]).find(row => Number(row.id) === invoiceId);
+      if (invoice) {
+        let items: any[] = [];
+        try { items = invoice.itemsJson ? JSON.parse(invoice.itemsJson) : []; } catch { items = []; }
+        window.history.replaceState({}, "", "/receipts");
+        setConversionInvoiceId(invoice.id);
+        setEditingReceiptId(null);
+        setReceiptForm({ ...emptyReceipt(), invoiceId: invoice.id, projectId: String(invoice.projectId ?? ""), clientId: String(invoice.clientId ?? ""), clientName: String(invoice.clientName ?? ""), clientAddress: String(invoice.clientAddress ?? ""), clientContact: String(invoice.clientContact ?? ""), clientEmail: String(invoice.clientEmail ?? ""), clientGst: String(invoice.clientGst ?? ""), gstRate: String(invoice.gstRate ?? "18"), gstMode: invoice.gstMode === "inclusive" ? "inclusive" : "exclusive", notes: String(invoice.notes ?? ""), items: items.length ? items.map(item => ({ itemName: String(item.itemName ?? ""), description: String(item.description ?? ""), quantity: String(item.quantity ?? "1"), unitPrice: String(item.unitPrice ?? "0"), productId: item.productId, collectionAmount: item.collectionAmount })) : [emptyItem()] });
+        setFormErrors({});
+        setCreateOpen(true);
+      }
+      return;
+    }
+    if (selected || !receipts.data) return;
     const receiptNumber = new URLSearchParams(window.location.search).get("receipt");
     if (!receiptNumber) return;
     const receipt = (receipts.data as any[]).find((row) => String(row.receiptNumber) === receiptNumber);
@@ -503,12 +529,14 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       }));
   }, [isInvoice, invoiceSettings.data, createOpen]);
 
+  const convertedInvoiceIds = new Set((receipts.data ?? []).map((row: any) => Number(row.invoiceId)).filter((id: number) => Number.isInteger(id) && id > 0));
   const invoiceRows = (invoices.data ?? []).filter(
-    (row: any) =>
+    (row: any) => !convertedInvoiceIds.has(Number(row.id)) && (
       !search ||
       `${row.invoiceNumber} ${row.clientName}`
         .toLowerCase()
         .includes(search.toLowerCase())
+    )
   );
   const receiptRows = (receipts.data ?? []).filter(
     (row: any) =>
@@ -708,6 +736,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const openEditReceipt = (row: any) => {
     setEditingReceiptId(Number(row.id));
     setReceiptForm({
+      invoiceId: row.invoiceId ?? undefined,
       projectId: row.projectId ?? "",
       clientId: row.clientId ?? "",
       clientName: row.clientName ?? "",
@@ -1030,12 +1059,15 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           {isInvoice ? (
                             <Select
                               value={row.status}
-                              onValueChange={value =>
-                                updateInvoiceStatus.mutate({
-                                  id: row.id,
-                                  status: value as "Draft" | "Due" | "Paid" | "Cancelled",
-                                })
-                              }
+                              onValueChange={value => {
+                                const nextStatus = value as "Draft" | "Due" | "Paid" | "Cancelled";
+                                if (nextStatus === "Paid") {
+                                  navigate(`/receipts?fromInvoice=${row.id}`);
+                                  toast.info("Complete and submit the receipt to finalize this payment.");
+                                  return;
+                                }
+                                updateInvoiceStatus.mutate({ id: row.id, status: nextStatus });
+                              }}
                             >
                               <SelectTrigger className="h-8 w-[108px] rounded-full border-indigo-100 bg-indigo-50 px-3 text-xs font-semibold text-[#43239d]">
                                 <SelectValue />
@@ -1520,7 +1552,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
             </DialogContent>
           </Dialog>
 
-          <Dialog open={createOpen} onOpenChange={setCreateOpen}>
+          <Dialog open={createOpen} onOpenChange={open => { setCreateOpen(open); if (!open) setConversionInvoiceId(null); }}>
             <DialogContent className="max-h-[92vh] overflow-y-auto bg-white text-[#172033] sm:max-w-4xl">
               <DialogHeader>
                 <DialogTitle className="font-serif text-2xl">
@@ -1531,6 +1563,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                       : `New ${isInvoice ? "invoice" : "receipt"}`}
                 </DialogTitle>
               </DialogHeader>
+              {conversionInvoiceId && <div className="rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-3 text-sm text-indigo-900"><strong>Receipt completion for Paid invoice</strong><p className="mt-1 text-xs text-indigo-700">Client and invoice details are prefilled. Add or correct the payment mode, payment date, transaction reference, and any other missing receipt information before issuing it.</p></div>}
               <ValidationSummary
                 errors={formErrors}
                 onReview={focusFirstError}

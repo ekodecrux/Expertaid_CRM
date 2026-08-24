@@ -13098,3 +13098,9 @@
 - [x] Format completed Service duration compactly as M or Y values without the word completed
 
 - [x] Add a top Cancel/Close icon to the public agreement link page without submitting the client decision
+
+- [x] Convert Paid invoices into receipts with missing-detail prompts, hide converted invoices, and provide a success receipt action
+
+- [x] Keep Paid invoice and payment process incomplete until the receipt form is submitted successfully
+
+- [x] Make invoice-derived receipts display the exact invoice amount, GST, grand total, and tax mode
