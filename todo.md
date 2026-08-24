@@ -13072,3 +13072,5 @@
 - [x] Show dynamic Service duration below End date and label the line Current plan
 - [x] Add ERP renewal icon linking to a prefilled agreement page with complete client details
 - [x] Add non-ERP extension icon to extend service dates without ERP renewal flow
+
+- [x] Ensure old and new renewal records do not both display Renewal; approved renewal must become the current plan
