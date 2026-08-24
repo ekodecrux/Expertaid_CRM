@@ -13213,3 +13213,6 @@
 - [x] Place report data below the Session and Search controls
 - [x] Remove Session and Search from the report header and keep Refresh with them
 - [x] Verify the exact visual hierarchy and publish
+- [x] Remove Refresh, Excel, PDF, and Print icons from the top Reports heading
+- [x] Place export and refresh icons after Search in the filter row
+- [x] Preserve export behavior and verify the final toolbar placement
