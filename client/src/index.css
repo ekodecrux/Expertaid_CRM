@@ -534,3 +534,12 @@ button:active {
     max-width: 100%;
   }
 }
+
+@media print {
+  body.reports-printing * { visibility: hidden !important; }
+  body.reports-printing #reports-print,
+  body.reports-printing #reports-print * { visibility: visible !important; }
+  body.reports-printing #reports-print { position: absolute; inset: 0; width: 100%; max-width: none; padding: 1rem; background: #fff; }
+  body.reports-printing #reports-print .print\:hidden { display: none !important; }
+  body.reports-printing #reports-print table { font-size: 10px; }
+}

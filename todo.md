@@ -13142,3 +13142,7 @@
 - [x] Reconcile ERP26003 list and Edit-page assigned, paid, and pending totals
 - [x] Remove reminders when the corresponding payment is fully collected or explicitly closed
 - [x] Add regression coverage for consistent primary and additional-product payment calculations
+- [x] Make Reports module functional with client, agreement, invoice, receipt, payment, and collection views
+- [x] Add Excel export for each report view with complete report fields
+- [x] Add print actions where a report is suitable for printable output
+- [x] Add Reports regression tests and verify responsive UI

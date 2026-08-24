@@ -40,7 +40,7 @@ const menuItems = [
   { icon: FileText, label: "Quotations", path: "/quotations", available: true },
   { icon: FileCheck2, label: "Agreements", path: "/agreements", available: true },
   { icon: Bell, label: "Reminders", available: false },
-  { icon: BarChart3, label: "Reports", available: false },
+  { icon: BarChart3, label: "Reports", path: "/reports", available: true },
   { icon: Settings2, label: "Settings", path: "/settings", available: true },
 ];
 
