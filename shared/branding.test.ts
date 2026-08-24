@@ -6,6 +6,7 @@ describe("company branding", () => {
     expect(DEFAULT_BRANDING.companyName).toBe("Expertaid Technologies Pvt. Ltd.");
     expect(DEFAULT_BRANDING.serviceCaption).toContain("ERP Solutions");
     expect(DEFAULT_BRANDING.footerCompanyName).toBe("Expertaid Technologies Pvt Ltd");
+    expect(DEFAULT_BRANDING.companyLogoUrl).toBe("/manus-storage/expertaid-default-logo_ffdcff11.png");
   });
 
   it("falls back for empty or nullable stored fields", () => {

@@ -13048,3 +13048,5 @@
 - [x] Further reduce sidebar container, header, menu, button, and footer spacing to match the compact reference
 
 - [x] Rebuild the default Dashboard to match the compact reference with operational cards, financial KPIs, due-payment chart, invoice-aging chart, and recent-activity table
+
+- [x] Fix login-page logo so it loads on first unauthenticated visit and after logout
