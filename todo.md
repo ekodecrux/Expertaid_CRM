@@ -13056,3 +13056,5 @@
 - [x] Tighten Dashboard KPI card top and bottom spacing and highlight primary values
 
 - [x] Further decrease Dashboard card frame top and bottom space and highlight key metric data for quick scanning
+
+- [x] Base Dashboard Due Payments and Aging Summary on client payment plans and product due dates instead of invoice records

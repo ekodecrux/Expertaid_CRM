@@ -869,6 +869,24 @@ export async function getPaymentPlanForOwner(ownerId: number, clientId: string) 
   return { ...plan, terms };
 }
 
+export async function getClientPaymentSummaryForOwner(ownerId: number) {
+  const db = await getDb();
+  if (!db) return { products: [], plans: [] };
+  const [products, plans, allTerms] = await Promise.all([
+    db.select().from(clientProducts).where(eq(clientProducts.ownerId, ownerId)),
+    db.select().from(paymentPlans).where(eq(paymentPlans.ownerId, ownerId)),
+    db.select().from(paymentPlanTerms),
+  ]);
+  const planIds = new Set(plans.map((plan) => plan.id));
+  const termsByPlan = new Map<number, typeof allTerms>();
+  allTerms.filter((term) => planIds.has(term.paymentPlanId)).forEach((term) => {
+    const existing = termsByPlan.get(term.paymentPlanId) ?? [];
+    existing.push(term);
+    termsByPlan.set(term.paymentPlanId, existing);
+  });
+  return { products, plans: plans.map((plan) => ({ ...plan, terms: termsByPlan.get(plan.id) ?? [] })) };
+}
+
 export async function savePaymentPlanForOwner(ownerId: number, input: { clientId: string; projectId?: number | null; paymentCycle: "single" | "terms" | "installments" | "months"; totalAmount: string; initialPayment: string; terms: Array<{ label: string; dueDate: string; amount: string }> }) {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
