@@ -536,10 +536,14 @@ button:active {
 }
 
 @media print {
+  @page { size: A4 landscape; margin: 8mm; }
   body.reports-printing * { visibility: hidden !important; }
   body.reports-printing #report-export,
   body.reports-printing #report-export * { visibility: visible !important; }
-  body.reports-printing #report-export { position: absolute; inset: 0; width: 100%; max-width: none; padding: 1rem; background: #fff; }
+  body.reports-printing #report-export { position: absolute; inset: 0; width: 100%; max-width: none; padding: 0; background: #fff; }
   body.reports-printing #report-export .print\:hidden { display: none !important; }
-  body.reports-printing #report-export table { font-size: 10px; }
+  body.reports-printing #report-export .overflow-x-auto { overflow: visible !important; }
+  body.reports-printing #report-export table { width: 100% !important; min-width: 0 !important; table-layout: fixed !important; font-size: 9px; }
+  body.reports-printing #report-export th,
+  body.reports-printing #report-export td { padding: 5px 4px !important; white-space: normal !important; overflow-wrap: anywhere !important; word-break: break-word !important; }
 }

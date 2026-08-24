@@ -13194,3 +13194,6 @@
 - [x] Remove the separate session filter card above the report tabs
 - [x] Add Search and Refresh controls at the bottom of the report area
 - [x] Add regression coverage, visually verify the new layout, and publish
+- [x] Fix Clients report PDF and Print preview so all columns fit without horizontal clipping
+- [x] Use a full-width landscape-friendly export table with wrapped cells
+- [x] Add regression coverage, verify the Clients print preview, and publish
