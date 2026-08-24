@@ -1,11 +1,12 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { calculateAgreementEndDate, calculateAgreementTotal } from "@shared/pricing";
 
-const { createAgreement, getAgreementByToken, updateAgreement, updateAgreementDecision, storagePut } = vi.hoisted(() => ({
+const { createAgreement, getAgreementByToken, updateAgreement, updateAgreementDecision, renewClientForOwner, storagePut } = vi.hoisted(() => ({
   createAgreement: vi.fn(),
   getAgreementByToken: vi.fn(),
   updateAgreement: vi.fn(),
   updateAgreementDecision: vi.fn(),
+  renewClientForOwner: vi.fn(),
   storagePut: vi.fn(),
 }));
 
@@ -15,6 +16,7 @@ vi.mock("./db", () => ({
   getAgreementByToken,
   updateAgreement,
   updateAgreementDecision,
+  renewClientForOwner,
 }));
 vi.mock("./storage", () => ({ storagePut }));
 
@@ -29,6 +31,14 @@ describe("agreement workflow", () => {
     getAgreementByToken.mockResolvedValue(pendingAgreement);
     updateAgreementDecision.mockImplementation(async (_token, values) => ({ ...pendingAgreement, ...values }));
     storagePut.mockResolvedValue({ key: "agreements/public-token-123/signature.png", url: "/manus-storage/agreements/public-token-123/signature.png" });
+    renewClientForOwner.mockResolvedValue({ id: 3, clientId: "ERP26003", status: "Renewal", startDate: "2026-08-21", endDate: "2027-08-21" });
+  });
+
+  it("routes direct-client renewal through the client record without requiring an agreement ID", async () => {
+    const caller = appRouter.createCaller({ user: { id: 1 } as any, req: {} as any, res: {} as any });
+    const result = await caller.clients.renewDirect({ clientId: 3, renewalType: "continuous", startDate: "2026-08-21", endDate: "2027-08-21" });
+    expect(renewClientForOwner).toHaveBeenCalledWith(1, 3, "continuous", { startDate: "2026-08-21", endDate: "2027-08-21" });
+    expect(result.status).toBe("Renewal");
   });
 
   it("calculates total price from students, unit price, and years", () => {

@@ -749,6 +749,16 @@ export async function updateClientForOwner(ownerId: number, clientId: number, va
   if (!rows[0]) throw new Error("Client not found or you do not have permission to edit it.");
   return rows[0];
 }
+export async function renewClientForOwner(ownerId: number, clientId: number, renewalType: "continuous" | "sixMonths" | "oneYear", selectedDates?: { startDate?: string; endDate?: string }) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const rows = await db.select().from(clients).where(and(eq(clients.id, clientId), eq(clients.ownerId, ownerId))).limit(1);
+  const original = rows[0];
+  if (!original) throw new Error("Client not found or you do not have permission to renew it.");
+  const dates = renewalDates({ previousStartDate: original.startDate, previousEndDate: original.endDate, planYears: original.noOfYearPlan, renewalType, today: new Date().toISOString().slice(0, 10), startDate: selectedDates?.startDate, endDate: selectedDates?.endDate });
+  await db.update(clients).set({ status: "Renewal", startDate: dates.startDate, endDate: dates.endDate }).where(and(eq(clients.id, clientId), eq(clients.ownerId, ownerId)));
+  return { ...original, status: "Renewal" as const, startDate: dates.startDate, endDate: dates.endDate };
+}
 export type ClientManualStatus = "Active" | "Inactive" | "Hold" | "Cancelled" | "Renewal" | "Extended" | "Closed";
 
 export async function updateAgreementClientStatus(ownerId: number, agreementId: number, status: ClientManualStatus) {

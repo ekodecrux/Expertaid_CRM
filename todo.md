@@ -13129,3 +13129,7 @@
 - [x] Add regression coverage for remaining service days across active, expired, and future plans
 - [x] Display remaining Collaboration Service as calendar years, months, and days instead of total days
 - [x] Add regression coverage for year-month-day remaining duration formatting
+- [x] Fix renewal dialog validation error caused by submitting an invalid agreement ID
+- [x] Add regression coverage for client-to-agreement ID resolution before renewal
+- [x] Allow direct Clients-module records without agreements to renew using their underlying client record
+- [x] Preserve agreement-backed renewal routing and add regression coverage for both record types
