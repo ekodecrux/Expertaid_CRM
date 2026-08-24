@@ -13062,3 +13062,5 @@
 - [x] Replace Due Payments and Client Payment Aging panels with live business growth graphs and monthly collections bar chart
 
 - [x] Remove Dashboard executive heading, subtitle, and workspace-status block so KPI cards start at the top
+
+- [x] Replace Dashboard calendar-year labels and chart grouping with the active/current session
