@@ -13197,3 +13197,6 @@
 - [x] Fix Clients report PDF and Print preview so all columns fit without horizontal clipping
 - [x] Use a full-width landscape-friendly export table with wrapped cells
 - [x] Add regression coverage, verify the Clients print preview, and publish
+- [x] Move Session, Search, and Refresh controls below the complete Reports module
+- [x] Preserve session, multiple-session, all-session, search, and refresh behavior
+- [x] Add regression coverage, visually verify the new position, and publish
