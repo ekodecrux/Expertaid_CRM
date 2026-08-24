@@ -13060,3 +13060,5 @@
 - [x] Base Dashboard Due Payments and Aging Summary on client payment plans and product due dates instead of invoice records
 
 - [x] Replace Due Payments and Client Payment Aging panels with live business growth graphs and monthly collections bar chart
+
+- [x] Remove Dashboard executive heading, subtitle, and workspace-status block so KPI cards start at the top
