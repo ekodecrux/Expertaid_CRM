@@ -13092,3 +13092,5 @@
 - [x] Calculate renewal start from expiry gap, use current date when gap exceeds three months, and show editable Plan From/Plan To dates
 
 - [x] Preserve sidebar label size and reduce the horizontal space between the side menu and right-side data
+
+- [x] Show completed elapsed service in Collaboration Service, not the full taken/contracted period
