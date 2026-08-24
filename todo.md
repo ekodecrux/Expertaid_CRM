@@ -13064,3 +13064,5 @@
 - [x] Remove Dashboard executive heading, subtitle, and workspace-status block so KPI cards start at the top
 
 - [x] Replace Dashboard calendar-year labels and chart grouping with the active/current session
+
+- [ ] Make the generated ERP renewal link visible and copyable after renewal creation
