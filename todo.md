@@ -13094,3 +13094,5 @@
 - [x] Preserve sidebar label size and reduce the horizontal space between the side menu and right-side data
 
 - [x] Show completed elapsed service in Collaboration Service, not the full taken/contracted period
+
+- [x] Format completed Service duration compactly as M or Y values without the word completed

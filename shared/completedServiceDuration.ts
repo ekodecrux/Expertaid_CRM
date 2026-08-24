@@ -13,6 +13,9 @@ export function completedServiceDuration(startDate: string, endDate: string, tod
   const months = completedServiceMonths(startDate, endDate, today);
   const years = Math.floor(months / 12);
   const remainder = months % 12;
-  if (years) return `${years}y${remainder ? ` ${remainder}m` : ""}`;
-  return `${months} months completed`;
+  if (years) {
+    const compactYears = Number((months / 12).toFixed(1));
+    return `${compactYears}Y`;
+  }
+  return `${months}M`;
 }
