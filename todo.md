@@ -13106,3 +13106,5 @@
 - [x] Make invoice-derived receipts display the exact invoice amount, GST, grand total, and tax mode
 
 - [x] Fix remaining invoice-to-receipt amount mismatch so the saved receipt displays the exact source invoice amount
+
+- [x] Fix bottom Cancel/Close on invoice-opened receipt form so it returns to the invoice without submitting payment

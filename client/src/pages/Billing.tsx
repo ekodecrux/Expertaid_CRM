@@ -2211,7 +2211,11 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     <Button
                       type="button"
                       variant="outline"
-                      onClick={() => setCreateOpen(false)}
+                      onClick={() => {
+                        setCreateOpen(false);
+                        setConversionInvoiceId(null);
+                        if (conversionInvoiceId) navigate("/invoices");
+                      }}
                     >
                       Cancel
                     </Button>
