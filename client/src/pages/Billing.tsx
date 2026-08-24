@@ -86,7 +86,7 @@ function ClientProductBalanceLine({ item, products, primary }: { item: Item; pro
   const assigned = Number(product.totalAmount ?? 0);
   const paid = Number(product.paidAmount ?? 0);
   const pending = Math.max(0, assigned - paid);
-  return <div className="sm:col-span-5 rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600"><div className="flex flex-wrap items-center justify-between gap-2"><span className="font-semibold text-slate-800">{product.productName}</span><span>Assigned {formatCurrency(assigned)} · Paid {formatCurrency(paid)} · Pending {formatCurrency(pending)} · GST {product.gstRate}% {product.gstMode}</span></div></div>;
+  return <div className="sm:col-span-5 rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600"><div className="flex flex-wrap items-center justify-between gap-2"><span className="font-semibold text-slate-800">{product.productName}</span><span>Assigned {formatRoundedCurrency(assigned)} · Paid {formatRoundedCurrency(paid)} · Pending {formatRoundedCurrency(pending)} · GST {product.gstRate}% {product.gstMode}</span></div></div>;
 }
 const today = () => new Date().toISOString().slice(0, 10);
 const readImageFile = (file: File) =>
@@ -511,20 +511,24 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     if (conversionInvoiceId || reminderPrefill) return;
     if (!createOpen || !selectedClient?.clientId || (!selectedClientProducts.data?.length && !primaryProductBalance)) return;
     const clientProductRows = Array.isArray(selectedClientProducts.data) ? selectedClientProducts.data : [];
-    const additionalItems = clientProductRows.map(product => ({
-      itemName: String(product.productName ?? ""),
-      description: String(product.description ?? ""),
-      quantity: "1",
-      unitPrice: String(Math.max(0, Number(product.totalAmount ?? 0) - Number(product.paidAmount ?? 0))),
-      productId: Number(product.id),
-      collectionAmount: String(Math.max(0, Number(product.totalAmount ?? 0) - Number(product.paidAmount ?? 0))),
-    }));
+    const additionalItems = clientProductRows.map(product => {
+      const pending = Math.max(0, Number(product.totalAmount ?? 0) - Number(product.paidAmount ?? 0));
+      const collection = isInvoice ? pending : formatWholeRupees(pending);
+      return {
+        itemName: String(product.productName ?? ""),
+        description: String(product.description ?? ""),
+        quantity: "1",
+        unitPrice: String(collection),
+        productId: Number(product.id),
+        collectionAmount: String(collection),
+      };
+    });
     const mappedItems = primaryProductBalance
-      ? [{ itemName: primaryProductBalance.productName, description: "Primary ERP service", quantity: "1", unitPrice: String(Math.max(0, primaryProductBalance.totalAmount - primaryProductBalance.paidAmount)), collectionAmount: String(Math.max(0, primaryProductBalance.totalAmount - primaryProductBalance.paidAmount)), isPrimary: true }, ...additionalItems]
+      ? (() => { const pending = Math.max(0, primaryProductBalance.totalAmount - primaryProductBalance.paidAmount); const collection = isInvoice ? pending : formatWholeRupees(pending); return [{ itemName: primaryProductBalance.productName, description: "Primary ERP service", quantity: "1", unitPrice: String(collection), collectionAmount: String(collection), isPrimary: true }, ...additionalItems]; })()
       : additionalItems;
     const gstSource = clientProductRows.find(product => Math.max(0, Number(product.totalAmount ?? 0) - Number(product.paidAmount ?? 0)) > 0) ?? clientProductRows[0] ?? primaryProductBalance;
     if (isInvoice) setInvoiceForm(current => ({ ...current, items: mappedItems }));
-    else setReceiptForm(current => ({ ...current, items: mappedItems, gstRate: gstSource ? String(gstSource.gstRate ?? current.gstRate) : current.gstRate, gstMode: gstSource?.gstMode === "inclusive" ? "inclusive" : gstSource?.gstMode === "exclusive" ? "exclusive" : current.gstMode }));
+    else setReceiptForm(current => ({ ...current, items: mappedItems, gstRate: gstSource ? String(gstSource.gstRate ?? current.gstRate) : current.gstRate, gstMode: "inclusive" }));
   }, [createOpen, selectedClient?.clientId, selectedClientProducts.data, primaryProductBalance, isInvoice, reminderPrefill]);
   useEffect(() => {
     if (!createOpen || !projectOptions.length) return;

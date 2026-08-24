@@ -13173,3 +13173,13 @@
 - [x] Make the payment schedule installment row display the same rounded whole-rupee amount as the reconciled reminder
 - [x] Preserve exact underlying paise for receipt accounting while showing whole rupees in the schedule editor
 - [x] Add regression coverage for schedule display rounding
+- [ ] Fix ERP Primary receipt hydration so the ₹7 reminder amount is not reduced to ₹6.80 and charged GST again
+- [ ] Keep receipt product value, GST, grand total, and submitted amount consistent for inclusive reminder payments
+- [ ] Add regression coverage for ERP Primary receipt GST handling
+- [x] Add Daily Collections report with current-session default filtering
+- [x] Add Monthly Collections report with current-session default filtering
+- [x] Add Date-Range Collections report with selectable start and end dates
+- [x] Add Due report with current-session default filtering
+- [x] Support multiple selected sessions and an All Sessions option across collection and due reports
+- [x] Preserve Excel export and print support for the new report views
+- [x] Add regression tests and visually verify the expanded Reports module
