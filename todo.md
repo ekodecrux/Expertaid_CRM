@@ -13248,3 +13248,7 @@
 - [x] Remove the Overview metric table from the report card
 - [x] Show Clients, Daily Collection, Monthly Collection, Due Balance, and Total Value to Collect in that space
 - [x] Preserve report controls, exports, and other report tabs
+
+- [x] Fix Reminders print output so it prints the filtered reminder report in a readable A4 layout without unrelated dashboard content
+- [x] Add regression coverage for the Reminders print target and print-only visibility rules
+- [x] Build, test, and visually verify the Reminders print fix
