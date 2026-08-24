@@ -13165,3 +13165,8 @@
 - [x] Make the Pay flow use the displayed installment amount, not the unrounded stored amount
 - [x] Ensure the receipt line, inclusive GST total, and submitted amount all match ₹7 for this reminder
 - [x] Add regression coverage for rounded installment Pay prefilling
+- [x] Navigate from each header notification reminder item to the Reminders module
+- [x] Add regression coverage for bell reminder navigation without changing client or Pay actions
+- [x] Align ERP26001 installment row amount with the displayed ₹7 remaining balance
+- [x] Keep payment schedule total, reminder amount, and receipt Pay amount consistent
+- [x] Add regression coverage for schedule amount consistency

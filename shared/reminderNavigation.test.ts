@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { buildReminderClientPath, buildReminderPayPath } from "./reminderNavigation";
+import { buildReminderClientPath, buildReminderModulePath, buildReminderPayPath } from "./reminderNavigation";
 
 describe("reminder navigation", () => {
+  it("opens the Reminders module from a header notification", () => {
+    expect(buildReminderModulePath()).toBe("/reminders");
+  });
   it("opens the correct client edit record", () => {
     expect(buildReminderClientPath(-3)).toBe("/clients/edit/-3");
   });

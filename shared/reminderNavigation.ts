@@ -1,2 +1,3 @@
+export function buildReminderModulePath() { return "/reminders"; }
 export function buildReminderClientPath(clientRecordId: number | string) { return `/clients/edit/${clientRecordId}`; }
 export function buildReminderPayPath(input: { clientId: string; clientName: string; item: string; amount: number; projectId?: number | string | null; productId?: number | string | null }) { const params = new URLSearchParams({ reminderClient: input.clientId, reminderName: input.clientName, reminderItem: input.item, reminderAmount: String(input.amount), projectId: String(input.projectId ?? ""), reminderProductId: String(input.productId ?? "") }); params.forEach((value, key) => { if (!value) params.delete(key); }); return `/receipts?${params.toString()}`; }
