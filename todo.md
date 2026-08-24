@@ -13076,3 +13076,5 @@
 - [x] Ensure old and new renewal records do not both display Renewal; approved renewal must become the current plan
 
 - [x] Keep renewed clients under the same Client ID with the latest approved plan active and prior plans trackable as history
+
+- [x] Add an expand/collapse option in client view for all payments and all taken products under the same Client ID
