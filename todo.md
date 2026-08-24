@@ -13084,3 +13084,5 @@
 - [x] Add Renewal action in client Edit that opens an editable prefilled agreement, generates a share link with optional client approval, marks the new agreement Renewal with session, and keeps the old agreement Expired with full history
 
 - [x] Remove Renewal from client-list row actions and keep it only inside client Edit
+
+- [x] Keep only the existing pen icon for client Edit and remove any duplicate edit action
