@@ -13058,3 +13058,5 @@
 - [x] Further decrease Dashboard card frame top and bottom space and highlight key metric data for quick scanning
 
 - [x] Base Dashboard Due Payments and Aging Summary on client payment plans and product due dates instead of invoice records
+
+- [x] Replace Due Payments and Client Payment Aging panels with live business growth graphs and monthly collections bar chart
