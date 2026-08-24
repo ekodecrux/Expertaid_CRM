@@ -13230,3 +13230,9 @@
 - [x] Move all five Reports summary frames below the active report data
 - [x] Preserve compact frame styling and all summary values
 - [x] Verify the bottom placement and publish
+- [x] Show only Reports at the top with compact H3 sizing
+- [x] Remove the Management Intelligence label and subtitle
+- [x] Verify the compact heading and publish
+- [x] Style the Reports title clearly at the top of the page
+- [x] Reduce top spacing before the Reports module
+- [x] Verify the heading position and publish
