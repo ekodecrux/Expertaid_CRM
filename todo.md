@@ -13074,3 +13074,5 @@
 - [x] Add non-ERP extension icon to extend service dates without ERP renewal flow
 
 - [x] Ensure old and new renewal records do not both display Renewal; approved renewal must become the current plan
+
+- [x] Keep renewed clients under the same Client ID with the latest approved plan active and prior plans trackable as history

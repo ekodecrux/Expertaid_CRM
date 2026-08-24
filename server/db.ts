@@ -5,6 +5,7 @@ import { agreements, clients, clientProducts, paymentPlans, paymentPlanTerms, In
 import { DEFAULT_QUOTATION_ADDRESS, DEFAULT_QUOTATION_GST, DEFAULT_QUOTATION_TERMS, type QuotationProduct } from "@shared/quotation";
 import { DEFAULT_BRANDING, normalizeBranding, type CompanyBranding } from "@shared/branding";
 import { formatProjectClientId, nextFutureProjectClientNumber } from "@shared/project";
+import { groupPlansByClientId } from "@shared/clientRenewalHistory";
 import { ENV } from './_core/env';
 import { nanoid } from "nanoid";
 import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getSavedLocalQuotationSettings, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalQuotationSettings, saveLocalSessionSettings, listLocalQuotations, createLocalQuotation, updateLocalQuotation, deleteLocalQuotation, type LocalQuotationSettings } from './localSettings';
@@ -828,10 +829,16 @@ export async function listApprovedClientsForOwner(ownerId: number, options: { pa
   const addProductTotals = <T extends { clientId: string | null; totalPrice: string | null }>(item: T) => ({ ...item, totalPrice: (Number(item.totalPrice ?? 0) + (productTotalByClientId.get(item.clientId ?? "") ?? 0)).toFixed(2) });
   const normalizedStandalone = standaloneItems.map((client) => ({ ...client, id: -client.id, signatureDate: null, decidedAt: null }));
   const combined: any[] = [...agreementItems, ...normalizedStandalone].map(addProductTotals).sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-  const total = combined.length;
-  const pageItems = combined.slice((options.page - 1) * options.pageSize, options.page * options.pageSize);
-  const students = combined.reduce<number>((sum, item) => sum + Number(item.noOfStudents ?? 0), 0);
-  const value = combined.reduce<number>((sum, item) => sum + Number(item.totalPrice ?? 0), 0);
+  const grouped = groupPlansByClientId(combined);
+  const currentByClientId = grouped.current.map(({ current, history }) => ({
+    ...current,
+    renewalHistory: history.map((item: any) => { const { renewalHistory: _history, ...historyItem } = item; return historyItem; }),
+  }));
+  const currentItems = [...currentByClientId, ...grouped.withoutClientId].sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  const total = currentItems.length;
+  const pageItems = currentItems.slice((options.page - 1) * options.pageSize, options.page * options.pageSize);
+  const students = currentItems.reduce<number>((sum, item) => sum + Number(item.noOfStudents ?? 0), 0);
+  const value = currentItems.reduce<number>((sum, item) => sum + Number(item.totalPrice ?? 0), 0);
   return { items: pageItems, total, page: options.page, pageSize: options.pageSize, totalPages: Math.ceil(total / options.pageSize), summary: { students, value } };
 }
 
