@@ -13086,3 +13086,5 @@
 - [x] Remove Renewal from client-list row actions and keep it only inside client Edit
 
 - [x] Keep only the existing pen icon for client Edit and remove any duplicate edit action
+
+- [x] Make Renewal visible in the actual /clients/edit/:id page opened by the existing pen icon
