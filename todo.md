@@ -13245,3 +13245,6 @@
 - [x] Add Portrait/Landscape orientation selection for Reports PDF and Print
 - [x] Add Fit to page, Fit to width, and 100% paper-fitting options
 - [x] Apply settings to active report export and verify printing
+- [x] Remove the Overview metric table from the report card
+- [x] Show Clients, Daily Collection, Monthly Collection, Due Balance, and Total Value to Collect in that space
+- [x] Preserve report controls, exports, and other report tabs
