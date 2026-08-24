@@ -13068,3 +13068,7 @@
 - [x] Make the generated ERP renewal link visible and copyable after renewal creation
 
 - [x] Show Expired date for renewal clients and compact service duration beside start/end dates in Collaboration
+
+- [x] Show dynamic Service duration below End date and label the line Current plan
+- [x] Add ERP renewal icon linking to a prefilled agreement page with complete client details
+- [x] Add non-ERP extension icon to extend service dates without ERP renewal flow
