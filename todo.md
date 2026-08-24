@@ -13253,6 +13253,6 @@
 - [x] Add regression coverage for the Reminders print target and print-only visibility rules
 - [x] Build, test, and visually verify the Reminders print fix
 
-- [ ] Push the current ERP CRM changes to ekodecrux/Expertaid_CRM
-- [ ] Prepare and validate the updated database SQL file for deployment
-- [ ] Deliver the GitHub commit reference and updated SQL attachment
+- [x] Push the current ERP CRM changes to ekodecrux/Expertaid_CRM
+- [x] Prepare and validate the updated database SQL file for deployment
+- [x] Deliver the GitHub commit reference and updated SQL attachment
