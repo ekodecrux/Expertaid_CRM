@@ -13236,3 +13236,6 @@
 - [x] Style the Reports title clearly at the top of the page
 - [x] Reduce top spacing before the Reports module
 - [x] Verify the heading position and publish
+- [x] Repair active-report PDF and Print exports with readable data-only output
+- [x] Add column hide/show controls that affect the table and exports
+- [x] Add export and column-visibility regression coverage and verify the result
