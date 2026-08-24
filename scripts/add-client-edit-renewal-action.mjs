@@ -1,0 +1,13 @@
+import fs from "node:fs";
+const path = "client/src/pages/Clients.tsx";
+let s = fs.readFileSync(path, "utf8");
+const editStart = s.indexOf("<Dialog open={editOpen}");
+if (editStart < 0) throw new Error("edit dialog not found");
+const saveAt = s.indexOf("Save Client", editStart);
+if (saveAt < 0) throw new Error("edit save button not found");
+const buttonStart = s.lastIndexOf("<Button type=\"submit\"", saveAt);
+if (buttonStart < 0) throw new Error("edit submit button not found");
+const renewalButton = '<Button type="button" variant="outline" className="border-[#cfc5ff] text-[#4f2ad3]" onClick={() => { if (!editingRecord) return; setEditOpen(false); setRenewalClient(editingRecord); setRenewalType("continuous"); }}>Renewal</Button>';
+s = s.slice(0, buttonStart) + renewalButton + s.slice(buttonStart);
+s = s.replace("A new Pending agreement is created, the existing agreement is marked Renewal, and a shareable sign link is copied after creation.", "A new Renewal agreement is created with the same Client ID and session. Client approval is optional; you can share the link or keep the agreement for internal records. The previous agreement remains available as expired history.");
+fs.writeFileSync(path, s);

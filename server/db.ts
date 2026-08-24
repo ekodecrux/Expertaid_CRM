@@ -637,7 +637,7 @@ export async function renewAgreementForOwner(ownerId: number, agreementId: numbe
     const endDate = addMonthsToDate(original.endDate, Math.max(1, original.noOfYearPlan) * 12 + (renewalType === "continuous" ? 0 : renewalType === "sixMonths" ? 6 : 12));
     await tx.update(agreements).set({ clientStatus: "Renewal" }).where(eq(agreements.id, original.id));
     const { id: _id, createdAt: _createdAt, updatedAt: _updatedAt, status: _status, clientStatus: _clientStatus, renewalOfAgreementId: _renewalOfAgreementId, renewalType: _renewalType, signatureUrl: _signatureUrl, signatureKey: _signatureKey, signatureDate: _signatureDate, decidedAt: _decidedAt, publicToken: _publicToken, ...copy } = original;
-    const result = await tx.insert(agreements).values({ ...copy, ownerId, projectId: original.projectId, clientId: original.clientId, publicToken: nanoid(24), status: "Pending", clientStatus: null, renewalOfAgreementId: original.id, renewalType, signatureUrl: null, signatureKey: null, signatureDate: null, decidedAt: null, startDate, endDate });
+    const result = await tx.insert(agreements).values({ ...copy, ownerId, projectId: original.projectId, clientId: original.clientId, publicToken: nanoid(24), status: "Pending", clientStatus: "Renewal", renewalOfAgreementId: original.id, renewalType, signatureUrl: null, signatureKey: null, signatureDate: null, decidedAt: null, startDate, endDate });
     const created = await tx.select().from(agreements).where(eq(agreements.id, Number(result[0].insertId))).limit(1);
     return created[0];
   });
