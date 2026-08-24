@@ -13066,3 +13066,5 @@
 - [x] Replace Dashboard calendar-year labels and chart grouping with the active/current session
 
 - [x] Make the generated ERP renewal link visible and copyable after renewal creation
+
+- [x] Show Expired date for renewal clients and compact service duration beside start/end dates in Collaboration
