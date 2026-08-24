@@ -13139,3 +13139,6 @@
 - [x] Allow expiry extension on the renewed plan and add regression coverage
 - [x] Stop upcoming reminders for ERP26003 when the payment or schedule item is closed or fully paid
 - [x] Add regression coverage so genuinely pending reminders remain visible
+- [x] Reconcile ERP26003 list and Edit-page assigned, paid, and pending totals
+- [x] Remove reminders when the corresponding payment is fully collected or explicitly closed
+- [x] Add regression coverage for consistent primary and additional-product payment calculations
