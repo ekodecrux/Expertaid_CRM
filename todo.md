@@ -13114,9 +13114,9 @@
 - [x] Add a Successful invoices view for paid/converted invoices while keeping active invoices separate
 - [x] Calculate Dashboard Invoiced Value from due/open invoices only
 
-- [ ] Restrict Renewal to yearly only and show a clear renewal reason
+- [x] Superseded: keep all Renewal period choices and show a clear calculated renewal reason
 - [x] Add separate Extend expiry date action for the existing plan
-- [ ] Fix renewal validation error when creating the yearly renewal agreement
+- [x] Superseded: fix renewal validation without restricting the available renewal periods
 
 - [x] Preserve all renewal period choices; show the correct expiry-gap reason and add a separate Extend expiry date option
 - [x] Fix renewal validation error without restricting renewal to yearly
@@ -13127,3 +13127,5 @@
 - [x] Run Vitest, production build, and visual verification before checkpoint
 - [x] Display remaining service days in the Collaboration Service value instead of elapsed months/years
 - [x] Add regression coverage for remaining service days across active, expired, and future plans
+- [x] Display remaining Collaboration Service as calendar years, months, and days instead of total days
+- [x] Add regression coverage for year-month-day remaining duration formatting
