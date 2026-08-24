@@ -13113,3 +13113,17 @@
 
 - [x] Add a Successful invoices view for paid/converted invoices while keeping active invoices separate
 - [x] Calculate Dashboard Invoiced Value from due/open invoices only
+
+- [ ] Restrict Renewal to yearly only and show a clear renewal reason
+- [x] Add separate Extend expiry date action for the existing plan
+- [ ] Fix renewal validation error when creating the yearly renewal agreement
+
+- [x] Preserve all renewal period choices; show the correct expiry-gap reason and add a separate Extend expiry date option
+- [x] Fix renewal validation error without restricting renewal to yearly
+
+- [x] Preserve all renewal period choices; show the correct expiry-gap reason and add a separate Extend expiry date option
+- [x] Fix renewal validation error without restricting renewal to yearly
+- [x] Add renewal reason and expiry-extension regression tests
+- [x] Run Vitest, production build, and visual verification before checkpoint
+- [x] Display remaining service days in the Collaboration Service value instead of elapsed months/years
+- [x] Add regression coverage for remaining service days across active, expired, and future plans

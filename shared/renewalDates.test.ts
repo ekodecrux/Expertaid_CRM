@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { renewalDates } from "./renewalDates";
+import { renewalDates, renewalReason } from "./renewalDates";
 
 describe("renewalDates", () => {
   it("uses the current date when the expiry gap exceeds three months", () => {
@@ -14,5 +14,12 @@ describe("renewalDates", () => {
   });
   it("preserves manually selected dates", () => {
     expect(renewalDates({ previousStartDate: "2026-04-01", previousEndDate: "2027-03-31", planYears: 1, renewalType: "continuous", today: "2027-04-01", startDate: "2027-06-15", endDate: "2028-06-14" })).toMatchObject({ startDate: "2027-06-15", endDate: "2028-06-14" });
+  });
+  it("explains the automatic current-date rule when the expiry gap exceeds three months", () => {
+    expect(renewalReason({ previousEndDate: "2026-03-31", renewalType: "continuous", today: "2026-08-01", startDate: "2026-08-01" })).toContain("more than 3 months");
+  });
+  it("explains the selected six-month and one-year gap rules", () => {
+    expect(renewalReason({ previousEndDate: "2027-03-31", renewalType: "sixMonths", today: "2027-04-01", startDate: "2027-10-01" })).toContain("Six-month gap");
+    expect(renewalReason({ previousEndDate: "2027-03-31", renewalType: "oneYear", today: "2027-04-01", startDate: "2028-03-31" })).toContain("One-year gap");
   });
 });

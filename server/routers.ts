@@ -352,6 +352,7 @@ export const appRouter = router({
       return updated;
     }),
     renew: protectedProcedure.input(z.object({ agreementId: z.number().int().positive(), renewalType: z.enum(["continuous", "sixMonths", "oneYear"]), startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(), endDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional() })).mutation(({ ctx, input }) => renewAgreementForOwner(ctx.user.id, input.agreementId, input.renewalType, { startDate: input.startDate, endDate: input.endDate })),
+    extend: protectedProcedure.input(z.object({ agreementId: z.number().int().positive(), endDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) })).mutation(async ({ ctx, input }) => updateAgreementByIdForOwner(ctx.user.id, input.agreementId, { endDate: input.endDate, clientStatus: "Extended" })),
     byToken: publicProcedure.input(z.object({ token: z.string().min(12).max(32) })).query(({ input }) => getAgreementByToken(input.token)),
     respond: publicProcedure.input(z.object({
       token: z.string().min(12).max(32),
