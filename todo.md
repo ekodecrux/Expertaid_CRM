@@ -13239,3 +13239,6 @@
 - [x] Repair active-report PDF and Print exports with readable data-only output
 - [x] Add column hide/show controls that affect the table and exports
 - [x] Add export and column-visibility regression coverage and verify the result
+- [x] Change Reports PDF and Print exports to default A4 portrait format
+- [x] Adjust portrait table sizing and wrapping for readable exports
+- [x] Test, visually verify, and publish the portrait export update

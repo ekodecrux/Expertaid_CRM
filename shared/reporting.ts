@@ -6,6 +6,8 @@ function numeric(value: unknown) {
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
+export function visibleReportColumns(columns: string[], hiddenColumns: string[]) { const visible = columns.filter((column) => !hiddenColumns.includes(column)); return visible.length ? visible : columns; }
+
 export function matchesSession(session: unknown, scope: SessionScope, currentSession: string, selectedSessions: string[]) {
   if (scope === "all") return true;
   if (scope === "custom") return selectedSessions.includes(String(session ?? ""));
