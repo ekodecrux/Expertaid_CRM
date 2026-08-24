@@ -13216,3 +13216,6 @@
 - [x] Remove Refresh, Excel, PDF, and Print icons from the top Reports heading
 - [x] Place export and refresh icons after Search in the filter row
 - [x] Preserve export behavior and verify the final toolbar placement
+- [x] Add Project, Payment Mode, Transaction ID, and required financial fields to report data
+- [x] Align visible report columns with Excel, PDF, and Print exports
+- [x] Add regression coverage and verify complete report details

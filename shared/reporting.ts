@@ -30,8 +30,16 @@ export function buildCollectionReportRows(receipts: any[], clients: any[], optio
       clientId: receipt.clientId ?? "—",
       clientName: receipt.clientName ?? clientsById.get(String(receipt.clientId ?? ""))?.clientName ?? "—",
       paymentDate: receipt.paymentDate,
+      projectId: clientsById.get(String(receipt.clientId ?? ""))?.projectId ?? null,
+      project: clientsById.get(String(receipt.clientId ?? ""))?.projectName ?? clientsById.get(String(receipt.clientId ?? ""))?.project ?? "—",
       paymentMode: receipt.paymentMode ?? "—",
+      transactionId: receipt.transactionReference ?? "—",
+      receivedFor: receipt.receivedFor ?? "—",
+      gstMode: receipt.gstMode ?? "—",
+      subtotal: numeric(receipt.subtotal),
+      gstAmount: numeric(receipt.gstAmount),
       amount: numeric(receipt.amount ?? receipt.grandTotal),
+      grandTotal: numeric(receipt.grandTotal ?? receipt.amount),
       session: clientsById.get(String(receipt.clientId ?? ""))?.session ?? "—",
     }));
 }
@@ -47,7 +55,7 @@ export function buildDueReportRows(clients: any[], receipts: any[], options: { s
     .map((client) => {
       const assigned = numeric(client.totalPrice);
       const paid = paidByClient.get(String(client.clientId ?? client.clientName ?? "").toLowerCase()) ?? 0;
-      return { clientId: client.clientId ?? `ERP${Math.abs(Number(client.id ?? 0))}`, clientName: client.clientName, session: client.session ?? "—", assigned, paid, due: Math.max(assigned - paid, 0) };
+      return { clientId: client.clientId ?? `ERP${Math.abs(Number(client.id ?? 0))}`, clientName: client.clientName, projectId: client.projectId ?? null, project: client.projectName ?? client.project ?? "—", session: client.session ?? "—", assigned, paid, due: Math.max(assigned - paid, 0) };
     })
     .filter((row) => row.due > 0.005);
 }

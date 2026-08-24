@@ -21,6 +21,10 @@ describe("reporting helpers", () => {
     expect(rows).toHaveLength(1);
     expect(rows[0].amount).toBe(7);
   });
+  it("retains complete payment details for collection reports", () => {
+    const rows = buildCollectionReportRows([{ receiptNumber: "RCT2", clientId: "ERP2", clientName: "Two", paymentDate: "2026-08-24", amount: "100", grandTotal: "100", subtotal: "84.75", gstAmount: "15.25", gstMode: "inclusive", paymentMode: "UPI", transactionReference: "TXN-42", receivedFor: "ERP Primary", status: "Issued" }], [{ clientId: "ERP2", clientName: "Two", projectName: "ERP", projectId: 3, session: "2026-2027" }], { period: "daily", scope: "current", currentSession: "2026-2027", selectedSessions: [], today: new Date("2026-08-24T12:00:00Z") });
+    expect(rows[0]).toMatchObject({ project: "ERP", paymentMode: "UPI", transactionId: "TXN-42", receivedFor: "ERP Primary", gstMode: "inclusive", subtotal: 84.75, gstAmount: 15.25, grandTotal: 100 });
+  });
   it("returns only clients with an outstanding due balance", () => {
     const rows = buildDueReportRows([{ id: 1, clientId: "ERP1", clientName: "One", session: "2026-2027", totalPrice: "100" }, { id: 2, clientId: "ERP2", clientName: "Two", session: "2026-2027", totalPrice: "50" }], [{ clientId: "ERP1", amount: "40", status: "Issued" }, { clientId: "ERP2", amount: "50", status: "Cancelled" }], { scope: "current", currentSession: "2026-2027", selectedSessions: [] });
     expect(rows.map((row) => row.due)).toEqual([60, 50]);
