@@ -13153,3 +13153,6 @@
 - [x] Open a prefilled receipt flow for the selected reminder amount and item
 - [x] Keep the reminder visible until receipt submission successfully records payment
 - [x] Add regression coverage for reminder action routing and payment completion
+- [x] Preserve exact GST-inclusive reminder amount when opening a prefilled receipt
+- [x] Ensure receipt summary and grand total match the reminder amount for small balances such as ₹7
+- [x] Add regression coverage for inclusive GST reminder receipt prefilling
