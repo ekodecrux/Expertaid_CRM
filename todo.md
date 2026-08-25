@@ -13486,3 +13486,8 @@
 - [x] Reorganize the full client detail view with clearer spacing and section hierarchy
 - [x] Preserve access to current and historical plan, invoice, receipt, and payment details
 - [x] Add visual validation and regression checks for the clearer client search experience
+
+- [x] Open matching global-search clients in a full-page overview instead of a popup
+- [x] Present current plan, payments, invoices, products, GST, and historical records with clear page sections
+- [x] Preserve back navigation, global search behavior, and renewal-cycle separation
+- [x] Add regression coverage and visual validation for the full-page client overview
