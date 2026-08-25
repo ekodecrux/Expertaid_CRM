@@ -37,7 +37,7 @@ import {
   formatCurrency,
   type GstMode,
 } from "@shared/quotation";
-import { buildAllSessionClientQuery, filterProjectClients } from "@shared/clients";
+import { buildAllSessionClientQuery, filterProjectClients, filterRowsBySession } from "@shared/clients";
 import { matchesClientId } from "@shared/clientSearch";
 import { clientPrimaryTotal } from "@shared/clientBalance";
 import { buildReceiptClosePath } from "@shared/receiptNavigation";
@@ -295,6 +295,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const receiptSettings = trpc.receipts.settings.get.useQuery(undefined, {
     enabled: !isInvoice,
   });
+  const sessionSettings = trpc.session.get.useQuery(undefined);
+  const sessionMode = sessionSettings.data?.sessionMode ?? "single";
+  const currentSession = sessionSettings.data?.currentSession ?? "2026-2027";
   const invoices = trpc.invoices.list.useQuery();
   const receipts = trpc.receipts.list.useQuery();
   const clients = trpc.clients.list.useQuery(buildAllSessionClientQuery());
@@ -573,11 +576,13 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       }));
   }, [isInvoice, invoiceSettings.data, createOpen]);
 
-  const convertedInvoiceIds = new Set((receipts.data ?? []).map((row: any) => Number(row.invoiceId)).filter((id: number) => Number.isInteger(id) && id > 0));
-  const searchedInvoiceRows = (invoices.data ?? []).filter((row: any) => !search || `${row.invoiceNumber} ${row.clientName}`.toLowerCase().includes(search.toLowerCase()));
+  const sessionInvoices = filterRowsBySession((invoices.data ?? []) as any[], (clients.data?.items ?? []) as any[], sessionMode, currentSession);
+  const sessionReceipts = filterRowsBySession((receipts.data ?? []) as any[], (clients.data?.items ?? []) as any[], sessionMode, currentSession);
+  const convertedInvoiceIds = new Set(sessionReceipts.map((row: any) => Number(row.invoiceId)).filter((id: number) => Number.isInteger(id) && id > 0));
+  const searchedInvoiceRows = sessionInvoices.filter((row: any) => !search || `${row.invoiceNumber} ${row.clientName}`.toLowerCase().includes(search.toLowerCase()));
   const successfulInvoiceRows = searchedInvoiceRows.filter((row: any) => convertedInvoiceIds.has(Number(row.id)) || row.status === "Paid");
   const invoiceRows = searchedInvoiceRows.filter((row: any) => !successfulInvoiceRows.includes(row));
-  const receiptRows = (receipts.data ?? []).filter(
+  const receiptRows = sessionReceipts.filter(
     (row: any) =>
       !search ||
       `${row.receiptNumber} ${row.clientName}`

@@ -26,6 +26,12 @@ export function buildAllSessionClientQuery(page = 1, pageSize = 200) {
   return { page, pageSize, sessionMode: "all" as const };
 }
 
+export function filterRowsBySession<T extends { clientId?: string | null; session?: string | null }>(rows: T[], clients: Array<{ clientId?: string | null; session?: string | null }>, sessionMode: "all" | "single", currentSession: string) {
+  if (sessionMode === "all") return rows;
+  const sessionsByClient = new Map(clients.map((client) => [String(client.clientId ?? ""), String(client.session ?? "")]));
+  return rows.filter((row) => String(row.session ?? sessionsByClient.get(String(row.clientId ?? "")) ?? "") === currentSession);
+}
+
 export function normalizeProjectFilter(projectFilter: string): number | undefined {
   const value = projectFilter.trim();
   if (!value || value === "all") return undefined;

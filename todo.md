@@ -13449,3 +13449,7 @@
 - [x] Verify All sessions and every individual session across loading, filtering, renewal, payment, and reporting scenarios
 - [x] Fix all discovered session-scope or session-state inconsistencies
 - [x] Add comprehensive session regression coverage and complete visual validation
+
+- [x] Filter the Receipts list by the selected session
+- [x] Keep All sessions showing all receipts and preserve cross-session New Receipt access
+- [x] Add regression coverage for Receipts session filtering

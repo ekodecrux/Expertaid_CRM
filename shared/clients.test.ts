@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildAllSessionClientQuery, filterApprovedClients, filterProjectClients, getClientLifecycleStatus, getManualClientStatuses, normalizeProjectFilter } from "./clients";
+import { buildAllSessionClientQuery, filterApprovedClients, filterProjectClients, filterRowsBySession, getClientLifecycleStatus, getManualClientStatuses, normalizeProjectFilter } from "./clients";
 
 describe("approved client filtering", () => {
   it("returns only approved agreements", () => {
@@ -25,6 +25,13 @@ describe("approved client filtering", () => {
     expect(filterProjectClients(clients, 1).map((client) => client.clientId)).toEqual(["ERP26001", "ERP26002"]);
     expect(filterProjectClients(clients, 1, "erp26002").map((client) => client.clientName)).toEqual(["Another School"]);
     expect(filterProjectClients(clients, 2, "acme").map((client) => client.clientId)).toEqual(["EMP26001"]);
+  });
+
+  it("filters document rows by the selected session while preserving All sessions", () => {
+    const clients = [{ clientId: "ERP261", session: "2026-2027" }, { clientId: "FEATURE01", session: "2027-2028" }];
+    const rows = [{ clientId: "ERP261", id: 1 }, { clientId: "FEATURE01", id: 2 }];
+    expect(filterRowsBySession(rows, clients, "single", "2027-2028").map((row) => row.id)).toEqual([2]);
+    expect(filterRowsBySession(rows, clients, "all", "2027-2028").map((row) => row.id)).toEqual([1, 2]);
   });
 
   it("builds an explicit All sessions query for operational client access", () => {
