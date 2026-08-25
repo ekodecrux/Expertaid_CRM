@@ -46,6 +46,10 @@ export const CLIENT_PAYMENT_AGING_BUCKETS = [
   { label: "31+ Days", color: "bg-emerald-500" },
 ] as const;
 
+export function filterReceiptsForDashboardSession(receipts: any[], clientIds: Set<string>) {
+  return receipts.filter((row) => row.status !== "Cancelled" && (!row.clientId || clientIds.has(String(row.clientId))));
+}
+
 export function calculateClientPaymentAging(items: DashboardPaymentItem[], now = new Date()) {
   const aging: DashboardAgingBucket[] = CLIENT_PAYMENT_AGING_BUCKETS.map((bucket) => ({ ...bucket, amount: 0, count: 0 }));
   const dueClientPayments = items.filter((item) => item.dueDate && item.amount > 0);

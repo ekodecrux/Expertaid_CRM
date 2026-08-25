@@ -13427,3 +13427,7 @@
 - [x] Display sessions in newest-to-oldest chronological order
 - [x] Keep All sessions at the top and preserve active-session labeling
 - [x] Add regression coverage and visually validate session ordering
+
+- [x] Filter Dashboard Receipts count and receipt value by the selected session
+- [x] Keep Today and Monthly Collection independent and based on actual current dates
+- [x] Add regression coverage for receipt KPI session filtering

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildClientPaymentItems, calculateClientPaymentAging, calculateDashboardBusinessValue } from "./dashboardPaymentAging";
+import { buildClientPaymentItems, calculateClientPaymentAging, calculateDashboardBusinessValue, filterReceiptsForDashboardSession } from "./dashboardPaymentAging";
 
 describe("client payment dashboard aging", () => {
   it("counts an approved renewal as new business for the same client", () => {
@@ -11,6 +11,14 @@ describe("client payment dashboard aging", () => {
       ],
     )).toBe(14000);
   });
+  it("filters Receipts KPI to the selected session clients", () => {
+    expect(filterReceiptsForDashboardSession([
+      { clientId: "ERP261", status: "Issued", amount: "7000" },
+      { clientId: "FEATURE01", status: "Issued", amount: "3000" },
+      { clientId: "ERP261", status: "Cancelled", amount: "2000" },
+    ], new Set(["FEATURE01"]))).toEqual([{ clientId: "FEATURE01", status: "Issued", amount: "3000" }]);
+  });
+
   it("calculates today and monthly collections from actual receipt dates regardless of session", async () => {
     const { calculateCurrentDateCollections } = await import("./dashboardPaymentAging");
     expect(calculateCurrentDateCollections([
