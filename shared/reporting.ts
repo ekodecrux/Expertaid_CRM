@@ -38,6 +38,7 @@ export function buildCollectionReportRows(receipts: any[], clients: any[], optio
       transactionId: receipt.transactionReference ?? "—",
       receivedFor: receipt.receivedFor ?? "—",
       gstMode: receipt.gstMode ?? "—",
+      gstRate: receipt.gstRate == null || String(receipt.gstRate).trim() === "" ? null : numeric(receipt.gstRate),
       subtotal: numeric(receipt.subtotal),
       gstAmount: numeric(receipt.gstAmount),
       amount: numeric(receipt.amount ?? receipt.grandTotal),

@@ -13256,3 +13256,7 @@
 - [x] Push the current ERP CRM changes to ekodecrux/Expertaid_CRM
 - [x] Prepare and validate the updated database SQL file for deployment
 - [x] Deliver the GitHub commit reference and updated SQL attachment
+
+- [x] Correct Reports GST-inclusive and GST-exclusive subtotal, GST, amount, and grand-total display
+- [x] Add regression coverage for Reports GST normalization and export values
+- [x] Build, test, and visually verify the Reports GST correction
