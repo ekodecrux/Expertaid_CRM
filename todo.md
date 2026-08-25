@@ -13477,3 +13477,7 @@
 - [x] Make the profile icon container transparent so uploaded icons fit naturally
 - [x] Preserve profile fallback, sizing, and menu behavior
 - [x] Add visual validation and regression checks for transparent profile icons
+
+- [x] Make global client search open a complete client detail view for matching records
+- [x] Show current plan, active-cycle payment status, and historical plans and payments in the search detail view
+- [x] Add regression coverage and visual validation for global client search details
