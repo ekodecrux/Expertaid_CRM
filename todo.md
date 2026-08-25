@@ -13457,3 +13457,7 @@
 - [x] Make Reports Due Balance apply the same active renewal-cycle receipt boundary as Dashboard
 - [x] Reconcile Reports assigned, paid, and due values with renewed business totals
 - [x] Add regression coverage proving Reports and Dashboard due totals match after renewal
+
+- [x] Place Quotations search beside the Quotation Register heading
+- [x] Preserve quotation search fields and responsive behavior
+- [x] Add regression coverage and visual validation for the Quotations header search
