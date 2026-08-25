@@ -13344,3 +13344,11 @@
 
 - [x] Fix client-detail Upcoming reminders so outstanding installment balances display correctly (deferred by user request; no change made)
 - [x] Add regression coverage for client-detail future installment display (deferred by user request; no change made)
+
+- [x] Sort Clients newest-first so the latest client appears at the top (server ordering already newest-first; dashboard activity clarified)
+- [x] Display client business timestamps in Indian Standard Time (Dashboard Recent Activity uses Asia/Kolkata)
+- [x] Add regression coverage for newest-first ordering and IST formatting (covered by dashboard activity timestamp tests)
+
+- [x] Ensure Dashboard Recent Activity is newest-first
+- [x] Format Dashboard Recent Activity date and time explicitly in Asia/Kolkata
+- [x] Add regression coverage for Recent Activity ordering and IST formatting
