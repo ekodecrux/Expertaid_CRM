@@ -368,7 +368,16 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       setCreateOpen(false);
       setConversionInvoiceId(null);
       toast.success("Receipt created successfully.");
-      if (receipt?.receiptNumber) navigate(`/receipts?receipt=${encodeURIComponent(receipt.receiptNumber)}`);
+      if (receipt?.receiptNumber) {
+        const params = new URLSearchParams(window.location.search);
+        const returnToClients = params.get("returnTo") === "clients" && params.get("paymentClientId");
+        const previewParams = new URLSearchParams({ receipt: String(receipt.receiptNumber) });
+        if (returnToClients) {
+          previewParams.set("returnTo", "clients");
+          previewParams.set("paymentClientId", params.get("paymentClientId")!);
+        }
+        navigate(`/receipts?${previewParams.toString()}`);
+      }
     },
     onError: error => {
       const message = mutationErrorMessage(error);
@@ -449,7 +458,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     const productId = Number(params.get("reminderProductId"));
     const itemName = params.get("reminderItem") || "Payment reminder";
     const projectId = params.get("projectId") || String(client.projectId ?? "");
-    window.history.replaceState({}, "", "/receipts");
+    const returnToClients = params.get("returnTo") === "clients" && params.get("paymentClientId");
+    window.history.replaceState({}, "", returnToClients ? `/receipts?returnTo=clients&paymentClientId=${encodeURIComponent(params.get("paymentClientId")!)}` : "/receipts");
     setReminderPrefill(true);
     setConversionInvoiceId(null);
     setEditingReceiptId(null);
@@ -912,12 +922,15 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   };
   const closeCreateDialog = () => {
     const cameFromInvoice = Boolean(conversionInvoiceId);
+    const params = new URLSearchParams(window.location.search);
+    const cameFromPaymentHistory = params.get("returnTo") === "clients" && params.get("paymentClientId");
     setCreateOpen(false);
     setConversionInvoiceId(null);
     setReminderPrefill(false);
     setEditingInvoiceId(null);
     setEditingReceiptId(null);
     if (cameFromInvoice) navigate("/invoices");
+    else if (cameFromPaymentHistory) navigate(`/clients?returnTo=clients&paymentClientId=${encodeURIComponent(params.get("paymentClientId")!)}`);
   };
   const printSelected = () => {
     const source = document.getElementById("billing-print");

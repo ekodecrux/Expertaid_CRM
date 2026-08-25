@@ -13377,3 +13377,8 @@
 - [x] Show only pending installments in the payment history Due / upcoming section
 - [x] Keep paid installments only in Payment details, not in Due / upcoming
 - [x] Add regression coverage for pending-only payment history rendering
+
+- [x] Add Pay action beside each pending payment-history installment
+- [x] Open a client-specific prefilled Receipt from the pending installment
+- [x] Return to the same client payment history and refresh after receipt completion
+- [x] Add regression coverage for payment-history Pay navigation
