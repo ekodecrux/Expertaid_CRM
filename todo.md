@@ -13436,3 +13436,7 @@
 - [x] Make All sessions show complete workspace data without invalid session filtering
 - [x] Keep payment actions available for valid pending clients from other sessions
 - [x] Add regression coverage for session switching and All sessions behavior
+
+- [x] Verify each session’s agreements, clients, assigned value, collected value, and due value
+- [x] Verify All sessions equals the combined cross-session totals
+- [x] Add regression coverage or fix any discovered session reconciliation discrepancy
