@@ -13491,3 +13491,7 @@
 - [x] Present current plan, payments, invoices, products, GST, and historical records with clear page sections
 - [x] Preserve back navigation, global search behavior, and renewal-cycle separation
 - [x] Add regression coverage and visual validation for the full-page client overview
+
+- [ ] Commit and push the latest ERP CRM code to ekodecrux/Expertaid_CRM
+- [ ] Generate and deliver a consolidated schema-only SQL update file from all Drizzle migrations
+- [ ] Verify the pushed commit and SQL file contents
