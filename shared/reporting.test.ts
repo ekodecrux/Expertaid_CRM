@@ -16,6 +16,14 @@ describe("reporting helpers", () => {
     expect(inCollectionPeriod("2026-07-31", "monthly", today)).toBe(false);
     expect(inCollectionPeriod("2026-08-10", "range", today, "2026-08-01", "2026-08-15")).toBe(true);
   });
+  it("supports single, multiple, and all month scopes", () => {
+    const today = new Date("2026-08-24T12:00:00Z");
+    expect(inCollectionPeriod("2026-08-12", "monthly", today, undefined, undefined, "single", ["2026-08"])).toBe(true);
+    expect(inCollectionPeriod("2026-07-12", "monthly", today, undefined, undefined, "single", ["2026-08"])).toBe(false);
+    expect(inCollectionPeriod("2026-07-12", "monthly", today, undefined, undefined, "multiple", ["2026-07", "2026-08"])).toBe(true);
+    expect(inCollectionPeriod("2026-06-12", "monthly", today, undefined, undefined, "multiple", ["2026-07", "2026-08"])).toBe(false);
+    expect(inCollectionPeriod("2026-06-12", "monthly", today, undefined, undefined, "all", [])).toBe(true);
+  });
   it("builds session-filtered collection rows", () => {
     const rows = buildCollectionReportRows([{ receiptNumber: "RCT1", clientId: "ERP1", clientName: "One", paymentDate: "2026-08-24", amount: "7", status: "Issued" }], [{ clientId: "ERP1", clientName: "One", session: "2026-2027" }], { period: "daily", scope: "current", currentSession: "2026-2027", selectedSessions: [], today: new Date("2026-08-24T12:00:00Z") });
     expect(rows).toHaveLength(1);

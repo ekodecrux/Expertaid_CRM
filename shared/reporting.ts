@@ -1,5 +1,6 @@
 export type ReportPeriod = "daily" | "monthly" | "range";
 export type SessionScope = "current" | "all" | "custom";
+export type MonthScope = "single" | "multiple" | "all";
 
 type CollectionProduct = {
   clientId?: string | null;
@@ -81,18 +82,22 @@ export function matchesSession(session: unknown, scope: SessionScope, currentSes
   return String(session ?? "") === currentSession;
 }
 
-export function inCollectionPeriod(value: unknown, period: ReportPeriod, today = new Date(), rangeStart?: string, rangeEnd?: string) {
+export function inCollectionPeriod(value: unknown, period: ReportPeriod, today = new Date(), rangeStart?: string, rangeEnd?: string, monthScope: MonthScope = "single", selectedMonths: string[] = []) {
   const date = String(value ?? "").slice(0, 10);
   if (!date) return false;
   if (period === "range") return Boolean(rangeStart && rangeEnd && date >= rangeStart && date <= rangeEnd);
   const reference = today.toISOString().slice(0, 10);
-  return period === "daily" ? date === reference : date.slice(0, 7) === reference.slice(0, 7);
+  if (period === "daily") return date === reference;
+  const month = date.slice(0, 7);
+  if (monthScope === "all") return true;
+  if (monthScope === "multiple") return selectedMonths.includes(month);
+  return month === (selectedMonths[0] ?? reference.slice(0, 7));
 }
 
-export function buildCollectionReportRows(receipts: any[], clients: any[], options: { period: ReportPeriod; scope: SessionScope; currentSession: string; selectedSessions: string[]; today?: Date; rangeStart?: string; rangeEnd?: string }, products: CollectionProduct[] = []) {
+export function buildCollectionReportRows(receipts: any[], clients: any[], options: { period: ReportPeriod; scope: SessionScope; currentSession: string; selectedSessions: string[]; today?: Date; rangeStart?: string; rangeEnd?: string; monthScope?: MonthScope; selectedMonths?: string[] }, products: CollectionProduct[] = []) {
   const clientsById = new Map(clients.map((client) => [String(client.clientId ?? ""), client]));
   return receipts
-    .filter((receipt) => receipt.status !== "Cancelled" && inCollectionPeriod(receipt.paymentDate, options.period, options.today, options.rangeStart, options.rangeEnd))
+    .filter((receipt) => receipt.status !== "Cancelled" && inCollectionPeriod(receipt.paymentDate, options.period, options.today, options.rangeStart, options.rangeEnd, options.monthScope, options.selectedMonths))
     .filter((receipt) => matchesSession(clientsById.get(String(receipt.clientId ?? ""))?.session, options.scope, options.currentSession, options.selectedSessions))
     .map((receipt) => {
       const client = clientsById.get(String(receipt.clientId ?? ""));

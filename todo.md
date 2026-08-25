@@ -13270,3 +13270,7 @@
 - [x] Remove the duplicate Amount column from receipt and collection Reports and exports
 - [x] Preserve the financial sequence as Subtotal, GST, and Grand Total
 - [x] Test and visually verify the streamlined Reports output
+
+- [x] Add single-month, multiple-month, and all-month filtering to Monthly Collections
+- [x] Repair Search report data so it filters the active report consistently
+- [x] Add regression coverage and validate the Monthly Collections filter behavior
