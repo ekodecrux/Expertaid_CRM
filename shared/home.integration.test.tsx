@@ -87,6 +87,7 @@ describe("Home dashboard integration", () => {
     expect(markup).toContain("Approved");
     expect(markup).toContain("View signature");
     expect(markup).toContain("Copy link");
+    expect(markup).toContain("h-12 w-12 bg-transparent");
     for (const id of [42, 43]) {
       expect(markup).toContain(`data-testid="agreement-row-${id}-identity"`);
       expect(markup).toContain(`data-testid="agreement-row-${id}-metadata"`);

@@ -13473,3 +13473,7 @@
 - [x] Reduce unused right-side space in the sidebar without shrinking navigation labels
 - [x] Preserve sidebar navigation alignment and responsive behavior
 - [x] Add visual validation and regression checks for the sidebar width refinement
+
+- [x] Make the profile icon container transparent so uploaded icons fit naturally
+- [x] Preserve profile fallback, sizing, and menu behavior
+- [x] Add visual validation and regression checks for transparent profile icons
