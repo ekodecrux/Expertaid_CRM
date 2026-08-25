@@ -13373,3 +13373,7 @@
 - [x] Keep paid installments visible as light disabled Invoice reference lines
 - [x] Keep unpaid installments active and collectible in Invoices
 - [x] Add regression coverage for paid-installment Invoice behavior
+
+- [x] Show only pending installments in the payment history Due / upcoming section
+- [x] Keep paid installments only in Payment details, not in Due / upcoming
+- [x] Add regression coverage for pending-only payment history rendering

@@ -1,3 +1,5 @@
+import { getPaymentTermStates } from "./paymentPlan";
+
 export type UpcomingPaymentItem = {
   id: number;
   reference: string;
@@ -56,9 +58,16 @@ export function fallbackPlannedPaymentTerms(input: { totalAmount: number; paidAm
 export function mergeUpcomingPaymentItems(
   invoiceItems: UpcomingPaymentItem[],
   plannedTerms: PlannedPaymentTerm[] = [],
+  paidAmount = 0,
 ): UpcomingPaymentItem[] {
-  const plannedItems = plannedTerms
-    .filter((term) => Number(term.amount) > 0 && Boolean(term.dueDate))
+  const openPlannedTerms = getPaymentTermStates(
+    plannedTerms.map((term) => ({ ...term, amount: String(term.amount) })),
+    paidAmount,
+  )
+    .filter((term) => !term.isPaid)
+    .map((term) => ({ ...term, amount: Math.max(0, Number(term.amount) - term.appliedPaidAmount) }))
+    .filter((term) => Number(term.amount) > 0 && Boolean(term.dueDate));
+  const plannedItems = openPlannedTerms
     .map((term, index) => ({
       id: -(index + 1),
       reference: term.label,

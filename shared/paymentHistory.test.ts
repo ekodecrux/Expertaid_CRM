@@ -20,6 +20,19 @@ describe("mergeUpcomingPaymentItems", () => {
       { label: "No date", dueDate: "", amount: 1000 },
     ])).toEqual([]);
   });
+
+  it("shows only the pending balance for planned installments", () => {
+    const result = mergeUpcomingPaymentItems([], [
+      { label: "Installment 1", dueDate: "2026-08-26", amount: 3540 },
+      { label: "Installment 2", dueDate: "2027-09-22", amount: 3540 },
+      { label: "Installment 3", dueDate: "2027-10-21", amount: 3540 },
+    ], 5310);
+
+    expect(result).toEqual([
+      { id: -1, reference: "Installment 2", date: "2027-09-22", amount: 1770, status: "Planned" },
+      { id: -2, reference: "Installment 3", date: "2027-10-21", amount: 3540, status: "Planned" },
+    ]);
+  });
 });
 
 describe("displayPlannedPaymentTerms", () => {
