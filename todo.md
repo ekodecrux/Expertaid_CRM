@@ -13279,3 +13279,7 @@
 - [x] Add pagination to the active Reports table with continuous serial numbers across pages
 - [x] Preserve report filters, search, column visibility, and full-result exports
 - [x] Add regression coverage and validate Reports pagination
+
+- [x] Move Reports export and Columns icons to the right side of the tabs row to match the reference
+- [x] Keep Session, Search, Orientation, and Paper Fit on the row below the tabs
+- [x] Validate toolbar alignment and preserve report interactions
