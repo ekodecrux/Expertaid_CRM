@@ -61,37 +61,48 @@ CREATE TABLE `agreements` (
 -- -----------------------------------------------------------------------------
 -- Migration: 0002_chunky_cable.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `agreements` ADD `logoUrl` text;--> statement-breakpoint
+ALTER TABLE `agreements` ADD `logoUrl` text;
+
 ALTER TABLE `agreements` ADD `logoKey` varchar(512);
 
 -- -----------------------------------------------------------------------------
 -- Migration: 0003_friendly_lord_hawal.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `agreements` MODIFY COLUMN `perStudentPrice` decimal(12,2);--> statement-breakpoint
-ALTER TABLE `agreements` ADD `pricingMode` enum('perStudent','package') DEFAULT 'perStudent' NOT NULL;--> statement-breakpoint
+ALTER TABLE `agreements` MODIFY COLUMN `perStudentPrice` decimal(12,2);
+
+ALTER TABLE `agreements` ADD `pricingMode` enum('perStudent','package') DEFAULT 'perStudent' NOT NULL;
+
 ALTER TABLE `agreements` ADD `packagePrice` decimal(14,2);
 
 -- -----------------------------------------------------------------------------
 -- Migration: 0004_faithful_viper.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `agreements` ADD `instituteType` enum('School','College','Academy') DEFAULT 'School' NOT NULL;--> statement-breakpoint
-ALTER TABLE `agreements` ADD `branchCoverage` enum('individual','multiple') DEFAULT 'individual' NOT NULL;--> statement-breakpoint
+ALTER TABLE `agreements` ADD `instituteType` enum('School','College','Academy') DEFAULT 'School' NOT NULL;
+
+ALTER TABLE `agreements` ADD `branchCoverage` enum('individual','multiple') DEFAULT 'individual' NOT NULL;
+
 ALTER TABLE `agreements` ADD `branchCount` int DEFAULT 1 NOT NULL;
 
 -- -----------------------------------------------------------------------------
 -- Migration: 0005_confused_war_machine.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `users` ADD `companyLogoUrl` text;--> statement-breakpoint
-ALTER TABLE `users` ADD `companyLogoKey` varchar(512);--> statement-breakpoint
-ALTER TABLE `users` ADD `companyName` varchar(255);--> statement-breakpoint
-ALTER TABLE `users` ADD `serviceCaption` varchar(255);--> statement-breakpoint
+ALTER TABLE `users` ADD `companyLogoUrl` text;
+
+ALTER TABLE `users` ADD `companyLogoKey` varchar(512);
+
+ALTER TABLE `users` ADD `companyName` varchar(255);
+
+ALTER TABLE `users` ADD `serviceCaption` varchar(255);
+
 ALTER TABLE `users` ADD `footerCompanyName` varchar(255);
 
 -- -----------------------------------------------------------------------------
 -- Migration: 0006_empty_violations.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `agreements` ADD `session` varchar(16) DEFAULT '2026-2027' NOT NULL;--> statement-breakpoint
-ALTER TABLE `users` ADD `sessionMode` enum('all','single') DEFAULT 'single' NOT NULL;--> statement-breakpoint
+ALTER TABLE `agreements` ADD `session` varchar(16) DEFAULT '2026-2027' NOT NULL;
+
+ALTER TABLE `users` ADD `sessionMode` enum('all','single') DEFAULT 'single' NOT NULL;
+
 ALTER TABLE `users` ADD `currentSession` varchar(16) DEFAULT '2026-2027' NOT NULL;
 
 -- -----------------------------------------------------------------------------
@@ -166,7 +177,8 @@ CREATE TABLE `quotationSettings` (
 -- -----------------------------------------------------------------------------
 -- Migration: 0010_classy_cable.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `quotationSettings` ADD `gstMode` enum('inclusive','exclusive') DEFAULT 'exclusive' NOT NULL;--> statement-breakpoint
+ALTER TABLE `quotationSettings` ADD `gstMode` enum('inclusive','exclusive') DEFAULT 'exclusive' NOT NULL;
+
 ALTER TABLE `quotations` ADD `gstMode` enum('inclusive','exclusive') DEFAULT 'exclusive' NOT NULL;
 
 -- -----------------------------------------------------------------------------
@@ -182,17 +194,23 @@ CREATE TABLE `quotationEditHistory` (
 	`snapshotJson` text NOT NULL,
 	CONSTRAINT `quotationEditHistory_id` PRIMARY KEY(`id`)
 );
---> statement-breakpoint
-ALTER TABLE `quotations` ADD `lastEditedBy` int;--> statement-breakpoint
-ALTER TABLE `quotations` ADD `lastEditedByName` varchar(255);--> statement-breakpoint
+
+
+ALTER TABLE `quotations` ADD `lastEditedBy` int;
+
+ALTER TABLE `quotations` ADD `lastEditedByName` varchar(255);
+
 ALTER TABLE `quotations` ADD `lastEditedAt` timestamp;
 
 -- -----------------------------------------------------------------------------
 -- Migration: 0012_uneven_martin_li.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `quotationSettings` ADD `invoiceNumberStart` int DEFAULT 129 NOT NULL;--> statement-breakpoint
-ALTER TABLE `quotationSettings` ADD `invoiceNumberNext` int DEFAULT 129 NOT NULL;--> statement-breakpoint
-ALTER TABLE `quotations` ADD `invoiceNumber` varchar(32);--> statement-breakpoint
+ALTER TABLE `quotationSettings` ADD `invoiceNumberStart` int DEFAULT 129 NOT NULL;
+
+ALTER TABLE `quotationSettings` ADD `invoiceNumberNext` int DEFAULT 129 NOT NULL;
+
+ALTER TABLE `quotations` ADD `invoiceNumber` varchar(32);
+
 ALTER TABLE `quotations` ADD CONSTRAINT `quotations_invoiceNumber_unique` UNIQUE(`invoiceNumber`);
 
 -- -----------------------------------------------------------------------------
@@ -208,13 +226,20 @@ ALTER TABLE `quotations` ADD `estimationNumber` int DEFAULT 1 NOT NULL;
 -- -----------------------------------------------------------------------------
 -- Migration: 0015_steep_robin_chapel.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `quotationSettings` ADD `accountCompanyName` varchar(255);--> statement-breakpoint
-ALTER TABLE `quotationSettings` ADD `accountNumber` varchar(128);--> statement-breakpoint
-ALTER TABLE `quotationSettings` ADD `accountIfsc` varchar(64);--> statement-breakpoint
-ALTER TABLE `quotationSettings` ADD `accountBranch` varchar(255);--> statement-breakpoint
-ALTER TABLE `quotations` ADD `accountCompanyName` varchar(255);--> statement-breakpoint
-ALTER TABLE `quotations` ADD `accountNumber` varchar(128);--> statement-breakpoint
-ALTER TABLE `quotations` ADD `accountIfsc` varchar(64);--> statement-breakpoint
+ALTER TABLE `quotationSettings` ADD `accountCompanyName` varchar(255);
+
+ALTER TABLE `quotationSettings` ADD `accountNumber` varchar(128);
+
+ALTER TABLE `quotationSettings` ADD `accountIfsc` varchar(64);
+
+ALTER TABLE `quotationSettings` ADD `accountBranch` varchar(255);
+
+ALTER TABLE `quotations` ADD `accountCompanyName` varchar(255);
+
+ALTER TABLE `quotations` ADD `accountNumber` varchar(128);
+
+ALTER TABLE `quotations` ADD `accountIfsc` varchar(64);
+
 ALTER TABLE `quotations` ADD `accountBranch` varchar(255);
 
 -- -----------------------------------------------------------------------------
@@ -251,15 +276,19 @@ CREATE TABLE `profileSettingsData` (
 -- -----------------------------------------------------------------------------
 -- Migration: 0019_high_puff_adder.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `agreements` ADD `subtotal` decimal(14,2) DEFAULT '0.00' NOT NULL;--> statement-breakpoint
-ALTER TABLE `agreements` ADD `gstRate` decimal(5,2) DEFAULT '18.00' NOT NULL;--> statement-breakpoint
-ALTER TABLE `agreements` ADD `gstMode` enum('inclusive','exclusive') DEFAULT 'exclusive' NOT NULL;--> statement-breakpoint
+ALTER TABLE `agreements` ADD `subtotal` decimal(14,2) DEFAULT '0.00' NOT NULL;
+
+ALTER TABLE `agreements` ADD `gstRate` decimal(5,2) DEFAULT '18.00' NOT NULL;
+
+ALTER TABLE `agreements` ADD `gstMode` enum('inclusive','exclusive') DEFAULT 'exclusive' NOT NULL;
+
 ALTER TABLE `agreements` ADD `gstAmount` decimal(14,2) DEFAULT '0.00' NOT NULL;
 
 -- -----------------------------------------------------------------------------
 -- Migration: 0020_bent_zemo.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `quotations` ADD `logoUrl` text;--> statement-breakpoint
+ALTER TABLE `quotations` ADD `logoUrl` text;
+
 ALTER TABLE `quotations` ADD `logoKey` varchar(512);
 
 -- -----------------------------------------------------------------------------
@@ -290,7 +319,8 @@ CREATE TABLE `invoiceSettings` (
 	CONSTRAINT `invoiceSettings_id` PRIMARY KEY(`id`),
 	CONSTRAINT `invoiceSettings_ownerId_unique` UNIQUE(`ownerId`)
 );
---> statement-breakpoint
+
+
 CREATE TABLE `invoices` (
 	`id` int AUTO_INCREMENT NOT NULL,
 	`ownerId` int NOT NULL,
@@ -326,7 +356,8 @@ CREATE TABLE `invoices` (
 	CONSTRAINT `invoices_id` PRIMARY KEY(`id`),
 	CONSTRAINT `invoices_invoiceNumber_unique` UNIQUE(`invoiceNumber`)
 );
---> statement-breakpoint
+
+
 CREATE TABLE `receiptSettings` (
 	`id` int AUTO_INCREMENT NOT NULL,
 	`ownerId` int NOT NULL,
@@ -349,7 +380,8 @@ CREATE TABLE `receiptSettings` (
 	CONSTRAINT `receiptSettings_id` PRIMARY KEY(`id`),
 	CONSTRAINT `receiptSettings_ownerId_unique` UNIQUE(`ownerId`)
 );
---> statement-breakpoint
+
+
 CREATE TABLE `receipts` (
 	`id` int AUTO_INCREMENT NOT NULL,
 	`ownerId` int NOT NULL,
@@ -386,31 +418,46 @@ CREATE TABLE `receipts` (
 -- -----------------------------------------------------------------------------
 -- Migration: 0022_lazy_mesmero.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `invoiceSettings` ADD `scannerUrl` text;--> statement-breakpoint
+ALTER TABLE `invoiceSettings` ADD `scannerUrl` text;
+
 ALTER TABLE `invoiceSettings` ADD `scannerKey` varchar(512);
 
 -- -----------------------------------------------------------------------------
 -- Migration: 0023_sloppy_roughhouse.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `invoices` MODIFY COLUMN `status` enum('Draft','Due','Paid','Cancelled') NOT NULL DEFAULT 'Draft';--> statement-breakpoint
-ALTER TABLE `receipts` ADD `invoiceId` int;--> statement-breakpoint
-ALTER TABLE `receipts` ADD `invoiceNumber` varchar(32);--> statement-breakpoint
-ALTER TABLE `receipts` ADD `clientGst` varchar(32);--> statement-breakpoint
-ALTER TABLE `receipts` ADD `itemsJson` text;--> statement-breakpoint
-ALTER TABLE `receipts` ADD `subtotal` decimal(14,2);--> statement-breakpoint
-ALTER TABLE `receipts` ADD `gstRate` decimal(5,2);--> statement-breakpoint
-ALTER TABLE `receipts` ADD `gstMode` enum('inclusive','exclusive');--> statement-breakpoint
-ALTER TABLE `receipts` ADD `gstAmount` decimal(14,2);--> statement-breakpoint
+ALTER TABLE `invoices` MODIFY COLUMN `status` enum('Draft','Due','Paid','Cancelled') NOT NULL DEFAULT 'Draft';
+
+ALTER TABLE `receipts` ADD `invoiceId` int;
+
+ALTER TABLE `receipts` ADD `invoiceNumber` varchar(32);
+
+ALTER TABLE `receipts` ADD `clientGst` varchar(32);
+
+ALTER TABLE `receipts` ADD `itemsJson` text;
+
+ALTER TABLE `receipts` ADD `subtotal` decimal(14,2);
+
+ALTER TABLE `receipts` ADD `gstRate` decimal(5,2);
+
+ALTER TABLE `receipts` ADD `gstMode` enum('inclusive','exclusive');
+
+ALTER TABLE `receipts` ADD `gstAmount` decimal(14,2);
+
 ALTER TABLE `receipts` ADD `grandTotal` decimal(14,2);
 
 -- -----------------------------------------------------------------------------
 -- Migration: 0024_pink_molten_man.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `receiptSettings` ADD `footerCompanyName` varchar(255) DEFAULT 'FOR EXPERTAID TECHNOLOGIES PVT LTD.';--> statement-breakpoint
-ALTER TABLE `receiptSettings` ADD `footerMessage` varchar(255) DEFAULT 'Thank you for your business!';--> statement-breakpoint
-ALTER TABLE `receiptSettings` ADD `qrLabel` varchar(64) DEFAULT 'SCAN & PAY';--> statement-breakpoint
-ALTER TABLE `receipts` ADD `footerCompanyName` varchar(255);--> statement-breakpoint
-ALTER TABLE `receipts` ADD `footerMessage` varchar(255);--> statement-breakpoint
+ALTER TABLE `receiptSettings` ADD `footerCompanyName` varchar(255) DEFAULT 'FOR EXPERTAID TECHNOLOGIES PVT LTD.';
+
+ALTER TABLE `receiptSettings` ADD `footerMessage` varchar(255) DEFAULT 'Thank you for your business!';
+
+ALTER TABLE `receiptSettings` ADD `qrLabel` varchar(64) DEFAULT 'SCAN & PAY';
+
+ALTER TABLE `receipts` ADD `footerCompanyName` varchar(255);
+
+ALTER TABLE `receipts` ADD `footerMessage` varchar(255);
+
 ALTER TABLE `receipts` ADD `qrLabel` varchar(64);
 
 -- -----------------------------------------------------------------------------
@@ -437,8 +484,10 @@ CREATE TABLE `projects` (
 	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
 	CONSTRAINT `projects_id` PRIMARY KEY(`id`)
 );
---> statement-breakpoint
-ALTER TABLE `agreements` ADD `projectId` int;--> statement-breakpoint
+
+
+ALTER TABLE `agreements` ADD `projectId` int;
+
 ALTER TABLE `agreements` ADD `clientId` varchar(64);
 
 -- -----------------------------------------------------------------------------
@@ -484,9 +533,12 @@ CREATE TABLE `clients` (
 -- -----------------------------------------------------------------------------
 -- Migration: 0030_yellow_gunslinger.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `clients` ADD `price` decimal(14,2) DEFAULT '0.00' NOT NULL;--> statement-breakpoint
-ALTER TABLE `clients` ADD `gstRate` decimal(5,2) DEFAULT '18.00' NOT NULL;--> statement-breakpoint
-ALTER TABLE `clients` ADD `gstMode` enum('inclusive','exclusive') DEFAULT 'exclusive' NOT NULL;--> statement-breakpoint
+ALTER TABLE `clients` ADD `price` decimal(14,2) DEFAULT '0.00' NOT NULL;
+
+ALTER TABLE `clients` ADD `gstRate` decimal(5,2) DEFAULT '18.00' NOT NULL;
+
+ALTER TABLE `clients` ADD `gstMode` enum('inclusive','exclusive') DEFAULT 'exclusive' NOT NULL;
+
 ALTER TABLE `clients` ADD `gstAmount` decimal(14,2) DEFAULT '0.00' NOT NULL;
 
 -- -----------------------------------------------------------------------------
@@ -497,19 +549,22 @@ ALTER TABLE `clients` MODIFY COLUMN `status` enum('Active','Inactive','Hold','Cl
 -- -----------------------------------------------------------------------------
 -- Migration: 0032_jittery_madelyne_pryor.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `clients` MODIFY COLUMN `status` enum('Active','Inactive','Hold','Cancelled','Renewal','Extended','Closed') NOT NULL DEFAULT 'Active';--> statement-breakpoint
+ALTER TABLE `clients` MODIFY COLUMN `status` enum('Active','Inactive','Hold','Cancelled','Renewal','Extended','Closed') NOT NULL DEFAULT 'Active';
+
 ALTER TABLE `agreements` ADD `clientStatus` enum('Active','Inactive','Hold','Cancelled','Renewal','Extended','Closed');
 
 -- -----------------------------------------------------------------------------
 -- Migration: 0033_little_earthquake.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `agreements` ADD `renewalOfAgreementId` int;--> statement-breakpoint
+ALTER TABLE `agreements` ADD `renewalOfAgreementId` int;
+
 ALTER TABLE `agreements` ADD `renewalType` enum('continuous','sixMonths','oneYear');
 
 -- -----------------------------------------------------------------------------
 -- Migration: 0034_familiar_nova.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `invoices` ADD `clientId` varchar(64);--> statement-breakpoint
+ALTER TABLE `invoices` ADD `clientId` varchar(64);
+
 ALTER TABLE `receipts` ADD `clientId` varchar(64);
 
 -- -----------------------------------------------------------------------------
@@ -525,7 +580,8 @@ CREATE TABLE `paymentPlanTerms` (
 	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
 	CONSTRAINT `paymentPlanTerms_id` PRIMARY KEY(`id`)
 );
---> statement-breakpoint
+
+
 CREATE TABLE `paymentPlans` (
 	`id` int AUTO_INCREMENT NOT NULL,
 	`ownerId` int NOT NULL,
@@ -580,5 +636,6 @@ ALTER TABLE `invoices` ADD `projectId` int;
 -- -----------------------------------------------------------------------------
 -- Migration: 0039_daily_magma.sql
 -- -----------------------------------------------------------------------------
-ALTER TABLE `agreements` ADD `paymentTrackingStartedAt` timestamp;--> statement-breakpoint
+ALTER TABLE `agreements` ADD `paymentTrackingStartedAt` timestamp;
+
 ALTER TABLE `clients` ADD `paymentTrackingStartedAt` timestamp;
