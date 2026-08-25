@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { trpc } from "@/lib/trpc";
 import { formatCurrency } from "@shared/quotation";
-import { buildClientPaymentItems, calculateClientPaymentAging, calculateCurrentDateCollections, calculateDashboardBusinessValue, filterReceiptsForDashboardSession } from "@shared/dashboardPaymentAging";
+import { buildClientPaymentItems, calculateClientPaymentAging, calculateCurrentDateCollections, calculateDashboardBusinessValue, dashboardChartStartYear, filterReceiptsForDashboardSession } from "@shared/dashboardPaymentAging";
 import { formatIndiaDate, formatIndiaTime, timestampMs } from "@shared/timezone";
 
 const money = (value: unknown) => formatCurrency(Number(value ?? 0));
@@ -46,8 +46,7 @@ export default function Dashboard() {
     const currentDateCollections = calculateCurrentDateCollections(receiptRows);
     const todayCollected = currentDateCollections.today;
     const monthlyCollected = currentDateCollections.month;
-    const year = new Date().getFullYear();
-    const sessionStartYear = Number(currentSession.slice(0, 4)) || year;
+    const sessionStartYear = dashboardChartStartYear(sessionMode as "all" | "single", currentSession, new Date());
     const sessionMonths = Array.from({ length: 12 }, (_, offset) => { const monthIndex = (3 + offset) % 12; const monthYear = sessionStartYear + (monthIndex < 3 ? 1 : 0); return { label: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][monthIndex], monthIndex, monthYear }; });
     const sessionStart = `${sessionStartYear}-04-01`;
     const sessionEnd = `${sessionStartYear + 1}-03-31`;

@@ -9,6 +9,11 @@ function indiaDateKey(value: unknown) {
   return new Intl.DateTimeFormat("en-CA", { timeZone: INDIA_TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit" }).format(date);
 }
 
+export function dashboardChartStartYear(sessionMode: "all" | "single", currentSession: string, now = new Date()) {
+  if (sessionMode === "all") return now.getFullYear();
+  return Number(currentSession.slice(0, 4)) || now.getFullYear();
+}
+
 export function calculateCurrentDateCollections(receipts: any[], now = new Date()) {
   const todayKey = indiaDateKey(now);
   const monthKey = todayKey.slice(0, 7);

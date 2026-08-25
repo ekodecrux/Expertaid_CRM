@@ -13440,3 +13440,7 @@
 - [x] Verify each session’s agreements, clients, assigned value, collected value, and due value
 - [x] Verify All sessions equals the combined cross-session totals
 - [x] Add regression coverage or fix any discovered session reconciliation discrepancy
+
+- [x] Populate Monthly Collections chart correctly for All sessions
+- [x] Populate Business Growth chart correctly for All sessions
+- [x] Add regression coverage for All sessions chart aggregation

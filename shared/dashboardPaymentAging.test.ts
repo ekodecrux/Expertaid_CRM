@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { buildClientPaymentItems, calculateClientPaymentAging, calculateDashboardBusinessValue, filterReceiptsForDashboardSession } from "./dashboardPaymentAging";
+import { buildClientPaymentItems, calculateClientPaymentAging, calculateDashboardBusinessValue, dashboardChartStartYear, filterReceiptsForDashboardSession } from "./dashboardPaymentAging";
 
 describe("client payment dashboard aging", () => {
+  it("uses the current calendar year for All sessions chart buckets", () => {
+    expect(dashboardChartStartYear("all", "2027-2028", new Date("2026-08-25T00:00:00.000Z"))).toBe(2026);
+    expect(dashboardChartStartYear("single", "2027-2028", new Date("2026-08-25T00:00:00.000Z"))).toBe(2027);
+  });
   it("counts an approved renewal as new business for the same client", () => {
     expect(calculateDashboardBusinessValue(
       [{ clientId: "ERP261", totalPrice: "7000.00" }],
