@@ -13461,3 +13461,7 @@
 - [x] Place Quotations search beside the Quotation Register heading
 - [x] Preserve quotation search fields and responsive behavior
 - [x] Add regression coverage and visual validation for the Quotations header search
+
+- [x] Correct Reports overview labels and displayed collection values so they reconcile with the selected session
+- [x] Verify Reports subtotal, GST, grand total, collected, and due value presentation where applicable
+- [x] Add regression coverage and visual validation for the corrected Reports overview

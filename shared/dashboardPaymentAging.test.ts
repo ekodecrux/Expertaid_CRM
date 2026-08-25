@@ -30,7 +30,7 @@ describe("client payment dashboard aging", () => {
       { status: "Paid", paymentDate: "2026-08-10", amount: "3000.00" },
       { status: "Paid", paymentDate: "2026-07-31", amount: "2000.00" },
       { status: "Cancelled", paymentDate: "2026-08-25", amount: "5000.00" },
-    ], new Date("2026-08-25T12:00:00.000Z"))).toEqual({ today: 7000, month: 10000 });
+    ], new Date("2026-08-25T12:00:00.000Z"))).toEqual({ today: 7000, month: 10000, todayCount: 1, monthCount: 2 });
   });
 
   it("falls back to the renewed primary assignment when no terms are saved", () => {

@@ -23,9 +23,13 @@ export function calculateCurrentDateCollections(receipts: any[], now = new Date(
     const businessDate = String(row.paymentDate ?? "").slice(0, 10);
     return /^\d{4}-\d{2}-\d{2}$/.test(businessDate) ? businessDate : indiaDateKey(row.createdAt);
   };
+  const todayReceipts = activeReceipts.filter((row) => dateKey(row) === todayKey);
+  const monthReceipts = activeReceipts.filter((row) => dateKey(row).slice(0, 7) === monthKey);
   return {
-    today: activeReceipts.filter((row) => dateKey(row) === todayKey).reduce((sum, row) => sum + amount(row), 0),
-    month: activeReceipts.filter((row) => dateKey(row).slice(0, 7) === monthKey).reduce((sum, row) => sum + amount(row), 0),
+    today: todayReceipts.reduce((sum, row) => sum + amount(row), 0),
+    month: monthReceipts.reduce((sum, row) => sum + amount(row), 0),
+    todayCount: todayReceipts.length,
+    monthCount: monthReceipts.length,
   };
 }
 
