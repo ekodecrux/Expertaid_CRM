@@ -13,6 +13,7 @@ import { calculateErpPricing } from "@shared/erpPricing";
 import { calculateReceiptCollectionDelta } from "@shared/paymentReceipt";
 import { renewalDates, renewalReason } from "@shared/renewalDates";
 import { renewalPaymentDue } from "@shared/renewalPayment";
+import { recordBelongsToClientCycle, currentCycleProducts } from "@shared/paymentTracking";
 import { clientPaymentPosition, clientPrimaryTotal } from "@shared/clientBalance";
 import { formatWholeRupees } from "@shared/displayCurrency";
 import { ArrowLeft, CalendarDays, CheckCircle2, CreditCard, ExternalLink, Loader2, Mail, MapPin, Phone, Plus, ReceiptText, RefreshCw, Save, Trash2, Wallet } from "lucide-react";
@@ -20,7 +21,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "wouter";
 import { toast } from "sonner";
 
-type Client = { id: number; projectId?: number | null; clientId?: string | null; clientName: string; clientOwnerName: string; contactNumber: string; email: string; address: string; noOfStudents: number; pricingMode: "perStudent" | "package"; perStudentPrice: string | null; packagePrice: string | null; price?: string | null; gstRate?: string | null; gstMode?: "inclusive" | "exclusive" | null; gstAmount?: string | null; session: string; startDate: string; endDate: string; totalPrice: string; description: string | null; instituteType: "School" | "College" | "Academy"; branchCoverage: "individual" | "multiple"; branchCount: number;   clientStatus?: ClientManualStatus | null; status?: ClientManualStatus; createdAt?: string | Date; updatedAt?: string | Date };
+type Client = { id: number; projectId?: number | null; clientId?: string | null; clientName: string; clientOwnerName: string; contactNumber: string; email: string; address: string; noOfStudents: number; pricingMode: "perStudent" | "package"; perStudentPrice: string | null; packagePrice: string | null; price?: string | null; gstRate?: string | null; gstMode?: "inclusive" | "exclusive" | null; gstAmount?: string | null; session: string; startDate: string; endDate: string; totalPrice: string; description: string | null; instituteType: "School" | "College" | "Academy"; branchCoverage: "individual" | "multiple"; branchCount: number; paymentTrackingStartedAt?: string | Date | null; clientStatus?: ClientManualStatus | null; status?: ClientManualStatus; createdAt?: string | Date; updatedAt?: string | Date };
 type Term = { label: string; dueDate: string; amount: string };
 type Product = { id?: number; productName: string; description: string; quantity: string; unitPrice: string; gstRate: string; gstMode: "inclusive" | "exclusive"; paidAmount: string; originalPaidAmount?: string; dueDate: string; paymentDate: string; paymentMode: string; transactionReference: string; totalAmount?: string; gstAmount?: string; paymentStatus?: "Pending" | "Partially Paid" | "Paid" };
 type ReceiptDraft = { productIndex: number; amount: string; receiptDate: string; paymentDate: string; paymentMode: "Cash" | "UPI" | "Bank Transfer" | "Card" | "Cheque" | "Other"; transactionReference: string; notes: string };
@@ -36,7 +37,7 @@ function gstBreakdown(amount: number, rate: number, mode: "inclusive" | "exclusi
 function productBreakdown(product: Product) { return gstBreakdown(Number(product.quantity || 0) * Number(product.unitPrice || 0), Number(product.gstRate || 0), product.gstMode); }
 function productTotal(product: Product) { return productBreakdown(product).total; }
 function productPaid(product: Product) { return Math.min(Math.max(Number(product.paidAmount || 0), 0), productTotal(product)); }
-function paymentPosition(client: Client, invoices: any[], receipts: any[], products: Product[] = []) { const matches = (row: any) => client.clientId && row.clientId ? String(row.clientId).toLowerCase() === String(client.clientId).toLowerCase() : String(row.clientName ?? "").trim().toLowerCase() === client.clientName.trim().toLowerCase(); const fromCurrentPlan = (value: unknown) => client.id < 0 || !client.startDate || String(value ?? "") >= client.startDate; const clientInvoices = invoices.filter((row) => matches(row) && fromCurrentPlan(row.invoiceDate)); const clientReceipts = receipts.filter((row) => matches(row) && row.status !== "Cancelled" && fromCurrentPlan(row.paymentDate)); const receiptInvoiceIds = new Set(clientReceipts.map((row) => row.invoiceId).filter(Boolean)); const paidInvoices = clientInvoices.filter((row) => row.status === "Paid" && !receiptInvoiceIds.has(row.id)); const paid = clientReceipts.reduce((sum, row) => sum + Number(row.amount ?? row.grandTotal ?? 0), 0) + paidInvoices.reduce((sum, row) => sum + Number(row.grandTotal ?? 0), 0); return clientPaymentPosition(client, products.map(productTotal), paid); }
+function paymentPosition(client: Client, invoices: any[], receipts: any[], products: Product[] = []) { const matches = (row: any) => client.clientId && row.clientId ? String(row.clientId).toLowerCase() === String(client.clientId).toLowerCase() : String(row.clientName ?? "").trim().toLowerCase() === client.clientName.trim().toLowerCase(); const clientInvoices = invoices.filter((row) => matches(row) && recordBelongsToClientCycle(row, client, "invoiceDate")); const clientReceipts = receipts.filter((row) => matches(row) && row.status !== "Cancelled" && recordBelongsToClientCycle(row, client, "paymentDate")); const receiptInvoiceIds = new Set(clientReceipts.map((row) => row.invoiceId).filter(Boolean)); const paidInvoices = clientInvoices.filter((row) => row.status === "Paid" && !receiptInvoiceIds.has(row.id)); const paid = clientReceipts.reduce((sum, row) => sum + Number(row.amount ?? row.grandTotal ?? 0), 0) + paidInvoices.reduce((sum, row) => sum + Number(row.grandTotal ?? 0), 0); const currentProducts = currentCycleProducts(products, client.paymentTrackingStartedAt); return clientPaymentPosition(client, currentProducts.map(productTotal), paid); }
 
 export default function ClientPaymentPlan() {
   const params = useParams<{ id: string }>();
@@ -117,7 +118,7 @@ export default function ClientPaymentPlan() {
   useEffect(() => {
     if (!client) return;
     if (client.clientId && planQuery.isLoading) return;
-    const key = `${client.id}-${client.clientId ?? ""}`;
+    const key = `${client.id}-${client.clientId ?? ""}-${client.startDate}-${client.endDate}-${client.totalPrice}-${client.paymentTrackingStartedAt ? String(client.paymentTrackingStartedAt) : ""}`;
     if (initializedFor === key) return;
     const saved = planQuery.data;
     const total = Number(client.totalPrice ?? 0);

@@ -25,6 +25,19 @@ describe("client payment dashboard aging", () => {
     expect(result.aging[0]).toMatchObject({ amount: 400, count: 1 });
   });
 
+  it("does not apply prior-cycle receipts to a renewed plan", () => {
+    const items = buildClientPaymentItems(
+      [{ clientId: "EXP26004", clientName: "Renewed School", startDate: "2026-08-25", paymentTrackingStartedAt: "2026-08-25T12:00:00.000Z" }],
+      [],
+      [{ id: 3, clientId: "EXP26004", terms: [{ dueDate: "2026-09-01", amount: "1000.00" }, { dueDate: "2026-10-01", amount: "1000.00" }] }],
+      [
+        { clientId: "EXP26004", status: "Paid", createdAt: "2026-08-25T11:59:59.000Z", paymentDate: "2026-08-25", amount: "2000.00" },
+        { clientId: "EXP26004", status: "Paid", createdAt: "2026-08-25T12:00:00.000Z", paymentDate: "2026-08-25", amount: "100.00" },
+      ],
+    );
+    expect(items.map((item) => item.amount)).toEqual([900, 1000]);
+  });
+
   it("removes paid plan installments and keeps only remaining balances", () => {
     const items = buildClientPaymentItems(
       [{ clientId: "EXP26003", clientName: "Expertaid Test School" }],

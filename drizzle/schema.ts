@@ -165,6 +165,7 @@ export const clients = mysqlTable("clients", {
   status: mysqlEnum("status", ["Active", "Inactive", "Hold", "Cancelled", "Renewal", "Extended", "Closed"]).default("Active").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  paymentTrackingStartedAt: timestamp("paymentTrackingStartedAt"),
 });
 
 export const agreements = mysqlTable("agreements", {
@@ -207,6 +208,7 @@ export const agreements = mysqlTable("agreements", {
   decidedAt: timestamp("decidedAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  paymentTrackingStartedAt: timestamp("paymentTrackingStartedAt"),
 });
 
 export const invoiceSettings = mysqlTable("invoiceSettings", {

@@ -45,6 +45,7 @@ import { receiptDisplayTotal } from "@shared/receiptDisplayTotals";
 import { normalizeCollectionReceipt } from "@shared/reporting";
 import { formatWholeRupees } from "@shared/displayCurrency";
 import { buildClientReceiptPrefillItems } from "@shared/billingPrefill";
+import { recordBelongsToClientCycle, currentCycleProducts } from "@shared/paymentTracking";
 
 type BillingKind = "invoice" | "receipt";
 
@@ -489,11 +490,11 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     const matches = (row: any) => selectedClient.clientId && row.clientId
       ? String(row.clientId).toLowerCase() === String(selectedClient.clientId).toLowerCase()
       : String(row.clientName ?? "").trim().toLowerCase() === String(selectedClient.clientName ?? "").trim().toLowerCase();
-    const clientInvoices = ((invoices.data ?? []) as any[]).filter(matches);
-    const clientReceipts = ((receipts.data ?? []) as any[]).filter((row) => matches(row) && row.status !== "Cancelled");
+    const clientInvoices = ((invoices.data ?? []) as any[]).filter((row) => matches(row) && recordBelongsToClientCycle(row, selectedClient, "invoiceDate"));
+    const clientReceipts = ((receipts.data ?? []) as any[]).filter((row) => matches(row) && row.status !== "Cancelled" && recordBelongsToClientCycle(row, selectedClient, "paymentDate"));
     const receiptInvoiceIds = new Set(clientReceipts.map((row) => row.invoiceId).filter(Boolean));
     const documentPaid = clientReceipts.reduce((sum, row) => sum + Number(row.amount ?? row.grandTotal ?? 0), 0) + clientInvoices.filter((row) => row.status === "Paid" && !receiptInvoiceIds.has(row.id)).reduce((sum, row) => sum + Number(row.grandTotal ?? 0), 0);
-    const clientProductRows = Array.isArray(selectedClientProducts.data) ? selectedClientProducts.data : [];
+    const clientProductRows = currentCycleProducts(Array.isArray(selectedClientProducts.data) ? selectedClientProducts.data : [], selectedClient.paymentTrackingStartedAt);
     const primaryTotal = clientPrimaryTotal({ price: selectedClient.price, gstAmount: selectedClient.gstAmount, gstMode: selectedClient.gstMode, totalPrice: selectedClient.totalPrice });
     const productTotal = clientProductRows.reduce((sum, product) => sum + Number(product.totalAmount ?? 0), 0);
     const productPaid = clientProductRows.reduce((sum, product) => sum + Number(product.paidAmount ?? 0), 0);
@@ -531,7 +532,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   useEffect(() => {
     if (conversionInvoiceId || reminderPrefill) return;
     if (!createOpen || !selectedClient?.clientId || selectedClientProducts.isLoading || selectedClientPlan.isLoading) return;
-    const clientProductRows = Array.isArray(selectedClientProducts.data) ? selectedClientProducts.data : [];
+    const clientProductRows = currentCycleProducts(Array.isArray(selectedClientProducts.data) ? selectedClientProducts.data : [], selectedClient?.paymentTrackingStartedAt);
     const mappedItems = buildClientReceiptPrefillItems({
       terms: selectedClientPlan.data?.terms,
       products: clientProductRows,

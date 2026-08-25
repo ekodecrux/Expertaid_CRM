@@ -13394,3 +13394,7 @@
 - [x] Use one dynamic Subtotal → GST (rate and mode) → Grand Total sequence in renewal history
 - [x] Ensure inclusive and exclusive GST calculations always produce the correct grand total
 - [x] Add regression coverage for dynamic renewal GST labels and totals
+
+- [x] Start renewed plans with fresh paid, due, installment, and progress tracking
+- [x] Keep previous-plan receipts and payment history isolated from the renewed plan
+- [x] Add regression coverage for fresh renewal payment tracking
