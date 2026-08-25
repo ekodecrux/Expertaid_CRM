@@ -13274,3 +13274,8 @@
 - [x] Add single-month, multiple-month, and all-month filtering to Monthly Collections
 - [x] Repair Search report data so it filters the active report consistently
 - [x] Add regression coverage and validate the Monthly Collections filter behavior
+
+- [x] Add an SL No column to every Reports table and export
+- [x] Add pagination to the active Reports table with continuous serial numbers across pages
+- [x] Preserve report filters, search, column visibility, and full-result exports
+- [x] Add regression coverage and validate Reports pagination

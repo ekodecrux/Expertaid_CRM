@@ -1,7 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { buildCollectionReportRows, buildDueReportRows, inCollectionPeriod, matchesSession } from "./reporting";
+import { buildCollectionReportRows, buildDueReportRows, inCollectionPeriod, matchesSession, paginateReportRows } from "./reporting";
 
 describe("reporting helpers", () => {
+  it("paginates report rows with continuous serial offsets", () => {
+    const result = paginateReportRows(["one", "two", "three", "four", "five"], 2, 2);
+    expect(result.pageRows).toEqual(["three", "four"]);
+    expect(result.page).toBe(2);
+    expect(result.pageCount).toBe(3);
+    expect(result.serialOffset).toBe(2);
+  });
   it("supports current, custom, and all session scopes", () => {
     expect(matchesSession("2026-2027", "current", "2026-2027", [])).toBe(true);
     expect(matchesSession("2025-2026", "current", "2026-2027", [])).toBe(false);

@@ -74,6 +74,13 @@ export function normalizeCollectionReceipt(receipt: any, client?: any, products:
   return { subtotal, gstRate, gstMode, gstAmount, amount: grandTotal, grandTotal };
 }
 
+export function paginateReportRows<T>(rows: T[], page: number, pageSize: number) {
+  const safePageSize = Math.max(1, pageSize);
+  const pageCount = Math.max(1, Math.ceil(rows.length / safePageSize));
+  const safePage = Math.min(Math.max(1, page), pageCount);
+  return { pageRows: rows.slice((safePage - 1) * safePageSize, safePage * safePageSize), page: safePage, pageCount, serialOffset: (safePage - 1) * safePageSize };
+}
+
 export function visibleReportColumns(columns: string[], hiddenColumns: string[]) { const visible = columns.filter((column) => !hiddenColumns.includes(column)); return visible.length ? visible : columns; }
 
 export function matchesSession(session: unknown, scope: SessionScope, currentSession: string, selectedSessions: string[]) {
