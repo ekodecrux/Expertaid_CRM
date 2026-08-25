@@ -1,4 +1,5 @@
 import { getPaymentTermStates } from "./paymentPlan";
+import { clientPrimaryTotal } from "./clientBalance";
 import { currentCycleProducts, currentCycleReceipts } from "./paymentTracking";
 import { INDIA_TIME_ZONE } from "./timezone";
 
@@ -75,6 +76,10 @@ export function buildClientPaymentItems(clientRows: any[], products: any[], plan
     const plan = [...plans].filter((row) => String(row.clientId) === clientId).sort((a, b) => Number(b.id) - Number(a.id))[0];
     const paidAmount = currentCycleReceipts(receipts.filter((receipt) => String(receipt.clientId ?? "") === clientId && receipt.status !== "Cancelled"), client.paymentTrackingStartedAt, client.startDate).reduce((sum, receipt) => sum + Number(receipt.amount ?? receipt.grandTotal ?? 0), 0);
     const terms = (plan?.terms ?? []).map((term: any) => ({ ...term, amount: String(term.amount ?? 0) }));
+    if (!terms.length) {
+      const primaryDue = Math.max(clientPrimaryTotal(client) - paidAmount, 0);
+      return primaryDue > 0 ? [{ clientId, clientName: client.clientName, dueDate: client.endDate ?? null, amount: primaryDue, source: "plan" as const }] : [];
+    }
     return getPaymentTermStates(terms, paidAmount)
       .filter((term) => !term.isPaid)
       .map((term) => ({ clientId, clientName: client.clientName, dueDate: term.dueDate, amount: Math.max(Number(term.amount) - term.appliedPaidAmount, 0), source: "plan" as const }))

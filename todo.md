@@ -13419,3 +13419,11 @@
 - [x] Calculate Today Collection from receipts dated today regardless of selected session
 - [x] Calculate Monthly Collection from receipts in the actual current month regardless of selected session
 - [x] Add regression coverage for Dashboard date scope and current-cycle due metrics
+
+- [x] Reconcile Pending Client Payments and Total Due with overall assigned amount minus collected amount
+- [x] Include renewed business assignments without counting old receipts against the renewed cycle
+- [x] Add regression coverage for Dashboard assigned-minus-collected reconciliation
+
+- [x] Display sessions in newest-to-oldest chronological order
+- [x] Keep All sessions at the top and preserve active-session labeling
+- [x] Add regression coverage and visually validate session ordering

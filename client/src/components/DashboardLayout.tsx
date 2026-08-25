@@ -32,6 +32,7 @@ import { toast } from "sonner";
 import { DEFAULT_BRANDING, type CompanyBranding } from "@shared/branding";
 import { trpc } from "@/lib/trpc";
 import { buildReminderItems } from "@shared/reminders";
+import { sortSessionsNewestFirst } from "@shared/session";
 import { buildReminderModulePath } from "@shared/reminderNavigation";
 
 const menuItems = [
@@ -64,7 +65,7 @@ export default function DashboardLayout({
   const branding = trpc.branding.get.useQuery(undefined, { enabled: Boolean(user) });
   const sessionSettings = trpc.session.get.useQuery(undefined, { enabled: Boolean(user) });
   const sessionRecords = trpc.session.list.useQuery(undefined, { enabled: Boolean(user) });
-  const uniqueSessionRecords = Array.from(new Map((sessionRecords.data ?? []).map((session) => [session.sessionLabel, session])).values());
+  const uniqueSessionRecords = sortSessionsNewestFirst(Array.from(new Map((sessionRecords.data ?? []).map((session) => [session.sessionLabel, session])).values()));
   const profile = trpc.profile.get.useQuery(undefined, { enabled: Boolean(user) });
   const profileUpdate = trpc.profile.update.useMutation({ onSuccess: (saved) => { profile.refetch(); setProfileForm({ displayName: saved.displayName, roleLabel: saved.roleLabel, avatarDataUrl: undefined, avatarPreviewUrl: saved.avatarUrl }); toast.success("Profile settings saved"); setProfileOpen(false); }, onError: (error) => toast.error(error.message) });
   const reminderTrpc = trpc as any;

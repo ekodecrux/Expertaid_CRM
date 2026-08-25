@@ -21,6 +21,16 @@ describe("client payment dashboard aging", () => {
     ], new Date("2026-08-25T12:00:00.000Z"))).toEqual({ today: 7000, month: 10000 });
   });
 
+  it("falls back to the renewed primary assignment when no terms are saved", () => {
+    const items = buildClientPaymentItems(
+      [{ clientId: "ERP261", clientName: "Expertaid Test School", totalPrice: "7080.00", endDate: "2027-08-25" }],
+      [],
+      [],
+      [],
+    );
+    expect(items).toEqual([{ clientId: "ERP261", clientName: "Expertaid Test School", dueDate: "2027-08-25", amount: 7080, source: "plan" }]);
+  });
+
   it("uses the unpaid balance of client products", () => {
     const items = buildClientPaymentItems(
       [{ clientId: "EXP26001", clientName: "Bright Future School" }],
