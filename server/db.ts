@@ -876,6 +876,9 @@ export async function listApprovedClientsForOwner(ownerId: number, options: { pa
   const grouped = groupPlansByClientId(combined);
   const currentByClientId = grouped.current.map(({ current, history }) => ({
     ...current,
+    // Legacy renewal rows may have a NULL boundary. The renewal row's
+    // creation time is the first reliable point of the new payment cycle.
+    paymentTrackingStartedAt: current.paymentTrackingStartedAt ?? (current.renewalOfAgreementId ? current.createdAt : null),
     renewalHistory: history.map((item: any) => { const { renewalHistory: _history, ...historyItem } = item; return historyItem; }),
   }));
   const currentItems = [...currentByClientId, ...grouped.withoutClientId].sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());

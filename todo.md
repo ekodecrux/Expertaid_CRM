@@ -13398,3 +13398,7 @@
 - [x] Start renewed plans with fresh paid, due, installment, and progress tracking
 - [x] Keep previous-plan receipts and payment history isolated from the renewed plan
 - [x] Add regression coverage for fresh renewal payment tracking
+
+- [x] Fix renewed client row showing previous-cycle paid balance instead of fresh renewal-cycle payment state
+- [x] Add regression coverage for renewed client row paid and pending display
+- [x] Validate renewed client row visually after the fix
