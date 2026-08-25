@@ -7,6 +7,10 @@ describe("client balance totals", () => {
     expect(clientPaymentPosition({ price: "10.00", gstAmount: "1.80", gstMode: "exclusive", totalPrice: "12.00" }, [], 5)).toEqual({ total: 12, paid: 5, due: 7, progress: 5 / 12 * 100 });
   });
 
+  it("starts an equal-value renewed plan with zero paid and the full amount due", () => {
+    expect(clientPaymentPosition({ totalPrice: "7000.00" }, [], 0)).toEqual({ total: 7000, paid: 0, due: 7000, progress: 0 });
+  });
+
   it("falls back to the calculated total when no stored total exists", () => {
     expect(clientPrimaryTotal({ price: "10.00", gstAmount: "1.80", gstMode: "exclusive", totalPrice: "0.00" })).toBeCloseTo(11.8, 2);
   });

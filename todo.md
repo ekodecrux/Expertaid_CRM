@@ -13406,3 +13406,7 @@
 - [x] Fix renewed client assigned payment being added twice in payment-plan and financial displays
 - [x] Add regression coverage for renewed assigned-payment deduplication
 - [x] Validate renewed payment-plan totals visually
+
+- [x] Treat a fully paid old-plan amount as historical and assign the same renewed amount again as a new-cycle balance
+- [x] Ensure renewed ERP261 collections reduce only the new-cycle assigned amount
+- [x] Add regression coverage for equal-value renewal reassignment after full payment
