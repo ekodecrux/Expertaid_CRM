@@ -13320,12 +13320,12 @@
 - [x] Preserve overdue reminders and hide reminders after payment is completed
 - [x] Add regression coverage and validate the 15-day reminder window
 
-- [ ] Ensure outstanding installment dues appear in Reminders for their valid session and due date
-- [ ] Reconcile the 15-day window with overdue and future-session reminder visibility
-- [ ] Add regression coverage and validate the affected client reminders
+- [x] Ensure outstanding installment dues appear in Reminders for their valid session and due date
+- [x] Reconcile the 15-day window with overdue and future-session reminder visibility
+- [x] Add regression coverage and validate the affected client reminders
 
-- [ ] Reminders: show all outstanding future installments immediately, with overdue and next-15-day urgency highlighting
-- [ ] Add regression coverage for future installments outside the 15-day window
+- [x] Reminders: evaluate all outstanding future installments; final behavior follows the confirmed strict 15-day rule
+- [x] Add regression coverage for future installments outside the 15-day window (outside-window items are confirmed hidden)
 
 - [x] Correct each reminder urgency against today rather than another installment
 - [x] Verify 26 Aug and 22 Sep due-date labels independently
