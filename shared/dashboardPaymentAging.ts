@@ -1,5 +1,27 @@
 import { getPaymentTermStates } from "./paymentPlan";
 import { currentCycleProducts, currentCycleReceipts } from "./paymentTracking";
+import { INDIA_TIME_ZONE } from "./timezone";
+
+function indiaDateKey(value: unknown) {
+  const date = value instanceof Date ? value : new Date(String(value));
+  if (!Number.isFinite(date.getTime())) return "";
+  return new Intl.DateTimeFormat("en-CA", { timeZone: INDIA_TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit" }).format(date);
+}
+
+export function calculateCurrentDateCollections(receipts: any[], now = new Date()) {
+  const todayKey = indiaDateKey(now);
+  const monthKey = todayKey.slice(0, 7);
+  const activeReceipts = receipts.filter((row) => row.status !== "Cancelled");
+  const amount = (row: any) => Number(row.amount ?? row.grandTotal ?? 0);
+  const dateKey = (row: any) => {
+    const businessDate = String(row.paymentDate ?? "").slice(0, 10);
+    return /^\d{4}-\d{2}-\d{2}$/.test(businessDate) ? businessDate : indiaDateKey(row.createdAt);
+  };
+  return {
+    today: activeReceipts.filter((row) => dateKey(row) === todayKey).reduce((sum, row) => sum + amount(row), 0),
+    month: activeReceipts.filter((row) => dateKey(row).slice(0, 7) === monthKey).reduce((sum, row) => sum + amount(row), 0),
+  };
+}
 
 export type DashboardPaymentItem = {
   clientId: string;

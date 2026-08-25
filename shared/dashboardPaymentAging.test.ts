@@ -11,6 +11,16 @@ describe("client payment dashboard aging", () => {
       ],
     )).toBe(14000);
   });
+  it("calculates today and monthly collections from actual receipt dates regardless of session", async () => {
+    const { calculateCurrentDateCollections } = await import("./dashboardPaymentAging");
+    expect(calculateCurrentDateCollections([
+      { status: "Paid", paymentDate: "2026-08-25", amount: "7000.00" },
+      { status: "Paid", paymentDate: "2026-08-10", amount: "3000.00" },
+      { status: "Paid", paymentDate: "2026-07-31", amount: "2000.00" },
+      { status: "Cancelled", paymentDate: "2026-08-25", amount: "5000.00" },
+    ], new Date("2026-08-25T12:00:00.000Z"))).toEqual({ today: 7000, month: 10000 });
+  });
+
   it("uses the unpaid balance of client products", () => {
     const items = buildClientPaymentItems(
       [{ clientId: "EXP26001", clientName: "Bright Future School" }],

@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { trpc } from "@/lib/trpc";
 import { formatCurrency } from "@shared/quotation";
-import { buildClientPaymentItems, calculateClientPaymentAging, calculateDashboardBusinessValue } from "@shared/dashboardPaymentAging";
+import { buildClientPaymentItems, calculateClientPaymentAging, calculateCurrentDateCollections, calculateDashboardBusinessValue } from "@shared/dashboardPaymentAging";
 import { formatIndiaDate, formatIndiaTime, timestampMs } from "@shared/timezone";
 
 const money = (value: unknown) => formatCurrency(Number(value ?? 0));
@@ -42,11 +42,10 @@ export default function Dashboard() {
     const invoiceValue = validInvoices.reduce((sum, row) => sum + Number(row.grandTotal ?? 0), 0);
     const receiptValue = validReceipts.reduce((sum, row) => sum + Number(row.amount ?? row.grandTotal ?? 0), 0);
     const totalClientValue = calculateDashboardBusinessValue(clientRows, agreementRows);
-    const today = new Date();
-    const month = today.getMonth();
-    const year = today.getFullYear();
-    const todayCollected = validReceipts.filter(row => String(row.paymentDate ?? "").slice(0, 10) === today.toISOString().slice(0, 10)).reduce((sum, row) => sum + Number(row.amount ?? row.grandTotal ?? 0), 0);
-    const monthlyCollected = validReceipts.filter(row => { const d = new Date(String(row.paymentDate ?? row.createdAt)); return d.getMonth() === month && d.getFullYear() === year; }).reduce((sum, row) => sum + Number(row.amount ?? row.grandTotal ?? 0), 0);
+    const currentDateCollections = calculateCurrentDateCollections(receiptRows);
+    const todayCollected = currentDateCollections.today;
+    const monthlyCollected = currentDateCollections.month;
+    const year = new Date().getFullYear();
     const sessionStartYear = Number(currentSession.slice(0, 4)) || year;
     const sessionMonths = Array.from({ length: 12 }, (_, offset) => { const monthIndex = (3 + offset) % 12; const monthYear = sessionStartYear + (monthIndex < 3 ? 1 : 0); return { label: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][monthIndex], monthIndex, monthYear }; });
     const sessionStart = `${sessionStartYear}-04-01`;

@@ -13414,3 +13414,8 @@
 - [x] Count each approved renewal’s assigned amount as new Dashboard business for the same client
 - [x] Keep Dashboard paid and due metrics scoped to the active renewal cycle
 - [x] Add regression coverage for renewed business-value aggregation
+
+- [x] Scope Pending Client Payments and Total Due to current-cycle outstanding balances
+- [x] Calculate Today Collection from receipts dated today regardless of selected session
+- [x] Calculate Monthly Collection from receipts in the actual current month regardless of selected session
+- [x] Add regression coverage for Dashboard date scope and current-cycle due metrics
