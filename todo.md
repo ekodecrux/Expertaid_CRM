@@ -13481,3 +13481,8 @@
 - [x] Make global client search open a complete client detail view for matching records
 - [x] Show current plan, active-cycle payment status, and historical plans and payments in the search detail view
 - [x] Add regression coverage and visual validation for global client search details
+
+- [x] Reduce congestion in the global client search result preview
+- [x] Reorganize the full client detail view with clearer spacing and section hierarchy
+- [x] Preserve access to current and historical plan, invoice, receipt, and payment details
+- [x] Add visual validation and regression checks for the clearer client search experience
