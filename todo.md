@@ -13283,3 +13283,7 @@
 - [x] Move Reports export and Columns icons to the right side of the tabs row to match the reference
 - [x] Keep Session, Search, Orientation, and Paper Fit on the row below the tabs
 - [x] Validate toolbar alignment and preserve report interactions
+
+- [x] Make the Receipts list Amount column display the final collected receipt value
+- [x] Keep list values consistent with receipt preview and GST-inclusive/exclusive totals
+- [x] Add regression coverage and validate the Receipts list amount display

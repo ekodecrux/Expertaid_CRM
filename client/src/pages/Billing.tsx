@@ -42,6 +42,7 @@ import { matchesClientId } from "@shared/clientSearch";
 import { clientPrimaryTotal } from "@shared/clientBalance";
 import { buildReceiptClosePath } from "@shared/receiptNavigation";
 import { receiptDisplayTotal } from "@shared/receiptDisplayTotals";
+import { normalizeCollectionReceipt } from "@shared/reporting";
 import { formatWholeRupees } from "@shared/displayCurrency";
 
 type BillingKind = "invoice" | "receipt";
@@ -294,6 +295,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const invoices = trpc.invoices.list.useQuery();
   const receipts = trpc.receipts.list.useQuery();
   const clients = trpc.clients.list.useQuery({ page: 1, pageSize: 200 });
+  const clientProducts = trpc.clients.allProducts.useQuery();
   const projects = trpc.projects.list.useQuery();
   const updateInvoiceSettings = trpc.invoices.settings.update.useMutation({
     onSuccess: () => {
@@ -455,6 +457,12 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   }, [clients.data, projects.data, isInvoice, createOpen, location]);
   const clientOptions: any[] = (clients.data as any)?.items ?? [];
   const projectOptions: any[] = (projects.data as any) ?? [];
+  const productBalances: any[] = (clientProducts.data as any) ?? [];
+  const finalReceiptValue = (row: any) => {
+    const client = clientOptions.find((candidate) => String(candidate.clientId ?? "") === String(row.clientId ?? ""));
+    const normalized = normalizeCollectionReceipt(row, client, productBalances);
+    return Number(normalized.grandTotal ?? row.grandTotal ?? row.amount ?? 0);
+  };
   const selectedProjectId = Number(isInvoice ? invoiceForm.projectId : receiptForm.projectId) || 0;
   const selectedProject = projectOptions.find((project: any) => Number(project.id) === selectedProjectId);
   const selectedClient = clientOptions
@@ -602,7 +610,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const selectedInvoiceTaxable = selected?.gstMode === "inclusive" ? selectedInvoiceSubtotal : selectedInvoiceSubtotal;
   const totalValue = rows.reduce(
     (sum: number, row: any) =>
-      sum + Number(isInvoice ? row.grandTotal : row.amount),
+      sum + Number(isInvoice ? row.grandTotal : finalReceiptValue(row)),
     0
   );
   const invoiceTotals = useMemo(
@@ -1091,7 +1099,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                         </td>
                         <td className="px-5 py-4 text-right font-semibold">
                           {formatCurrency(
-                            Number(isInvoice ? row.grandTotal : row.amount)
+                            Number(isInvoice ? row.grandTotal : finalReceiptValue(row))
                           )}
                         </td>
                         <td className="px-5 py-4">
