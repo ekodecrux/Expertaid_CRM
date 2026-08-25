@@ -13382,3 +13382,7 @@
 - [x] Open a client-specific prefilled Receipt from the pending installment
 - [x] Return to the same client payment history and refresh after receipt completion
 - [x] Add regression coverage for payment-history Pay navigation
+
+- [x] Reconcile Dashboard Pending client payments count with actual pending installments
+- [x] Reconcile Dashboard Total Due with unpaid client balances and pending installments
+- [x] Add regression coverage for dashboard pending-payment KPIs

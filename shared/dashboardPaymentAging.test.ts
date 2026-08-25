@@ -24,4 +24,21 @@ describe("client payment dashboard aging", () => {
     expect(result.dueTotal).toBe(400);
     expect(result.aging[0]).toMatchObject({ amount: 400, count: 1 });
   });
+
+  it("removes paid plan installments and keeps only remaining balances", () => {
+    const items = buildClientPaymentItems(
+      [{ clientId: "EXP26003", clientName: "Expertaid Test School" }],
+      [],
+      [{ id: 2, clientId: "EXP26003", terms: [
+        { dueDate: "2026-08-26", amount: "3540.00" },
+        { dueDate: "2027-09-22", amount: "3540.00" },
+        { dueDate: "2027-10-21", amount: "3540.00" },
+      ] }],
+      [{ clientId: "EXP26003", status: "Paid", amount: "5310.00" }],
+    );
+    const result = calculateClientPaymentAging(items, new Date("2026-08-25T00:00:00Z"));
+    expect(result.dueClientPayments.map((item) => item.amount)).toEqual([1770, 3540]);
+    expect(result.dueTotal).toBe(5310);
+    expect(result.dueClientPayments.every((item) => item.amount > 0)).toBe(true);
+  });
 });

@@ -1,3 +1,5 @@
+import { getPaymentTermStates } from "./paymentPlan";
+
 export type DashboardPaymentItem = {
   clientId: string;
   clientName?: string | null;
@@ -32,24 +34,34 @@ export function calculateClientPaymentAging(items: DashboardPaymentItem[], now =
   return { dueClientPayments, aging, dueTotal: dueClientPayments.reduce((sum, item) => sum + item.amount, 0) };
 }
 
-export function buildClientPaymentItems(clientRows: any[], products: any[], plans: any[]): DashboardPaymentItem[] {
+export function buildClientPaymentItems(clientRows: any[], products: any[], plans: any[], receipts: any[] = []): DashboardPaymentItem[] {
   const productsByClient = new Map<string, any[]>();
+  const receiptsByClient = new Map<string, number>();
+  receipts.filter((receipt) => receipt.status !== "Cancelled").forEach((receipt) => {
+    const clientId = String(receipt.clientId ?? "");
+    if (!clientId) return;
+    const amount = Number(receipt.amount ?? receipt.grandTotal ?? 0);
+    if (Number.isFinite(amount) && amount > 0) receiptsByClient.set(clientId, (receiptsByClient.get(clientId) ?? 0) + amount);
+  });
   products.forEach((product) => {
     const existing = productsByClient.get(String(product.clientId)) ?? [];
     existing.push(product);
     productsByClient.set(String(product.clientId), existing);
   });
-  return clientRows.flatMap((client) => {
+  return clientRows.flatMap((client): DashboardPaymentItem[] => {
     const clientId = String(client.clientId ?? "");
     const clientProducts = productsByClient.get(clientId) ?? [];
     if (clientProducts.length) {
       return clientProducts
-        .map((product) => ({ clientId, clientName: client.clientName, dueDate: product.dueDate, amount: Math.max(Number(product.totalAmount ?? 0) - Number(product.paidAmount ?? 0), 0), source: "product" as const }))
+        .map((product): DashboardPaymentItem => ({ clientId, clientName: client.clientName, dueDate: product.dueDate, amount: Math.max(Number(product.totalAmount ?? 0) - Number(product.paidAmount ?? 0), 0), source: "product" }))
         .filter((item: DashboardPaymentItem) => item.amount > 0);
     }
     const plan = [...plans].filter((row) => String(row.clientId) === clientId).sort((a, b) => Number(b.id) - Number(a.id))[0];
-    return (plan?.terms ?? [])
-      .map((term: any) => ({ clientId, clientName: client.clientName, dueDate: term.dueDate, amount: Math.max(Number(term.amount ?? 0), 0), source: "plan" as const }))
+    const paidAmount = receiptsByClient.get(clientId) ?? 0;
+    const terms = (plan?.terms ?? []).map((term: any) => ({ ...term, amount: String(term.amount ?? 0) }));
+    return getPaymentTermStates(terms, paidAmount)
+      .filter((term) => !term.isPaid)
+      .map((term) => ({ clientId, clientName: client.clientName, dueDate: term.dueDate, amount: Math.max(Number(term.amount) - term.appliedPaidAmount, 0), source: "plan" as const }))
       .filter((item: DashboardPaymentItem) => item.amount > 0);
   });
 }

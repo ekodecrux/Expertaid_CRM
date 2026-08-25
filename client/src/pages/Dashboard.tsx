@@ -55,7 +55,7 @@ export default function Dashboard() {
     const sessionCollected = sessionReceipts.reduce((sum, row) => sum + Number(row.amount ?? row.grandTotal ?? 0), 0);
     const monthlyCollections = sessionMonths.map(({ label, monthIndex, monthYear }) => ({ label, amount: sessionReceipts.filter(row => { const date = new Date(String(row.paymentDate ?? row.createdAt)); return date.getFullYear() === monthYear && date.getMonth() === monthIndex; }).reduce((sum, row) => sum + Number(row.amount ?? row.grandTotal ?? 0), 0) }));
     const clientGrowth = sessionMonths.map(({ label, monthIndex, monthYear }) => ({ label, count: clientRows.filter(row => { const date = new Date(String(row.createdAt ?? row.startDate)); return date.getFullYear() === monthYear && date.getMonth() === monthIndex; }).length }));
-    const clientPaymentItems = buildClientPaymentItems(clientRows, clientPaymentRows.products, clientPaymentRows.plans);
+    const clientPaymentItems = buildClientPaymentItems(clientRows, clientPaymentRows.products, clientPaymentRows.plans, validReceipts);
     const { dueClientPayments, aging, dueTotal: clientDueTotal } = calculateClientPaymentAging(clientPaymentItems);
 
     return { invoiceValue, invoiceCount: validInvoices.length, receiptValue, totalClientValue, todayCollected, monthlyCollected, yearCollected: sessionCollected, monthlyCollections, clientGrowth, dueClientPayments, aging, pendingClientPayments: dueClientPayments.length, dueTotal: clientDueTotal };
