@@ -25,6 +25,19 @@ describe("client pending amount prefill", () => {
     ]);
   });
 
+  it("keeps paid installments visible as reference lines and marks only them as paid", () => {
+    expect(buildClientReceiptPrefillItems({
+      terms: [
+        { label: "Installment 1", dueDate: "2026-08-26", amount: "3540" },
+        { label: "Installment 2", dueDate: "2027-09-22", amount: "3540" },
+      ],
+      paidAmount: 3540,
+    })).toMatchObject([
+      { itemName: "Installment 1", unitPrice: "3540", isPaid: true },
+      { itemName: "Installment 2", unitPrice: "3540", isPaid: false },
+    ]);
+  });
+
   it("returns an empty line instead of defaults when a selected client has no open payment data", () => {
     expect(buildClientReceiptPrefillItems({ terms: [], products: [], primary: null })).toEqual([]);
   });

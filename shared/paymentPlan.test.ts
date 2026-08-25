@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculateRemainingPayment, calculateScheduleDifference, distributeRemainingPayment, filterOpenPaymentTerms } from "./paymentPlan";
+import { calculateRemainingPayment, calculateScheduleDifference, distributeRemainingPayment, filterOpenPaymentTerms, getPaymentTermStates } from "./paymentPlan";
 
 describe("payment plan utilities", () => {
   it("calculates the remaining balance after an initial payment", () => {
@@ -19,5 +19,24 @@ describe("payment plan utilities", () => {
     const distributed = distributeRemainingPayment(terms, 1000);
     expect(distributed.map((term) => term.amount)).toEqual(["333.33", "333.33", "333.34"]);
     expect(calculateScheduleDifference(distributed, 1000)).toBeCloseTo(0, 8);
+  });
+
+  it("marks fully covered installments as paid and locked", () => {
+    const states = getPaymentTermStates([
+      { label: "Installment 1", dueDate: "2026-08-26", amount: "3540" },
+      { label: "Installment 2", dueDate: "2027-09-22", amount: "3540" },
+      { label: "Installment 3", dueDate: "2027-10-21", amount: "0" },
+    ], 3540);
+    expect(states.map((term) => term.isPaid)).toEqual([true, false, false]);
+  });
+
+  it("preserves a paid installment while distributing only the remaining unpaid balance", () => {
+    const terms = [
+      { label: "Installment 1", dueDate: "2026-08-26", amount: "3540" },
+      { label: "Installment 2", dueDate: "2027-09-22", amount: "3540" },
+      { label: "Installment 3", dueDate: "2027-10-21", amount: "0" },
+    ];
+    const distributed = distributeRemainingPayment(terms, 7080, 3540);
+    expect(distributed.map((term) => term.amount)).toEqual(["3540", "1770.00", "1770.00"]);
   });
 });

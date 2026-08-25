@@ -81,6 +81,7 @@ type Item = {
   productId?: number;
   collectionAmount?: string;
   isPrimary?: boolean;
+  isPaid?: boolean;
 };
 function ClientProductBalanceLine({ item, products, primary }: { item: Item; products: any[]; primary?: any }) {
   const product = item.productId ? products.find(row => Number(row.id) === item.productId) : item.isPrimary ? primary : null;
@@ -525,6 +526,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       terms: selectedClientPlan.data?.terms,
       products: clientProductRows,
       primary: primaryProductBalance,
+      paidAmount: selectedClientPayment?.paid ?? 0,
     });
     const items = mappedItems.length ? mappedItems : [emptyItem()];
     const gstSource = clientProductRows.find(product => Math.max(0, Number(product.totalAmount ?? 0) - Number(product.paidAmount ?? 0)) > 0) ?? clientProductRows[0] ?? primaryProductBalance;
@@ -609,7 +611,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const invoiceTotals = useMemo(
     () =>
       calculateQuotationTotals(
-        invoiceForm.items.map(item => ({
+        invoiceForm.items.filter(item => !item.isPaid).map(item => ({
           product: "ERP" as const,
           itemName: item.itemName || "Item",
           quantity: Number(item.quantity) || 0,
@@ -623,7 +625,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   const receiptTotals = useMemo(
     () =>
       calculateQuotationTotals(
-        receiptForm.items.map(item => ({
+        receiptForm.items.filter(item => !item.isPaid).map(item => ({
           product: "ERP" as const,
           itemName: item.itemName || "Item",
           quantity: Number(item.quantity) || 0,
@@ -811,7 +813,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     if (isInvoice) {
       if (!form.invoiceDate) errors.invoiceDate = "Invoice date is required.";
       if (!form.dueDate) errors.dueDate = "Due date is required.";
-      form.items.forEach((item: Item, index: number) => {
+      const activeInvoiceItems = form.items.filter((item: Item) => !item.isPaid);
+      if (!activeInvoiceItems.length) errors.form = "No unpaid payment line is available for this invoice.";
+      activeInvoiceItems.forEach((item: Item, index: number) => {
         if (!item.itemName.trim())
           errors[`item.${index}`] =
             `Line item ${index + 1} needs an item name.`;
@@ -827,7 +831,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       if (!form.paymentDate) errors.paymentDate = "Payment date is required.";
       if (!(Number(form.gstRate) >= 0) || Number(form.gstRate) > 100)
         errors.gstRate = "GST rate must be between 0 and 100.";
-      form.items.forEach((item: Item, index: number) => {
+      const activeReceiptItems = form.items.filter((item: Item) => !item.isPaid);
+      if (!activeReceiptItems.length) errors.form = "No unpaid payment line is available for this receipt.";
+      activeReceiptItems.forEach((item: Item, index: number) => {
         if (!item.itemName.trim())
           errors[`item.${index}`] = `Line item ${index + 1} needs an item name.`;
         if (!(Number(item.quantity) > 0))
@@ -844,7 +850,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
         projectId: invoiceForm.projectId ? Number(invoiceForm.projectId) : undefined,
         clientId: invoiceForm.clientId.trim() || undefined,
         gstRate: Number(invoiceForm.gstRate),
-        items: invoiceForm.items.map(item => ({
+        items: invoiceForm.items.filter(item => !item.isPaid).map(item => ({
           ...item,
           quantity: Number(item.quantity),
           unitPrice: Number(item.unitPrice),
@@ -861,7 +867,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
         projectId: receiptForm.projectId ? Number(receiptForm.projectId) : undefined,
         clientId: receiptForm.clientId.trim() || undefined,
         gstRate: Number(receiptForm.gstRate),
-        items: receiptForm.items.map(item => ({
+        items: receiptForm.items.filter(item => !item.isPaid).map(item => ({
           ...item,
           quantity: Number(item.quantity),
           unitPrice: Number(item.unitPrice),
@@ -1777,11 +1783,13 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     {invoiceForm.items.map((item, index) => (
                       <div
                         key={index}
-                        className="grid gap-2 rounded-xl border border-slate-200 p-3 sm:grid-cols-[1fr_1fr_100px_140px_40px]"
+                        className={`grid gap-2 rounded-xl border p-3 sm:grid-cols-[1fr_1fr_100px_140px_40px] ${item.isPaid ? "border-slate-200 bg-slate-50 opacity-60" : "border-slate-200 bg-white"}`}
                       >
                         <ClientProductBalanceLine item={item} products={(selectedClientProducts.data as any[]) ?? []} primary={primaryProductBalance} />
+                        {item.isPaid && <p className="sm:col-span-5 text-xs font-semibold text-slate-500">Paid installment · reference only · not included in this invoice</p>}
                         <Input
                           required
+                          disabled={item.isPaid}
                           placeholder="Item name"
                           value={item.itemName}
                           onChange={e =>
@@ -1798,6 +1806,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                         />
                         <Input
                           placeholder="Description"
+                          disabled={item.isPaid}
                           value={item.description}
                           onChange={e =>
                             setInvoiceForm({
@@ -1816,6 +1825,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                         />
                         <Input
                           required
+                          disabled={item.isPaid}
                           type="number"
                           min="0.01"
                           step="0.01"
@@ -1835,6 +1845,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                         />
                         <Input
                           required
+                          disabled={item.isPaid}
                           type="number"
                           min="0"
                           step="0.01"
@@ -1856,7 +1867,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           type="button"
                           size="icon"
                           variant="outline"
-                          disabled={invoiceForm.items.length === 1}
+                          disabled={invoiceForm.items.length === 1 || item.isPaid}
                           onClick={() =>
                             setInvoiceForm({
                               ...invoiceForm,
@@ -2118,11 +2129,13 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                     </div>
                     <div className="mt-4 space-y-3">
                       {receiptForm.items.map((item, index) => (
-                        <div key={`receipt-item-form-${index}`} className="grid gap-2 rounded-lg border border-slate-200 bg-white p-3 sm:grid-cols-[1.4fr_1.2fr_90px_120px_auto]">
+                        <div key={`receipt-item-form-${index}`} className={`grid gap-2 rounded-lg border p-3 sm:grid-cols-[1.4fr_1.2fr_90px_120px_auto] ${item.isPaid ? "border-slate-200 bg-slate-50 opacity-60" : "border-slate-200 bg-white"}`}>
                           <ClientProductBalanceLine item={item} products={(selectedClientProducts.data as any[]) ?? []} primary={primaryProductBalance} />
+                          {item.isPaid && <p className="sm:col-span-5 text-xs font-semibold text-slate-500">Paid installment · reference only · not included in this receipt</p>}
                           <Input
                             data-billing-error={Boolean(formErrors[`item.${index}`])}
                             required
+                            disabled={item.isPaid}
                             placeholder="Product name"
                             value={item.itemName}
                             onChange={e =>
@@ -2136,6 +2149,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           />
                           <Input
                             placeholder="Description"
+                            disabled={item.isPaid}
                             value={item.description ?? ""}
                             onChange={e =>
                               setReceiptForm({
@@ -2149,6 +2163,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           <Input
                             data-billing-error={Boolean(formErrors[`quantity.${index}`])}
                             required
+                            disabled={item.isPaid}
                             type="number"
                             min="0.01"
                             step="0.01"
@@ -2166,6 +2181,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           <Input
                             data-billing-error={Boolean(formErrors[`unitPrice.${index}`])}
                             required
+                            disabled={item.isPaid}
                             type="number"
                             min="0"
                             step="0.01"
@@ -2184,7 +2200,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                             type="button"
                             size="icon"
                             variant="outline"
-                            disabled={receiptForm.items.length === 1}
+                            disabled={receiptForm.items.length === 1 || item.isPaid}
                             aria-label={`Remove Receipt item ${index + 1}`}
                             onClick={() =>
                               setReceiptForm({

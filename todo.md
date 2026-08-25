@@ -13356,3 +13356,20 @@
 - [x] Load the selected client’s saved installments/products into Receipt payment lines
 - [x] Keep standalone Receipt defaults only when no client is selected
 - [x] Add regression coverage for client-specific Receipt line hydration
+
+- [x] Keep fully paid installments hidden from reminders but locked in the schedule
+- [x] Prevent editing or deleting paid installments
+- [x] Distribute only the remaining unpaid balance across unpaid installments
+- [x] Add regression coverage for paid-term locking and unpaid-only distribution
+
+- [x] Hide fully paid installments from Receipt payment lines (superseded: paid lines remain visible as light references)
+- [x] Preserve unpaid installment amounts for collection after paid-term filtering
+- [x] Add regression coverage for paid installments excluded from Receipt lines (superseded by visible locked-line coverage)
+
+- [x] Keep paid installments visible as light disabled Receipt reference lines
+- [x] Keep unpaid installments active and collectible beside the paid reference lines
+- [x] Add regression coverage for light disabled paid Receipt lines
+
+- [x] Keep paid installments visible as light disabled Invoice reference lines
+- [x] Keep unpaid installments active and collectible in Invoices
+- [x] Add regression coverage for paid-installment Invoice behavior

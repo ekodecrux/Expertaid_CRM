@@ -1,4 +1,5 @@
 import { formatWholeRupees } from "./displayCurrency";
+import { getPaymentTermStates } from "./paymentPlan";
 
 export function clientPendingAmount(total: string | number | null | undefined, paid: string | number | null | undefined) {
   const pending = Math.max(0, Number(total ?? 0) - Number(paid ?? 0));
@@ -33,16 +34,19 @@ export type ClientReceiptPrefillItem = {
   productId?: number;
   collectionAmount?: string;
   isPrimary?: boolean;
+  isPaid?: boolean;
 };
 
 export function buildClientReceiptPrefillItems({
   terms,
   products,
   primary,
+  paidAmount = 0,
 }: {
   terms?: ClientPrefillTerm[] | null;
   products?: ClientPrefillProduct[] | null;
   primary?: ClientPrefillPrimary | null;
+  paidAmount?: string | number | null;
 }): ClientReceiptPrefillItem[] {
   const additionalItems = (products ?? [])
     .map((product) => {
@@ -58,7 +62,7 @@ export function buildClientReceiptPrefillItems({
     })
     .filter((item) => item.itemName && Number(item.unitPrice) > 0);
 
-  const installmentItems = (terms ?? [])
+  const installmentItems = getPaymentTermStates((terms ?? []).map((term) => ({ label: String(term.label ?? "Installment"), dueDate: String(term.dueDate ?? ""), amount: String(term.amount ?? "0") })), Number(paidAmount ?? 0))
     .map((term) => {
       const amount = Math.max(0, Number(term.amount ?? 0));
       return {
@@ -67,6 +71,7 @@ export function buildClientReceiptPrefillItems({
         quantity: "1",
         unitPrice: String(amount),
         collectionAmount: String(amount),
+        isPaid: term.isPaid,
       };
     })
     .filter((item) => Number(item.unitPrice) > 0);
