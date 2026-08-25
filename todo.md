@@ -13465,3 +13465,7 @@
 - [x] Correct Reports overview labels and displayed collection values so they reconcile with the selected session
 - [x] Verify Reports subtotal, GST, grand total, collected, and due value presentation where applicable
 - [x] Add regression coverage and visual validation for the corrected Reports overview
+
+- [x] Restyle the client edit payment-plan header to match the supplied compact reference
+- [x] Preserve client edit, current-plan, and renewal actions in the updated header
+- [x] Add responsive visual validation and regression coverage for the client edit header
