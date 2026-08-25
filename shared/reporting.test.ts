@@ -29,6 +29,10 @@ describe("reporting helpers", () => {
     const rows = buildCollectionReportRows([{ receiptNumber: "RCT3", clientId: "ERP3", clientName: "Three", paymentDate: "2026-08-24", amount: "1000", grandTotal: "1000", subtotal: "1000", gstRate: "0", gstAmount: "0", gstMode: "exclusive", status: "Issued" }], [{ clientId: "ERP3", clientName: "Three", session: "2026-2027" }], { period: "daily", scope: "current", currentSession: "2026-2027", selectedSessions: [], today: new Date("2026-08-24T12:00:00Z") });
     expect(rows[0]).toMatchObject({ gstMode: "exclusive", gstRate: 0, subtotal: 1000, gstAmount: 0, amount: 1000, grandTotal: 1000 });
   });
+  it("reconciles a product collection saved without GST using the client product tax settings", () => {
+    const rows = buildCollectionReportRows([{ receiptNumber: "RCT4", clientId: "ERP4", clientName: "Four", paymentDate: "2026-08-24", amount: "1000", grandTotal: "1000", subtotal: "1000", gstRate: "0", gstAmount: "0", gstMode: "exclusive", receivedFor: "Biometric", itemsJson: JSON.stringify([{ itemName: "Biometric", productId: 901, quantity: 1, unitPrice: 1000 }]), status: "Issued" }], [{ clientId: "ERP4", clientName: "Four", session: "2026-2027" }], { period: "daily", scope: "current", currentSession: "2026-2027", selectedSessions: [], today: new Date("2026-08-24T12:00:00Z") }, [{ id: 901, clientId: "ERP4", productName: "Biometric", gstRate: "18", gstMode: "exclusive" }]);
+    expect(rows[0]).toMatchObject({ gstMode: "exclusive", gstRate: 18, subtotal: 1000, gstAmount: 180, amount: 1180, grandTotal: 1180 });
+  });
   it("returns only clients with an outstanding due balance", () => {
     const rows = buildDueReportRows([{ id: 1, clientId: "ERP1", clientName: "One", session: "2026-2027", totalPrice: "100" }, { id: 2, clientId: "ERP2", clientName: "Two", session: "2026-2027", totalPrice: "50" }], [{ clientId: "ERP1", amount: "40", status: "Issued" }, { clientId: "ERP2", amount: "50", status: "Cancelled" }], { scope: "current", currentSession: "2026-2027", selectedSessions: [] });
     expect(rows.map((row) => row.due)).toEqual([60, 50]);

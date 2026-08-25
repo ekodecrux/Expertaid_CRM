@@ -13260,3 +13260,13 @@
 - [x] Correct Reports GST-inclusive and GST-exclusive subtotal, GST, amount, and grand-total display
 - [x] Add regression coverage for Reports GST normalization and export values
 - [x] Build, test, and visually verify the Reports GST correction
+
+- [x] Calculate GST for exclusive product collections from the actual subtotal and display the resulting grand total
+- [x] Keep inclusive collections tax-inclusive while preserving the requested subtotal, GST, and grand-total order
+- [x] Add regression coverage and validate the exclusive GST Reports correction
+
+- [x] Audit product assignment, partial payment allocation, receipt persistence, and collection report totals end to end
+
+- [x] Remove the duplicate Amount column from receipt and collection Reports and exports
+- [x] Preserve the financial sequence as Subtotal, GST, and Grand Total
+- [x] Test and visually verify the streamlined Reports output

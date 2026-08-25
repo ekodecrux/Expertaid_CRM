@@ -958,6 +958,12 @@ export async function listClientProductsForOwner(ownerId: number, clientId: stri
   return db.select().from(clientProducts).where(and(eq(clientProducts.ownerId, ownerId), eq(clientProducts.clientId, clientId))).orderBy(clientProducts.id);
 }
 
+export async function listAllClientProductsForOwner(ownerId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(clientProducts).where(eq(clientProducts.ownerId, ownerId)).orderBy(clientProducts.id);
+}
+
 export async function saveClientProductsForOwner(ownerId: number, input: { clientId: string; projectId?: number | null; products: Array<{ productName: string; description?: string | null; quantity: number; unitPrice: number; gstRate: number; gstMode: "inclusive" | "exclusive"; paidAmount: number; dueDate?: string | null; paymentDate?: string | null; paymentMode?: string | null; transactionReference?: string | null }> }) {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
