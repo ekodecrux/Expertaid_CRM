@@ -13308,3 +13308,10 @@
 - [x] Fix the Invoice line-item prefill so ERP26001 receives the exact pending ₹7 instead of ₹6.80
 - [x] Keep invoice summary semantics consistent with the corrected line-item amount
 - [x] Add regression coverage and verify the Invoice dialog with the affected client
+
+- [x] Clear confirmed business data while preserving users, sessions, workspace/profile settings, Invoice Settings, Receipt Settings, and application configuration
+- [x] Verify all confirmed business tables are empty and preserved settings remain present
+
+- [x] Hide the agreement cancel/close control from printed output
+- [x] Preserve the cancel/close control on screen for normal navigation
+- [x] Test and visually verify the agreement print header
