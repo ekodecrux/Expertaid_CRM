@@ -13402,3 +13402,7 @@
 - [x] Fix renewed client row showing previous-cycle paid balance instead of fresh renewal-cycle payment state
 - [x] Add regression coverage for renewed client row paid and pending display
 - [x] Validate renewed client row visually after the fix
+
+- [x] Fix renewed client assigned payment being added twice in payment-plan and financial displays
+- [x] Add regression coverage for renewed assigned-payment deduplication
+- [x] Validate renewed payment-plan totals visually

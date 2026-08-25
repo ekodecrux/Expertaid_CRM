@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { currentCycleInvoices, currentCycleProducts, currentCycleReceipts } from "./paymentTracking";
+import { currentCycleInvoices, currentCycleProductTotal, currentCycleProducts, currentCycleReceipts } from "./paymentTracking";
 
 describe("payment tracking cycle boundaries", () => {
   const boundary = "2026-08-25T12:00:00.000Z";
@@ -10,6 +10,13 @@ describe("payment tracking cycle boundaries", () => {
       { createdAt: "2026-08-25T12:00:00.000Z", paymentDate: "2026-08-20", amount: "200" },
     ], boundary, "2026-08-01");
     expect(result.map((row) => row.amount)).toEqual(["200"]);
+  });
+
+  it("excludes historical product assignment from a renewed assigned total", () => {
+    expect(currentCycleProductTotal([
+      { createdAt: "2026-08-25T11:00:00.000Z", totalAmount: "3000" },
+      { createdAt: "2026-08-25T12:00:00.000Z", totalAmount: "500" },
+    ], boundary)).toBe(500);
   });
 
   it("keeps only current-cycle invoices and products when a renewal boundary exists", () => {

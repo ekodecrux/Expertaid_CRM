@@ -8,7 +8,7 @@ import { formatProjectClientId, nextFutureProjectClientNumber } from "@shared/pr
 import { groupPlansByClientId } from "@shared/clientRenewalHistory";
 import { renewalDates } from "@shared/renewalDates";
 import { renewalPaymentDue } from "@shared/renewalPayment";
-import { currentCycleInvoices, currentCycleProducts, currentCycleReceipts, type PaymentTrackingBoundary } from "@shared/paymentTracking";
+import { currentCycleInvoices, currentCycleProductTotal, currentCycleProducts, currentCycleReceipts, type PaymentTrackingBoundary } from "@shared/paymentTracking";
 import { ENV } from './_core/env';
 import { nanoid } from "nanoid";
 import { addLocalSession, getLocalBranding, getLocalQuotationSettings, getSavedLocalQuotationSettings, getLocalSessionSettings, listLocalSessions, saveLocalBranding, saveLocalQuotationSettings, saveLocalSessionSettings, listLocalQuotations, createLocalQuotation, updateLocalQuotation, deleteLocalQuotation, type LocalQuotationSettings } from './localSettings';
@@ -864,13 +864,16 @@ export async function listApprovedClientsForOwner(ownerId: number, options: { pa
     agreementFilters.push(or(like(agreements.clientId, pattern), like(agreements.clientName, pattern), like(agreements.clientOwnerName, pattern), like(agreements.email, pattern), like(agreements.contactNumber, pattern), like(agreements.instituteType, pattern))!);
     clientFilters.push(or(like(clients.clientId, pattern), like(clients.clientName, pattern), like(clients.clientOwnerName, pattern), like(clients.email, pattern), like(clients.contactNumber, pattern), like(clients.instituteType, pattern))!);
   }
-  const [agreementItems, standaloneItems, productTotals] = await Promise.all([
+  const [agreementItems, standaloneItems, productRows] = await Promise.all([
     db.select().from(agreements).where(and(...agreementFilters)).orderBy(desc(agreements.createdAt)),
     db.select().from(clients).where(and(...clientFilters)).orderBy(desc(clients.createdAt)),
-    db.select({ clientId: clientProducts.clientId, total: sql<string>`COALESCE(SUM(${clientProducts.totalAmount}), 0)` }).from(clientProducts).where(eq(clientProducts.ownerId, ownerId)).groupBy(clientProducts.clientId),
+    db.select().from(clientProducts).where(eq(clientProducts.ownerId, ownerId)).orderBy(clientProducts.id),
   ]);
-  const productTotalByClientId = new Map(productTotals.map((row) => [row.clientId, Number(row.total ?? 0)]));
-  const addProductTotals = <T extends { clientId: string | null; totalPrice: string | null }>(item: T) => ({ ...item, totalPrice: (Number(item.totalPrice ?? 0) + (productTotalByClientId.get(item.clientId ?? "") ?? 0)).toFixed(2) });
+  const addProductTotals = <T extends { clientId: string | null; totalPrice: string | null; paymentTrackingStartedAt?: Date | string | null; renewalOfAgreementId?: number | null; createdAt?: Date | string | null }>(item: T) => {
+    const boundary = item.paymentTrackingStartedAt ?? (item.renewalOfAgreementId ? item.createdAt : null);
+    const productTotal = currentCycleProductTotal(productRows.filter((product) => product.clientId === item.clientId), boundary);
+    return { ...item, totalPrice: (Number(item.totalPrice ?? 0) + productTotal).toFixed(2) };
+  };
   const normalizedStandalone = standaloneItems.map((client) => ({ ...client, id: -client.id, signatureDate: null, decidedAt: null }));
   const combined: any[] = [...agreementItems, ...normalizedStandalone].map(addProductTotals).sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   const grouped = groupPlansByClientId(combined);

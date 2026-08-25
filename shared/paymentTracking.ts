@@ -48,6 +48,10 @@ export function currentCycleProducts<T extends PaymentRecord>(records: T[], boun
   });
 }
 
+export function currentCycleProductTotal<T extends PaymentRecord & { totalAmount?: string | number | null }>(records: T[], boundary: PaymentTrackingBoundary) {
+  return currentCycleProducts(records, boundary).reduce((sum, record) => sum + Number(record.totalAmount ?? 0), 0);
+}
+
 export function recordBelongsToClientCycle(record: PaymentRecord, client: { paymentTrackingStartedAt?: PaymentTrackingBoundary; startDate?: string | null }, dateField: "paymentDate" | "invoiceDate" = "paymentDate") {
   return belongsToCurrentPaymentCycle(record, client.paymentTrackingStartedAt, client.startDate, dateField);
 }
