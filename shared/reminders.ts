@@ -36,5 +36,15 @@ export function buildReminderItems({ clients, products, plans, invoices, receipt
     }
     invoices.filter((invoice) => sameClient(client, invoice) && ["Draft", "Due"].includes(invoice.status) && positive(invoice.grandTotal) > 0).forEach((invoice) => rows.push({ id: `invoice-${invoice.id}`, clientId, clientName: client.clientName, source: "Invoice", label: invoice.invoiceNumber, dueDate: String(invoice.dueDate || invoice.invoiceDate || ""), amount: positive(invoice.grandTotal), urgency: new Date(String(invoice.dueDate || invoice.invoiceDate)).getTime() < now.getTime() ? "Overdue" : "Upcoming" }));
   });
-  return rows.filter((row) => row.dueDate && Number.isFinite(new Date(row.dueDate).getTime())).sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
+  const reminderWindowEnd = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 15).getTime();
+  return rows
+    .filter((row) => {
+      if (!row.dueDate) return false;
+      const dueTime = new Date(row.dueDate).getTime();
+      if (!Number.isFinite(dueTime)) return false;
+      const dueDay = new Date(row.dueDate);
+      const dueDayTime = new Date(dueDay.getFullYear(), dueDay.getMonth(), dueDay.getDate()).getTime();
+      return dueDayTime <= reminderWindowEnd;
+    })
+    .sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
 }

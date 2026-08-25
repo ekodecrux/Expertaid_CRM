@@ -13315,3 +13315,7 @@
 - [x] Hide the agreement cancel/close control from printed output
 - [x] Preserve the cancel/close control on screen for normal navigation
 - [x] Test and visually verify the agreement print header
+
+- [x] Show upcoming due reminders from 15 days before the due date
+- [x] Preserve overdue reminders and hide reminders after payment is completed
+- [x] Add regression coverage and validate the 15-day reminder window

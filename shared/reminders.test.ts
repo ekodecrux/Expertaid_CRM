@@ -32,4 +32,21 @@ describe("reminder aggregation", () => {
     expect(items.map((item) => item.source)).toEqual(["Product", "Invoice"]);
     expect(items.every((item) => item.urgency === "Overdue")).toBe(true);
   });
+
+  it("shows overdue and upcoming items through 15 calendar days only", () => {
+    const items = buildReminderItems({
+      clients: [client],
+      products: [
+        { id: 10, clientId: "ERP26003", productName: "Overdue", totalAmount: "100", paidAmount: "0", dueDate: "2026-08-23" },
+        { id: 11, clientId: "ERP26003", productName: "Within window", totalAmount: "100", paidAmount: "0", dueDate: "2026-09-08" },
+        { id: 12, clientId: "ERP26003", productName: "Outside window", totalAmount: "100", paidAmount: "0", dueDate: "2026-09-09" },
+      ],
+      plans: [],
+      invoices: [],
+      receipts: [],
+      now: new Date("2026-08-24T12:00:00"),
+    });
+    expect(items.map((item) => item.label)).toEqual(["Overdue", "Within window"]);
+    expect(items.find((item) => item.label === "Within window")?.urgency).toBe("Upcoming");
+  });
 });
