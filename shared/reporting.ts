@@ -1,3 +1,5 @@
+import { currentCycleReceipts } from "./paymentTracking";
+
 export type ReportPeriod = "daily" | "monthly" | "range";
 export type SessionScope = "current" | "all" | "custom";
 export type MonthScope = "single" | "multiple" | "all";
@@ -105,7 +107,10 @@ export function buildCollectionReportRows(receipts: any[], clients: any[], optio
   const clientsById = new Map(clients.map((client) => [String(client.clientId ?? ""), client]));
   return receipts
     .filter((receipt) => receipt.status !== "Cancelled" && inCollectionPeriod(receipt.paymentDate, options.period, options.today, options.rangeStart, options.rangeEnd, options.monthScope, options.selectedMonths))
-    .filter((receipt) => matchesSession(clientsById.get(String(receipt.clientId ?? ""))?.session, options.scope, options.currentSession, options.selectedSessions))
+    .filter((receipt) => {
+      const client = clientsById.get(String(receipt.clientId ?? ""));
+      return matchesSession(client?.session, options.scope, options.currentSession, options.selectedSessions) && currentCycleReceipts([receipt], client?.paymentTrackingStartedAt, client?.startDate).length > 0;
+    })
     .map((receipt) => {
       const client = clientsById.get(String(receipt.clientId ?? ""));
       const financials = normalizeCollectionReceipt(receipt, client, products);
@@ -133,7 +138,11 @@ export function buildCollectionReportRows(receipts: any[], clients: any[], optio
 export function buildDueReportRows(clients: any[], receipts: any[], options: { scope: SessionScope; currentSession: string; selectedSessions: string[] }, products: CollectionProduct[] = []) {
   const paidByClient = new Map<string, number>();
   const clientsById = new Map(clients.map((client) => [String(client.clientId ?? ""), client]));
-  receipts.filter((receipt) => receipt.status !== "Cancelled").forEach((receipt) => {
+  receipts.filter((receipt) => {
+    if (receipt.status === "Cancelled") return false;
+    const client = clientsById.get(String(receipt.clientId ?? ""));
+    return currentCycleReceipts([receipt], client?.paymentTrackingStartedAt, client?.startDate).length > 0;
+  }).forEach((receipt) => {
     const key = String(receipt.clientId ?? receipt.clientName ?? "").toLowerCase();
     const financials = normalizeCollectionReceipt(receipt, clientsById.get(String(receipt.clientId ?? "")), products);
     paidByClient.set(key, (paidByClient.get(key) ?? 0) + financials.amount);

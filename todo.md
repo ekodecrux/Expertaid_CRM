@@ -13453,3 +13453,7 @@
 - [x] Filter the Receipts list by the selected session
 - [x] Keep All sessions showing all receipts and preserve cross-session New Receipt access
 - [x] Add regression coverage for Receipts session filtering
+
+- [x] Make Reports Due Balance apply the same active renewal-cycle receipt boundary as Dashboard
+- [x] Reconcile Reports assigned, paid, and due values with renewed business totals
+- [x] Add regression coverage proving Reports and Dashboard due totals match after renewal

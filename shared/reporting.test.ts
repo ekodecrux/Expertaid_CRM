@@ -48,6 +48,17 @@ describe("reporting helpers", () => {
     const rows = buildCollectionReportRows([{ receiptNumber: "RCT4", clientId: "ERP4", clientName: "Four", paymentDate: "2026-08-24", amount: "1000", grandTotal: "1000", subtotal: "1000", gstRate: "0", gstAmount: "0", gstMode: "exclusive", receivedFor: "Biometric", itemsJson: JSON.stringify([{ itemName: "Biometric", productId: 901, quantity: 1, unitPrice: 1000 }]), status: "Issued" }], [{ clientId: "ERP4", clientName: "Four", session: "2026-2027" }], { period: "daily", scope: "current", currentSession: "2026-2027", selectedSessions: [], today: new Date("2026-08-24T12:00:00Z") }, [{ id: 901, clientId: "ERP4", productName: "Biometric", gstRate: "18", gstMode: "exclusive" }]);
     expect(rows[0]).toMatchObject({ gstMode: "exclusive", gstRate: 18, subtotal: 1000, gstAmount: 180, amount: 1180, grandTotal: 1180 });
   });
+  it("keeps prior-cycle receipts from reducing a renewed client in due and collection reports", () => {
+    const client = { id: 1, clientId: "ERP261", clientName: "Expertaid Test School", session: "2026-2027", startDate: "2026-08-25", paymentTrackingStartedAt: "2026-08-25T08:00:00.000Z", totalPrice: "7080" };
+    const receipts = [
+      { receiptNumber: "OLD", clientId: "ERP261", paymentDate: "2026-08-25", createdAt: "2026-08-25T07:00:00.000Z", amount: "7080", status: "Issued" },
+      { receiptNumber: "NEW", clientId: "ERP261", paymentDate: "2026-08-25", createdAt: "2026-08-25T09:00:00.000Z", amount: "1000", status: "Issued" },
+    ];
+    const options = { scope: "current" as const, currentSession: "2026-2027", selectedSessions: [] };
+    expect(buildDueReportRows([client], receipts, options)[0].due).toBe(6080);
+    expect(buildCollectionReportRows(receipts, [client], { ...options, period: "daily" as const, today: new Date("2026-08-25T12:00:00.000Z") }).map((row) => row.receiptNumber)).toEqual(["NEW"]);
+  });
+
   it("returns only clients with an outstanding due balance", () => {
     const rows = buildDueReportRows([{ id: 1, clientId: "ERP1", clientName: "One", session: "2026-2027", totalPrice: "100" }, { id: 2, clientId: "ERP2", clientName: "Two", session: "2026-2027", totalPrice: "50" }], [{ clientId: "ERP1", amount: "40", status: "Issued" }, { clientId: "ERP2", amount: "50", status: "Cancelled" }], { scope: "current", currentSession: "2026-2027", selectedSessions: [] });
     expect(rows.map((row) => row.due)).toEqual([60, 50]);
