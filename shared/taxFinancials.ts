@@ -1,6 +1,7 @@
 export type TaxFinancialInput = {
   subtotal?: string | number | null;
   totalAmount?: string | number | null;
+  totalPrice?: string | number | null;
   gstAmount?: string | number | null;
   gstRate?: string | number | null;
   gstMode?: "inclusive" | "exclusive" | null;
@@ -12,7 +13,7 @@ function numeric(value: string | number | null | undefined) {
 }
 
 export function taxFinancials(input: TaxFinancialInput) {
-  const totalAmount = Math.max(0, numeric(input.totalAmount));
+  const totalAmount = Math.max(0, numeric(input.totalAmount ?? input.totalPrice));
   const gstRate = Math.max(0, numeric(input.gstRate));
   const gstMode = input.gstMode === "inclusive" ? "inclusive" : "exclusive";
   const storedGstAmount = numeric(input.gstAmount);

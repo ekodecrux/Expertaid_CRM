@@ -13390,3 +13390,7 @@
 - [x] Show GST mode and rate for renewed and previous plans
 - [x] Show subtotal, GST amount, and total including GST for historical plan products and plans
 - [x] Add regression coverage for renewal-history GST details
+
+- [x] Use one dynamic Subtotal → GST (rate and mode) → Grand Total sequence in renewal history
+- [x] Ensure inclusive and exclusive GST calculations always produce the correct grand total
+- [x] Add regression coverage for dynamic renewal GST labels and totals
