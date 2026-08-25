@@ -67,6 +67,9 @@ describe("billing defaults and input contracts", () => {
     expect(receipt.items[1].unitPrice).toBe(250.5);
     expect(invoice.gstRate).toBe(18);
     expect(invoice.gstMode).toBe("exclusive");
+    expect(invoice.projectId).toBeUndefined();
+    expect(invoice.clientId).toBeUndefined();
+    expect(receipt.clientId).toBeUndefined();
     expect(invoice.items[0].quantity).toBe(2);
     expect(invoice.items[0].unitPrice).toBe(500);
   });

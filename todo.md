@@ -13299,3 +13299,8 @@
 - [x] Use the client’s actual pending balance when prefilling a new invoice
 - [x] Prevent GST conversion or duplicate product aggregation from changing the due amount
 - [x] Add regression coverage and verify the invoice due prefill
+
+- [x] Make Project optional for new Invoices and Receipts
+- [x] Make Client ID optional for new Invoices and Receipts
+- [x] Preserve client-linked hydration when Project and Client ID are supplied
+- [x] Add regression coverage and verify standalone document creation

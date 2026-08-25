@@ -812,8 +812,6 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     event.preventDefault();
     const errors: Record<string, string> = {};
     const form: any = isInvoice ? invoiceForm : receiptForm;
-    if (!form.projectId) errors.projectId = "Select a project first.";
-    if (!form.clientId) errors.clientId = "Select a Client ID so payment details link to the client.";
     if (!form.clientName.trim()) errors.clientName = "Client name is required.";
     if (!form.clientAddress.trim())
       errors.clientAddress = "Client address is required.";
@@ -850,6 +848,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     if (isInvoice) {
       const payload = {
         ...invoiceForm,
+        projectId: invoiceForm.projectId ? Number(invoiceForm.projectId) : undefined,
+        clientId: invoiceForm.clientId.trim() || undefined,
         gstRate: Number(invoiceForm.gstRate),
         items: invoiceForm.items.map(item => ({
           ...item,
@@ -865,6 +865,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     } else {
       const payload = {
         ...receiptForm,
+        projectId: receiptForm.projectId ? Number(receiptForm.projectId) : undefined,
+        clientId: receiptForm.clientId.trim() || undefined,
         gstRate: Number(receiptForm.gstRate),
         items: receiptForm.items.map(item => ({
           ...item,
@@ -1625,7 +1627,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                 >
                   <div className="sm:col-span-2 grid gap-3 sm:grid-cols-2">
                     <div>
-                      <Label>Project</Label>
+                      <Label>Project <span className="text-xs font-normal text-slate-400">(optional)</span></Label>
                       <select className="mt-1 h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50" value={invoiceForm.projectId || "none"} onChange={event => applyProjectToForm(event.target.value === "none" ? "" : event.target.value)}>
                         <option value="none">Select project</option>
                         {projectOptions.map((project: any) => <option key={project.id} value={String(project.id)}>{project.name}{project.isMain ? " (ERP)" : ""}</option>)}
@@ -1633,7 +1635,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                       {selectedProject && <p className="mt-1 text-xs text-slate-500">Client IDs for {selectedProject.name} only.</p>}
                     </div>
                     <div>
-                      <Label>Client ID</Label>
+                      <Label>Client ID <span className="text-xs font-normal text-slate-400">(optional)</span></Label>
                       <ClientSearchSelect clients={filteredClientOptions} value={invoiceForm.clientId} onChange={applyClientToForm} disabled={!selectedProjectId} />
                     </div>
                   </div>
@@ -1960,7 +1962,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                 >
                   <div className="sm:col-span-2 grid gap-3 sm:grid-cols-2">
                     <div>
-                      <Label>Project</Label>
+                      <Label>Project <span className="text-xs font-normal text-slate-400">(optional)</span></Label>
                       <select className="mt-1 h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50" value={receiptForm.projectId || "none"} onChange={event => applyProjectToForm(event.target.value === "none" ? "" : event.target.value)}>
                         <option value="none">Select project</option>
                         {projectOptions.map((project: any) => <option key={project.id} value={String(project.id)}>{project.name}{project.isMain ? " (ERP)" : ""}</option>)}
@@ -1968,7 +1970,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                       {selectedProject && <p className="mt-1 text-xs text-slate-500">Client IDs for {selectedProject.name} only.</p>}
                     </div>
                     <div>
-                      <Label>Client ID</Label>
+                      <Label>Client ID <span className="text-xs font-normal text-slate-400">(optional)</span></Label>
                       <ClientSearchSelect clients={filteredClientOptions} value={receiptForm.clientId} onChange={applyClientToForm} disabled={!selectedProjectId} />
                     </div>
                   </div>
