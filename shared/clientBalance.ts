@@ -6,12 +6,14 @@ export type ClientBalanceSource = {
 };
 
 export function clientPrimaryTotal(client: ClientBalanceSource): number {
+  const storedTotal = Number(client.totalPrice ?? 0);
+  if (Number.isFinite(storedTotal) && storedTotal > 0) return storedTotal;
   const entered = Number(client.price ?? 0);
   const gst = Number(client.gstAmount ?? 0);
   if (entered > 0) {
     return client.gstMode === "inclusive" ? entered : entered + gst;
   }
-  return Number(client.totalPrice ?? 0);
+  return Number.isFinite(storedTotal) ? storedTotal : 0;
 }
 
 export function clientPaymentPosition(client: ClientBalanceSource, productTotals: number[], paid: number) {

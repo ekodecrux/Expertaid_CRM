@@ -13291,3 +13291,11 @@
 - [x] Show Client ID above the client name and email in the Receipts list
 - [x] Preserve receipt search, actions, and final amount display
 - [x] Test and visually verify the Client ID-first Receipts layout
+
+- [x] Preserve an exact pending invoice amount such as ₹7 when prefilled from a client balance
+- [x] Correct invoice GST-inclusive and GST-exclusive subtotal, tax, and total calculations
+- [x] Add regression coverage and visually verify new invoice creation totals
+
+- [x] Use the client’s actual pending balance when prefilling a new invoice
+- [x] Prevent GST conversion or duplicate product aggregation from changing the due amount
+- [x] Add regression coverage and verify the invoice due prefill
