@@ -60,4 +60,12 @@ export function buildClientPaymentItems(clientRows: any[], products: any[], plan
   });
 }
 
+export function calculateDashboardBusinessValue(clientRows: any[], agreementRows: any[] = []) {
+  const currentValue = clientRows.reduce((sum, row) => sum + Number(row.totalPrice ?? 0), 0);
+  const renewalValue = agreementRows
+    .filter((row) => row.status === "Approved" && row.renewalOfAgreementId)
+    .reduce((sum, row) => sum + Number(row.totalPrice ?? 0), 0);
+  return currentValue + renewalValue;
+}
+
 export type ClientPaymentSummary = ReturnType<typeof calculateClientPaymentAging>;

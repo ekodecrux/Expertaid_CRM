@@ -1,7 +1,16 @@
 import { describe, expect, it } from "vitest";
-import { buildClientPaymentItems, calculateClientPaymentAging } from "./dashboardPaymentAging";
+import { buildClientPaymentItems, calculateClientPaymentAging, calculateDashboardBusinessValue } from "./dashboardPaymentAging";
 
 describe("client payment dashboard aging", () => {
+  it("counts an approved renewal as new business for the same client", () => {
+    expect(calculateDashboardBusinessValue(
+      [{ clientId: "ERP261", totalPrice: "7000.00" }],
+      [
+        { clientId: "ERP261", status: "Approved", totalPrice: "7000.00" },
+        { clientId: "ERP261", status: "Approved", renewalOfAgreementId: 10, totalPrice: "7000.00" },
+      ],
+    )).toBe(14000);
+  });
   it("uses the unpaid balance of client products", () => {
     const items = buildClientPaymentItems(
       [{ clientId: "EXP26001", clientName: "Bright Future School" }],

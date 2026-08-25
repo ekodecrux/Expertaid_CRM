@@ -13410,3 +13410,7 @@
 - [x] Treat a fully paid old-plan amount as historical and assign the same renewed amount again as a new-cycle balance
 - [x] Ensure renewed ERP261 collections reduce only the new-cycle assigned amount
 - [x] Add regression coverage for equal-value renewal reassignment after full payment
+
+- [x] Count each approved renewal’s assigned amount as new Dashboard business for the same client
+- [x] Keep Dashboard paid and due metrics scoped to the active renewal cycle
+- [x] Add regression coverage for renewed business-value aggregation

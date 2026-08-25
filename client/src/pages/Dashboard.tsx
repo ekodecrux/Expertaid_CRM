@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { trpc } from "@/lib/trpc";
 import { formatCurrency } from "@shared/quotation";
-import { buildClientPaymentItems, calculateClientPaymentAging } from "@shared/dashboardPaymentAging";
+import { buildClientPaymentItems, calculateClientPaymentAging, calculateDashboardBusinessValue } from "@shared/dashboardPaymentAging";
 import { formatIndiaDate, formatIndiaTime, timestampMs } from "@shared/timezone";
 
 const money = (value: unknown) => formatCurrency(Number(value ?? 0));
@@ -41,7 +41,7 @@ export default function Dashboard() {
     const validReceipts = receiptRows.filter(row => row.status !== "Cancelled" && belongsToCurrentSession(row));
     const invoiceValue = validInvoices.reduce((sum, row) => sum + Number(row.grandTotal ?? 0), 0);
     const receiptValue = validReceipts.reduce((sum, row) => sum + Number(row.amount ?? row.grandTotal ?? 0), 0);
-    const totalClientValue = clientRows.reduce((sum, row) => sum + Number(row.totalPrice ?? 0), 0);
+    const totalClientValue = calculateDashboardBusinessValue(clientRows, agreementRows);
     const today = new Date();
     const month = today.getMonth();
     const year = today.getFullYear();
@@ -59,7 +59,7 @@ export default function Dashboard() {
     const { dueClientPayments, aging, dueTotal: clientDueTotal } = calculateClientPaymentAging(clientPaymentItems);
 
     return { invoiceValue, invoiceCount: validInvoices.length, receiptValue, totalClientValue, todayCollected, monthlyCollected, yearCollected: sessionCollected, monthlyCollections, clientGrowth, dueClientPayments, aging, pendingClientPayments: dueClientPayments.length, dueTotal: clientDueTotal };
-  }, [clientRows, clientPaymentRows, invoiceRows, receiptRows]);
+  }, [agreementRows, clientRows, clientPaymentRows, invoiceRows, receiptRows]);
 
   const dueTotal = computed.aging.reduce((sum, bucket) => sum + bucket.amount, 0);
   const donutSegments = computed.aging.map(bucket => bucket.amount).reduce((sum, amount) => sum + amount, 0) || 1;
