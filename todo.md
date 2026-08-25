@@ -13352,3 +13352,7 @@
 - [x] Ensure Dashboard Recent Activity is newest-first
 - [x] Format Dashboard Recent Activity date and time explicitly in Asia/Kolkata
 - [x] Add regression coverage for Recent Activity ordering and IST formatting
+
+- [x] Load the selected client’s saved installments/products into Receipt payment lines
+- [x] Keep standalone Receipt defaults only when no client is selected
+- [x] Add regression coverage for client-specific Receipt line hydration

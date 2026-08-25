@@ -44,7 +44,7 @@ import { buildReceiptClosePath } from "@shared/receiptNavigation";
 import { receiptDisplayTotal } from "@shared/receiptDisplayTotals";
 import { normalizeCollectionReceipt } from "@shared/reporting";
 import { formatWholeRupees } from "@shared/displayCurrency";
-import { clientPendingAmount } from "@shared/billingPrefill";
+import { buildClientReceiptPrefillItems } from "@shared/billingPrefill";
 
 type BillingKind = "invoice" | "receipt";
 
@@ -470,6 +470,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     .filter((client: any) => String(client.clientId ?? "") === String(isInvoice ? invoiceForm.clientId : receiptForm.clientId) && Number(client.projectId) === selectedProjectId)
     .sort((a: any, b: any) => Number(b.id >= 0) - Number(a.id >= 0))[0];
   const selectedClientProducts = trpc.clients.products.useQuery({ clientId: String(selectedClient?.clientId ?? "") }, { enabled: Boolean(selectedClient?.clientId) });
+  const selectedClientPlan = trpc.clients.paymentPlan.useQuery({ clientId: String(selectedClient?.clientId ?? "") }, { enabled: Boolean(selectedClient?.clientId) });
   const selectedReceiptProducts = trpc.clients.products.useQuery({ clientId: String(selected?.clientId ?? "") }, { enabled: Boolean(selected && !isInvoice && selected.clientId) });
   const filteredClientOptions = selectedProjectId > 0 ? filterProjectClients(clientOptions, selectedProjectId) : [];
   const selectedClientPayment = useMemo<ClientPaymentSummary | null>(() => {
@@ -518,27 +519,18 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   };
   useEffect(() => {
     if (conversionInvoiceId || reminderPrefill) return;
-    if (!createOpen || !selectedClient?.clientId || (!selectedClientProducts.data?.length && !primaryProductBalance)) return;
+    if (!createOpen || !selectedClient?.clientId || selectedClientProducts.isLoading || selectedClientPlan.isLoading) return;
     const clientProductRows = Array.isArray(selectedClientProducts.data) ? selectedClientProducts.data : [];
-    const additionalItems = clientProductRows.map(product => {
-      const pending = clientPendingAmount(product.totalAmount, product.paidAmount);
-      const collection = pending;
-      return {
-        itemName: String(product.productName ?? ""),
-        description: String(product.description ?? ""),
-        quantity: "1",
-        unitPrice: String(collection),
-        productId: Number(product.id),
-        collectionAmount: String(collection),
-      };
+    const mappedItems = buildClientReceiptPrefillItems({
+      terms: selectedClientPlan.data?.terms,
+      products: clientProductRows,
+      primary: primaryProductBalance,
     });
-    const mappedItems = primaryProductBalance
-      ? (() => { const pending = clientPendingAmount(primaryProductBalance.totalAmount, primaryProductBalance.paidAmount); const collection = pending; return [{ itemName: primaryProductBalance.productName, description: "Primary ERP service", quantity: "1", unitPrice: String(collection), collectionAmount: String(collection), isPrimary: true }, ...additionalItems]; })()
-      : additionalItems;
+    const items = mappedItems.length ? mappedItems : [emptyItem()];
     const gstSource = clientProductRows.find(product => Math.max(0, Number(product.totalAmount ?? 0) - Number(product.paidAmount ?? 0)) > 0) ?? clientProductRows[0] ?? primaryProductBalance;
-    if (isInvoice) setInvoiceForm(current => ({ ...current, items: mappedItems }));
-    else setReceiptForm(current => ({ ...current, items: mappedItems, gstRate: gstSource ? String(gstSource.gstRate ?? current.gstRate) : current.gstRate, gstMode: "inclusive" }));
-  }, [createOpen, selectedClient?.clientId, selectedClientProducts.data, primaryProductBalance, isInvoice, reminderPrefill]);
+    if (isInvoice) setInvoiceForm(current => ({ ...current, items }));
+    else setReceiptForm(current => ({ ...current, items, gstRate: gstSource ? String(gstSource.gstRate ?? current.gstRate) : current.gstRate, gstMode: "inclusive" }));
+  }, [createOpen, selectedClient?.clientId, selectedClientProducts.data, selectedClientProducts.isLoading, selectedClientPlan.data, selectedClientPlan.isLoading, primaryProductBalance, isInvoice, reminderPrefill]);
   useEffect(() => {
     if (!createOpen || !projectOptions.length) return;
     const mainProject = projectOptions.find((project: any) => project.isMain) ?? projectOptions[0];
