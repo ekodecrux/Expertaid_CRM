@@ -22,6 +22,13 @@ export function getClientLifecycleStatus(endDate: string, today = new Date().toI
   return daysRemaining <= 5 ? "Ready to Expire" : "Active";
 }
 
+export function normalizeProjectFilter(projectFilter: string): number | undefined {
+  const value = projectFilter.trim();
+  if (!value || value === "all") return undefined;
+  const projectId = Number(value);
+  return Number.isFinite(projectId) && projectId > 0 ? projectId : undefined;
+}
+
 export function filterProjectClients<T extends { projectId?: number | null; clientId?: string | null; clientName?: string | null }>(clients: T[], projectId: number, search = ""): T[] {
   const query = search.trim().toLowerCase();
   return clients.filter((client) => {

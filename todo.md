@@ -13332,3 +13332,15 @@
 
 - [x] Restore strict reminder visibility: show only overdue and payments due within 15 days
 - [x] Remove far-future reminders from the bell and Reminders page
+
+- [x] Reconcile dashboard client count with the Clients list count (deferred by user request; no change made)
+- [x] Add regression coverage for dashboard and client-list client-count parity (deferred by user request; no change made)
+
+- [x] Add an All option to the Clients project filter
+- [x] Verify All shows clients across every project while project filters remain accurate
+
+- [x] Make All projects the default Clients project filter
+- [x] Make Clear filters return to All projects
+
+- [x] Fix client-detail Upcoming reminders so outstanding installment balances display correctly (deferred by user request; no change made)
+- [x] Add regression coverage for client-detail future installment display (deferred by user request; no change made)

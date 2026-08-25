@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { filterApprovedClients, filterProjectClients, getClientLifecycleStatus, getManualClientStatuses } from "./clients";
+import { filterApprovedClients, filterProjectClients, getClientLifecycleStatus, getManualClientStatuses, normalizeProjectFilter } from "./clients";
 
 describe("approved client filtering", () => {
   it("returns only approved agreements", () => {
@@ -25,6 +25,13 @@ describe("approved client filtering", () => {
     expect(filterProjectClients(clients, 1).map((client) => client.clientId)).toEqual(["ERP26001", "ERP26002"]);
     expect(filterProjectClients(clients, 1, "erp26002").map((client) => client.clientName)).toEqual(["Another School"]);
     expect(filterProjectClients(clients, 2, "acme").map((client) => client.clientId)).toEqual(["EMP26001"]);
+  });
+
+  it("normalizes the All project filter without creating a NaN query value", () => {
+    expect(normalizeProjectFilter("all")).toBeUndefined();
+    expect(normalizeProjectFilter("")).toBeUndefined();
+    expect(normalizeProjectFilter("2")).toBe(2);
+    expect(normalizeProjectFilter("not-a-project")).toBeUndefined();
   });
 
   it("uses project-specific manual status choices", () => {
