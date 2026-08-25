@@ -1084,6 +1084,9 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
                           {isInvoice ? row.invoiceNumber : row.receiptNumber}
                         </td>
                         <td className="px-5 py-4">
+                          <p className="text-xs font-semibold tracking-wide text-[#43239d]">
+                            {row.clientId || "—"}
+                          </p>
                           <p className="font-medium">{row.clientName}</p>
                           <p className="text-xs text-slate-500">
                             {row.clientEmail ||

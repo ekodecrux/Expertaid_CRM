@@ -13287,3 +13287,7 @@
 - [x] Make the Receipts list Amount column display the final collected receipt value
 - [x] Keep list values consistent with receipt preview and GST-inclusive/exclusive totals
 - [x] Add regression coverage and validate the Receipts list amount display
+
+- [x] Show Client ID above the client name and email in the Receipts list
+- [x] Preserve receipt search, actions, and final amount display
+- [x] Test and visually verify the Client ID-first Receipts layout
