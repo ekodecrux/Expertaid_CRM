@@ -44,6 +44,7 @@ import { buildReceiptClosePath } from "@shared/receiptNavigation";
 import { receiptDisplayTotal } from "@shared/receiptDisplayTotals";
 import { normalizeCollectionReceipt } from "@shared/reporting";
 import { formatWholeRupees } from "@shared/displayCurrency";
+import { clientPendingAmount } from "@shared/billingPrefill";
 
 type BillingKind = "invoice" | "receipt";
 
@@ -520,8 +521,8 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
     if (!createOpen || !selectedClient?.clientId || (!selectedClientProducts.data?.length && !primaryProductBalance)) return;
     const clientProductRows = Array.isArray(selectedClientProducts.data) ? selectedClientProducts.data : [];
     const additionalItems = clientProductRows.map(product => {
-      const pending = Math.max(0, Number(product.totalAmount ?? 0) - Number(product.paidAmount ?? 0));
-      const collection = isInvoice ? pending : formatWholeRupees(pending);
+      const pending = clientPendingAmount(product.totalAmount, product.paidAmount);
+      const collection = pending;
       return {
         itemName: String(product.productName ?? ""),
         description: String(product.description ?? ""),
@@ -532,7 +533,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
       };
     });
     const mappedItems = primaryProductBalance
-      ? (() => { const pending = Math.max(0, primaryProductBalance.totalAmount - primaryProductBalance.paidAmount); const collection = isInvoice ? pending : formatWholeRupees(pending); return [{ itemName: primaryProductBalance.productName, description: "Primary ERP service", quantity: "1", unitPrice: String(collection), collectionAmount: String(collection), isPrimary: true }, ...additionalItems]; })()
+      ? (() => { const pending = clientPendingAmount(primaryProductBalance.totalAmount, primaryProductBalance.paidAmount); const collection = pending; return [{ itemName: primaryProductBalance.productName, description: "Primary ERP service", quantity: "1", unitPrice: String(collection), collectionAmount: String(collection), isPrimary: true }, ...additionalItems]; })()
       : additionalItems;
     const gstSource = clientProductRows.find(product => Math.max(0, Number(product.totalAmount ?? 0) - Number(product.paidAmount ?? 0)) > 0) ?? clientProductRows[0] ?? primaryProductBalance;
     if (isInvoice) setInvoiceForm(current => ({ ...current, items: mappedItems }));

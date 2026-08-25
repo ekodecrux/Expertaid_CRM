@@ -13304,3 +13304,7 @@
 - [x] Make Client ID optional for new Invoices and Receipts
 - [x] Preserve client-linked hydration when Project and Client ID are supplied
 - [x] Add regression coverage and verify standalone document creation
+
+- [x] Fix the Invoice line-item prefill so ERP26001 receives the exact pending ₹7 instead of ₹6.80
+- [x] Keep invoice summary semantics consistent with the corrected line-item amount
+- [x] Add regression coverage and verify the Invoice dialog with the affected client
