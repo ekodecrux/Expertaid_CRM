@@ -48,7 +48,7 @@ const menuItems = [
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
-const DEFAULT_WIDTH = 230;
+const DEFAULT_WIDTH = 205;
 const MIN_WIDTH = 190;
 const MAX_WIDTH = 480;
 
@@ -59,7 +59,8 @@ export default function DashboardLayout({
 }) {
   const [sidebarWidth, setSidebarWidth] = useState(() => {
     const saved = localStorage.getItem(SIDEBAR_WIDTH_KEY);
-    return saved ? Math.min(parseInt(saved, 10), 240) : DEFAULT_WIDTH;
+    const parsed = saved ? parseInt(saved, 10) : NaN;
+    return Number.isFinite(parsed) ? Math.min(Math.max(parsed, MIN_WIDTH), DEFAULT_WIDTH) : DEFAULT_WIDTH;
   });
   const { loading, user, logout } = useAuth();
   const branding = trpc.branding.get.useQuery(undefined, { enabled: Boolean(user) });

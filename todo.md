@@ -13469,3 +13469,7 @@
 - [x] Restyle the client edit payment-plan header to match the supplied compact reference
 - [x] Preserve client edit, current-plan, and renewal actions in the updated header
 - [x] Add responsive visual validation and regression coverage for the client edit header
+
+- [x] Reduce unused right-side space in the sidebar without shrinking navigation labels
+- [x] Preserve sidebar navigation alignment and responsive behavior
+- [x] Add visual validation and regression checks for the sidebar width refinement
