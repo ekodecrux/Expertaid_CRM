@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatSessionRange, isValidSessionDateRange, sortSessionsNewestFirst } from "./session";
+import { formatSessionRange, isValidSessionDateRange, resolveSessionFilter, sortSessionsNewestFirst } from "./session";
 
 describe("session date ranges", () => {
   it("accepts a date range whose end is after its start", () => {
@@ -10,6 +10,12 @@ describe("session date ranges", () => {
     expect(isValidSessionDateRange("", "2027-03-31")).toBe(false);
     expect(isValidSessionDateRange("2027-03-31", "2027-03-31")).toBe(false);
     expect(isValidSessionDateRange("2027-03-31", "2026-04-01")).toBe(false);
+  });
+
+  it("resolves All sessions and selected sessions from global settings", () => {
+    expect(resolveSessionFilter({ sessionMode: "all", currentSession: "2027-2028" })).toBe("all");
+    expect(resolveSessionFilter({ sessionMode: "single", currentSession: "2027-2028" })).toBe("2027-2028");
+    expect(resolveSessionFilter(undefined)).toBe("2026-2027");
   });
 
   it("sorts sessions newest first", () => {

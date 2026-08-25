@@ -22,6 +22,10 @@ export function getClientLifecycleStatus(endDate: string, today = new Date().toI
   return daysRemaining <= 5 ? "Ready to Expire" : "Active";
 }
 
+export function buildAllSessionClientQuery(page = 1, pageSize = 200) {
+  return { page, pageSize, sessionMode: "all" as const };
+}
+
 export function normalizeProjectFilter(projectFilter: string): number | undefined {
   const value = projectFilter.trim();
   if (!value || value === "all") return undefined;

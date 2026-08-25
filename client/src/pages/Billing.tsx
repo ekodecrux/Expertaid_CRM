@@ -37,7 +37,7 @@ import {
   formatCurrency,
   type GstMode,
 } from "@shared/quotation";
-import { filterProjectClients } from "@shared/clients";
+import { buildAllSessionClientQuery, filterProjectClients } from "@shared/clients";
 import { matchesClientId } from "@shared/clientSearch";
 import { clientPrimaryTotal } from "@shared/clientBalance";
 import { buildReceiptClosePath } from "@shared/receiptNavigation";
@@ -297,7 +297,7 @@ export function BillingPage({ kind }: { kind: BillingKind }) {
   });
   const invoices = trpc.invoices.list.useQuery();
   const receipts = trpc.receipts.list.useQuery();
-  const clients = trpc.clients.list.useQuery({ page: 1, pageSize: 200 });
+  const clients = trpc.clients.list.useQuery(buildAllSessionClientQuery());
   const clientProducts = trpc.clients.allProducts.useQuery();
   const projects = trpc.projects.list.useQuery();
   const updateInvoiceSettings = trpc.invoices.settings.update.useMutation({

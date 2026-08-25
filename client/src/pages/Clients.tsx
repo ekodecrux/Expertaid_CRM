@@ -61,7 +61,7 @@ export default function Clients() {
   const [minValue, setMinValue] = useState("");
   const [maxValue, setMaxValue] = useState("");
   const [page, setPage] = useState(1);
-  const [sessionFilter, setSessionFilter] = useState("2026-2027");
+  const [sessionFilter, setSessionFilter] = useState("all");
   const [projectFilter, setProjectFilter] = useState("all");
   const [selected, setSelected] = useState<Client | null>(null);
   const [expandedHistoryPlanId, setExpandedHistoryPlanId] = useState<number | null>(null);

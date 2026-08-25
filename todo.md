@@ -13431,3 +13431,8 @@
 - [x] Filter Dashboard Receipts count and receipt value by the selected session
 - [x] Keep Today and Monthly Collection independent and based on actual current dates
 - [x] Add regression coverage for receipt KPI session filtering
+
+- [x] Make selected-session behavior consistent across Clients, Dashboard, Reports, Reminders, Invoices, and Receipts
+- [x] Make All sessions show complete workspace data without invalid session filtering
+- [x] Keep payment actions available for valid pending clients from other sessions
+- [x] Add regression coverage for session switching and All sessions behavior
