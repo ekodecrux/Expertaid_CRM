@@ -13386,3 +13386,7 @@
 - [x] Reconcile Dashboard Pending client payments count with actual pending installments
 - [x] Reconcile Dashboard Total Due with unpaid client balances and pending installments
 - [x] Add regression coverage for dashboard pending-payment KPIs
+
+- [x] Show GST mode and rate for renewed and previous plans
+- [x] Show subtotal, GST amount, and total including GST for historical plan products and plans
+- [x] Add regression coverage for renewal-history GST details
