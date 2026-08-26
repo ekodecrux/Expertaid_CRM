@@ -65,6 +65,7 @@ export default function DashboardLayout({
   });
   const { loading, user, logout } = useAuth();
   const branding = trpc.branding.get.useQuery(undefined, { enabled: Boolean(user) });
+  const publicBranding = trpc.branding.public.useQuery(undefined);
   const sessionSettings = trpc.session.get.useQuery(undefined, { enabled: Boolean(user) });
   const sessionRecords = trpc.session.list.useQuery(undefined, { enabled: Boolean(user) });
   const uniqueSessionRecords = sortSessionsNewestFirst(Array.from(new Map((sessionRecords.data ?? []).map((session) => [session.sessionLabel, session])).values()));
@@ -93,7 +94,7 @@ export default function DashboardLayout({
     reader.onload = () => { const dataUrl = typeof reader.result === "string" ? reader.result : ""; setProfileForm((form) => ({ ...form, avatarDataUrl: dataUrl, avatarPreviewUrl: dataUrl })); };
     reader.readAsDataURL(file);
   };
-  const companyBranding: CompanyBranding = branding.data ?? DEFAULT_BRANDING;
+  const companyBranding: CompanyBranding = branding.data ?? publicBranding.data ?? DEFAULT_BRANDING;
   const liveReminders = useMemo(() => buildReminderItems({ clients: reminderClients.data?.items ?? [], products: reminderPaymentData.data?.products ?? [], plans: reminderPaymentData.data?.plans ?? [], invoices: reminderInvoices.data ?? [], receipts: reminderReceipts.data ?? [] }).slice(0, 8), [reminderClients.data?.items, reminderPaymentData.data, reminderInvoices.data, reminderReceipts.data]);
   const activeSessionLabel = sessionSettings.data?.currentSession ?? "2026-2027";
   const changeSessionSelection = (value: string) => { const currentSession = value === "all" ? (sessionSettings.data?.currentSession ?? "2026-2027") : value; updateSession.mutate({ sessionMode: value === "all" ? "all" : "single", currentSession }); };

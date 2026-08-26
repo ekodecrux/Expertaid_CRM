@@ -6,7 +6,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { ENV } from "./_core/env";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getNextEstimationNumberForClient, getAgreementByToken, createSessionForOwner, updateSessionRecordForOwner, deleteSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, updateBrandingForOwner, updateSessionSettings, getProfileSettingsForOwner, updateProfileSettingsForOwner, getUserByEmail, upsertUser, listProjectsForOwner, createProjectForOwner, updateProjectForOwner, deleteProjectForOwner, setMainProjectForOwner, createAgreementForProject, createClientForOwner, updateClientForOwner, updateAgreementClientStatus, updateAgreementByIdForOwner, getPaymentPlanForOwner, savePaymentPlanForOwner, listClientProductsForOwner, listAllClientProductsForOwner, saveClientProductsForOwner, applyClientProductCollectionsForOwner, renewAgreementForOwner, renewClientForOwner, getClientPaymentSummaryForOwner } from "./db";
+import { createAgreement, createQuotation, allocateInvoiceNumberForOwner, getNextEstimationNumberForClient, getAgreementByToken, createSessionForOwner, updateSessionRecordForOwner, deleteSessionForOwner, listQuotationsForOwner, getQuotationSettingsForOwner, updateQuotationSettingsForOwner, updateQuotationForOwner, deleteQuotationForOwner, listQuotationEditHistoryForOwner, getSessionSettings, listSessionsForOwner, listAgreementsForOwner, listApprovedClientsForOwner, updateAgreement, updateAgreementDecision, getBrandingForOwner, getPublicBranding, updateBrandingForOwner, updateSessionSettings, getProfileSettingsForOwner, updateProfileSettingsForOwner, getUserByEmail, upsertUser, listProjectsForOwner, createProjectForOwner, updateProjectForOwner, deleteProjectForOwner, setMainProjectForOwner, createAgreementForProject, createClientForOwner, updateClientForOwner, updateAgreementClientStatus, updateAgreementByIdForOwner, getPaymentPlanForOwner, savePaymentPlanForOwner, listClientProductsForOwner, listAllClientProductsForOwner, saveClientProductsForOwner, applyClientProductCollectionsForOwner, renewAgreementForOwner, renewClientForOwner, getClientPaymentSummaryForOwner } from "./db";
 import { storagePut } from "./storage";
 import { sdk } from "./_core/sdk";
 import { validateCredentialLogin } from "./credentialLogin";
@@ -287,6 +287,7 @@ export const appRouter = router({
   }),
   branding: router({
     get: protectedProcedure.query(({ ctx }) => getBrandingForOwner(ctx.user.id)),
+    public: publicProcedure.query(() => getPublicBranding()),
     forAgreement: publicProcedure.input(z.object({ token: z.string().min(12).max(32) })).query(async ({ input }) => {
       const agreement = await getAgreementByToken(input.token);
       return agreement ? getBrandingForOwner(agreement.ownerId) : null;

@@ -13499,3 +13499,7 @@
 - [x] Remove Drizzle `statement-breakpoint` markers from the consolidated SQL export
 - [x] Validate the corrected export as plain MariaDB/MySQL-compatible SQL
 - [x] Deliver the corrected SQL file with safe application guidance
+
+- [x] Make the configured Expertaid logo visible on the public pre-login page
+- [x] Preserve the authenticated header/profile branding while adding the public fallback
+- [x] Verify the live login page and regression-test the branding fix

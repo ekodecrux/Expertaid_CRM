@@ -36,6 +36,14 @@ describe("branding persistence strategy", () => {
     expect(source).toContain("if (hasConfiguredDatabase()) throw new Error(`Profile settings database load failed");
   });
 
+  it("exposes a read-only public branding path for the pre-login page", () => {
+    const routerSource = readFileSync(resolve(process.cwd(), "server/routers.ts"), "utf8");
+    const layoutSource = readFileSync(resolve(process.cwd(), "client/src/components/DashboardLayout.tsx"), "utf8");
+    expect(routerSource).toContain("public: publicProcedure.query(() => getPublicBranding())");
+    expect(layoutSource).toContain("trpc.branding.public.useQuery(undefined)");
+    expect(layoutSource).toContain("branding.data ?? publicBranding.data ?? DEFAULT_BRANDING");
+  });
+
   it("serves managed storage URLs through the preview proxy", () => {
     const source = readFileSync(resolve(process.cwd(), "server/_core/storageProxy.ts"), "utf8");
     expect(source).toContain('app.get("/manus-storage/*"');

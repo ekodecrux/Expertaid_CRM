@@ -194,6 +194,11 @@ export async function upsertUser(user: InsertUser): Promise<void> {
   await db.insert(users).values(values).onDuplicateKeyUpdate({ set: updateSet });
 }
 
+export async function getPublicBranding() {
+  const owner = await getUserByOpenId(ENV.ownerOpenId || "credential:1") ?? (ENV.crmLoginEmail ? await getUserByEmail(ENV.crmLoginEmail) : undefined);
+  return owner ? getBrandingForOwner(owner.id) : DEFAULT_BRANDING;
+}
+
 export async function getBrandingForOwner(ownerId: number) {
   const localFallback = await getLocalBranding(ownerId);
   const db = await getDb();
